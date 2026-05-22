@@ -54,7 +54,7 @@ Para entender a fondo el código fuente, te recomendamos seguir este orden de le
 3.  **[Frontend](frontend.md)**: Estructura de componentes, manejo de estados globales y consumo de servicios.
 4.  **[API Gateway](apigateway.md)**: Configuración de rutas, filtros de seguridad y middleware.
 5.  **[Base de Datos (SQL)](sql.md)**: Modelo Entidad-Relación, scripts de migración y diseño de tablas.
-6.  **[Scripts / Python](python.md)**: Códigos realizado para simular usuarios en pruebas de JMeter y el funcionamiento del sistema en general.
+6.  **[Scripts / Python](pruebas_carga.md)**: Scripts realizados para crear usuarios automáticamente para pruebas de JMeter.
 
 ## 📁 Estructura del proyecto
 
