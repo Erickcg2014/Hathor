@@ -1,0 +1,2303 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ProgresoPracticasComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-progreso-practicas</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./progreso-practicas.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./progreso-practicas.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#filtro" >filtro</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#loadingKpis" >loadingKpis</a>
+                            </li>
+                            <li>
+                                <a href="#practicas" >practicas</a>
+                            </li>
+                            <li>
+                                <a href="#timeline" >timeline</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#calcularAlturaBar" >calcularAlturaBar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarTodo" >cargarTodo</a>
+                            </li>
+                            <li>
+                                <a href="#claseEstado" >claseEstado</a>
+                            </li>
+                            <li>
+                                <a href="#colorDelta" >colorDelta</a>
+                            </li>
+                            <li>
+                                <a href="#colorEstadoKpi" >colorEstadoKpi</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#construirTimeline" >construirTimeline</a>
+                            </li>
+                            <li>
+                                <a href="#iconoCategoria" >iconoCategoria</a>
+                            </li>
+                            <li>
+                                <a href="#iconoDelta" >iconoDelta</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#setFiltro" >setFiltro</a>
+                            </li>
+                            <li>
+                                <a href="#verDetalle" >verDetalle</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#timelineFiltrado" >timelineFiltrado</a>
+                                </li>
+                                <li>
+                                    <a href="#totalCompletadas" >totalCompletadas</a>
+                                </li>
+                                <li>
+                                    <a href="#totalEnCurso" >totalEnCurso</a>
+                                </li>
+                                <li>
+                                    <a href="#promedioAvance" >promedioAvance</a>
+                                </li>
+                                <li>
+                                    <a href="#practicasConMejora" >practicasConMejora</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, hatoService: <a href="../injectables/HatoService.html" target="_self">HatoService</a>, practicasService: <a href="../injectables/PracticasService.html" target="_self">PracticasService</a>, kpiService: <a href="../injectables/KpiService.html" target="_self">KpiService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:54</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoService.html" target="_self" >HatoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>practicasService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PracticasService.html" target="_self" >PracticasService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>kpiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/KpiService.html" target="_self" >KpiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcularAlturaBar"></a>
+                    <span class="name">
+                        <span ><b>calcularAlturaBar</b></span>
+                        <a href="#calcularAlturaBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calcularAlturaBar(valor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, historico: <a href="../interfaces/KpiHistorico.html" target="_self">KpiHistorico[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="285"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:285</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>historico</td>
+                                            <td>
+                                                            <code><a href="../interfaces/KpiHistorico.html" target="_self" >KpiHistorico[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarTodo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarTodo</b></span>
+                        <a href="#cargarTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarTodo(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="claseEstado"></a>
+                    <span class="name">
+                        <span ><b>claseEstado</b></span>
+                        <a href="#claseEstado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>claseEstado(estado: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="253"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:253</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorDelta"></a>
+                    <span class="name">
+                        <span ><b>colorDelta</b></span>
+                        <a href="#colorDelta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorDelta(delta: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="261"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:261</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>delta</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorEstadoKpi"></a>
+                    <span class="name">
+                        <span ><b>colorEstadoKpi</b></span>
+                        <a href="#colorEstadoKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorEstadoKpi(estado: string | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="275"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:275</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                        <code>string | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="construirTimeline"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>construirTimeline</b></span>
+                        <a href="#construirTimeline"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>construirTimeline(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="134"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:134</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoCategoria"></a>
+                    <span class="name">
+                        <span ><b>iconoCategoria</b></span>
+                        <a href="#iconoCategoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoCategoria(categoria: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="243"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:243</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>categoria</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoDelta"></a>
+                    <span class="name">
+                        <span ><b>iconoDelta</b></span>
+                        <a href="#iconoDelta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoDelta(delta: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="268"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:268</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>delta</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="294"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:294</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFiltro"></a>
+                    <span class="name">
+                        <span ><b>setFiltro</b></span>
+                        <a href="#setFiltro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setFiltro(f: unknown)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="204"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:204</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>f</td>
+                                            <td>
+                                                        <code>unknown</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verDetalle"></a>
+                    <span class="name">
+                        <span ><b>verDetalle</b></span>
+                        <a href="#verDetalle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>verDetalle(practica: <a href="../interfaces/HatoPracticaDTO.html" target="_self">HatoPracticaDTO</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="216"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:216</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>practica</td>
+                                            <td>
+                                                            <code><a href="../interfaces/HatoPracticaDTO.html" target="_self" >HatoPracticaDTO</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtro"></a>
+                    <span class="name">
+                        <span ><b>filtro</b></span>
+                        <a href="#filtro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;TODAS&quot; | &quot;EN_CURSO&quot; | &quot;COMPLETADA&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;TODAS&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingKpis"></a>
+                    <span class="name">
+                        <span ><b>loadingKpis</b></span>
+                        <a href="#loadingKpis"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="practicas"></a>
+                    <span class="name">
+                        <span ><b>practicas</b></span>
+                        <a href="#practicas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HatoPracticaDTO[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="timeline"></a>
+                    <span class="name">
+                        <span ><b>timeline</b></span>
+                        <a href="#timeline"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/EventoTimeline.html" target="_self" >EventoTimeline[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="timelineFiltrado"></a>
+                        <span class="name"><b>timelineFiltrado</b><a href="#timelineFiltrado"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>timelineFiltrado()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:209</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalCompletadas"></a>
+                        <span class="name"><b>totalCompletadas</b><a href="#totalCompletadas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalCompletadas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:222</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalEnCurso"></a>
+                        <span class="name"><b>totalEnCurso</b><a href="#totalEnCurso"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalEnCurso()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="226" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:226</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="promedioAvance"></a>
+                        <span class="name"><b>promedioAvance</b><a href="#promedioAvance"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>promedioAvance()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="230" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:230</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="practicasConMejora"></a>
+                        <span class="name"><b>practicasConMejora</b><a href="#practicasConMejora"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>practicasConMejora()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="237" class="link-to-prism">src/app/features/Usuario/practicas/progreso-practicas/progreso-practicas.component.ts:237</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import { HatoService, Hato } from &#x27;../../../../core/services/hato/hato.service&#x27;;
+import {
+  HatoPracticaDTO,
+  PracticasService,
+} from &#x27;../../../../core/services/practicas/practicas.service&#x27;;
+import { KpiService, KpiResultado, KpiHistorico } from &#x27;../../../../core/services/kpi/kpi.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+
+// ── Interfaces ────────────────────────────────────────────────────────────
+
+interface EventoTimeline {
+  practica: HatoPracticaDTO;
+  fechaReferencia: Date;
+  kpiActual: KpiResultado | null;
+  historico: KpiHistorico[];
+  deltaValor: number | null;
+  deltaPct: number | null;
+}
+
+@Component({
+  selector: &#x27;app-progreso-practicas&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent],
+  templateUrl: &#x27;./progreso-practicas.component.html&#x27;,
+  styleUrl: &#x27;./progreso-practicas.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProgresoPracticasComponent implements OnInit, OnDestroy {
+  // ── Estado ────────────────────────────────────────────────────────────
+  hatoActivo: Hato | null &#x3D; null;
+  loading &#x3D; true;
+  loadingKpis &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+
+  // ── Datos ─────────────────────────────────────────────────────────────
+  practicas: HatoPracticaDTO[] &#x3D; [];
+  timeline: EventoTimeline[] &#x3D; [];
+
+  // ── Filtro ────────────────────────────────────────────────────────────
+  filtro: &#x27;TODAS&#x27; | &#x27;EN_CURSO&#x27; | &#x27;COMPLETADA&#x27; &#x3D; &#x27;TODAS&#x27;;
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private hatoState: HatoStateService,
+    private hatoService: HatoService,
+    private practicasService: PracticasService,
+    private kpiService: KpiService,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato?.idHato) {
+        this.cargarTodo(hato.idHato);
+      } else {
+        this.practicas &#x3D; [];
+        this.timeline &#x3D; [];
+        this.loading &#x3D; false;
+      }
+      this.cdr.markForCheck();
+    });
+
+    if (!this.hatoState.getHatoActivo()) {
+      this.hatoService.getMisHatos().subscribe({
+        next: (hatos) &#x3D;&gt; {
+          if (hatos.length &gt; 0) this.hatoState.setHatoActivo(hatos[0]);
+          else this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+    }
+  }
+
+  // ── Carga ─────────────────────────────────────────────────────────────
+
+  private cargarTodo(idHato: string): void {
+    this.loading &#x3D; true;
+    this.loadingKpis &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    this.practicasService
+      .getPracticasByHato(idHato)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data) &#x3D;&gt; {
+          // Solo prácticas que ya iniciaron (EN_CURSO o COMPLETADA)
+          this.practicas &#x3D; data.filter((p) &#x3D;&gt; p.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27; || p.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;);
+          this.loading &#x3D; false;
+
+          // Cargar KPIs y construir timeline
+          this.kpiService.getKpis(idHato).subscribe({
+            next: () &#x3D;&gt; {
+              this.loadingKpis &#x3D; false;
+              this.construirTimeline(idHato);
+              this.cdr.markForCheck();
+            },
+            error: () &#x3D;&gt; {
+              this.loadingKpis &#x3D; false;
+              this.construirTimeline(idHato);
+              this.cdr.markForCheck();
+            },
+          });
+
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.practicas &#x3D; [];
+          this.timeline &#x3D; [];
+          this.loading &#x3D; false;
+          this.error &#x3D; &#x27;Error al cargar las prácticas.&#x27;;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Construir timeline ────────────────────────────────────────────────
+
+  private construirTimeline(idHato: string): void {
+    const eventos: EventoTimeline[] &#x3D; this.practicas.map((p) &#x3D;&gt; {
+      const kpiActual &#x3D; p.kpiImpactado ? this.kpiService.getKpiDesdeCache(p.kpiImpactado) : null;
+
+      // Fecha de referencia — usar fechaInicio si existe, si no fechaFin
+      const fechaRef &#x3D; p.fechaInicio
+        ? new Date(p.fechaInicio)
+        : p.fechaFin
+          ? new Date(p.fechaFin)
+          : new Date();
+
+      return {
+        practica: p,
+        fechaReferencia: fechaRef,
+        kpiActual,
+        historico: [],
+        deltaValor: null,
+        deltaPct: null,
+      };
+    });
+
+    // Ordenar por fecha descendente (más reciente primero)
+    eventos.sort((a, b) &#x3D;&gt; b.fechaReferencia.getTime() - a.fechaReferencia.getTime());
+
+    this.timeline &#x3D; eventos;
+
+    // Cargar histórico de KPIs para cada práctica con KPI impactado
+    const codigosUnicos &#x3D; [...new Set(this.practicas.map((p) &#x3D;&gt; p.kpiImpactado).filter(Boolean))];
+
+    for (const codigo of codigosUnicos) {
+      this.kpiService
+        .getHistorico(idHato, codigo)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (historico) &#x3D;&gt; {
+            const ordenado &#x3D; historico.sort(
+              (a, b) &#x3D;&gt; new Date(a.fechaCalculo).getTime() - new Date(b.fechaCalculo).getTime(),
+            );
+
+            // Calcular delta para eventos con este KPI
+            this.timeline &#x3D; this.timeline.map((ev) &#x3D;&gt; {
+              if (ev.practica.kpiImpactado !&#x3D;&#x3D; codigo) return ev;
+
+              const historicoCortado &#x3D; ordenado.slice(-6);
+              let deltaValor: number | null &#x3D; null;
+              let deltaPct: number | null &#x3D; null;
+
+              if (historicoCortado.length &gt;&#x3D; 2) {
+                const primero &#x3D; historicoCortado[0].valor;
+                const ultimo &#x3D; historicoCortado[historicoCortado.length - 1].valor;
+                deltaValor &#x3D; Math.round((ultimo - primero) * 100) / 100;
+                deltaPct &#x3D; primero !&#x3D;&#x3D; 0 ? Math.round(((ultimo - primero) / primero) * 100) : null;
+              }
+
+              return {
+                ...ev,
+                historico: historicoCortado,
+                deltaValor,
+                deltaPct,
+              };
+            });
+
+            this.cdr.markForCheck();
+          },
+        });
+    }
+  }
+
+  // ── Filtro ────────────────────────────────────────────────────────────
+
+  setFiltro(f: typeof this.filtro): void {
+    this.filtro &#x3D; f;
+    this.cdr.markForCheck();
+  }
+
+  get timelineFiltrado(): EventoTimeline[] {
+    if (this.filtro &#x3D;&#x3D;&#x3D; &#x27;TODAS&#x27;) return this.timeline;
+    return this.timeline.filter((ev) &#x3D;&gt; ev.practica.estado &#x3D;&#x3D;&#x3D; this.filtro);
+  }
+
+  // ── Navegación ────────────────────────────────────────────────────────
+
+  verDetalle(practica: HatoPracticaDTO): void {
+    this.router.navigate([&#x27;/practicas/detalle&#x27;, practica.idHatoPractica], { state: { practica } });
+  }
+
+  // ── Stats globales ────────────────────────────────────────────────────
+
+  get totalCompletadas(): number {
+    return this.practicas.filter((p) &#x3D;&gt; p.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;).length;
+  }
+
+  get totalEnCurso(): number {
+    return this.practicas.filter((p) &#x3D;&gt; p.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;).length;
+  }
+
+  get promedioAvance(): number {
+    const enCurso &#x3D; this.practicas.filter((p) &#x3D;&gt; p.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;);
+    if (!enCurso.length) return 0;
+    const suma &#x3D; enCurso.reduce((acc, p) &#x3D;&gt; acc + (p.porcentajeAvance ?? 0), 0);
+    return Math.round(suma / enCurso.length);
+  }
+
+  get practicasConMejora(): number {
+    return this.timeline.filter((ev) &#x3D;&gt; ev.deltaPct !&#x3D;&#x3D; null &amp;&amp; ev.deltaPct &gt; 0).length;
+  }
+
+  // ── Helpers visuales ─────────────────────────────────────────────────
+
+  iconoCategoria(categoria: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      PRODUCTIVIDAD: &#x27;🥛&#x27;,
+      HATO: &#x27;🐄&#x27;,
+      FINANCIERO: &#x27;💰&#x27;,
+      EFICIENCIA: &#x27;⚙️&#x27;,
+    };
+    return map[categoria] ?? &#x27;🌱&#x27;;
+  }
+
+  claseEstado(estado: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      EN_CURSO: &#x27;estado-curso&#x27;,
+      COMPLETADA: &#x27;estado-completada&#x27;,
+    };
+    return map[estado] ?? &#x27;&#x27;;
+  }
+
+  colorDelta(delta: number | null): string {
+    if (delta &#x3D;&#x3D;&#x3D; null) return &#x27;&#x27;;
+    if (delta &gt; 0) return &#x27;delta-positivo&#x27;;
+    if (delta &lt; 0) return &#x27;delta-negativo&#x27;;
+    return &#x27;delta-neutro&#x27;;
+  }
+
+  iconoDelta(delta: number | null): string {
+    if (delta &#x3D;&#x3D;&#x3D; null) return &#x27;—&#x27;;
+    if (delta &gt; 0) return &#x27;↗️&#x27;;
+    if (delta &lt; 0) return &#x27;↘️&#x27;;
+    return &#x27;→&#x27;;
+  }
+
+  colorEstadoKpi(estado: string | undefined): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      OPTIMO: &#x27;kpi-optimo&#x27;,
+      ACEPTABLE: &#x27;kpi-aceptable&#x27;,
+      CRITICO: &#x27;kpi-critico&#x27;,
+      SIN_DATOS: &#x27;kpi-sin-datos&#x27;,
+    };
+    return map[estado ?? &#x27;&#x27;] ?? &#x27;kpi-sin-datos&#x27;;
+  }
+
+  calcularAlturaBar(valor: number, historico: KpiHistorico[]): number {
+    if (!historico.length) return 0;
+    const valores &#x3D; historico.map((h) &#x3D;&gt; h.valor);
+    const max &#x3D; Math.max(...valores);
+    const min &#x3D; Math.min(...valores);
+    if (max &#x3D;&#x3D;&#x3D; min) return 50;
+    return Math.round(((valor - min) / (max - min)) * 80) + 10;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;progreso-page&quot;&gt;
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; LOADING &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (loading) {
+    &lt;div class&#x3D;&quot;loading-wrap&quot;&gt;
+      &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Cargando timeline...&quot;&gt; &lt;/app-spinner&gt;
+    &lt;/div&gt;
+  }
+
+  @if (!loading) {
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HEADER &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;header class&#x3D;&quot;page-header&quot;&gt;
+      &lt;div class&#x3D;&quot;header-left&quot;&gt;
+        &lt;p class&#x3D;&quot;page-tag&quot;&gt;Prácticas · Timeline&lt;/p&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Mi &lt;span class&#x3D;&quot;brand&quot;&gt;Progreso&lt;/span&gt;&lt;/h1&gt;
+        @if (hatoActivo) {
+          &lt;p class&#x3D;&quot;page-subtitle&quot;&gt;
+            &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          &lt;/p&gt;
+        } @else {
+          &lt;p class&#x3D;&quot;page-subtitle warn&quot;&gt;⚠️ Selecciona un hato para ver tu progreso.&lt;/p&gt;
+        }
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;header-right&quot;&gt;
+        &lt;div class&#x3D;&quot;header-icon&quot;&gt;📈&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    @if (error) {
+      &lt;div class&#x3D;&quot;msg-error&quot;&gt;
+        &lt;span&gt;❌&lt;/span&gt;
+        &lt;p&gt;{{ error }}&lt;/p&gt;
+      &lt;/div&gt;
+    }
+
+    @if (!hatoActivo) {
+      &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+        &lt;span&gt;🐄&lt;/span&gt;
+        &lt;p&gt;Selecciona un hato para ver tu progreso.&lt;/p&gt;
+      &lt;/div&gt;
+    }
+
+    @if (hatoActivo) {
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; STATS GLOBALES &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;stats-grid&quot;&gt;
+        &lt;div class&#x3D;&quot;stat-card completada&quot;&gt;
+          &lt;span class&#x3D;&quot;stat-icono&quot;&gt;✅&lt;/span&gt;
+          &lt;div class&#x3D;&quot;stat-info&quot;&gt;
+            &lt;span class&#x3D;&quot;stat-label&quot;&gt;Completadas&lt;/span&gt;
+            &lt;span class&#x3D;&quot;stat-valor&quot;&gt;{{ totalCompletadas }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;stat-card curso&quot;&gt;
+          &lt;span class&#x3D;&quot;stat-icono&quot;&gt;🔄&lt;/span&gt;
+          &lt;div class&#x3D;&quot;stat-info&quot;&gt;
+            &lt;span class&#x3D;&quot;stat-label&quot;&gt;En curso&lt;/span&gt;
+            &lt;span class&#x3D;&quot;stat-valor&quot;&gt;{{ totalEnCurso }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;stat-card avance&quot;&gt;
+          &lt;span class&#x3D;&quot;stat-icono&quot;&gt;📊&lt;/span&gt;
+          &lt;div class&#x3D;&quot;stat-info&quot;&gt;
+            &lt;span class&#x3D;&quot;stat-label&quot;&gt;Avance promedio&lt;/span&gt;
+            &lt;span class&#x3D;&quot;stat-valor&quot;&gt;{{ promedioAvance }}%&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;stat-card mejora&quot;&gt;
+          &lt;span class&#x3D;&quot;stat-icono&quot;&gt;✨&lt;/span&gt;
+          &lt;div class&#x3D;&quot;stat-info&quot;&gt;
+            &lt;span class&#x3D;&quot;stat-label&quot;&gt;KPIs mejorados&lt;/span&gt;
+            &lt;span class&#x3D;&quot;stat-valor&quot;&gt;{{ practicasConMejora }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; FILTROS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;filtros-row&quot;&gt;
+        &lt;button class&#x3D;&quot;filtro-btn&quot; [class.activo]&#x3D;&quot;filtro &#x3D;&#x3D;&#x3D; &#x27;TODAS&#x27;&quot; (click)&#x3D;&quot;setFiltro(&#x27;TODAS&#x27;)&quot;&gt;
+          Todas
+          &lt;span class&#x3D;&quot;filtro-count&quot;&gt;{{ timeline.length }}&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button
+          class&#x3D;&quot;filtro-btn&quot;
+          [class.activo]&#x3D;&quot;filtro &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;&quot;
+          (click)&#x3D;&quot;setFiltro(&#x27;EN_CURSO&#x27;)&quot;
+        &gt;
+          🔄 En curso
+          &lt;span class&#x3D;&quot;filtro-count&quot;&gt;{{ totalEnCurso }}&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button
+          class&#x3D;&quot;filtro-btn&quot;
+          [class.activo]&#x3D;&quot;filtro &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;&quot;
+          (click)&#x3D;&quot;setFiltro(&#x27;COMPLETADA&#x27;)&quot;
+        &gt;
+          ✅ Completadas
+          &lt;span class&#x3D;&quot;filtro-count&quot;&gt;{{ totalCompletadas }}&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; TIMELINE VACÍO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      @if (timelineFiltrado.length &#x3D;&#x3D;&#x3D; 0) {
+        &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+          &lt;span&gt;🌱&lt;/span&gt;
+          @if (practicas.length &#x3D;&#x3D;&#x3D; 0) {
+            &lt;p&gt;Aún no has iniciado ninguna práctica.&lt;/p&gt;
+            &lt;p class&#x3D;&quot;empty-hint&quot;&gt;
+              Ve a &lt;strong&gt;Prácticas sugeridas&lt;/strong&gt; para comenzar a aplicar mejoras en tu hato.
+            &lt;/p&gt;
+          } @else {
+            &lt;p&gt;No hay prácticas con el filtro seleccionado.&lt;/p&gt;
+          }
+        &lt;/div&gt;
+      }
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; TIMELINE &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      @if (timelineFiltrado.length &gt; 0) {
+        &lt;div class&#x3D;&quot;timeline-wrap&quot;&gt;
+          @for (
+            ev of timelineFiltrado;
+            track ev.practica.idHatoPractica;
+            let i &#x3D; $index;
+            let last &#x3D; $last
+          ) {
+            &lt;div class&#x3D;&quot;timeline-item&quot;&gt;
+              &lt;!-- Línea vertical + punto --&gt;
+              &lt;div class&#x3D;&quot;timeline-eje&quot;&gt;
+                &lt;div
+                  class&#x3D;&quot;timeline-punto&quot;
+                  [class.punto-completada]&#x3D;&quot;ev.practica.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;&quot;
+                  [class.punto-curso]&#x3D;&quot;ev.practica.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;&quot;
+                &gt;
+                  {{ iconoCategoria(ev.practica.categoria) }}
+                &lt;/div&gt;
+                @if (!last) {
+                  &lt;div class&#x3D;&quot;timeline-linea&quot;&gt;&lt;/div&gt;
+                }
+              &lt;/div&gt;
+
+              &lt;!-- Contenido del evento --&gt;
+              &lt;div class&#x3D;&quot;timeline-contenido&quot;&gt;
+                &lt;!-- Header del evento --&gt;
+                &lt;div class&#x3D;&quot;evento-header&quot;&gt;
+                  &lt;div class&#x3D;&quot;evento-header-left&quot;&gt;
+                    &lt;div class&#x3D;&quot;evento-meta&quot;&gt;
+                      &lt;span class&#x3D;&quot;evento-fecha&quot;&gt;
+                        @if (ev.practica.fechaInicio) {
+                          📅 {{ ev.practica.fechaInicio | date: &#x27;dd MMM yyyy&#x27; }}
+                        } @else {
+                          📅 Sin fecha registrada
+                        }
+                      &lt;/span&gt;
+                      &lt;span class&#x3D;&quot;estado-chip&quot; [class]&#x3D;&quot;claseEstado(ev.practica.estado)&quot;&gt;
+                        {{ ev.practica.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27; ? &#x27;🔄 En curso&#x27; : &#x27;✅ Completada&#x27; }}
+                      &lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;h3 class&#x3D;&quot;evento-nombre&quot;&gt;
+                      {{ ev.practica.nombrePractica }}
+                    &lt;/h3&gt;
+                    &lt;div class&#x3D;&quot;evento-tags&quot;&gt;
+                      &lt;span class&#x3D;&quot;tag-cat&quot;&gt;
+                        {{ ev.practica.categoria }}
+                      &lt;/span&gt;
+                      &lt;span class&#x3D;&quot;tag-dif&quot;&gt;
+                        {{ ev.practica.dificultad }}
+                      &lt;/span&gt;
+                      @if (ev.practica.duracionDias) {
+                        &lt;span class&#x3D;&quot;tag-dur&quot;&gt; ⏱️ {{ ev.practica.duracionDias }} días &lt;/span&gt;
+                      }
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Delta KPI si hay mejora --&gt;
+                  @if (ev.deltaPct !&#x3D;&#x3D; null) {
+                    &lt;div class&#x3D;&quot;delta-badge&quot; [class]&#x3D;&quot;colorDelta(ev.deltaPct)&quot;&gt;
+                      &lt;span class&#x3D;&quot;delta-icono&quot;&gt;
+                        {{ iconoDelta(ev.deltaPct) }}
+                      &lt;/span&gt;
+                      &lt;div class&#x3D;&quot;delta-info&quot;&gt;
+                        &lt;span class&#x3D;&quot;delta-pct&quot;&gt;
+                          {{ ev.deltaPct &gt; 0 ? &#x27;+&#x27; : &#x27;&#x27; }}{{ ev.deltaPct }}%
+                        &lt;/span&gt;
+                        &lt;span class&#x3D;&quot;delta-label&quot;&gt;en el KPI&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  }
+                &lt;/div&gt;
+
+                &lt;!-- Barra de avance --&gt;
+                &lt;div class&#x3D;&quot;evento-avance&quot;&gt;
+                  &lt;div class&#x3D;&quot;avance-header&quot;&gt;
+                    &lt;span class&#x3D;&quot;avance-label&quot;&gt;Avance&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;avance-pct&quot;&gt; {{ ev.practica.porcentajeAvance }}% &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;avance-track&quot;&gt;
+                    &lt;div
+                      class&#x3D;&quot;avance-fill&quot;
+                      [class.fill-completada]&#x3D;&quot;ev.practica.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;&quot;
+                      [class.fill-curso]&#x3D;&quot;ev.practica.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;&quot;
+                      [style.width.%]&#x3D;&quot;ev.practica.porcentajeAvance&quot;
+                    &gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- KPI impactado --&gt;
+                @if (ev.practica.kpiImpactado) {
+                  &lt;div class&#x3D;&quot;evento-kpi&quot;&gt;
+                    &lt;div class&#x3D;&quot;evento-kpi-header&quot;&gt;
+                      &lt;span class&#x3D;&quot;evento-kpi-label&quot;&gt; 📈 KPI impactado: &lt;/span&gt;
+                      &lt;span class&#x3D;&quot;evento-kpi-codigo&quot;&gt;
+                        {{ ev.practica.kpiImpactado }}
+                      &lt;/span&gt;
+                      @if (ev.kpiActual) {
+                        &lt;span class&#x3D;&quot;kpi-estado-chip&quot; [class]&#x3D;&quot;colorEstadoKpi(ev.kpiActual.estado)&quot;&gt;
+                          {{ ev.kpiActual.estado }}
+                        &lt;/span&gt;
+                        @if (ev.kpiActual.valor !&#x3D; null) {
+                          &lt;span class&#x3D;&quot;evento-kpi-valor&quot;&gt;
+                            {{ ev.kpiActual.valor | number: &#x27;1.1-2&#x27; }}
+                            {{ ev.kpiActual.unidad }}
+                          &lt;/span&gt;
+                        }
+                      }
+                    &lt;/div&gt;
+
+                    &lt;!-- Mini gráfica de barras histórico --&gt;
+                    @if (ev.historico.length &gt;&#x3D; 2) {
+                      &lt;div class&#x3D;&quot;mini-grafica&quot;&gt;
+                        &lt;span class&#x3D;&quot;mini-grafica-label&quot;&gt;
+                          Evolución últimos {{ ev.historico.length }} períodos:
+                        &lt;/span&gt;
+                        &lt;div class&#x3D;&quot;mini-bars&quot;&gt;
+                          @for (h of ev.historico; track h.periodo) {
+                            &lt;div class&#x3D;&quot;mini-bar-wrap&quot;&gt;
+                              &lt;div
+                                class&#x3D;&quot;mini-bar&quot;
+                                [style.height.%]&#x3D;&quot;calcularAlturaBar(h.valor, ev.historico)&quot;
+                                [class.bar-optimo]&#x3D;&quot;h.estado &#x3D;&#x3D;&#x3D; &#x27;OPTIMO&#x27;&quot;
+                                [class.bar-aceptable]&#x3D;&quot;h.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;&quot;
+                                [class.bar-critico]&#x3D;&quot;h.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;&quot;
+                                [title]&#x3D;&quot;h.valor + &#x27; — &#x27; + h.periodo&quot;
+                              &gt;&lt;/div&gt;
+                              &lt;span class&#x3D;&quot;mini-bar-periodo&quot;&gt;
+                                {{ h.periodo | slice: 5 : 7 }}
+                              &lt;/span&gt;
+                            &lt;/div&gt;
+                          }
+                        &lt;/div&gt;
+                        @if (ev.deltaValor !&#x3D;&#x3D; null) {
+                          &lt;span class&#x3D;&quot;mini-delta&quot; [class]&#x3D;&quot;colorDelta(ev.deltaValor)&quot;&gt;
+                            {{ iconoDelta(ev.deltaValor) }}
+                            {{ ev.deltaValor &gt; 0 ? &#x27;+&#x27; : &#x27;&#x27; }}
+                            {{ ev.deltaValor | number: &#x27;1.1-2&#x27; }}
+                            {{ ev.kpiActual?.unidad }}
+                            desde que iniciaste
+                          &lt;/span&gt;
+                        }
+                      &lt;/div&gt;
+                    }
+                  &lt;/div&gt;
+                }
+
+                &lt;!-- Fechas y acción --&gt;
+                &lt;div class&#x3D;&quot;evento-footer&quot;&gt;
+                  &lt;div class&#x3D;&quot;fechas-row&quot;&gt;
+                    @if (ev.practica.fechaInicio) {
+                      &lt;span class&#x3D;&quot;fecha-chip&quot;&gt;
+                        Inicio: {{ ev.practica.fechaInicio | date: &#x27;dd/MM/yyyy&#x27; }}
+                      &lt;/span&gt;
+                    }
+                    @if (ev.practica.fechaFin) {
+                      &lt;span class&#x3D;&quot;fecha-chip completada&quot;&gt;
+                        Fin: {{ ev.practica.fechaFin | date: &#x27;dd/MM/yyyy&#x27; }}
+                      &lt;/span&gt;
+                    }
+                  &lt;/div&gt;
+                  &lt;button class&#x3D;&quot;btn-ver-detalle&quot; (click)&#x3D;&quot;verDetalle(ev.practica)&quot;&gt;
+                    🔍 Ver detalle
+                  &lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+      }
+    }
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="progreso-page">  <!-- ===== LOADING ===== -->  @if (loading) {    <div class="loading-wrap">      <app-spinner size="large" message="Cargando timeline..."> </app-spinner>    </div>  }  @if (!loading) {    <!-- ===== HEADER ===== -->    <header class="page-header">      <div class="header-left">        <p class="page-tag">Prácticas · Timeline</p>        <h1 class="page-title">Mi <span class="brand">Progreso</span></h1>        @if (hatoActivo) {          <p class="page-subtitle">            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},            {{ hatoActivo.departamento }}          </p>        } @else {          <p class="page-subtitle warn">⚠️ Selecciona un hato para ver tu progreso.</p>        }      </div>      <div class="header-right">        <div class="header-icon">📈</div>      </div>    </header>    @if (error) {      <div class="msg-error">        <span>❌</span>        <p>{{ error }}</p>      </div>    }    @if (!hatoActivo) {      <div class="empty-state">        <span>🐄</span>        <p>Selecciona un hato para ver tu progreso.</p>      </div>    }    @if (hatoActivo) {      <!-- ===== STATS GLOBALES ===== -->      <div class="stats-grid">        <div class="stat-card completada">          <span class="stat-icono">✅</span>          <div class="stat-info">            <span class="stat-label">Completadas</span>            <span class="stat-valor">{{ totalCompletadas }}</span>          </div>        </div>        <div class="stat-card curso">          <span class="stat-icono">🔄</span>          <div class="stat-info">            <span class="stat-label">En curso</span>            <span class="stat-valor">{{ totalEnCurso }}</span>          </div>        </div>        <div class="stat-card avance">          <span class="stat-icono">📊</span>          <div class="stat-info">            <span class="stat-label">Avance promedio</span>            <span class="stat-valor">{{ promedioAvance }}%</span>          </div>        </div>        <div class="stat-card mejora">          <span class="stat-icono">✨</span>          <div class="stat-info">            <span class="stat-label">KPIs mejorados</span>            <span class="stat-valor">{{ practicasConMejora }}</span>          </div>        </div>      </div>      <!-- ===== FILTROS ===== -->      <div class="filtros-row">        <button class="filtro-btn" [class.activo]="filtro === \'TODAS\'" (click)="setFiltro(\'TODAS\')">          Todas          <span class="filtro-count">{{ timeline.length }}</span>        </button>        <button          class="filtro-btn"          [class.activo]="filtro === \'EN_CURSO\'"          (click)="setFiltro(\'EN_CURSO\')"        >          🔄 En curso          <span class="filtro-count">{{ totalEnCurso }}</span>        </button>        <button          class="filtro-btn"          [class.activo]="filtro === \'COMPLETADA\'"          (click)="setFiltro(\'COMPLETADA\')"        >          ✅ Completadas          <span class="filtro-count">{{ totalCompletadas }}</span>        </button>      </div>      <!-- ===== TIMELINE VACÍO ===== -->      @if (timelineFiltrado.length === 0) {        <div class="empty-state">          <span>🌱</span>          @if (practicas.length === 0) {            <p>Aún no has iniciado ninguna práctica.</p>            <p class="empty-hint">              Ve a <strong>Prácticas sugeridas</strong> para comenzar a aplicar mejoras en tu hato.            </p>          } @else {            <p>No hay prácticas con el filtro seleccionado.</p>          }        </div>      }      <!-- ===== TIMELINE ===== -->      @if (timelineFiltrado.length > 0) {        <div class="timeline-wrap">          @for (            ev of timelineFiltrado;            track ev.practica.idHatoPractica;            let i = $index;            let last = $last          ) {            <div class="timeline-item">              <!-- Línea vertical + punto -->              <div class="timeline-eje">                <div                  class="timeline-punto"                  [class.punto-completada]="ev.practica.estado === \'COMPLETADA\'"                  [class.punto-curso]="ev.practica.estado === \'EN_CURSO\'"                >                  {{ iconoCategoria(ev.practica.categoria) }}                </div>                @if (!last) {                  <div class="timeline-linea"></div>                }              </div>              <!-- Contenido del evento -->              <div class="timeline-contenido">                <!-- Header del evento -->                <div class="evento-header">                  <div class="evento-header-left">                    <div class="evento-meta">                      <span class="evento-fecha">                        @if (ev.practica.fechaInicio) {                          📅 {{ ev.practica.fechaInicio | date: \'dd MMM yyyy\' }}                        } @else {                          📅 Sin fecha registrada                        }                      </span>                      <span class="estado-chip" [class]="claseEstado(ev.practica.estado)">                        {{ ev.practica.estado === \'EN_CURSO\' ? \'🔄 En curso\' : \'✅ Completada\' }}                      </span>                    </div>                    <h3 class="evento-nombre">                      {{ ev.practica.nombrePractica }}                    </h3>                    <div class="evento-tags">                      <span class="tag-cat">                        {{ ev.practica.categoria }}                      </span>                      <span class="tag-dif">                        {{ ev.practica.dificultad }}                      </span>                      @if (ev.practica.duracionDias) {                        <span class="tag-dur"> ⏱️ {{ ev.practica.duracionDias }} días </span>                      }                    </div>                  </div>                  <!-- Delta KPI si hay mejora -->                  @if (ev.deltaPct !== null) {                    <div class="delta-badge" [class]="colorDelta(ev.deltaPct)">                      <span class="delta-icono">                        {{ iconoDelta(ev.deltaPct) }}                      </span>                      <div class="delta-info">                        <span class="delta-pct">                          {{ ev.deltaPct > 0 ? \'+\' : \'\' }}{{ ev.deltaPct }}%                        </span>                        <span class="delta-label">en el KPI</span>                      </div>                    </div>                  }                </div>                <!-- Barra de avance -->                <div class="evento-avance">                  <div class="avance-header">                    <span class="avance-label">Avance</span>                    <span class="avance-pct"> {{ ev.practica.porcentajeAvance }}% </span>                  </div>                  <div class="avance-track">                    <div                      class="avance-fill"                      [class.fill-completada]="ev.practica.estado === \'COMPLETADA\'"                      [class.fill-curso]="ev.practica.estado === \'EN_CURSO\'"                      [style.width.%]="ev.practica.porcentajeAvance"                    ></div>                  </div>                </div>                <!-- KPI impactado -->                @if (ev.practica.kpiImpactado) {                  <div class="evento-kpi">                    <div class="evento-kpi-header">                      <span class="evento-kpi-label"> 📈 KPI impactado: </span>                      <span class="evento-kpi-codigo">                        {{ ev.practica.kpiImpactado }}                      </span>                      @if (ev.kpiActual) {                        <span class="kpi-estado-chip" [class]="colorEstadoKpi(ev.kpiActual.estado)">                          {{ ev.kpiActual.estado }}                        </span>                        @if (ev.kpiActual.valor != null) {                          <span class="evento-kpi-valor">                            {{ ev.kpiActual.valor | number: \'1.1-2\' }}                            {{ ev.kpiActual.unidad }}                          </span>                        }                      }                    </div>                    <!-- Mini gráfica de barras histórico -->                    @if (ev.historico.length >= 2) {                      <div class="mini-grafica">                        <span class="mini-grafica-label">                          Evolución últimos {{ ev.historico.length }} períodos:                        </span>                        <div class="mini-bars">                          @for (h of ev.historico; track h.periodo) {                            <div class="mini-bar-wrap">                              <div                                class="mini-bar"                                [style.height.%]="calcularAlturaBar(h.valor, ev.historico)"                                [class.bar-optimo]="h.estado === \'OPTIMO\'"                                [class.bar-aceptable]="h.estado === \'ACEPTABLE\'"                                [class.bar-critico]="h.estado === \'CRITICO\'"                                [title]="h.valor + \' — \' + h.periodo"                              ></div>                              <span class="mini-bar-periodo">                                {{ h.periodo | slice: 5 : 7 }}                              </span>                            </div>                          }                        </div>                        @if (ev.deltaValor !== null) {                          <span class="mini-delta" [class]="colorDelta(ev.deltaValor)">                            {{ iconoDelta(ev.deltaValor) }}                            {{ ev.deltaValor > 0 ? \'+\' : \'\' }}                            {{ ev.deltaValor | number: \'1.1-2\' }}                            {{ ev.kpiActual?.unidad }}                            desde que iniciaste                          </span>                        }                      </div>                    }                  </div>                }                <!-- Fechas y acción -->                <div class="evento-footer">                  <div class="fechas-row">                    @if (ev.practica.fechaInicio) {                      <span class="fecha-chip">                        Inicio: {{ ev.practica.fechaInicio | date: \'dd/MM/yyyy\' }}                      </span>                    }                    @if (ev.practica.fechaFin) {                      <span class="fecha-chip completada">                        Fin: {{ ev.practica.fechaFin | date: \'dd/MM/yyyy\' }}                      </span>                    }                  </div>                  <button class="btn-ver-detalle" (click)="verDetalle(ev.practica)">                    🔍 Ver detalle                  </button>                </div>              </div>            </div>          }        </div>      }    }  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'ProgresoPracticasComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ProgresoPracticasComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,800 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  CategoriaStat</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/features/Usuario/hato/inventarios-hato/general/estadisticas/inventario-general-estadisticas.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#cantidad" 
+>
+                                            cantidad
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#categoria" 
+>
+                                            categoria
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#pct" 
+>
+                                            pct
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#total" 
+>
+                                            total
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="cantidad"></a>
+                                        <span class="name "><b>cantidad</b>
+                                            <a href="#cantidad">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>cantidad:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="categoria"></a>
+                                        <span class="name "><b>categoria</b>
+                                            <a href="#categoria">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>categoria:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="pct"></a>
+                                        <span class="name "><b>pct</b>
+                                            <a href="#pct">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>pct:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="total"></a>
+                                        <span class="name "><b>total</b>
+                                            <a href="#total">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>total:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnDestroy,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+import { Chart, registerables } from &#x27;chart.js&#x27;;
+
+import { Hato } from &#x27;../../../../../../core/services/hato/hato.service&#x27;;
+import { HatoStateService } from &#x27;../../../../../../core/services/ui-state/hato-state.service&#x27;;
+import {
+  InventarioGeneral,
+  InventarioGeneralService,
+} from &#x27;../../../../../../core/services/inventario/inventario-general.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../../../shared/spinner/spinner.component&#x27;;
+
+Chart.register(...registerables);
+
+interface CategoriaStat {
+  categoria: string;
+  total: number;
+  pct: number;
+  cantidad: number;
+}
+
+@Component({
+  selector: &#x27;app-inventario-general-estadisticas&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent],
+  templateUrl: &#x27;./inventario-general-estadisticas.component.html&#x27;,
+  styleUrl: &#x27;./inventario-general-estadisticas.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class InventarioGeneralEstadisticasComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild(&#x27;chartDona&#x27;) chartDonaRef!: ElementRef;
+  @ViewChild(&#x27;chartBarras&#x27;) chartBarrasRef!: ElementRef;
+  @ViewChild(&#x27;chartItems&#x27;) chartItemsRef!: ElementRef;
+
+  hatoActivo: Hato | null &#x3D; null;
+  loading &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  items: InventarioGeneral[] &#x3D; [];
+
+  private chartDona: Chart | null &#x3D; null;
+  private chartBarras: Chart | null &#x3D; null;
+  private chartItems: Chart | null &#x3D; null;
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+  private viewIniciado &#x3D; false;
+
+  readonly Math &#x3D; Math;
+
+  private readonly COLORES &#x3D; [
+    &#x27;#19e64d&#x27;,
+    &#x27;#15803d&#x27;,
+    &#x27;#052e0f&#x27;,
+    &#x27;#86efac&#x27;,
+    &#x27;#4ade80&#x27;,
+    &#x27;#bbf7d0&#x27;,
+    &#x27;#166534&#x27;,
+    &#x27;#dcfce7&#x27;,
+    &#x27;#22c55e&#x27;,
+  ];
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private hatoState: HatoStateService,
+    private inventarioService: InventarioGeneralService,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato?.idHato) {
+        this.cargar(hato.idHato);
+      } else {
+        this.items &#x3D; [];
+        this.destruirGraficas();
+        this.cdr.markForCheck();
+      }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.viewIniciado &#x3D; true;
+    if (this.items.length &gt; 0) {
+      this.renderizarGraficas();
+    }
+  }
+
+  // ── Getters KPI ───────────────────────────────────────────
+
+  get valorTotal(): number {
+    return this.items.reduce((acc, i) &#x3D;&gt; acc + i.valorTotal, 0);
+  }
+
+  get promedioValorUnitario(): number {
+    if (!this.items.length) return 0;
+    return this.items.reduce((acc, i) &#x3D;&gt; acc + i.valorUnitario, 0) / this.items.length;
+  }
+
+  get cantidadTotalUnidades(): number {
+    return this.items.reduce((acc, i) &#x3D;&gt; acc + i.cantidad, 0);
+  }
+
+  get categoriaLider(): string {
+    return this.topCategorias[0]?.categoria ?? &#x27;Sin datos&#x27;;
+  }
+
+  // ── Getters gráficas ──────────────────────────────────────
+
+  get topCategorias(): CategoriaStat[] {
+    const map &#x3D; new Map&lt;string, { total: number; cantidad: number }&gt;();
+    this.items.forEach((i) &#x3D;&gt; {
+      const key &#x3D; i.categoriaInventario.categoriaPadre?.nombre ?? i.categoriaInventario.nombre;
+      const actual &#x3D; map.get(key) ?? { total: 0, cantidad: 0 };
+      actual.total +&#x3D; i.valorTotal;
+      actual.cantidad +&#x3D; i.cantidad;
+      map.set(key, actual);
+    });
+    const raw &#x3D; Array.from(map.entries()).map(([categoria, data]) &#x3D;&gt; ({
+      categoria,
+      total: data.total,
+      cantidad: data.cantidad,
+    }));
+    const max &#x3D; raw.reduce((acc, r) &#x3D;&gt; Math.max(acc, r.total), 0);
+    return raw
+      .sort((a, b) &#x3D;&gt; b.total - a.total)
+      .slice(0, 6)
+      .map((r) &#x3D;&gt; ({
+        ...r,
+        pct: max ? (r.total / max) * 100 : 0,
+      }));
+  }
+
+  get topItems(): InventarioGeneral[] {
+    return [...this.items].sort((a, b) &#x3D;&gt; b.valorTotal - a.valorTotal).slice(0, 8);
+  }
+
+  // ── Helpers ───────────────────────────────────────────────
+
+  formatCOP(valor: number | null | undefined): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;$ 0&#x27;;
+    return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(valor));
+  }
+
+  getNombreCategoria(item: InventarioGeneral): string {
+    return item.categoriaInventario.categoriaPadre?.nombre ?? item.categoriaInventario.nombre;
+  }
+
+  // ── Carga ─────────────────────────────────────────────────
+
+  private cargar(idHato: string): void {
+    this.loading &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    this.inventarioService
+      .getByHato(idHato)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (items) &#x3D;&gt; {
+          this.items &#x3D; items;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+          setTimeout(() &#x3D;&gt; this.renderizarGraficas(), 100);
+        },
+        error: () &#x3D;&gt; {
+          this.error &#x3D; &#x27;No fue posible calcular estadísticas.&#x27;;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Gráficas ──────────────────────────────────────────────
+
+  private renderizarGraficas(): void {
+    if (!this.viewIniciado || !this.items.length) return;
+    this.destruirGraficas();
+    this.renderDona();
+    this.renderBarras();
+    this.renderItems();
+  }
+
+  private renderDona(): void {
+    if (!this.chartDonaRef?.nativeElement) return;
+    const stats &#x3D; this.topCategorias;
+    const labels &#x3D; stats.map((s) &#x3D;&gt; s.categoria);
+    const data &#x3D; stats.map((s) &#x3D;&gt; s.total);
+
+    this.chartDona &#x3D; new Chart(this.chartDonaRef.nativeElement, {
+      type: &#x27;doughnut&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            data,
+            backgroundColor: this.COLORES.slice(0, labels.length),
+            borderWidth: 2,
+            borderColor: &#x27;#ffffff&#x27;,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: &#x27;bottom&#x27;,
+            labels: {
+              font: { size: 11, weight: &#x27;bold&#x27; },
+              color: &#x27;#374151&#x27;,
+              padding: 14,
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt;
+                &#x60; ${ctx.label}: $ ${new Intl.NumberFormat(&#x27;es-CO&#x27;).format(ctx.parsed ?? 0)}&#x60;,
+            },
+          },
+        },
+        cutout: &#x27;62%&#x27;,
+      },
+    });
+  }
+
+  private renderBarras(): void {
+    if (!this.chartBarrasRef?.nativeElement) return;
+    const stats &#x3D; this.topCategorias;
+    const labels &#x3D; stats.map((s) &#x3D;&gt; s.categoria);
+
+    this.chartBarras &#x3D; new Chart(this.chartBarrasRef.nativeElement, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: &#x27;Valor total (COP)&#x27;,
+            data: stats.map((s) &#x3D;&gt; s.total),
+            backgroundColor: this.COLORES[1],
+            borderRadius: 6,
+            borderSkipped: false,
+            yAxisID: &#x27;yValor&#x27;,
+          },
+          {
+            label: &#x27;Unidades&#x27;,
+            data: stats.map((s) &#x3D;&gt; s.cantidad),
+            backgroundColor: this.COLORES[3],
+            borderRadius: 6,
+            borderSkipped: false,
+            yAxisID: &#x27;yUnidades&#x27;,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: &#x27;top&#x27;,
+            labels: {
+              font: { size: 12 },
+              color: &#x27;#374151&#x27;,
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 0)
+                  return &#x60; $ ${new Intl.NumberFormat(&#x27;es-CO&#x27;).format(ctx.parsed.y ?? 0)}&#x60;;
+                return &#x60; ${ctx.parsed.y ?? 0} unidades&#x60;;
+              },
+            },
+          },
+        },
+        scales: {
+          yValor: {
+            type: &#x27;linear&#x27;,
+            position: &#x27;left&#x27;,
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: {
+              callback: (v) &#x3D;&gt;
+                &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Number(v) / 1000000) + &#x27;M&#x27;,
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          yUnidades: {
+            type: &#x27;linear&#x27;,
+            position: &#x27;right&#x27;,
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          x: {
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#374151&#x27;,
+              font: { size: 11 },
+              maxRotation: 30,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private renderItems(): void {
+    if (!this.chartItemsRef?.nativeElement) return;
+    const top &#x3D; this.topItems;
+    const labels &#x3D; top.map((i) &#x3D;&gt; i.nombreItem);
+    const data &#x3D; top.map((i) &#x3D;&gt; i.valorTotal);
+
+    this.chartItems &#x3D; new Chart(this.chartItemsRef.nativeElement, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: &#x27;Valor total (COP)&#x27;,
+            data,
+            backgroundColor: this.COLORES[0],
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60; $ ${new Intl.NumberFormat(&#x27;es-CO&#x27;).format(ctx.parsed.x ?? 0)}&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: {
+              callback: (v) &#x3D;&gt;
+                &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Number(v) / 1000000) + &#x27;M&#x27;,
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          y: {
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#374151&#x27;,
+              font: { size: 11 },
+              maxRotation: 0,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private destruirGraficas(): void {
+    this.chartDona?.destroy();
+    this.chartBarras?.destroy();
+    this.chartItems?.destroy();
+    this.chartDona &#x3D; null;
+    this.chartBarras &#x3D; null;
+    this.chartItems &#x3D; null;
+  }
+
+  ngOnDestroy(): void {
+    this.destruirGraficas();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'CategoriaStat-2.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

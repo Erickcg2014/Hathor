@@ -1,0 +1,5 @@
+.cta-wrap {
+  background:
+    radial-gradient(circle at 10% 70%, rgba(4, 75, 49, 0.8), transparent 30%),
+    linear-gradient(90deg, rgba(2, 61, 59, 0.98) 0%, rgba(50, 130, 20, 0.95) 100%);
+}

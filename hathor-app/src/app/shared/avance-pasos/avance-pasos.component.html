@@ -1,0 +1,122 @@
+@if (visible) {
+  <!-- Backdrop -->
+  <div class="avance-backdrop" (click)="onCerrar()"></div>
+
+  <!-- Modal -->
+  <div class="avance-modal" (click)="$event.stopPropagation()">
+    <!-- ===== HEADER ===== -->
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <span class="modal-icono">📋</span>
+        <div>
+          <h2 class="modal-titulo">Actualizar avance</h2>
+          <p class="modal-subtitulo">{{ nombrePractica }}</p>
+        </div>
+      </div>
+      <button class="btn-cerrar" (click)="onCerrar()">✕</button>
+    </div>
+
+    <!-- ===== PROGRESO ===== -->
+    <div class="progreso-wrap">
+      <div class="progreso-header">
+        <span class="progreso-label">
+          {{ pasosCompletados }} de {{ totalPasos }} pasos completados
+        </span>
+        <span class="progreso-pct" [class.pct-completo]="todosCompletados">
+          {{ porcentajeActual }}%
+        </span>
+      </div>
+      <div class="progreso-track">
+        <div
+          class="progreso-fill"
+          [style.width.%]="porcentajeActual"
+          [class.fill-completo]="todosCompletados"
+        ></div>
+      </div>
+    </div>
+
+    <!-- ===== LOADING ===== -->
+    @if (loading) {
+      <div class="pasos-loading">
+        <app-spinner size="medium" message="Cargando pasos..."> </app-spinner>
+      </div>
+    }
+
+    <!-- ===== ERROR ===== -->
+    @if (error) {
+      <div class="msg-error">
+        <span>⚠️</span>
+        <p>{{ error }}</p>
+      </div>
+    }
+
+    <!-- ===== PASOS ===== -->
+    @if (!loading && cargado) {
+      @if (pasoTextos.length === 0) {
+        <div class="pasos-empty">
+          <span>📋</span>
+          <p>Esta práctica no tiene pasos definidos.</p>
+        </div>
+      } @else {
+        <div class="pasos-lista">
+          @for (texto of pasoTextos; track $index; let i = $index) {
+            <div class="paso-item" [class.paso-completado]="estadoPasos[i]" (click)="togglePaso(i)">
+              <!-- Checkbox visual -->
+              <div class="paso-check" [class.check-on]="estadoPasos[i]">
+                @if (estadoPasos[i]) {
+                  <svg viewBox="0 0 12 10" fill="none">
+                    <path
+                      d="M1 5l3.5 3.5L11 1"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                }
+              </div>
+
+              <!-- Número y texto -->
+              <div class="paso-contenido">
+                <span class="paso-num">Paso {{ i + 1 }}</span>
+                <p class="paso-texto" [class.texto-completado]="estadoPasos[i]">
+                  {{ texto }}
+                </p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Mensaje todos completados -->
+        @if (todosCompletados) {
+          <div class="todos-completados">
+            <span>🎉</span>
+            <p>
+              ¡Completaste todos los pasos! Al guardar la práctica pasará a
+              <strong>Completada</strong>.
+            </p>
+          </div>
+        }
+      }
+
+      <!-- ===== ACCIONES ===== -->
+      <div class="modal-acciones">
+        <button class="btn-cancelar" (click)="onCerrar()">Cancelar</button>
+        <button
+          class="btn-guardar"
+          [disabled]="guardando || pasoTextos.length === 0"
+          (click)="guardar()"
+        >
+          @if (guardando) {
+            <app-spinner size="small"></app-spinner>
+            Guardando...
+          } @else if (todosCompletados) {
+            ✅ Guardar y completar práctica
+          } @else {
+            💾 Guardar avance
+          }
+        </button>
+      </div>
+    }
+  </div>
+}

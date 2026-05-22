@@ -1,0 +1,466 @@
+<div class="mis-practicas-page">
+  <!-- ===== LOADING ===== -->
+  @if (loading) {
+    <div class="loading-wrap" data-cy="mis-practicas-loading">
+      <app-spinner size="large" message="Cargando prácticas..."></app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- ===== HEADER ===== -->
+    <header class="page-header" data-cy="mis-practicas-header">
+      <div class="header-left">
+        <p class="page-tag">Prácticas · Gestión</p>
+        <h1 class="page-title">Mis <span class="brand">Prácticas</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato para ver tus prácticas.</p>
+        }
+      </div>
+      <div class="header-right">
+        @if (hatoActivo && !modoLectura) {
+          <button class="btn-generar-ia" (click)="abrirModalIA()">
+            <img src="assets/hathor-ia-logo.png" alt="IA" class="btn-generar-ia-logo" />
+            Generar con IA
+          </button>
+        }
+        <div class="header-icon">🌱</div>
+      </div>
+    </header>
+
+    @if (error) {
+      <div class="msg-error">
+        <span>❌</span>
+        <p>{{ error }}</p>
+      </div>
+    }
+
+    @if (!hatoActivo) {
+      <div class="empty-state">
+        <span>🐄</span>
+        <p>Selecciona un hato para ver tus prácticas activas.</p>
+      </div>
+    }
+
+    @if (hatoActivo) {
+      <!-- ===== STATS ===== -->
+      <div class="stats-grid" data-cy="mis-practicas-stats">
+        <div
+          class="stat-card"
+          data-cy="stat-total"
+          [class.activo]="filtroEstado === 'TODOS'"
+          (click)="setFiltroEstado('TODOS')"
+        >
+          <span class="stat-icono">📋</span>
+          <div class="stat-info">
+            <span class="stat-label">Total</span>
+            <span class="stat-valor">{{ practicas.length }}</span>
+          </div>
+        </div>
+        <div
+          class="stat-card pendiente"
+          data-cy="stat-pendientes"
+          [class.activo]="filtroEstado === 'PENDIENTE'"
+          (click)="setFiltroEstado('PENDIENTE')"
+        >
+          <span class="stat-icono">⏳</span>
+          <div class="stat-info">
+            <span class="stat-label">Pendientes</span>
+            <span class="stat-valor">{{ totalPendientes }}</span>
+          </div>
+        </div>
+        <div
+          class="stat-card curso"
+          data-cy="stat-en-curso"
+          [class.activo]="filtroEstado === 'EN_CURSO'"
+          (click)="setFiltroEstado('EN_CURSO')"
+        >
+          <span class="stat-icono">🔄</span>
+          <div class="stat-info">
+            <span class="stat-label">En curso</span>
+            <span class="stat-valor">{{ totalEnCurso }}</span>
+          </div>
+        </div>
+        <div
+          class="stat-card completada"
+          data-cy="stat-completadas"
+          [class.activo]="filtroEstado === 'COMPLETADA'"
+          (click)="setFiltroEstado('COMPLETADA')"
+        >
+          <span class="stat-icono">✅</span>
+          <div class="stat-info">
+            <span class="stat-label">Completadas</span>
+            <span class="stat-valor">{{ totalCompletadas }}</span>
+          </div>
+        </div>
+        <div class="stat-card avance">
+          <span class="stat-icono">📈</span>
+          <div class="stat-info">
+            <span class="stat-label">Avance promedio</span>
+            <span class="stat-valor">{{ promedioAvance }}%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== FILTROS ===== -->
+      <div class="filtros-card">
+        <div class="filtro-busqueda-wrap">
+          <svg
+            class="busqueda-icono"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input
+            type="text"
+            class="filtro-busqueda"
+            placeholder="Buscar por práctica, categoría o KPI..."
+            [(ngModel)]="searchQuery"
+            (ngModelChange)="onBusquedaChange()"
+          />
+        </div>
+      </div>
+
+      <!-- ===== VACÍO ===== -->
+      @if (practicasFiltradas.length === 0) {
+        <div class="empty-state">
+          <span>📭</span>
+          @if (practicas.length === 0) {
+            <p>No tienes prácticas asignadas aún.</p>
+            <p class="empty-hint">
+              Las prácticas se asignan automáticamente cuando el sistema detecta KPIs que necesitan
+              mejora.
+            </p>
+          } @else {
+            <p>No se encontraron prácticas con los filtros aplicados.</p>
+          }
+        </div>
+      }
+
+      <!-- ===== GRID DE CARDS ===== -->
+      @if (practicasFiltradas.length > 0) {
+        <div class="practicas-grid" data-cy="practicas-grid">
+          @for (p of practicasFiltradas; track p.idHatoPractica) {
+            <div
+              class="practica-card"
+              [class.card-curso]="p.estado === 'EN_CURSO'"
+              [class.card-completada]="p.estado === 'COMPLETADA'"
+            >
+              <!-- Header de la card -->
+              <div class="card-header">
+                <div class="card-header-left">
+                  <span class="cat-icono">
+                    {{ iconoCategoria(p.categoria) }}
+                  </span>
+                  <div class="card-badges">
+                    <span class="estado-chip" [class]="claseEstado(p.estado)">
+                      {{ estadoLabel(p.estado) }}
+                    </span>
+                    <span class="dif-chip" [class]="colorDificultad(p.dificultad)">
+                      {{ p.dificultad }}
+                    </span>
+                  </div>
+                </div>
+                @if (p.duracionDias) {
+                  <span class="duracion-chip"> ⏱️ {{ p.duracionDias }} días </span>
+                }
+              </div>
+
+              <!-- Nombre -->
+              <h3 class="card-nombre">{{ p.nombrePractica }}</h3>
+
+              <!-- KPI impactado -->
+              <div class="kpi-impacto-wrap">
+                <span class="kpi-impacto-label">KPI impactado:</span>
+                <div class="kpi-impacto-info">
+                  <span class="kpi-impacto-codigo">{{ p.kpiImpactado }}</span>
+                  @if (!loadingKpis) {
+                    @if (getKpiDePractica(p.kpiImpactado); as kpi) {
+                      <div class="kpi-valor-row">
+                        <span class="kpi-estado-chip" [class]="colorEstadoKpi(kpi.estado)">
+                          {{ iconoEstadoKpi(kpi.estado) }}
+                          {{ kpi.estado }}
+                        </span>
+                        @if (kpi.valor != null) {
+                          <span class="kpi-valor-actual">
+                            {{ kpi.valor | number: '1.1-2' }}
+                            {{ kpi.unidad }}
+                          </span>
+                        }
+                        @if (kpi.benchmarkPromedio != null) {
+                          <span class="kpi-benchmark">
+                            vs {{ kpi.benchmarkPromedio | number: '1.1-2' }}
+                            promedio
+                          </span>
+                        }
+                      </div>
+                    } @else {
+                      <span class="kpi-sin-datos">Sin datos del KPI</span>
+                    }
+                  }
+                </div>
+              </div>
+
+              <!-- Barra de avance -->
+              <div class="avance-wrap">
+                <div class="avance-header">
+                  <span class="avance-label">Avance</span>
+                  <span class="avance-pct">{{ p.porcentajeAvance }}%</span>
+                </div>
+                <div class="avance-track">
+                  <div
+                    class="avance-fill"
+                    [class.fill-completada]="p.estado === 'COMPLETADA'"
+                    [style.width.%]="p.porcentajeAvance"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Acciones -->
+              <div class="card-acciones">
+                <!-- Botón avance — solo EN_CURSO y no modoLectura -->
+                @if (p.estado === 'EN_CURSO' && !modoLectura) {
+                  <button
+                    class="btn-avance"
+                    [disabled]="cargandoPasos"
+                    (click)="abrirOverlayAvance(p)"
+                  >
+                    @if (
+                      cargandoPasos && practicaAvanceActual?.idHatoPractica === p.idHatoPractica
+                    ) {
+                      <app-spinner size="small"></app-spinner>
+                    } @else {
+                      📊 Avance
+                    }
+                  </button>
+                }
+
+                <!-- Ver detalle -->
+                <button class="btn-detalle" (click)="verDetalle(p)">🔍 Ver detalle</button>
+
+                <!-- Iniciar / Completar -->
+                @if (!modoLectura && p.estado !== 'COMPLETADA') {
+                  <button
+                    class="btn-accion"
+                    [class.btn-iniciar]="p.estado === 'PENDIENTE'"
+                    [class.btn-completar]="p.estado === 'EN_CURSO'"
+                    [disabled]="avanzandoEstado === p.idHatoPractica"
+                    (click)="avanzarEstado(p)"
+                  >
+                    @if (avanzandoEstado === p.idHatoPractica) {
+                      <app-spinner size="small"></app-spinner>
+                    } @else {
+                      {{ botonEstadoLabel(p.estado) }}
+                    }
+                  </button>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+  }
+</div>
+
+<!-- ===== MODAL GENERACIÓN IA ===== -->
+@if (modalIAVisible) {
+  <div class="modal-overlay" (click)="cerrarModalIA()">
+    <div class="modal-ia" (click)="$event.stopPropagation()">
+      <!-- Header modal -->
+      <div class="modal-ia-header">
+        <div class="modal-ia-header-left">
+          <div class="modal-ia-avatar">
+            <img src="assets/hathor-ia-logo.png" alt="Hathor AI" class="modal-ia-avatar-logo" />
+          </div>
+          <div>
+            <h2 class="modal-ia-titulo">Generar práctica con IA</h2>
+            <p class="modal-ia-subtitulo">
+              Hathor AI creará una práctica personalizada para tu hato
+            </p>
+          </div>
+        </div>
+        <button class="modal-ia-cerrar" (click)="cerrarModalIA()">✕</button>
+      </div>
+
+      <!-- Sin KPIs críticos -->
+      @if (kpisCriticos.length === 0) {
+        <div class="modal-ia-empty">
+          <span>✅</span>
+          <p>¡Todos tus KPIs están en estado óptimo o aceptable!</p>
+          <p class="modal-ia-empty-hint">
+            No hay KPIs críticos para generar prácticas de mejora en este momento.
+          </p>
+          <button class="btn-cancelar" (click)="cerrarModalIA()">Cerrar</button>
+        </div>
+      }
+
+      @if (kpisCriticos.length > 0) {
+        <!-- Selector de KPI -->
+        <div class="modal-ia-body">
+          <div class="modal-ia-section">
+            <label class="modal-ia-label"> Selecciona el KPI a mejorar </label>
+            <div class="kpi-opciones">
+              @for (kpi of kpisCriticos; track kpi.codigo) {
+                <button
+                  class="kpi-opcion"
+                  [class.kpi-opcion-activa]="kpiSeleccionado === kpi.codigo"
+                  [class.kpi-opcion-critico]="kpi.estado === 'CRITICO'"
+                  [class.kpi-opcion-aceptable]="kpi.estado === 'ACEPTABLE'"
+                  (click)="kpiSeleccionado = kpi.codigo; practicaPreview = null; errorIA = ''"
+                >
+                  <span class="kpi-opcion-icono">
+                    {{ iconoEstadoIA(kpi.estado) }}
+                  </span>
+                  <div class="kpi-opcion-info">
+                    <span class="kpi-opcion-nombre">{{ kpi.nombre }}</span>
+                    <span class="kpi-opcion-valor">
+                      {{ kpi.valor | number: '1.1-2' }}
+                      {{ kpi.unidad }}
+                    </span>
+                  </div>
+                  <span class="kpi-opcion-estado" [class]="colorEstadoKpi(kpi.estado)">
+                    {{ kpi.estado }}
+                  </span>
+                </button>
+              }
+            </div>
+          </div>
+
+          <!-- Error -->
+          @if (errorIA) {
+            <div class="modal-ia-error">
+              <span>❌</span>
+              <p>{{ errorIA }}</p>
+            </div>
+          }
+
+          <!-- Botón generar preview -->
+          @if (!practicaPreview && !generando) {
+            <div class="modal-ia-acciones">
+              <button class="btn-cancelar" (click)="cerrarModalIA()">Cancelar</button>
+              <button
+                class="btn-generar"
+                [disabled]="!kpiSeleccionado"
+                (click)="generarPrevisualizacion()"
+              >
+                <img src="assets/hathor-ia-logo.png" alt="IA" class="btn-generar-logo" />
+                Generar práctica
+              </button>
+            </div>
+          }
+
+          <!-- Generando -->
+          @if (generando) {
+            <div class="modal-ia-generando">
+              <app-spinner size="medium" message="Hathor AI está creando tu práctica...">
+              </app-spinner>
+              <p class="generando-hint">Esto puede tomar unos segundos</p>
+            </div>
+          }
+
+          <!-- Preview de la práctica generada -->
+          @if (practicaPreview && !generando) {
+            <div class="practica-preview">
+              <div class="preview-header">
+                <span class="preview-tag">✨ Práctica generada</span>
+                <button
+                  class="btn-regenerar"
+                  (click)="generarPrevisualizacion()"
+                  title="Generar otra versión"
+                >
+                  🔄 Regenerar
+                </button>
+              </div>
+
+              <h3 class="preview-nombre">{{ practicaPreview.nombre }}</h3>
+
+              <div class="preview-chips">
+                <span class="preview-chip chip-categoria">
+                  {{ iconoCategoria(practicaPreview.categoria) }}
+                  {{ practicaPreview.categoria }}
+                </span>
+                <span class="preview-chip" [class]="colorDificultad(practicaPreview.dificultad)">
+                  {{ practicaPreview.dificultad }}
+                </span>
+                <span class="preview-chip chip-duracion">
+                  ⏱️ {{ practicaPreview.duracionDias }} días
+                </span>
+                <span class="preview-chip chip-tropico">
+                  🌡️ {{ practicaPreview.tropicaAplicable }}
+                </span>
+              </div>
+
+              <div class="preview-section">
+                <span class="preview-section-label">Descripción</span>
+                <p class="preview-text">{{ practicaPreview.descripcion }}</p>
+              </div>
+
+              <div class="preview-section">
+                <span class="preview-section-label">Objetivo</span>
+                <p class="preview-text">{{ practicaPreview.objetivo }}</p>
+              </div>
+
+              <div class="preview-section">
+                <span class="preview-section-label">Impacto esperado</span>
+                <p class="preview-text">{{ practicaPreview.impactoEsperado }}</p>
+              </div>
+
+              <div class="preview-section">
+                <span class="preview-section-label">
+                  Pasos ({{ practicaPreview.pasos.length }})
+                </span>
+                <ol class="preview-pasos">
+                  @for (paso of practicaPreview.pasos; track $index) {
+                    <li class="preview-paso">{{ paso }}</li>
+                  }
+                </ol>
+              </div>
+
+              <!-- Acciones confirmación -->
+              <div class="modal-ia-acciones">
+                <button class="btn-cancelar" (click)="cerrarModalIA()">Cancelar</button>
+                <button
+                  class="btn-regenerar-outline"
+                  (click)="generarPrevisualizacion()"
+                  [disabled]="generando"
+                >
+                  🔄 Generar otra
+                </button>
+                <button
+                  class="btn-confirmar"
+                  (click)="confirmarPractica()"
+                  [disabled]="confirmando"
+                >
+                  @if (confirmando) {
+                    <app-spinner size="small"></app-spinner>
+                    Guardando...
+                  } @else {
+                    ✅ Agregar a mis prácticas
+                  }
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+}
+
+<app-avance-pasos
+  [visible]="overlayAvanceVisible"
+  [idHatoPractica]="practicaAvanceActual?.idHatoPractica ?? ''"
+  [nombrePractica]="practicaAvanceActual?.nombrePractica ?? ''"
+  [pasoTextos]="pasosTextoActual"
+  (cerrar)="cerrarOverlayAvance()"
+  (avanceActualizado)="onAvanceActualizado($event)"
+/>

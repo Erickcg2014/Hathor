@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Transición de navegación entre rutas */
+::view-transition-old(root) {
+  animation: fadeOut 0.2s ease-out both;
+}
+
+::view-transition-new(root) {
+  animation: fadeIn 0.25s ease-out both;
+}
+
+/* MAPAS*/
+
+.marcador-mihato {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #15803d, #19e64d);
+  border-radius: 50% 50% 50% 0;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 14px rgba(21, 128, 61, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.marcador-anonimo {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cluster-wrapper {
+  background: transparent !important;
+}
+
+.cluster-icon {
+  width: 36px;
+  height: 36px;
+  background: #15803d;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(21, 128, 61, 0.35);
+}
+
+.hathor-popup .leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  border: 1px solid #e9f5eb;
+  box-shadow: 0 4px 16px rgba(21, 128, 61, 0.12);
+}
+
+.popup-mihato {
+  font-size: 12px;
+  color: #163f2a;
+  line-height: 1.6;
+}
+
+.popup-anonimo {
+  font-size: 12px;
+  color: #374151;
+  line-height: 1.6;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

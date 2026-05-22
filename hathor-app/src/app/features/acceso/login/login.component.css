@@ -1,0 +1,7 @@
+.btn-hathor {
+  @apply bg-[#BFF102] hover:bg-[#a8d601] text-black font-bold rounded-xl transition-all duration-200;
+}
+
+.input-hathor:focus {
+  @apply outline-none border-[#BFF102] ring-2 ring-[#BFF102] ring-opacity-30 bg-white;
+}

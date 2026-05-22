@@ -1,0 +1,19 @@
+@import '../shared/_mod-shared.css';
+
+:host {
+  display: contents;
+}
+
+.grafica-mini-wrap {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  flex: 1;
+  min-height: 120px;
+  max-height: 200px;
+}
+
+.grafica-donut {
+  min-height: 120px;
+  max-height: 200px;
+}

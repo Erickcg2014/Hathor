@@ -1,0 +1,144 @@
+<div class="evolucion-wrapper">
+  <!-- Cargando -->
+  @if (cargando) {
+    <div class="cargando-wrap">
+      <span class="cargando-spinner"></span>
+      <span class="cargando-texto">Cargando evolución...</span>
+    </div>
+  }
+
+  <!-- Sin KPI seleccionado -->
+  @if (!cargando && !datos) {
+    <div class="empty-state">
+      <span>📈</span>
+      <p>Selecciona un KPI para ver su evolución temporal.</p>
+    </div>
+  }
+
+  <!-- Datos insuficientes -->
+  @if (!cargando && datos?.datosInsuficientes) {
+    <div class="empty-state aviso">
+      <span>🗓️</span>
+      <p>
+        No hay suficientes registros históricos para graficar la evolución de
+        <strong>{{ datos?.nombreKpi }}</strong
+        >. Se necesitan al menos 2 cálculos en períodos distintos.
+      </p>
+    </div>
+  }
+
+  @if (!cargando && datos && !datos.datosInsuficientes) {
+    <!-- Header -->
+    <div class="evolucion-header">
+      <div class="evolucion-header-left">
+        <h3 class="evolucion-titulo">
+          Evolución · <span class="brand">{{ datos.nombreKpi }}</span>
+        </h3>
+        <span class="evolucion-subtitulo">
+          Últimos {{ datos.mesesConsultados }} meses ·
+          {{ datos.unidadKpi }}
+        </span>
+      </div>
+      <div class="tendencia-chip" [class]="claseTendencia">
+        {{ iconoTendencia }} {{ labelTendencia }}
+      </div>
+    </div>
+
+    <!-- Cards de resumen -->
+    <div class="resumen-cards">
+      <div class="resumen-card">
+        <span class="resumen-card-icono">📍</span>
+        <div class="resumen-card-info">
+          <span class="resumen-card-label">Posición actual</span>
+          <span class="resumen-card-valor">
+            #{{ posicionActual?.posicion }}
+            <span class="resumen-card-de">de {{ posicionActual?.totalHatos }}</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="resumen-card">
+        <span class="resumen-card-icono">🏆</span>
+        <div class="resumen-card-info">
+          <span class="resumen-card-label">Mejor posición</span>
+          <span class="resumen-card-valor verde">#{{ mejorPosicion }}</span>
+        </div>
+      </div>
+
+      <div class="resumen-card">
+        <span class="resumen-card-icono">📉</span>
+        <div class="resumen-card-info">
+          <span class="resumen-card-label">Peor posición</span>
+          <span class="resumen-card-valor rojo">#{{ peorPosicion }}</span>
+        </div>
+      </div>
+
+      <div class="resumen-card">
+        <span class="resumen-card-icono">📊</span>
+        <div class="resumen-card-info">
+          <span class="resumen-card-label">Percentil actual</span>
+          <span class="resumen-card-valor">
+            {{ posicionActual?.percentilEnFecha?.toFixed(0) ?? '—' }}°
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gráfica 1: Evolución de posición -->
+    <div class="grafica-card">
+      <div class="grafica-card-header">
+        <span class="grafica-card-titulo">Evolución de posición en ranking</span>
+        <span class="grafica-card-hint">El eje Y está invertido: posición #1 es la más alta</span>
+      </div>
+      <div class="grafica-canvas-wrap">
+        <canvas #chartEvolucion></canvas>
+      </div>
+    </div>
+
+    <!-- Gráfica 2: Evolución de percentil -->
+    <div class="grafica-card">
+      <div class="grafica-card-header">
+        <span class="grafica-card-titulo">Evolución de percentil</span>
+        <span class="grafica-card-hint"> P50 = promedio del sector · Por encima es mejor </span>
+      </div>
+      <div class="grafica-canvas-wrap">
+        <canvas #chartPercentil></canvas>
+      </div>
+    </div>
+
+    <!-- Tabla de puntos históricos -->
+    <div class="tabla-historico">
+      <h4 class="tabla-titulo">Detalle histórico</h4>
+      <div class="tabla-lista">
+        <div class="tabla-header">
+          <span>Fecha</span>
+          <span>Posición</span>
+          <span>Total hatos</span>
+          <span>Valor</span>
+          <span>Percentil</span>
+        </div>
+
+        @for (punto of datos.puntos; track punto.fecha) {
+          <div class="tabla-fila">
+            <span class="fila-fecha">{{ formatFecha(punto.fecha) }}</span>
+            <span class="fila-posicion">#{{ punto.posicion }}</span>
+            <span class="fila-total">{{ punto.totalHatos }}</span>
+            <span class="fila-valor">
+              {{ punto.valorHato?.toFixed(2) ?? '—' }} {{ datos.unidadKpi }}
+            </span>
+            <span
+              class="fila-percentil"
+              [class.pct-alto]="(punto.percentilEnFecha ?? 0) >= 70"
+              [class.pct-medio]="
+                (punto.percentilEnFecha ?? 0) >= 40 && (punto.percentilEnFecha ?? 0) < 70
+              "
+              [class.pct-bajo]="(punto.percentilEnFecha ?? 0) < 40"
+            >
+              P{{ punto.percentilEnFecha?.toFixed(0) ?? '—' }}
+            </span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,125 @@
+<div class="loading-wrapper" *ngIf="loading">
+  <app-spinner size="large" message="Cargando estadísticas..."></app-spinner>
+</div>
+
+<section class="estadisticas-page" *ngIf="!loading">
+  <!-- Sin hato -->
+  <div class="panel" *ngIf="!hatoActivo">
+    <p class="panel-tag">Sin hato activo</p>
+    <h2>Selecciona un hato para ver estadísticas</h2>
+  </div>
+
+  <!-- Error -->
+  <div class="panel error" *ngIf="error">
+    <p class="panel-tag">Error</p>
+    <h2>{{ error }}</h2>
+  </div>
+
+  <div *ngIf="hatoActivo && !error">
+    <!-- Header -->
+    <div class="page-header">
+      <div class="header-left">
+        <span class="page-tag">Estadísticas</span>
+        <h1 class="page-title">Producción <span class="brand">Lechera</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato para ver estadísticas.</p>
+        }
+      </div>
+      <div class="header-badge">📊</div>
+    </div>
+
+    <!-- Sin datos -->
+    <div class="panel" *ngIf="!hayDatos">
+      <p class="panel-tag">Sin registros</p>
+      <h2>Aún no hay datos suficientes</h2>
+      <p class="panel-text">
+        Registra producción diaria y ventas de leche para ver las estadísticas históricas aquí.
+      </p>
+    </div>
+
+    <ng-container *ngIf="hayDatos">
+      <!-- ===== KPIs RESUMEN ===== -->
+      <div class="kpi-grid">
+        <article class="kpi-card">
+          <p class="label">Total producido histórico</p>
+          <p class="value">{{ totalProducidoHistorico | number: '1.0-2' }} L</p>
+          <p class="hint">Suma de todos los registros</p>
+        </article>
+
+        <article class="kpi-card">
+          <p class="label">Total vendido histórico</p>
+          <p class="value">{{ totalVendidoHistorico | number: '1.0-2' }} L</p>
+          <p class="hint">Suma de todas las ventas</p>
+        </article>
+
+        <article class="kpi-card income">
+          <p class="label">Ingreso total por leche</p>
+          <p class="value">{{ ingresoTotalHistorico | currency: 'COP' : 'symbol' : '1.0-0' }}</p>
+          <p class="hint">Suma histórica de ventas</p>
+        </article>
+      </div>
+
+      <!-- ===== GRÁFICA 1: Producción mensual ===== -->
+      <div class="grafica-card">
+        <div class="grafica-header">
+          <div>
+            <h3 class="grafica-titulo">Producción mensual</h3>
+            <p class="grafica-subtitulo">Litros producidos por mes en los últimos 6 meses</p>
+          </div>
+          <span class="grafica-badge produccion">🥛 Producción</span>
+        </div>
+        <div class="grafica-wrapper">
+          <canvas #chartProduccion></canvas>
+        </div>
+      </div>
+
+      <!-- ===== GRÁFICA 2: Producción vs Ventas ===== -->
+      <div class="grafica-card">
+        <div class="grafica-header">
+          <div>
+            <h3 class="grafica-titulo">Producción vs Ventas</h3>
+            <p class="grafica-subtitulo">Comparativa mensual de litros producidos y vendidos</p>
+          </div>
+          <span class="grafica-badge comparativa">📊 Comparativa</span>
+        </div>
+        <div class="grafica-wrapper">
+          <canvas #chartComparativa></canvas>
+        </div>
+      </div>
+
+      <!-- ===== GRÁFICA 3 + 4 en fila ===== -->
+      <div class="graficas-fila">
+        <div class="grafica-card">
+          <div class="grafica-header">
+            <div>
+              <h3 class="grafica-titulo">Precio por litro</h3>
+              <p class="grafica-subtitulo">Precio promedio real mensual (COP)</p>
+            </div>
+            <span class="grafica-badge precio">💲 Precio</span>
+          </div>
+          <div class="grafica-wrapper">
+            <canvas #chartPrecio></canvas>
+          </div>
+        </div>
+
+        <div class="grafica-card">
+          <div class="grafica-header">
+            <div>
+              <h3 class="grafica-titulo">Ingreso por ventas</h3>
+              <p class="grafica-subtitulo">Ingreso mensual generado por venta de leche</p>
+            </div>
+            <span class="grafica-badge ingreso">💰 Ingresos</span>
+          </div>
+          <div class="grafica-wrapper">
+            <canvas #chartIngreso></canvas>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>

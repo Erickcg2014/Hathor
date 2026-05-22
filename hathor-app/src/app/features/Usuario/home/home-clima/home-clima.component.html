@@ -1,0 +1,73 @@
+@if (climaData) {
+  <div class="clima-card" [class.clima-severo]="!climaData.esNeutral">
+    <!-- ── Condición actual + pronóstico ── -->
+    <div class="clima-actual">
+      <!-- Ícono condición -->
+      <div class="clima-icono-wrap">
+        <span class="clima-icono">{{ climaData.icono }}</span>
+      </div>
+
+      <!-- Datos principales -->
+      <div class="clima-info">
+        <p class="clima-condicion">{{ climaData.condicionLabel }}</p>
+        <p class="clima-temp">
+          {{ climaData.temperatura | number: '1.0-0' }}°C
+          <span class="clima-sensacion">
+            Sensación {{ climaData.sensacionTermica | number: '1.0-0' }}°C
+          </span>
+        </p>
+        <div class="clima-detalles">
+          @if (climaData.precipitacion > 0) {
+            <span class="clima-detalle">
+              🌧️ {{ climaData.precipitacion | number: '1.0-1' }} mm
+            </span>
+          }
+          <span class="clima-detalle"> 💨 {{ climaData.viento | number: '1.0-0' }} km/h </span>
+          @if (hatoActivo?.ciudad) {
+            <span class="clima-detalle"> 📍 {{ hatoActivo!.ciudad }} </span>
+          }
+        </div>
+      </div>
+
+      <!-- Pronóstico 3 días -->
+      <div class="clima-pronostico">
+        @for (dia of climaData.pronostico; track dia.fecha) {
+          <div class="clima-dia">
+            <span class="clima-dia-fecha">
+              {{ formatFechaPronostico(dia.fecha) }}
+            </span>
+            <span class="clima-dia-icono">{{ dia.icono }}</span>
+            <span class="clima-dia-temp">
+              {{ dia.tempMax | number: '1.0-0' }}°
+              <span class="clima-dia-min">{{ dia.tempMin | number: '1.0-0' }}°</span>
+            </span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- ── Avisos / recomendaciones ── -->
+    @if (recomendacionesClima.length > 0) {
+      <div class="clima-avisos">
+        @for (rec of recomendacionesClima; track rec.idRecomendacion) {
+          <div class="clima-aviso-item">
+            <span class="clima-aviso-icono">{{ rec.icono }}</span>
+            <div class="clima-aviso-info">
+              <p class="clima-aviso-titulo">{{ rec.titulo }}</p>
+              <p class="clima-aviso-mensaje">{{ rec.mensaje }}</p>
+            </div>
+            @if (rec.urlAccion && rec.labelAccion) {
+              <button class="clima-aviso-btn" (click)="onIrA(rec.urlAccion)">
+                {{ rec.labelAccion }} →
+              </button>
+            }
+          </div>
+        }
+      </div>
+    } @else if (climaData.esNeutral) {
+      <div class="clima-neutral">
+        <p>☀️ El clima en tu zona es favorable hoy. ¡Buen día para producir!</p>
+      </div>
+    }
+  </div>
+}

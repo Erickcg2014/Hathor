@@ -1,0 +1,110 @@
+<!-- ═══════════════════════════════════════════════════════════
+     SELECTOR ADMIN — solo visible cuando el admin no ha elegido hato
+════════════════════════════════════════════════════════════ -->
+@if (mostrarSelectorAdmin) {
+  <div class="admin-selector-card">
+    <div class="admin-selector-left">
+      <div class="admin-selector-icono" aria-hidden="true">🐄</div>
+      <div class="admin-selector-texto">
+        <h2 class="admin-selector-titulo">Selecciona un hato para comenzar</h2>
+        <p class="admin-selector-desc">
+          Usa el selector de
+          <strong>Departamento → Región → Hato</strong>
+          en el navbar superior para ver la información completa de cualquier hato registrado en la
+          plataforma.
+        </p>
+        <div class="admin-selector-pasos">
+          <div class="admin-paso">
+            <span class="admin-paso-num">1</span>
+            <span>Elige un departamento</span>
+          </div>
+          <span class="admin-paso-flecha" aria-hidden="true">→</span>
+          <div class="admin-paso">
+            <span class="admin-paso-num">2</span>
+            <span>Selecciona la región</span>
+          </div>
+          <span class="admin-paso-flecha" aria-hidden="true">→</span>
+          <div class="admin-paso">
+            <span class="admin-paso-num">3</span>
+            <span>Elige el hato</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-selector-right">
+      <div class="admin-stats-preview">
+        <div class="admin-stat-item">
+          <span class="admin-stat-icono" aria-hidden="true">🗺️</span>
+          <span class="admin-stat-label">Acceso nacional</span>
+        </div>
+        <div class="admin-stat-item">
+          <span class="admin-stat-icono" aria-hidden="true">📊</span>
+          <span class="admin-stat-label">Datos reales</span>
+        </div>
+        <div class="admin-stat-item">
+          <span class="admin-stat-icono" aria-hidden="true">🔍</span>
+          <span class="admin-stat-label">Sin anonimizar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- ═══════════════════════════════════════════════════════════
+     BANNER COMPLETITUD — hato activo pero registro incompleto
+════════════════════════════════════════════════════════════ -->
+@if (mostrarBannerCompletitud) {
+  <div class="completitud-banner">
+    <div class="completitud-banner-left">
+      <div class="completitud-icon" aria-hidden="true">📋</div>
+      <div>
+        <p class="completitud-titulo">Completa el registro de tu hato</p>
+        <p class="completitud-sub">
+          Siguiente paso: <strong>{{ pasoActualFormulario }}</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="completitud-right">
+      <div class="completitud-barra-wrapper">
+        <div class="completitud-barra-labels">
+          <span>Progreso del registro</span>
+          <span class="completitud-pct">{{ completitud }}%</span>
+        </div>
+        <div
+          class="completitud-track"
+          role="progressbar"
+          [attr.aria-valuenow]="completitud"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          <div class="completitud-fill" [style.width.%]="completitud"></div>
+        </div>
+        <div class="completitud-pasos" aria-hidden="true">
+          @for (paso of pasos; track paso) {
+            <div class="completitud-paso-dot" [class.completado]="completitud >= paso"></div>
+          }
+        </div>
+      </div>
+
+      <button class="btn-continuar-registro" (click)="onContinuarFormulario()">
+        Continuar registro →
+      </button>
+    </div>
+  </div>
+}
+
+<!-- ═══════════════════════════════════════════════════════════
+     SIN HATO — usuario ganadero sin unidad productiva registrada
+════════════════════════════════════════════════════════════ -->
+@if (mostrarSinHato) {
+  <div class="sin-hato-card">
+    <span class="sin-hato-icon" aria-hidden="true">🐄</span>
+    <div class="sin-hato-texto">
+      <h2>Registra tu primer hato</h2>
+      <p>Para comenzar a usar Hathor necesitas registrar tu unidad productiva.</p>
+    </div>
+    <button class="btn-primary-green" (click)="onRegistrarHato()">Registrar hato →</button>
+  </div>
+}

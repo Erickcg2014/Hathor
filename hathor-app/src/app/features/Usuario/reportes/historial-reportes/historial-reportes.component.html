@@ -1,0 +1,191 @@
+<div class="historial-page">
+  <!-- ===== HEADER ===== -->
+  <header class="page-header">
+    <div class="header-left">
+      <p class="page-tag">Reportes · Historial</p>
+      <h1 class="page-title">Mis <span class="brand">Reportes</span></h1>
+      @if (hatoActivo) {
+        <p class="page-subtitle">
+          <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        </p>
+      } @else {
+        <p class="page-subtitle warn">⚠️ Selecciona un hato para ver tus reportes.</p>
+      }
+    </div>
+    <div class="header-right">
+      <div class="header-icon">📄</div>
+    </div>
+  </header>
+
+  <!-- ===== MENSAJES ===== -->
+  @if (error) {
+    <div class="msg-error">
+      <span>❌</span>
+      <p>{{ error }}</p>
+    </div>
+  }
+  @if (exito) {
+    <div class="msg-exito">
+      <span>✅</span>
+      <p>{{ exito }}</p>
+    </div>
+  }
+
+  @if (!hatoActivo) {
+    <div class="empty-state">
+      <span>🐄</span>
+      <p>Selecciona un hato para ver tu historial de reportes.</p>
+    </div>
+  }
+
+  @if (hatoActivo) {
+    <!-- ===== FILTROS ===== -->
+    <div class="filtros-card">
+      <div class="filtros-row">
+        @for (tipo of tipos; track tipo.valor) {
+          <button
+            class="filtro-btn"
+            [class.activo]="filtroTipo === tipo.valor"
+            (click)="setFiltro(tipo.valor)"
+          >
+            {{ tipo.label }}
+            <span class="filtro-count">
+              {{ countPorTipo[tipo.valor] }}
+            </span>
+          </button>
+        }
+        <button class="btn-nuevo-reporte" (click)="irAGenerarReporte()">
+          + Generar nuevo reporte
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== LOADING ===== -->
+    @if (loading) {
+      <div class="loading-wrap">
+        <app-spinner size="large" message="Cargando historial..."> </app-spinner>
+      </div>
+    }
+
+    <!-- ===== LISTA ===== -->
+    @if (!loading) {
+      @if (reportesFiltrados.length === 0) {
+        <div class="empty-state">
+          <span>📄</span>
+          @if (reportes.length === 0) {
+            <p>No tienes reportes guardados actualmente.</p>
+            <p class="empty-hint">
+              Genera tu primer reporte para que quede guardado en tu historial.
+            </p>
+          } @else {
+            <p>No hay reportes del tipo seleccionado.</p>
+          }
+          <button class="btn-nuevo-reporte-empty" (click)="irAGenerarReporte()">
+            + Generar primer reporte
+          </button>
+        </div>
+      } @else {
+        <div class="reportes-lista">
+          @for (reporte of reportesFiltrados; track reporte.idReporte) {
+            <div class="reporte-card">
+              <!-- Header -->
+              <div class="reporte-header">
+                <div class="reporte-header-left">
+                  <span class="reporte-icono">
+                    {{ iconoTipo(reporte.tipo) }}
+                  </span>
+                  <div class="reporte-info">
+                    <h3 class="reporte-nombre">
+                      {{ reporte.nombre }}
+                    </h3>
+                    <p class="reporte-fecha">
+                      Generado el
+                      {{ formatearFecha(reporte.fechaGeneracion) }}
+                    </p>
+                  </div>
+                </div>
+                <div class="reporte-header-right">
+                  <span class="tipo-chip" [class]="claseTipo(reporte.tipo)">
+                    {{ iconoTipo(reporte.tipo) }}
+                    {{ labelTipo(reporte.tipo) }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Detalles -->
+              <div class="reporte-detalles">
+                <div class="detalle-item">
+                  <span class="detalle-label">Período</span>
+                  <span class="detalle-valor">
+                    {{ formatearPeriodo(reporte.periodoDesde, reporte.periodoHasta) }}
+                  </span>
+                </div>
+                @if (reporte.tamanioFormateado) {
+                  <div class="detalle-item">
+                    <span class="detalle-label">Tamaño</span>
+                    <span class="detalle-valor">
+                      {{ reporte.tamanioFormateado }}
+                    </span>
+                  </div>
+                }
+                @if (reporte.configuracion) {
+                  <div class="detalle-item">
+                    <span class="detalle-label">Secciones</span>
+                    <span class="detalle-valor">
+                      {{ contarSecciones(reporte.configuracion) }}
+                      secciones
+                    </span>
+                  </div>
+                }
+              </div>
+
+              <!-- Secciones chips -->
+              @if (reporte.configuracion) {
+                <div class="secciones-chips">
+                  @if (reporte.configuracion.incluirResumenEjecutivo) {
+                    <span class="seccion-chip">📋 Resumen</span>
+                  }
+                  @if (reporte.configuracion.incluirKpis) {
+                    <span class="seccion-chip">📈 KPIs</span>
+                  }
+                  @if (reporte.configuracion.incluirBenchmarking) {
+                    <span class="seccion-chip">🔍 Benchmarking</span>
+                  }
+                  @if (reporte.configuracion.incluirRanking) {
+                    <span class="seccion-chip">🏆 Ranking</span>
+                  }
+                  @if (reporte.configuracion.incluirFinanzas) {
+                    <span class="seccion-chip">💰 Finanzas</span>
+                  }
+                  @if (reporte.configuracion.incluirProduccion) {
+                    <span class="seccion-chip">🥛 Producción</span>
+                  }
+                  @if (reporte.configuracion.incluirPracticas) {
+                    <span class="seccion-chip">🌱 Prácticas</span>
+                  }
+                </div>
+              }
+
+              <!-- Acciones -->
+              <div class="reporte-acciones">
+                <button
+                  class="btn-regenerar"
+                  [disabled]="regenerando === reporte.idReporte"
+                  (click)="regenerar(reporte)"
+                >
+                  @if (regenerando === reporte.idReporte) {
+                    <app-spinner size="small"></app-spinner>
+                    Generando...
+                  } @else {
+                    🔄 Regenerar y descargar
+                  }
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+  }
+</div>

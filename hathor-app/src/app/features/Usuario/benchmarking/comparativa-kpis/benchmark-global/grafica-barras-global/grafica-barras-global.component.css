@@ -1,0 +1,18 @@
+.barras-global-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.sin-datos {
+  color: #9ca3af;
+  font-size: 13px;
+  font-style: italic;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.chart-wrap {
+  position: relative;
+  min-height: 300px;
+  height: auto;
+}

@@ -1,0 +1,1446 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SeccionInfoHatoComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-seccion-info-hato</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                                <code><a href="https://angular.io/api/forms/ReactiveFormsModule" target="_blank" >ReactiveFormsModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./seccion-info-hato.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./seccion-info-hato.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ciudadesFiltradas" >ciudadesFiltradas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#colombiaData" >colombiaData</a>
+                            </li>
+                            <li>
+                                <a href="#departamentos" >departamentos</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#loadingGuardar" >loadingGuardar</a>
+                            </li>
+                            <li>
+                                <a href="#tiposHato" >tiposHato</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarColombia" >cargarColombia</a>
+                            </li>
+                            <li>
+                                <a href="#continuar" >continuar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#guardar" >guardar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#initForm" >initForm</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#hatoActual" >hatoActual</a>
+                            </li>
+                            <li>
+                                <a href="#modoReadonly" >modoReadonly</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#irAnterior" >irAnterior</a>
+                            </li>
+                            <li>
+                                <a href="#irSiguiente" >irSiguiente</a>
+                            </li>
+                            <li>
+                                <a href="#seccionCompletada" >seccionCompletada</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, hatoService: <a href="../injectables/HatoService.html" target="_self">HatoService</a>, http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoService.html" target="_self" >HatoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hatoActual"></a>
+                        <b>hatoActual</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:28</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modoReadonly"></a>
+                        <b>modoReadonly</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:29</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="irAnterior"></a>
+                        <b>irAnterior</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:33</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="irSiguiente"></a>
+                        <b>irSiguiente</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="seccionCompletada"></a>
+                        <b>seccionCompletada</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:31</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarColombia"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarColombia</b></span>
+                        <a href="#cargarColombia"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarColombia()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="continuar"></a>
+                    <span class="name">
+                        <span ><b>continuar</b></span>
+                        <a href="#continuar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>continuar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="165"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:165</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardar"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>guardar</b></span>
+                        <a href="#guardar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>guardar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initForm"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>initForm</b></span>
+                        <a href="#initForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ciudadesFiltradas"></a>
+                    <span class="name">
+                        <span ><b>ciudadesFiltradas</b></span>
+                        <a href="#ciudadesFiltradas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colombiaData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>colombiaData</b></span>
+                        <a href="#colombiaData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="departamentos"></a>
+                    <span class="name">
+                        <span ><b>departamentos</b></span>
+                        <a href="#departamentos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingGuardar"></a>
+                    <span class="name">
+                        <span ><b>loadingGuardar</b></span>
+                        <a href="#loadingGuardar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tiposHato"></a>
+                    <span class="name">
+                        <span ><b>tiposHato</b></span>
+                        <a href="#tiposHato"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;Lechero&#x27;, &#x27;Doble propósito&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-info-hato/seccion-info-hato.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from &#x27;@angular/forms&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { firstValueFrom } from &#x27;rxjs&#x27;;
+import {
+  HatoService,
+  RegistroHatoDTO,
+  Hato,
+} from &#x27;../../../../../../core/services/hato/hato.service&#x27;;
+import { HatoStateService } from &#x27;../../../../../../core/services/ui-state/hato-state.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../../../shared/spinner/spinner.component&#x27;;
+
+@Component({
+  selector: &#x27;app-seccion-info-hato&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SpinnerComponent],
+  templateUrl: &#x27;./seccion-info-hato.component.html&#x27;,
+  styleUrl: &#x27;./seccion-info-hato.component.css&#x27;,
+})
+export class SeccionInfoHatoComponent implements OnInit {
+  @Input() hatoActual: Hato | null &#x3D; null;
+  @Input() modoReadonly &#x3D; false;
+
+  @Output() seccionCompletada &#x3D; new EventEmitter&lt;Hato&gt;();
+  @Output() irSiguiente &#x3D; new EventEmitter&lt;void&gt;();
+  @Output() irAnterior &#x3D; new EventEmitter&lt;void&gt;();
+
+  form!: FormGroup;
+  loadingGuardar &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+
+  tiposHato &#x3D; [&#x27;Lechero&#x27;, &#x27;Doble propósito&#x27;];
+  departamentos: string[] &#x3D; [];
+  ciudadesFiltradas: { nombre: string; latitud: number; longitud: number; altitud: number }[] &#x3D; [];
+  private colombiaData: any[] &#x3D; [];
+
+  constructor(
+    private fb: FormBuilder,
+    private hatoService: HatoService,
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.initForm();
+    this.cargarColombia();
+  }
+
+  private cargarColombia(): void {
+    this.http.get&lt;any[]&gt;(&#x27;assets/data/colombia_data.json&#x27;).subscribe({
+      next: (data) &#x3D;&gt; {
+        this.colombiaData &#x3D; data;
+        this.departamentos &#x3D; data.map((d) &#x3D;&gt; d.departamento);
+        if (this.hatoActual) {
+          const found &#x3D; data.find((d) &#x3D;&gt; d.departamento &#x3D;&#x3D;&#x3D; this.hatoActual!.departamento);
+          this.ciudadesFiltradas &#x3D; found ? found.ciudades : [];
+        }
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private initForm(): void {
+    this.form &#x3D; this.fb.group({
+      nombreHato: [&#x27;&#x27;, [Validators.required, Validators.minLength(2)]],
+      departamento: [&#x27;&#x27;, Validators.required],
+      ciudad: [&#x27;&#x27;, Validators.required],
+      altitud: [{ value: &#x27;&#x27;, disabled: true }],
+      tropico: [{ value: &#x27;&#x27;, disabled: true }],
+      tipoHato: [&#x27;&#x27;, Validators.required],
+      areaHato: [null, [Validators.required, Validators.min(0)]],
+      areaPastoreo: [null, [Validators.required, Validators.min(0)]],
+    });
+
+    if (this.hatoActual) {
+      this.form.patchValue({
+        nombreHato: this.hatoActual.nombreHato,
+        departamento: this.hatoActual.departamento,
+        ciudad: this.hatoActual.ciudad,
+        altitud: this.hatoActual.altitud,
+        tropico: this.hatoActual.tropico,
+        tipoHato: this.hatoActual.tipoHato,
+        areaHato: this.hatoActual.areaHato,
+        areaPastoreo: this.hatoActual.areaPastoreo,
+      });
+    }
+
+    // Listener departamento
+    this.form.get(&#x27;departamento&#x27;)!.valueChanges.subscribe((dep) &#x3D;&gt; {
+      const found &#x3D; this.colombiaData.find((d) &#x3D;&gt; d.departamento &#x3D;&#x3D;&#x3D; dep);
+      this.ciudadesFiltradas &#x3D; found ? found.ciudades : [];
+      this.form.get(&#x27;ciudad&#x27;)!.setValue(&#x27;&#x27;);
+      this.form.get(&#x27;altitud&#x27;)!.setValue(&#x27;&#x27;);
+      this.form.get(&#x27;tropico&#x27;)!.setValue(&#x27;&#x27;);
+      this.cdr.markForCheck();
+    });
+
+    // Listener ciudad — autocompletar altitud y trópico
+    this.form.get(&#x27;ciudad&#x27;)!.valueChanges.subscribe((nombreCiudad) &#x3D;&gt; {
+      const ciudad &#x3D; this.ciudadesFiltradas.find((c) &#x3D;&gt; c.nombre &#x3D;&#x3D;&#x3D; nombreCiudad);
+      if (!ciudad) return;
+      const altitud &#x3D; ciudad.altitud;
+      let tropico &#x3D; &#x27;&#x27;;
+      if (altitud &lt; 1000) tropico &#x3D; &#x27;CALIDO&#x27;;
+      else if (altitud &lt; 2000) tropico &#x3D; &#x27;TEMPLADO&#x27;;
+      else tropico &#x3D; &#x27;FRIO&#x27;;
+      this.form.get(&#x27;altitud&#x27;)!.setValue(altitud);
+      this.form.get(&#x27;tropico&#x27;)!.setValue(tropico);
+      this.cdr.markForCheck();
+    });
+  }
+
+  async guardar(): Promise&lt;void&gt; {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.loadingGuardar &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+
+    try {
+      const v &#x3D; this.form.getRawValue();
+
+      // Buscar coordenadas de la ciudad seleccionada
+      const ciudadData &#x3D; this.ciudadesFiltradas.find((c) &#x3D;&gt; c.nombre &#x3D;&#x3D;&#x3D; v.ciudad);
+
+      const dto: RegistroHatoDTO &#x3D; {
+        nombreHato: v.nombreHato,
+        departamento: v.departamento,
+        ciudad: v.ciudad,
+        altitud: v.altitud,
+        tropico: v.tropico,
+        tipoHato: v.tipoHato,
+        areaHato: v.areaHato,
+        areaPastoreo: v.areaPastoreo,
+        cantCorrales: 0,
+        cantSalasOrdenio: 0,
+        capacidadAlmacenarLeche: 0,
+        cantEmpleadosPermanentes: 0,
+        cantEmpleadosTemporales: 0,
+        latitud: ciudadData?.latitud,
+        longitud: ciudadData?.longitud,
+      };
+
+      const hatoCreado &#x3D; await firstValueFrom(this.hatoService.crearHato(dto));
+      this.seccionCompletada.emit(hatoCreado);
+    } catch {
+      this.error &#x3D; &#x27;Error al guardar. Intenta de nuevo.&#x27;;
+      this.cdr.markForCheck();
+    } finally {
+      this.loadingGuardar &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  continuar(): void {
+    this.irSiguiente.emit();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;seccion-wrapper&quot;&gt;
+  &lt;!-- MODO READONLY --&gt;
+  &lt;div *ngIf&#x3D;&quot;modoReadonly&quot; class&#x3D;&quot;readonly-wrapper&quot;&gt;
+    &lt;div class&#x3D;&quot;readonly-header&quot;&gt;
+      &lt;div class&#x3D;&quot;readonly-check&quot;&gt;✓&lt;/div&gt;
+      &lt;div&gt;
+        &lt;h2 class&#x3D;&quot;readonly-titulo&quot;&gt;¡Información del hato registrada!&lt;/h2&gt;
+        &lt;p class&#x3D;&quot;readonly-mensaje&quot;&gt;
+          Tu hato &lt;strong&gt;{{ hatoActual?.nombreHato }}&lt;/strong&gt; ya está en el sistema. Ahora viene
+          lo bueno — sigamos completando el perfil de tu finca. 🚀
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;datos-grid&quot;&gt;
+      &lt;div class&#x3D;&quot;dato-card&quot;&gt;
+        &lt;span class&#x3D;&quot;dato-label&quot;&gt;Nombre&lt;/span&gt;
+        &lt;span class&#x3D;&quot;dato-valor&quot;&gt;{{ hatoActual?.nombreHato }}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;dato-card&quot;&gt;
+        &lt;span class&#x3D;&quot;dato-label&quot;&gt;Tipo de hato&lt;/span&gt;
+        &lt;span class&#x3D;&quot;dato-valor&quot;&gt;{{ hatoActual?.tipoHato }}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;dato-card&quot;&gt;
+        &lt;span class&#x3D;&quot;dato-label&quot;&gt;Departamento&lt;/span&gt;
+        &lt;span class&#x3D;&quot;dato-valor&quot;&gt;{{ hatoActual?.departamento }}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;dato-card&quot;&gt;
+        &lt;span class&#x3D;&quot;dato-label&quot;&gt;Ciudad&lt;/span&gt;
+        &lt;span class&#x3D;&quot;dato-valor&quot;&gt;{{ hatoActual?.ciudad }}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;dato-card&quot;&gt;
+        &lt;span class&#x3D;&quot;dato-label&quot;&gt;Altitud / Trópico&lt;/span&gt;
+        &lt;span class&#x3D;&quot;dato-valor&quot;
+          &gt;{{ hatoActual?.altitud }} m.s.n.m · {{ hatoActual?.tropico }}&lt;/span
+        &gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;dato-card&quot;&gt;
+        &lt;span class&#x3D;&quot;dato-label&quot;&gt;Área total&lt;/span&gt;
+        &lt;span class&#x3D;&quot;dato-valor&quot;&gt;{{ hatoActual?.areaHato }} ha&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;dato-card&quot;&gt;
+        &lt;span class&#x3D;&quot;dato-label&quot;&gt;Área de pastoreo&lt;/span&gt;
+        &lt;span class&#x3D;&quot;dato-valor&quot;&gt;{{ hatoActual?.areaPastoreo }} ha&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;paso-actions&quot;&gt;
+      &lt;button class&#x3D;&quot;btn-primary&quot; (click)&#x3D;&quot;continuar()&quot;&gt;Continuar al inventario →&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- MODO EDITABLE --&gt;
+  &lt;div *ngIf&#x3D;&quot;!modoReadonly&quot;&gt;
+    &lt;div class&#x3D;&quot;paso-header&quot;&gt;
+      &lt;span class&#x3D;&quot;paso-icono&quot;&gt;🏡&lt;/span&gt;
+      &lt;div&gt;
+        &lt;h2 class&#x3D;&quot;paso-titulo&quot;&gt;Información del hato&lt;/h2&gt;
+        &lt;p class&#x3D;&quot;paso-subtitulo&quot;&gt;Datos generales, ubicación y características del terreno&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;form [formGroup]&#x3D;&quot;form&quot; class&#x3D;&quot;paso-form&quot;&gt;
+      &lt;div class&#x3D;&quot;form-row&quot;&gt;
+        &lt;div class&#x3D;&quot;field&quot;&gt;
+          &lt;label&gt;Nombre del hato &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+          &lt;input
+            type&#x3D;&quot;text&quot;
+            formControlName&#x3D;&quot;nombreHato&quot;
+            placeholder&#x3D;&quot;Ej: Hacienda El Prado&quot;
+            [class.error]&#x3D;&quot;form.get(&#x27;nombreHato&#x27;)?.invalid &amp;&amp; form.get(&#x27;nombreHato&#x27;)?.touched&quot;
+          /&gt;
+          &lt;p
+            class&#x3D;&quot;field-error&quot;
+            *ngIf&#x3D;&quot;form.get(&#x27;nombreHato&#x27;)?.invalid &amp;&amp; form.get(&#x27;nombreHato&#x27;)?.touched&quot;
+          &gt;
+            Nombre requerido (mínimo 2 caracteres)
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;field&quot;&gt;
+          &lt;label&gt;Tipo de hato &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+          &lt;select
+            formControlName&#x3D;&quot;tipoHato&quot;
+            [class.error]&#x3D;&quot;form.get(&#x27;tipoHato&#x27;)?.invalid &amp;&amp; form.get(&#x27;tipoHato&#x27;)?.touched&quot;
+          &gt;
+            &lt;option value&#x3D;&quot;&quot;&gt;Selecciona...&lt;/option&gt;
+            &lt;option *ngFor&#x3D;&quot;let tipo of tiposHato&quot; [value]&#x3D;&quot;tipo&quot;&gt;{{ tipo }}&lt;/option&gt;
+          &lt;/select&gt;
+          &lt;p
+            class&#x3D;&quot;field-error&quot;
+            *ngIf&#x3D;&quot;form.get(&#x27;tipoHato&#x27;)?.invalid &amp;&amp; form.get(&#x27;tipoHato&#x27;)?.touched&quot;
+          &gt;
+            Selecciona el tipo de hato
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;form-row&quot;&gt;
+        &lt;div class&#x3D;&quot;field&quot;&gt;
+          &lt;label&gt;Departamento &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+          &lt;select
+            formControlName&#x3D;&quot;departamento&quot;
+            [class.error]&#x3D;&quot;form.get(&#x27;departamento&#x27;)?.invalid &amp;&amp; form.get(&#x27;departamento&#x27;)?.touched&quot;
+          &gt;
+            &lt;option value&#x3D;&quot;&quot;&gt;Selecciona...&lt;/option&gt;
+            &lt;option *ngFor&#x3D;&quot;let dep of departamentos&quot; [value]&#x3D;&quot;dep&quot;&gt;{{ dep }}&lt;/option&gt;
+          &lt;/select&gt;
+          &lt;p
+            class&#x3D;&quot;field-error&quot;
+            *ngIf&#x3D;&quot;form.get(&#x27;departamento&#x27;)?.invalid &amp;&amp; form.get(&#x27;departamento&#x27;)?.touched&quot;
+          &gt;
+            Selecciona un departamento
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;field&quot;&gt;
+          &lt;label&gt;Ciudad / Municipio &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+          &lt;select
+            formControlName&#x3D;&quot;ciudad&quot;
+            [class.error]&#x3D;&quot;form.get(&#x27;ciudad&#x27;)?.invalid &amp;&amp; form.get(&#x27;ciudad&#x27;)?.touched&quot;
+            [attr.disabled]&#x3D;&quot;!form.get(&#x27;departamento&#x27;)?.value ? true : null&quot;
+          &gt;
+            &lt;option value&#x3D;&quot;&quot;&gt;
+              {{
+                form.get(&#x27;departamento&#x27;)?.value
+                  ? &#x27;Selecciona...&#x27;
+                  : &#x27;Primero selecciona un departamento&#x27;
+              }}
+            &lt;/option&gt;
+            &lt;option *ngFor&#x3D;&quot;let c of ciudadesFiltradas&quot; [value]&#x3D;&quot;c.nombre&quot;&gt;{{ c.nombre }}&lt;/option&gt;
+          &lt;/select&gt;
+          &lt;p class&#x3D;&quot;field-error&quot; *ngIf&#x3D;&quot;form.get(&#x27;ciudad&#x27;)?.invalid &amp;&amp; form.get(&#x27;ciudad&#x27;)?.touched&quot;&gt;
+            Ciudad requerida
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;form-row&quot;&gt;
+        &lt;div class&#x3D;&quot;field&quot;&gt;
+          &lt;label&gt;Área total del hato (ha) &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+          &lt;input
+            type&#x3D;&quot;number&quot;
+            formControlName&#x3D;&quot;areaHato&quot;
+            placeholder&#x3D;&quot;Ej: 120.5&quot;
+            [class.error]&#x3D;&quot;form.get(&#x27;areaHato&#x27;)?.invalid &amp;&amp; form.get(&#x27;areaHato&#x27;)?.touched&quot;
+          /&gt;
+          &lt;p class&#x3D;&quot;field-hint&quot;&gt;
+            Ingresa el área total de tu finca en hectáreas (ha). 1 hectárea equivale aproximadamente
+            a 10.000 m². Incluye potreros, instalaciones y zonas no productivas.
+          &lt;/p&gt;
+          &lt;p
+            class&#x3D;&quot;field-error&quot;
+            *ngIf&#x3D;&quot;form.get(&#x27;areaHato&#x27;)?.invalid &amp;&amp; form.get(&#x27;areaHato&#x27;)?.touched&quot;
+          &gt;
+            Área requerida
+          &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;field&quot;&gt;
+          &lt;label&gt;Área de pastoreo (ha) &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+          &lt;input
+            type&#x3D;&quot;number&quot;
+            formControlName&#x3D;&quot;areaPastoreo&quot;
+            placeholder&#x3D;&quot;Ej: 80.0&quot;
+            [class.error]&#x3D;&quot;form.get(&#x27;areaPastoreo&#x27;)?.invalid &amp;&amp; form.get(&#x27;areaPastoreo&#x27;)?.touched&quot;
+          /&gt;
+          &lt;p class&#x3D;&quot;field-hint&quot;&gt;
+            Ingresa solo el área destinada al pastoreo de tu ganado. Debe ser menor o igual al área
+            total. No incluyas zonas de instalaciones o cultivos.
+          &lt;/p&gt;
+          &lt;p
+            class&#x3D;&quot;field-error&quot;
+            *ngIf&#x3D;&quot;form.get(&#x27;areaPastoreo&#x27;)?.invalid &amp;&amp; form.get(&#x27;areaPastoreo&#x27;)?.touched&quot;
+          &gt;
+            Área de pastoreo requerida
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;error-box&quot; *ngIf&#x3D;&quot;error&quot;&gt;
+        &lt;p&gt;{{ error }}&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;paso-actions&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-secondary&quot; (click)&#x3D;&quot;irAnterior.emit()&quot;&gt;Cancelar&lt;/button&gt;
+        &lt;button
+          type&#x3D;&quot;button&quot;
+          class&#x3D;&quot;btn-primary&quot;
+          (click)&#x3D;&quot;guardar()&quot;
+          [disabled]&#x3D;&quot;loadingGuardar || form.invalid&quot;
+        &gt;
+          &lt;span *ngIf&#x3D;&quot;!loadingGuardar&quot;&gt;Guardar y continuar →&lt;/span&gt;
+          &lt;span *ngIf&#x3D;&quot;loadingGuardar&quot; class&#x3D;&quot;btn-loading&quot;&gt;
+            &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+            Guardando...
+          &lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="seccion-wrapper">  <!-- MODO READONLY -->  <div *ngIf="modoReadonly" class="readonly-wrapper">    <div class="readonly-header">      <div class="readonly-check">✓</div>      <div>        <h2 class="readonly-titulo">¡Información del hato registrada!</h2>        <p class="readonly-mensaje">          Tu hato <strong>{{ hatoActual?.nombreHato }}</strong> ya está en el sistema. Ahora viene          lo bueno — sigamos completando el perfil de tu finca. 🚀        </p>      </div>    </div>    <div class="datos-grid">      <div class="dato-card">        <span class="dato-label">Nombre</span>        <span class="dato-valor">{{ hatoActual?.nombreHato }}</span>      </div>      <div class="dato-card">        <span class="dato-label">Tipo de hato</span>        <span class="dato-valor">{{ hatoActual?.tipoHato }}</span>      </div>      <div class="dato-card">        <span class="dato-label">Departamento</span>        <span class="dato-valor">{{ hatoActual?.departamento }}</span>      </div>      <div class="dato-card">        <span class="dato-label">Ciudad</span>        <span class="dato-valor">{{ hatoActual?.ciudad }}</span>      </div>      <div class="dato-card">        <span class="dato-label">Altitud / Trópico</span>        <span class="dato-valor"          >{{ hatoActual?.altitud }} m.s.n.m · {{ hatoActual?.tropico }}</span        >      </div>      <div class="dato-card">        <span class="dato-label">Área total</span>        <span class="dato-valor">{{ hatoActual?.areaHato }} ha</span>      </div>      <div class="dato-card">        <span class="dato-label">Área de pastoreo</span>        <span class="dato-valor">{{ hatoActual?.areaPastoreo }} ha</span>      </div>    </div>    <div class="paso-actions">      <button class="btn-primary" (click)="continuar()">Continuar al inventario →</button>    </div>  </div>  <!-- MODO EDITABLE -->  <div *ngIf="!modoReadonly">    <div class="paso-header">      <span class="paso-icono">🏡</span>      <div>        <h2 class="paso-titulo">Información del hato</h2>        <p class="paso-subtitulo">Datos generales, ubicación y características del terreno</p>      </div>    </div>    <form [formGroup]="form" class="paso-form">      <div class="form-row">        <div class="field">          <label>Nombre del hato <span class="required">*</span></label>          <input            type="text"            formControlName="nombreHato"            placeholder="Ej: Hacienda El Prado"            [class.error]="form.get(\'nombreHato\')?.invalid && form.get(\'nombreHato\')?.touched"          />          <p            class="field-error"            *ngIf="form.get(\'nombreHato\')?.invalid && form.get(\'nombreHato\')?.touched"          >            Nombre requerido (mínimo 2 caracteres)          </p>        </div>        <div class="field">          <label>Tipo de hato <span class="required">*</span></label>          <select            formControlName="tipoHato"            [class.error]="form.get(\'tipoHato\')?.invalid && form.get(\'tipoHato\')?.touched"          >            <option value="">Selecciona...</option>            <option *ngFor="let tipo of tiposHato" [value]="tipo">{{ tipo }}</option>          </select>          <p            class="field-error"            *ngIf="form.get(\'tipoHato\')?.invalid && form.get(\'tipoHato\')?.touched"          >            Selecciona el tipo de hato          </p>        </div>      </div>      <div class="form-row">        <div class="field">          <label>Departamento <span class="required">*</span></label>          <select            formControlName="departamento"            [class.error]="form.get(\'departamento\')?.invalid && form.get(\'departamento\')?.touched"          >            <option value="">Selecciona...</option>            <option *ngFor="let dep of departamentos" [value]="dep">{{ dep }}</option>          </select>          <p            class="field-error"            *ngIf="form.get(\'departamento\')?.invalid && form.get(\'departamento\')?.touched"          >            Selecciona un departamento          </p>        </div>        <div class="field">          <label>Ciudad / Municipio <span class="required">*</span></label>          <select            formControlName="ciudad"            [class.error]="form.get(\'ciudad\')?.invalid && form.get(\'ciudad\')?.touched"            [attr.disabled]="!form.get(\'departamento\')?.value ? true : null"          >            <option value="">              {{                form.get(\'departamento\')?.value                  ? \'Selecciona...\'                  : \'Primero selecciona un departamento\'              }}            </option>            <option *ngFor="let c of ciudadesFiltradas" [value]="c.nombre">{{ c.nombre }}</option>          </select>          <p class="field-error" *ngIf="form.get(\'ciudad\')?.invalid && form.get(\'ciudad\')?.touched">            Ciudad requerida          </p>        </div>      </div>      <div class="form-row">        <div class="field">          <label>Área total del hato (ha) <span class="required">*</span></label>          <input            type="number"            formControlName="areaHato"            placeholder="Ej: 120.5"            [class.error]="form.get(\'areaHato\')?.invalid && form.get(\'areaHato\')?.touched"          />          <p class="field-hint">            Ingresa el área total de tu finca en hectáreas (ha). 1 hectárea equivale aproximadamente            a 10.000 m². Incluye potreros, instalaciones y zonas no productivas.          </p>          <p            class="field-error"            *ngIf="form.get(\'areaHato\')?.invalid && form.get(\'areaHato\')?.touched"          >            Área requerida          </p>        </div>        <div class="field">          <label>Área de pastoreo (ha) <span class="required">*</span></label>          <input            type="number"            formControlName="areaPastoreo"            placeholder="Ej: 80.0"            [class.error]="form.get(\'areaPastoreo\')?.invalid && form.get(\'areaPastoreo\')?.touched"          />          <p class="field-hint">            Ingresa solo el área destinada al pastoreo de tu ganado. Debe ser menor o igual al área            total. No incluyas zonas de instalaciones o cultivos.          </p>          <p            class="field-error"            *ngIf="form.get(\'areaPastoreo\')?.invalid && form.get(\'areaPastoreo\')?.touched"          >            Área de pastoreo requerida          </p>        </div>      </div>      <div class="error-box" *ngIf="error">        <p>{{ error }}</p>      </div>      <div class="paso-actions">        <button type="button" class="btn-secondary" (click)="irAnterior.emit()">Cancelar</button>        <button          type="button"          class="btn-primary"          (click)="guardar()"          [disabled]="loadingGuardar || form.invalid"        >          <span *ngIf="!loadingGuardar">Guardar y continuar →</span>          <span *ngIf="loadingGuardar" class="btn-loading">            <app-spinner size="small"></app-spinner>            Guardando...          </span>        </button>      </div>    </form>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'SeccionInfoHatoComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SeccionInfoHatoComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,11 @@
+.hero {
+  background-image: url('/assets/hero-hathor.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  background:
+    radial-gradient(circle at 70% 50%, rgba(191, 241, 2, 0.24), transparent 45%),
+    linear-gradient(92deg, rgba(7, 48, 49, 0.92) 0%, rgba(20, 84, 45, 0.72) 55%, rgba(23, 82, 41, 0.5) 100%);
+}

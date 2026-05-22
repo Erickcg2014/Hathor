@@ -1,0 +1,2500 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  EstadisticasFinanzasComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-estadisticas-finanzas</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./estadisticas-finanzas.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./estadisticas-finanzas.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartDonaRef" >chartDonaRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartEvolucionRef" >chartEvolucionRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#charts" >charts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartTopGastosRef" >chartTopGastosRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartTopIngresosRef" >chartTopIngresosRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dataReady" >dataReady</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#stats" >stats</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#viewReady" >viewReady</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#calcularStats" >calcularStats</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarYCalcular" >cargarYCalcular</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#construirGraficas" >construirGraficas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearGraficaDona" >crearGraficaDona</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearGraficaEvolucion" >crearGraficaEvolucion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearGraficaTopGastos" >crearGraficaTopGastos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearGraficaTopIngresos" >crearGraficaTopIngresos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destruirGraficas" >destruirGraficas</a>
+                            </li>
+                            <li>
+                                <a href="#formatCOP" >formatCOP</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#formatMesLabel" >formatMesLabel</a>
+                            </li>
+                            <li>
+                                <a href="#labelTipo" >labelTipo</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#statsVacias" >statsVacias</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#sumar" >sumar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, registroService: <a href="../injectables/RegistroFinancieroService.html" target="_self">RegistroFinancieroService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:85</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>registroService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RegistroFinancieroService.html" target="_self" >RegistroFinancieroService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcularStats"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>calcularStats</b></span>
+                        <a href="#calcularStats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>calcularStats(registros: <a href="../interfaces/RegistroFinanciero.html" target="_self">RegistroFinanciero[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="137"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:137</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>registros</td>
+                                            <td>
+                                                            <code><a href="../interfaces/RegistroFinanciero.html" target="_self" >RegistroFinanciero[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Stats.html" target="_self" >Stats</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarYCalcular"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarYCalcular</b></span>
+                        <a href="#cargarYCalcular"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarYCalcular(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="construirGraficas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>construirGraficas</b></span>
+                        <a href="#construirGraficas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>construirGraficas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="258"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:258</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearGraficaDona"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearGraficaDona</b></span>
+                        <a href="#crearGraficaDona"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearGraficaDona()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="340"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:340</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearGraficaEvolucion"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearGraficaEvolucion</b></span>
+                        <a href="#crearGraficaEvolucion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearGraficaEvolucion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="268"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:268</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearGraficaTopGastos"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearGraficaTopGastos</b></span>
+                        <a href="#crearGraficaTopGastos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearGraficaTopGastos()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="432"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:432</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearGraficaTopIngresos"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearGraficaTopIngresos</b></span>
+                        <a href="#crearGraficaTopIngresos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearGraficaTopIngresos()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="388"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:388</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destruirGraficas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destruirGraficas</b></span>
+                        <a href="#destruirGraficas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>destruirGraficas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="476"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:476</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatCOP"></a>
+                    <span class="name">
+                        <span ><b>formatCOP</b></span>
+                        <a href="#formatCOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatCOP(valor: number | null | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="525"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:525</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatMesLabel"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>formatMesLabel</b></span>
+                        <a href="#formatMesLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>formatMesLabel(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="487"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:487</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelTipo"></a>
+                    <span class="name">
+                        <span ><b>labelTipo</b></span>
+                        <a href="#labelTipo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>labelTipo(tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="531"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:531</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tipo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="106"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="541"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:541</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="statsVacias"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>statsVacias</b></span>
+                        <a href="#statsVacias"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>statsVacias()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="506"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:506</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Stats.html" target="_self" >Stats</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sumar"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>sumar</b></span>
+                        <a href="#sumar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sumar(registros: <a href="../interfaces/RegistroFinanciero.html" target="_self">RegistroFinanciero[]</a>, tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="483"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:483</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>registros</td>
+                                            <td>
+                                                            <code><a href="../interfaces/RegistroFinanciero.html" target="_self" >RegistroFinanciero[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>tipo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartDonaRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartDonaRef</b></span>
+                        <a href="#chartDonaRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartDona&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartEvolucionRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartEvolucionRef</b></span>
+                        <a href="#chartEvolucionRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartEvolucion&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="charts"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>charts</b></span>
+                        <a href="#charts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart&lt;any, any, any&gt;[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartTopGastosRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartTopGastosRef</b></span>
+                        <a href="#chartTopGastosRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartTopGastos&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartTopIngresosRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartTopIngresosRef</b></span>
+                        <a href="#chartTopIngresosRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartTopIngresos&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataReady"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dataReady</b></span>
+                        <a href="#dataReady"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stats"></a>
+                    <span class="name">
+                        <span ><b>stats</b></span>
+                        <a href="#stats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Stats.html" target="_self" >Stats</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.statsVacias()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewReady"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>viewReady</b></span>
+                        <a href="#viewReady"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  AfterViewInit,
+  ChangeDetectorRef,
+  ElementRef,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+import { Chart, registerables } from &#x27;chart.js&#x27;;
+
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import { Hato } from &#x27;../../../../core/services/hato/hato.service&#x27;;
+import {
+  RegistroFinancieroService,
+  RegistroFinanciero,
+} from &#x27;../../../../core/services/finanzas/registro-financiero.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+
+Chart.register(...registerables);
+
+interface TipoStat {
+  tipo: string;
+  total: number;
+  cantidad: number;
+  pct: number;
+}
+
+interface CategoriaStat {
+  nombre: string;
+  tipo: string;
+  total: number;
+  pct: number;
+}
+
+interface MesStat {
+  mes: string;
+  mesKey: string;
+  ingresos: number;
+  egresos: number;
+  balance: number;
+  pctIngreso: number;
+  pctEgreso: number;
+}
+
+interface Stats {
+  totalRegistros: number;
+  totalIngresos: number;
+  totalEgresos: number;
+  balanceNeto: number;
+  ratioRentabilidad: number;
+  mesesConActividad: number;
+  promedioMensual: number;
+  porTipo: TipoStat[];
+  topCategorias: CategoriaStat[];
+  topCategoriaGastos: CategoriaStat[];
+  evolucionMensual: MesStat[];
+  mejorMes: MesStat | null;
+  mesMayorGasto: MesStat | null;
+  categoriaLider: CategoriaStat | null;
+}
+
+@Component({
+  selector: &#x27;app-estadisticas-finanzas&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent],
+  templateUrl: &#x27;./estadisticas-finanzas.component.html&#x27;,
+  styleUrl: &#x27;./estadisticas-finanzas.component.css&#x27;,
+})
+export class EstadisticasFinanzasComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild(&#x27;chartEvolucion&#x27;) chartEvolucionRef!: ElementRef;
+  @ViewChild(&#x27;chartDona&#x27;) chartDonaRef!: ElementRef;
+  @ViewChild(&#x27;chartTopIngresos&#x27;) chartTopIngresosRef!: ElementRef;
+  @ViewChild(&#x27;chartTopGastos&#x27;) chartTopGastosRef!: ElementRef;
+
+  hatoActivo: Hato | null &#x3D; null;
+  loading &#x3D; false;
+  stats: Stats &#x3D; this.statsVacias();
+
+  private charts: Chart&lt;any, any, any&gt;[] &#x3D; [];
+  private viewReady &#x3D; false;
+  private dataReady &#x3D; false;
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private hatoState: HatoStateService,
+    private registroService: RegistroFinancieroService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato) {
+        this.cargarYCalcular(hato.idHato as string);
+      } else {
+        this.stats &#x3D; this.statsVacias();
+        this.destruirGraficas();
+      }
+      this.cdr.markForCheck();
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.viewReady &#x3D; true;
+    if (this.dataReady) this.construirGraficas();
+  }
+
+  private cargarYCalcular(idHato: string): void {
+    this.loading &#x3D; true;
+    this.destruirGraficas();
+    this.cdr.markForCheck();
+
+    this.registroService
+      .getRegistrosByHato(idHato)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (registros) &#x3D;&gt; {
+          this.stats &#x3D; this.calcularStats(registros);
+          this.loading &#x3D; false;
+          this.dataReady &#x3D; true;
+          this.cdr.markForCheck();
+          setTimeout(() &#x3D;&gt; {
+            if (this.viewReady) this.construirGraficas();
+          }, 150);
+        },
+        error: () &#x3D;&gt; {
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  //  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; MOTOR DE CÁLCULO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  private calcularStats(registros: RegistroFinanciero[]): Stats {
+    if (!registros.length) return this.statsVacias();
+
+    const TIPOS_EGRESO &#x3D; [&#x27;GASTO&#x27;, &#x27;COSTO&#x27;, &#x27;INVERSION&#x27;];
+
+    const totalIngresos &#x3D; this.sumar(registros, &#x27;INGRESO&#x27;);
+    const totalEgresos &#x3D; TIPOS_EGRESO.reduce((s, t) &#x3D;&gt; s + this.sumar(registros, t), 0);
+    const balanceNeto &#x3D; totalIngresos - totalEgresos;
+    const ratioRentabilidad &#x3D;
+      totalEgresos &gt; 0 ? totalIngresos / totalEgresos : totalIngresos &gt; 0 ? Infinity : 0;
+
+    const TODOS_TIPOS &#x3D; [&#x27;INGRESO&#x27;, &#x27;GASTO&#x27;, &#x27;COSTO&#x27;, &#x27;INVERSION&#x27;];
+    const maxTipoTotal &#x3D; Math.max(...TODOS_TIPOS.map((t) &#x3D;&gt; this.sumar(registros, t)));
+
+    const porTipo: TipoStat[] &#x3D; TODOS_TIPOS.map((tipo) &#x3D;&gt; {
+      const grupo &#x3D; registros.filter((r) &#x3D;&gt; r.tipoMovimiento &#x3D;&#x3D;&#x3D; tipo);
+      const total &#x3D; grupo.reduce((s, r) &#x3D;&gt; s + r.monto, 0);
+      return {
+        tipo,
+        total,
+        cantidad: grupo.length,
+        pct: maxTipoTotal &gt; 0 ? (total / maxTipoTotal) * 100 : 0,
+      };
+    })
+      .filter((t) &#x3D;&gt; t.cantidad &gt; 0)
+      .sort((a, b) &#x3D;&gt; b.total - a.total);
+
+    // Top categorías ingresos
+    const catIngMap &#x3D; new Map&lt;string, { nombre: string; tipo: string; total: number }&gt;();
+    for (const r of registros.filter((r) &#x3D;&gt; r.tipoMovimiento &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27;)) {
+      const nombre &#x3D; r.categoriaFinanciera?.nombre ?? &#x27;Sin categoría&#x27;;
+      const prev &#x3D; catIngMap.get(nombre);
+      catIngMap.set(nombre, {
+        nombre,
+        tipo: r.tipoMovimiento,
+        total: (prev?.total ?? 0) + r.monto,
+      });
+    }
+    const catIngArr &#x3D; Array.from(catIngMap.values()).sort((a, b) &#x3D;&gt; b.total - a.total);
+    const maxCatIng &#x3D; catIngArr[0]?.total ?? 0;
+    const topCategorias: CategoriaStat[] &#x3D; catIngArr.slice(0, 5).map((c) &#x3D;&gt; ({
+      ...c,
+      pct: maxCatIng &gt; 0 ? (c.total / maxCatIng) * 100 : 0,
+    }));
+
+    // Top categorías gastos
+    const catGasMap &#x3D; new Map&lt;string, { nombre: string; tipo: string; total: number }&gt;();
+    for (const r of registros.filter((r) &#x3D;&gt; TIPOS_EGRESO.includes(r.tipoMovimiento))) {
+      const nombre &#x3D; r.categoriaFinanciera?.nombre ?? &#x27;Sin categoría&#x27;;
+      const prev &#x3D; catGasMap.get(nombre);
+      catGasMap.set(nombre, {
+        nombre,
+        tipo: r.tipoMovimiento,
+        total: (prev?.total ?? 0) + r.monto,
+      });
+    }
+    const catGasArr &#x3D; Array.from(catGasMap.values()).sort((a, b) &#x3D;&gt; b.total - a.total);
+    const maxCatGas &#x3D; catGasArr[0]?.total ?? 0;
+    const topCategoriaGastos: CategoriaStat[] &#x3D; catGasArr.slice(0, 5).map((c) &#x3D;&gt; ({
+      ...c,
+      pct: maxCatGas &gt; 0 ? (c.total / maxCatGas) * 100 : 0,
+    }));
+
+    // Evolución mensual
+    const mesMap &#x3D; new Map&lt;string, { ingresos: number; egresos: number }&gt;();
+    for (const r of registros) {
+      const key &#x3D; r.fecha.substring(0, 7);
+      const prev &#x3D; mesMap.get(key) ?? { ingresos: 0, egresos: 0 };
+      if (r.tipoMovimiento &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27;) {
+        mesMap.set(key, { ...prev, ingresos: prev.ingresos + r.monto });
+      } else {
+        mesMap.set(key, { ...prev, egresos: prev.egresos + r.monto });
+      }
+    }
+
+    const mesEntries &#x3D; Array.from(mesMap.entries())
+      .sort(([a], [b]) &#x3D;&gt; a.localeCompare(b))
+      .slice(-12);
+
+    const maxVal &#x3D; Math.max(...mesEntries.flatMap(([, v]) &#x3D;&gt; [v.ingresos, v.egresos]), 1);
+
+    const evolucionMensual: MesStat[] &#x3D; mesEntries.map(([key, v]) &#x3D;&gt; ({
+      mes: this.formatMesLabel(key),
+      mesKey: key,
+      ingresos: v.ingresos,
+      egresos: v.egresos,
+      balance: v.ingresos - v.egresos,
+      pctIngreso: (v.ingresos / maxVal) * 100,
+      pctEgreso: (v.egresos / maxVal) * 100,
+    }));
+
+    const mejorMes &#x3D; evolucionMensual.length
+      ? [...evolucionMensual].sort((a, b) &#x3D;&gt; b.ingresos - a.ingresos)[0]
+      : null;
+    const mesMayorGasto &#x3D; evolucionMensual.length
+      ? [...evolucionMensual].sort((a, b) &#x3D;&gt; b.egresos - a.egresos)[0]
+      : null;
+    const categoriaLider &#x3D; topCategorias[0] ?? null;
+    const mesesConActividad &#x3D; mesMap.size;
+    const promedioMensual &#x3D; mesesConActividad &gt; 0 ? balanceNeto / mesesConActividad : 0;
+
+    return {
+      totalRegistros: registros.length,
+      totalIngresos,
+      totalEgresos,
+      balanceNeto,
+      ratioRentabilidad,
+      mesesConActividad,
+      promedioMensual,
+      porTipo,
+      topCategorias,
+      topCategoriaGastos,
+      evolucionMensual,
+      mejorMes,
+      mesMayorGasto,
+      categoriaLider,
+    };
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GRÁFICAS CHART.JS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  private construirGraficas(): void {
+    this.destruirGraficas();
+    if (!this.stats.totalRegistros) return;
+
+    this.crearGraficaEvolucion();
+    this.crearGraficaDona();
+    this.crearGraficaTopIngresos();
+    this.crearGraficaTopGastos();
+  }
+
+  private crearGraficaEvolucion(): void {
+    const ctx &#x3D; this.chartEvolucionRef?.nativeElement;
+    if (!ctx) return;
+
+    const labels &#x3D; this.stats.evolucionMensual.map((m) &#x3D;&gt; m.mes);
+    const chart &#x3D; new Chart(ctx, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: &#x27;Ingresos&#x27;,
+            data: this.stats.evolucionMensual.map((m) &#x3D;&gt; m.ingresos),
+            backgroundColor: &#x27;rgba(25, 230, 77, 0.75)&#x27;,
+            borderColor: &#x27;#15c944&#x27;,
+            borderWidth: 2,
+            borderRadius: 6,
+            order: 2,
+          },
+          {
+            label: &#x27;Egresos&#x27;,
+            data: this.stats.evolucionMensual.map((m) &#x3D;&gt; m.egresos),
+            backgroundColor: &#x27;rgba(239, 68, 68, 0.75)&#x27;,
+            borderColor: &#x27;#dc2626&#x27;,
+            borderWidth: 2,
+            borderRadius: 6,
+            order: 2,
+          },
+          {
+            label: &#x27;Balance neto&#x27;,
+            data: this.stats.evolucionMensual.map((m) &#x3D;&gt; m.balance),
+            type: &#x27;line&#x27;,
+            borderColor: &#x27;#f59e0b&#x27;,
+            backgroundColor: &#x27;rgba(245, 158, 11, 0.08)&#x27;,
+            borderWidth: 2.5,
+            pointBackgroundColor: &#x27;#f59e0b&#x27;,
+            pointRadius: 4,
+            fill: false,
+            tension: 0.4,
+            order: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: &#x27;index&#x27;, intersect: false },
+        plugins: {
+          legend: {
+            display: true,
+            position: &#x27;top&#x27;,
+            labels: { font: { size: 12 }, padding: 16, usePointStyle: true },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60;${ctx.dataset.label}: ${this.formatCOP(ctx.parsed.y ?? 0)}&#x60;,
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: { callback: (val) &#x3D;&gt; &#x60;$${Number(val).toLocaleString(&#x27;es-CO&#x27;)}&#x60; },
+          },
+          x: { grid: { display: false } },
+        },
+      },
+    });
+    this.charts.push(chart);
+  }
+
+  private crearGraficaDona(): void {
+    const ctx &#x3D; this.chartDonaRef?.nativeElement;
+    if (!ctx) return;
+
+    const chart &#x3D; new Chart(ctx, {
+      type: &#x27;doughnut&#x27;,
+      data: {
+        labels: this.stats.porTipo.map((t) &#x3D;&gt; this.labelTipo(t.tipo)),
+        datasets: [
+          {
+            data: this.stats.porTipo.map((t) &#x3D;&gt; t.total),
+            backgroundColor: [
+              &#x27;rgba(25, 230, 77, 0.8)&#x27;,
+              &#x27;rgba(239, 68, 68, 0.8)&#x27;,
+              &#x27;rgba(251, 191, 36, 0.8)&#x27;,
+              &#x27;rgba(167, 139, 250, 0.8)&#x27;,
+            ],
+            borderColor: [&#x27;#15c944&#x27;, &#x27;#dc2626&#x27;, &#x27;#b45309&#x27;, &#x27;#7c3aed&#x27;],
+            borderWidth: 2,
+            hoverOffset: 8,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: &#x27;65%&#x27;,
+        plugins: {
+          legend: {
+            position: &#x27;bottom&#x27;,
+            labels: { font: { size: 12 }, padding: 16, usePointStyle: true },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; {
+                const total &#x3D; (ctx.dataset.data as number[]).reduce((a, b) &#x3D;&gt; a + b, 0);
+                const val &#x3D; (ctx.parsed ?? 0) as number;
+                const pct &#x3D; total &gt; 0 ? ((val / total) * 100).toFixed(1) : &#x27;0&#x27;;
+                return &#x60;${ctx.label}: ${this.formatCOP(val)} (${pct}%)&#x60;;
+              },
+            },
+          },
+        },
+      },
+    });
+    this.charts.push(chart);
+  }
+
+  private crearGraficaTopIngresos(): void {
+    const ctx &#x3D; this.chartTopIngresosRef?.nativeElement;
+    if (!ctx || !this.stats.topCategorias.length) return;
+
+    const chart &#x3D; new Chart(ctx, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: this.stats.topCategorias.map((c) &#x3D;&gt; c.nombre),
+        datasets: [
+          {
+            label: &#x27;Total ingresos&#x27;,
+            data: this.stats.topCategorias.map((c) &#x3D;&gt; c.total),
+            backgroundColor: &#x27;rgba(25, 230, 77, 0.75)&#x27;,
+            borderColor: &#x27;#15c944&#x27;,
+            borderWidth: 2,
+            borderRadius: 8,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60;${this.formatCOP(ctx.parsed.x ?? 0)}&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: { callback: (val) &#x3D;&gt; &#x60;$${Number(val).toLocaleString(&#x27;es-CO&#x27;)}&#x60; },
+          },
+          y: { grid: { display: false } },
+        },
+      },
+    });
+    this.charts.push(chart);
+  }
+
+  private crearGraficaTopGastos(): void {
+    const ctx &#x3D; this.chartTopGastosRef?.nativeElement;
+    if (!ctx || !this.stats.topCategoriaGastos.length) return;
+
+    const chart &#x3D; new Chart(ctx, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: this.stats.topCategoriaGastos.map((c) &#x3D;&gt; c.nombre),
+        datasets: [
+          {
+            label: &#x27;Total gastos&#x27;,
+            data: this.stats.topCategoriaGastos.map((c) &#x3D;&gt; c.total),
+            backgroundColor: &#x27;rgba(239, 68, 68, 0.75)&#x27;,
+            borderColor: &#x27;#dc2626&#x27;,
+            borderWidth: 2,
+            borderRadius: 8,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60;${this.formatCOP(ctx.parsed.x ?? 0)}&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: { color: &#x27;#fef2f2&#x27; },
+            ticks: { callback: (val) &#x3D;&gt; &#x60;$${Number(val).toLocaleString(&#x27;es-CO&#x27;)}&#x60; },
+          },
+          y: { grid: { display: false } },
+        },
+      },
+    });
+    this.charts.push(chart);
+  }
+
+  private destruirGraficas(): void {
+    this.charts.forEach((c: Chart&lt;any, any, any&gt;) &#x3D;&gt; c.destroy());
+    this.charts &#x3D; [];
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HELPERS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  private sumar(registros: RegistroFinanciero[], tipo: string): number {
+    return registros.filter((r) &#x3D;&gt; r.tipoMovimiento &#x3D;&#x3D;&#x3D; tipo).reduce((s, r) &#x3D;&gt; s + r.monto, 0);
+  }
+
+  private formatMesLabel(key: string): string {
+    const [year, month] &#x3D; key.split(&#x27;-&#x27;);
+    const meses &#x3D; [
+      &#x27;Ene&#x27;,
+      &#x27;Feb&#x27;,
+      &#x27;Mar&#x27;,
+      &#x27;Abr&#x27;,
+      &#x27;May&#x27;,
+      &#x27;Jun&#x27;,
+      &#x27;Jul&#x27;,
+      &#x27;Ago&#x27;,
+      &#x27;Sep&#x27;,
+      &#x27;Oct&#x27;,
+      &#x27;Nov&#x27;,
+      &#x27;Dic&#x27;,
+    ];
+    return &#x60;${meses[parseInt(month) - 1]} ${year.slice(2)}&#x60;;
+  }
+
+  private statsVacias(): Stats {
+    return {
+      totalRegistros: 0,
+      totalIngresos: 0,
+      totalEgresos: 0,
+      balanceNeto: 0,
+      ratioRentabilidad: 0,
+      mesesConActividad: 0,
+      promedioMensual: 0,
+      porTipo: [],
+      topCategorias: [],
+      topCategoriaGastos: [],
+      evolucionMensual: [],
+      mejorMes: null,
+      mesMayorGasto: null,
+      categoriaLider: null,
+    };
+  }
+
+  formatCOP(valor: number | null | undefined): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;$ 0&#x27;;
+    const abs &#x3D; Math.abs(valor);
+    return (valor &lt; 0 ? &#x27;-$ &#x27; : &#x27;$ &#x27;) + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(abs);
+  }
+
+  labelTipo(tipo: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      INGRESO: &#x27;Ingreso&#x27;,
+      GASTO: &#x27;Gasto&#x27;,
+      COSTO: &#x27;Costo&#x27;,
+      INVERSION: &#x27;Inversión&#x27;,
+    };
+    return map[tipo] ?? tipo;
+  }
+
+  ngOnDestroy(): void {
+    this.destruirGraficas();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;estadisticas-page&quot;&gt;
+  &lt;div class&#x3D;&quot;loading-wrapper&quot; *ngIf&#x3D;&quot;loading&quot;&gt;
+    &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Calculando estadísticas...&quot;&gt;&lt;/app-spinner&gt;
+  &lt;/div&gt;
+
+  &lt;ng-container *ngIf&#x3D;&quot;!loading&quot;&gt;
+    &lt;!-- Header --&gt;
+    &lt;div class&#x3D;&quot;page-header&quot;&gt;
+      &lt;div class&#x3D;&quot;header-left&quot;&gt;
+        &lt;span class&#x3D;&quot;page-tag&quot;&gt;Finanzas · Estadísticas&lt;/span&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Panel &lt;span class&#x3D;&quot;brand&quot;&gt;Estadístico&lt;/span&gt;&lt;/h1&gt;
+        &lt;p class&#x3D;&quot;page-subtitle&quot; *ngIf&#x3D;&quot;hatoActivo&quot;&gt;
+          Hato: &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        &lt;/p&gt;
+        &lt;p class&#x3D;&quot;page-subtitle warn&quot; *ngIf&#x3D;&quot;!hatoActivo&quot;&gt;
+          ⚠️ Selecciona un hato desde el panel superior.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;header-badge&quot;&gt;📈&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Sin hato --&gt;
+    &lt;div class&#x3D;&quot;empty-state&quot; *ngIf&#x3D;&quot;!hatoActivo&quot;&gt;
+      &lt;span class&#x3D;&quot;empty-icon&quot;&gt;🐄&lt;/span&gt;
+      &lt;p&gt;No hay un hato seleccionado.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Sin datos --&gt;
+    &lt;div class&#x3D;&quot;empty-state&quot; *ngIf&#x3D;&quot;hatoActivo &amp;&amp; stats.totalRegistros &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+      &lt;span class&#x3D;&quot;empty-icon&quot;&gt;📭&lt;/span&gt;
+      &lt;p&gt;No hay registros financieros para este hato todavía.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;ng-container *ngIf&#x3D;&quot;hatoActivo &amp;&amp; stats.totalRegistros &gt; 0&quot;&gt;
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; KPIs principales &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;kpi-row&quot;&gt;
+        &lt;div
+          class&#x3D;&quot;kpi-hero&quot;
+          [class.positivo]&#x3D;&quot;stats.balanceNeto &gt;&#x3D; 0&quot;
+          [class.negativo]&#x3D;&quot;stats.balanceNeto &lt; 0&quot;
+        &gt;
+          &lt;div class&#x3D;&quot;kpi-hero-top&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-hero-label&quot;&gt;Balance Neto&lt;/span&gt;
+            &lt;span
+              class&#x3D;&quot;kpi-hero-trend&quot;
+              [class.trend-up]&#x3D;&quot;stats.balanceNeto &gt;&#x3D; 0&quot;
+              [class.trend-down]&#x3D;&quot;stats.balanceNeto &lt; 0&quot;
+            &gt;
+              {{ stats.balanceNeto &gt;&#x3D; 0 ? &#x27;↑ Superávit&#x27; : &#x27;↓ Déficit&#x27; }}
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;span class&#x3D;&quot;kpi-hero-value&quot;&gt;{{ formatCOP(stats.balanceNeto) }}&lt;/span&gt;
+          &lt;div class&#x3D;&quot;kpi-hero-sub&quot;&gt;
+            &lt;span
+              &gt;Ingresos: &lt;strong&gt;{{ formatCOP(stats.totalIngresos) }}&lt;/strong&gt;&lt;/span
+            &gt;
+            &lt;span
+              &gt;Egresos: &lt;strong&gt;{{ formatCOP(stats.totalEgresos) }}&lt;/strong&gt;&lt;/span
+            &gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;kpi-secondary-grid&quot;&gt;
+          &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-icon&quot;&gt;📋&lt;/span&gt;
+            &lt;div&gt;
+              &lt;span class&#x3D;&quot;kpi-val&quot;&gt;{{ stats.totalRegistros }}&lt;/span&gt;
+              &lt;span class&#x3D;&quot;kpi-lbl&quot;&gt;Registros totales&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-icon&quot;&gt;📅&lt;/span&gt;
+            &lt;div&gt;
+              &lt;span class&#x3D;&quot;kpi-val&quot;&gt;{{ stats.mesesConActividad }}&lt;/span&gt;
+              &lt;span class&#x3D;&quot;kpi-lbl&quot;&gt;Meses con actividad&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-icon ratio-icon&quot; [class.ratio-bueno]&#x3D;&quot;stats.ratioRentabilidad &gt;&#x3D; 1&quot;&gt;
+              {{ stats.ratioRentabilidad &gt;&#x3D; 1 ? &#x27;✓&#x27; : &#x27;!&#x27; }}
+            &lt;/span&gt;
+            &lt;div&gt;
+              &lt;span
+                class&#x3D;&quot;kpi-val&quot;
+                [class.ratio-bueno]&#x3D;&quot;stats.ratioRentabilidad &gt;&#x3D; 1&quot;
+                [class.ratio-malo]&#x3D;&quot;stats.ratioRentabilidad &lt; 1&quot;
+              &gt;
+                {{ stats.ratioRentabilidad | number: &#x27;1.2-2&#x27; }}x
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;kpi-lbl&quot;&gt;Ratio ingreso/egreso&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-icon&quot;&gt;💡&lt;/span&gt;
+            &lt;div&gt;
+              &lt;span class&#x3D;&quot;kpi-val&quot;&gt;{{ formatCOP(stats.promedioMensual) }}&lt;/span&gt;
+              &lt;span class&#x3D;&quot;kpi-lbl&quot;&gt;Promedio mensual neto&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GRÁFICA 1: Evolución mensual &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;grafica-card&quot;&gt;
+        &lt;div class&#x3D;&quot;grafica-header&quot;&gt;
+          &lt;div&gt;
+            &lt;h3 class&#x3D;&quot;grafica-titulo&quot;&gt;Evolución mensual&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;grafica-subtitulo&quot;&gt;Ingresos vs egresos por mes con línea de balance neto&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;span class&#x3D;&quot;grafica-badge evolucion&quot;&gt;📊 Últimos 12 meses&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;grafica-wrapper grande&quot;&gt;
+          &lt;canvas #chartEvolucion&gt;&lt;/canvas&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; FILA: Dona + KPIs secundarios &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;mid-row&quot;&gt;
+        &lt;!-- Dona distribución --&gt;
+        &lt;div class&#x3D;&quot;grafica-card&quot;&gt;
+          &lt;div class&#x3D;&quot;grafica-header&quot;&gt;
+            &lt;div&gt;
+              &lt;h3 class&#x3D;&quot;grafica-titulo&quot;&gt;Distribución por tipo&lt;/h3&gt;
+              &lt;p class&#x3D;&quot;grafica-subtitulo&quot;&gt;Proporción de cada tipo de movimiento&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;grafica-badge distribucion&quot;&gt;🍩 Distribución&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;grafica-wrapper&quot;&gt;
+            &lt;canvas #chartDona&gt;&lt;/canvas&gt;
+          &lt;/div&gt;
+          &lt;!-- Resumen tipo --&gt;
+          &lt;div class&#x3D;&quot;tipo-resumen&quot;&gt;
+            &lt;div class&#x3D;&quot;tipo-resumen-item&quot; *ngFor&#x3D;&quot;let t of stats.porTipo&quot;&gt;
+              &lt;span class&#x3D;&quot;tipo-badge&quot; [ngClass]&#x3D;&quot;&#x27;tipo-&#x27; + t.tipo.toLowerCase()&quot;&gt;
+                {{ labelTipo(t.tipo) }}
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;tipo-resumen-val&quot;&gt;{{ formatCOP(t.total) }}&lt;/span&gt;
+              &lt;span class&#x3D;&quot;tipo-resumen-count&quot;&gt;{{ t.cantidad }} reg.&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Highlights --&gt;
+        &lt;div class&#x3D;&quot;highlights-col&quot;&gt;
+          &lt;div class&#x3D;&quot;highlight-card&quot; *ngIf&#x3D;&quot;stats.mejorMes&quot;&gt;
+            &lt;span class&#x3D;&quot;hl-icon&quot;&gt;🏆&lt;/span&gt;
+            &lt;div&gt;
+              &lt;span class&#x3D;&quot;hl-label&quot;&gt;Mejor mes&lt;/span&gt;
+              &lt;span class&#x3D;&quot;hl-value&quot;&gt;{{ stats.mejorMes.mes }}&lt;/span&gt;
+              &lt;span class&#x3D;&quot;hl-sub&quot;&gt;{{ formatCOP(stats.mejorMes.ingresos) }} en ingresos&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;highlight-card&quot; *ngIf&#x3D;&quot;stats.mesMayorGasto&quot;&gt;
+            &lt;span class&#x3D;&quot;hl-icon&quot;&gt;⚠️&lt;/span&gt;
+            &lt;div&gt;
+              &lt;span class&#x3D;&quot;hl-label&quot;&gt;Mayor gasto mensual&lt;/span&gt;
+              &lt;span class&#x3D;&quot;hl-value&quot;&gt;{{ stats.mesMayorGasto.mes }}&lt;/span&gt;
+              &lt;span class&#x3D;&quot;hl-sub&quot;&gt;{{ formatCOP(stats.mesMayorGasto.egresos) }} en egresos&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;highlight-card&quot; *ngIf&#x3D;&quot;stats.categoriaLider&quot;&gt;
+            &lt;span class&#x3D;&quot;hl-icon&quot;&gt;📌&lt;/span&gt;
+            &lt;div&gt;
+              &lt;span class&#x3D;&quot;hl-label&quot;&gt;Categoría líder&lt;/span&gt;
+              &lt;span class&#x3D;&quot;hl-value&quot;&gt;{{ stats.categoriaLider.nombre }}&lt;/span&gt;
+              &lt;span class&#x3D;&quot;hl-sub&quot;&gt;{{ formatCOP(stats.categoriaLider.total) }} acumulado&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;highlight-card&quot;&gt;
+            &lt;span class&#x3D;&quot;hl-icon&quot;&gt;📈&lt;/span&gt;
+            &lt;div&gt;
+              &lt;span class&#x3D;&quot;hl-label&quot;&gt;Promedio neto mensual&lt;/span&gt;
+              &lt;span
+                class&#x3D;&quot;hl-value&quot;
+                [class.positivo-text]&#x3D;&quot;stats.promedioMensual &gt;&#x3D; 0&quot;
+                [class.negativo-text]&#x3D;&quot;stats.promedioMensual &lt; 0&quot;
+              &gt;
+                {{ formatCOP(stats.promedioMensual) }}
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;hl-sub&quot;&gt;en {{ stats.mesesConActividad }} meses&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; FILA: Top ingresos + Top gastos &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;mid-row&quot;&gt;
+        &lt;div class&#x3D;&quot;grafica-card&quot;&gt;
+          &lt;div class&#x3D;&quot;grafica-header&quot;&gt;
+            &lt;div&gt;
+              &lt;h3 class&#x3D;&quot;grafica-titulo&quot;&gt;Top categorías de ingreso&lt;/h3&gt;
+              &lt;p class&#x3D;&quot;grafica-subtitulo&quot;&gt;Las 5 categorías con mayor ingreso acumulado&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;grafica-badge top-ing&quot;&gt;💰 Ingresos&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;grafica-wrapper&quot;&gt;
+            &lt;canvas #chartTopIngresos&gt;&lt;/canvas&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;grafica-card&quot;&gt;
+          &lt;div class&#x3D;&quot;grafica-header&quot;&gt;
+            &lt;div&gt;
+              &lt;h3 class&#x3D;&quot;grafica-titulo&quot;&gt;Top categorías de gasto&lt;/h3&gt;
+              &lt;p class&#x3D;&quot;grafica-subtitulo&quot;&gt;Las 5 categorías con mayor gasto acumulado&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;grafica-badge top-gas&quot;&gt;💸 Gastos&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;grafica-wrapper&quot;&gt;
+            &lt;canvas #chartTopGastos&gt;&lt;/canvas&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/ng-container&gt;
+  &lt;/ng-container&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="estadisticas-page">  <div class="loading-wrapper" *ngIf="loading">    <app-spinner size="large" message="Calculando estadísticas..."></app-spinner>  </div>  <ng-container *ngIf="!loading">    <!-- Header -->    <div class="page-header">      <div class="header-left">        <span class="page-tag">Finanzas · Estadísticas</span>        <h1 class="page-title">Panel <span class="brand">Estadístico</span></h1>        <p class="page-subtitle" *ngIf="hatoActivo">          Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},          {{ hatoActivo.departamento }}        </p>        <p class="page-subtitle warn" *ngIf="!hatoActivo">          ⚠️ Selecciona un hato desde el panel superior.        </p>      </div>      <div class="header-badge">📈</div>    </div>    <!-- Sin hato -->    <div class="empty-state" *ngIf="!hatoActivo">      <span class="empty-icon">🐄</span>      <p>No hay un hato seleccionado.</p>    </div>    <!-- Sin datos -->    <div class="empty-state" *ngIf="hatoActivo && stats.totalRegistros === 0">      <span class="empty-icon">📭</span>      <p>No hay registros financieros para este hato todavía.</p>    </div>    <ng-container *ngIf="hatoActivo && stats.totalRegistros > 0">      <!-- ===== KPIs principales ===== -->      <div class="kpi-row">        <div          class="kpi-hero"          [class.positivo]="stats.balanceNeto >= 0"          [class.negativo]="stats.balanceNeto < 0"        >          <div class="kpi-hero-top">            <span class="kpi-hero-label">Balance Neto</span>            <span              class="kpi-hero-trend"              [class.trend-up]="stats.balanceNeto >= 0"              [class.trend-down]="stats.balanceNeto < 0"            >              {{ stats.balanceNeto >= 0 ? \'↑ Superávit\' : \'↓ Déficit\' }}            </span>          </div>          <span class="kpi-hero-value">{{ formatCOP(stats.balanceNeto) }}</span>          <div class="kpi-hero-sub">            <span              >Ingresos: <strong>{{ formatCOP(stats.totalIngresos) }}</strong></span            >            <span              >Egresos: <strong>{{ formatCOP(stats.totalEgresos) }}</strong></span            >          </div>        </div>        <div class="kpi-secondary-grid">          <div class="kpi-card">            <span class="kpi-icon">📋</span>            <div>              <span class="kpi-val">{{ stats.totalRegistros }}</span>              <span class="kpi-lbl">Registros totales</span>            </div>          </div>          <div class="kpi-card">            <span class="kpi-icon">📅</span>            <div>              <span class="kpi-val">{{ stats.mesesConActividad }}</span>              <span class="kpi-lbl">Meses con actividad</span>            </div>          </div>          <div class="kpi-card">            <span class="kpi-icon ratio-icon" [class.ratio-bueno]="stats.ratioRentabilidad >= 1">              {{ stats.ratioRentabilidad >= 1 ? \'✓\' : \'!\' }}            </span>            <div>              <span                class="kpi-val"                [class.ratio-bueno]="stats.ratioRentabilidad >= 1"                [class.ratio-malo]="stats.ratioRentabilidad < 1"              >                {{ stats.ratioRentabilidad | number: \'1.2-2\' }}x              </span>              <span class="kpi-lbl">Ratio ingreso/egreso</span>            </div>          </div>          <div class="kpi-card">            <span class="kpi-icon">💡</span>            <div>              <span class="kpi-val">{{ formatCOP(stats.promedioMensual) }}</span>              <span class="kpi-lbl">Promedio mensual neto</span>            </div>          </div>        </div>      </div>      <!-- ===== GRÁFICA 1: Evolución mensual ===== -->      <div class="grafica-card">        <div class="grafica-header">          <div>            <h3 class="grafica-titulo">Evolución mensual</h3>            <p class="grafica-subtitulo">Ingresos vs egresos por mes con línea de balance neto</p>          </div>          <span class="grafica-badge evolucion">📊 Últimos 12 meses</span>        </div>        <div class="grafica-wrapper grande">          <canvas #chartEvolucion></canvas>        </div>      </div>      <!-- ===== FILA: Dona + KPIs secundarios ===== -->      <div class="mid-row">        <!-- Dona distribución -->        <div class="grafica-card">          <div class="grafica-header">            <div>              <h3 class="grafica-titulo">Distribución por tipo</h3>              <p class="grafica-subtitulo">Proporción de cada tipo de movimiento</p>            </div>            <span class="grafica-badge distribucion">🍩 Distribución</span>          </div>          <div class="grafica-wrapper">            <canvas #chartDona></canvas>          </div>          <!-- Resumen tipo -->          <div class="tipo-resumen">            <div class="tipo-resumen-item" *ngFor="let t of stats.porTipo">              <span class="tipo-badge" [ngClass]="\'tipo-\' + t.tipo.toLowerCase()">                {{ labelTipo(t.tipo) }}              </span>              <span class="tipo-resumen-val">{{ formatCOP(t.total) }}</span>              <span class="tipo-resumen-count">{{ t.cantidad }} reg.</span>            </div>          </div>        </div>        <!-- Highlights -->        <div class="highlights-col">          <div class="highlight-card" *ngIf="stats.mejorMes">            <span class="hl-icon">🏆</span>            <div>              <span class="hl-label">Mejor mes</span>              <span class="hl-value">{{ stats.mejorMes.mes }}</span>              <span class="hl-sub">{{ formatCOP(stats.mejorMes.ingresos) }} en ingresos</span>            </div>          </div>          <div class="highlight-card" *ngIf="stats.mesMayorGasto">            <span class="hl-icon">⚠️</span>            <div>              <span class="hl-label">Mayor gasto mensual</span>              <span class="hl-value">{{ stats.mesMayorGasto.mes }}</span>              <span class="hl-sub">{{ formatCOP(stats.mesMayorGasto.egresos) }} en egresos</span>            </div>          </div>          <div class="highlight-card" *ngIf="stats.categoriaLider">            <span class="hl-icon">📌</span>            <div>              <span class="hl-label">Categoría líder</span>              <span class="hl-value">{{ stats.categoriaLider.nombre }}</span>              <span class="hl-sub">{{ formatCOP(stats.categoriaLider.total) }} acumulado</span>            </div>          </div>          <div class="highlight-card">            <span class="hl-icon">📈</span>            <div>              <span class="hl-label">Promedio neto mensual</span>              <span                class="hl-value"                [class.positivo-text]="stats.promedioMensual >= 0"                [class.negativo-text]="stats.promedioMensual < 0"              >                {{ formatCOP(stats.promedioMensual) }}              </span>              <span class="hl-sub">en {{ stats.mesesConActividad }} meses</span>            </div>          </div>        </div>      </div>      <!-- ===== FILA: Top ingresos + Top gastos ===== -->      <div class="mid-row">        <div class="grafica-card">          <div class="grafica-header">            <div>              <h3 class="grafica-titulo">Top categorías de ingreso</h3>              <p class="grafica-subtitulo">Las 5 categorías con mayor ingreso acumulado</p>            </div>            <span class="grafica-badge top-ing">💰 Ingresos</span>          </div>          <div class="grafica-wrapper">            <canvas #chartTopIngresos></canvas>          </div>        </div>        <div class="grafica-card">          <div class="grafica-header">            <div>              <h3 class="grafica-titulo">Top categorías de gasto</h3>              <p class="grafica-subtitulo">Las 5 categorías con mayor gasto acumulado</p>            </div>            <span class="grafica-badge top-gas">💸 Gastos</span>          </div>          <div class="grafica-wrapper">            <canvas #chartTopGastos></canvas>          </div>        </div>      </div>    </ng-container>  </ng-container></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'EstadisticasFinanzasComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EstadisticasFinanzasComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

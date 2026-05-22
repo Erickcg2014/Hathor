@@ -1,0 +1,2764 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  GraficaDetalleModalComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-grafica-detalle-modal</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./grafica-detalle-modal.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./grafica-detalle-modal.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#chart" >chart</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartDetalleRef" >chartDetalleRef</a>
+                            </li>
+                            <li>
+                                <a href="#rangoRadar" >rangoRadar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#borderPorPercentil" >borderPorPercentil</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildBarrasCategoria" >buildBarrasCategoria</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildCategoria" >buildCategoria</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildPercentiles" >buildPercentiles</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildPotencial" >buildPotencial</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildRadar" >buildRadar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildRadarCategoria" >buildRadarCategoria</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildSemaforo" >buildSemaforo</a>
+                            </li>
+                            <li>
+                                <a href="#colorPorPercentil" >colorPorPercentil</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#construirChart" >construirChart</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destruirChart" >destruirChart</a>
+                            </li>
+                            <li>
+                                <a href="#formatValor" >formatValor</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getDedupData" >getDedupData</a>
+                            </li>
+                            <li>
+                                <a href="#interpretacionClass" >interpretacionClass</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#onEsc" >onEsc</a>
+                            </li>
+                            <li>
+                                <a href="#onOverlayClick" >onOverlayClick</a>
+                            </li>
+                            <li>
+                                <a href="#setRangoRadar" >setRangoRadar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#grafica" >grafica</a>
+                            </li>
+                            <li>
+                                <a href="#grupos" >grupos</a>
+                            </li>
+                            <li>
+                                <a href="#resultados" >resultados</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cerrar" >cerrar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#document:keydown.escape" >document:keydown.escape</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#guiaItems" >guiaItems</a>
+                                </li>
+                                <li>
+                                    <a href="#datosParaTabla" >datosParaTabla</a>
+                                </li>
+                                <li>
+                                    <a href="#top3Mejores" >top3Mejores</a>
+                                </li>
+                                <li>
+                                    <a href="#top3AMejorar" >top3AMejorar</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:52</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="grafica"></a>
+                        <b>grafica</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/GraficaDetalle.html" target="_self" >GraficaDetalle</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:44</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="grupos"></a>
+                        <b>grupos</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>KpiGrupo[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:46</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resultados"></a>
+                        <b>resultados</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BenchmarkHatoResultado[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:45</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cerrar"></a>
+                        <b>cerrar</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:47</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-methods">
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="document:keydown.escape"></a>
+                    <span class="name">
+                        <span ><b>document:keydown.escape</b></span>
+                        <a href="#document:keydown.escape"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>document:keydown.escape()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="borderPorPercentil"></a>
+                    <span class="name">
+                        <span ><b>borderPorPercentil</b></span>
+                        <a href="#borderPorPercentil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>borderPorPercentil(p: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>p</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildBarrasCategoria"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildBarrasCategoria</b></span>
+                        <a href="#buildBarrasCategoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildBarrasCategoria(canvas: HTMLCanvasElement, categoria: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="314"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:314</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>categoria</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildCategoria"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildCategoria</b></span>
+                        <a href="#buildCategoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildCategoria(canvas: HTMLCanvasElement)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="249"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:249</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildPercentiles"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildPercentiles</b></span>
+                        <a href="#buildPercentiles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildPercentiles(canvas: HTMLCanvasElement)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="186"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:186</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildPotencial"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildPotencial</b></span>
+                        <a href="#buildPotencial"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildPotencial(canvas: HTMLCanvasElement)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="557"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:557</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildRadar"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildRadar</b></span>
+                        <a href="#buildRadar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildRadar(canvas: HTMLCanvasElement)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="381"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:381</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildRadarCategoria"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildRadarCategoria</b></span>
+                        <a href="#buildRadarCategoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildRadarCategoria(canvas: HTMLCanvasElement, categoria: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="432"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:432</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>categoria</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildSemaforo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildSemaforo</b></span>
+                        <a href="#buildSemaforo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildSemaforo(canvas: HTMLCanvasElement)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="509"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:509</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorPorPercentil"></a>
+                    <span class="name">
+                        <span ><b>colorPorPercentil</b></span>
+                        <a href="#colorPorPercentil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorPorPercentil(p: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>p</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="construirChart"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>construirChart</b></span>
+                        <a href="#construirChart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>construirChart()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destruirChart"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destruirChart</b></span>
+                        <a href="#destruirChart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>destruirChart()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatValor"></a>
+                    <span class="name">
+                        <span ><b>formatValor</b></span>
+                        <a href="#formatValor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatValor(valor: number | null, unidad?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:87</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>unidad</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDedupData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>getDedupData</b></span>
+                        <a href="#getDedupData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getDedupData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:178</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>BenchmarkHatoResultado[]</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="interpretacionClass"></a>
+                    <span class="name">
+                        <span ><b>interpretacionClass</b></span>
+                        <a href="#interpretacionClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>interpretacionClass(interp: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>interp</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="611"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:611</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onEsc"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>onEsc</b></span>
+                        <a href="#onEsc"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onEsc()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;document:keydown.escape&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onOverlayClick"></a>
+                    <span class="name">
+                        <span ><b>onOverlayClick</b></span>
+                        <a href="#onOverlayClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onOverlayClick(event: MouseEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>MouseEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setRangoRadar"></a>
+                    <span class="name">
+                        <span ><b>setRangoRadar</b></span>
+                        <a href="#setRangoRadar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setRangoRadar(rango: "100" | "75" | "50" | "25")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:115</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>rango</td>
+                                            <td>
+                                                        <code>&quot;100&quot; | &quot;75&quot; | &quot;50&quot; | &quot;25&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chart"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>chart</b></span>
+                        <a href="#chart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart&lt;any | any | any&gt; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartDetalleRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartDetalleRef</b></span>
+                        <a href="#chartDetalleRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLCanvasElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartDetalle&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rangoRadar"></a>
+                    <span class="name">
+                        <span ><b>rangoRadar</b></span>
+                        <a href="#rangoRadar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;100&quot; | &quot;75&quot; | &quot;50&quot; | &quot;25&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>100</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="guiaItems"></a>
+                        <span class="name"><b>guiaItems</b><a href="#guiaItems"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>guiaItems()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:107</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="datosParaTabla"></a>
+                        <span class="name"><b>datosParaTabla</b><a href="#datosParaTabla"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>datosParaTabla()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:121</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="top3Mejores"></a>
+                        <span class="name"><b>top3Mejores</b><a href="#top3Mejores"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>top3Mejores()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:131</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="top3AMejorar"></a>
+                        <span class="name"><b>top3AMejorar</b><a href="#top3AMejorar"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>top3AMejorar()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts:138</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnDestroy,
+  Output,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Chart, registerables, TooltipItem } from &#x27;chart.js&#x27;;
+import { BenchmarkHatoResultado } from &#x27;../../../../../core/services/benchmarking/benchmarking.service&#x27;;
+
+Chart.register(...registerables);
+
+interface GraficaDetalle {
+  id: string;
+  titulo: string;
+  subtitulo: string;
+  descripcion: string;
+  guiaLectura: string;
+}
+
+interface KpiGrupo {
+  categoria: string;
+  label: string;
+  icono: string;
+  items: BenchmarkHatoResultado[];
+}
+
+@Component({
+  selector: &#x27;app-grafica-detalle-modal&#x27;,
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: &#x27;./grafica-detalle-modal.component.html&#x27;,
+  styleUrl: &#x27;./grafica-detalle-modal.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class GraficaDetalleModalComponent implements AfterViewInit, OnDestroy {
+  @Input() grafica!: GraficaDetalle;
+  @Input() resultados: BenchmarkHatoResultado[] &#x3D; [];
+  @Input() grupos: KpiGrupo[] &#x3D; [];
+  @Output() cerrar &#x3D; new EventEmitter&lt;void&gt;();
+
+  @ViewChild(&#x27;chartDetalle&#x27;) chartDetalleRef!: ElementRef&lt;HTMLCanvasElement&gt;;
+
+  private chart: Chart&lt;any, any, any&gt; | null &#x3D; null;
+  rangoRadar: 100 | 75 | 50 | 25 &#x3D; 100;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
+    setTimeout(() &#x3D;&gt; this.construirChart(), 100);
+  }
+
+  @HostListener(&#x27;document:keydown.escape&#x27;)
+  onEsc(): void {
+    this.cerrar.emit();
+  }
+
+  onOverlayClick(event: MouseEvent): void {
+    if ((event.target as HTMLElement).classList.contains(&#x27;modal-overlay&#x27;)) {
+      this.cerrar.emit();
+    }
+  }
+
+  // ── Helpers ──────────────────────────────────────────────
+
+  colorPorPercentil(p: number | null): string {
+    const n &#x3D; Number(p ?? 0);
+    if (n &gt;&#x3D; 70) return &#x27;rgba(25,230,77,0.82)&#x27;;
+    if (n &gt;&#x3D; 40) return &#x27;rgba(245,182,66,0.85)&#x27;;
+    return &#x27;rgba(239,68,68,0.78)&#x27;;
+  }
+
+  borderPorPercentil(p: number | null): string {
+    const n &#x3D; Number(p ?? 0);
+    if (n &gt;&#x3D; 70) return &#x27;#15c944&#x27;;
+    if (n &gt;&#x3D; 40) return &#x27;#f59e0b&#x27;;
+    return &#x27;#dc2626&#x27;;
+  }
+
+  formatValor(valor: number | null, unidad?: string): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;—&#x27;;
+    if (!unidad) return Number(valor).toFixed(2);
+    if (unidad.includes(&#x27;COP&#x27;) || unidad &#x3D;&#x3D;&#x3D; &#x27;COP/vaca&#x27; || unidad &#x3D;&#x3D;&#x3D; &#x27;COP/L&#x27;)
+      return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(Number(valor)));
+    if (unidad &#x3D;&#x3D;&#x3D; &#x27;%&#x27;) return Number(valor).toFixed(1) + &#x27;%&#x27;;
+    if (unidad &#x3D;&#x3D;&#x3D; &#x27;ratio&#x27; || unidad &#x3D;&#x3D;&#x3D; &#x27;veces&#x27;) return Number(valor).toFixed(2) + &#x27;x&#x27;;
+    return &#x60;${Number(valor).toFixed(2)} ${unidad}&#x60;;
+  }
+
+  interpretacionClass(interp: string | null): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      OPTIMO: &#x27;badge-optimo&#x27;,
+      BUENO: &#x27;badge-bueno&#x27;,
+      ACEPTABLE: &#x27;badge-aceptable&#x27;,
+      CRITICO: &#x27;badge-critico&#x27;,
+    };
+    return map[interp ?? &#x27;&#x27;] ?? &#x27;badge-default&#x27;;
+  }
+
+  get guiaItems(): { rango: string; descripcion: string; color: string }[] {
+    return [
+      { rango: &#x27;P0 – 49&#x27;, descripcion: &#x27;Por debajo del promedio del sector&#x27;, color: &#x27;#dc2626&#x27; },
+      { rango: &#x27;P50&#x27;, descripcion: &#x27;En el promedio del sector&#x27;, color: &#x27;#f59e0b&#x27; },
+      { rango: &#x27;P51 – 100&#x27;, descripcion: &#x27;Por encima del promedio del sector&#x27;, color: &#x27;#15803d&#x27; },
+    ];
+  }
+
+  setRangoRadar(rango: 100 | 75 | 50 | 25): void {
+    if (this.rangoRadar &#x3D;&#x3D;&#x3D; rango) return;
+    this.rangoRadar &#x3D; rango;
+    this.construirChart();
+  }
+
+  get datosParaTabla(): BenchmarkHatoResultado[] {
+    if (this.grafica.id &#x3D;&#x3D;&#x3D; &#x27;semaforo&#x27; || this.grafica.id &#x3D;&#x3D;&#x3D; &#x27;radar&#x27;) {
+      return this.resultados;
+    }
+    const grupo &#x3D; this.grupos.find((g) &#x3D;&gt;
+      this.grafica.id.toLowerCase().includes(g.categoria.toLowerCase()),
+    );
+    return grupo?.items ?? this.resultados;
+  }
+
+  get top3Mejores(): BenchmarkHatoResultado[] {
+    return [...this.resultados]
+      .filter((r) &#x3D;&gt; r.percentil !&#x3D;&#x3D; null)
+      .sort((a, b) &#x3D;&gt; Number(b.percentil) - Number(a.percentil))
+      .slice(0, 3);
+  }
+
+  get top3AMejorar(): BenchmarkHatoResultado[] {
+    return [...this.resultados]
+      .filter((r) &#x3D;&gt; r.percentil !&#x3D;&#x3D; null)
+      .sort((a, b) &#x3D;&gt; Number(a.percentil) - Number(b.percentil))
+      .slice(0, 3);
+  }
+
+  // ── Construcción gráfica ────────────────────────────────
+
+  private destruirChart(): void {
+    this.chart?.destroy();
+    this.chart &#x3D; null;
+  }
+
+  private construirChart(): void {
+    this.destruirChart();
+    if (!this.chartDetalleRef?.nativeElement) return;
+
+    const canvas &#x3D; this.chartDetalleRef.nativeElement;
+    const id &#x3D; this.grafica.id;
+
+    if (id &#x3D;&#x3D;&#x3D; &#x27;percentiles&#x27;) {
+      this.buildPercentiles(canvas);
+    } else if (id &#x3D;&#x3D;&#x3D; &#x27;radar&#x27;) {
+      this.buildRadar(canvas);
+    } else if (id &#x3D;&#x3D;&#x3D; &#x27;semaforo&#x27;) {
+      this.buildSemaforo(canvas);
+    } else if (id &#x3D;&#x3D;&#x3D; &#x27;potencial&#x27;) {
+      this.buildPotencial(canvas);
+    } else if (id.startsWith(&#x27;radar_&#x27;)) {
+      this.buildRadarCategoria(canvas, id.replace(&#x27;radar_&#x27;, &#x27;&#x27;).toUpperCase());
+    } else if (id.startsWith(&#x27;barras_&#x27;)) {
+      this.buildBarrasCategoria(canvas, id.replace(&#x27;barras_&#x27;, &#x27;&#x27;).toUpperCase());
+    } else {
+      this.buildCategoria(canvas);
+    }
+
+    this.cdr.markForCheck();
+  }
+
+  private getDedupData(): BenchmarkHatoResultado[] {
+    const seen &#x3D; new Map&lt;string, BenchmarkHatoResultado&gt;();
+    for (const r of this.resultados) {
+      if (r.kpi?.codigo &amp;&amp; !seen.has(r.kpi.codigo)) seen.set(r.kpi.codigo, r);
+    }
+    return Array.from(seen.values());
+  }
+
+  private buildPercentiles(canvas: HTMLCanvasElement): void {
+    const data &#x3D; this.getDedupData()
+      .filter((r) &#x3D;&gt; r.percentil !&#x3D;&#x3D; null)
+      .sort((a, b) &#x3D;&gt; Number(b.percentil) - Number(a.percentil));
+
+    if (!data.length) return;
+    canvas.parentElement!.style.height &#x3D; Math.max(400, data.length * 44) + &#x27;px&#x27;;
+
+    this.chart &#x3D; new Chart(canvas, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: data.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+        datasets: [
+          {
+            label: &#x27;Tu hato (percentil)&#x27;,
+            data: data.map((r) &#x3D;&gt; Number(r.percentil ?? 0)),
+            backgroundColor: data.map((r) &#x3D;&gt; this.colorPorPercentil(r.percentil)),
+            borderColor: data.map((r) &#x3D;&gt; this.borderPorPercentil(r.percentil)),
+            borderWidth: 1.5,
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+          {
+            label: &#x27;Promedio sector&#x27;,
+            data: data.map(() &#x3D;&gt; 50),
+            backgroundColor: &#x27;rgba(0,0,0,0)&#x27;,
+            borderColor: &#x27;rgba(99,102,241,0.6)&#x27;,
+            borderWidth: 1.5,
+            type: &#x27;line&#x27; as any,
+            pointRadius: 0,
+            order: 0,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: &#x27;bottom&#x27; },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;bar&#x27;&gt;) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 1) return &#x27;Promedio sector: P50&#x27;;
+                const r &#x3D; data[ctx.dataIndex];
+                const pct &#x3D; Number(ctx.parsed.x ?? 0).toFixed(1);
+                return [
+                  &#x60;Percentil: ${pct}&#x60;,
+                  &#x60;Valor: ${this.formatValor(r.valorHato, r.kpi?.unidad)}&#x60;,
+                  &#x60;Estado: ${r.interpretacion}&#x60;,
+                ];
+              },
+            },
+          },
+        },
+        scales: {
+          x: { min: 0, max: 100, ticks: { callback: (v: string | number) &#x3D;&gt; &#x60;P${v}&#x60; } },
+          y: { ticks: { font: { size: 12 } } },
+        },
+      },
+    });
+  }
+
+  private buildCategoria(canvas: HTMLCanvasElement): void {
+    const grupo &#x3D; this.grupos.find((g) &#x3D;&gt;
+      this.grafica.id.toLowerCase().includes(g.categoria.toLowerCase()),
+    );
+    const items &#x3D; grupo?.items ?? [];
+    if (!items.length) return;
+
+    canvas.parentElement!.style.height &#x3D; Math.max(400, items.length * 44) + &#x27;px&#x27;;
+
+    const data &#x3D; items.map((r) &#x3D;&gt; Number(r.percentil ?? 0));
+    const colors &#x3D; data.map((v) &#x3D;&gt; this.colorPorPercentil(v));
+
+    this.chart &#x3D; new Chart(canvas, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: items.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+        datasets: [
+          {
+            label: &#x27;Tu hato (percentil)&#x27;,
+            data,
+            backgroundColor: colors,
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+          {
+            label: &#x27;Promedio sector&#x27;,
+            data: data.map(() &#x3D;&gt; 50),
+            backgroundColor: &#x27;rgba(0,0,0,0)&#x27;,
+            borderColor: &#x27;rgba(99,102,241,0.6)&#x27;,
+            borderWidth: 1.5,
+            type: &#x27;line&#x27; as any,
+            pointRadius: 0,
+            order: 0,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: &#x27;bottom&#x27; },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;bar&#x27;&gt;) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 1) return &#x27;Promedio sector: P50&#x27;;
+                const r &#x3D; items[ctx.dataIndex];
+                const pct &#x3D; Number(ctx.parsed.x ?? 0).toFixed(1);
+                return [
+                  &#x60;Percentil: ${pct}&#x60;,
+                  &#x60;Valor: ${this.formatValor(r.valorHato, r.kpi?.unidad)}&#x60;,
+                  &#x60;Estado: ${r.interpretacion}&#x60;,
+                ];
+              },
+            },
+          },
+        },
+        scales: {
+          x: { min: 0, max: 100, ticks: { callback: (v: string | number) &#x3D;&gt; &#x60;P${v}&#x60; } },
+          y: { ticks: { font: { size: 13 } } },
+        },
+      },
+    });
+  }
+
+  private buildBarrasCategoria(canvas: HTMLCanvasElement, categoria: string): void {
+    const grupo &#x3D; this.grupos.find((g) &#x3D;&gt; g.categoria &#x3D;&#x3D;&#x3D; categoria);
+    const items &#x3D; grupo?.items ?? [];
+    if (!items.length) return;
+
+    canvas.parentElement!.style.height &#x3D; Math.max(400, items.length * 44) + &#x27;px&#x27;;
+
+    const data &#x3D; items.map((r) &#x3D;&gt; Number(r.percentil ?? 0));
+    const colors &#x3D; data.map((v) &#x3D;&gt; this.colorPorPercentil(v));
+
+    this.chart &#x3D; new Chart(canvas, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: items.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+        datasets: [
+          {
+            label: &#x27;Tu hato (percentil)&#x27;,
+            data,
+            backgroundColor: colors,
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+          {
+            label: &#x27;Promedio sector&#x27;,
+            data: data.map(() &#x3D;&gt; 50),
+            backgroundColor: &#x27;rgba(0,0,0,0)&#x27;,
+            borderColor: &#x27;rgba(99,102,241,0.6)&#x27;,
+            borderWidth: 1.5,
+            type: &#x27;line&#x27; as any,
+            pointRadius: 0,
+            order: 0,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: &#x27;bottom&#x27; },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;bar&#x27;&gt;) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 1) return &#x27;Promedio sector: P50&#x27;;
+                const r &#x3D; items[ctx.dataIndex];
+                const pct &#x3D; Number(ctx.parsed.x ?? 0).toFixed(1);
+                return [
+                  &#x60;Percentil: P${pct}&#x60;,
+                  &#x60;Valor: ${this.formatValor(r.valorHato, r.kpi?.unidad)}&#x60;,
+                  &#x60;Estado: ${r.interpretacion}&#x60;,
+                ];
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            min: 0,
+            max: 100,
+            ticks: { callback: (v: string | number) &#x3D;&gt; &#x60;P${v}&#x60; },
+          },
+          y: { ticks: { font: { size: 13 } } },
+        },
+      },
+    });
+  }
+
+  private buildRadar(canvas: HTMLCanvasElement): void {
+    const data &#x3D; this.getDedupData();
+    const values &#x3D; data.map((r) &#x3D;&gt; Math.min(Number(r.percentil ?? 0), this.rangoRadar));
+    const realValues &#x3D; data.map((r) &#x3D;&gt; Number(r.percentil ?? 0));
+
+    this.chart &#x3D; new Chart&lt;&#x27;radar&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;radar&#x27;,
+      data: {
+        labels: data.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+        datasets: [
+          {
+            label: &#x27;Tu hato&#x27;,
+            data: values,
+            backgroundColor: &#x27;rgba(21,128,61,0.15)&#x27;,
+            borderColor: &#x27;#15803d&#x27;,
+            borderWidth: 2.5,
+            pointBackgroundColor: realValues.map((v) &#x3D;&gt; this.colorPorPercentil(v)),
+            pointBorderColor: &#x27;#fff&#x27;,
+            pointRadius: 6,
+          },
+          {
+            label: &#x27;Promedio sector (P50)&#x27;,
+            data: values.map(() &#x3D;&gt; Math.min(50, this.rangoRadar)),
+            backgroundColor: &#x27;rgba(148,163,184,0.06)&#x27;,
+            borderColor: &#x27;rgba(148,163,184,0.5)&#x27;,
+            borderWidth: 1.5,
+            borderDash: [5, 4],
+            pointRadius: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: &#x27;bottom&#x27; } },
+        scales: {
+          r: {
+            min: this.rangoRadar,
+            max: 100,
+            ticks: {
+              stepSize: this.rangoRadar &lt;&#x3D; 25 ? 5 : this.rangoRadar / 4,
+              backdropColor: &#x27;transparent&#x27;,
+              color: &#x27;#9ca3af&#x27;,
+              font: { size: 10 },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private buildRadarCategoria(canvas: HTMLCanvasElement, categoria: string): void {
+    const grupo &#x3D; this.grupos.find((g) &#x3D;&gt; g.categoria &#x3D;&#x3D;&#x3D; categoria);
+    const items &#x3D; grupo?.items ?? [];
+    if (!items.length) return;
+
+    const values &#x3D; items.map((r) &#x3D;&gt; Math.min(Number(r.percentil ?? 0), this.rangoRadar));
+    const realValues &#x3D; items.map((r) &#x3D;&gt; Number(r.percentil ?? 0));
+
+    this.chart &#x3D; new Chart&lt;&#x27;radar&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;radar&#x27;,
+      data: {
+        labels: items.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+        datasets: [
+          {
+            label: &#x27;Tu hato&#x27;,
+            data: values,
+            backgroundColor: &#x27;rgba(21,128,61,0.15)&#x27;,
+            borderColor: &#x27;#15803d&#x27;,
+            borderWidth: 2.5,
+            pointBackgroundColor: realValues.map((v) &#x3D;&gt; this.colorPorPercentil(v)),
+            pointBorderColor: &#x27;#fff&#x27;,
+            pointRadius: 7,
+            pointHoverRadius: 9,
+          },
+          {
+            label: &#x27;Promedio sector (P50)&#x27;,
+            data: values.map(() &#x3D;&gt; Math.min(50, this.rangoRadar)),
+            backgroundColor: &#x27;rgba(148,163,184,0.06)&#x27;,
+            borderColor: &#x27;rgba(148,163,184,0.5)&#x27;,
+            borderWidth: 1.5,
+            borderDash: [5, 4],
+            pointRadius: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: &#x27;bottom&#x27;,
+            labels: { color: &#x27;#374151&#x27;, font: { size: 11 } },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;radar&#x27;&gt;) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 1) return &#x27;Promedio: P50&#x27;;
+                const r &#x3D; items[ctx.dataIndex];
+                const pct &#x3D; Number(ctx.parsed.r ?? 0).toFixed(1);
+                return [
+                  &#x60;Percentil: P${pct}&#x60;,
+                  &#x60;Valor: ${this.formatValor(r.valorHato, r.kpi?.unidad)}&#x60;,
+                  &#x60;Estado: ${r.interpretacion}&#x60;,
+                ];
+              },
+            },
+          },
+        },
+        scales: {
+          r: {
+            min: 0,
+            max: this.rangoRadar,
+            ticks: {
+              stepSize: this.rangoRadar &lt;&#x3D; 25 ? 5 : this.rangoRadar / 4,
+              backdropColor: &#x27;transparent&#x27;,
+              color: &#x27;#9ca3af&#x27;,
+              font: { size: 10 },
+            },
+            grid: { color: &#x27;rgba(148,163,184,0.2)&#x27; },
+            angleLines: { color: &#x27;rgba(148,163,184,0.2)&#x27; },
+            pointLabels: { font: { size: 12 }, color: &#x27;#374151&#x27; },
+          },
+        },
+      },
+    });
+  }
+
+  private buildSemaforo(canvas: HTMLCanvasElement): void {
+    const data &#x3D; this.getDedupData();
+    const alto &#x3D; data.filter((r) &#x3D;&gt; Number(r.percentil ?? 0) &gt;&#x3D; 70).length;
+    const medio &#x3D; data.filter((r) &#x3D;&gt; {
+      const p &#x3D; Number(r.percentil ?? 0);
+      return p &gt;&#x3D; 40 &amp;&amp; p &lt; 70;
+    }).length;
+    const bajo &#x3D; data.filter((r) &#x3D;&gt; Number(r.percentil ?? 0) &lt; 40).length;
+    const total &#x3D; data.length;
+
+    this.chart &#x3D; new Chart&lt;&#x27;doughnut&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;doughnut&#x27;,
+      data: {
+        labels: [&#x27;Alto (≥70)&#x27;, &#x27;Medio (40–69)&#x27;, &#x27;Bajo (&lt;40)&#x27;],
+        datasets: [
+          {
+            data: [alto, medio, bajo],
+            backgroundColor: [
+              &#x27;rgba(25,230,77,0.85)&#x27;,
+              &#x27;rgba(245,182,66,0.85)&#x27;,
+              &#x27;rgba(239,68,68,0.82)&#x27;,
+            ],
+            borderColor: [&#x27;#15c944&#x27;, &#x27;#f59e0b&#x27;, &#x27;#dc2626&#x27;],
+            borderWidth: 2,
+            hoverOffset: 10,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: &#x27;58%&#x27;,
+        plugins: {
+          legend: { position: &#x27;bottom&#x27; },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;doughnut&#x27;&gt;) &#x3D;&gt; {
+                const v &#x3D; Number(ctx.parsed ?? 0);
+                const pct &#x3D; total &gt; 0 ? ((v / total) * 100).toFixed(1) : &#x27;0&#x27;;
+                return &#x60;${v} KPI(s) — ${pct}% del total&#x60;;
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private buildPotencial(canvas: HTMLCanvasElement): void {
+    const items &#x3D; this.getDedupData()
+      .map((r) &#x3D;&gt; ({
+        nombre: r.kpi?.nombre ?? &#x27;&#x27;,
+        potencial: Math.max(0, 100 - Number(r.percentil ?? 0)),
+      }))
+      .filter((x) &#x3D;&gt; x.potencial &gt; 0)
+      .sort((a, b) &#x3D;&gt; b.potencial - a.potencial)
+      .slice(0, 15);
+
+    if (!items.length) return;
+    canvas.parentElement!.style.height &#x3D; Math.max(400, items.length * 44) + &#x27;px&#x27;;
+
+    this.chart &#x3D; new Chart&lt;&#x27;bar&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: items.map((x) &#x3D;&gt; x.nombre),
+        datasets: [
+          {
+            label: &#x27;Brecha hacia el top&#x27;,
+            data: items.map((x) &#x3D;&gt; x.potencial),
+            backgroundColor: items.map((x) &#x3D;&gt;
+              x.potencial &lt;&#x3D; 15
+                ? &#x27;rgba(34,197,94,0.78)&#x27;
+                : x.potencial &lt;&#x3D; 50
+                  ? &#x27;rgba(245,182,66,0.85)&#x27;
+                  : &#x27;rgba(239,68,68,0.78)&#x27;,
+            ),
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;bar&#x27;&gt;) &#x3D;&gt;
+                &#x60;${Number(ctx.parsed.x ?? 0).toFixed(1)} puntos de mejora&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: { min: 0, max: 100, ticks: { callback: (v: string | number) &#x3D;&gt; &#x60;${v}pts&#x60; } },
+          y: { ticks: { font: { size: 13 } } },
+        },
+      },
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destruirChart();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;modal-overlay&quot; (click)&#x3D;&quot;onOverlayClick($event)&quot;&gt;
+  &lt;div class&#x3D;&quot;modal-panel&quot;&gt;
+    &lt;!-- Header --&gt;
+    &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-header-text&quot;&gt;
+        &lt;p class&#x3D;&quot;modal-tag&quot;&gt;Detalle · {{ grafica.titulo }}&lt;/p&gt;
+        &lt;h2&gt;{{ grafica.titulo }}&lt;/h2&gt;
+        &lt;p class&#x3D;&quot;modal-subtitulo&quot;&gt;{{ grafica.subtitulo }}&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;button class&#x3D;&quot;btn-cerrar&quot; (click)&#x3D;&quot;cerrar.emit()&quot;&gt;✕&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Descripción --&gt;
+    &lt;div class&#x3D;&quot;modal-descripcion&quot;&gt;
+      &lt;span class&#x3D;&quot;desc-icono&quot;&gt;📊&lt;/span&gt;
+      &lt;p&gt;{{ grafica.descripcion }}&lt;/p&gt;
+    &lt;/div&gt;
+
+    @if (grafica.id &#x3D;&#x3D;&#x3D; &#x27;radar&#x27; || grafica.id.startsWith(&#x27;radar_&#x27;)) {
+      &lt;div class&#x3D;&quot;zoom-controles&quot;&gt;
+        &lt;span class&#x3D;&quot;zoom-label&quot;&gt;Zoom del eje:&lt;/span&gt;
+        &lt;div class&#x3D;&quot;zoom-btns&quot;&gt;
+          &lt;button [class.activo]&#x3D;&quot;rangoRadar &#x3D;&#x3D;&#x3D; 100&quot; (click)&#x3D;&quot;setRangoRadar(100)&quot;&gt;P0–100&lt;/button&gt;
+          &lt;button [class.activo]&#x3D;&quot;rangoRadar &#x3D;&#x3D;&#x3D; 75&quot; (click)&#x3D;&quot;setRangoRadar(75)&quot;&gt;P0–75&lt;/button&gt;
+          &lt;button [class.activo]&#x3D;&quot;rangoRadar &#x3D;&#x3D;&#x3D; 50&quot; (click)&#x3D;&quot;setRangoRadar(50)&quot;&gt;P0–50&lt;/button&gt;
+          &lt;button [class.activo]&#x3D;&quot;rangoRadar &#x3D;&#x3D;&#x3D; 25&quot; (click)&#x3D;&quot;setRangoRadar(25)&quot;&gt;P0–25&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;!-- Gráfica ampliada --&gt;
+    &lt;div class&#x3D;&quot;modal-chart-wrap&quot;&gt;
+      &lt;canvas #chartDetalle&gt;&lt;/canvas&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Guía de lectura --&gt;
+    &lt;div class&#x3D;&quot;modal-guia&quot;&gt;
+      &lt;h4&gt;Guía de lectura&lt;/h4&gt;
+      &lt;div class&#x3D;&quot;guia-items&quot;&gt;
+        @for (item of guiaItems; track item.rango) {
+          &lt;div class&#x3D;&quot;guia-item&quot;&gt;
+            &lt;span class&#x3D;&quot;guia-dot&quot; [style.background]&#x3D;&quot;item.color&quot;&gt;&lt;/span&gt;
+            &lt;span class&#x3D;&quot;guia-rango&quot;&gt;{{ item.rango }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;guia-desc&quot;&gt;{{ item.descripcion }}&lt;/span&gt;
+          &lt;/div&gt;
+        }
+      &lt;/div&gt;
+      &lt;p class&#x3D;&quot;guia-extra&quot;&gt;{{ grafica.guiaLectura }}&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Highlights --&gt;
+    &lt;div class&#x3D;&quot;modal-highlights&quot;&gt;
+      &lt;div class&#x3D;&quot;highlight-col&quot;&gt;
+        &lt;h4&gt;🏆 Tus mejores KPIs&lt;/h4&gt;
+        @for (r of top3Mejores; track r.idBenchmarkHato) {
+          &lt;div class&#x3D;&quot;highlight-item&quot;&gt;
+            &lt;span class&#x3D;&quot;highlight-nombre&quot;&gt;{{ r.kpi.nombre }}&lt;/span&gt;
+            &lt;span [class]&#x3D;&quot;&#x27;badge &#x27; + interpretacionClass(r.interpretacion)&quot;&gt;
+              {{ r.interpretacion }}
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;highlight-percentil&quot;&gt;P{{ (+(r.percentil ?? 0)).toFixed(0) }}&lt;/span&gt;
+          &lt;/div&gt;
+        }
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;highlight-col&quot;&gt;
+        &lt;h4&gt;⚠️ KPIs a mejorar&lt;/h4&gt;
+        @for (r of top3AMejorar; track r.idBenchmarkHato) {
+          &lt;div class&#x3D;&quot;highlight-item&quot;&gt;
+            &lt;span class&#x3D;&quot;highlight-nombre&quot;&gt;{{ r.kpi.nombre }}&lt;/span&gt;
+            &lt;span [class]&#x3D;&quot;&#x27;badge &#x27; + interpretacionClass(r.interpretacion)&quot;&gt;
+              {{ r.interpretacion }}
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;highlight-percentil&quot;&gt;P{{ (+(r.percentil ?? 0)).toFixed(0) }}&lt;/span&gt;
+          &lt;/div&gt;
+        }
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="modal-overlay" (click)="onOverlayClick($event)">  <div class="modal-panel">    <!-- Header -->    <div class="modal-header">      <div class="modal-header-text">        <p class="modal-tag">Detalle · {{ grafica.titulo }}</p>        <h2>{{ grafica.titulo }}</h2>        <p class="modal-subtitulo">{{ grafica.subtitulo }}</p>      </div>      <button class="btn-cerrar" (click)="cerrar.emit()">✕</button>    </div>    <!-- Descripción -->    <div class="modal-descripcion">      <span class="desc-icono">📊</span>      <p>{{ grafica.descripcion }}</p>    </div>    @if (grafica.id === \'radar\' || grafica.id.startsWith(\'radar_\')) {      <div class="zoom-controles">        <span class="zoom-label">Zoom del eje:</span>        <div class="zoom-btns">          <button [class.activo]="rangoRadar === 100" (click)="setRangoRadar(100)">P0–100</button>          <button [class.activo]="rangoRadar === 75" (click)="setRangoRadar(75)">P0–75</button>          <button [class.activo]="rangoRadar === 50" (click)="setRangoRadar(50)">P0–50</button>          <button [class.activo]="rangoRadar === 25" (click)="setRangoRadar(25)">P0–25</button>        </div>      </div>    }    <!-- Gráfica ampliada -->    <div class="modal-chart-wrap">      <canvas #chartDetalle></canvas>    </div>    <!-- Guía de lectura -->    <div class="modal-guia">      <h4>Guía de lectura</h4>      <div class="guia-items">        @for (item of guiaItems; track item.rango) {          <div class="guia-item">            <span class="guia-dot" [style.background]="item.color"></span>            <span class="guia-rango">{{ item.rango }}</span>            <span class="guia-desc">{{ item.descripcion }}</span>          </div>        }      </div>      <p class="guia-extra">{{ grafica.guiaLectura }}</p>    </div>    <!-- Highlights -->    <div class="modal-highlights">      <div class="highlight-col">        <h4>🏆 Tus mejores KPIs</h4>        @for (r of top3Mejores; track r.idBenchmarkHato) {          <div class="highlight-item">            <span class="highlight-nombre">{{ r.kpi.nombre }}</span>            <span [class]="\'badge \' + interpretacionClass(r.interpretacion)">              {{ r.interpretacion }}            </span>            <span class="highlight-percentil">P{{ (+(r.percentil ?? 0)).toFixed(0) }}</span>          </div>        }      </div>      <div class="highlight-col">        <h4>⚠️ KPIs a mejorar</h4>        @for (r of top3AMejorar; track r.idBenchmarkHato) {          <div class="highlight-item">            <span class="highlight-nombre">{{ r.kpi.nombre }}</span>            <span [class]="\'badge \' + interpretacionClass(r.interpretacion)">              {{ r.interpretacion }}            </span>            <span class="highlight-percentil">P{{ (+(r.percentil ?? 0)).toFixed(0) }}</span>          </div>        }      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'GraficaDetalleModalComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GraficaDetalleModalComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

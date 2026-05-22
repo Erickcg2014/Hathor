@@ -1,0 +1,2960 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ProyeccionesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-proyecciones</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./proyecciones.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./proyecciones.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#categoriasInversion" >categoriasInversion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#guardandoInversion" >guardandoInversion</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#inversiones" >inversiones</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#loadingCategorias" >loadingCategorias</a>
+                            </li>
+                            <li>
+                                <a href="#loadingInversiones" >loadingInversiones</a>
+                            </li>
+                            <li>
+                                <a href="#mesesDisponibles" >mesesDisponibles</a>
+                            </li>
+                            <li>
+                                <a href="#mesesSeleccionados" >mesesSeleccionados</a>
+                            </li>
+                            <li>
+                                <a href="#modalVisible" >modalVisible</a>
+                            </li>
+                            <li>
+                                <a href="#respuesta" >respuesta</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abrirModal" >abrirModal</a>
+                            </li>
+                            <li>
+                                <a href="#cambiarMeses" >cambiarMeses</a>
+                            </li>
+                            <li>
+                                <a href="#cancelarInversion" >cancelarInversion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarCategoriasInversion" >cargarCategoriasInversion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarInversiones" >cargarInversiones</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarProyecciones" >cargarProyecciones</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarTodo" >cargarTodo</a>
+                            </li>
+                            <li>
+                                <a href="#cerrarModal" >cerrarModal</a>
+                            </li>
+                            <li>
+                                <a href="#claseMargen" >claseMargen</a>
+                            </li>
+                            <li>
+                                <a href="#ejecutarInversion" >ejecutarInversion</a>
+                            </li>
+                            <li>
+                                <a href="#formatCOP" >formatCOP</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#generarMesesDisponibles" >generarMesesDisponibles</a>
+                            </li>
+                            <li>
+                                <a href="#guardarInversion" >guardarInversion</a>
+                            </li>
+                            <li>
+                                <a href="#iconoMargen" >iconoMargen</a>
+                            </li>
+                            <li>
+                                <a href="#labelModelo" >labelModelo</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#resetForm" >resetForm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#tendenciaIngresosLabel" >tendenciaIngresosLabel</a>
+                                </li>
+                                <li>
+                                    <a href="#tendenciaEgresosLabel" >tendenciaEgresosLabel</a>
+                                </li>
+                                <li>
+                                    <a href="#formValido" >formValido</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, hatoService: <a href="../injectables/HatoService.html" target="_self">HatoService</a>, proyeccionesService: <a href="../injectables/ProyeccionesService.html" target="_self">ProyeccionesService</a>, inversionService: <a href="../injectables/InversionService.html" target="_self">InversionService</a>, categoriaService: <a href="../injectables/CategoriaFinancieraService.html" target="_self">CategoriaFinancieraService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:71</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoService.html" target="_self" >HatoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>proyeccionesService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProyeccionesService.html" target="_self" >ProyeccionesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>inversionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/InversionService.html" target="_self" >InversionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>categoriaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CategoriaFinancieraService.html" target="_self" >CategoriaFinancieraService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirModal"></a>
+                    <span class="name">
+                        <span ><b>abrirModal</b></span>
+                        <a href="#abrirModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:166</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cambiarMeses"></a>
+                    <span class="name">
+                        <span ><b>cambiarMeses</b></span>
+                        <a href="#cambiarMeses"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cambiarMeses(meses: "3" | "6")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>meses</td>
+                                            <td>
+                                                        <code>&quot;3&quot; | &quot;6&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelarInversion"></a>
+                    <span class="name">
+                        <span ><b>cancelarInversion</b></span>
+                        <a href="#cancelarInversion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelarInversion(idInversion: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="223"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:223</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idInversion</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarCategoriasInversion"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarCategoriasInversion</b></span>
+                        <a href="#cargarCategoriasInversion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarCategoriasInversion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:178</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarInversiones"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarInversiones</b></span>
+                        <a href="#cargarInversiones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarInversiones(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:135</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarProyecciones"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarProyecciones</b></span>
+                        <a href="#cargarProyecciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarProyecciones(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarTodo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarTodo</b></span>
+                        <a href="#cargarTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarTodo(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:108</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrarModal"></a>
+                    <span class="name">
+                        <span ><b>cerrarModal</b></span>
+                        <a href="#cerrarModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrarModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="173"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:173</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="claseMargen"></a>
+                    <span class="name">
+                        <span ><b>claseMargen</b></span>
+                        <a href="#claseMargen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>claseMargen(estado: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="285"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:285</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ejecutarInversion"></a>
+                    <span class="name">
+                        <span ><b>ejecutarInversion</b></span>
+                        <a href="#ejecutarInversion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ejecutarInversion(inv: <a href="../interfaces/InversionPlaneadaDTO.html" target="_self">InversionPlaneadaDTO</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="234"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:234</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>inv</td>
+                                            <td>
+                                                            <code><a href="../interfaces/InversionPlaneadaDTO.html" target="_self" >InversionPlaneadaDTO</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatCOP"></a>
+                    <span class="name">
+                        <span ><b>formatCOP</b></span>
+                        <a href="#formatCOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatCOP(valor: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="312"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:312</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generarMesesDisponibles"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>generarMesesDisponibles</b></span>
+                        <a href="#generarMesesDisponibles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generarMesesDisponibles()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="267"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:267</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarInversion"></a>
+                    <span class="name">
+                        <span ><b>guardarInversion</b></span>
+                        <a href="#guardarInversion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardarInversion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoMargen"></a>
+                    <span class="name">
+                        <span ><b>iconoMargen</b></span>
+                        <a href="#iconoMargen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoMargen(estado: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="294"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:294</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelModelo"></a>
+                    <span class="name">
+                        <span ><b>labelModelo</b></span>
+                        <a href="#labelModelo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>labelModelo(modelo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="303"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:303</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>modelo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="337"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:337</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetForm"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>resetForm</b></span>
+                        <a href="#resetForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="256"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:256</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="categoriasInversion"></a>
+                    <span class="name">
+                        <span ><b>categoriasInversion</b></span>
+                        <a href="#categoriasInversion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CategoriaFinanciera.html" target="_self" >CategoriaFinanciera[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CrearInversionDTO.html" target="_self" >CrearInversionDTO</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    descripcion: &#x27;&#x27;,
+    monto: 0,
+    mesEjecucion: &#x27;&#x27;,
+    retornoEsperadoPct: null,
+    mesesRetorno: null,
+    idCategoria: null,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardandoInversion"></a>
+                    <span class="name">
+                        <span ><b>guardandoInversion</b></span>
+                        <a href="#guardandoInversion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inversiones"></a>
+                    <span class="name">
+                        <span ><b>inversiones</b></span>
+                        <a href="#inversiones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/InversionPlaneadaDTO.html" target="_self" >InversionPlaneadaDTO[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingCategorias"></a>
+                    <span class="name">
+                        <span ><b>loadingCategorias</b></span>
+                        <a href="#loadingCategorias"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingInversiones"></a>
+                    <span class="name">
+                        <span ><b>loadingInversiones</b></span>
+                        <a href="#loadingInversiones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mesesDisponibles"></a>
+                    <span class="name">
+                        <span ><b>mesesDisponibles</b></span>
+                        <a href="#mesesDisponibles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mesesSeleccionados"></a>
+                    <span class="name">
+                        <span ><b>mesesSeleccionados</b></span>
+                        <a href="#mesesSeleccionados"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;3&quot; | &quot;6&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>6</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalVisible"></a>
+                    <span class="name">
+                        <span ><b>modalVisible</b></span>
+                        <a href="#modalVisible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="respuesta"></a>
+                    <span class="name">
+                        <span ><b>respuesta</b></span>
+                        <a href="#respuesta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ProyeccionesResponseDTO.html" target="_self" >ProyeccionesResponseDTO | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tendenciaIngresosLabel"></a>
+                        <span class="name"><b>tendenciaIngresosLabel</b><a href="#tendenciaIngresosLabel"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>tendenciaIngresosLabel()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="317" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:317</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tendenciaEgresosLabel"></a>
+                        <span class="name"><b>tendenciaEgresosLabel</b><a href="#tendenciaEgresosLabel"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>tendenciaEgresosLabel()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="325" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:325</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="formValido"></a>
+                        <span class="name"><b>formValido</b><a href="#formValido"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>formValido()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="333" class="link-to-prism">src/app/features/Usuario/finanzas/proyecciones/proyecciones.component.ts:333</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import { HatoService, Hato } from &#x27;../../../../core/services/hato/hato.service&#x27;;
+import {
+  ProyeccionesService,
+  ProyeccionesResponseDTO,
+  ProyeccionMensualDTO,
+} from &#x27;../../../../core/services/finanzas/proyecciones.service&#x27;;
+import {
+  InversionService,
+  InversionPlaneadaDTO,
+  CrearInversionDTO,
+} from &#x27;../../../../core/services/finanzas/inversion.service&#x27;;
+import {
+  CategoriaFinancieraService,
+  CategoriaFinanciera,
+} from &#x27;../../../../core/services/finanzas/categoria-financiera.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+
+@Component({
+  selector: &#x27;app-proyecciones&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, SpinnerComponent],
+  templateUrl: &#x27;./proyecciones.component.html&#x27;,
+  styleUrl: &#x27;./proyecciones.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProyeccionesComponent implements OnInit, OnDestroy {
+  // ── Estado general ────────────────────────────────────────────────
+  loading &#x3D; true;
+  error &#x3D; &#x27;&#x27;;
+  hatoActivo: Hato | null &#x3D; null;
+
+  // ── Proyecciones ──────────────────────────────────────────────────
+  respuesta: ProyeccionesResponseDTO | null &#x3D; null;
+  mesesSeleccionados: 3 | 6 &#x3D; 6;
+
+  // ── Inversiones planeadas ─────────────────────────────────────────
+  inversiones: InversionPlaneadaDTO[] &#x3D; [];
+  loadingInversiones &#x3D; false;
+
+  // ── Modal agregar inversión ───────────────────────────────────────
+  modalVisible &#x3D; false;
+  guardandoInversion &#x3D; false;
+  categoriasInversion: CategoriaFinanciera[] &#x3D; [];
+  loadingCategorias &#x3D; false;
+
+  // Formulario nueva inversión
+  form: CrearInversionDTO &#x3D; {
+    descripcion: &#x27;&#x27;,
+    monto: 0,
+    mesEjecucion: &#x27;&#x27;,
+    retornoEsperadoPct: null,
+    mesesRetorno: null,
+    idCategoria: null,
+  };
+
+  // Meses disponibles para el selector del formulario
+  mesesDisponibles: { valor: string; label: string }[] &#x3D; [];
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private hatoState: HatoStateService,
+    private hatoService: HatoService,
+    private proyeccionesService: ProyeccionesService,
+    private inversionService: InversionService,
+    private categoriaService: CategoriaFinancieraService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.generarMesesDisponibles();
+
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato?.idHato) {
+        this.cargarTodo(hato.idHato as string);
+      } else {
+        this.loading &#x3D; false;
+      }
+      this.cdr.markForCheck();
+    });
+
+    if (!this.hatoState.getHatoActivo()) {
+      this.hatoService.getMisHatos().subscribe({
+        next: (hatos) &#x3D;&gt; {
+          if (hatos.length &gt; 0) this.hatoState.setHatoActivo(hatos[0]);
+          else this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+    }
+  }
+
+  // ── Carga ─────────────────────────────────────────────────────────
+
+  private cargarTodo(idHato: string): void {
+    this.cargarProyecciones(idHato);
+    this.cargarInversiones(idHato);
+  }
+
+  private cargarProyecciones(idHato: string): void {
+    this.loading &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    this.proyeccionesService
+      .getProyecciones(idHato, this.mesesSeleccionados)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (respuesta) &#x3D;&gt; {
+          this.respuesta &#x3D; respuesta;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.error &#x3D; &#x27;Error al cargar las proyecciones.&#x27;;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  private cargarInversiones(idHato: string): void {
+    this.loadingInversiones &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.inversionService
+      .getByHato(idHato)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (inv) &#x3D;&gt; {
+          this.inversiones &#x3D; inv;
+          this.loadingInversiones &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.loadingInversiones &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Selector de meses ─────────────────────────────────────────────
+
+  cambiarMeses(meses: 3 | 6): void {
+    this.mesesSeleccionados &#x3D; meses;
+    if (this.hatoActivo?.idHato) {
+      this.cargarProyecciones(this.hatoActivo.idHato as string);
+    }
+  }
+
+  // ── Modal inversión ───────────────────────────────────────────────
+
+  abrirModal(): void {
+    this.resetForm();
+    this.modalVisible &#x3D; true;
+    this.cargarCategoriasInversion();
+    this.cdr.markForCheck();
+  }
+
+  cerrarModal(): void {
+    this.modalVisible &#x3D; false;
+    this.cdr.markForCheck();
+  }
+
+  private cargarCategoriasInversion(): void {
+    this.loadingCategorias &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.categoriaService
+      .getCategoriasPorTipo(&#x27;INVERSION&#x27;)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (cats) &#x3D;&gt; {
+          this.categoriasInversion &#x3D; cats;
+          this.loadingCategorias &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.loadingCategorias &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  guardarInversion(): void {
+    if (!this.hatoActivo?.idHato) return;
+    if (!this.form.descripcion || !this.form.monto || !this.form.mesEjecucion) return;
+
+    this.guardandoInversion &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.inversionService
+      .crear(this.hatoActivo.idHato as string, this.form)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () &#x3D;&gt; {
+          this.guardandoInversion &#x3D; false;
+          this.modalVisible &#x3D; false;
+          // Recargar proyecciones e inversiones
+          this.cargarTodo(this.hatoActivo!.idHato as string);
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.guardandoInversion &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  cancelarInversion(idInversion: number): void {
+    this.inversionService
+      .cancelar(idInversion)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () &#x3D;&gt; {
+          this.cargarTodo(this.hatoActivo!.idHato as string);
+          this.cdr.markForCheck();
+        },
+      });
+  }
+  ejecutarInversion(inv: InversionPlaneadaDTO): void {
+    if (
+      !confirm(&#x60;¿Confirmas que ejecutaste la inversión
+    &quot;${inv.descripcion}&quot; por ${this.formatCOP(inv.monto)}?&#x60;)
+    )
+      return;
+
+    this.inversionService
+      .actualizar(inv.idInversion, {
+        estado: &#x27;EJECUTADA&#x27;,
+      })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () &#x3D;&gt; {
+          this.cargarTodo(this.hatoActivo!.idHato as string);
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Helpers ───────────────────────────────────────────────────────
+
+  private resetForm(): void {
+    this.form &#x3D; {
+      descripcion: &#x27;&#x27;,
+      monto: 0,
+      mesEjecucion: this.mesesDisponibles[0]?.valor ?? &#x27;&#x27;,
+      retornoEsperadoPct: null,
+      mesesRetorno: null,
+      idCategoria: null,
+    };
+  }
+
+  private generarMesesDisponibles(): void {
+    const meses: { valor: string; label: string }[] &#x3D; [];
+    const base &#x3D; new Date();
+    const fmt &#x3D; new Intl.DateTimeFormat(&#x27;es-CO&#x27;, {
+      month: &#x27;long&#x27;,
+      year: &#x27;numeric&#x27;,
+    });
+    for (let i &#x3D; 1; i &lt;&#x3D; 12; i++) {
+      const d &#x3D; new Date(base.getFullYear(), base.getMonth() + i, 1);
+      const valor &#x3D; &#x60;${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, &#x27;0&#x27;)}&#x60;;
+      meses.push({
+        valor,
+        label: fmt.format(d).replace(/^(.)/, (c) &#x3D;&gt; c.toUpperCase()),
+      });
+    }
+    this.mesesDisponibles &#x3D; meses;
+  }
+
+  claseMargen(estado: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      POSITIVO: &#x27;margen-positivo&#x27;,
+      NEUTRO: &#x27;margen-neutro&#x27;,
+      NEGATIVO: &#x27;margen-negativo&#x27;,
+    };
+    return map[estado] ?? &#x27;&#x27;;
+  }
+
+  iconoMargen(estado: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      POSITIVO: &#x27;🟢&#x27;,
+      NEUTRO: &#x27;🟡&#x27;,
+      NEGATIVO: &#x27;🔴&#x27;,
+    };
+    return map[estado] ?? &#x27;—&#x27;;
+  }
+
+  labelModelo(modelo: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      PROMEDIO_MOVIL: &#x27;Promedio móvil&#x27;,
+      TENDENCIA_LINEAL: &#x27;Tendencia lineal&#x27;,
+      ESTACIONALIDAD: &#x27;Estacionalidad&#x27;,
+    };
+    return map[modelo] ?? modelo;
+  }
+
+  formatCOP(valor: number | null): string {
+    if (valor &#x3D;&#x3D; null) return &#x27;—&#x27;;
+    return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(valor));
+  }
+
+  get tendenciaIngresosLabel(): string {
+    const t &#x3D; this.respuesta?.tendenciaIngresos;
+    if (t &#x3D;&#x3D; null) return &#x27;—&#x27;;
+    if (t &gt; 0) return &#x60;↗ +${t.toFixed(1)}% mensual&#x60;;
+    if (t &lt; 0) return &#x60;↘ ${t.toFixed(1)}% mensual&#x60;;
+    return &#x27;→ Estable&#x27;;
+  }
+
+  get tendenciaEgresosLabel(): string {
+    const t &#x3D; this.respuesta?.tendenciaEgresos;
+    if (t &#x3D;&#x3D; null) return &#x27;—&#x27;;
+    if (t &gt; 0) return &#x60;↗ +${t.toFixed(1)}% mensual&#x60;;
+    if (t &lt; 0) return &#x60;↘ ${t.toFixed(1)}% mensual&#x60;;
+    return &#x27;→ Estable&#x27;;
+  }
+
+  get formValido(): boolean {
+    return !!(this.form.descripcion?.trim() &amp;&amp; this.form.monto &gt; 0 &amp;&amp; this.form.mesEjecucion);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;proyecciones-page&quot;&gt;
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; LOADING &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (loading) {
+    &lt;div class&#x3D;&quot;loading-wrap&quot;&gt;
+      &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Calculando proyecciones...&quot;&gt; &lt;/app-spinner&gt;
+    &lt;/div&gt;
+  }
+
+  @if (!loading) {
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HEADER &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;header class&#x3D;&quot;page-header&quot;&gt;
+      &lt;div class&#x3D;&quot;header-left&quot;&gt;
+        &lt;p class&#x3D;&quot;page-tag&quot;&gt;Finanzas · Proyecciones&lt;/p&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Proyecciones &lt;span class&#x3D;&quot;brand&quot;&gt;Financieras&lt;/span&gt;&lt;/h1&gt;
+        @if (hatoActivo) {
+          &lt;p class&#x3D;&quot;page-subtitle&quot;&gt;
+            &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          &lt;/p&gt;
+        } @else {
+          &lt;p class&#x3D;&quot;page-subtitle warn&quot;&gt;⚠️ Selecciona un hato para ver proyecciones.&lt;/p&gt;
+        }
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;header-right&quot;&gt;
+        &lt;div class&#x3D;&quot;header-icon&quot;&gt;📊&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    @if (error) {
+      &lt;div class&#x3D;&quot;msg-error&quot;&gt;
+        &lt;span&gt;❌&lt;/span&gt;
+        &lt;p&gt;{{ error }}&lt;/p&gt;
+      &lt;/div&gt;
+    }
+
+    @if (!hatoActivo) {
+      &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+        &lt;span&gt;🐄&lt;/span&gt;
+        &lt;p&gt;Selecciona un hato para ver proyecciones.&lt;/p&gt;
+      &lt;/div&gt;
+    }
+
+    @if (hatoActivo &amp;&amp; respuesta) {
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; DATOS INSUFICIENTES &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      @if (respuesta.datosInsuficientes) {
+        &lt;div class&#x3D;&quot;insuficiente-card&quot;&gt;
+          &lt;div class&#x3D;&quot;insuficiente-icono&quot;&gt;📅&lt;/div&gt;
+          &lt;div class&#x3D;&quot;insuficiente-info&quot;&gt;
+            &lt;h3 class&#x3D;&quot;insuficiente-titulo&quot;&gt;Datos insuficientes para proyectar&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;insuficiente-mensaje&quot;&gt;
+              {{ respuesta.mensajeInsuficiente }}
+            &lt;/p&gt;
+            &lt;div class&#x3D;&quot;insuficiente-progreso&quot;&gt;
+              &lt;div class&#x3D;&quot;progreso-track&quot;&gt;
+                &lt;div
+                  class&#x3D;&quot;progreso-fill&quot;
+                  [style.width.%]&#x3D;&quot;(respuesta.mesesHistorial / 3) * 100&quot;
+                &gt;&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;span class&#x3D;&quot;progreso-label&quot;&gt; {{ respuesta.mesesHistorial }} / 3 meses &lt;/span&gt;
+            &lt;/div&gt;
+            &lt;p class&#x3D;&quot;insuficiente-hint&quot;&gt;
+              💡 Registra tus ingresos y egresos mensualmente para que el sistema genere
+              proyecciones precisas.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; CONTENIDO CON DATOS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      @if (!respuesta.datosInsuficientes) {
+        &lt;!-- Controles + botón inversión --&gt;
+        &lt;div class&#x3D;&quot;controles-row&quot;&gt;
+          &lt;div class&#x3D;&quot;selector-meses&quot;&gt;
+            &lt;span class&#x3D;&quot;selector-label&quot;&gt;Proyectar:&lt;/span&gt;
+            &lt;button
+              class&#x3D;&quot;selector-btn&quot;
+              [class.activo]&#x3D;&quot;mesesSeleccionados &#x3D;&#x3D;&#x3D; 3&quot;
+              (click)&#x3D;&quot;cambiarMeses(3)&quot;
+            &gt;
+              3 meses
+            &lt;/button&gt;
+            &lt;button
+              class&#x3D;&quot;selector-btn&quot;
+              [class.activo]&#x3D;&quot;mesesSeleccionados &#x3D;&#x3D;&#x3D; 6&quot;
+              (click)&#x3D;&quot;cambiarMeses(6)&quot;
+            &gt;
+              6 meses
+            &lt;/button&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;modelos-wrap&quot;&gt;
+            &lt;span class&#x3D;&quot;selector-label&quot;&gt;Modelos Aplicados:&lt;/span&gt;
+            @for (m of respuesta.modelosAplicados; track m) {
+              &lt;span class&#x3D;&quot;modelo-chip&quot;&gt;{{ labelModelo(m) }}&lt;/span&gt;
+            }
+          &lt;/div&gt;
+
+          &lt;button class&#x3D;&quot;btn-agregar-inversion&quot; (click)&#x3D;&quot;abrirModal()&quot;&gt;+ Planear inversión&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Stats del historial --&gt;
+        &lt;div class&#x3D;&quot;historial-stats&quot;&gt;
+          &lt;div class&#x3D;&quot;hstat-card&quot;&gt;
+            &lt;span class&#x3D;&quot;hstat-label&quot;&gt;Historial&lt;/span&gt;
+            &lt;span class&#x3D;&quot;hstat-valor&quot;&gt; {{ respuesta.mesesHistorial }} meses &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;hstat-card&quot;&gt;
+            &lt;span class&#x3D;&quot;hstat-label&quot;&gt;Ingreso promedio&lt;/span&gt;
+            &lt;span class&#x3D;&quot;hstat-valor verde&quot;&gt;
+              {{ formatCOP(respuesta.promedioIngresosMensual) }}
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;hstat-card&quot;&gt;
+            &lt;span class&#x3D;&quot;hstat-label&quot;&gt;Egreso promedio&lt;/span&gt;
+            &lt;span class&#x3D;&quot;hstat-valor rojo&quot;&gt;
+              {{ formatCOP(respuesta.promedioEgresosMensual) }}
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;hstat-card&quot;&gt;
+            &lt;span class&#x3D;&quot;hstat-label&quot;&gt;Tendencia ingresos&lt;/span&gt;
+            &lt;span class&#x3D;&quot;hstat-valor&quot;&gt;{{ tendenciaIngresosLabel }}&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;hstat-card&quot;&gt;
+            &lt;span class&#x3D;&quot;hstat-label&quot;&gt;Tendencia egresos&lt;/span&gt;
+            &lt;span class&#x3D;&quot;hstat-valor&quot;&gt;{{ tendenciaEgresosLabel }}&lt;/span&gt;
+          &lt;/div&gt;
+          @if (inversiones.length &gt; 0) {
+            &lt;div class&#x3D;&quot;hstat-card inversion&quot;&gt;
+              &lt;span class&#x3D;&quot;hstat-label&quot;&gt;Inversiones planeadas&lt;/span&gt;
+              &lt;span class&#x3D;&quot;hstat-valor naranja&quot;&gt;
+                {{ inversiones.length }}
+              &lt;/span&gt;
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;!-- Inversiones planeadas resumen --&gt;
+        @if (inversiones.length &gt; 0) {
+          &lt;div class&#x3D;&quot;inversiones-resumen&quot;&gt;
+            &lt;div class&#x3D;&quot;inversiones-resumen-header&quot;&gt;
+              &lt;h3 class&#x3D;&quot;inversiones-resumen-titulo&quot;&gt;📦 Inversiones planeadas&lt;/h3&gt;
+              &lt;span class&#x3D;&quot;inversiones-resumen-hint&quot;&gt; Incluidas en las proyecciones &lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;inversiones-lista&quot;&gt;
+              @for (inv of inversiones; track inv.idInversion) {
+                &lt;div class&#x3D;&quot;inversion-item&quot;&gt;
+                  &lt;div class&#x3D;&quot;inversion-item-left&quot;&gt;
+                    &lt;span class&#x3D;&quot;inversion-cat-icono&quot;&gt;📦&lt;/span&gt;
+                    &lt;div class&#x3D;&quot;inversion-item-info&quot;&gt;
+                      &lt;span class&#x3D;&quot;inversion-item-desc&quot;&gt;
+                        {{ inv.descripcion }}
+                      &lt;/span&gt;
+                      &lt;div class&#x3D;&quot;inversion-item-meta&quot;&gt;
+                        &lt;span class&#x3D;&quot;inversion-mes-chip&quot;&gt; 📅 {{ inv.mesEjecucionLabel }} &lt;/span&gt;
+                        @if (inv.nombreCategoria) {
+                          &lt;span class&#x3D;&quot;inversion-cat-chip&quot;&gt;
+                            {{ inv.nombreCategoria }}
+                          &lt;/span&gt;
+                        }
+                        @if (inv.retornoEsperadoPct) {
+                          &lt;span class&#x3D;&quot;inversion-ret-chip&quot;&gt;
+                            📈 +{{ inv.retornoEsperadoPct }}% retorno en
+                            {{ inv.mesesRetorno }} meses
+                          &lt;/span&gt;
+                        }
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;inversion-item-right&quot;&gt;
+                    &lt;span class&#x3D;&quot;inversion-monto&quot;&gt;
+                      {{ formatCOP(inv.monto) }}
+                    &lt;/span&gt;
+                    &lt;button
+                      class&#x3D;&quot;btn-ejecutar-inv&quot;
+                      (click)&#x3D;&quot;ejecutarInversion(inv)&quot;
+                      title&#x3D;&quot;Marcar como ejecutada&quot;
+                    &gt;
+                      ✓
+                    &lt;/button&gt;
+                    &lt;button
+                      class&#x3D;&quot;btn-cancelar-inv&quot;
+                      (click)&#x3D;&quot;cancelarInversion(inv.idInversion)&quot;
+                      title&#x3D;&quot;Cancelar inversión&quot;
+                    &gt;
+                      ✕
+                    &lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              }
+            &lt;/div&gt;
+          &lt;/div&gt;
+        }
+
+        &lt;!-- Nota de incertidumbre --&gt;
+        &lt;div class&#x3D;&quot;nota-incertidumbre&quot;&gt;
+          &lt;span&gt;ℹ️&lt;/span&gt;
+          &lt;p&gt;
+            Las proyecciones muestran un &lt;strong&gt;rango estimado&lt;/strong&gt;
+            basado en tu historial. Las inversiones planeadas se suman a los egresos del mes de
+            ejecución y el retorno estimado se distribuye en los meses siguientes.
+          &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GRID DE PROYECCIONES &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+        &lt;div class&#x3D;&quot;proyecciones-grid&quot;&gt;
+          @for (p of respuesta.proyecciones; track p.periodo; let i &#x3D; $index) {
+            &lt;div
+              class&#x3D;&quot;proy-card&quot;
+              [class]&#x3D;&quot;claseMargen(p.estadoMargen)&quot;
+              [class.proy-card-inversion]&#x3D;&quot;p.tieneInversion&quot;
+              [class.proy-card-retorno]&#x3D;&quot;p.tieneRetorno&quot;
+            &gt;
+              &lt;!-- Header --&gt;
+              &lt;div class&#x3D;&quot;proy-header&quot;&gt;
+                &lt;div class&#x3D;&quot;proy-mes&quot;&gt;
+                  &lt;span class&#x3D;&quot;proy-num&quot;&gt;+{{ i + 1 }}&lt;/span&gt;
+                  &lt;h3 class&#x3D;&quot;proy-label&quot;&gt;{{ p.periodoLabel }}&lt;/h3&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;proy-badges&quot;&gt;
+                  @if (p.tieneInversion) {
+                    &lt;span class&#x3D;&quot;badge-inversion&quot;&gt;📦 Inversión&lt;/span&gt;
+                  }
+                  @if (p.tieneRetorno) {
+                    &lt;span class&#x3D;&quot;badge-retorno&quot;&gt;📈 Retorno&lt;/span&gt;
+                  }
+                  &lt;span class&#x3D;&quot;proy-margen-badge&quot; [class]&#x3D;&quot;claseMargen(p.estadoMargen)&quot;&gt;
+                    {{ iconoMargen(p.estadoMargen) }}
+                    {{ p.estadoMargen }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Inversiones del mes --&gt;
+              @if (p.tieneInversion &amp;&amp; p.inversionesDelMes.length &gt; 0) {
+                &lt;div class&#x3D;&quot;proy-inversiones&quot;&gt;
+                  @for (inv of p.inversionesDelMes; track inv.idInversion) {
+                    &lt;div class&#x3D;&quot;proy-inversion-item&quot;&gt;
+                      &lt;span&gt;📦&lt;/span&gt;
+                      &lt;span class&#x3D;&quot;proy-inversion-desc&quot;&gt;
+                        {{ inv.descripcion }}
+                      &lt;/span&gt;
+                      &lt;span class&#x3D;&quot;proy-inversion-monto&quot;&gt; -{{ formatCOP(inv.monto) }} &lt;/span&gt;
+                    &lt;/div&gt;
+                  }
+                &lt;/div&gt;
+              }
+
+              &lt;!-- Retornos activos --&gt;
+              @if (p.tieneRetorno &amp;&amp; p.retornosDelMes.length &gt; 0) {
+                &lt;div class&#x3D;&quot;proy-retornos&quot;&gt;
+                  @for (ret of p.retornosDelMes; track ret.idInversion) {
+                    &lt;div class&#x3D;&quot;proy-retorno-item&quot;&gt;
+                      &lt;span&gt;📈&lt;/span&gt;
+                      &lt;span class&#x3D;&quot;proy-retorno-desc&quot;&gt; Retorno: {{ ret.descripcion }} &lt;/span&gt;
+                      &lt;span class&#x3D;&quot;proy-retorno-monto&quot;&gt; +{{ formatCOP(ret.monto) }} &lt;/span&gt;
+                    &lt;/div&gt;
+                  }
+                &lt;/div&gt;
+              }
+
+              &lt;!-- Filas de proyección --&gt;
+              &lt;div class&#x3D;&quot;proy-filas&quot;&gt;
+                &lt;!-- Ingresos --&gt;
+                &lt;div class&#x3D;&quot;proy-fila ingreso&quot;&gt;
+                  &lt;div class&#x3D;&quot;proy-fila-header&quot;&gt;
+                    &lt;span class&#x3D;&quot;proy-fila-icono&quot;&gt;💰&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;proy-fila-label&quot;&gt;Ingresos&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;proy-fila-proy&quot;&gt;
+                      {{ formatCOP(p.ingresoProyectado) }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;proy-rango&quot;&gt;
+                    &lt;span class&#x3D;&quot;rango-min&quot;&gt;
+                      {{ formatCOP(p.ingresoMin) }}
+                    &lt;/span&gt;
+                    &lt;div class&#x3D;&quot;rango-barra&quot;&gt;
+                      &lt;div class&#x3D;&quot;rango-fill ingreso-fill&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;span class&#x3D;&quot;rango-max&quot;&gt;
+                      {{ formatCOP(p.ingresoMax) }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Egresos --&gt;
+                &lt;div class&#x3D;&quot;proy-fila egreso&quot;&gt;
+                  &lt;div class&#x3D;&quot;proy-fila-header&quot;&gt;
+                    &lt;span class&#x3D;&quot;proy-fila-icono&quot;&gt;📤&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;proy-fila-label&quot;&gt;
+                      Egresos
+                      @if (p.tieneInversion) {
+                        &lt;span class&#x3D;&quot;fila-badge-inv&quot;&gt; + inversión &lt;/span&gt;
+                      }
+                    &lt;/span&gt;
+                    &lt;span class&#x3D;&quot;proy-fila-proy&quot;&gt;
+                      {{ formatCOP(p.egresoProyectado) }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;proy-rango&quot;&gt;
+                    &lt;span class&#x3D;&quot;rango-min&quot;&gt;
+                      {{ formatCOP(p.egresoMin) }}
+                    &lt;/span&gt;
+                    &lt;div class&#x3D;&quot;rango-barra&quot;&gt;
+                      &lt;div class&#x3D;&quot;rango-fill egreso-fill&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;span class&#x3D;&quot;rango-max&quot;&gt;
+                      {{ formatCOP(p.egresoMax) }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Margen neto --&gt;
+                &lt;div class&#x3D;&quot;proy-fila margen&quot;&gt;
+                  &lt;div class&#x3D;&quot;proy-fila-header&quot;&gt;
+                    &lt;span class&#x3D;&quot;proy-fila-icono&quot;&gt;📈&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;proy-fila-label&quot;&gt;Margen neto&lt;/span&gt;
+                    &lt;span
+                      class&#x3D;&quot;proy-fila-proy&quot;
+                      [class.valor-pos]&#x3D;&quot;p.margenProyectado &gt;&#x3D; 0&quot;
+                      [class.valor-neg]&#x3D;&quot;p.margenProyectado &lt; 0&quot;
+                    &gt;
+                      {{ formatCOP(p.margenProyectado) }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;proy-rango&quot;&gt;
+                    &lt;span class&#x3D;&quot;rango-min&quot; [class.valor-neg]&#x3D;&quot;p.margenMin &lt; 0&quot;&gt;
+                      {{ formatCOP(p.margenMin) }}
+                    &lt;/span&gt;
+                    &lt;div class&#x3D;&quot;rango-barra&quot;&gt;
+                      &lt;div
+                        class&#x3D;&quot;rango-fill&quot;
+                        [class.margen-fill-pos]&#x3D;&quot;p.estadoMargen &#x3D;&#x3D;&#x3D; &#x27;POSITIVO&#x27;&quot;
+                        [class.margen-fill-neu]&#x3D;&quot;p.estadoMargen &#x3D;&#x3D;&#x3D; &#x27;NEUTRO&#x27;&quot;
+                        [class.margen-fill-neg]&#x3D;&quot;p.estadoMargen &#x3D;&#x3D;&#x3D; &#x27;NEGATIVO&#x27;&quot;
+                      &gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;span class&#x3D;&quot;rango-max&quot; [class.valor-pos]&#x3D;&quot;p.margenMax &gt;&#x3D; 0&quot;&gt;
+                      {{ formatCOP(p.margenMax) }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Alertas contextuales --&gt;
+              @if (p.alertas &amp;&amp; p.alertas.length &gt; 0) {
+                &lt;div class&#x3D;&quot;proy-alertas&quot;&gt;
+                  @for (alerta of p.alertas; track alerta) {
+                    &lt;p class&#x3D;&quot;proy-alerta&quot;&gt;{{ alerta }}&lt;/p&gt;
+                  }
+                &lt;/div&gt;
+              }
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+      }
+    }
+  }
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; MODAL INVERSIÓN &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (modalVisible) {
+    &lt;div class&#x3D;&quot;modal-overlay&quot; (click)&#x3D;&quot;cerrarModal()&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-card&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
+        &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+          &lt;h2 class&#x3D;&quot;modal-titulo&quot;&gt;📦 Planear inversión&lt;/h2&gt;
+          &lt;button class&#x3D;&quot;modal-cerrar&quot; (click)&#x3D;&quot;cerrarModal()&quot;&gt;✕&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+          &lt;p class&#x3D;&quot;modal-desc&quot;&gt;
+            Registra una inversión futura para visualizar su impacto en tus proyecciones
+            financieras.
+          &lt;/p&gt;
+
+          &lt;!-- Descripción --&gt;
+          &lt;div class&#x3D;&quot;form-grupo&quot;&gt;
+            &lt;label class&#x3D;&quot;form-label&quot;&gt;Descripción *&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;text&quot;
+              class&#x3D;&quot;form-input&quot;
+              placeholder&#x3D;&quot;Ej: Compra de 5 vacas Holstein&quot;
+              [(ngModel)]&#x3D;&quot;form.descripcion&quot;
+            /&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Monto --&gt;
+          &lt;div class&#x3D;&quot;form-grupo&quot;&gt;
+            &lt;label class&#x3D;&quot;form-label&quot;&gt;Monto a invertir (COP) *&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              class&#x3D;&quot;form-input&quot;
+              placeholder&#x3D;&quot;Ej: 5000000&quot;
+              [(ngModel)]&#x3D;&quot;form.monto&quot;
+              min&#x3D;&quot;0&quot;
+            /&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Mes de ejecución --&gt;
+          &lt;div class&#x3D;&quot;form-grupo&quot;&gt;
+            &lt;label class&#x3D;&quot;form-label&quot;&gt;Mes de ejecución *&lt;/label&gt;
+            &lt;select class&#x3D;&quot;form-select&quot; [(ngModel)]&#x3D;&quot;form.mesEjecucion&quot;&gt;
+              &lt;option value&#x3D;&quot;&quot;&gt;Selecciona un mes&lt;/option&gt;
+              @for (mes of mesesDisponibles; track mes.valor) {
+                &lt;option [value]&#x3D;&quot;mes.valor&quot;&gt;{{ mes.label }}&lt;/option&gt;
+              }
+            &lt;/select&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Categoría --&gt;
+          &lt;div class&#x3D;&quot;form-grupo&quot;&gt;
+            &lt;label class&#x3D;&quot;form-label&quot;&gt;Categoría de inversión&lt;/label&gt;
+            @if (loadingCategorias) {
+              &lt;div class&#x3D;&quot;form-loading&quot;&gt;
+                &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+              &lt;/div&gt;
+            } @else {
+              &lt;select class&#x3D;&quot;form-select&quot; [(ngModel)]&#x3D;&quot;form.idCategoria&quot;&gt;
+                &lt;option [value]&#x3D;&quot;null&quot;&gt;Sin categoría&lt;/option&gt;
+                @for (cat of categoriasInversion; track cat.idCategoriaFinanciera) {
+                  &lt;option [value]&#x3D;&quot;cat.idCategoriaFinanciera&quot;&gt;
+                    {{ cat.nombre }}
+                  &lt;/option&gt;
+                }
+              &lt;/select&gt;
+            }
+          &lt;/div&gt;
+
+          &lt;!-- Retorno esperado --&gt;
+          &lt;div class&#x3D;&quot;form-seccion&quot;&gt;
+            &lt;p class&#x3D;&quot;form-seccion-titulo&quot;&gt;
+              📈 Retorno esperado &lt;span class&#x3D;&quot;form-opcional&quot;&gt;(opcional)&lt;/span&gt;
+            &lt;/p&gt;
+            &lt;p class&#x3D;&quot;form-seccion-desc&quot;&gt;
+              Si esta inversión generará más ingresos, indica el porcentaje de mejora estimado y en
+              cuántos meses se materializará.
+            &lt;/p&gt;
+            &lt;div class&#x3D;&quot;form-row&quot;&gt;
+              &lt;div class&#x3D;&quot;form-grupo&quot;&gt;
+                &lt;label class&#x3D;&quot;form-label&quot;&gt; % mejora en ingresos &lt;/label&gt;
+                &lt;input
+                  type&#x3D;&quot;number&quot;
+                  class&#x3D;&quot;form-input&quot;
+                  placeholder&#x3D;&quot;Ej: 15&quot;
+                  [(ngModel)]&#x3D;&quot;form.retornoEsperadoPct&quot;
+                  min&#x3D;&quot;0&quot;
+                  max&#x3D;&quot;100&quot;
+                /&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;form-grupo&quot;&gt;
+                &lt;label class&#x3D;&quot;form-label&quot;&gt; Meses de retorno &lt;/label&gt;
+                &lt;input
+                  type&#x3D;&quot;number&quot;
+                  class&#x3D;&quot;form-input&quot;
+                  placeholder&#x3D;&quot;Ej: 6&quot;
+                  [(ngModel)]&#x3D;&quot;form.mesesRetorno&quot;
+                  min&#x3D;&quot;1&quot;
+                  max&#x3D;&quot;24&quot;
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Preview del retorno --&gt;
+            @if (form.monto &gt; 0 &amp;&amp; form.retornoEsperadoPct &amp;&amp; form.mesesRetorno) {
+              &lt;div class&#x3D;&quot;retorno-preview&quot;&gt;
+                &lt;span&gt;📊&lt;/span&gt;
+                &lt;p&gt;
+                  Retorno total estimado:
+                  &lt;strong&gt;
+                    {{ formatCOP((form.monto * form.retornoEsperadoPct) / 100) }}
+                  &lt;/strong&gt;
+                  distribuido en
+                  &lt;strong&gt;{{ form.mesesRetorno }} meses&lt;/strong&gt;
+                  (~{{
+                    formatCOP((form.monto * form.retornoEsperadoPct) / 100 / form.mesesRetorno)
+                  }}/mes)
+                &lt;/p&gt;
+              &lt;/div&gt;
+            }
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+          &lt;button class&#x3D;&quot;btn-cancelar-modal&quot; (click)&#x3D;&quot;cerrarModal()&quot;&gt;Cancelar&lt;/button&gt;
+          &lt;button
+            class&#x3D;&quot;btn-guardar-modal&quot;
+            [disabled]&#x3D;&quot;!formValido || guardandoInversion&quot;
+            (click)&#x3D;&quot;guardarInversion()&quot;
+          &gt;
+            @if (guardandoInversion) {
+              &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+            } @else {
+              💾 Guardar inversión
+            }
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="proyecciones-page">  <!-- ===== LOADING ===== -->  @if (loading) {    <div class="loading-wrap">      <app-spinner size="large" message="Calculando proyecciones..."> </app-spinner>    </div>  }  @if (!loading) {    <!-- ===== HEADER ===== -->    <header class="page-header">      <div class="header-left">        <p class="page-tag">Finanzas · Proyecciones</p>        <h1 class="page-title">Proyecciones <span class="brand">Financieras</span></h1>        @if (hatoActivo) {          <p class="page-subtitle">            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},            {{ hatoActivo.departamento }}          </p>        } @else {          <p class="page-subtitle warn">⚠️ Selecciona un hato para ver proyecciones.</p>        }      </div>      <div class="header-right">        <div class="header-icon">📊</div>      </div>    </header>    @if (error) {      <div class="msg-error">        <span>❌</span>        <p>{{ error }}</p>      </div>    }    @if (!hatoActivo) {      <div class="empty-state">        <span>🐄</span>        <p>Selecciona un hato para ver proyecciones.</p>      </div>    }    @if (hatoActivo && respuesta) {      <!-- ===== DATOS INSUFICIENTES ===== -->      @if (respuesta.datosInsuficientes) {        <div class="insuficiente-card">          <div class="insuficiente-icono">📅</div>          <div class="insuficiente-info">            <h3 class="insuficiente-titulo">Datos insuficientes para proyectar</h3>            <p class="insuficiente-mensaje">              {{ respuesta.mensajeInsuficiente }}            </p>            <div class="insuficiente-progreso">              <div class="progreso-track">                <div                  class="progreso-fill"                  [style.width.%]="(respuesta.mesesHistorial / 3) * 100"                ></div>              </div>              <span class="progreso-label"> {{ respuesta.mesesHistorial }} / 3 meses </span>            </div>            <p class="insuficiente-hint">              💡 Registra tus ingresos y egresos mensualmente para que el sistema genere              proyecciones precisas.            </p>          </div>        </div>      }      <!-- ===== CONTENIDO CON DATOS ===== -->      @if (!respuesta.datosInsuficientes) {        <!-- Controles + botón inversión -->        <div class="controles-row">          <div class="selector-meses">            <span class="selector-label">Proyectar:</span>            <button              class="selector-btn"              [class.activo]="mesesSeleccionados === 3"              (click)="cambiarMeses(3)"            >              3 meses            </button>            <button              class="selector-btn"              [class.activo]="mesesSeleccionados === 6"              (click)="cambiarMeses(6)"            >              6 meses            </button>          </div>          <div class="modelos-wrap">            <span class="selector-label">Modelos Aplicados:</span>            @for (m of respuesta.modelosAplicados; track m) {              <span class="modelo-chip">{{ labelModelo(m) }}</span>            }          </div>          <button class="btn-agregar-inversion" (click)="abrirModal()">+ Planear inversión</button>        </div>        <!-- Stats del historial -->        <div class="historial-stats">          <div class="hstat-card">            <span class="hstat-label">Historial</span>            <span class="hstat-valor"> {{ respuesta.mesesHistorial }} meses </span>          </div>          <div class="hstat-card">            <span class="hstat-label">Ingreso promedio</span>            <span class="hstat-valor verde">              {{ formatCOP(respuesta.promedioIngresosMensual) }}            </span>          </div>          <div class="hstat-card">            <span class="hstat-label">Egreso promedio</span>            <span class="hstat-valor rojo">              {{ formatCOP(respuesta.promedioEgresosMensual) }}            </span>          </div>          <div class="hstat-card">            <span class="hstat-label">Tendencia ingresos</span>            <span class="hstat-valor">{{ tendenciaIngresosLabel }}</span>          </div>          <div class="hstat-card">            <span class="hstat-label">Tendencia egresos</span>            <span class="hstat-valor">{{ tendenciaEgresosLabel }}</span>          </div>          @if (inversiones.length > 0) {            <div class="hstat-card inversion">              <span class="hstat-label">Inversiones planeadas</span>              <span class="hstat-valor naranja">                {{ inversiones.length }}              </span>            </div>          }        </div>        <!-- Inversiones planeadas resumen -->        @if (inversiones.length > 0) {          <div class="inversiones-resumen">            <div class="inversiones-resumen-header">              <h3 class="inversiones-resumen-titulo">📦 Inversiones planeadas</h3>              <span class="inversiones-resumen-hint"> Incluidas en las proyecciones </span>            </div>            <div class="inversiones-lista">              @for (inv of inversiones; track inv.idInversion) {                <div class="inversion-item">                  <div class="inversion-item-left">                    <span class="inversion-cat-icono">📦</span>                    <div class="inversion-item-info">                      <span class="inversion-item-desc">                        {{ inv.descripcion }}                      </span>                      <div class="inversion-item-meta">                        <span class="inversion-mes-chip"> 📅 {{ inv.mesEjecucionLabel }} </span>                        @if (inv.nombreCategoria) {                          <span class="inversion-cat-chip">                            {{ inv.nombreCategoria }}                          </span>                        }                        @if (inv.retornoEsperadoPct) {                          <span class="inversion-ret-chip">                            📈 +{{ inv.retornoEsperadoPct }}% retorno en                            {{ inv.mesesRetorno }} meses                          </span>                        }                      </div>                    </div>                  </div>                  <div class="inversion-item-right">                    <span class="inversion-monto">                      {{ formatCOP(inv.monto) }}                    </span>                    <button                      class="btn-ejecutar-inv"                      (click)="ejecutarInversion(inv)"                      title="Marcar como ejecutada"                    >                      ✓                    </button>                    <button                      class="btn-cancelar-inv"                      (click)="cancelarInversion(inv.idInversion)"                      title="Cancelar inversión"                    >                      ✕                    </button>                  </div>                </div>              }            </div>          </div>        }        <!-- Nota de incertidumbre -->        <div class="nota-incertidumbre">          <span>ℹ️</span>          <p>            Las proyecciones muestran un <strong>rango estimado</strong>            basado en tu historial. Las inversiones planeadas se suman a los egresos del mes de            ejecución y el retorno estimado se distribuye en los meses siguientes.          </p>        </div>        <!-- ===== GRID DE PROYECCIONES ===== -->        <div class="proyecciones-grid">          @for (p of respuesta.proyecciones; track p.periodo; let i = $index) {            <div              class="proy-card"              [class]="claseMargen(p.estadoMargen)"              [class.proy-card-inversion]="p.tieneInversion"              [class.proy-card-retorno]="p.tieneRetorno"            >              <!-- Header -->              <div class="proy-header">                <div class="proy-mes">                  <span class="proy-num">+{{ i + 1 }}</span>                  <h3 class="proy-label">{{ p.periodoLabel }}</h3>                </div>                <div class="proy-badges">                  @if (p.tieneInversion) {                    <span class="badge-inversion">📦 Inversión</span>                  }                  @if (p.tieneRetorno) {                    <span class="badge-retorno">📈 Retorno</span>                  }                  <span class="proy-margen-badge" [class]="claseMargen(p.estadoMargen)">                    {{ iconoMargen(p.estadoMargen) }}                    {{ p.estadoMargen }}                  </span>                </div>              </div>              <!-- Inversiones del mes -->              @if (p.tieneInversion && p.inversionesDelMes.length > 0) {                <div class="proy-inversiones">                  @for (inv of p.inversionesDelMes; track inv.idInversion) {                    <div class="proy-inversion-item">                      <span>📦</span>                      <span class="proy-inversion-desc">                        {{ inv.descripcion }}                      </span>                      <span class="proy-inversion-monto"> -{{ formatCOP(inv.monto) }} </span>                    </div>                  }                </div>              }              <!-- Retornos activos -->              @if (p.tieneRetorno && p.retornosDelMes.length > 0) {                <div class="proy-retornos">                  @for (ret of p.retornosDelMes; track ret.idInversion) {                    <div class="proy-retorno-item">                      <span>📈</span>                      <span class="proy-retorno-desc"> Retorno: {{ ret.descripcion }} </span>                      <span class="proy-retorno-monto"> +{{ formatCOP(ret.monto) }} </span>                    </div>                  }                </div>              }              <!-- Filas de proyección -->              <div class="proy-filas">                <!-- Ingresos -->                <div class="proy-fila ingreso">                  <div class="proy-fila-header">                    <span class="proy-fila-icono">💰</span>                    <span class="proy-fila-label">Ingresos</span>                    <span class="proy-fila-proy">                      {{ formatCOP(p.ingresoProyectado) }}                    </span>                  </div>                  <div class="proy-rango">                    <span class="rango-min">                      {{ formatCOP(p.ingresoMin) }}                    </span>                    <div class="rango-barra">                      <div class="rango-fill ingreso-fill"></div>                    </div>                    <span class="rango-max">                      {{ formatCOP(p.ingresoMax) }}                    </span>                  </div>                </div>                <!-- Egresos -->                <div class="proy-fila egreso">                  <div class="proy-fila-header">                    <span class="proy-fila-icono">📤</span>                    <span class="proy-fila-label">                      Egresos                      @if (p.tieneInversion) {                        <span class="fila-badge-inv"> + inversión </span>                      }                    </span>                    <span class="proy-fila-proy">                      {{ formatCOP(p.egresoProyectado) }}                    </span>                  </div>                  <div class="proy-rango">                    <span class="rango-min">                      {{ formatCOP(p.egresoMin) }}                    </span>                    <div class="rango-barra">                      <div class="rango-fill egreso-fill"></div>                    </div>                    <span class="rango-max">                      {{ formatCOP(p.egresoMax) }}                    </span>                  </div>                </div>                <!-- Margen neto -->                <div class="proy-fila margen">                  <div class="proy-fila-header">                    <span class="proy-fila-icono">📈</span>                    <span class="proy-fila-label">Margen neto</span>                    <span                      class="proy-fila-proy"                      [class.valor-pos]="p.margenProyectado >= 0"                      [class.valor-neg]="p.margenProyectado < 0"                    >                      {{ formatCOP(p.margenProyectado) }}                    </span>                  </div>                  <div class="proy-rango">                    <span class="rango-min" [class.valor-neg]="p.margenMin < 0">                      {{ formatCOP(p.margenMin) }}                    </span>                    <div class="rango-barra">                      <div                        class="rango-fill"                        [class.margen-fill-pos]="p.estadoMargen === \'POSITIVO\'"                        [class.margen-fill-neu]="p.estadoMargen === \'NEUTRO\'"                        [class.margen-fill-neg]="p.estadoMargen === \'NEGATIVO\'"                      ></div>                    </div>                    <span class="rango-max" [class.valor-pos]="p.margenMax >= 0">                      {{ formatCOP(p.margenMax) }}                    </span>                  </div>                </div>              </div>              <!-- Alertas contextuales -->              @if (p.alertas && p.alertas.length > 0) {                <div class="proy-alertas">                  @for (alerta of p.alertas; track alerta) {                    <p class="proy-alerta">{{ alerta }}</p>                  }                </div>              }            </div>          }        </div>      }    }  }  <!-- ===== MODAL INVERSIÓN ===== -->  @if (modalVisible) {    <div class="modal-overlay" (click)="cerrarModal()">      <div class="modal-card" (click)="$event.stopPropagation()">        <div class="modal-header">          <h2 class="modal-titulo">📦 Planear inversión</h2>          <button class="modal-cerrar" (click)="cerrarModal()">✕</button>        </div>        <div class="modal-body">          <p class="modal-desc">            Registra una inversión futura para visualizar su impacto en tus proyecciones            financieras.          </p>          <!-- Descripción -->          <div class="form-grupo">            <label class="form-label">Descripción *</label>            <input              type="text"              class="form-input"              placeholder="Ej: Compra de 5 vacas Holstein"              [(ngModel)]="form.descripcion"            />          </div>          <!-- Monto -->          <div class="form-grupo">            <label class="form-label">Monto a invertir (COP) *</label>            <input              type="number"              class="form-input"              placeholder="Ej: 5000000"              [(ngModel)]="form.monto"              min="0"            />          </div>          <!-- Mes de ejecución -->          <div class="form-grupo">            <label class="form-label">Mes de ejecución *</label>            <select class="form-select" [(ngModel)]="form.mesEjecucion">              <option value="">Selecciona un mes</option>              @for (mes of mesesDisponibles; track mes.valor) {                <option [value]="mes.valor">{{ mes.label }}</option>              }            </select>          </div>          <!-- Categoría -->          <div class="form-grupo">            <label class="form-label">Categoría de inversión</label>            @if (loadingCategorias) {              <div class="form-loading">                <app-spinner size="small"></app-spinner>              </div>            } @else {              <select class="form-select" [(ngModel)]="form.idCategoria">                <option [value]="null">Sin categoría</option>                @for (cat of categoriasInversion; track cat.idCategoriaFinanciera) {                  <option [value]="cat.idCategoriaFinanciera">                    {{ cat.nombre }}                  </option>                }              </select>            }          </div>          <!-- Retorno esperado -->          <div class="form-seccion">            <p class="form-seccion-titulo">              📈 Retorno esperado <span class="form-opcional">(opcional)</span>            </p>            <p class="form-seccion-desc">              Si esta inversión generará más ingresos, indica el porcentaje de mejora estimado y en              cuántos meses se materializará.            </p>            <div class="form-row">              <div class="form-grupo">                <label class="form-label"> % mejora en ingresos </label>                <input                  type="number"                  class="form-input"                  placeholder="Ej: 15"                  [(ngModel)]="form.retornoEsperadoPct"                  min="0"                  max="100"                />              </div>              <div class="form-grupo">                <label class="form-label"> Meses de retorno </label>                <input                  type="number"                  class="form-input"                  placeholder="Ej: 6"                  [(ngModel)]="form.mesesRetorno"                  min="1"                  max="24"                />              </div>            </div>            <!-- Preview del retorno -->            @if (form.monto > 0 && form.retornoEsperadoPct && form.mesesRetorno) {              <div class="retorno-preview">                <span>📊</span>                <p>                  Retorno total estimado:                  <strong>                    {{ formatCOP((form.monto * form.retornoEsperadoPct) / 100) }}                  </strong>                  distribuido en                  <strong>{{ form.mesesRetorno }} meses</strong>                  (~{{                    formatCOP((form.monto * form.retornoEsperadoPct) / 100 / form.mesesRetorno)                  }}/mes)                </p>              </div>            }          </div>        </div>        <div class="modal-footer">          <button class="btn-cancelar-modal" (click)="cerrarModal()">Cancelar</button>          <button            class="btn-guardar-modal"            [disabled]="!formValido || guardandoInversion"            (click)="guardarInversion()"          >            @if (guardandoInversion) {              <app-spinner size="small"></app-spinner>            } @else {              💾 Guardar inversión            }          </button>        </div>      </div>    </div>  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'ProyeccionesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ProyeccionesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

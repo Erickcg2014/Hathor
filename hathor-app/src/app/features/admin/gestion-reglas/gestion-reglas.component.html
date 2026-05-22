@@ -1,0 +1,515 @@
+<div class="gestion-reglas-page">
+  <!-- ===== HEADER ===== -->
+  <header class="page-header">
+    <div class="header-left">
+      <p class="page-tag">Administración · Motor de reglas</p>
+      <h1 class="page-title">Gestión de <span class="brand">Reglas</span></h1>
+      <p class="page-subtitle">
+        Define condiciones sobre KPIs para generar recomendaciones automáticas
+      </p>
+    </div>
+    <div class="header-right">
+      <div class="header-icon">⚡</div>
+    </div>
+  </header>
+
+  <!-- ===== MENSAJES ===== -->
+  @if (error) {
+    <div class="msg-error">
+      <span>❌</span>
+      <p>{{ error }}</p>
+    </div>
+  }
+  @if (exito) {
+    <div class="msg-exito">
+      <span>✅</span>
+      <p>{{ exito }}</p>
+    </div>
+  }
+
+  <!-- ═══════════════════════════════════════════════════
+       VISTA: LISTA
+  ═══════════════════════════════════════════════════ -->
+  @if (tabActivo === 'lista') {
+    <!-- Filtros + botón crear -->
+    <div class="filtros-card">
+      <div class="filtros-row">
+        <!-- Búsqueda -->
+        <div class="filtro-busqueda-wrap">
+          <svg
+            class="busqueda-icono"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input
+            type="text"
+            class="filtro-busqueda"
+            placeholder="Buscar por KPI, mensaje o escala..."
+            [value]="filtroBusqueda"
+            (input)="onFiltroBusquedaChange($any($event.target).value)"
+          />
+        </div>
+
+        <!-- Estado -->
+        <select
+          class="filtro-select"
+          [value]="filtroEstado"
+          (change)="onFiltroEstadoChange($any($event.target).value)"
+        >
+          <option value="">Todos los estados</option>
+          <option value="ACTIVA">✅ Activa</option>
+          <option value="INACTIVA">⛔ Inactiva</option>
+        </select>
+
+        <!-- Escala -->
+        <select
+          class="filtro-select"
+          [value]="filtroEscala"
+          (change)="onFiltroEscalaChange($any($event.target).value)"
+        >
+          <option value="">Todas las escalas</option>
+          @for (e of escalas; track e) {
+            <option [value]="e">{{ e }}</option>
+          }
+        </select>
+
+        @if (hayFiltrosActivos) {
+          <button class="btn-limpiar" (click)="limpiarFiltros()">✕ Limpiar</button>
+        }
+
+        <button class="btn-crear" (click)="abrirCrear()">+ Nueva regla</button>
+      </div>
+
+      <div class="resultados-row">
+        <span class="resultados-texto">
+          <strong>{{ reglasFiltradas.length }}</strong> regla(s)
+        </span>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    @if (loading) {
+      <div class="loading-wrap">
+        <app-spinner size="large" message="Cargando reglas..."></app-spinner>
+      </div>
+    }
+
+    <!-- Lista de reglas -->
+    @if (!loading) {
+      @if (reglasFiltradas.length === 0) {
+        <div class="empty-state">
+          <span>⚡</span>
+          <p>No hay reglas con los filtros aplicados.</p>
+          <button class="btn-crear-empty" (click)="abrirCrear()">+ Crear primera regla</button>
+        </div>
+      } @else {
+        <div class="reglas-lista">
+          @for (regla of reglasFiltradas; track regla.idRegla) {
+            <div class="regla-card" [class.inactiva]="regla.estado === 'INACTIVA'">
+              <!-- Header de la card -->
+              <div class="regla-card-header">
+                <div class="regla-card-header-left">
+                  <div class="kpi-badge">
+                    <span class="kpi-badge-categoria">
+                      {{ iconoCategoria(categoriaDesdeKpi(regla.codigoKpi ?? '')) }}
+                    </span>
+                    <div>
+                      <span class="kpi-badge-nombre">
+                        {{ regla.nombreKpi ?? '—' }}
+                      </span>
+                      <span class="kpi-badge-codigo">
+                        {{ regla.codigoKpi ?? '—' }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="regla-card-header-right">
+                  <span
+                    class="estado-chip"
+                    [class.activa]="regla.estado === 'ACTIVA'"
+                    [class.inactiva]="regla.estado === 'INACTIVA'"
+                  >
+                    {{ regla.estado === 'ACTIVA' ? '✅ Activa' : '⛔ Inactiva' }}
+                  </span>
+                  <span class="escala-chip"> 📐 {{ regla.escalaAplicable }} </span>
+                  @if (regla.prioridad != null) {
+                    <span class="prioridad-chip"> P{{ regla.prioridad }} </span>
+                  }
+                </div>
+              </div>
+
+              <!-- Condición visual -->
+              <div class="regla-condicion">
+                <span class="condicion-kpi">
+                  {{ regla.nombreKpi }}
+                </span>
+                <span class="condicion-op">
+                  {{ labelCondicion(regla) }}
+                </span>
+                <span class="condicion-tipo"> ({{ regla.umbralTipo }}) </span>
+                <span class="condicion-objetivo">
+                  → Estado objetivo:
+                  <strong>{{ regla.estadoKpiObjetivo }}</strong>
+                </span>
+              </div>
+
+              <!-- Mensaje -->
+              @if (regla.mensaje) {
+                <p class="regla-mensaje">💬 {{ regla.mensaje }}</p>
+              }
+
+              <!-- Prácticas vinculadas -->
+              @if (regla.practicas.length > 0) {
+                <div class="practicas-vinculadas">
+                  <span class="practicas-label">
+                    Prácticas vinculadas ({{ regla.practicas.length }}):
+                  </span>
+                  <div class="practicas-chips">
+                    @for (p of regla.practicas; track p.id) {
+                      <span class="practica-chip">
+                        {{ p.orden }}. {{ p.nombrePractica }}
+                        <span class="practica-chip-dif">
+                          {{ p.dificultadPractica }}
+                        </span>
+                      </span>
+                    }
+                  </div>
+                </div>
+              } @else {
+                <p class="sin-practicas">⚠️ Sin prácticas vinculadas</p>
+              }
+
+              <!-- Acciones -->
+              <div class="regla-acciones">
+                <button class="btn-editar" (click)="abrirEditar(regla)">✏️ Editar</button>
+                @if (regla.estado === 'ACTIVA') {
+                  <button class="btn-desactivar" (click)="desactivar(regla, $event)">
+                    ⛔ Desactivar
+                  </button>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+  }
+
+  <!-- ═══════════════════════════════════════════════════
+       VISTA: FORMULARIO
+  ═══════════════════════════════════════════════════ -->
+  @if (tabActivo === 'form') {
+    <div class="form-layout">
+      <!-- Header del form -->
+      <div class="form-header-row">
+        <button class="btn-volver" (click)="cancelarForm()">← Volver</button>
+        <h2 class="form-titulo">
+          {{ modoForm === 'crear' ? '+ Nueva regla' : '✏️ Editar regla' }}
+        </h2>
+      </div>
+
+      <div class="form-grid">
+        <!-- ── Columna izquierda: datos de la regla ── -->
+        <div class="form-col">
+          <!-- KPI -->
+          <div class="form-card">
+            <h3 class="form-card-titulo">📊 KPI asociado</h3>
+            @if (modoForm === 'editar') {
+              <div class="campo-readonly">
+                <span class="campo-readonly-label">KPI</span>
+                <span class="campo-readonly-valor">
+                  {{ kpiSeleccionadoNombre }}
+                </span>
+              </div>
+            } @else {
+              <div class="campo-group">
+                <label class="campo-label"> Selecciona el KPI * </label>
+                <select
+                  class="campo-select"
+                  [value]="form.idKpi ?? ''"
+                  (change)="onFormChange('idKpi', +$any($event.target).value || null)"
+                >
+                  <option value="">— Selecciona un KPI —</option>
+                  @for (cat of categorias; track cat.valor) {
+                    @if (kpisPorCategoria[cat.valor]?.length) {
+                      <optgroup [label]="cat.label">
+                        @for (kpi of kpisPorCategoria[cat.valor]; track kpi.idKpi) {
+                          <option [value]="kpi.idKpi">
+                            {{ kpi.nombre }}
+                            @if (kpi.unidad) {
+                              ({{ kpi.unidad }})
+                            }
+                          </option>
+                        }
+                      </optgroup>
+                    }
+                  }
+                </select>
+              </div>
+            }
+          </div>
+
+          <!-- Condición -->
+          <div class="form-card">
+            <h3 class="form-card-titulo">⚡ Condición</h3>
+
+            <div class="campo-group">
+              <label class="campo-label">Operador *</label>
+              <select
+                class="campo-select"
+                [value]="form.operador"
+                (change)="onFormChange('operador', $any($event.target).value)"
+              >
+                @for (op of operadores; track op.valor) {
+                  <option [value]="op.valor">{{ op.label }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="campos-row">
+              <div class="campo-group">
+                <label class="campo-label">
+                  {{ necesitaUmbral2 ? 'Umbral mínimo *' : 'Umbral *' }}
+                </label>
+                <input
+                  type="number"
+                  class="campo-input"
+                  placeholder="Ej: 8.5"
+                  [value]="form.umbral1 ?? ''"
+                  (input)="onFormChange('umbral1', +$any($event.target).value || null)"
+                />
+              </div>
+              @if (necesitaUmbral2) {
+                <div class="campo-group">
+                  <label class="campo-label">Umbral máximo *</label>
+                  <input
+                    type="number"
+                    class="campo-input"
+                    placeholder="Ej: 15.0"
+                    [value]="form.umbral2 ?? ''"
+                    (input)="onFormChange('umbral2', +$any($event.target).value || null)"
+                  />
+                </div>
+              }
+            </div>
+
+            <div class="campo-group">
+              <label class="campo-label">Tipo de umbral *</label>
+              <select
+                class="campo-select"
+                [value]="form.umbralTipo"
+                (change)="onFormChange('umbralTipo', $any($event.target).value)"
+              >
+                @for (t of umbralTipos; track t.valor) {
+                  <option [value]="t.valor">{{ t.label }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="campo-group">
+              <label class="campo-label">Estado KPI objetivo *</label>
+              <select
+                class="campo-select"
+                [value]="form.estadoKpiObjetivo"
+                (change)="onFormChange('estadoKpiObjetivo', $any($event.target).value)"
+              >
+                @for (e of estadosKpi; track e.valor) {
+                  <option [value]="e.valor">{{ e.label }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <!-- Configuración -->
+          <div class="form-card">
+            <h3 class="form-card-titulo">⚙️ Configuración</h3>
+
+            <div class="campos-row">
+              <div class="campo-group">
+                <label class="campo-label">Escala aplicable *</label>
+                <select
+                  class="campo-select"
+                  [value]="form.escalaAplicable"
+                  (change)="onFormChange('escalaAplicable', $any($event.target).value)"
+                >
+                  @for (e of escalas; track e) {
+                    <option [value]="e">{{ e }}</option>
+                  }
+                </select>
+              </div>
+              <div class="campo-group">
+                <label class="campo-label">Prioridad</label>
+                <input
+                  type="number"
+                  class="campo-input"
+                  placeholder="Ej: 1"
+                  min="1"
+                  [value]="form.prioridad ?? ''"
+                  (input)="onFormChange('prioridad', +$any($event.target).value || null)"
+                />
+              </div>
+            </div>
+
+            @if (modoForm === 'editar') {
+              <div class="campo-group">
+                <label class="campo-label">Estado de la regla</label>
+                <select
+                  class="campo-select"
+                  [value]="form.estado"
+                  (change)="onFormChange('estado', $any($event.target).value)"
+                >
+                  <option value="ACTIVA">✅ Activa</option>
+                  <option value="INACTIVA">⛔ Inactiva</option>
+                </select>
+              </div>
+            }
+
+            <div class="campo-group">
+              <label class="campo-label">Mensaje de recomendación</label>
+              <textarea
+                class="campo-textarea"
+                rows="3"
+                placeholder="Ej: Tu producción por vaca está por debajo del promedio sectorial..."
+                [value]="form.mensaje"
+                (input)="onFormChange('mensaje', $any($event.target).value)"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Columna derecha: prácticas ── -->
+        <div class="form-col">
+          <div class="form-card form-card-practicas">
+            <div class="practicas-form-header">
+              <h3 class="form-card-titulo">🌱 Prácticas vinculadas</h3>
+              <span class="practicas-count-badge">
+                {{ practicasSeleccionadas.length }} seleccionadas
+              </span>
+            </div>
+
+            <p class="practicas-hint">
+              Selecciona las prácticas que se recomendarán cuando esta regla se active. El orden
+              determina la prioridad.
+            </p>
+
+            <!-- Orden actual -->
+            @if (practicasSeleccionadas.length > 0) {
+              <div class="orden-actual">
+                <span class="orden-label">Orden de recomendación:</span>
+                @for (p of practicasSeleccionadas; track p.idPractica; let i = $index) {
+                  <div class="orden-item">
+                    <span class="orden-num">{{ i + 1 }}</span>
+                    <span class="orden-nombre">
+                      {{ nombrePractica(p.idPractica) }}
+                    </span>
+                    <div class="orden-botones">
+                      <button class="btn-orden" [disabled]="i === 0" (click)="moverArriba(i)">
+                        ↑
+                      </button>
+                      <button
+                        class="btn-orden"
+                        [disabled]="i === practicasSeleccionadas.length - 1"
+                        (click)="moverAbajo(i)"
+                      >
+                        ↓
+                      </button>
+                      <button
+                        class="btn-orden btn-orden-remove"
+                        (click)="togglePractica(p.idPractica)"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  </div>
+                }
+              </div>
+            }
+
+            <!-- Filtro por categoría -->
+            <div class="practicas-filtro-row">
+              <span class="practicas-filtro-label"> Filtrar por categoría: </span>
+              <div class="practicas-cat-btns">
+                <button
+                  class="cat-btn"
+                  [class.activo]="filtroCatPractica === ''"
+                  (click)="setFiltroCatPractica('')"
+                >
+                  Todas
+                </button>
+                @for (cat of categorias; track cat.valor) {
+                  <button
+                    class="cat-btn"
+                    [class.activo]="filtroCatPractica === cat.valor"
+                    (click)="setFiltroCatPractica(cat.valor)"
+                  >
+                    {{ cat.label }}
+                  </button>
+                }
+              </div>
+            </div>
+
+            <!-- Grid de prácticas -->
+            <div class="practicas-selector">
+              @for (p of practicasDisponibles; track p.idPractica) {
+                <div
+                  class="practica-selector-item"
+                  [class.seleccionada]="isPracticaSeleccionada(p.idPractica)"
+                  (click)="togglePractica(p.idPractica)"
+                >
+                  <div class="practica-sel-check">
+                    @if (isPracticaSeleccionada(p.idPractica)) {
+                      <span class="check-on">✓</span>
+                    } @else {
+                      <span class="check-off">+</span>
+                    }
+                  </div>
+                  <div class="practica-sel-info">
+                    <span class="practica-sel-nombre">
+                      {{ p.nombre }}
+                    </span>
+                    <div class="practica-sel-meta">
+                      <span class="practica-sel-cat">
+                        {{ iconoCategoria(p.categoria ?? '') }}
+                        {{ p.categoria }}
+                      </span>
+                      <span
+                        class="practica-sel-dif"
+                        [class.dif-baja]="p.dificultad === 'BAJA'"
+                        [class.dif-media]="p.dificultad === 'MEDIA'"
+                        [class.dif-alta]="p.dificultad === 'ALTA'"
+                      >
+                        {{ p.dificultad }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              }
+
+              @if (practicasDisponibles.length === 0) {
+                <p class="practicas-empty">Sin prácticas en esta categoría.</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones guardar -->
+      <div class="form-footer">
+        <button class="btn-cancelar" (click)="cancelarForm()">Cancelar</button>
+        <button class="btn-guardar" [disabled]="guardando" (click)="guardar()">
+          @if (guardando) {
+            <app-spinner size="small"></app-spinner>
+            Guardando...
+          } @else {
+            {{ modoForm === 'crear' ? '+ Crear regla' : '💾 Guardar cambios' }}
+          }
+        </button>
+      </div>
+    </div>
+  }
+</div>

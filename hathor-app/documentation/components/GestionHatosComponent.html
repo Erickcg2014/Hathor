@@ -1,0 +1,2395 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  GestionHatosComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/admin/gestion-hatos/gestion-hatos.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-gestion-hatos</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./gestion-hatos.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./gestion-hatos.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#escalasOpciones" >escalasOpciones</a>
+                            </li>
+                            <li>
+                                <a href="#filtroBusqueda" >filtroBusqueda</a>
+                            </li>
+                            <li>
+                                <a href="#filtroEscala" >filtroEscala</a>
+                            </li>
+                            <li>
+                                <a href="#filtrosActuales" >filtrosActuales</a>
+                            </li>
+                            <li>
+                                <a href="#filtroTipoHato" >filtroTipoHato</a>
+                            </li>
+                            <li>
+                                <a href="#filtroTropico" >filtroTropico</a>
+                            </li>
+                            <li>
+                                <a href="#hatos" >hatos</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#PAGE_SIZE" >PAGE_SIZE</a>
+                            </li>
+                            <li>
+                                <a href="#paginaActual" >paginaActual</a>
+                            </li>
+                            <li>
+                                <a href="#tropicosOpciones" >tropicosOpciones</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cargarHatos" >cargarHatos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarOpciones" >cargarOpciones</a>
+                            </li>
+                            <li>
+                                <a href="#colorCompletitud" >colorCompletitud</a>
+                            </li>
+                            <li>
+                                <a href="#iconoEscala" >iconoEscala</a>
+                            </li>
+                            <li>
+                                <a href="#irAPagina" >irAPagina</a>
+                            </li>
+                            <li>
+                                <a href="#limpiarFiltros" >limpiarFiltros</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onBusquedaChange" >onBusquedaChange</a>
+                            </li>
+                            <li>
+                                <a href="#onEscalaChange" >onEscalaChange</a>
+                            </li>
+                            <li>
+                                <a href="#onTipoHatoChange" >onTipoHatoChange</a>
+                            </li>
+                            <li>
+                                <a href="#onTropicoChange" >onTropicoChange</a>
+                            </li>
+                            <li>
+                                <a href="#verDetalle" >verDetalle</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#hatosFiltradosLocalmente" >hatosFiltradosLocalmente</a>
+                                </li>
+                                <li>
+                                    <a href="#hatosPaginados" >hatosPaginados</a>
+                                </li>
+                                <li>
+                                    <a href="#totalPaginas" >totalPaginas</a>
+                                </li>
+                                <li>
+                                    <a href="#paginas" >paginas</a>
+                                </li>
+                                <li>
+                                    <a href="#hayFiltrosActivos" >hayFiltrosActivos</a>
+                                </li>
+                                <li>
+                                    <a href="#labelContexto" >labelContexto</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(adminService: <a href="../injectables/AdminService.html" target="_self">AdminService</a>, adminState: <a href="../injectables/AdminStateService.html" target="_self">AdminStateService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:54</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>adminService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AdminService.html" target="_self" >AdminService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>adminState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AdminStateService.html" target="_self" >AdminStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarHatos"></a>
+                    <span class="name">
+                        <span ><b>cargarHatos</b></span>
+                        <a href="#cargarHatos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarHatos()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarOpciones"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarOpciones</b></span>
+                        <a href="#cargarOpciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarOpciones()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:87</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorCompletitud"></a>
+                    <span class="name">
+                        <span ><b>colorCompletitud</b></span>
+                        <a href="#colorCompletitud"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorCompletitud(pct: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:208</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>pct</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoEscala"></a>
+                    <span class="name">
+                        <span ><b>iconoEscala</b></span>
+                        <a href="#iconoEscala"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoEscala(escala: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="215"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:215</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>escala</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irAPagina"></a>
+                    <span class="name">
+                        <span ><b>irAPagina</b></span>
+                        <a href="#irAPagina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irAPagina(pagina: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="194"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:194</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>pagina</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="limpiarFiltros"></a>
+                    <span class="name">
+                        <span ><b>limpiarFiltros</b></span>
+                        <a href="#limpiarFiltros"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>limpiarFiltros()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="158"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:158</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="247"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:247</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBusquedaChange"></a>
+                    <span class="name">
+                        <span ><b>onBusquedaChange</b></span>
+                        <a href="#onBusquedaChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onBusquedaChange(valor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onEscalaChange"></a>
+                    <span class="name">
+                        <span ><b>onEscalaChange</b></span>
+                        <a href="#onEscalaChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onEscalaChange(valor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:138</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTipoHatoChange"></a>
+                    <span class="name">
+                        <span ><b>onTipoHatoChange</b></span>
+                        <a href="#onTipoHatoChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onTipoHatoChange(valor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="145"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:145</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTropicoChange"></a>
+                    <span class="name">
+                        <span ><b>onTropicoChange</b></span>
+                        <a href="#onTropicoChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onTropicoChange(valor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="131"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:131</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verDetalle"></a>
+                    <span class="name">
+                        <span ><b>verDetalle</b></span>
+                        <a href="#verDetalle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>verDetalle(hato: <a href="../interfaces/HatoAdminDTO.html" target="_self">HatoAdminDTO</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="202"
+                                    class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:202</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>hato</td>
+                                            <td>
+                                                            <code><a href="../interfaces/HatoAdminDTO.html" target="_self" >HatoAdminDTO</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="escalasOpciones"></a>
+                    <span class="name">
+                        <span ><b>escalasOpciones</b></span>
+                        <a href="#escalasOpciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroBusqueda"></a>
+                    <span class="name">
+                        <span ><b>filtroBusqueda</b></span>
+                        <a href="#filtroBusqueda"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroEscala"></a>
+                    <span class="name">
+                        <span ><b>filtroEscala</b></span>
+                        <a href="#filtroEscala"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtrosActuales"></a>
+                    <span class="name">
+                        <span ><b>filtrosActuales</b></span>
+                        <a href="#filtrosActuales"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/FiltroAdmin.html" target="_self" >FiltroAdmin</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    departamento: null,
+    region: null,
+    idHato: null,
+    nombreHato: null,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroTipoHato"></a>
+                    <span class="name">
+                        <span ><b>filtroTipoHato</b></span>
+                        <a href="#filtroTipoHato"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroTropico"></a>
+                    <span class="name">
+                        <span ><b>filtroTropico</b></span>
+                        <a href="#filtroTropico"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatos"></a>
+                    <span class="name">
+                        <span ><b>hatos</b></span>
+                        <a href="#hatos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HatoAdminDTO[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PAGE_SIZE"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>PAGE_SIZE</b></span>
+                        <a href="#PAGE_SIZE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>15</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginaActual"></a>
+                    <span class="name">
+                        <span ><b>paginaActual</b></span>
+                        <a href="#paginaActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tropicosOpciones"></a>
+                    <span class="name">
+                        <span ><b>tropicosOpciones</b></span>
+                        <a href="#tropicosOpciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hatosFiltradosLocalmente"></a>
+                        <span class="name"><b>hatosFiltradosLocalmente</b><a href="#hatosFiltradosLocalmente"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>hatosFiltradosLocalmente()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:170</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hatosPaginados"></a>
+                        <span class="name"><b>hatosPaginados</b><a href="#hatosPaginados"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>hatosPaginados()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:181</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalPaginas"></a>
+                        <span class="name"><b>totalPaginas</b><a href="#totalPaginas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalPaginas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:186</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="paginas"></a>
+                        <span class="name"><b>paginas</b><a href="#paginas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>paginas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:190</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hayFiltrosActivos"></a>
+                        <span class="name"><b>hayFiltrosActivos</b><a href="#hayFiltrosActivos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>hayFiltrosActivos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:225</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="labelContexto"></a>
+                        <span class="name"><b>labelContexto</b><a href="#labelContexto"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>labelContexto()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="236" class="link-to-prism">src/app/features/admin/gestion-hatos/gestion-hatos.component.ts:236</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil, debounceTime, distinctUntilChanged } from &#x27;rxjs&#x27;;
+
+import { AdminService, HatoAdminDTO } from &#x27;../../../core/services/admin/admin.service&#x27;;
+import {
+  AdminStateService,
+  FiltroAdmin,
+} from &#x27;../../../core/services/ui-state/admin-state.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../shared/spinner/spinner.component&#x27;;
+
+@Component({
+  selector: &#x27;app-gestion-hatos&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent],
+  templateUrl: &#x27;./gestion-hatos.component.html&#x27;,
+  styleUrl: &#x27;./gestion-hatos.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class GestionHatosComponent implements OnInit, OnDestroy {
+  // ── Estado ────────────────────────────────────────────────────────────
+  loading &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  hatos: HatoAdminDTO[] &#x3D; [];
+
+  // ── Filtros adicionales locales ───────────────────────────────────────
+  filtroTropico: string &#x3D; &#x27;&#x27;;
+  filtroEscala: string &#x3D; &#x27;&#x27;;
+  filtroTipoHato: string &#x3D; &#x27;&#x27;;
+  filtroBusqueda: string &#x3D; &#x27;&#x27;;
+
+  tropicosOpciones: string[] &#x3D; [];
+  escalasOpciones: string[] &#x3D; [];
+
+  // ── Paginación ────────────────────────────────────────────────────────
+  readonly PAGE_SIZE &#x3D; 15;
+  paginaActual &#x3D; 1;
+
+  // ── Filtros del navbar admin ──────────────────────────────────────────
+  filtrosActuales: FiltroAdmin &#x3D; {
+    departamento: null,
+    region: null,
+    idHato: null,
+    nombreHato: null,
+  };
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private adminService: AdminService,
+    private adminState: AdminStateService,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    // Cargar opciones de filtros locales
+    this.cargarOpciones();
+
+    // Suscribirse a cambios de filtros del navbar admin
+    this.adminState
+      .getFiltros$()
+      .pipe(
+        takeUntil(this.destroy$),
+        distinctUntilChanged(
+          (a, b) &#x3D;&gt;
+            a.departamento &#x3D;&#x3D;&#x3D; b.departamento &amp;&amp; a.region &#x3D;&#x3D;&#x3D; b.region &amp;&amp; a.idHato &#x3D;&#x3D;&#x3D; b.idHato,
+        ),
+      )
+      .subscribe((filtros) &#x3D;&gt; {
+        this.filtrosActuales &#x3D; filtros;
+        this.paginaActual &#x3D; 1;
+        this.cargarHatos();
+        this.cdr.markForCheck();
+      });
+  }
+
+  // ── Carga de datos ────────────────────────────────────────────────────
+
+  private cargarOpciones(): void {
+    this.adminService.getTropicos().subscribe({
+      next: (t) &#x3D;&gt; {
+        this.tropicosOpciones &#x3D; t;
+        this.cdr.markForCheck();
+      },
+    });
+    this.adminService.getEscalas().subscribe({
+      next: (e) &#x3D;&gt; {
+        this.escalasOpciones &#x3D; e;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  cargarHatos(): void {
+    this.loading &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    this.adminService
+      .getHatosFiltrados(
+        this.filtrosActuales.departamento ?? undefined,
+        this.filtrosActuales.region ?? undefined,
+        this.filtroTropico || undefined,
+        this.filtroEscala || undefined,
+        this.filtroTipoHato || undefined,
+      )
+      .subscribe({
+        next: (hatos) &#x3D;&gt; {
+          this.hatos &#x3D; hatos;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.error &#x3D; &#x27;Error al cargar los hatos.&#x27;;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Filtros locales ───────────────────────────────────────────────────
+
+  onTropicoChange(valor: string): void {
+    this.filtroTropico &#x3D; valor;
+    this.paginaActual &#x3D; 1;
+    this.cargarHatos();
+    this.cdr.markForCheck();
+  }
+
+  onEscalaChange(valor: string): void {
+    this.filtroEscala &#x3D; valor;
+    this.paginaActual &#x3D; 1;
+    this.cargarHatos();
+    this.cdr.markForCheck();
+  }
+
+  onTipoHatoChange(valor: string): void {
+    this.filtroTipoHato &#x3D; valor;
+    this.paginaActual &#x3D; 1;
+    this.cargarHatos();
+    this.cdr.markForCheck();
+  }
+
+  onBusquedaChange(valor: string): void {
+    this.filtroBusqueda &#x3D; valor.toLowerCase().trim();
+    this.paginaActual &#x3D; 1;
+    this.cdr.markForCheck();
+  }
+
+  limpiarFiltros(): void {
+    this.filtroTropico &#x3D; &#x27;&#x27;;
+    this.filtroEscala &#x3D; &#x27;&#x27;;
+    this.filtroTipoHato &#x3D; &#x27;&#x27;;
+    this.filtroBusqueda &#x3D; &#x27;&#x27;;
+    this.paginaActual &#x3D; 1;
+    this.cargarHatos();
+    this.cdr.markForCheck();
+  }
+
+  // ── Paginación ────────────────────────────────────────────────────────
+
+  get hatosFiltradosLocalmente(): HatoAdminDTO[] {
+    if (!this.filtroBusqueda) return this.hatos;
+    return this.hatos.filter(
+      (h) &#x3D;&gt;
+        h.nombreHato.toLowerCase().includes(this.filtroBusqueda) ||
+        h.departamento.toLowerCase().includes(this.filtroBusqueda) ||
+        h.ciudad.toLowerCase().includes(this.filtroBusqueda) ||
+        (h.correoUsuario ?? &#x27;&#x27;).toLowerCase().includes(this.filtroBusqueda),
+    );
+  }
+
+  get hatosPaginados(): HatoAdminDTO[] {
+    const inicio &#x3D; (this.paginaActual - 1) * this.PAGE_SIZE;
+    return this.hatosFiltradosLocalmente.slice(inicio, inicio + this.PAGE_SIZE);
+  }
+
+  get totalPaginas(): number {
+    return Math.ceil(this.hatosFiltradosLocalmente.length / this.PAGE_SIZE);
+  }
+
+  get paginas(): number[] {
+    return Array.from({ length: this.totalPaginas }, (_, i) &#x3D;&gt; i + 1);
+  }
+
+  irAPagina(pagina: number): void {
+    if (pagina &lt; 1 || pagina &gt; this.totalPaginas) return;
+    this.paginaActual &#x3D; pagina;
+    this.cdr.markForCheck();
+  }
+
+  // ── Navegación al detalle ─────────────────────────────────────────────
+
+  verDetalle(hato: HatoAdminDTO): void {
+    this.router.navigate([&#x27;/admin/hatos&#x27;, hato.idHato]);
+  }
+
+  // ── Helpers visuales ─────────────────────────────────────────────────
+
+  colorCompletitud(pct: number): string {
+    if (pct &gt;&#x3D; 100) return &#x27;comp-completo&#x27;;
+    if (pct &gt;&#x3D; 75) return &#x27;comp-alto&#x27;;
+    if (pct &gt;&#x3D; 50) return &#x27;comp-medio&#x27;;
+    return &#x27;comp-bajo&#x27;;
+  }
+
+  iconoEscala(escala: string | null): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      PEQUEÑA: &#x27;🏠&#x27;,
+      MEDIANA: &#x27;🏡&#x27;,
+      GRANDE: &#x27;🏘️&#x27;,
+      EMPRESARIAL: &#x27;🏢&#x27;,
+    };
+    return map[escala ?? &#x27;&#x27;] ?? &#x27;🐄&#x27;;
+  }
+
+  get hayFiltrosActivos(): boolean {
+    return !!(
+      this.filtrosActuales.departamento ||
+      this.filtrosActuales.region ||
+      this.filtroTropico ||
+      this.filtroEscala ||
+      this.filtroTipoHato ||
+      this.filtroBusqueda
+    );
+  }
+
+  get labelContexto(): string {
+    const partes: string[] &#x3D; [];
+    if (this.filtrosActuales.departamento) {
+      partes.push(this.filtrosActuales.departamento);
+    }
+    if (this.filtrosActuales.region) {
+      partes.push(this.filtrosActuales.region);
+    }
+    return partes.length &gt; 0 ? partes.join(&#x27; › &#x27;) : &#x27;Nacional — todos los departamentos&#x27;;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;gestion-hatos-page&quot;&gt;
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HEADER &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  &lt;header class&#x3D;&quot;page-header&quot;&gt;
+    &lt;div class&#x3D;&quot;header-left&quot;&gt;
+      &lt;p class&#x3D;&quot;page-tag&quot;&gt;Administración · Hatos&lt;/p&gt;
+      &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Gestión de &lt;span class&#x3D;&quot;brand&quot;&gt;Hatos&lt;/span&gt;&lt;/h1&gt;
+      &lt;p class&#x3D;&quot;page-subtitle&quot;&gt;{{ labelContexto }}&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;header-right&quot;&gt;
+      &lt;div class&#x3D;&quot;header-icon&quot;&gt;🐄&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; FILTROS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  &lt;div class&#x3D;&quot;filtros-card&quot;&gt;
+    &lt;!-- Contexto del navbar admin --&gt;
+    @if (filtrosActuales.departamento) {
+      &lt;div class&#x3D;&quot;contexto-row&quot;&gt;
+        &lt;span class&#x3D;&quot;contexto-chip&quot;&gt; 📍 {{ filtrosActuales.departamento }} &lt;/span&gt;
+        @if (filtrosActuales.region) {
+          &lt;span class&#x3D;&quot;contexto-arrow&quot;&gt;›&lt;/span&gt;
+          &lt;span class&#x3D;&quot;contexto-chip&quot;&gt; 🏙️ {{ filtrosActuales.region }} &lt;/span&gt;
+        }
+        @if (filtrosActuales.nombreHato) {
+          &lt;span class&#x3D;&quot;contexto-arrow&quot;&gt;›&lt;/span&gt;
+          &lt;span class&#x3D;&quot;contexto-chip activo&quot;&gt; 🐄 {{ filtrosActuales.nombreHato }} &lt;/span&gt;
+        }
+      &lt;/div&gt;
+    }
+
+    &lt;!-- Filtros adicionales --&gt;
+    &lt;div class&#x3D;&quot;filtros-row&quot;&gt;
+      &lt;!-- Búsqueda --&gt;
+      &lt;div class&#x3D;&quot;filtro-busqueda-wrap&quot;&gt;
+        &lt;svg
+          class&#x3D;&quot;busqueda-icono&quot;
+          fill&#x3D;&quot;none&quot;
+          stroke&#x3D;&quot;currentColor&quot;
+          stroke-width&#x3D;&quot;2&quot;
+          viewBox&#x3D;&quot;0 0 24 24&quot;
+        &gt;
+          &lt;circle cx&#x3D;&quot;11&quot; cy&#x3D;&quot;11&quot; r&#x3D;&quot;8&quot; /&gt;
+          &lt;path d&#x3D;&quot;m21 21-4.35-4.35&quot; /&gt;
+        &lt;/svg&gt;
+        &lt;input
+          type&#x3D;&quot;text&quot;
+          class&#x3D;&quot;filtro-busqueda&quot;
+          placeholder&#x3D;&quot;Buscar por nombre, departamento, ciudad o correo...&quot;
+          [value]&#x3D;&quot;filtroBusqueda&quot;
+          (input)&#x3D;&quot;onBusquedaChange($any($event.target).value)&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Trópico --&gt;
+      &lt;select
+        class&#x3D;&quot;filtro-select&quot;
+        [value]&#x3D;&quot;filtroTropico&quot;
+        (change)&#x3D;&quot;onTropicoChange($any($event.target).value)&quot;
+      &gt;
+        &lt;option value&#x3D;&quot;&quot;&gt;🌿 Todos los trópicos&lt;/option&gt;
+        @for (t of tropicosOpciones; track t) {
+          &lt;option [value]&#x3D;&quot;t&quot;&gt;{{ t }}&lt;/option&gt;
+        }
+      &lt;/select&gt;
+
+      &lt;!-- Escala --&gt;
+      &lt;select
+        class&#x3D;&quot;filtro-select&quot;
+        [value]&#x3D;&quot;filtroEscala&quot;
+        (change)&#x3D;&quot;onEscalaChange($any($event.target).value)&quot;
+      &gt;
+        &lt;option value&#x3D;&quot;&quot;&gt;📐 Todas las escalas&lt;/option&gt;
+        @for (e of escalasOpciones; track e) {
+          &lt;option [value]&#x3D;&quot;e&quot;&gt;{{ e }}&lt;/option&gt;
+        }
+      &lt;/select&gt;
+
+      &lt;!-- Tipo de hato --&gt;
+      &lt;select
+        class&#x3D;&quot;filtro-select&quot;
+        [value]&#x3D;&quot;filtroTipoHato&quot;
+        (change)&#x3D;&quot;onTipoHatoChange($any($event.target).value)&quot;
+      &gt;
+        &lt;option value&#x3D;&quot;&quot;&gt;🏡 Todos los tipos&lt;/option&gt;
+        &lt;option value&#x3D;&quot;LECHERO&quot;&gt;Lechero&lt;/option&gt;
+        &lt;option value&#x3D;&quot;DOBLE_PROPOSITO&quot;&gt;Doble propósito&lt;/option&gt;
+        &lt;option value&#x3D;&quot;CARNE&quot;&gt;Carne&lt;/option&gt;
+      &lt;/select&gt;
+
+      &lt;!-- Limpiar filtros --&gt;
+      @if (hayFiltrosActivos) {
+        &lt;button class&#x3D;&quot;btn-limpiar&quot; (click)&#x3D;&quot;limpiarFiltros()&quot;&gt;✕ Limpiar&lt;/button&gt;
+      }
+    &lt;/div&gt;
+
+    &lt;!-- Resumen resultados --&gt;
+    &lt;div class&#x3D;&quot;resultados-row&quot;&gt;
+      &lt;span class&#x3D;&quot;resultados-texto&quot;&gt;
+        @if (loading) {
+          Cargando hatos...
+        } @else {
+          &lt;strong&gt;{{ hatosFiltradosLocalmente.length }}&lt;/strong&gt;
+          hato(s) encontrado(s)
+          @if (hatos.length !&#x3D;&#x3D; hatosFiltradosLocalmente.length) {
+            de {{ hatos.length }} total
+          }
+        }
+      &lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ERROR &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (error) {
+    &lt;div class&#x3D;&quot;msg-error&quot;&gt;
+      &lt;span&gt;❌&lt;/span&gt;
+      &lt;p&gt;{{ error }}&lt;/p&gt;
+    &lt;/div&gt;
+  }
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; LOADING &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (loading) {
+    &lt;div class&#x3D;&quot;loading-wrap&quot;&gt;
+      &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Cargando hatos...&quot;&gt;&lt;/app-spinner&gt;
+    &lt;/div&gt;
+  }
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; TABLA &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (!loading) {
+    @if (hatosFiltradosLocalmente.length &#x3D;&#x3D;&#x3D; 0) {
+      &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+        &lt;span&gt;🐄&lt;/span&gt;
+        &lt;p&gt;No se encontraron hatos con los filtros aplicados.&lt;/p&gt;
+        @if (hayFiltrosActivos) {
+          &lt;button class&#x3D;&quot;btn-limpiar-empty&quot; (click)&#x3D;&quot;limpiarFiltros()&quot;&gt;Limpiar filtros&lt;/button&gt;
+        }
+      &lt;/div&gt;
+    } @else {
+      &lt;div class&#x3D;&quot;tabla-card&quot;&gt;
+        &lt;div class&#x3D;&quot;tabla-wrap&quot;&gt;
+          &lt;table class&#x3D;&quot;tabla-hatos&quot;&gt;
+            &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th&gt;Hato&lt;/th&gt;
+                &lt;th&gt;Ubicación&lt;/th&gt;
+                &lt;th class&#x3D;&quot;text-center&quot;&gt;Escala&lt;/th&gt;
+                &lt;th class&#x3D;&quot;text-center&quot;&gt;Trópico&lt;/th&gt;
+                &lt;th class&#x3D;&quot;text-center&quot;&gt;Área&lt;/th&gt;
+                &lt;th class&#x3D;&quot;text-center&quot;&gt;Completitud&lt;/th&gt;
+                &lt;th&gt;Propietario&lt;/th&gt;
+                &lt;th class&#x3D;&quot;text-center&quot;&gt;Acciones&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+              @for (hato of hatosPaginados; track hato.idHato; let i &#x3D; $index) {
+                &lt;tr
+                  class&#x3D;&quot;tabla-fila&quot;
+                  [class.fila-alterna]&#x3D;&quot;i % 2 !&#x3D;&#x3D; 0&quot;
+                  (click)&#x3D;&quot;verDetalle(hato)&quot;
+                &gt;
+                  &lt;!-- Hato --&gt;
+                  &lt;td class&#x3D;&quot;td-hato&quot;&gt;
+                    &lt;div class&#x3D;&quot;hato-cell&quot;&gt;
+                      &lt;div class&#x3D;&quot;hato-avatar&quot;&gt;
+                        {{ hato.nombreHato.charAt(0).toUpperCase() }}
+                      &lt;/div&gt;
+                      &lt;div class&#x3D;&quot;hato-info&quot;&gt;
+                        &lt;span class&#x3D;&quot;hato-nombre&quot;&gt;{{ hato.nombreHato }}&lt;/span&gt;
+                        &lt;span class&#x3D;&quot;hato-tipo&quot;&gt;
+                          {{ hato.tipoHato ?? &#x27;—&#x27; }}
+                        &lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/td&gt;
+
+                  &lt;!-- Ubicación --&gt;
+                  &lt;td class&#x3D;&quot;td-ubicacion&quot;&gt;
+                    &lt;div class&#x3D;&quot;ubicacion-cell&quot;&gt;
+                      &lt;span class&#x3D;&quot;ubicacion-depto&quot;&gt;
+                        {{ hato.departamento }}
+                      &lt;/span&gt;
+                      &lt;span class&#x3D;&quot;ubicacion-ciudad&quot;&gt;
+                        {{ hato.ciudad }}
+                      &lt;/span&gt;
+                    &lt;/div&gt;
+                  &lt;/td&gt;
+
+                  &lt;!-- Escala --&gt;
+                  &lt;td class&#x3D;&quot;text-center&quot;&gt;
+                    &lt;span class&#x3D;&quot;escala-chip&quot;&gt;
+                      {{ iconoEscala(hato.escala) }}
+                      {{ hato.escala ?? &#x27;—&#x27; }}
+                    &lt;/span&gt;
+                  &lt;/td&gt;
+
+                  &lt;!-- Trópico --&gt;
+                  &lt;td class&#x3D;&quot;text-center&quot;&gt;
+                    &lt;span class&#x3D;&quot;tropico-chip&quot;&gt;
+                      {{ hato.tropico ?? &#x27;—&#x27; }}
+                    &lt;/span&gt;
+                  &lt;/td&gt;
+
+                  &lt;!-- Área --&gt;
+                  &lt;td class&#x3D;&quot;text-center td-area&quot;&gt;
+                    {{ hato.areaHato !&#x3D; null ? hato.areaHato + &#x27; ha&#x27; : &#x27;—&#x27; }}
+                  &lt;/td&gt;
+
+                  &lt;!-- Completitud --&gt;
+                  &lt;td class&#x3D;&quot;td-completitud&quot;&gt;
+                    &lt;div class&#x3D;&quot;completitud-cell&quot;&gt;
+                      &lt;div class&#x3D;&quot;comp-barra&quot;&gt;
+                        &lt;div
+                          class&#x3D;&quot;comp-barra-fill&quot;
+                          [class]&#x3D;&quot;colorCompletitud(hato.porcentajeCompletitud)&quot;
+                          [style.width.%]&#x3D;&quot;hato.porcentajeCompletitud&quot;
+                        &gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;span class&#x3D;&quot;comp-pct&quot; [class]&#x3D;&quot;colorCompletitud(hato.porcentajeCompletitud)&quot;&gt;
+                        {{ hato.porcentajeCompletitud }}%
+                      &lt;/span&gt;
+                    &lt;/div&gt;
+                  &lt;/td&gt;
+
+                  &lt;!-- Propietario --&gt;
+                  &lt;td class&#x3D;&quot;td-propietario&quot;&gt;
+                    &lt;div class&#x3D;&quot;propietario-cell&quot;&gt;
+                      &lt;span class&#x3D;&quot;prop-nombre&quot;&gt;
+                        {{ hato.nombreUsuario ?? &#x27;—&#x27; }}
+                        {{ hato.apellidoUsuario ?? &#x27;&#x27; }}
+                      &lt;/span&gt;
+                      &lt;span class&#x3D;&quot;prop-correo&quot;&gt;
+                        {{ hato.correoUsuario ?? &#x27;—&#x27; }}
+                      &lt;/span&gt;
+                    &lt;/div&gt;
+                  &lt;/td&gt;
+
+                  &lt;!-- Acciones --&gt;
+                  &lt;td class&#x3D;&quot;text-center td-acciones&quot;&gt;
+                    &lt;button class&#x3D;&quot;btn-ver&quot; (click)&#x3D;&quot;$event.stopPropagation(); verDetalle(hato)&quot;&gt;
+                      Ver detalle →
+                    &lt;/button&gt;
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              }
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Paginación --&gt;
+      @if (totalPaginas &gt; 1) {
+        &lt;div class&#x3D;&quot;paginacion&quot;&gt;
+          &lt;button
+            class&#x3D;&quot;pag-btn&quot;
+            [disabled]&#x3D;&quot;paginaActual &#x3D;&#x3D;&#x3D; 1&quot;
+            (click)&#x3D;&quot;irAPagina(paginaActual - 1)&quot;
+          &gt;
+            ‹ Anterior
+          &lt;/button&gt;
+
+          @for (p of paginas; track p) {
+            @if (
+              p &#x3D;&#x3D;&#x3D; 1 || p &#x3D;&#x3D;&#x3D; totalPaginas || (p &gt;&#x3D; paginaActual - 2 &amp;&amp; p &lt;&#x3D; paginaActual + 2)
+            ) {
+              &lt;button class&#x3D;&quot;pag-num&quot; [class.activo]&#x3D;&quot;paginaActual &#x3D;&#x3D;&#x3D; p&quot; (click)&#x3D;&quot;irAPagina(p)&quot;&gt;
+                {{ p }}
+              &lt;/button&gt;
+            } @else if (p &#x3D;&#x3D;&#x3D; paginaActual - 3 || p &#x3D;&#x3D;&#x3D; paginaActual + 3) {
+              &lt;span class&#x3D;&quot;pag-dots&quot;&gt;…&lt;/span&gt;
+            }
+          }
+
+          &lt;button
+            class&#x3D;&quot;pag-btn&quot;
+            [disabled]&#x3D;&quot;paginaActual &#x3D;&#x3D;&#x3D; totalPaginas&quot;
+            (click)&#x3D;&quot;irAPagina(paginaActual + 1)&quot;
+          &gt;
+            Siguiente ›
+          &lt;/button&gt;
+        &lt;/div&gt;
+      }
+    }
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="gestion-hatos-page">  <!-- ===== HEADER ===== -->  <header class="page-header">    <div class="header-left">      <p class="page-tag">Administración · Hatos</p>      <h1 class="page-title">Gestión de <span class="brand">Hatos</span></h1>      <p class="page-subtitle">{{ labelContexto }}</p>    </div>    <div class="header-right">      <div class="header-icon">🐄</div>    </div>  </header>  <!-- ===== FILTROS ===== -->  <div class="filtros-card">    <!-- Contexto del navbar admin -->    @if (filtrosActuales.departamento) {      <div class="contexto-row">        <span class="contexto-chip"> 📍 {{ filtrosActuales.departamento }} </span>        @if (filtrosActuales.region) {          <span class="contexto-arrow">›</span>          <span class="contexto-chip"> 🏙️ {{ filtrosActuales.region }} </span>        }        @if (filtrosActuales.nombreHato) {          <span class="contexto-arrow">›</span>          <span class="contexto-chip activo"> 🐄 {{ filtrosActuales.nombreHato }} </span>        }      </div>    }    <!-- Filtros adicionales -->    <div class="filtros-row">      <!-- Búsqueda -->      <div class="filtro-busqueda-wrap">        <svg          class="busqueda-icono"          fill="none"          stroke="currentColor"          stroke-width="2"          viewBox="0 0 24 24"        >          <circle cx="11" cy="11" r="8" />          <path d="m21 21-4.35-4.35" />        </svg>        <input          type="text"          class="filtro-busqueda"          placeholder="Buscar por nombre, departamento, ciudad o correo..."          [value]="filtroBusqueda"          (input)="onBusquedaChange($any($event.target).value)"        />      </div>      <!-- Trópico -->      <select        class="filtro-select"        [value]="filtroTropico"        (change)="onTropicoChange($any($event.target).value)"      >        <option value="">🌿 Todos los trópicos</option>        @for (t of tropicosOpciones; track t) {          <option [value]="t">{{ t }}</option>        }      </select>      <!-- Escala -->      <select        class="filtro-select"        [value]="filtroEscala"        (change)="onEscalaChange($any($event.target).value)"      >        <option value="">📐 Todas las escalas</option>        @for (e of escalasOpciones; track e) {          <option [value]="e">{{ e }}</option>        }      </select>      <!-- Tipo de hato -->      <select        class="filtro-select"        [value]="filtroTipoHato"        (change)="onTipoHatoChange($any($event.target).value)"      >        <option value="">🏡 Todos los tipos</option>        <option value="LECHERO">Lechero</option>        <option value="DOBLE_PROPOSITO">Doble propósito</option>        <option value="CARNE">Carne</option>      </select>      <!-- Limpiar filtros -->      @if (hayFiltrosActivos) {        <button class="btn-limpiar" (click)="limpiarFiltros()">✕ Limpiar</button>      }    </div>    <!-- Resumen resultados -->    <div class="resultados-row">      <span class="resultados-texto">        @if (loading) {          Cargando hatos...        } @else {          <strong>{{ hatosFiltradosLocalmente.length }}</strong>          hato(s) encontrado(s)          @if (hatos.length !== hatosFiltradosLocalmente.length) {            de {{ hatos.length }} total          }        }      </span>    </div>  </div>  <!-- ===== ERROR ===== -->  @if (error) {    <div class="msg-error">      <span>❌</span>      <p>{{ error }}</p>    </div>  }  <!-- ===== LOADING ===== -->  @if (loading) {    <div class="loading-wrap">      <app-spinner size="large" message="Cargando hatos..."></app-spinner>    </div>  }  <!-- ===== TABLA ===== -->  @if (!loading) {    @if (hatosFiltradosLocalmente.length === 0) {      <div class="empty-state">        <span>🐄</span>        <p>No se encontraron hatos con los filtros aplicados.</p>        @if (hayFiltrosActivos) {          <button class="btn-limpiar-empty" (click)="limpiarFiltros()">Limpiar filtros</button>        }      </div>    } @else {      <div class="tabla-card">        <div class="tabla-wrap">          <table class="tabla-hatos">            <thead>              <tr>                <th>Hato</th>                <th>Ubicación</th>                <th class="text-center">Escala</th>                <th class="text-center">Trópico</th>                <th class="text-center">Área</th>                <th class="text-center">Completitud</th>                <th>Propietario</th>                <th class="text-center">Acciones</th>              </tr>            </thead>            <tbody>              @for (hato of hatosPaginados; track hato.idHato; let i = $index) {                <tr                  class="tabla-fila"                  [class.fila-alterna]="i % 2 !== 0"                  (click)="verDetalle(hato)"                >                  <!-- Hato -->                  <td class="td-hato">                    <div class="hato-cell">                      <div class="hato-avatar">                        {{ hato.nombreHato.charAt(0).toUpperCase() }}                      </div>                      <div class="hato-info">                        <span class="hato-nombre">{{ hato.nombreHato }}</span>                        <span class="hato-tipo">                          {{ hato.tipoHato ?? \'—\' }}                        </span>                      </div>                    </div>                  </td>                  <!-- Ubicación -->                  <td class="td-ubicacion">                    <div class="ubicacion-cell">                      <span class="ubicacion-depto">                        {{ hato.departamento }}                      </span>                      <span class="ubicacion-ciudad">                        {{ hato.ciudad }}                      </span>                    </div>                  </td>                  <!-- Escala -->                  <td class="text-center">                    <span class="escala-chip">                      {{ iconoEscala(hato.escala) }}                      {{ hato.escala ?? \'—\' }}                    </span>                  </td>                  <!-- Trópico -->                  <td class="text-center">                    <span class="tropico-chip">                      {{ hato.tropico ?? \'—\' }}                    </span>                  </td>                  <!-- Área -->                  <td class="text-center td-area">                    {{ hato.areaHato != null ? hato.areaHato + \' ha\' : \'—\' }}                  </td>                  <!-- Completitud -->                  <td class="td-completitud">                    <div class="completitud-cell">                      <div class="comp-barra">                        <div                          class="comp-barra-fill"                          [class]="colorCompletitud(hato.porcentajeCompletitud)"                          [style.width.%]="hato.porcentajeCompletitud"                        ></div>                      </div>                      <span class="comp-pct" [class]="colorCompletitud(hato.porcentajeCompletitud)">                        {{ hato.porcentajeCompletitud }}%                      </span>                    </div>                  </td>                  <!-- Propietario -->                  <td class="td-propietario">                    <div class="propietario-cell">                      <span class="prop-nombre">                        {{ hato.nombreUsuario ?? \'—\' }}                        {{ hato.apellidoUsuario ?? \'\' }}                      </span>                      <span class="prop-correo">                        {{ hato.correoUsuario ?? \'—\' }}                      </span>                    </div>                  </td>                  <!-- Acciones -->                  <td class="text-center td-acciones">                    <button class="btn-ver" (click)="$event.stopPropagation(); verDetalle(hato)">                      Ver detalle →                    </button>                  </td>                </tr>              }            </tbody>          </table>        </div>      </div>      <!-- Paginación -->      @if (totalPaginas > 1) {        <div class="paginacion">          <button            class="pag-btn"            [disabled]="paginaActual === 1"            (click)="irAPagina(paginaActual - 1)"          >            ‹ Anterior          </button>          @for (p of paginas; track p) {            @if (              p === 1 || p === totalPaginas || (p >= paginaActual - 2 && p <= paginaActual + 2)            ) {              <button class="pag-num" [class.activo]="paginaActual === p" (click)="irAPagina(p)">                {{ p }}              </button>            } @else if (p === paginaActual - 3 || p === paginaActual + 3) {              <span class="pag-dots">…</span>            }          }          <button            class="pag-btn"            [disabled]="paginaActual === totalPaginas"            (click)="irAPagina(paginaActual + 1)"          >            Siguiente ›          </button>        </div>      }    }  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'GestionHatosComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GestionHatosComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

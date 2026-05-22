@@ -1,0 +1,165 @@
+.posicion-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Stats */
+.posicion-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.posicion-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 16px;
+  background: #f7fbf8;
+  border: 1px solid #e9f5eb;
+  border-radius: 10px;
+  min-width: 100px;
+}
+
+.posicion-stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #9ca3af;
+}
+
+.posicion-stat-valor {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.posicion-stat-valor.verde {
+  color: #15803d;
+}
+.posicion-stat-valor.positivo {
+  color: #15803d;
+}
+.posicion-stat-valor.negativo {
+  color: #b91c1c;
+}
+
+/* Gráfica */
+.chart-wrap {
+  position: relative;
+  height: 300px;
+}
+
+/* Ranking tabla */
+.ranking-tabla {
+  background: #ffffff;
+  border: 1px solid #e9f5eb;
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid #f0f7f2;
+  font-size: 12px;
+}
+
+thead th {
+  background: #f7fbf8;
+  color: #385f4b;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+}
+
+tbody td {
+  color: #374151;
+}
+
+.fila-mihato {
+  background: #f0fdf4 !important;
+  border-left: 3px solid #15803d;
+}
+
+.td-pos {
+  font-weight: 700;
+  color: #15803d;
+  width: 40px;
+}
+
+.td-alias {
+  font-weight: 500;
+}
+
+.td-valor {
+  font-weight: 600;
+  color: #163f2a;
+  text-align: right;
+}
+
+.mihato-badge {
+  font-weight: 700;
+  color: #15803d;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge-optimo {
+  background: #dcfce7;
+  color: #15803d;
+}
+.badge-bueno {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.badge-aceptable {
+  background: #fef9c3;
+  color: #a16207;
+}
+.badge-critico {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.badge-default {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+@media (max-width: 600px) {
+  .posicion-stats {
+    gap: 8px;
+  }
+
+  .posicion-stat {
+    min-width: 80px;
+    padding: 8px 12px;
+  }
+
+  .chart-wrap {
+    height: 240px;
+  }
+}

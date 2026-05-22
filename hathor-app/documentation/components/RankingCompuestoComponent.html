@@ -1,0 +1,1478 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  RankingCompuestoComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-ranking-compuesto</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ranking-compuesto.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./ranking-compuesto.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#itemsMostrados" >itemsMostrados</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#PAGE_SIZE" >PAGE_SIZE</a>
+                            </li>
+                            <li>
+                                <a href="#paginaActual" >paginaActual</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#actualizarPagina" >actualizarPagina</a>
+                            </li>
+                            <li>
+                                <a href="#anchoBarra" >anchoBarra</a>
+                            </li>
+                            <li>
+                                <a href="#cargarMas" >cargarMas</a>
+                            </li>
+                            <li>
+                                <a href="#colorBarra" >colorBarra</a>
+                            </li>
+                            <li>
+                                <a href="#formatScore" >formatScore</a>
+                            </li>
+                            <li>
+                                <a href="#labelRegion" >labelRegion</a>
+                            </li>
+                            <li>
+                                <a href="#medallaTop3" >medallaTop3</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#datos" >datos</a>
+                            </li>
+                            <li>
+                                <a href="#region" >region</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#hayMas" >hayMas</a>
+                                </li>
+                                <li>
+                                    <a href="#top3" >top3</a>
+                                </li>
+                                <li>
+                                    <a href="#posicionMiHato" >posicionMiHato</a>
+                                </li>
+                                <li>
+                                    <a href="#totalHatos" >totalHatos</a>
+                                </li>
+                                <li>
+                                    <a href="#percentilMiHato" >percentilMiHato</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="datos"></a>
+                        <b>datos</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RankingCompuestoDTO.html" target="_self" >RankingCompuestoDTO | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:24</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="region"></a>
+                        <b>region</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:25</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actualizarPagina"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>actualizarPagina</b></span>
+                        <a href="#actualizarPagina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>actualizarPagina()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="anchoBarra"></a>
+                    <span class="name">
+                        <span ><b>anchoBarra</b></span>
+                        <a href="#anchoBarra"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>anchoBarra(item: <a href="../interfaces/HatoRankingItem.html" target="_self">HatoRankingItem</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../interfaces/HatoRankingItem.html" target="_self" >HatoRankingItem</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarMas"></a>
+                    <span class="name">
+                        <span ><b>cargarMas</b></span>
+                        <a href="#cargarMas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarMas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorBarra"></a>
+                    <span class="name">
+                        <span ><b>colorBarra</b></span>
+                        <a href="#colorBarra"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorBarra(item: <a href="../interfaces/HatoRankingItem.html" target="_self">HatoRankingItem</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../interfaces/HatoRankingItem.html" target="_self" >HatoRankingItem</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatScore"></a>
+                    <span class="name">
+                        <span ><b>formatScore</b></span>
+                        <a href="#formatScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatScore(score: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:100</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>score</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelRegion"></a>
+                    <span class="name">
+                        <span ><b>labelRegion</b></span>
+                        <a href="#labelRegion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>labelRegion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:105</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="medallaTop3"></a>
+                    <span class="name">
+                        <span ><b>medallaTop3</b></span>
+                        <a href="#medallaTop3"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>medallaTop3(posicion: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>posicion</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>changes</td>
+                                            <td>
+                                                            <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="itemsMostrados"></a>
+                    <span class="name">
+                        <span ><b>itemsMostrados</b></span>
+                        <a href="#itemsMostrados"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HatoRankingItem[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PAGE_SIZE"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>PAGE_SIZE</b></span>
+                        <a href="#PAGE_SIZE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>10</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginaActual"></a>
+                    <span class="name">
+                        <span ><b>paginaActual</b></span>
+                        <a href="#paginaActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hayMas"></a>
+                        <span class="name"><b>hayMas</b><a href="#hayMas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>hayMas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:55</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="top3"></a>
+                        <span class="name"><b>top3</b><a href="#top3"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>top3()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:60</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="posicionMiHato"></a>
+                        <span class="name"><b>posicionMiHato</b><a href="#posicionMiHato"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>posicionMiHato()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:65</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalHatos"></a>
+                        <span class="name"><b>totalHatos</b><a href="#totalHatos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalHatos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:69</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="percentilMiHato"></a>
+                        <span class="name"><b>percentilMiHato</b><a href="#percentilMiHato"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>percentilMiHato()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking-compuesto/ranking-compuesto.component.ts:73</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import {
+  RankingCompuestoDTO,
+  HatoRankingItem,
+} from &#x27;../../../../../core/services/benchmarking/ranking.service&#x27;;
+
+@Component({
+  selector: &#x27;app-ranking-compuesto&#x27;,
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: &#x27;./ranking-compuesto.component.html&#x27;,
+  styleUrl: &#x27;./ranking-compuesto.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class RankingCompuestoComponent implements OnChanges {
+  @Input() datos: RankingCompuestoDTO | null &#x3D; null;
+  @Input() region: string | null &#x3D; null;
+
+  readonly PAGE_SIZE &#x3D; 10;
+  paginaActual &#x3D; 1;
+  itemsMostrados: HatoRankingItem[] &#x3D; [];
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes[&#x27;datos&#x27;]) {
+      this.paginaActual &#x3D; 1;
+      this.actualizarPagina();
+    }
+  }
+
+  private actualizarPagina(): void {
+    if (!this.datos?.ranking) {
+      this.itemsMostrados &#x3D; [];
+      return;
+    }
+    const fin &#x3D; this.paginaActual * this.PAGE_SIZE;
+    this.itemsMostrados &#x3D; this.datos.ranking.slice(0, fin);
+    this.cdr.markForCheck();
+  }
+
+  cargarMas(): void {
+    this.paginaActual++;
+    this.actualizarPagina();
+  }
+
+  get hayMas(): boolean {
+    if (!this.datos?.ranking) return false;
+    return this.itemsMostrados.length &lt; this.datos.ranking.length;
+  }
+
+  get top3(): HatoRankingItem[] {
+    if (!this.datos?.ranking) return [];
+    return this.datos.ranking.slice(0, 3);
+  }
+
+  get posicionMiHato(): number {
+    return this.datos?.posicionMiHato ?? 0;
+  }
+
+  get totalHatos(): number {
+    return this.datos?.totalHatos ?? 0;
+  }
+
+  get percentilMiHato(): number {
+    if (!this.datos || this.datos.totalHatos &lt;&#x3D; 1) return 0;
+    return (
+      ((this.datos.totalHatos - this.datos.posicionMiHato) / (this.datos.totalHatos - 1)) * 100
+    );
+  }
+
+  medallaTop3(posicion: number): string {
+    if (posicion &#x3D;&#x3D;&#x3D; 1) return &#x27;🥇&#x27;;
+    if (posicion &#x3D;&#x3D;&#x3D; 2) return &#x27;🥈&#x27;;
+    return &#x27;🥉&#x27;;
+  }
+
+  colorBarra(item: HatoRankingItem): string {
+    if (item.esMiHato) return &#x27;#19e64d&#x27;;
+    const score &#x3D; item.valor ?? 0;
+    if (score &gt;&#x3D; 75) return &#x27;#15803d&#x27;;
+    if (score &gt;&#x3D; 50) return &#x27;#3b82f6&#x27;;
+    if (score &gt;&#x3D; 25) return &#x27;#f59e0b&#x27;;
+    return &#x27;#ef4444&#x27;;
+  }
+
+  anchoBarra(item: HatoRankingItem): number {
+    if (!this.datos?.scoreTop || this.datos.scoreTop &#x3D;&#x3D;&#x3D; 0) return 0;
+    return Math.min(((item.valor ?? 0) / this.datos.scoreTop) * 100, 100);
+  }
+
+  formatScore(score: number | null): string {
+    if (score &#x3D;&#x3D;&#x3D; null) return &#x27;—&#x27;;
+    return score.toFixed(1);
+  }
+
+  labelRegion(): string {
+    return this.region ? &#x60;Región: ${this.region}&#x60; : &#x27;Nacional&#x27;;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;compuesto-wrapper&quot;&gt;
+  @if (!datos) {
+    &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+      &lt;span&gt;🏆&lt;/span&gt;
+      &lt;p&gt;No hay datos de ranking compuesto disponibles.&lt;/p&gt;
+    &lt;/div&gt;
+  }
+
+  @if (datos) {
+    &lt;!-- Header sección --&gt;
+    &lt;div class&#x3D;&quot;seccion-header&quot;&gt;
+      &lt;div class&#x3D;&quot;seccion-header-left&quot;&gt;
+        &lt;h3 class&#x3D;&quot;seccion-titulo&quot;&gt;Ranking compuesto&lt;/h3&gt;
+        &lt;span class&#x3D;&quot;seccion-subtitulo&quot;&gt;
+          Score basado en el promedio de percentiles de todos tus KPIs ·
+          &lt;strong&gt;{{ labelRegion() }}&lt;/strong&gt;
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;totales-chip&quot;&gt;{{ totalHatos }} hatos comparados&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Mi posición destacada --&gt;
+    &lt;div class&#x3D;&quot;mi-posicion-banner&quot;&gt;
+      &lt;div class&#x3D;&quot;mi-posicion-left&quot;&gt;
+        &lt;span class&#x3D;&quot;mi-posicion-icono&quot;&gt;🏅&lt;/span&gt;
+        &lt;div class&#x3D;&quot;mi-posicion-info&quot;&gt;
+          &lt;span class&#x3D;&quot;mi-posicion-label&quot;&gt;Tu posición&lt;/span&gt;
+          &lt;span class&#x3D;&quot;mi-posicion-valor&quot;&gt;#{{ posicionMiHato }}&lt;/span&gt;
+          &lt;span class&#x3D;&quot;mi-posicion-total&quot;&gt;de {{ totalHatos }} hatos&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;mi-posicion-right&quot;&gt;
+        &lt;div class&#x3D;&quot;mi-score-wrap&quot;&gt;
+          &lt;span class&#x3D;&quot;mi-score-label&quot;&gt;Tu score&lt;/span&gt;
+          &lt;span class&#x3D;&quot;mi-score-valor&quot;&gt;{{ formatScore(datos.scoreMiHato) }}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;mi-score-wrap&quot;&gt;
+          &lt;span class&#x3D;&quot;mi-score-label&quot;&gt;Promedio&lt;/span&gt;
+          &lt;span class&#x3D;&quot;mi-score-valor secundario&quot;&gt;{{ formatScore(datos.scorePromedio) }}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;mi-score-wrap&quot;&gt;
+          &lt;span class&#x3D;&quot;mi-score-label&quot;&gt;Top&lt;/span&gt;
+          &lt;span class&#x3D;&quot;mi-score-valor top&quot;&gt;{{ formatScore(datos.scoreTop) }}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;mi-percentil&quot;&gt;
+          &lt;span class&#x3D;&quot;mi-score-label&quot;&gt;Percentil&lt;/span&gt;
+          &lt;span class&#x3D;&quot;mi-score-valor&quot;&gt;{{ percentilMiHato.toFixed(0) }}°&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Podio top 3 --&gt;
+    @if (top3.length &gt;&#x3D; 3) {
+      &lt;div class&#x3D;&quot;podio-section&quot;&gt;
+        &lt;h4 class&#x3D;&quot;podio-titulo&quot;&gt;🏆 Podio&lt;/h4&gt;
+        &lt;div class&#x3D;&quot;podio-grid&quot;&gt;
+          &lt;!-- Plata (posición 2) --&gt;
+          &lt;div class&#x3D;&quot;podio-item plata&quot; [class.es-mi-hato]&#x3D;&quot;top3[1]?.esMiHato&quot;&gt;
+            &lt;span class&#x3D;&quot;podio-medalla&quot;&gt;{{ medallaTop3(2) }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;podio-alias&quot;&gt;{{ top3[1]?.alias }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;podio-score&quot;&gt;{{ formatScore(top3[1]?.valor ?? null) }}&lt;/span&gt;
+            @if (top3[1]?.esMiHato) {
+              &lt;span class&#x3D;&quot;mi-hato-chip&quot;&gt;Tu hato&lt;/span&gt;
+            }
+          &lt;/div&gt;
+
+          &lt;!-- Oro (posición 1) --&gt;
+          &lt;div class&#x3D;&quot;podio-item oro&quot; [class.es-mi-hato]&#x3D;&quot;top3[0]?.esMiHato&quot;&gt;
+            &lt;span class&#x3D;&quot;podio-medalla&quot;&gt;{{ medallaTop3(1) }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;podio-alias&quot;&gt;{{ top3[0]?.alias }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;podio-score&quot;&gt;{{ formatScore(top3[0]?.valor ?? null) }}&lt;/span&gt;
+            @if (top3[0]?.esMiHato) {
+              &lt;span class&#x3D;&quot;mi-hato-chip&quot;&gt;Tu hato&lt;/span&gt;
+            }
+          &lt;/div&gt;
+
+          &lt;!-- Bronce (posición 3) --&gt;
+          &lt;div class&#x3D;&quot;podio-item bronce&quot; [class.es-mi-hato]&#x3D;&quot;top3[2]?.esMiHato&quot;&gt;
+            &lt;span class&#x3D;&quot;podio-medalla&quot;&gt;{{ medallaTop3(3) }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;podio-alias&quot;&gt;{{ top3[2]?.alias }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;podio-score&quot;&gt;{{ formatScore(top3[2]?.valor ?? null) }}&lt;/span&gt;
+            @if (top3[2]?.esMiHato) {
+              &lt;span class&#x3D;&quot;mi-hato-chip&quot;&gt;Tu hato&lt;/span&gt;
+            }
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;!-- Tabla ranking completo --&gt;
+    &lt;div class&#x3D;&quot;tabla-section&quot;&gt;
+      &lt;h4 class&#x3D;&quot;tabla-titulo&quot;&gt;Ranking completo&lt;/h4&gt;
+      &lt;div class&#x3D;&quot;tabla-lista&quot;&gt;
+        @for (item of itemsMostrados; track item.posicion) {
+          &lt;div class&#x3D;&quot;tabla-fila&quot; [class.fila-mi-hato]&#x3D;&quot;item.esMiHato&quot;&gt;
+            &lt;!-- Posición --&gt;
+            &lt;span class&#x3D;&quot;fila-posicion&quot; [class.posicion-destacada]&#x3D;&quot;item.posicion &lt;&#x3D; 3&quot;&gt;
+              @if (item.posicion &lt;&#x3D; 3) {
+                {{ medallaTop3(item.posicion) }}
+              } @else {
+                #{{ item.posicion }}
+              }
+            &lt;/span&gt;
+
+            &lt;!-- Alias --&gt;
+            &lt;div class&#x3D;&quot;fila-alias-wrap&quot;&gt;
+              &lt;span class&#x3D;&quot;fila-alias&quot;&gt;{{ item.alias }}&lt;/span&gt;
+              @if (item.esMiHato) {
+                &lt;span class&#x3D;&quot;mi-hato-tag&quot;&gt;Tú&lt;/span&gt;
+              }
+            &lt;/div&gt;
+
+            &lt;!-- Barra de score --&gt;
+            &lt;div class&#x3D;&quot;fila-barra-wrap&quot;&gt;
+              &lt;div class&#x3D;&quot;fila-barra&quot;&gt;
+                &lt;div
+                  class&#x3D;&quot;fila-barra-fill&quot;
+                  [style.width.%]&#x3D;&quot;anchoBarra(item)&quot;
+                  [style.background]&#x3D;&quot;colorBarra(item)&quot;
+                &gt;&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;span class&#x3D;&quot;fila-score&quot;&gt;{{ formatScore(item.valor) }}&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        }
+      &lt;/div&gt;
+
+      &lt;!-- Cargar más --&gt;
+      @if (hayMas) {
+        &lt;div class&#x3D;&quot;cargar-mas-wrap&quot;&gt;
+          &lt;button class&#x3D;&quot;btn-cargar-mas&quot; (click)&#x3D;&quot;cargarMas()&quot;&gt;
+            Ver más hatos ({{ datos.ranking.length - itemsMostrados.length }} restantes)
+          &lt;/button&gt;
+        &lt;/div&gt;
+      }
+    &lt;/div&gt;
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="compuesto-wrapper">  @if (!datos) {    <div class="empty-state">      <span>🏆</span>      <p>No hay datos de ranking compuesto disponibles.</p>    </div>  }  @if (datos) {    <!-- Header sección -->    <div class="seccion-header">      <div class="seccion-header-left">        <h3 class="seccion-titulo">Ranking compuesto</h3>        <span class="seccion-subtitulo">          Score basado en el promedio de percentiles de todos tus KPIs ·          <strong>{{ labelRegion() }}</strong>        </span>      </div>      <div class="totales-chip">{{ totalHatos }} hatos comparados</div>    </div>    <!-- Mi posición destacada -->    <div class="mi-posicion-banner">      <div class="mi-posicion-left">        <span class="mi-posicion-icono">🏅</span>        <div class="mi-posicion-info">          <span class="mi-posicion-label">Tu posición</span>          <span class="mi-posicion-valor">#{{ posicionMiHato }}</span>          <span class="mi-posicion-total">de {{ totalHatos }} hatos</span>        </div>      </div>      <div class="mi-posicion-right">        <div class="mi-score-wrap">          <span class="mi-score-label">Tu score</span>          <span class="mi-score-valor">{{ formatScore(datos.scoreMiHato) }}</span>        </div>        <div class="mi-score-wrap">          <span class="mi-score-label">Promedio</span>          <span class="mi-score-valor secundario">{{ formatScore(datos.scorePromedio) }}</span>        </div>        <div class="mi-score-wrap">          <span class="mi-score-label">Top</span>          <span class="mi-score-valor top">{{ formatScore(datos.scoreTop) }}</span>        </div>        <div class="mi-percentil">          <span class="mi-score-label">Percentil</span>          <span class="mi-score-valor">{{ percentilMiHato.toFixed(0) }}°</span>        </div>      </div>    </div>    <!-- Podio top 3 -->    @if (top3.length >= 3) {      <div class="podio-section">        <h4 class="podio-titulo">🏆 Podio</h4>        <div class="podio-grid">          <!-- Plata (posición 2) -->          <div class="podio-item plata" [class.es-mi-hato]="top3[1]?.esMiHato">            <span class="podio-medalla">{{ medallaTop3(2) }}</span>            <span class="podio-alias">{{ top3[1]?.alias }}</span>            <span class="podio-score">{{ formatScore(top3[1]?.valor ?? null) }}</span>            @if (top3[1]?.esMiHato) {              <span class="mi-hato-chip">Tu hato</span>            }          </div>          <!-- Oro (posición 1) -->          <div class="podio-item oro" [class.es-mi-hato]="top3[0]?.esMiHato">            <span class="podio-medalla">{{ medallaTop3(1) }}</span>            <span class="podio-alias">{{ top3[0]?.alias }}</span>            <span class="podio-score">{{ formatScore(top3[0]?.valor ?? null) }}</span>            @if (top3[0]?.esMiHato) {              <span class="mi-hato-chip">Tu hato</span>            }          </div>          <!-- Bronce (posición 3) -->          <div class="podio-item bronce" [class.es-mi-hato]="top3[2]?.esMiHato">            <span class="podio-medalla">{{ medallaTop3(3) }}</span>            <span class="podio-alias">{{ top3[2]?.alias }}</span>            <span class="podio-score">{{ formatScore(top3[2]?.valor ?? null) }}</span>            @if (top3[2]?.esMiHato) {              <span class="mi-hato-chip">Tu hato</span>            }          </div>        </div>      </div>    }    <!-- Tabla ranking completo -->    <div class="tabla-section">      <h4 class="tabla-titulo">Ranking completo</h4>      <div class="tabla-lista">        @for (item of itemsMostrados; track item.posicion) {          <div class="tabla-fila" [class.fila-mi-hato]="item.esMiHato">            <!-- Posición -->            <span class="fila-posicion" [class.posicion-destacada]="item.posicion <= 3">              @if (item.posicion <= 3) {                {{ medallaTop3(item.posicion) }}              } @else {                #{{ item.posicion }}              }            </span>            <!-- Alias -->            <div class="fila-alias-wrap">              <span class="fila-alias">{{ item.alias }}</span>              @if (item.esMiHato) {                <span class="mi-hato-tag">Tú</span>              }            </div>            <!-- Barra de score -->            <div class="fila-barra-wrap">              <div class="fila-barra">                <div                  class="fila-barra-fill"                  [style.width.%]="anchoBarra(item)"                  [style.background]="colorBarra(item)"                ></div>              </div>              <span class="fila-score">{{ formatScore(item.valor) }}</span>            </div>          </div>        }      </div>      <!-- Cargar más -->      @if (hayMas) {        <div class="cargar-mas-wrap">          <button class="btn-cargar-mas" (click)="cargarMas()">            Ver más hatos ({{ datos.ranking.length - itemsMostrados.length }} restantes)          </button>        </div>      }    </div>  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'RankingCompuestoComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RankingCompuestoComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

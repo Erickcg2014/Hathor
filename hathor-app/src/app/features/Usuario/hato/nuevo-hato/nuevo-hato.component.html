@@ -1,0 +1,113 @@
+<div class="nuevo-hato-page">
+  <!-- Loading inicial -->
+  <div class="loading-wrapper" *ngIf="loading">
+    <app-spinner size="large" message="Cargando información..."></app-spinner>
+  </div>
+
+  <ng-container *ngIf="!loading">
+    <!-- Header -->
+    <div class="page-header">
+      <div class="header-left">
+        <button class="btn-back" (click)="cancelar()">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <div>
+          <h1 class="page-title">
+            {{ hatoActual ? 'Continuar registro del hato' : 'Registrar nuevo hato' }}
+          </h1>
+          <p class="page-subtitle">
+            Completa las 4 secciones para desbloquear todas las funcionalidades
+          </p>
+        </div>
+      </div>
+      <div class="header-progress-label">
+        <span class="progress-pct">{{ pasoActual }} de {{ pasos.length }}</span>
+      </div>
+    </div>
+
+    <!-- Stepper -->
+    <div class="stepper">
+      <ng-container *ngFor="let paso of pasos; let i = index">
+        <div
+          class="step-item"
+          [class.active]="pasoActual === paso.numero"
+          [class.completed]="hatoActual && getModoPaso(paso.numero) === 'readonly'"
+        >
+          <div class="step-circle">
+            <svg
+              *ngIf="hatoActual && getModoPaso(paso.numero) === 'readonly'"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span *ngIf="!hatoActual || getModoPaso(paso.numero) !== 'readonly'">{{
+              paso.icono
+            }}</span>
+          </div>
+          <div class="step-info">
+            <span class="step-titulo">{{ paso.titulo }}</span>
+            <span class="step-desc">{{ paso.descripcion }}</span>
+          </div>
+        </div>
+        <div
+          class="step-connector"
+          *ngIf="i < pasos.length - 1"
+          [class.filled]="hatoActual && getModoPaso(paso.numero) === 'readonly'"
+        ></div>
+      </ng-container>
+    </div>
+
+    <!-- Barra de progreso -->
+    <div class="progress-bar-wrapper">
+      <div class="progress-bar" [style.width.%]="porcentaje"></div>
+    </div>
+
+    <!-- Contenido por sección -->
+    <div class="paso-content">
+      <app-seccion-info-hato
+        *ngIf="pasoActual === 1"
+        [hatoActual]="hatoActual"
+        [modoReadonly]="getModoPaso(1) === 'readonly'"
+        (seccionCompletada)="onSeccionCompletada($event)"
+        (irSiguiente)="onIrSiguiente()"
+        (irAnterior)="onIrAnterior()"
+      >
+      </app-seccion-info-hato>
+
+      <app-seccion-inventario
+        *ngIf="pasoActual === 2"
+        [hatoActual]="hatoActual"
+        [modoReadonly]="getModoPaso(2) === 'readonly'"
+        (seccionCompletada)="onSeccionCompletada($event)"
+        (irSiguiente)="onIrSiguiente()"
+        (irAnterior)="onIrAnterior()"
+      >
+      </app-seccion-inventario>
+
+      <app-seccion-produccion
+        *ngIf="pasoActual === 3"
+        [hatoActual]="hatoActual"
+        [modoReadonly]="getModoPaso(3) === 'readonly'"
+        (seccionCompletada)="onSeccionCompletada($event)"
+        (irSiguiente)="onIrSiguiente()"
+        (irAnterior)="onIrAnterior()"
+      >
+      </app-seccion-produccion>
+
+      <app-seccion-financiero
+        *ngIf="pasoActual === 4"
+        [hatoActual]="hatoActual"
+        [modoReadonly]="getModoPaso(4) === 'readonly'"
+        (seccionCompletada)="onSeccionCompletada($event)"
+        (irSiguiente)="onIrSiguiente()"
+        (irAnterior)="onIrAnterior()"
+      >
+      </app-seccion-financiero>
+    </div>
+  </ng-container>
+</div>

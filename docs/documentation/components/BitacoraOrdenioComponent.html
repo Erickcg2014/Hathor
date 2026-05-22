@@ -1,0 +1,2545 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  BitacoraOrdenioComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-bitacora-ordenio</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./bitacora-ordenio.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./bitacora-ordenio.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#agregandoProduccionSugerida" >agregandoProduccionSugerida</a>
+                            </li>
+                            <li>
+                                <a href="#alertaProduccion" >alertaProduccion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#esAdmin" >esAdmin</a>
+                            </li>
+                            <li>
+                                <a href="#guardando" >guardando</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#litrosFaltantes" >litrosFaltantes</a>
+                            </li>
+                            <li>
+                                <a href="#mensajeAlerta" >mensajeAlerta</a>
+                            </li>
+                            <li>
+                                <a href="#paso" >paso</a>
+                            </li>
+                            <li>
+                                <a href="#produccionGuardada" >produccionGuardada</a>
+                            </li>
+                            <li>
+                                <a href="#registroProduccion" >registroProduccion</a>
+                            </li>
+                            <li>
+                                <a href="#registroVenta" >registroVenta</a>
+                            </li>
+                            <li>
+                                <a href="#ventaGuardada" >ventaGuardada</a>
+                            </li>
+                            <li>
+                                <a href="#visible" >visible</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#aceptarProduccionSugerida" >aceptarProduccionSugerida</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#actualizarFrecuenciaOrdenio" >actualizarFrecuenciaOrdenio</a>
+                            </li>
+                            <li>
+                                <a href="#cerrar" >cerrar</a>
+                            </li>
+                            <li>
+                                <a href="#formatCOP" >formatCOP</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#guardarProduccion" >guardarProduccion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#guardarVenta" >guardarVenta</a>
+                            </li>
+                            <li>
+                                <a href="#irAInventarios" >irAInventarios</a>
+                            </li>
+                            <li>
+                                <a href="#irAPaso" >irAPaso</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#marcarMostrado" >marcarMostrado</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#rechazarProduccionSugerida" >rechazarProduccionSugerida</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#resetForms" >resetForms</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#verificarMostrar" >verificarMostrar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#saludoHora" >saludoHora</a>
+                                </li>
+                                <li>
+                                    <a href="#fechaHoy" >fechaHoy</a>
+                                </li>
+                                <li>
+                                    <a href="#totalVentaHoy" >totalVentaHoy</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, produccionService: <a href="../injectables/ProduccionLecheService.html" target="_self">ProduccionLecheService</a>, ventaService: <a href="../injectables/VentaLecheService.html" target="_self">VentaLecheService</a>, perfilProductivoService: <a href="../injectables/PerfilProductivoService.html" target="_self">PerfilProductivoService</a>, kpiService: <a href="../injectables/KpiService.html" target="_self">KpiService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:75</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>produccionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProduccionLecheService.html" target="_self" >ProduccionLecheService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ventaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/VentaLecheService.html" target="_self" >VentaLecheService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>perfilProductivoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PerfilProductivoService.html" target="_self" >PerfilProductivoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>kpiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/KpiService.html" target="_self" >KpiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="aceptarProduccionSugerida"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>aceptarProduccionSugerida</b></span>
+                        <a href="#aceptarProduccionSugerida"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>aceptarProduccionSugerida()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="279"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:279</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actualizarFrecuenciaOrdenio"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>actualizarFrecuenciaOrdenio</b></span>
+                        <a href="#actualizarFrecuenciaOrdenio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>actualizarFrecuenciaOrdenio()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="196"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:196</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrar"></a>
+                    <span class="name">
+                        <span ><b>cerrar</b></span>
+                        <a href="#cerrar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="312"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:312</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatCOP"></a>
+                    <span class="name">
+                        <span ><b>formatCOP</b></span>
+                        <a href="#formatCOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatCOP(valor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="364"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:364</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarProduccion"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>guardarProduccion</b></span>
+                        <a href="#guardarProduccion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>guardarProduccion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="146"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarVenta"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>guardarVenta</b></span>
+                        <a href="#guardarVenta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>guardarVenta()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="225"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:225</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irAInventarios"></a>
+                    <span class="name">
+                        <span ><b>irAInventarios</b></span>
+                        <a href="#irAInventarios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irAInventarios()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="318"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:318</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irAPaso"></a>
+                    <span class="name">
+                        <span ><b>irAPaso</b></span>
+                        <a href="#irAPaso"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irAPaso(paso: <a href="../interfaces/Paso.html" target="_self">Paso</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:138</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>paso</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Paso.html" target="_self" >Paso</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="marcarMostrado"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>marcarMostrado</b></span>
+                        <a href="#marcarMostrado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>marcarMostrado()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="368"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:368</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rechazarProduccionSugerida"></a>
+                    <span class="name">
+                        <span ><b>rechazarProduccionSugerida</b></span>
+                        <a href="#rechazarProduccionSugerida"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>rechazarProduccionSugerida()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="303"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:303</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetForms"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>resetForms</b></span>
+                        <a href="#resetForms"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetForms()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="325"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:325</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verificarMostrar"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>verificarMostrar</b></span>
+                        <a href="#verificarMostrar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>verificarMostrar(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="agregandoProduccionSugerida"></a>
+                    <span class="name">
+                        <span ><b>agregandoProduccionSugerida</b></span>
+                        <a href="#agregandoProduccionSugerida"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="alertaProduccion"></a>
+                    <span class="name">
+                        <span ><b>alertaProduccion</b></span>
+                        <a href="#alertaProduccion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="esAdmin"></a>
+                    <span class="name">
+                        <span ><b>esAdmin</b></span>
+                        <a href="#esAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardando"></a>
+                    <span class="name">
+                        <span ><b>guardando</b></span>
+                        <a href="#guardando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="litrosFaltantes"></a>
+                    <span class="name">
+                        <span ><b>litrosFaltantes</b></span>
+                        <a href="#litrosFaltantes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mensajeAlerta"></a>
+                    <span class="name">
+                        <span ><b>mensajeAlerta</b></span>
+                        <a href="#mensajeAlerta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paso"></a>
+                    <span class="name">
+                        <span ><b>paso</b></span>
+                        <a href="#paso"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Paso.html" target="_self" >Paso</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;produccion&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="produccionGuardada"></a>
+                    <span class="name">
+                        <span ><b>produccionGuardada</b></span>
+                        <a href="#produccionGuardada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registroProduccion"></a>
+                    <span class="name">
+                        <span ><b>registroProduccion</b></span>
+                        <a href="#registroProduccion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    litrosProducidos: null as number | null,
+    vacasOrdenadas: null as number | null,
+    fecha: new Date().toISOString().split(&#x27;T&#x27;)[0],
+    omitir: false,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registroVenta"></a>
+                    <span class="name">
+                        <span ><b>registroVenta</b></span>
+                        <a href="#registroVenta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    litrosVendidos: null as number | null,
+    precioLitro: null as number | null,
+    registrar: false,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ventaGuardada"></a>
+                    <span class="name">
+                        <span ><b>ventaGuardada</b></span>
+                        <a href="#ventaGuardada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visible"></a>
+                    <span class="name">
+                        <span ><b>visible</b></span>
+                        <a href="#visible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="saludoHora"></a>
+                        <span class="name"><b>saludoHora</b><a href="#saludoHora"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>saludoHora()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="344" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:344</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fechaHoy"></a>
+                        <span class="name"><b>fechaHoy</b><a href="#fechaHoy"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>fechaHoy()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="351" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:351</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalVentaHoy"></a>
+                        <span class="name"><b>totalVentaHoy</b><a href="#totalVentaHoy"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalVentaHoy()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="359" class="link-to-prism">src/app/shared/bitacora-ordenio/bitacora-ordenio.component.ts:359</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil, firstValueFrom } from &#x27;rxjs&#x27;;
+
+import { HatoStateService } from &#x27;../../core/services/ui-state/hato-state.service&#x27;;
+import { UserService } from &#x27;../../core/services/usuario/user.service&#x27;;
+import {
+  ProduccionLecheService,
+  RegistroProduccionLecheDTO,
+} from &#x27;../../core/services/produccion/produccion-leche.service&#x27;;
+import {
+  VentaLecheService,
+  RespuestaVentaLeche,
+} from &#x27;../../core/services/finanzas/venta-leche.service&#x27;;
+import { PerfilProductivoService } from &#x27;../../core/services/produccion/perfil-productivo.service&#x27;;
+import { KpiService } from &#x27;../../core/services/kpi/kpi.service&#x27;;
+import { Hato } from &#x27;../../core/services/hato/hato.service&#x27;;
+
+type Paso &#x3D; &#x27;produccion&#x27; | &#x27;venta&#x27; | &#x27;resumen&#x27;;
+
+@Component({
+  selector: &#x27;app-bitacora-ordenio&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: &#x27;./bitacora-ordenio.component.html&#x27;,
+  styleUrl: &#x27;./bitacora-ordenio.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class BitacoraOrdenioComponent implements OnInit, OnDestroy {
+  // ── Visibilidad ───────────────────────────────────────────────────────
+  visible &#x3D; false;
+  esAdmin &#x3D; false;
+
+  // ── Estado ────────────────────────────────────────────────────────────
+  paso: Paso &#x3D; &#x27;produccion&#x27;;
+  guardando &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+
+  // ── Hato ──────────────────────────────────────────────────────────────
+  hatoActivo: Hato | null &#x3D; null;
+
+  // ── Formulario producción ─────────────────────────────────────────────
+  registroProduccion &#x3D; {
+    litrosProducidos: null as number | null,
+    vacasOrdenadas: null as number | null,
+    fecha: new Date().toISOString().split(&#x27;T&#x27;)[0],
+    omitir: false,
+  };
+
+  // ── Alerta de producción ──────────────────────────────────────────────
+  alertaProduccion &#x3D; false;
+  litrosFaltantes &#x3D; 0;
+  mensajeAlerta &#x3D; &#x27;&#x27;;
+  agregandoProduccionSugerida &#x3D; false;
+
+  // ── Formulario venta ──────────────────────────────────────────────────
+  registroVenta &#x3D; {
+    litrosVendidos: null as number | null,
+    precioLitro: null as number | null,
+    registrar: false,
+  };
+
+  // ── Resumen guardado ──────────────────────────────────────────────────
+  produccionGuardada &#x3D; false;
+  ventaGuardada &#x3D; false;
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private hatoState: HatoStateService,
+    private userService: UserService,
+    private produccionService: ProduccionLecheService,
+    private ventaService: VentaLecheService,
+    private perfilProductivoService: PerfilProductivoService,
+    private kpiService: KpiService,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    // Verificar rol — admin nunca ve la bitácora
+    this.userService
+      .getUsuarioLogueado()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((usuario) &#x3D;&gt; {
+        this.esAdmin &#x3D; usuario?.rol &#x3D;&#x3D;&#x3D; &#x27;ADMIN&#x27;;
+        this.cdr.markForCheck();
+      });
+
+    // Suscribirse al hato activo
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato &amp;&amp; !this.esAdmin) {
+        this.verificarMostrar(hato.idHato as string);
+      }
+      this.cdr.markForCheck();
+    });
+  }
+
+  // ── Lógica de aparición ───────────────────────────────────────────────
+
+  private verificarMostrar(idHato: string): void {
+    if (this.esAdmin) return;
+
+    const key &#x3D; &#x60;bitacora_ultima_fecha_${idHato}&#x60;;
+    const hoy &#x3D; new Date().toISOString().split(&#x27;T&#x27;)[0];
+    const ultimaVez &#x3D; localStorage.getItem(key);
+
+    // Solo mostrar si no ha aparecido hoy
+    if (ultimaVez &#x3D;&#x3D;&#x3D; hoy) return;
+
+    // Pequeño delay para no interrumpir la carga inicial
+    setTimeout(() &#x3D;&gt; {
+      this.visible &#x3D; true;
+      this.paso &#x3D; &#x27;produccion&#x27;;
+      this.resetForms();
+      this.cdr.markForCheck();
+    }, 1500);
+  }
+
+  private marcarMostrado(): void {
+    if (!this.hatoActivo?.idHato) return;
+    const key &#x3D; &#x60;bitacora_ultima_fecha_${this.hatoActivo.idHato}&#x60;;
+    const hoy &#x3D; new Date().toISOString().split(&#x27;T&#x27;)[0];
+    localStorage.setItem(key, hoy);
+  }
+
+  // ── Navegación entre pasos ────────────────────────────────────────────
+
+  irAPaso(paso: Paso): void {
+    this.paso &#x3D; paso;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+  }
+
+  // ── Guardar producción ────────────────────────────────────────────────
+
+  async guardarProduccion(): Promise&lt;void&gt; {
+    if (!this.hatoActivo?.idHato) return;
+
+    if (this.registroProduccion.omitir) {
+      this.produccionGuardada &#x3D; false;
+      this.irAPaso(&#x27;venta&#x27;);
+      return;
+    }
+
+    if (
+      !this.registroProduccion.litrosProducidos ||
+      this.registroProduccion.litrosProducidos &lt;&#x3D; 0
+    ) {
+      this.error &#x3D; &#x27;Ingresa una cantidad válida de litros.&#x27;;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.guardando &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    try {
+      const dto: RegistroProduccionLecheDTO &#x3D; {
+        idHato: this.hatoActivo.idHato as any,
+        fecha: this.registroProduccion.fecha as any,
+        litrosProducidos: this.registroProduccion.litrosProducidos,
+        vacasOrdenadas: this.registroProduccion.vacasOrdenadas ?? undefined,
+      };
+
+      await firstValueFrom(this.produccionService.crearRegistro(dto));
+      this.produccionGuardada &#x3D; true;
+
+      // Actualizar frecuencia de ordeño en perfil productivo
+      await this.actualizarFrecuenciaOrdenio();
+
+      // Recalcular KPIs en segundo plano
+      this.kpiService.calcularKpis(this.hatoActivo.idHato as string).subscribe();
+
+      this.irAPaso(&#x27;venta&#x27;);
+    } catch {
+      this.error &#x3D; &#x27;Error al guardar la producción.&#x27;;
+    } finally {
+      this.guardando &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  // ── Actualizar frecuencia de ordeño ───────────────────────────────────
+
+  private async actualizarFrecuenciaOrdenio(): Promise&lt;void&gt; {
+    if (!this.hatoActivo?.idHato) return;
+    try {
+      const perfil &#x3D; await firstValueFrom(
+        this.perfilProductivoService.getPerfilByHato(this.hatoActivo.idHato as string),
+      );
+      if (!perfil) return;
+
+      // Calcular nueva frecuencia promediando con la actual
+      const frecuenciaActual &#x3D; perfil.frecuenciaOrdenio ?? 1;
+      // Si hoy se registró producción se asume al menos 1 ordeño
+      const nuevaFrecuencia &#x3D; Math.round((frecuenciaActual + 1) / 2);
+
+      if (nuevaFrecuencia !&#x3D;&#x3D; frecuenciaActual) {
+        await firstValueFrom(
+          this.perfilProductivoService.actualizarPerfil(this.hatoActivo.idHato as string, {
+            ...perfil,
+            idHato: this.hatoActivo.idHato as string,
+            frecuenciaOrdenio: nuevaFrecuencia,
+          }),
+        );
+      }
+    } catch {
+      // No fallar la bitácora por error en el perfil
+    }
+  }
+
+  // ── Guardar venta ─────────────────────────────────────────────────────
+
+  async guardarVenta(): Promise&lt;void&gt; {
+    if (!this.hatoActivo?.idHato) return;
+
+    if (!this.registroVenta.registrar) {
+      this.ventaGuardada &#x3D; false;
+      this.irAPaso(&#x27;resumen&#x27;);
+      return;
+    }
+
+    if (!this.registroVenta.litrosVendidos || this.registroVenta.litrosVendidos &lt;&#x3D; 0) {
+      this.error &#x3D; &#x27;Ingresa una cantidad válida de litros vendidos.&#x27;;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    if (!this.registroVenta.precioLitro || this.registroVenta.precioLitro &lt;&#x3D; 0) {
+      this.error &#x3D; &#x27;Ingresa un precio válido por litro.&#x27;;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.guardando &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    try {
+      const respuesta: RespuestaVentaLeche &#x3D; await firstValueFrom(
+        this.ventaService.crearVenta({
+          idHato: this.hatoActivo.idHato as string,
+          fecha: this.registroProduccion.fecha,
+          litrosVendidos: this.registroVenta.litrosVendidos,
+          precioLitro: this.registroVenta.precioLitro,
+        }),
+      );
+
+      this.ventaGuardada &#x3D; true;
+
+      // ── alerta de producción ──
+      if (respuesta.alerta &amp;&amp; respuesta.litrosFaltantes &gt; 0) {
+        this.alertaProduccion &#x3D; true;
+        this.litrosFaltantes &#x3D; respuesta.litrosFaltantes;
+        this.mensajeAlerta &#x3D; respuesta.mensaje ?? &#x27;&#x27;;
+        this.cdr.markForCheck();
+      } else {
+        this.irAPaso(&#x27;resumen&#x27;);
+      }
+    } catch {
+      this.error &#x3D; &#x27;Error al guardar la venta.&#x27;;
+    } finally {
+      this.guardando &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  async aceptarProduccionSugerida(): Promise&lt;void&gt; {
+    if (!this.hatoActivo?.idHato) return;
+
+    this.agregandoProduccionSugerida &#x3D; true;
+    this.cdr.markForCheck();
+
+    try {
+      const dto: RegistroProduccionLecheDTO &#x3D; {
+        idHato: this.hatoActivo.idHato as any,
+        fecha: this.registroProduccion.fecha as any,
+        litrosProducidos: this.litrosFaltantes,
+        vacasOrdenadas: undefined,
+      };
+      await firstValueFrom(this.produccionService.crearRegistro(dto));
+      this.kpiService.calcularKpis(this.hatoActivo.idHato as string).subscribe();
+    } catch {
+    } finally {
+      this.alertaProduccion &#x3D; false;
+      this.agregandoProduccionSugerida &#x3D; false;
+      this.irAPaso(&#x27;resumen&#x27;);
+      this.cdr.markForCheck();
+    }
+  }
+
+  rechazarProduccionSugerida(): void {
+    this.alertaProduccion &#x3D; false;
+    this.litrosFaltantes &#x3D; 0;
+    this.mensajeAlerta &#x3D; &#x27;&#x27;;
+    this.irAPaso(&#x27;resumen&#x27;);
+    this.cdr.markForCheck();
+  }
+  // ── Cerrar ────────────────────────────────────────────────────────────
+
+  cerrar(): void {
+    this.marcarMostrado();
+    this.visible &#x3D; false;
+    this.cdr.markForCheck();
+  }
+
+  irAInventarios(): void {
+    this.cerrar();
+    this.router.navigate([&#x27;/inventarios&#x27;]);
+  }
+
+  // ── Reset ─────────────────────────────────────────────────────────────
+
+  private resetForms(): void {
+    this.registroProduccion &#x3D; {
+      litrosProducidos: null,
+      vacasOrdenadas: null,
+      fecha: new Date().toISOString().split(&#x27;T&#x27;)[0],
+      omitir: false,
+    };
+    this.registroVenta &#x3D; {
+      litrosVendidos: null,
+      precioLitro: null,
+      registrar: false,
+    };
+    this.produccionGuardada &#x3D; false;
+    this.ventaGuardada &#x3D; false;
+    this.error &#x3D; &#x27;&#x27;;
+  }
+
+  // ── Helpers ───────────────────────────────────────────────────────────
+
+  get saludoHora(): string {
+    const h &#x3D; new Date().getHours();
+    if (h &lt; 12) return &#x27;🌅 Buenos días&#x27;;
+    if (h &lt; 18) return &#x27;☀️ Buenas tardes&#x27;;
+    return &#x27;🌙 Buenas noches&#x27;;
+  }
+
+  get fechaHoy(): string {
+    return new Date().toLocaleDateString(&#x27;es-CO&#x27;, {
+      weekday: &#x27;long&#x27;,
+      day: &#x27;numeric&#x27;,
+      month: &#x27;long&#x27;,
+    });
+  }
+
+  get totalVentaHoy(): number {
+    if (!this.registroVenta.litrosVendidos || !this.registroVenta.precioLitro) return 0;
+    return this.registroVenta.litrosVendidos * this.registroVenta.precioLitro;
+  }
+
+  formatCOP(valor: number): string {
+    return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(valor);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">@if (visible &amp;&amp; !esAdmin &amp;&amp; hatoActivo) {
+  &lt;!-- Fondo oscuro --&gt;
+  &lt;div class&#x3D;&quot;bitacora-backdrop&quot; (click)&#x3D;&quot;cerrar()&quot;&gt;&lt;/div&gt;
+
+  &lt;!-- Modal --&gt;
+  &lt;div class&#x3D;&quot;bitacora-modal&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HEADER &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-header-left&quot;&gt;
+        &lt;span class&#x3D;&quot;modal-icono&quot;&gt;📋&lt;/span&gt;
+        &lt;div&gt;
+          &lt;p class&#x3D;&quot;modal-saludo&quot;&gt;{{ saludoHora }}&lt;/p&gt;
+          &lt;h2 class&#x3D;&quot;modal-titulo&quot;&gt;Bitácora de ordeño&lt;/h2&gt;
+          &lt;p class&#x3D;&quot;modal-fecha&quot;&gt;{{ fechaHoy }}&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button class&#x3D;&quot;btn-cerrar&quot; (click)&#x3D;&quot;cerrar()&quot;&gt;✕&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; STEPPER &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;div class&#x3D;&quot;stepper&quot;&gt;
+      &lt;div
+        class&#x3D;&quot;step&quot;
+        [class.activo]&#x3D;&quot;paso &#x3D;&#x3D;&#x3D; &#x27;produccion&#x27;&quot;
+        [class.completado]&#x3D;&quot;produccionGuardada || paso &#x3D;&#x3D;&#x3D; &#x27;venta&#x27; || paso &#x3D;&#x3D;&#x3D; &#x27;resumen&#x27;&quot;
+      &gt;
+        &lt;div class&#x3D;&quot;step-num&quot;&gt;
+          @if (produccionGuardada) {
+            ✓
+          } @else {
+            1
+          }
+        &lt;/div&gt;
+        &lt;span class&#x3D;&quot;step-label&quot;&gt;Producción&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;step-linea&quot; [class.completada]&#x3D;&quot;paso &#x3D;&#x3D;&#x3D; &#x27;venta&#x27; || paso &#x3D;&#x3D;&#x3D; &#x27;resumen&#x27;&quot;&gt;&lt;/div&gt;
+      &lt;div
+        class&#x3D;&quot;step&quot;
+        [class.activo]&#x3D;&quot;paso &#x3D;&#x3D;&#x3D; &#x27;venta&#x27;&quot;
+        [class.completado]&#x3D;&quot;ventaGuardada || paso &#x3D;&#x3D;&#x3D; &#x27;resumen&#x27;&quot;
+      &gt;
+        &lt;div class&#x3D;&quot;step-num&quot;&gt;
+          @if (ventaGuardada) {
+            ✓
+          } @else {
+            2
+          }
+        &lt;/div&gt;
+        &lt;span class&#x3D;&quot;step-label&quot;&gt;Venta&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;step-linea&quot; [class.completada]&#x3D;&quot;paso &#x3D;&#x3D;&#x3D; &#x27;resumen&#x27;&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;step&quot; [class.activo]&#x3D;&quot;paso &#x3D;&#x3D;&#x3D; &#x27;resumen&#x27;&quot;&gt;
+        &lt;div class&#x3D;&quot;step-num&quot;&gt;3&lt;/div&gt;
+        &lt;span class&#x3D;&quot;step-label&quot;&gt;Resumen&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ERROR &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    @if (error) {
+      &lt;div class&#x3D;&quot;msg-error&quot;&gt;
+        &lt;span&gt;⚠️&lt;/span&gt;
+        &lt;p&gt;{{ error }}&lt;/p&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;!-- ═══════════════════════════════════════════════
+         PASO 1: PRODUCCIÓN
+    ═══════════════════════════════════════════════ --&gt;
+    @if (paso &#x3D;&#x3D;&#x3D; &#x27;produccion&#x27;) {
+      &lt;div class&#x3D;&quot;paso-contenido&quot;&gt;
+        &lt;div class&#x3D;&quot;paso-header&quot;&gt;
+          &lt;span class&#x3D;&quot;paso-icono&quot;&gt;🥛&lt;/span&gt;
+          &lt;div&gt;
+            &lt;h3 class&#x3D;&quot;paso-titulo&quot;&gt;¿Cuánta leche produciste hoy?&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;paso-desc&quot;&gt;
+              Registra la producción de
+              &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt;
+              del día de hoy.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        @if (!registroProduccion.omitir) {
+          &lt;div class&#x3D;&quot;campos-grid&quot;&gt;
+            &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+              &lt;label class&#x3D;&quot;campo-label&quot;&gt; Litros producidos * &lt;/label&gt;
+              &lt;div class&#x3D;&quot;input-suffix-wrap&quot;&gt;
+                &lt;input
+                  type&#x3D;&quot;number&quot;
+                  class&#x3D;&quot;campo-input&quot;
+                  placeholder&#x3D;&quot;Ej: 185&quot;
+                  min&#x3D;&quot;0&quot;
+                  step&#x3D;&quot;0.1&quot;
+                  [(ngModel)]&#x3D;&quot;registroProduccion.litrosProducidos&quot;
+                /&gt;
+                &lt;span class&#x3D;&quot;input-suffix&quot;&gt;L&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+              &lt;label class&#x3D;&quot;campo-label&quot;&gt;
+                Vacas ordeñadas
+                &lt;span class&#x3D;&quot;campo-opcional&quot;&gt;(opcional)&lt;/span&gt;
+              &lt;/label&gt;
+              &lt;input
+                type&#x3D;&quot;number&quot;
+                class&#x3D;&quot;campo-input&quot;
+                placeholder&#x3D;&quot;Ej: 25&quot;
+                min&#x3D;&quot;0&quot;
+                [(ngModel)]&#x3D;&quot;registroProduccion.vacasOrdenadas&quot;
+              /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Preview productividad --&gt;
+          @if (registroProduccion.litrosProducidos &amp;&amp; registroProduccion.vacasOrdenadas) {
+            &lt;div class&#x3D;&quot;preview-kpi&quot;&gt;
+              &lt;span class&#x3D;&quot;preview-label&quot;&gt; Productividad calculada: &lt;/span&gt;
+              &lt;span class&#x3D;&quot;preview-valor&quot;&gt;
+                {{
+                  registroProduccion.litrosProducidos / registroProduccion.vacasOrdenadas
+                    | number: &#x27;1.1-1&#x27;
+                }}
+                L/vaca/día
+              &lt;/span&gt;
+            &lt;/div&gt;
+          }
+        }
+
+        &lt;!-- Toggle omitir --&gt;
+        &lt;div
+          class&#x3D;&quot;omitir-wrap&quot;
+          (click)&#x3D;&quot;registroProduccion.omitir &#x3D; !registroProduccion.omitir; error &#x3D; &#x27;&#x27;&quot;
+        &gt;
+          &lt;div class&#x3D;&quot;toggle-pill&quot; [class.on]&#x3D;&quot;registroProduccion.omitir&quot;&gt;
+            &lt;div class&#x3D;&quot;toggle-dot&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class&#x3D;&quot;omitir-label&quot;&gt; Hoy no hubo producción de leche &lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;paso-acciones&quot;&gt;
+          &lt;button class&#x3D;&quot;btn-omitir&quot; data-cy&#x3D;&quot;btn-recordar-despues&quot; (click)&#x3D;&quot;cerrar()&quot;&gt;
+            Recordar después
+          &lt;/button&gt;
+          &lt;button class&#x3D;&quot;btn-siguiente&quot; [disabled]&#x3D;&quot;guardando&quot; (click)&#x3D;&quot;guardarProduccion()&quot;&gt;
+            @if (guardando) {
+              Guardando...
+            } @else if (registroProduccion.omitir) {
+              Siguiente →
+            } @else {
+              💾 Guardar y continuar →
+            }
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;!-- ═══════════════════════════════════════════════
+         PASO 2: VENTA
+    ═══════════════════════════════════════════════ --&gt;
+    @if (paso &#x3D;&#x3D;&#x3D; &#x27;venta&#x27;) {
+      &lt;div class&#x3D;&quot;paso-contenido&quot;&gt;
+        &lt;div class&#x3D;&quot;paso-header&quot;&gt;
+          &lt;span class&#x3D;&quot;paso-icono&quot;&gt;💰&lt;/span&gt;
+          &lt;div&gt;
+            &lt;h3 class&#x3D;&quot;paso-titulo&quot;&gt;¿Vendiste leche hoy?&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;paso-desc&quot;&gt;Registra si realizaste alguna venta de leche hoy.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Toggle registrar venta --&gt;
+        &lt;div
+          class&#x3D;&quot;omitir-wrap&quot;
+          (click)&#x3D;&quot;registroVenta.registrar &#x3D; !registroVenta.registrar; error &#x3D; &#x27;&#x27;&quot;
+        &gt;
+          &lt;div class&#x3D;&quot;toggle-pill&quot; [class.on]&#x3D;&quot;registroVenta.registrar&quot;&gt;
+            &lt;div class&#x3D;&quot;toggle-dot&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class&#x3D;&quot;omitir-label&quot;&gt; Sí, vendí leche hoy &lt;/span&gt;
+        &lt;/div&gt;
+
+        @if (registroVenta.registrar) {
+          &lt;div class&#x3D;&quot;campos-grid&quot;&gt;
+            &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+              &lt;label class&#x3D;&quot;campo-label&quot;&gt;Litros vendidos *&lt;/label&gt;
+              &lt;div class&#x3D;&quot;input-suffix-wrap&quot;&gt;
+                &lt;input
+                  type&#x3D;&quot;number&quot;
+                  class&#x3D;&quot;campo-input&quot;
+                  placeholder&#x3D;&quot;Ej: 150&quot;
+                  min&#x3D;&quot;0&quot;
+                  step&#x3D;&quot;0.1&quot;
+                  [(ngModel)]&#x3D;&quot;registroVenta.litrosVendidos&quot;
+                /&gt;
+                &lt;span class&#x3D;&quot;input-suffix&quot;&gt;L&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+              &lt;label class&#x3D;&quot;campo-label&quot;&gt;Precio por litro *&lt;/label&gt;
+              &lt;div class&#x3D;&quot;input-suffix-wrap&quot;&gt;
+                &lt;span class&#x3D;&quot;input-prefix&quot;&gt;$&lt;/span&gt;
+                &lt;input
+                  type&#x3D;&quot;number&quot;
+                  class&#x3D;&quot;campo-input campo-input-prefix&quot;
+                  placeholder&#x3D;&quot;Ej: 1200&quot;
+                  min&#x3D;&quot;0&quot;
+                  [(ngModel)]&#x3D;&quot;registroVenta.precioLitro&quot;
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Total calculado --&gt;
+          @if (totalVentaHoy &gt; 0) {
+            &lt;div class&#x3D;&quot;preview-kpi&quot;&gt;
+              &lt;span class&#x3D;&quot;preview-label&quot;&gt;Total venta:&lt;/span&gt;
+              &lt;span class&#x3D;&quot;preview-valor verde&quot;&gt;
+                {{ formatCOP(totalVentaHoy) }}
+              &lt;/span&gt;
+            &lt;/div&gt;
+          }
+        }
+
+        &lt;div class&#x3D;&quot;paso-acciones&quot;&gt;
+          &lt;button class&#x3D;&quot;btn-omitir&quot; (click)&#x3D;&quot;irAPaso(&#x27;produccion&#x27;)&quot;&gt;← Volver&lt;/button&gt;
+          &lt;button class&#x3D;&quot;btn-siguiente&quot; [disabled]&#x3D;&quot;guardando&quot; (click)&#x3D;&quot;guardarVenta()&quot;&gt;
+            @if (guardando) {
+              Guardando...
+            } @else if (!registroVenta.registrar) {
+              Siguiente →
+            } @else {
+              💾 Guardar y continuar →
+            }
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    }
+
+    @if (alertaProduccion) {
+      &lt;div class&#x3D;&quot;paso-contenido&quot;&gt;
+        &lt;div class&#x3D;&quot;paso-header&quot;&gt;
+          &lt;span class&#x3D;&quot;paso-icono&quot;&gt;⚠️&lt;/span&gt;
+          &lt;div&gt;
+            &lt;h3 class&#x3D;&quot;paso-titulo&quot;&gt;Producción no registrada&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;paso-desc&quot;&gt;{{ mensajeAlerta }}&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;alerta-detalle&quot;&gt;
+          &lt;div class&#x3D;&quot;alerta-litros&quot;&gt;
+            &lt;span class&#x3D;&quot;alerta-litros-valor&quot;&gt; {{ litrosFaltantes | number: &#x27;1.1-1&#x27; }} L &lt;/span&gt;
+            &lt;span class&#x3D;&quot;alerta-litros-label&quot;&gt; litros sin registrar como producción &lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;paso-acciones&quot;&gt;
+          &lt;button
+            class&#x3D;&quot;btn-omitir&quot;
+            [disabled]&#x3D;&quot;agregandoProduccionSugerida&quot;
+            (click)&#x3D;&quot;rechazarProduccionSugerida()&quot;
+          &gt;
+            No, continuar sin registrar
+          &lt;/button&gt;
+          &lt;button
+            class&#x3D;&quot;btn-siguiente&quot;
+            [disabled]&#x3D;&quot;agregandoProduccionSugerida&quot;
+            (click)&#x3D;&quot;aceptarProduccionSugerida()&quot;
+          &gt;
+            @if (agregandoProduccionSugerida) {
+              Guardando...
+            } @else {
+              ✅ Sí, agregar {{ litrosFaltantes | number: &#x27;1.1-1&#x27; }} L a producción
+            }
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;!-- ═══════════════════════════════════════════════
+         PASO 3: RESUMEN
+    ═══════════════════════════════════════════════ --&gt;
+    @if (paso &#x3D;&#x3D;&#x3D; &#x27;resumen&#x27;) {
+      &lt;div class&#x3D;&quot;paso-contenido&quot;&gt;
+        &lt;div class&#x3D;&quot;resumen-header&quot;&gt;
+          &lt;span class&#x3D;&quot;resumen-check&quot;&gt;✅&lt;/span&gt;
+          &lt;h3 class&#x3D;&quot;resumen-titulo&quot;&gt;¡Bitácora del día registrada!&lt;/h3&gt;
+          &lt;p class&#x3D;&quot;resumen-desc&quot;&gt;Tu información del día ha sido guardada correctamente.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Resumen de lo registrado --&gt;
+        &lt;div class&#x3D;&quot;resumen-items&quot;&gt;
+          @if (produccionGuardada) {
+            &lt;div class&#x3D;&quot;resumen-item&quot;&gt;
+              &lt;span class&#x3D;&quot;resumen-item-icono&quot;&gt;🥛&lt;/span&gt;
+              &lt;div class&#x3D;&quot;resumen-item-info&quot;&gt;
+                &lt;span class&#x3D;&quot;resumen-item-label&quot;&gt;Producción&lt;/span&gt;
+                &lt;span class&#x3D;&quot;resumen-item-valor&quot;&gt;
+                  {{ registroProduccion.litrosProducidos }}
+                  litros registrados
+                &lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class&#x3D;&quot;resumen-item-check&quot;&gt;✓&lt;/span&gt;
+            &lt;/div&gt;
+          } @else {
+            &lt;div class&#x3D;&quot;resumen-item omitido&quot;&gt;
+              &lt;span class&#x3D;&quot;resumen-item-icono&quot;&gt;🥛&lt;/span&gt;
+              &lt;div class&#x3D;&quot;resumen-item-info&quot;&gt;
+                &lt;span class&#x3D;&quot;resumen-item-label&quot;&gt;Producción&lt;/span&gt;
+                &lt;span class&#x3D;&quot;resumen-item-valor&quot;&gt;Sin producción hoy&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class&#x3D;&quot;resumen-item-omitido&quot;&gt;—&lt;/span&gt;
+            &lt;/div&gt;
+          }
+
+          @if (ventaGuardada) {
+            &lt;div class&#x3D;&quot;resumen-item&quot;&gt;
+              &lt;span class&#x3D;&quot;resumen-item-icono&quot;&gt;💰&lt;/span&gt;
+              &lt;div class&#x3D;&quot;resumen-item-info&quot;&gt;
+                &lt;span class&#x3D;&quot;resumen-item-label&quot;&gt;Venta de leche&lt;/span&gt;
+                &lt;span class&#x3D;&quot;resumen-item-valor&quot;&gt;
+                  {{ registroVenta.litrosVendidos }} L ·
+                  {{ formatCOP(totalVentaHoy) }}
+                &lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class&#x3D;&quot;resumen-item-check&quot;&gt;✓&lt;/span&gt;
+            &lt;/div&gt;
+          } @else {
+            &lt;div class&#x3D;&quot;resumen-item omitido&quot;&gt;
+              &lt;span class&#x3D;&quot;resumen-item-icono&quot;&gt;💰&lt;/span&gt;
+              &lt;div class&#x3D;&quot;resumen-item-info&quot;&gt;
+                &lt;span class&#x3D;&quot;resumen-item-label&quot;&gt;Venta de leche&lt;/span&gt;
+                &lt;span class&#x3D;&quot;resumen-item-valor&quot;&gt;Sin ventas hoy&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class&#x3D;&quot;resumen-item-omitido&quot;&gt;—&lt;/span&gt;
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;!-- Inventario --&gt;
+        &lt;div class&#x3D;&quot;inventario-sugerencia&quot;&gt;
+          &lt;div class&#x3D;&quot;inventario-sugerencia-left&quot;&gt;
+            &lt;span class&#x3D;&quot;inventario-icono&quot;&gt;📦&lt;/span&gt;
+            &lt;div&gt;
+              &lt;p class&#x3D;&quot;inventario-titulo&quot;&gt;¿Cambió algo en tu inventario?&lt;/p&gt;
+              &lt;p class&#x3D;&quot;inventario-desc&quot;&gt;
+                Si compraste insumos, vendiste ganado o hubo cambios en tu inventario, actualízalo
+                ahora.
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;button class&#x3D;&quot;btn-inventario&quot; (click)&#x3D;&quot;irAInventarios()&quot;&gt;Ir a inventarios →&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;button class&#x3D;&quot;btn-finalizar&quot; (click)&#x3D;&quot;cerrar()&quot;&gt;✓ Finalizar&lt;/button&gt;
+      &lt;/div&gt;
+    }
+  &lt;/div&gt;
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div>@if (visible && !esAdmin && hatoActivo) {  <!-- Fondo oscuro -->  <div class="bitacora-backdrop" (click)="cerrar()"></div>  <!-- Modal -->  <div class="bitacora-modal" (click)="$event.stopPropagation()">    <!-- ===== HEADER ===== -->    <div class="modal-header">      <div class="modal-header-left">        <span class="modal-icono">📋</span>        <div>          <p class="modal-saludo">{{ saludoHora }}</p>          <h2 class="modal-titulo">Bitácora de ordeño</h2>          <p class="modal-fecha">{{ fechaHoy }}</p>        </div>      </div>      <button class="btn-cerrar" (click)="cerrar()">✕</button>    </div>    <!-- ===== STEPPER ===== -->    <div class="stepper">      <div        class="step"        [class.activo]="paso === \'produccion\'"        [class.completado]="produccionGuardada || paso === \'venta\' || paso === \'resumen\'"      >        <div class="step-num">          @if (produccionGuardada) {            ✓          } @else {            1          }        </div>        <span class="step-label">Producción</span>      </div>      <div class="step-linea" [class.completada]="paso === \'venta\' || paso === \'resumen\'"></div>      <div        class="step"        [class.activo]="paso === \'venta\'"        [class.completado]="ventaGuardada || paso === \'resumen\'"      >        <div class="step-num">          @if (ventaGuardada) {            ✓          } @else {            2          }        </div>        <span class="step-label">Venta</span>      </div>      <div class="step-linea" [class.completada]="paso === \'resumen\'"></div>      <div class="step" [class.activo]="paso === \'resumen\'">        <div class="step-num">3</div>        <span class="step-label">Resumen</span>      </div>    </div>    <!-- ===== ERROR ===== -->    @if (error) {      <div class="msg-error">        <span>⚠️</span>        <p>{{ error }}</p>      </div>    }    <!-- ═══════════════════════════════════════════════         PASO 1: PRODUCCIÓN    ═══════════════════════════════════════════════ -->    @if (paso === \'produccion\') {      <div class="paso-contenido">        <div class="paso-header">          <span class="paso-icono">🥛</span>          <div>            <h3 class="paso-titulo">¿Cuánta leche produciste hoy?</h3>            <p class="paso-desc">              Registra la producción de              <strong>{{ hatoActivo.nombreHato }}</strong>              del día de hoy.            </p>          </div>        </div>        @if (!registroProduccion.omitir) {          <div class="campos-grid">            <div class="campo-group">              <label class="campo-label"> Litros producidos * </label>              <div class="input-suffix-wrap">                <input                  type="number"                  class="campo-input"                  placeholder="Ej: 185"                  min="0"                  step="0.1"                  [(ngModel)]="registroProduccion.litrosProducidos"                />                <span class="input-suffix">L</span>              </div>            </div>            <div class="campo-group">              <label class="campo-label">                Vacas ordeñadas                <span class="campo-opcional">(opcional)</span>              </label>              <input                type="number"                class="campo-input"                placeholder="Ej: 25"                min="0"                [(ngModel)]="registroProduccion.vacasOrdenadas"              />            </div>          </div>          <!-- Preview productividad -->          @if (registroProduccion.litrosProducidos && registroProduccion.vacasOrdenadas) {            <div class="preview-kpi">              <span class="preview-label"> Productividad calculada: </span>              <span class="preview-valor">                {{                  registroProduccion.litrosProducidos / registroProduccion.vacasOrdenadas                    | number: \'1.1-1\'                }}                L/vaca/día              </span>            </div>          }        }        <!-- Toggle omitir -->        <div          class="omitir-wrap"          (click)="registroProduccion.omitir = !registroProduccion.omitir; error = \'\'"        >          <div class="toggle-pill" [class.on]="registroProduccion.omitir">            <div class="toggle-dot"></div>          </div>          <span class="omitir-label"> Hoy no hubo producción de leche </span>        </div>        <div class="paso-acciones">          <button class="btn-omitir" data-cy="btn-recordar-despues" (click)="cerrar()">            Recordar después          </button>          <button class="btn-siguiente" [disabled]="guardando" (click)="guardarProduccion()">            @if (guardando) {              Guardando...            } @else if (registroProduccion.omitir) {              Siguiente →            } @else {              💾 Guardar y continuar →            }          </button>        </div>      </div>    }    <!-- ═══════════════════════════════════════════════         PASO 2: VENTA    ═══════════════════════════════════════════════ -->    @if (paso === \'venta\') {      <div class="paso-contenido">        <div class="paso-header">          <span class="paso-icono">💰</span>          <div>            <h3 class="paso-titulo">¿Vendiste leche hoy?</h3>            <p class="paso-desc">Registra si realizaste alguna venta de leche hoy.</p>          </div>        </div>        <!-- Toggle registrar venta -->        <div          class="omitir-wrap"          (click)="registroVenta.registrar = !registroVenta.registrar; error = \'\'"        >          <div class="toggle-pill" [class.on]="registroVenta.registrar">            <div class="toggle-dot"></div>          </div>          <span class="omitir-label"> Sí, vendí leche hoy </span>        </div>        @if (registroVenta.registrar) {          <div class="campos-grid">            <div class="campo-group">              <label class="campo-label">Litros vendidos *</label>              <div class="input-suffix-wrap">                <input                  type="number"                  class="campo-input"                  placeholder="Ej: 150"                  min="0"                  step="0.1"                  [(ngModel)]="registroVenta.litrosVendidos"                />                <span class="input-suffix">L</span>              </div>            </div>            <div class="campo-group">              <label class="campo-label">Precio por litro *</label>              <div class="input-suffix-wrap">                <span class="input-prefix">$</span>                <input                  type="number"                  class="campo-input campo-input-prefix"                  placeholder="Ej: 1200"                  min="0"                  [(ngModel)]="registroVenta.precioLitro"                />              </div>            </div>          </div>          <!-- Total calculado -->          @if (totalVentaHoy > 0) {            <div class="preview-kpi">              <span class="preview-label">Total venta:</span>              <span class="preview-valor verde">                {{ formatCOP(totalVentaHoy) }}              </span>            </div>          }        }        <div class="paso-acciones">          <button class="btn-omitir" (click)="irAPaso(\'produccion\')">← Volver</button>          <button class="btn-siguiente" [disabled]="guardando" (click)="guardarVenta()">            @if (guardando) {              Guardando...            } @else if (!registroVenta.registrar) {              Siguiente →            } @else {              💾 Guardar y continuar →            }          </button>        </div>      </div>    }    @if (alertaProduccion) {      <div class="paso-contenido">        <div class="paso-header">          <span class="paso-icono">⚠️</span>          <div>            <h3 class="paso-titulo">Producción no registrada</h3>            <p class="paso-desc">{{ mensajeAlerta }}</p>          </div>        </div>        <div class="alerta-detalle">          <div class="alerta-litros">            <span class="alerta-litros-valor"> {{ litrosFaltantes | number: \'1.1-1\' }} L </span>            <span class="alerta-litros-label"> litros sin registrar como producción </span>          </div>        </div>        <div class="paso-acciones">          <button            class="btn-omitir"            [disabled]="agregandoProduccionSugerida"            (click)="rechazarProduccionSugerida()"          >            No, continuar sin registrar          </button>          <button            class="btn-siguiente"            [disabled]="agregandoProduccionSugerida"            (click)="aceptarProduccionSugerida()"          >            @if (agregandoProduccionSugerida) {              Guardando...            } @else {              ✅ Sí, agregar {{ litrosFaltantes | number: \'1.1-1\' }} L a producción            }          </button>        </div>      </div>    }    <!-- ═══════════════════════════════════════════════         PASO 3: RESUMEN    ═══════════════════════════════════════════════ -->    @if (paso === \'resumen\') {      <div class="paso-contenido">        <div class="resumen-header">          <span class="resumen-check">✅</span>          <h3 class="resumen-titulo">¡Bitácora del día registrada!</h3>          <p class="resumen-desc">Tu información del día ha sido guardada correctamente.</p>        </div>        <!-- Resumen de lo registrado -->        <div class="resumen-items">          @if (produccionGuardada) {            <div class="resumen-item">              <span class="resumen-item-icono">🥛</span>              <div class="resumen-item-info">                <span class="resumen-item-label">Producción</span>                <span class="resumen-item-valor">                  {{ registroProduccion.litrosProducidos }}                  litros registrados                </span>              </div>              <span class="resumen-item-check">✓</span>            </div>          } @else {            <div class="resumen-item omitido">              <span class="resumen-item-icono">🥛</span>              <div class="resumen-item-info">                <span class="resumen-item-label">Producción</span>                <span class="resumen-item-valor">Sin producción hoy</span>              </div>              <span class="resumen-item-omitido">—</span>            </div>          }          @if (ventaGuardada) {            <div class="resumen-item">              <span class="resumen-item-icono">💰</span>              <div class="resumen-item-info">                <span class="resumen-item-label">Venta de leche</span>                <span class="resumen-item-valor">                  {{ registroVenta.litrosVendidos }} L ·                  {{ formatCOP(totalVentaHoy) }}                </span>              </div>              <span class="resumen-item-check">✓</span>            </div>          } @else {            <div class="resumen-item omitido">              <span class="resumen-item-icono">💰</span>              <div class="resumen-item-info">                <span class="resumen-item-label">Venta de leche</span>                <span class="resumen-item-valor">Sin ventas hoy</span>              </div>              <span class="resumen-item-omitido">—</span>            </div>          }        </div>        <!-- Inventario -->        <div class="inventario-sugerencia">          <div class="inventario-sugerencia-left">            <span class="inventario-icono">📦</span>            <div>              <p class="inventario-titulo">¿Cambió algo en tu inventario?</p>              <p class="inventario-desc">                Si compraste insumos, vendiste ganado o hubo cambios en tu inventario, actualízalo                ahora.              </p>            </div>          </div>          <button class="btn-inventario" (click)="irAInventarios()">Ir a inventarios →</button>        </div>        <button class="btn-finalizar" (click)="cerrar()">✓ Finalizar</button>      </div>    }  </div>}</div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'BitacoraOrdenioComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'BitacoraOrdenioComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

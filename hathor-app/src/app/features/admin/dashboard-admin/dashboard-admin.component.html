@@ -1,0 +1,438 @@
+<div class="dashboard-admin-page">
+  <!-- ===== HEADER ===== -->
+  <header class="page-header">
+    <div class="header-left">
+      <p class="page-tag">Hathor · Administración</p>
+      <h1 class="page-title">Dashboard <span class="brand">Nacional</span></h1>
+      <p class="page-subtitle">Estadísticas globales de la plataforma Hathor Colombia</p>
+    </div>
+    <div class="header-right">
+      <div class="header-icon">⚙️</div>
+    </div>
+  </header>
+
+  <!-- ===== ERROR ===== -->
+  @if (error) {
+    <div class="msg-error">
+      <span>❌</span>
+      <p>{{ error }}</p>
+    </div>
+  }
+
+  <!-- ===== CARDS GLOBALES ===== -->
+  @if (loadingGlobales) {
+    <div class="cards-loading">
+      <app-spinner size="medium" message="Cargando estadísticas..."></app-spinner>
+    </div>
+  } @else if (globales) {
+    <div class="stats-grid">
+      <div class="stat-card" (click)="irAHatos()">
+        <div class="stat-card-icono">🐄</div>
+        <div class="stat-card-info">
+          <span class="stat-card-label">Total hatos</span>
+          <span class="stat-card-valor">{{ formatNum(globales.totalHatos) }}</span>
+          <span class="stat-card-sub">registrados en la plataforma</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-icono">📊</div>
+        <div class="stat-card-info">
+          <span class="stat-card-label">Hatos con KPIs</span>
+          <span class="stat-card-valor verde">
+            {{ formatNum(globales.hatosConKpis) }}
+          </span>
+          <span class="stat-card-sub">{{ porcentajeHatosConKpis }} del total</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-icono">📍</div>
+        <div class="stat-card-info">
+          <span class="stat-card-label">Departamentos</span>
+          <span class="stat-card-valor">
+            {{ formatNum(globales.totalDepartamentos) }}
+          </span>
+          <span class="stat-card-sub">con presencia activa</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-icono">📋</div>
+        <div class="stat-card-info">
+          <span class="stat-card-label">Completitud prom.</span>
+          <span
+            class="stat-card-valor"
+            [class.verde]="globales.promedioCompletitud >= 75"
+            [class.amarillo]="
+              globales.promedioCompletitud >= 50 && globales.promedioCompletitud < 75
+            "
+            [class.rojo]="globales.promedioCompletitud < 50"
+          >
+            {{ promedioCompletitudTexto }}
+          </span>
+          <span class="stat-card-sub">promedio de registros</span>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- ===== TABS ===== -->
+  <div class="tabs-row">
+    @for (tab of tabs; track tab.id) {
+      <button class="tab-btn" [class.activo]="tabActivo === tab.id" (click)="setTab(tab.id)">
+        <span class="tab-icono">{{ tab.icono }}</span>
+        <span class="tab-label">{{ tab.label }}</span>
+      </button>
+    }
+  </div>
+
+  <!-- ===== CONTENIDO TABS ===== -->
+  <div class="tab-content">
+    <!-- TAB: Resumen -->
+    @if (tabActivo === 'resumen') {
+      <div class="resumen-grid">
+        <!-- Card escala -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <h3 class="chart-card-titulo">📐 Distribución por escala</h3>
+            <p class="chart-card-subtitulo">Proporción de hatos según su tamaño</p>
+          </div>
+          @if (loadingEscalas) {
+            <div class="chart-loading">
+              <app-spinner size="small"></app-spinner>
+            </div>
+          } @else {
+            <div class="chart-wrap-donut">
+              <canvas #chartEscala></canvas>
+            </div>
+            <!-- Tabla resumen -->
+            <div class="resumen-tabla">
+              @for (e of escalas; track e.escala) {
+                <div class="resumen-tabla-fila">
+                  <span class="resumen-tabla-label">{{ e.escala }}</span>
+                  <span class="resumen-tabla-valor">{{ e.totalHatos }}</span>
+                  <span class="resumen-tabla-pct">
+                    {{ e.porcentajeDelTotal | number: '1.1-1' }}%
+                  </span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Card trópico -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <h3 class="chart-card-titulo">🌿 Distribución por trópico</h3>
+            <p class="chart-card-subtitulo">Hatos por tipo de zona climática</p>
+          </div>
+          @if (loadingTropicos) {
+            <div class="chart-loading">
+              <app-spinner size="small"></app-spinner>
+            </div>
+          } @else {
+            <div class="chart-wrap-bar">
+              <canvas #chartTropico></canvas>
+            </div>
+            <!-- KPIs por trópico -->
+            <div class="resumen-tabla">
+              @for (t of tropicos; track t.tropico) {
+                <div class="resumen-tabla-fila">
+                  <span class="resumen-tabla-label">{{ t.tropico }}</span>
+                  <div class="resumen-tabla-kpis">
+                    @if (t.promedioLitrosVacaDia) {
+                      <span class="kpi-chip">
+                        🥛 {{ formatDecimal(t.promedioLitrosVacaDia) }} L/v/d
+                      </span>
+                    }
+                    @if (t.promedioCargarAnimal) {
+                      <span class="kpi-chip">
+                        🐄 {{ formatDecimal(t.promedioCargarAnimal) }} UA/ha
+                      </span>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Card completitud -->
+        <div class="chart-card chart-card-completitud">
+          <div class="chart-card-header">
+            <h3 class="chart-card-titulo">📋 Completitud promedio</h3>
+            <p class="chart-card-subtitulo">Nivel de registro de información</p>
+          </div>
+          @if (loadingGlobales) {
+            <div class="chart-loading">
+              <app-spinner size="small"></app-spinner>
+            </div>
+          } @else if (globales) {
+            <div class="completitud-wrap">
+              <div class="completitud-donut-wrap">
+                <canvas #chartCompletitud></canvas>
+                <div class="completitud-centro">
+                  <span class="completitud-pct">
+                    {{ promedioCompletitudTexto }}
+                  </span>
+                  <span class="completitud-label">promedio</span>
+                </div>
+              </div>
+            </div>
+            <!-- Desglose por escala -->
+            <div class="resumen-tabla">
+              @for (e of escalas; track e.escala) {
+                <div class="resumen-tabla-fila">
+                  <span class="resumen-tabla-label">{{ e.escala }}</span>
+                  <div class="resumen-tabla-kpis">
+                    @if (e.promedioLitrosVacaDia) {
+                      <span class="kpi-chip verde">
+                        🥛 {{ formatDecimal(e.promedioLitrosVacaDia) }} L/v/d
+                      </span>
+                    }
+                    @if (e.promedioMargenNeto) {
+                      <span
+                        class="kpi-chip"
+                        [class.verde]="e.promedioMargenNeto >= 0"
+                        [class.rojo]="e.promedioMargenNeto < 0"
+                      >
+                        💰 {{ formatDecimal(e.promedioMargenNeto) }}%
+                      </span>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- TAB: Departamentos -->
+    @if (tabActivo === 'departamentos') {
+      <div class="depto-layout">
+        <!-- Gráfica barras horizontales -->
+        <div class="chart-card chart-card-full">
+          <div class="chart-card-header">
+            <h3 class="chart-card-titulo">📍 Hatos por departamento — Top 10</h3>
+            <p class="chart-card-subtitulo">Total de hatos vs hatos con KPIs calculados</p>
+          </div>
+          @if (loadingDepartamentos) {
+            <div class="chart-loading">
+              <app-spinner size="medium"></app-spinner>
+            </div>
+          } @else {
+            <div class="chart-wrap-horizontal">
+              <canvas #chartDepartamento></canvas>
+            </div>
+          }
+        </div>
+
+        <!-- Tabla completa departamentos -->
+        @if (!loadingDepartamentos && departamentos.length > 0) {
+          <div class="tabla-card">
+            <div class="tabla-header-row">
+              <h3 class="chart-card-titulo">Detalle por departamento</h3>
+            </div>
+            <div class="tabla-wrap">
+              <table class="tabla-admin">
+                <thead>
+                  <tr>
+                    <th>Departamento</th>
+                    <th class="text-center">Total hatos</th>
+                    <th class="text-center">Con KPIs</th>
+                    <th class="text-center">KPI destacado</th>
+                    <th class="text-center">Prom. litros/vaca/día</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (d of departamentos; track d.departamento; let i = $index) {
+                    <tr [class.fila-alterna]="i % 2 !== 0">
+                      <td class="td-nombre">{{ d.departamento }}</td>
+                      <td class="text-center td-num">{{ d.totalHatos }}</td>
+                      <td class="text-center">
+                        <span
+                          class="badge"
+                          [class.badge-verde]="d.hatosConKpis === d.totalHatos"
+                          [class.badge-amarillo]="
+                            d.hatosConKpis > 0 && d.hatosConKpis < d.totalHatos
+                          "
+                          [class.badge-gris]="d.hatosConKpis === 0"
+                        >
+                          {{ d.hatosConKpis }}
+                        </span>
+                      </td>
+                      <td class="text-center td-kpi">
+                        {{ d.kpiDestacado ?? '—' }}
+                      </td>
+                      <td class="text-center td-num">
+                        {{
+                          d.promedioKpiDestacado != null
+                            ? formatDecimal(d.promedioKpiDestacado) + ' L'
+                            : '—'
+                        }}
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- TAB: Escalas -->
+    @if (tabActivo === 'escalas') {
+      @if (loadingEscalas) {
+        <div class="tab-loading">
+          <app-spinner size="medium" message="Cargando..."></app-spinner>
+        </div>
+      } @else {
+        <div class="escalas-grid">
+          @for (e of escalas; track e.escala) {
+            <div class="escala-card">
+              <div class="escala-card-header">
+                <span class="escala-icono">📐</span>
+                <div>
+                  <h3 class="escala-titulo">{{ e.escala }}</h3>
+                  <p class="escala-subtitulo">
+                    {{ formatDecimal(e.porcentajeDelTotal) }}% del total
+                  </p>
+                </div>
+              </div>
+              <div class="escala-barra-wrap">
+                <div class="escala-barra">
+                  <div class="escala-barra-fill" [style.width.%]="e.porcentajeDelTotal"></div>
+                </div>
+                <span class="escala-barra-label"> {{ e.totalHatos }} hatos </span>
+              </div>
+              <div class="escala-kpis">
+                <div class="escala-kpi-item">
+                  <span class="escala-kpi-label">Litros/vaca/día</span>
+                  <span class="escala-kpi-valor">
+                    {{
+                      e.promedioLitrosVacaDia != null
+                        ? formatDecimal(e.promedioLitrosVacaDia) + ' L'
+                        : '—'
+                    }}
+                  </span>
+                </div>
+                <div class="escala-kpi-item">
+                  <span class="escala-kpi-label">Margen neto prom.</span>
+                  <span
+                    class="escala-kpi-valor"
+                    [class.verde]="(e.promedioMargenNeto ?? 0) >= 0"
+                    [class.rojo]="(e.promedioMargenNeto ?? 0) < 0"
+                  >
+                    {{
+                      e.promedioMargenNeto != null ? formatDecimal(e.promedioMargenNeto) + '%' : '—'
+                    }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+
+    <!-- TAB: Trópicos -->
+    @if (tabActivo === 'tropicos') {
+      @if (loadingTropicos) {
+        <div class="tab-loading">
+          <app-spinner size="medium" message="Cargando..."></app-spinner>
+        </div>
+      } @else {
+        <div class="tropicos-grid">
+          @for (t of tropicos; track t.tropico) {
+            <div class="tropico-card">
+              <div class="tropico-header">
+                <span class="tropico-icono">🌿</span>
+                <div>
+                  <h3 class="tropico-titulo">Trópico {{ t.tropico }}</h3>
+                  <p class="tropico-subtitulo">
+                    {{ t.totalHatos }} hatos · {{ formatDecimal(t.porcentajeDelTotal) }}%
+                  </p>
+                </div>
+              </div>
+              <div class="tropico-barra-wrap">
+                <div class="tropico-barra">
+                  <div class="tropico-barra-fill" [style.width.%]="t.porcentajeDelTotal"></div>
+                </div>
+              </div>
+              <div class="tropico-kpis">
+                <div class="tropico-kpi">
+                  <span class="tropico-kpi-icono">🥛</span>
+                  <div>
+                    <span class="tropico-kpi-label">Litros/vaca/día</span>
+                    <span class="tropico-kpi-valor">
+                      {{
+                        t.promedioLitrosVacaDia != null
+                          ? formatDecimal(t.promedioLitrosVacaDia) + ' L'
+                          : '—'
+                      }}
+                    </span>
+                  </div>
+                </div>
+                <div class="tropico-kpi">
+                  <span class="tropico-kpi-icono">🐄</span>
+                  <div>
+                    <span class="tropico-kpi-label">Carga animal prom.</span>
+                    <span class="tropico-kpi-valor">
+                      {{
+                        t.promedioCargarAnimal != null
+                          ? formatDecimal(t.promedioCargarAnimal) + ' UA/ha'
+                          : '—'
+                      }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+
+    <!-- TAB: Mapa -->
+    @if (tabActivo === 'mapa') {
+      <div class="mapa-card">
+        <div class="mapa-card-header">
+          <div>
+            <h3 class="chart-card-titulo">🗺️ Mapa nacional de hatos</h3>
+            <p class="chart-card-subtitulo">
+              {{ hatosConCoordenadas.length }} hatos con coordenadas registradas
+            </p>
+          </div>
+          <div class="mapa-leyenda">
+            <span class="leyenda-item">
+              <span class="leyenda-dot" style="background: #19e64d"></span>
+              100% completado
+            </span>
+            <span class="leyenda-item">
+              <span class="leyenda-dot" style="background: #3b82f6"></span>
+              75–99%
+            </span>
+            <span class="leyenda-item">
+              <span class="leyenda-dot" style="background: #f59e0b"></span>
+              50–74%
+            </span>
+            <span class="leyenda-item">
+              <span class="leyenda-dot" style="background: #ef4444"></span>
+              &lt;50%
+            </span>
+          </div>
+        </div>
+        @if (loadingMapa) {
+          <div class="mapa-loading">
+            <app-spinner size="medium" message="Cargando mapa..."></app-spinner>
+          </div>
+        } @else {
+          <div class="mapa-contenedor" [id]="mapId"></div>
+        }
+      </div>
+    }
+  </div>
+</div>

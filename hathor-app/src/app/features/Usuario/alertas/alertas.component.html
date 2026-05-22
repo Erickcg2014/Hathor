@@ -1,0 +1,243 @@
+<div class="alertas-page">
+  <!-- ===== LOADING ===== -->
+  @if (loading) {
+    <div class="loading-wrap">
+      <app-spinner size="large" message="Cargando alertas..."> </app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- ===== HEADER ===== -->
+    <header class="page-header">
+      <div class="header-left">
+        <p class="page-tag">Hathor · Alertas</p>
+        <h1 class="page-title">Mis <span class="brand">Alertas</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato para ver tus alertas.</p>
+        }
+      </div>
+      <div class="header-right">
+        <div class="header-icon">🔔</div>
+      </div>
+    </header>
+
+    @if (error) {
+      <div class="msg-error">
+        <span>❌</span>
+        <p>{{ error }}</p>
+      </div>
+    }
+
+    @if (!hatoActivo) {
+      <div class="empty-state">
+        <span>🐄</span>
+        <p>Selecciona un hato para ver tus alertas.</p>
+      </div>
+    }
+
+    @if (hatoActivo) {
+      <!-- ===== STATS ===== -->
+      <div class="stats-row">
+        <div class="stat-card total">
+          <span class="stat-icono">🔔</span>
+          <div class="stat-info">
+            <span class="stat-valor">{{ totalAlertas }}</span>
+            <span class="stat-label">Total alertas</span>
+          </div>
+        </div>
+        <div class="stat-card criticas">
+          <span class="stat-icono">🔴</span>
+          <div class="stat-info">
+            <span class="stat-valor">
+              {{ resumen?.criticas?.length ?? 0 }}
+            </span>
+            <span class="stat-label">Críticas</span>
+          </div>
+        </div>
+        <div class="stat-card preventivas">
+          <span class="stat-icono">🟡</span>
+          <div class="stat-info">
+            <span class="stat-valor">
+              {{ resumen?.preventivas?.length ?? 0 }}
+            </span>
+            <span class="stat-label">Preventivas</span>
+          </div>
+        </div>
+        <div class="stat-card oportunidades">
+          <span class="stat-icono">🟢</span>
+          <div class="stat-info">
+            <span class="stat-valor">
+              {{ resumen?.oportunidades?.length ?? 0 }}
+            </span>
+            <span class="stat-label">Oportunidades</span>
+          </div>
+        </div>
+        <div class="stat-card no-leidas">
+          <span class="stat-icono">📬</span>
+          <div class="stat-info">
+            <span class="stat-valor rojo">
+              {{ resumen?.totalNoLeidas ?? 0 }}
+            </span>
+            <span class="stat-label">Sin leer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ACCIONES GLOBALES ===== -->
+      <div class="acciones-globales">
+        <div class="filtros-row">
+          <button
+            class="filtro-btn"
+            [class.activo]="filtroActivo === 'TODAS'"
+            (click)="setFiltro('TODAS')"
+          >
+            Todas
+            <span class="filtro-count">{{ totalAlertas }}</span>
+          </button>
+          <button
+            class="filtro-btn critica"
+            [class.activo]="filtroActivo === 'CRITICA'"
+            (click)="setFiltro('CRITICA')"
+          >
+            🔴 Críticas
+            <span class="filtro-count">
+              {{ resumen?.criticas?.length ?? 0 }}
+            </span>
+          </button>
+          <button
+            class="filtro-btn preventiva"
+            [class.activo]="filtroActivo === 'PREVENTIVA'"
+            (click)="setFiltro('PREVENTIVA')"
+          >
+            🟡 Preventivas
+            <span class="filtro-count">
+              {{ resumen?.preventivas?.length ?? 0 }}
+            </span>
+          </button>
+          <button
+            class="filtro-btn oportunidad"
+            [class.activo]="filtroActivo === 'OPORTUNIDAD'"
+            (click)="setFiltro('OPORTUNIDAD')"
+          >
+            🟢 Oportunidades
+            <span class="filtro-count">
+              {{ resumen?.oportunidades?.length ?? 0 }}
+            </span>
+          </button>
+        </div>
+
+        <div class="acciones-derecha">
+          @if ((resumen?.totalNoLeidas ?? 0) > 0) {
+            <button class="btn-marcar-todas" (click)="marcarTodasLeidas()">
+              ✓ Marcar todas como leídas
+            </button>
+          }
+          <button class="btn-evaluar" [disabled]="evaluando" (click)="evaluarAlertas()">
+            @if (evaluando) {
+              <app-spinner size="small"></app-spinner>
+              Evaluando...
+            } @else {
+              🔄 Actualizar alertas
+            }
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== LISTA VACÍA ===== -->
+      @if (alertasFiltradas.length === 0) {
+        <div class="empty-state">
+          @if (totalAlertas === 0) {
+            <span>✅</span>
+            <p>¡Sin alertas activas!</p>
+            <p class="empty-hint">
+              Tu hato está en buen estado. El sistema evaluará nuevas alertas diariamente.
+            </p>
+          } @else {
+            <span>🔍</span>
+            <p>No hay alertas del tipo seleccionado.</p>
+          }
+        </div>
+      }
+
+      <!-- ===== LISTA DE ALERTAS ===== -->
+      @if (alertasFiltradas.length > 0) {
+        <div class="alertas-lista">
+          @for (alerta of alertasFiltradas; track alerta.idAlerta) {
+            <div
+              class="alerta-card"
+              [class]="claseAlerta(alerta.severidad)"
+              [class.leida]="alerta.leida"
+              [class.expandida]="alertaExpandida === alerta.idAlerta"
+            >
+              <!-- Header de la alerta -->
+              <div class="alerta-header" (click)="toggleExpandida(alerta.idAlerta)">
+                <div class="alerta-header-left">
+                  <span class="alerta-severidad-icono">
+                    {{ iconoSeveridad(alerta.severidad) }}
+                  </span>
+                  <div class="alerta-info">
+                    <div class="alerta-titulo-row">
+                      <h3 class="alerta-titulo">
+                        {{ alerta.titulo }}
+                      </h3>
+                      @if (!alerta.leida) {
+                        <span class="badge-nueva">Nueva</span>
+                      }
+                    </div>
+                    <div class="alerta-meta">
+                      <span class="badge-severidad" [class]="claseBadgeSeveridad(alerta.severidad)">
+                        {{ labelSeveridad(alerta.severidad) }}
+                      </span>
+                      @if (alerta.codigoKpi) {
+                        <span class="badge-kpi"> 📈 {{ alerta.codigoKpi }} </span>
+                      }
+                      <span class="alerta-tiempo">
+                        {{ alerta.tiempoRelativo }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="alerta-header-right">
+                  <!-- Flecha expand -->
+                  <span class="expand-icono" [class.rotado]="alertaExpandida === alerta.idAlerta">
+                    ›
+                  </span>
+                </div>
+              </div>
+
+              <!-- Contenido expandido -->
+              @if (alertaExpandida === alerta.idAlerta) {
+                <div class="alerta-contenido">
+                  <p class="alerta-mensaje">{{ alerta.mensaje }}</p>
+
+                  @if (alerta.fechaExpiracion) {
+                    <p class="alerta-expiracion">⏳ Expira el {{ alerta.fechaExpiracion }}</p>
+                  }
+
+                  <div class="alerta-acciones">
+                    @if (!alerta.leida) {
+                      <button
+                        class="btn-marcar-leida"
+                        (click)="marcarLeida(alerta); $event.stopPropagation()"
+                      >
+                        ✓ Marcar como leída
+                      </button>
+                    } @else {
+                      <span class="leida-label">✓ Leída</span>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    }
+  }
+</div>

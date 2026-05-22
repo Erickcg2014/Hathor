@@ -1,0 +1,756 @@
+<div class="seccion-wrapper">
+  <!-- MODO READONLY -->
+  <div *ngIf="modoReadonly" class="readonly-wrapper">
+    <div class="readonly-header">
+      <div class="readonly-check">✓</div>
+      <div>
+        <h2 class="readonly-titulo">¡Inventario registrado!</h2>
+        <p class="readonly-mensaje">El inventario de tu hato ya está guardado. 💪</p>
+      </div>
+    </div>
+
+    <div class="loading-catalogos" *ngIf="loadingReadonly">
+      <app-spinner size="small" message="Cargando datos guardados..."></app-spinner>
+    </div>
+    <ng-container *ngIf="!loadingReadonly">
+      <!-- Infraestructura básica — datos del hatoActual -->
+      <div class="resumen-seccion" *ngIf="hatoActual">
+        <div class="resumen-seccion-header">
+          <span>🏠</span>
+          <span class="resumen-seccion-titulo">Infraestructura básica</span>
+        </div>
+        <div class="resumen-items-grid">
+          <div class="resumen-item-basico">
+            <span class="resumen-item-label">Corrales</span>
+            <span class="resumen-item-valor">{{ hatoActual.cantCorrales }} unidades</span>
+          </div>
+          <div class="resumen-item-basico">
+            <span class="resumen-item-label">Salas de ordeño</span>
+            <span class="resumen-item-valor">{{ hatoActual.cantSalasOrdenio }} unidades</span>
+          </div>
+          <div class="resumen-item-basico">
+            <span class="resumen-item-label">Capacidad almacenamiento</span>
+            <span class="resumen-item-valor">{{ hatoActual.capacidadAlmacenarLeche }} litros</span>
+          </div>
+          <div class="resumen-item-basico">
+            <span class="resumen-item-label">Empleados permanentes</span>
+            <span class="resumen-item-valor"
+              >{{ hatoActual.cantEmpleadosPermanentes }} personas</span
+            >
+          </div>
+          <div class="resumen-item-basico">
+            <span class="resumen-item-label">Empleados temporales</span>
+            <span class="resumen-item-valor"
+              >{{ hatoActual.cantEmpleadosTemporales }} personas</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Inventario general guardado -->
+      <div class="resumen-seccion" *ngIf="inventarioGuardado.length > 0">
+        <div class="resumen-seccion-header">
+          <span>🔧</span>
+          <span class="resumen-seccion-titulo">Equipos e infraestructura</span>
+          <span class="resumen-count">{{ inventarioGuardado.length }} items</span>
+        </div>
+        <div class="resumen-tabla-wrapper">
+          <table class="resumen-tabla">
+            <thead>
+              <tr>
+                <th>Categoría</th>
+                <th>Item</th>
+                <th>Cantidad</th>
+                <th>Valor unitario</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of inventarioGuardado">
+                <td>
+                  <span class="resumen-badge-categoria">
+                    {{ item.categoriaInventario?.nombre }}
+                  </span>
+                </td>
+                <td class="resumen-nombre">{{ item.nombreItem }}</td>
+                <td class="resumen-numero">{{ item.cantidad }}</td>
+                <td class="resumen-numero">
+                  {{ item.valorUnitario | currency: 'COP' : 'symbol' : '1.0-0' }}
+                </td>
+                <td class="resumen-total">
+                  {{ item.valorTotal | currency: 'COP' : 'symbol' : '1.0-0' }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Ganado guardado -->
+      <div class="resumen-seccion" *ngIf="ganadoGuardado.length > 0">
+        <div class="resumen-seccion-header">
+          <span>🐄</span>
+          <span class="resumen-seccion-titulo">Inventario de ganado</span>
+          <span class="resumen-count">{{ ganadoGuardado.length }} registros</span>
+        </div>
+        <div class="resumen-tabla-wrapper">
+          <table class="resumen-tabla">
+            <thead>
+              <tr>
+                <th>Raza</th>
+                <th>Categoría</th>
+                <th>Cantidad</th>
+                <th>Edad (meses)</th>
+                <th>Valor unitario</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of ganadoGuardado">
+                <td class="resumen-nombre">{{ item.raza?.nombre }}</td>
+                <td class="resumen-nombre">{{ item.categoriaGanado?.nombreCategoria }}</td>
+                <td class="resumen-numero">{{ item.cantidad }}</td>
+                <td class="resumen-numero">{{ item.edadPromedioMeses }}</td>
+                <td class="resumen-numero">
+                  {{ item.valorUnitario | currency: 'COP' : 'symbol' : '1.0-0' }}
+                </td>
+                <td class="resumen-total">
+                  {{ item.valorTotal | currency: 'COP' : 'symbol' : '1.0-0' }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Sin datos -->
+      <div
+        class="items-empty"
+        *ngIf="inventarioGuardado.length === 0 && ganadoGuardado.length === 0"
+      >
+        <span>📦</span>
+        <p>No se encontraron registros de inventario para este hato.</p>
+      </div>
+    </ng-container>
+
+    <div class="paso-actions">
+      <button class="btn-secondary" (click)="irAnterior.emit()">← Anterior</button>
+      <button class="btn-primary" (click)="irSiguiente.emit()">Continuar a producción →</button>
+    </div>
+  </div>
+
+  <!-- MODO EDITABLE -->
+  <div *ngIf="!modoReadonly">
+    <div class="paso-header">
+      <span class="paso-icono">📋</span>
+      <div>
+        <h2 class="paso-titulo">¿Qué hay en tu hato?</h2>
+        <p class="paso-subtitulo">
+          Registra los equipos, herramientas y el ganado que posees.
+          <strong>Solo completa lo que aplica</strong> — puedes dejar vacío lo que no tengas.
+        </p>
+      </div>
+    </div>
+
+    <!-- Loading catálogos -->
+    <div class="loading-catalogos" *ngIf="loadingCatalogos">
+      <app-spinner size="small" message="Cargando catálogos..."></app-spinner>
+    </div>
+
+    <ng-container *ngIf="!loadingCatalogos">
+      <!-- ======= 2A: INVENTARIO GENERAL ======= -->
+      <!-- ======= BLOQUE 1: INFRAESTRUCTURA BÁSICA ======= -->
+      <div class="subseccion">
+        <div class="subseccion-header">
+          <span class="subseccion-icono">🏠</span>
+          <div>
+            <h3 class="subseccion-titulo">Infraestructura básica del hato</h3>
+            <p class="subseccion-desc">
+              Empecemos con los datos generales: instalaciones y personal. Estos son los cimientos
+              de tu operación.
+            </p>
+          </div>
+        </div>
+
+        <form [formGroup]="formInfraestructura" class="paso-form">
+          <div class="form-row">
+            <div class="field">
+              <label>Cantidad de corrales <span class="required">*</span></label>
+              <input
+                type="number"
+                formControlName="cantCorrales"
+                placeholder="Ej: 5"
+                min="0"
+                [class.error]="
+                  formInfraestructura.get('cantCorrales')?.invalid &&
+                  formInfraestructura.get('cantCorrales')?.touched
+                "
+              />
+              <p
+                class="field-error"
+                *ngIf="
+                  formInfraestructura.get('cantCorrales')?.invalid &&
+                  formInfraestructura.get('cantCorrales')?.touched
+                "
+              >
+                Requerido (mínimo 0)
+              </p>
+            </div>
+            <div class="field">
+              <label>Salas de ordeño <span class="required">*</span></label>
+              <input
+                type="number"
+                formControlName="cantSalasOrdenio"
+                placeholder="Ej: 2"
+                min="0"
+                [class.error]="
+                  formInfraestructura.get('cantSalasOrdenio')?.invalid &&
+                  formInfraestructura.get('cantSalasOrdenio')?.touched
+                "
+              />
+              <p
+                class="field-error"
+                *ngIf="
+                  formInfraestructura.get('cantSalasOrdenio')?.invalid &&
+                  formInfraestructura.get('cantSalasOrdenio')?.touched
+                "
+              >
+                Requerido (mínimo 0)
+              </p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label>Cap. almacenamiento de leche (litros) <span class="required">*</span></label>
+              <input
+                type="number"
+                formControlName="capacidadAlmacenarLeche"
+                placeholder="Ej: 1000"
+                min="0"
+                [class.error]="
+                  formInfraestructura.get('capacidadAlmacenarLeche')?.invalid &&
+                  formInfraestructura.get('capacidadAlmacenarLeche')?.touched
+                "
+              />
+              <p
+                class="field-error"
+                *ngIf="
+                  formInfraestructura.get('capacidadAlmacenarLeche')?.invalid &&
+                  formInfraestructura.get('capacidadAlmacenarLeche')?.touched
+                "
+              >
+                Requerido (mínimo 0)
+              </p>
+            </div>
+            <div class="field">
+              <label>Empleados permanentes <span class="required">*</span></label>
+              <input
+                type="number"
+                formControlName="cantEmpleadosPermanentes"
+                placeholder="Ej: 3"
+                min="0"
+                [class.error]="
+                  formInfraestructura.get('cantEmpleadosPermanentes')?.invalid &&
+                  formInfraestructura.get('cantEmpleadosPermanentes')?.touched
+                "
+              />
+              <p
+                class="field-error"
+                *ngIf="
+                  formInfraestructura.get('cantEmpleadosPermanentes')?.invalid &&
+                  formInfraestructura.get('cantEmpleadosPermanentes')?.touched
+                "
+              >
+                Requerido (mínimo 0)
+              </p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label>Empleados temporales <span class="required">*</span></label>
+              <input
+                type="number"
+                formControlName="cantEmpleadosTemporales"
+                placeholder="Ej: 2"
+                min="0"
+                [class.error]="
+                  formInfraestructura.get('cantEmpleadosTemporales')?.invalid &&
+                  formInfraestructura.get('cantEmpleadosTemporales')?.touched
+                "
+              />
+              <p
+                class="field-error"
+                *ngIf="
+                  formInfraestructura.get('cantEmpleadosTemporales')?.invalid &&
+                  formInfraestructura.get('cantEmpleadosTemporales')?.touched
+                "
+              >
+                Requerido (mínimo 0)
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- ======= BLOQUE 2: INVENTARIO EQUIPOS E INFRAESTRUCTURA ======= -->
+      <div class="subseccion">
+        <div class="subseccion-header">
+          <span class="subseccion-icono">🔧</span>
+          <div>
+            <h3 class="subseccion-titulo">Equipos, herramientas e instalaciones</h3>
+            <p class="subseccion-desc">
+              Desglosa cada categoría según lo que tengas en tu finca.
+              <strong>Haz clic en cada sección</strong> para expandirla y registrar cantidades.
+            </p>
+          </div>
+        </div>
+
+        <!-- Acordeón por categoría padre -->
+        <div class="acordeon-wrapper">
+          <div class="acordeon-item" *ngFor="let padre of categoriasParent">
+            <!-- Header toggle -->
+            <button
+              type="button"
+              class="acordeon-header"
+              [class.abierto]="estaAbiertaInventario(padre.idCategoriaInventario)"
+              (click)="toggleSeccionInventario(padre.idCategoriaInventario!)"
+            >
+              <div class="acordeon-header-left">
+                <span class="acordeon-icono">📦</span>
+                <span class="acordeon-titulo">{{ padre.nombre }}</span>
+                <span
+                  class="acordeon-badge"
+                  *ngIf="estaAbiertaInventario(padre.idCategoriaInventario)"
+                >
+                  {{ getSubcategorias(padre.idCategoriaInventario).length }} items
+                </span>
+              </div>
+              <svg
+                class="acordeon-chevron"
+                [class.rotado]="estaAbiertaInventario(padre.idCategoriaInventario)"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <!-- Contenido desplegable -->
+            <div
+              class="acordeon-contenido"
+              *ngIf="estaAbiertaInventario(padre.idCategoriaInventario)"
+            >
+              <table class="tabla-acordeon">
+                <thead>
+                  <tr>
+                    <th class="col-subcategoria">Subcategoría</th>
+                    <th class="col-cantidad">Cantidad</th>
+                    <th class="col-valor">Valor unitario (COP)</th>
+                    <th class="col-descripcion">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="
+                      let ctrl of getFormArrayInventario(padre.idCategoriaInventario).controls;
+                      let i = index
+                    "
+                    [formGroup]="$any(ctrl)"
+                  >
+                    <td class="col-subcategoria">
+                      <span class="subcategoria-label">
+                        {{ ctrl.get('nombreSubcategoria')?.value }}
+                      </span>
+                    </td>
+                    <td class="col-cantidad">
+                      <input type="number" formControlName="cantidad" placeholder="0" min="0" />
+                    </td>
+                    <td class="col-valor">
+                      <input
+                        type="number"
+                        formControlName="valorUnitario"
+                        placeholder="0"
+                        min="0"
+                      />
+                    </td>
+                    <td class="col-descripcion">
+                      <input type="text" formControlName="descripcion" placeholder="Opcional" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div
+                class="acordeon-total"
+                *ngIf="getTotalSeccionInventario(padre.idCategoriaInventario) > 0"
+              >
+                <span>Subtotal {{ padre.nombre }}:</span>
+                <span class="total-valor">
+                  {{
+                    getTotalSeccionInventario(padre.idCategoriaInventario)
+                      | currency: 'COP' : 'symbol' : '1.0-0'
+                  }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total general -->
+        <div class="total-general" *ngIf="totalInventarioGeneral > 0">
+          <span>Total en inventario:</span>
+          <span class="total-valor-grande">
+            {{ totalInventarioGeneral | currency: 'COP' : 'symbol' : '1.0-0' }}
+          </span>
+        </div>
+
+        <!-- Hint -->
+        <div class="inventario-hint">
+          <span class="hint-icono">💡</span>
+          <p>
+            Solo completa las categorías que aplican a tu finca. Puedes dejar en blanco las que no
+            tengas. Agrega más items desde el módulo de
+            <strong>Inventario</strong> en cualquier momento.
+          </p>
+        </div>
+      </div>
+
+      <!-- ======= 2B: INVENTARIO GANADO ======= -->
+      <div class="subseccion">
+        <div class="subseccion-header">
+          <span class="subseccion-icono">🐄</span>
+          <div>
+            <h3 class="subseccion-titulo">Tu hato, raza por raza</h3>
+            <p class="subseccion-desc">
+              Selecciona los tipos de ganado que tienes y regístralos por categoría.
+              <strong>No importa si tienes 5 o 500 animales</strong> — aquí caben todos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Acordeón por tipo de raza -->
+        <div class="acordeon-wrapper">
+          <div class="acordeon-item" *ngFor="let tipo of tiposRaza">
+            <!-- Header toggle -->
+            <button
+              type="button"
+              class="acordeon-header"
+              [class.abierto]="estaAbiertoGanado(tipo)"
+              (click)="toggleSeccionGanado(tipo)"
+            >
+              <div class="acordeon-header-left">
+                <span class="acordeon-icono">🐄</span>
+                <span class="acordeon-titulo">{{ tipo }}</span>
+                <span class="acordeon-badge" *ngIf="estaAbiertoGanado(tipo)">
+                  {{ ganadoPorTipo.get(tipo)?.length ?? 0 }} razas
+                </span>
+              </div>
+              <svg
+                class="acordeon-chevron"
+                [class.rotado]="estaAbiertoGanado(tipo)"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <!-- Contenido desplegable -->
+            <ng-container *ngIf="estaAbiertoGanado(tipo)">
+              <div class="acordeon-contenido">
+                <!-- Loading -->
+                <div class="acordeon-loading" *ngIf="!ganadoPorTipo.get(tipo)?.length">
+                  <app-spinner size="small" message="Cargando razas..."></app-spinner>
+                </div>
+
+                <!-- Un bloque por raza -->
+                <!-- Lista de razas  -->
+                <div class="razas-lista">
+                  <ng-container *ngFor="let entry of ganadoPorTipo.get(tipo)">
+                    <div
+                      class="raza-checkbox-item"
+                      [class.seleccionada]="isRazaSeleccionada(tipo, entry.raza.idRaza)"
+                    >
+                      <label class="raza-checkbox-label">
+                        <input
+                          type="checkbox"
+                          class="raza-checkbox"
+                          [checked]="isRazaSeleccionada(tipo, entry.raza.idRaza)"
+                          (change)="toggleRaza(tipo, entry.raza.idRaza)"
+                        />
+                        <span class="raza-checkbox-nombre">{{ entry.raza.nombre }}</span>
+                        @if (isRazaSeleccionada(tipo, entry.raza.idRaza)) {
+                          <span class="raza-seleccionada-badge">Seleccionada</span>
+                        }
+                      </label>
+                    </div>
+
+                    <!-- Tabla de categorías — solo si está seleccionada -->
+                    @if (isRazaSeleccionada(tipo, entry.raza.idRaza)) {
+                      <div class="raza-bloque">
+                        <div class="raza-bloque-header">
+                          <span class="raza-nombre-label">🐄 {{ entry.raza.nombre }}</span>
+                          <span class="raza-filas-count">
+                            {{ entry.filas.length }} categoría{{
+                              entry.filas.length > 1 ? 's' : ''
+                            }}
+                          </span>
+                        </div>
+
+                        <table class="tabla-acordeon">
+                          <thead>
+                            <tr>
+                              <th class="col-categoria">Categoría</th>
+                              <th class="col-cantidad">Cantidad</th>
+                              <th class="col-edad">Edad prom. (meses)</th>
+                              <th class="col-valor">Valor unitario (COP)</th>
+                              <th class="col-accion"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <ng-container *ngFor="let ctrl of entry.filas.controls; let i = index">
+                              <tr [formGroup]="$any(ctrl)">
+                                <td class="col-categoria">
+                                  <select formControlName="idCategoria">
+                                    <option [ngValue]="null">Selecciona categoría...</option>
+                                    <option
+                                      *ngFor="let cat of categoriasGanado"
+                                      [ngValue]="cat.idCategoria"
+                                    >
+                                      {{ cat.nombreCategoria }}
+                                    </option>
+                                  </select>
+                                </td>
+                                <td class="col-cantidad">
+                                  <input
+                                    type="number"
+                                    formControlName="cantidad"
+                                    placeholder="0"
+                                    min="1"
+                                  />
+                                </td>
+                                <td class="col-edad">
+                                  <input
+                                    type="number"
+                                    formControlName="edadPromedioMeses"
+                                    placeholder="0"
+                                    min="0"
+                                  />
+                                </td>
+                                <td class="col-valor">
+                                  <input
+                                    type="number"
+                                    formControlName="valorUnitario"
+                                    placeholder="0"
+                                    min="0"
+                                  />
+                                </td>
+                                <td class="col-accion">
+                                  <button
+                                    type="button"
+                                    class="btn-eliminar-fila"
+                                    *ngIf="entry.filas.length > 1"
+                                    (click)="eliminarFilaGanado(tipo, entry.raza.idRaza, i)"
+                                  >
+                                    🗑
+                                  </button>
+                                </td>
+                              </tr>
+                            </ng-container>
+                          </tbody>
+                        </table>
+
+                        <button
+                          type="button"
+                          class="btn-agregar-fila"
+                          (click)="agregarFilaGanado(tipo, entry.raza.idRaza)"
+                        >
+                          + Agregar categoría para {{ entry.raza.nombre }}
+                        </button>
+                      </div>
+                    }
+                  </ng-container>
+                </div>
+
+                <!-- Total sección -->
+                <div class="acordeon-total" *ngIf="getTotalSeccionGanado(tipo) > 0">
+                  <span>Subtotal {{ tipo }}:</span>
+                  <span class="total-valor">
+                    {{ getTotalSeccionGanado(tipo) | currency: 'COP' : 'symbol' : '1.0-0' }}
+                  </span>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- Total general ganado -->
+        <div class="total-general" *ngIf="totalInventarioGanado > 0">
+          <span>Total en ganado:</span>
+          <span class="total-valor-grande">
+            {{ totalInventarioGanado | currency: 'COP' : 'symbol' : '1.0-0' }}
+          </span>
+        </div>
+      </div>
+
+      <!-- ======= BLOQUE RESUMEN ======= -->
+      <div class="resumen-wrapper" *ngIf="tieneResumen">
+        <div class="resumen-header">
+          <span class="resumen-icono">📋</span>
+          <div>
+            <h3 class="resumen-titulo">Resumen del inventario registrado</h3>
+            <p class="resumen-subtitulo">
+              Este es el resumen de la informacion que se guardará al continuar
+            </p>
+          </div>
+        </div>
+
+        <!-- Infraestructura básica -->
+        <div class="resumen-seccion" *ngIf="resumenInfraestructura.length > 0">
+          <div class="resumen-seccion-header">
+            <span>🏠</span>
+            <span class="resumen-seccion-titulo">Infraestructura básica</span>
+          </div>
+          <div class="resumen-items-grid">
+            <div class="resumen-item-basico" *ngFor="let item of resumenInfraestructura">
+              <span class="resumen-item-label">{{ item.label }}</span>
+              <span class="resumen-item-valor">{{ item.valor }} {{ item.sufijo }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Equipos e infraestructura -->
+        <div class="resumen-seccion" *ngIf="resumenInventario.length > 0">
+          <div class="resumen-seccion-header">
+            <span>🔧</span>
+            <span class="resumen-seccion-titulo">Equipos e infraestructura</span>
+            <span class="resumen-count">{{ resumenInventario.length }} items</span>
+          </div>
+          <div class="resumen-tabla-wrapper">
+            <table class="resumen-tabla">
+              <thead>
+                <tr>
+                  <th>Categoría</th>
+                  <th>Item</th>
+                  <th>Cantidad</th>
+                  <th>Valor unitario</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of resumenInventario">
+                  <td>
+                    <span class="resumen-badge-categoria">{{ item.nombreCategoriaPadre }}</span>
+                  </td>
+                  <td class="resumen-nombre">{{ item.nombreSubcategoria }}</td>
+                  <td class="resumen-numero">{{ item.cantidad }}</td>
+                  <td class="resumen-numero">
+                    {{ item.valorUnitario | currency: 'COP' : 'symbol' : '1.0-0' }}
+                  </td>
+                  <td class="resumen-total">
+                    {{ item.total | currency: 'COP' : 'symbol' : '1.0-0' }}
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4" class="resumen-subtotal-label">Subtotal equipos</td>
+                  <td class="resumen-subtotal-valor">
+                    {{ totalInventarioGeneral | currency: 'COP' : 'symbol' : '1.0-0' }}
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <!-- Ganado -->
+        <div class="resumen-seccion" *ngIf="resumenGanado.length > 0">
+          <div class="resumen-seccion-header">
+            <span>🐄</span>
+            <span class="resumen-seccion-titulo">Inventario de ganado</span>
+            <span class="resumen-count">{{ resumenGanado.length }} registros</span>
+          </div>
+          <div class="resumen-tabla-wrapper">
+            <table class="resumen-tabla">
+              <thead>
+                <tr>
+                  <th>Tipo</th>
+                  <th>Raza</th>
+                  <th>Categoría</th>
+                  <th>Cantidad</th>
+                  <th>Edad (meses)</th>
+                  <th>Valor unitario</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of resumenGanado">
+                  <td>
+                    <span class="resumen-badge-tipo">{{ item.tipoRaza }}</span>
+                  </td>
+                  <td class="resumen-nombre">{{ item.nombreRaza }}</td>
+                  <td class="resumen-nombre">{{ item.nombreCategoria }}</td>
+                  <td class="resumen-numero">{{ item.cantidad }}</td>
+                  <td class="resumen-numero">{{ item.edadPromedioMeses }}</td>
+                  <td class="resumen-numero">
+                    {{ item.valorUnitario | currency: 'COP' : 'symbol' : '1.0-0' }}
+                  </td>
+                  <td class="resumen-total">
+                    {{ item.total | currency: 'COP' : 'symbol' : '1.0-0' }}
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="6" class="resumen-subtotal-label">Subtotal ganado</td>
+                  <td class="resumen-subtotal-valor">
+                    {{ totalInventarioGanado | currency: 'COP' : 'symbol' : '1.0-0' }}
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <!-- Total general -->
+        <div class="resumen-total-general" *ngIf="totalGeneral > 0">
+          <span class="resumen-total-label">Total general del inventario</span>
+          <span class="resumen-total-valor">
+            {{ totalGeneral | currency: 'COP ' : 'symbol' : '1.0-0' }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Error general -->
+      <div class="error-box" *ngIf="error">
+        <p>{{ error }}</p>
+      </div>
+
+      <!-- Acciones -->
+      <div class="paso-actions">
+        <button type="button" class="btn-secondary" (click)="irAnterior.emit()">← Anterior</button>
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="guardar()"
+          [disabled]="loadingGuardar || !seccionValida"
+        >
+          <span *ngIf="!loadingGuardar">
+            {{ seccionValida ? 'Guardar y continuar →' : 'Agrega items para continuar' }}
+          </span>
+          <span *ngIf="loadingGuardar" class="btn-loading">
+            <app-spinner size="small"></app-spinner>
+            Guardando...
+          </span>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>

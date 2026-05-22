@@ -1,0 +1,2143 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  InventarioGanadoResumenComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-inventario-ganado-resumen</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./inventario-ganado-resumen.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./inventario-ganado-resumen.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#confirmandoEliminar" >confirmandoEliminar</a>
+                            </li>
+                            <li>
+                                <a href="#datosEdicion" >datosEdicion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#errorEdicion" >errorEdicion</a>
+                            </li>
+                            <li>
+                                <a href="#filaEditando" >filaEditando</a>
+                            </li>
+                            <li>
+                                <a href="#filaEliminando" >filaEliminando</a>
+                            </li>
+                            <li>
+                                <a href="#guardandoEdicion" >guardandoEdicion</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#registros" >registros</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abrirEdicion" >abrirEdicion</a>
+                            </li>
+                            <li>
+                                <a href="#calcularEdadActual" >calcularEdadActual</a>
+                            </li>
+                            <li>
+                                <a href="#cancelarEdicion" >cancelarEdicion</a>
+                            </li>
+                            <li>
+                                <a href="#cancelarEliminar" >cancelarEliminar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarDatos" >cargarDatos</a>
+                            </li>
+                            <li>
+                                <a href="#confirmarEliminar" >confirmarEliminar</a>
+                            </li>
+                            <li>
+                                <a href="#formatCOP" >formatCOP</a>
+                            </li>
+                            <li>
+                                <a href="#guardarEdicion" >guardarEdicion</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#solicitarConfirmacion" >solicitarConfirmacion</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#cabezasTotales" >cabezasTotales</a>
+                                </li>
+                                <li>
+                                    <a href="#valorTotal" >valorTotal</a>
+                                </li>
+                                <li>
+                                    <a href="#edadPromedioPonderada" >edadPromedioPonderada</a>
+                                </li>
+                                <li>
+                                    <a href="#resumenPorTipo" >resumenPorTipo</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, inventarioService: <a href="../injectables/InventarioGanadoService.html" target="_self">InventarioGanadoService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:61</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>inventarioService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/InventarioGanadoService.html" target="_self" >InventarioGanadoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirEdicion"></a>
+                    <span class="name">
+                        <span ><b>abrirEdicion</b></span>
+                        <a href="#abrirEdicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirEdicion(registro: <a href="../interfaces/InventarioGanado.html" target="_self">InventarioGanado</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="126"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:126</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>registro</td>
+                                            <td>
+                                                            <code><a href="../interfaces/InventarioGanado.html" target="_self" >InventarioGanado</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcularEdadActual"></a>
+                    <span class="name">
+                        <span ><b>calcularEdadActual</b></span>
+                        <a href="#calcularEdadActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calcularEdadActual(edadPromedioMeses: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, fechaRegistro: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:115</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>edadPromedioMeses</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>fechaRegistro</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelarEdicion"></a>
+                    <span class="name">
+                        <span ><b>cancelarEdicion</b></span>
+                        <a href="#cancelarEdicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelarEdicion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelarEliminar"></a>
+                    <span class="name">
+                        <span ><b>cancelarEliminar</b></span>
+                        <a href="#cancelarEliminar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelarEliminar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="196"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:196</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarDatos"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarDatos</b></span>
+                        <a href="#cargarDatos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarDatos(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="229"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:229</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmarEliminar"></a>
+                    <span class="name">
+                        <span ><b>confirmarEliminar</b></span>
+                        <a href="#confirmarEliminar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirmarEliminar(idInventario: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="201"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:201</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idInventario</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatCOP"></a>
+                    <span class="name">
+                        <span ><b>formatCOP</b></span>
+                        <a href="#formatCOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatCOP(valor: number | null | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="224"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:224</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarEdicion"></a>
+                    <span class="name">
+                        <span ><b>guardarEdicion</b></span>
+                        <a href="#guardarEdicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardarEdicion(registro: <a href="../interfaces/InventarioGanado.html" target="_self">InventarioGanado</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>registro</td>
+                                            <td>
+                                                            <code><a href="../interfaces/InventarioGanado.html" target="_self" >InventarioGanado</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="249"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:249</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="solicitarConfirmacion"></a>
+                    <span class="name">
+                        <span ><b>solicitarConfirmacion</b></span>
+                        <a href="#solicitarConfirmacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>solicitarConfirmacion(idInventario: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="191"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:191</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idInventario</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmandoEliminar"></a>
+                    <span class="name">
+                        <span ><b>confirmandoEliminar</b></span>
+                        <a href="#confirmandoEliminar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosEdicion"></a>
+                    <span class="name">
+                        <span ><b>datosEdicion</b></span>
+                        <a href="#datosEdicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/FilaEdicion.html" target="_self" >FilaEdicion</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    cantidad: 0,
+    edadPromedioMeses: 0,
+    valorUnitario: 0,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorEdicion"></a>
+                    <span class="name">
+                        <span ><b>errorEdicion</b></span>
+                        <a href="#errorEdicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filaEditando"></a>
+                    <span class="name">
+                        <span ><b>filaEditando</b></span>
+                        <a href="#filaEditando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filaEliminando"></a>
+                    <span class="name">
+                        <span ><b>filaEliminando</b></span>
+                        <a href="#filaEliminando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardandoEdicion"></a>
+                    <span class="name">
+                        <span ><b>guardandoEdicion</b></span>
+                        <a href="#guardandoEdicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registros"></a>
+                    <span class="name">
+                        <span ><b>registros</b></span>
+                        <a href="#registros"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/InventarioGanado.html" target="_self" >InventarioGanado[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cabezasTotales"></a>
+                        <span class="name"><b>cabezasTotales</b><a href="#cabezasTotales"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>cabezasTotales()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:83</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="valorTotal"></a>
+                        <span class="name"><b>valorTotal</b><a href="#valorTotal"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>valorTotal()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:87</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edadPromedioPonderada"></a>
+                        <span class="name"><b>edadPromedioPonderada</b><a href="#edadPromedioPonderada"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>edadPromedioPonderada()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:91</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resumenPorTipo"></a>
+                        <span class="name"><b>resumenPorTipo</b><a href="#resumenPorTipo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>resumenPorTipo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component.ts:101</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnDestroy,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+import { Hato } from &#x27;../../../../../../core/services/hato/hato.service&#x27;;
+import { HatoStateService } from &#x27;../../../../../../core/services/ui-state/hato-state.service&#x27;;
+import {
+  InventarioGanado,
+  InventarioGanadoService,
+  ActualizarInventarioGanadoDTO,
+} from &#x27;../../../../../../core/services/inventario/inventario-ganado.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../../../shared/spinner/spinner.component&#x27;;
+
+interface TotalPorTipo {
+  tipo: string;
+  cantidad: number;
+  total: number;
+}
+
+interface FilaEdicion {
+  cantidad: number;
+  edadPromedioMeses: number;
+  valorUnitario: number;
+}
+
+@Component({
+  selector: &#x27;app-inventario-ganado-resumen&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, SpinnerComponent],
+  templateUrl: &#x27;./inventario-ganado-resumen.component.html&#x27;,
+  styleUrl: &#x27;./inventario-ganado-resumen.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class InventarioGanadoResumenComponent implements OnInit, OnDestroy {
+  hatoActivo: Hato | null &#x3D; null;
+  loading &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  registros: InventarioGanado[] &#x3D; [];
+
+  // ── Edición inline ────────────────────────────────────────
+  filaEditando: string | null &#x3D; null;
+  datosEdicion: FilaEdicion &#x3D; {
+    cantidad: 0,
+    edadPromedioMeses: 0,
+    valorUnitario: 0,
+  };
+  guardandoEdicion &#x3D; false;
+  errorEdicion &#x3D; &#x27;&#x27;;
+
+  // ── Eliminación ───────────────────────────────────────────
+  filaEliminando: string | null &#x3D; null;
+  confirmandoEliminar: string | null &#x3D; null;
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private hatoState: HatoStateService,
+    private inventarioService: InventarioGanadoService,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato?.idHato) {
+        this.cargarDatos(hato.idHato);
+      } else {
+        this.registros &#x3D; [];
+        this.cdr.markForCheck();
+      }
+    });
+  }
+
+  // ── Getters ───────────────────────────────────────────────
+
+  get cabezasTotales(): number {
+    return this.registros.reduce((acc, r) &#x3D;&gt; acc + r.cantidad, 0);
+  }
+
+  get valorTotal(): number {
+    return this.registros.reduce((acc, r) &#x3D;&gt; acc + r.valorTotal, 0);
+  }
+
+  get edadPromedioPonderada(): number {
+    const totalCabezas &#x3D; this.cabezasTotales;
+    if (!totalCabezas) return 0;
+    const suma &#x3D; this.registros.reduce(
+      (acc, r) &#x3D;&gt; acc + this.calcularEdadActual(r.edadPromedioMeses, r.fechaRegistro) * r.cantidad,
+      0,
+    );
+    return suma / totalCabezas;
+  }
+
+  get resumenPorTipo(): TotalPorTipo[] {
+    const map &#x3D; new Map&lt;string, TotalPorTipo&gt;();
+    this.registros.forEach((r) &#x3D;&gt; {
+      const key &#x3D; r.raza.tipoRaza;
+      const actual &#x3D; map.get(key) ?? { tipo: key, cantidad: 0, total: 0 };
+      actual.cantidad +&#x3D; r.cantidad;
+      actual.total +&#x3D; r.valorTotal;
+      map.set(key, actual);
+    });
+    return Array.from(map.values()).sort((a, b) &#x3D;&gt; b.total - a.total);
+  }
+
+  // ── Edad dinámica ─────────────────────────────────────────
+
+  calcularEdadActual(edadPromedioMeses: number, fechaRegistro: string): number {
+    if (!fechaRegistro) return edadPromedioMeses;
+    const registro &#x3D; new Date(fechaRegistro);
+    const hoy &#x3D; new Date();
+    const mesesTranscurridos &#x3D;
+      (hoy.getFullYear() - registro.getFullYear()) * 12 + (hoy.getMonth() - registro.getMonth());
+    return edadPromedioMeses + Math.max(0, mesesTranscurridos);
+  }
+
+  // ── Edición inline ────────────────────────────────────────
+
+  abrirEdicion(registro: InventarioGanado): void {
+    this.filaEditando &#x3D; registro.idInventario;
+    this.errorEdicion &#x3D; &#x27;&#x27;;
+    // Mostrar la edad actual calculada como valor inicial
+    this.datosEdicion &#x3D; {
+      cantidad: registro.cantidad,
+      edadPromedioMeses: this.calcularEdadActual(
+        registro.edadPromedioMeses,
+        registro.fechaRegistro,
+      ),
+      valorUnitario: registro.valorUnitario,
+    };
+    this.cdr.markForCheck();
+  }
+
+  cancelarEdicion(): void {
+    this.filaEditando &#x3D; null;
+    this.errorEdicion &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+  }
+
+  guardarEdicion(registro: InventarioGanado): void {
+    if (this.datosEdicion.cantidad &lt; 1) {
+      this.errorEdicion &#x3D; &#x27;La cantidad debe ser mayor a 0.&#x27;;
+      this.cdr.markForCheck();
+      return;
+    }
+    if (this.datosEdicion.valorUnitario &lt; 1) {
+      this.errorEdicion &#x3D; &#x27;El valor unitario debe ser mayor a 0.&#x27;;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.guardandoEdicion &#x3D; true;
+    this.errorEdicion &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    const dto: ActualizarInventarioGanadoDTO &#x3D; {
+      cantidad: this.datosEdicion.cantidad,
+      edadPromedioMeses: this.datosEdicion.edadPromedioMeses,
+      valorUnitario: this.datosEdicion.valorUnitario,
+    };
+
+    this.inventarioService
+      .actualizar(registro.idInventario, dto)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (actualizado) &#x3D;&gt; {
+          this.registros &#x3D; this.registros.map((r) &#x3D;&gt;
+            r.idInventario &#x3D;&#x3D;&#x3D; actualizado.idInventario ? actualizado : r,
+          );
+          this.filaEditando &#x3D; null;
+          this.guardandoEdicion &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.errorEdicion &#x3D; &#x27;Error al guardar. Intenta de nuevo.&#x27;;
+          this.guardandoEdicion &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Eliminación ───────────────────────────────────────────
+
+  solicitarConfirmacion(idInventario: string): void {
+    this.confirmandoEliminar &#x3D; idInventario;
+    this.cdr.markForCheck();
+  }
+
+  cancelarEliminar(): void {
+    this.confirmandoEliminar &#x3D; null;
+    this.cdr.markForCheck();
+  }
+
+  confirmarEliminar(idInventario: string): void {
+    this.filaEliminando &#x3D; idInventario;
+    this.confirmandoEliminar &#x3D; null;
+    this.cdr.markForCheck();
+
+    this.inventarioService
+      .eliminar(idInventario)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () &#x3D;&gt; {
+          this.registros &#x3D; this.registros.filter((r) &#x3D;&gt; r.idInventario !&#x3D;&#x3D; idInventario);
+          this.filaEliminando &#x3D; null;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.filaEliminando &#x3D; null;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Helpers ───────────────────────────────────────────────
+
+  formatCOP(valor: number | null | undefined): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;$ 0&#x27;;
+    return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(valor);
+  }
+
+  private cargarDatos(idHato: string): void {
+    this.loading &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.inventarioService
+      .getByHato(idHato)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (registros) &#x3D;&gt; {
+          this.registros &#x3D; registros;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.error &#x3D; &#x27;No fue posible cargar el inventario de ganado.&#x27;;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;info-finanzas-page&quot;&gt;
+  &lt;div class&#x3D;&quot;loading-wrapper&quot; *ngIf&#x3D;&quot;loading&quot;&gt;
+    &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Cargando resumen del inventario ganado...&quot;&gt; &lt;/app-spinner&gt;
+  &lt;/div&gt;
+
+  &lt;ng-container *ngIf&#x3D;&quot;!loading&quot;&gt;
+    &lt;!-- Header --&gt;
+    &lt;div class&#x3D;&quot;page-header&quot;&gt;
+      &lt;div class&#x3D;&quot;header-left&quot;&gt;
+        &lt;span class&#x3D;&quot;page-tag&quot;&gt;Inventario ganado&lt;/span&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Resumen &lt;span class&#x3D;&quot;brand&quot;&gt;Productivo del Hato&lt;/span&gt;&lt;/h1&gt;
+        &lt;p class&#x3D;&quot;page-subtitle&quot; *ngIf&#x3D;&quot;hatoActivo&quot;&gt;
+          Hato: &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        &lt;/p&gt;
+        &lt;p class&#x3D;&quot;page-subtitle warn&quot; *ngIf&#x3D;&quot;!hatoActivo&quot;&gt;
+          ⚠️ Selecciona un hato desde el panel superior.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;header-badge&quot;&gt;🐄&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Sin hato --&gt;
+    &lt;div class&#x3D;&quot;empty-hato&quot; *ngIf&#x3D;&quot;!hatoActivo &amp;&amp; !error&quot;&gt;
+      &lt;span class&#x3D;&quot;empty-icon&quot;&gt;🐄&lt;/span&gt;
+      &lt;p&gt;No hay un hato seleccionado.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;empty-hato&quot; *ngIf&#x3D;&quot;error&quot;&gt;
+      &lt;span class&#x3D;&quot;empty-icon&quot;&gt;⚠️&lt;/span&gt;
+      &lt;p&gt;{{ error }}&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;ng-container *ngIf&#x3D;&quot;hatoActivo &amp;&amp; !error&quot;&gt;
+      &lt;!-- KPIs --&gt;
+      &lt;div class&#x3D;&quot;kpi-grid&quot;&gt;
+        &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+          &lt;span class&#x3D;&quot;kpi-icon&quot;&gt;🐄&lt;/span&gt;
+          &lt;div class&#x3D;&quot;kpi-info&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-value&quot;&gt;{{ cabezasTotales }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Cabezas registradas&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+          &lt;span class&#x3D;&quot;kpi-icon ingreso-icon&quot;&gt;$&lt;/span&gt;
+          &lt;div class&#x3D;&quot;kpi-info&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-value ingreso-val&quot;&gt;{{ formatCOP(valorTotal) }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Valor total ganado&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+          &lt;span class&#x3D;&quot;kpi-icon&quot;&gt;📅&lt;/span&gt;
+          &lt;div class&#x3D;&quot;kpi-info&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-value&quot;&gt; {{ edadPromedioPonderada | number: &#x27;1.0-1&#x27; }} m &lt;/span&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Edad promedio actual&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+          &lt;span class&#x3D;&quot;kpi-icon&quot;&gt;🏷️&lt;/span&gt;
+          &lt;div class&#x3D;&quot;kpi-info&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-value&quot;&gt;{{ resumenPorTipo.length }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Tipos activos&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Tabla de registros --&gt;
+      &lt;div class&#x3D;&quot;section&quot;&gt;
+        &lt;div class&#x3D;&quot;section-header&quot;&gt;
+          &lt;div class&#x3D;&quot;section-title-group&quot;&gt;
+            &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Registros de ganado&lt;/h2&gt;
+            &lt;span class&#x3D;&quot;section-badge&quot;&gt;{{ registros.length }}&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;p class&#x3D;&quot;section-meta&quot;&gt;Puedes editar cantidad, edad y valor de cada grupo.&lt;/p&gt;
+        &lt;/div&gt;
+
+        @if (registros.length &#x3D;&#x3D;&#x3D; 0) {
+          &lt;div class&#x3D;&quot;empty-section&quot;&gt;
+            &lt;p&gt;No hay registros de ganado para este hato.&lt;/p&gt;
+          &lt;/div&gt;
+        }
+
+        @if (registros.length &gt; 0) {
+          &lt;div class&#x3D;&quot;table-wrapper&quot;&gt;
+            &lt;table class&#x3D;&quot;data-table&quot;&gt;
+              &lt;thead&gt;
+                &lt;tr&gt;
+                  &lt;th&gt;Raza&lt;/th&gt;
+                  &lt;th&gt;Tipo&lt;/th&gt;
+                  &lt;th&gt;Categoría&lt;/th&gt;
+                  &lt;th&gt;Cantidad&lt;/th&gt;
+                  &lt;th&gt;Edad actual&lt;/th&gt;
+                  &lt;th&gt;Valor unitario&lt;/th&gt;
+                  &lt;th&gt;Valor total&lt;/th&gt;
+                  &lt;th&gt;Acciones&lt;/th&gt;
+                &lt;/tr&gt;
+              &lt;/thead&gt;
+              &lt;tbody&gt;
+                @for (item of registros; track item.idInventario) {
+                  &lt;!-- Fila normal --&gt;
+                  @if (filaEditando !&#x3D;&#x3D; item.idInventario) {
+                    &lt;tr [class.fila-eliminando]&#x3D;&quot;filaEliminando &#x3D;&#x3D;&#x3D; item.idInventario&quot;&gt;
+                      &lt;td&gt;
+                        &lt;span class&#x3D;&quot;cat-nombre&quot;&gt;{{ item.raza.nombre }}&lt;/span&gt;
+                      &lt;/td&gt;
+                      &lt;td&gt;{{ item.raza.tipoRaza }}&lt;/td&gt;
+                      &lt;td&gt;{{ item.categoriaGanado.nombreCategoria }}&lt;/td&gt;
+                      &lt;td&gt;{{ item.cantidad }}&lt;/td&gt;
+                      &lt;td&gt;
+                        {{ calcularEdadActual(item.edadPromedioMeses, item.fechaRegistro) }} m
+                        &lt;span class&#x3D;&quot;edad-hint&quot;&gt; (base: {{ item.edadPromedioMeses }} m) &lt;/span&gt;
+                      &lt;/td&gt;
+                      &lt;td&gt;{{ formatCOP(item.valorUnitario) }}&lt;/td&gt;
+                      &lt;td class&#x3D;&quot;monto-cell ingreso-val&quot;&gt;
+                        {{ formatCOP(item.valorTotal) }}
+                      &lt;/td&gt;
+                      &lt;td class&#x3D;&quot;acciones-cell&quot;&gt;
+                        &lt;!-- Confirmación eliminar --&gt;
+                        @if (confirmandoEliminar &#x3D;&#x3D;&#x3D; item.idInventario) {
+                          &lt;div class&#x3D;&quot;confirm-eliminar&quot;&gt;
+                            &lt;span class&#x3D;&quot;confirm-texto&quot;&gt;¿Eliminar?&lt;/span&gt;
+                            &lt;button
+                              class&#x3D;&quot;btn-confirmar-eliminar&quot;
+                              (click)&#x3D;&quot;confirmarEliminar(item.idInventario)&quot;
+                            &gt;
+                              Sí
+                            &lt;/button&gt;
+                            &lt;button class&#x3D;&quot;btn-cancelar-eliminar&quot; (click)&#x3D;&quot;cancelarEliminar()&quot;&gt;
+                              No
+                            &lt;/button&gt;
+                          &lt;/div&gt;
+                        } @else {
+                          &lt;div class&#x3D;&quot;acciones-btns&quot;&gt;
+                            &lt;button class&#x3D;&quot;btn-editar&quot; (click)&#x3D;&quot;abrirEdicion(item)&quot; title&#x3D;&quot;Editar&quot;&gt;
+                              ✏️
+                            &lt;/button&gt;
+                            &lt;button
+                              class&#x3D;&quot;btn-eliminar&quot;
+                              (click)&#x3D;&quot;solicitarConfirmacion(item.idInventario)&quot;
+                              title&#x3D;&quot;Eliminar&quot;
+                              [disabled]&#x3D;&quot;filaEliminando &#x3D;&#x3D;&#x3D; item.idInventario&quot;
+                            &gt;
+                              🗑️
+                            &lt;/button&gt;
+                          &lt;/div&gt;
+                        }
+                      &lt;/td&gt;
+                    &lt;/tr&gt;
+                  }
+
+                  &lt;!-- Fila de edición inline --&gt;
+                  @if (filaEditando &#x3D;&#x3D;&#x3D; item.idInventario) {
+                    &lt;tr class&#x3D;&quot;fila-edicion&quot;&gt;
+                      &lt;td colspan&#x3D;&quot;2&quot;&gt;
+                        &lt;span class&#x3D;&quot;cat-nombre&quot;&gt;{{ item.raza.nombre }}&lt;/span&gt;
+                        &lt;span class&#x3D;&quot;tipo-hint&quot;&gt;{{ item.raza.tipoRaza }}&lt;/span&gt;
+                      &lt;/td&gt;
+                      &lt;td&gt;{{ item.categoriaGanado.nombreCategoria }}&lt;/td&gt;
+
+                      &lt;!-- Cantidad editable --&gt;
+                      &lt;td&gt;
+                        &lt;input
+                          class&#x3D;&quot;input-edicion&quot;
+                          type&#x3D;&quot;number&quot;
+                          [(ngModel)]&#x3D;&quot;datosEdicion.cantidad&quot;
+                          min&#x3D;&quot;1&quot;
+                          placeholder&#x3D;&quot;Cantidad&quot;
+                        /&gt;
+                      &lt;/td&gt;
+
+                      &lt;!-- Edad editable --&gt;
+                      &lt;td&gt;
+                        &lt;input
+                          class&#x3D;&quot;input-edicion&quot;
+                          type&#x3D;&quot;number&quot;
+                          [(ngModel)]&#x3D;&quot;datosEdicion.edadPromedioMeses&quot;
+                          min&#x3D;&quot;0&quot;
+                          placeholder&#x3D;&quot;Meses&quot;
+                        /&gt;
+                        &lt;span class&#x3D;&quot;edad-hint&quot;&gt;meses&lt;/span&gt;
+                      &lt;/td&gt;
+
+                      &lt;!-- Valor unitario editable --&gt;
+                      &lt;td&gt;
+                        &lt;input
+                          class&#x3D;&quot;input-edicion&quot;
+                          type&#x3D;&quot;number&quot;
+                          [(ngModel)]&#x3D;&quot;datosEdicion.valorUnitario&quot;
+                          min&#x3D;&quot;1&quot;
+                          placeholder&#x3D;&quot;Valor&quot;
+                        /&gt;
+                      &lt;/td&gt;
+
+                      &lt;!-- Valor total calculado --&gt;
+                      &lt;td class&#x3D;&quot;monto-cell ingreso-val&quot;&gt;
+                        {{ formatCOP(datosEdicion.cantidad * datosEdicion.valorUnitario) }}
+                      &lt;/td&gt;
+
+                      &lt;!-- Acciones edición --&gt;
+                      &lt;td class&#x3D;&quot;acciones-cell&quot;&gt;
+                        &lt;div class&#x3D;&quot;acciones-edicion&quot;&gt;
+                          @if (errorEdicion) {
+                            &lt;span class&#x3D;&quot;error-edicion&quot;&gt;{{ errorEdicion }}&lt;/span&gt;
+                          }
+                          &lt;button
+                            class&#x3D;&quot;btn-guardar-edicion&quot;
+                            (click)&#x3D;&quot;guardarEdicion(item)&quot;
+                            [disabled]&#x3D;&quot;guardandoEdicion&quot;
+                          &gt;
+                            @if (guardandoEdicion) {
+                              &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+                            } @else {
+                              ✓ Guardar
+                            }
+                          &lt;/button&gt;
+                          &lt;button
+                            class&#x3D;&quot;btn-cancelar-edicion&quot;
+                            (click)&#x3D;&quot;cancelarEdicion()&quot;
+                            [disabled]&#x3D;&quot;guardandoEdicion&quot;
+                          &gt;
+                            Cancelar
+                          &lt;/button&gt;
+                        &lt;/div&gt;
+                      &lt;/td&gt;
+                    &lt;/tr&gt;
+                  }
+                }
+              &lt;/tbody&gt;
+            &lt;/table&gt;
+          &lt;/div&gt;
+        }
+      &lt;/div&gt;
+
+      &lt;!-- Resumen por tipo --&gt;
+      &lt;div class&#x3D;&quot;section&quot;&gt;
+        &lt;div class&#x3D;&quot;section-header&quot;&gt;
+          &lt;div class&#x3D;&quot;section-title-group&quot;&gt;
+            &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Participación por tipo de raza&lt;/h2&gt;
+            &lt;span class&#x3D;&quot;section-badge&quot;&gt;{{ resumenPorTipo.length }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        @if (resumenPorTipo.length &gt; 0) {
+          &lt;div class&#x3D;&quot;perfil-grid&quot;&gt;
+            @for (resumen of resumenPorTipo; track resumen.tipo) {
+              &lt;div class&#x3D;&quot;perfil-card&quot;&gt;
+                &lt;div class&#x3D;&quot;perfil-card__header&quot;&gt;
+                  &lt;span class&#x3D;&quot;cat-nombre&quot;&gt;{{ resumen.tipo }}&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;cat-cantidad&quot;&gt;{{ resumen.cantidad }} cabezas&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;perfil-card__valor&quot;&gt;{{ formatCOP(resumen.total) }}&lt;/div&gt;
+                &lt;p&gt;Valor total asociado a este tipo&lt;/p&gt;
+              &lt;/div&gt;
+            }
+          &lt;/div&gt;
+        }
+      &lt;/div&gt;
+    &lt;/ng-container&gt;
+  &lt;/ng-container&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="info-finanzas-page">  <div class="loading-wrapper" *ngIf="loading">    <app-spinner size="large" message="Cargando resumen del inventario ganado..."> </app-spinner>  </div>  <ng-container *ngIf="!loading">    <!-- Header -->    <div class="page-header">      <div class="header-left">        <span class="page-tag">Inventario ganado</span>        <h1 class="page-title">Resumen <span class="brand">Productivo del Hato</span></h1>        <p class="page-subtitle" *ngIf="hatoActivo">          Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},          {{ hatoActivo.departamento }}        </p>        <p class="page-subtitle warn" *ngIf="!hatoActivo">          ⚠️ Selecciona un hato desde el panel superior.        </p>      </div>      <div class="header-badge">🐄</div>    </div>    <!-- Sin hato -->    <div class="empty-hato" *ngIf="!hatoActivo && !error">      <span class="empty-icon">🐄</span>      <p>No hay un hato seleccionado.</p>    </div>    <div class="empty-hato" *ngIf="error">      <span class="empty-icon">⚠️</span>      <p>{{ error }}</p>    </div>    <ng-container *ngIf="hatoActivo && !error">      <!-- KPIs -->      <div class="kpi-grid">        <div class="kpi-card">          <span class="kpi-icon">🐄</span>          <div class="kpi-info">            <span class="kpi-value">{{ cabezasTotales }}</span>            <span class="kpi-label">Cabezas registradas</span>          </div>        </div>        <div class="kpi-card">          <span class="kpi-icon ingreso-icon">$</span>          <div class="kpi-info">            <span class="kpi-value ingreso-val">{{ formatCOP(valorTotal) }}</span>            <span class="kpi-label">Valor total ganado</span>          </div>        </div>        <div class="kpi-card">          <span class="kpi-icon">📅</span>          <div class="kpi-info">            <span class="kpi-value"> {{ edadPromedioPonderada | number: \'1.0-1\' }} m </span>            <span class="kpi-label">Edad promedio actual</span>          </div>        </div>        <div class="kpi-card">          <span class="kpi-icon">🏷️</span>          <div class="kpi-info">            <span class="kpi-value">{{ resumenPorTipo.length }}</span>            <span class="kpi-label">Tipos activos</span>          </div>        </div>      </div>      <!-- Tabla de registros -->      <div class="section">        <div class="section-header">          <div class="section-title-group">            <h2 class="section-title">Registros de ganado</h2>            <span class="section-badge">{{ registros.length }}</span>          </div>          <p class="section-meta">Puedes editar cantidad, edad y valor de cada grupo.</p>        </div>        @if (registros.length === 0) {          <div class="empty-section">            <p>No hay registros de ganado para este hato.</p>          </div>        }        @if (registros.length > 0) {          <div class="table-wrapper">            <table class="data-table">              <thead>                <tr>                  <th>Raza</th>                  <th>Tipo</th>                  <th>Categoría</th>                  <th>Cantidad</th>                  <th>Edad actual</th>                  <th>Valor unitario</th>                  <th>Valor total</th>                  <th>Acciones</th>                </tr>              </thead>              <tbody>                @for (item of registros; track item.idInventario) {                  <!-- Fila normal -->                  @if (filaEditando !== item.idInventario) {                    <tr [class.fila-eliminando]="filaEliminando === item.idInventario">                      <td>                        <span class="cat-nombre">{{ item.raza.nombre }}</span>                      </td>                      <td>{{ item.raza.tipoRaza }}</td>                      <td>{{ item.categoriaGanado.nombreCategoria }}</td>                      <td>{{ item.cantidad }}</td>                      <td>                        {{ calcularEdadActual(item.edadPromedioMeses, item.fechaRegistro) }} m                        <span class="edad-hint"> (base: {{ item.edadPromedioMeses }} m) </span>                      </td>                      <td>{{ formatCOP(item.valorUnitario) }}</td>                      <td class="monto-cell ingreso-val">                        {{ formatCOP(item.valorTotal) }}                      </td>                      <td class="acciones-cell">                        <!-- Confirmación eliminar -->                        @if (confirmandoEliminar === item.idInventario) {                          <div class="confirm-eliminar">                            <span class="confirm-texto">¿Eliminar?</span>                            <button                              class="btn-confirmar-eliminar"                              (click)="confirmarEliminar(item.idInventario)"                            >                              Sí                            </button>                            <button class="btn-cancelar-eliminar" (click)="cancelarEliminar()">                              No                            </button>                          </div>                        } @else {                          <div class="acciones-btns">                            <button class="btn-editar" (click)="abrirEdicion(item)" title="Editar">                              ✏️                            </button>                            <button                              class="btn-eliminar"                              (click)="solicitarConfirmacion(item.idInventario)"                              title="Eliminar"                              [disabled]="filaEliminando === item.idInventario"                            >                              🗑️                            </button>                          </div>                        }                      </td>                    </tr>                  }                  <!-- Fila de edición inline -->                  @if (filaEditando === item.idInventario) {                    <tr class="fila-edicion">                      <td colspan="2">                        <span class="cat-nombre">{{ item.raza.nombre }}</span>                        <span class="tipo-hint">{{ item.raza.tipoRaza }}</span>                      </td>                      <td>{{ item.categoriaGanado.nombreCategoria }}</td>                      <!-- Cantidad editable -->                      <td>                        <input                          class="input-edicion"                          type="number"                          [(ngModel)]="datosEdicion.cantidad"                          min="1"                          placeholder="Cantidad"                        />                      </td>                      <!-- Edad editable -->                      <td>                        <input                          class="input-edicion"                          type="number"                          [(ngModel)]="datosEdicion.edadPromedioMeses"                          min="0"                          placeholder="Meses"                        />                        <span class="edad-hint">meses</span>                      </td>                      <!-- Valor unitario editable -->                      <td>                        <input                          class="input-edicion"                          type="number"                          [(ngModel)]="datosEdicion.valorUnitario"                          min="1"                          placeholder="Valor"                        />                      </td>                      <!-- Valor total calculado -->                      <td class="monto-cell ingreso-val">                        {{ formatCOP(datosEdicion.cantidad * datosEdicion.valorUnitario) }}                      </td>                      <!-- Acciones edición -->                      <td class="acciones-cell">                        <div class="acciones-edicion">                          @if (errorEdicion) {                            <span class="error-edicion">{{ errorEdicion }}</span>                          }                          <button                            class="btn-guardar-edicion"                            (click)="guardarEdicion(item)"                            [disabled]="guardandoEdicion"                          >                            @if (guardandoEdicion) {                              <app-spinner size="small"></app-spinner>                            } @else {                              ✓ Guardar                            }                          </button>                          <button                            class="btn-cancelar-edicion"                            (click)="cancelarEdicion()"                            [disabled]="guardandoEdicion"                          >                            Cancelar                          </button>                        </div>                      </td>                    </tr>                  }                }              </tbody>            </table>          </div>        }      </div>      <!-- Resumen por tipo -->      <div class="section">        <div class="section-header">          <div class="section-title-group">            <h2 class="section-title">Participación por tipo de raza</h2>            <span class="section-badge">{{ resumenPorTipo.length }}</span>          </div>        </div>        @if (resumenPorTipo.length > 0) {          <div class="perfil-grid">            @for (resumen of resumenPorTipo; track resumen.tipo) {              <div class="perfil-card">                <div class="perfil-card__header">                  <span class="cat-nombre">{{ resumen.tipo }}</span>                  <span class="cat-cantidad">{{ resumen.cantidad }} cabezas</span>                </div>                <div class="perfil-card__valor">{{ formatCOP(resumen.total) }}</div>                <p>Valor total asociado a este tipo</p>              </div>            }          </div>        }      </div>    </ng-container>  </ng-container></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'InventarioGanadoResumenComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'InventarioGanadoResumenComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

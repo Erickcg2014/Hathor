@@ -1,0 +1,200 @@
+<div class="seccion-wrapper">
+  <!-- MODO READONLY -->
+  <div *ngIf="modoReadonly" class="readonly-wrapper">
+    <div class="readonly-header">
+      <div class="readonly-check">✓</div>
+      <div>
+        <h2 class="readonly-titulo">¡Información del hato registrada!</h2>
+        <p class="readonly-mensaje">
+          Tu hato <strong>{{ hatoActual?.nombreHato }}</strong> ya está en el sistema. Ahora viene
+          lo bueno — sigamos completando el perfil de tu finca. 🚀
+        </p>
+      </div>
+    </div>
+
+    <div class="datos-grid">
+      <div class="dato-card">
+        <span class="dato-label">Nombre</span>
+        <span class="dato-valor">{{ hatoActual?.nombreHato }}</span>
+      </div>
+      <div class="dato-card">
+        <span class="dato-label">Tipo de hato</span>
+        <span class="dato-valor">{{ hatoActual?.tipoHato }}</span>
+      </div>
+      <div class="dato-card">
+        <span class="dato-label">Departamento</span>
+        <span class="dato-valor">{{ hatoActual?.departamento }}</span>
+      </div>
+      <div class="dato-card">
+        <span class="dato-label">Ciudad</span>
+        <span class="dato-valor">{{ hatoActual?.ciudad }}</span>
+      </div>
+      <div class="dato-card">
+        <span class="dato-label">Altitud / Trópico</span>
+        <span class="dato-valor"
+          >{{ hatoActual?.altitud }} m.s.n.m · {{ hatoActual?.tropico }}</span
+        >
+      </div>
+      <div class="dato-card">
+        <span class="dato-label">Área total</span>
+        <span class="dato-valor">{{ hatoActual?.areaHato }} ha</span>
+      </div>
+      <div class="dato-card">
+        <span class="dato-label">Área de pastoreo</span>
+        <span class="dato-valor">{{ hatoActual?.areaPastoreo }} ha</span>
+      </div>
+    </div>
+
+    <div class="paso-actions">
+      <button class="btn-primary" (click)="continuar()">Continuar al inventario →</button>
+    </div>
+  </div>
+
+  <!-- MODO EDITABLE -->
+  <div *ngIf="!modoReadonly">
+    <div class="paso-header">
+      <span class="paso-icono">🏡</span>
+      <div>
+        <h2 class="paso-titulo">Información del hato</h2>
+        <p class="paso-subtitulo">Datos generales, ubicación y características del terreno</p>
+      </div>
+    </div>
+
+    <form [formGroup]="form" class="paso-form">
+      <div class="form-row">
+        <div class="field">
+          <label>Nombre del hato <span class="required">*</span></label>
+          <input
+            type="text"
+            formControlName="nombreHato"
+            placeholder="Ej: Hacienda El Prado"
+            [class.error]="form.get('nombreHato')?.invalid && form.get('nombreHato')?.touched"
+          />
+          <p
+            class="field-error"
+            *ngIf="form.get('nombreHato')?.invalid && form.get('nombreHato')?.touched"
+          >
+            Nombre requerido (mínimo 2 caracteres)
+          </p>
+        </div>
+        <div class="field">
+          <label>Tipo de hato <span class="required">*</span></label>
+          <select
+            formControlName="tipoHato"
+            [class.error]="form.get('tipoHato')?.invalid && form.get('tipoHato')?.touched"
+          >
+            <option value="">Selecciona...</option>
+            <option *ngFor="let tipo of tiposHato" [value]="tipo">{{ tipo }}</option>
+          </select>
+          <p
+            class="field-error"
+            *ngIf="form.get('tipoHato')?.invalid && form.get('tipoHato')?.touched"
+          >
+            Selecciona el tipo de hato
+          </p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label>Departamento <span class="required">*</span></label>
+          <select
+            formControlName="departamento"
+            [class.error]="form.get('departamento')?.invalid && form.get('departamento')?.touched"
+          >
+            <option value="">Selecciona...</option>
+            <option *ngFor="let dep of departamentos" [value]="dep">{{ dep }}</option>
+          </select>
+          <p
+            class="field-error"
+            *ngIf="form.get('departamento')?.invalid && form.get('departamento')?.touched"
+          >
+            Selecciona un departamento
+          </p>
+        </div>
+        <div class="field">
+          <label>Ciudad / Municipio <span class="required">*</span></label>
+          <select
+            formControlName="ciudad"
+            [class.error]="form.get('ciudad')?.invalid && form.get('ciudad')?.touched"
+            [attr.disabled]="!form.get('departamento')?.value ? true : null"
+          >
+            <option value="">
+              {{
+                form.get('departamento')?.value
+                  ? 'Selecciona...'
+                  : 'Primero selecciona un departamento'
+              }}
+            </option>
+            <option *ngFor="let c of ciudadesFiltradas" [value]="c.nombre">{{ c.nombre }}</option>
+          </select>
+          <p class="field-error" *ngIf="form.get('ciudad')?.invalid && form.get('ciudad')?.touched">
+            Ciudad requerida
+          </p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label>Área total del hato (ha) <span class="required">*</span></label>
+          <input
+            type="number"
+            formControlName="areaHato"
+            placeholder="Ej: 120.5"
+            [class.error]="form.get('areaHato')?.invalid && form.get('areaHato')?.touched"
+          />
+          <p class="field-hint">
+            Ingresa el área total de tu finca en hectáreas (ha). 1 hectárea equivale aproximadamente
+            a 10.000 m². Incluye potreros, instalaciones y zonas no productivas.
+          </p>
+          <p
+            class="field-error"
+            *ngIf="form.get('areaHato')?.invalid && form.get('areaHato')?.touched"
+          >
+            Área requerida
+          </p>
+        </div>
+
+        <div class="field">
+          <label>Área de pastoreo (ha) <span class="required">*</span></label>
+          <input
+            type="number"
+            formControlName="areaPastoreo"
+            placeholder="Ej: 80.0"
+            [class.error]="form.get('areaPastoreo')?.invalid && form.get('areaPastoreo')?.touched"
+          />
+          <p class="field-hint">
+            Ingresa solo el área destinada al pastoreo de tu ganado. Debe ser menor o igual al área
+            total. No incluyas zonas de instalaciones o cultivos.
+          </p>
+          <p
+            class="field-error"
+            *ngIf="form.get('areaPastoreo')?.invalid && form.get('areaPastoreo')?.touched"
+          >
+            Área de pastoreo requerida
+          </p>
+        </div>
+      </div>
+
+      <div class="error-box" *ngIf="error">
+        <p>{{ error }}</p>
+      </div>
+
+      <div class="paso-actions">
+        <button type="button" class="btn-secondary" (click)="irAnterior.emit()">Cancelar</button>
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="guardar()"
+          [disabled]="loadingGuardar || form.invalid"
+        >
+          <span *ngIf="!loadingGuardar">Guardar y continuar →</span>
+          <span *ngIf="loadingGuardar" class="btn-loading">
+            <app-spinner size="small"></app-spinner>
+            Guardando...
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

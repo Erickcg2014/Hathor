@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-05-11T13:53:47.436Z",
+    "end": "2026-05-11T13:53:57.392Z",
+    "duration": 9956,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d2d66a65-c94a-45f8-90e7-66337d3f3400",
+      "title": "",
+      "fullFile": "cypress\\e2e\\01_login.cy.ts",
+      "file": "cypress\\e2e\\01_login.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f351ee0f-8d63-4e5a-9264-34b163ac753c",
+          "title": "01 — Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Muestra la página de login correctamente",
+              "fullTitle": "01 — Login Muestra la página de login correctamente",
+              "timedOut": null,
+              "duration": 2752,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.get('[data-cy=\"input-email\"]').should('be.visible');\ncy.get('[data-cy=\"input-password\"]').should('be.visible');\ncy.get('[data-cy=\"btn-login\"]').should('be.visible');",
+              "err": {},
+              "uuid": "0ce18536-f054-4c46-9353-b874c3cea633",
+              "parentUUID": "f351ee0f-8d63-4e5a-9264-34b163ac753c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Muestra error con credenciales incorrectas",
+              "fullTitle": "01 — Login Muestra error con credenciales incorrectas",
+              "timedOut": null,
+              "duration": 3163,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.get('[data-cy=\"input-email\"]').type('noexiste@test.com');\ncy.get('[data-cy=\"input-password\"]').type('wrongpassword');\ncy.get('[data-cy=\"btn-login\"]').click();\ncy.get('[data-cy=\"error-message\"]').should('be.visible');\ncy.url().should('include', '/login');",
+              "err": {},
+              "uuid": "5781f65b-5377-4956-9a08-65c00a58bd54",
+              "parentUUID": "f351ee0f-8d63-4e5a-9264-34b163ac753c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login exitoso redirige al home",
+              "fullTitle": "01 — Login Login exitoso redirige al home",
+              "timedOut": null,
+              "duration": 2243,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@usuarios').then((u) => {\n    cy.visit('/login');\n    cy.get('[data-cy=\"input-email\"]').type(u.usuarioValido.email);\n    cy.get('[data-cy=\"input-password\"]').type(u.usuarioValido.password);\n    cy.get('[data-cy=\"btn-login\"]').click();\n    cy.url().should('include', '/home');\n});",
+              "err": {},
+              "uuid": "fc59395d-9480-462d-9d1e-e4d97ac0bbfa",
+              "parentUUID": "f351ee0f-8d63-4e5a-9264-34b163ac753c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Botón deshabilitado con formulario vacío",
+              "fullTitle": "01 — Login Botón deshabilitado con formulario vacío",
+              "timedOut": null,
+              "duration": 290,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.get('[data-cy=\"btn-login\"]').should('be.disabled');",
+              "err": {},
+              "uuid": "0e532305-4db2-44f8-a9fd-10c0ba0ce675",
+              "parentUUID": "f351ee0f-8d63-4e5a-9264-34b163ac753c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Link de registro navega a /register",
+              "fullTitle": "01 — Login Link de registro navega a /register",
+              "timedOut": null,
+              "duration": 989,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.get('[data-cy=\"link-register\"]').click();\ncy.url().should('include', '/register');",
+              "err": {},
+              "uuid": "c4cff515-612b-40c5-83f4-28cb0acb9286",
+              "parentUUID": "f351ee0f-8d63-4e5a-9264-34b163ac753c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0ce18536-f054-4c46-9353-b874c3cea633",
+            "5781f65b-5377-4956-9a08-65c00a58bd54",
+            "fc59395d-9480-462d-9d1e-e4d97ac0bbfa",
+            "0e532305-4db2-44f8-a9fd-10c0ba0ce675",
+            "c4cff515-612b-40c5-83f4-28cb0acb9286"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9437,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

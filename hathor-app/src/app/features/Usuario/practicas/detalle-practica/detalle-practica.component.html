@@ -1,0 +1,312 @@
+<div class="detalle-practica-page">
+  <!-- ===== LOADING ===== -->
+  @if (loading) {
+    <div class="loading-wrap">
+      <app-spinner size="large" message="Cargando práctica..."> </app-spinner>
+    </div>
+  }
+
+  <!-- ===== ERROR ===== -->
+  @if (!loading && error) {
+    <div class="error-wrap">
+      <div class="msg-error">
+        <span>❌</span>
+        <div>
+          <p>{{ error }}</p>
+          <button class="btn-volver-error" (click)="volver()">← Volver a mis prácticas</button>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (!loading && !error && practica) {
+    <!-- ===== HEADER ===== -->
+    <header class="page-header">
+      <div class="header-left">
+        <button class="btn-volver" (click)="volver()">← Mis prácticas</button>
+        <p class="page-tag">
+          Prácticas ·
+          {{ detalle?.categoria ?? practica.categoria }}
+        </p>
+        <h1 class="page-title">
+          <span class="header-cat-icono">
+            {{ iconoCategoria(practica.categoria) }}
+          </span>
+          {{ practica.nombrePractica }}
+        </h1>
+        <div class="header-chips">
+          <span class="estado-chip" [class]="claseEstado(practica.estado)">
+            {{ estadoLabel(practica.estado) }}
+          </span>
+          <span class="dif-chip">
+            {{ practica.dificultad }}
+          </span>
+          @if (practica.duracionDias) {
+            <span class="duracion-chip"> ⏱️ {{ practica.duracionDias }} días estimados </span>
+          }
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="header-icon">
+          {{ iconoCategoria(practica.categoria) }}
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== LAYOUT PRINCIPAL ===== -->
+    <div class="main-layout">
+      <!-- ── Columna izquierda ── -->
+      <div class="col-izquierda">
+        <!-- BARRA DE AVANCE + ACCIONES -->
+        <div class="avance-card">
+          <div class="avance-card-header">
+            <h3 class="avance-card-titulo">📊 Progreso</h3>
+            <span class="avance-pct-grande"> {{ practica.porcentajeAvance }}% </span>
+          </div>
+
+          <div class="avance-track-grande">
+            <div
+              class="avance-fill-grande"
+              [class.fill-completada]="practica.estado === 'COMPLETADA'"
+              [class.fill-curso]="practica.estado === 'EN_CURSO'"
+              [style.width.%]="practica.porcentajeAvance"
+            ></div>
+          </div>
+
+          <!-- Fechas -->
+          <div class="avance-fechas">
+            @if (practica.fechaInicio) {
+              <span class="fecha-item">
+                📅 Inicio: {{ practica.fechaInicio | date: 'dd/MM/yyyy' }}
+              </span>
+            }
+            @if (practica.fechaFin) {
+              <span class="fecha-item"> 🏁 Fin: {{ practica.fechaFin | date: 'dd/MM/yyyy' }} </span>
+            }
+          </div>
+
+          <!-- Slider de avance -->
+          @if (practica.estado === 'EN_CURSO') {
+            <button
+              class="btn-actualizar-avance"
+              [disabled]="cargandoPasos"
+              (click)="abrirOverlayAvance(practica)"
+            >
+              @if (cargandoPasos) {
+                <app-spinner size="small"></app-spinner>
+                Cargando pasos...
+              } @else {
+                📊 Actualizar avance
+              }
+            </button>
+          }
+
+          <!-- Botón acción principal -->
+          @if (puedeAvanzar) {
+            <button
+              class="btn-accion-principal"
+              [class.btn-iniciar]="practica.estado === 'PENDIENTE'"
+              [class.btn-completar]="practica.estado === 'EN_CURSO'"
+              [disabled]="avanzandoEstado"
+              (click)="avanzarEstado()"
+            >
+              @if (avanzandoEstado) {
+                <app-spinner size="small"></app-spinner>
+                Procesando...
+              } @else {
+                {{ botonEstadoLabel }}
+              }
+            </button>
+          } @else {
+            <div class="completada-badge">✅ Práctica completada</div>
+          }
+        </div>
+
+        <!-- KPI IMPACTADO -->
+        <div class="kpi-card">
+          <h3 class="kpi-card-titulo">📈 KPI impactado</h3>
+
+          <div class="kpi-codigo">{{ practica.kpiImpactado }}</div>
+
+          @if (kpiActual) {
+            <div class="kpi-valor-principal">
+              <div class="kpi-valor-wrap">
+                <span class="kpi-valor-num">
+                  @if (kpiActual.valor != null) {
+                    {{ kpiActual.valor | number: '1.1-2' }}
+                    <span class="kpi-unidad">{{ kpiActual.unidad }}</span>
+                  } @else {
+                    Sin datos
+                  }
+                </span>
+                <span class="kpi-estado-chip" [class]="colorEstadoKpi(kpiActual.estado)">
+                  {{ iconoEstadoKpi(kpiActual.estado) }}
+                  {{ kpiActual.estado }}
+                </span>
+              </div>
+
+              @if (tendenciaKpi) {
+                <div class="kpi-tendencia">
+                  <span class="tendencia-icono">
+                    {{ iconoTendencia }}
+                  </span>
+                  <span
+                    class="tendencia-label"
+                    [class.tendencia-subiendo]="tendenciaKpi === 'subiendo'"
+                    [class.tendencia-bajando]="tendenciaKpi === 'bajando'"
+                    [class.tendencia-estable]="tendenciaKpi === 'estable'"
+                  >
+                    Tendencia: {{ tendenciaKpi }}
+                  </span>
+                </div>
+              }
+            </div>
+
+            <!-- Comparativa benchmark -->
+            @if (kpiActual.benchmarkPromedio != null) {
+              <div class="kpi-benchmark-wrap">
+                <div class="benchmark-fila">
+                  <span class="benchmark-label">Tu valor</span>
+                  <span class="benchmark-valor tuyo">
+                    {{ kpiActual.valor | number: '1.1-2' }}
+                    {{ kpiActual.unidad }}
+                  </span>
+                </div>
+                <div class="benchmark-fila">
+                  <span class="benchmark-label">Promedio sector</span>
+                  <span class="benchmark-valor promedio">
+                    {{ kpiActual.benchmarkPromedio | number: '1.1-2' }}
+                    {{ kpiActual.unidad }}
+                  </span>
+                </div>
+                @if (kpiActual.benchmarkTop != null) {
+                  <div class="benchmark-fila">
+                    <span class="benchmark-label">Top 25%</span>
+                    <span class="benchmark-valor top">
+                      {{ kpiActual.benchmarkTop | number: '1.1-2' }}
+                      {{ kpiActual.unidad }}
+                    </span>
+                  </div>
+                }
+                @if (kpiActual.diferenciaPct != null) {
+                  <div
+                    class="benchmark-diferencia"
+                    [class.dif-positiva]="kpiActual.diferenciaPct >= 0"
+                    [class.dif-negativa]="kpiActual.diferenciaPct < 0"
+                  >
+                    {{ kpiActual.diferenciaPct >= 0 ? '↑' : '↓' }}
+                    {{ kpiActual.diferenciaPct | number: '1.1-1' }}% respecto al promedio
+                  </div>
+                }
+              </div>
+            }
+
+            <!-- Histórico del KPI -->
+            @if (historicoKpi.length >= 2) {
+              <div class="historico-wrap">
+                <span class="historico-titulo">Evolución reciente</span>
+                <div class="historico-bars">
+                  @for (h of historicoKpi; track h.periodo) {
+                    <div class="historico-bar-wrap">
+                      <div
+                        class="historico-bar"
+                        [style.height.%]="calcularAlturaBar(h.valor)"
+                        [class.bar-optimo]="h.estado === 'OPTIMO'"
+                        [class.bar-aceptable]="h.estado === 'ACEPTABLE'"
+                        [class.bar-critico]="h.estado === 'CRITICO'"
+                        [title]="h.valor + ' — ' + h.periodo"
+                      ></div>
+                      <span class="historico-periodo">
+                        {{ h.periodo | slice: 5 : 7 }}/{{ h.periodo | slice: 2 : 4 }}
+                      </span>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          } @else {
+            <div class="kpi-sin-datos-wrap">
+              <span>📊</span>
+              <p>No hay datos calculados para este KPI aún.</p>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- ── Columna derecha ── -->
+      <div class="col-derecha">
+        <!-- DESCRIPCIÓN Y OBJETIVO -->
+        @if (loadingDetalle) {
+          <div class="detalle-loading">
+            <app-spinner size="medium" message="Cargando detalle..."> </app-spinner>
+          </div>
+        } @else if (detalle) {
+          <!-- Descripción -->
+          <div class="info-card">
+            <h3 class="info-card-titulo">📋 Descripción</h3>
+            <p class="info-texto">{{ detalle.descripcion }}</p>
+          </div>
+
+          <!-- Objetivo e impacto -->
+          <div class="info-card">
+            <h3 class="info-card-titulo">🎯 Objetivo e impacto</h3>
+            <div class="objetivo-grid">
+              <div class="objetivo-item">
+                <span class="objetivo-label">Objetivo</span>
+                <p class="objetivo-texto">{{ detalle.objetivo }}</p>
+              </div>
+              <div class="objetivo-item">
+                <span class="objetivo-label">Impacto esperado</span>
+                <p class="objetivo-texto">{{ detalle.impactoEsperado }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Meta info -->
+          <div class="meta-card">
+            <div class="meta-item">
+              <span class="meta-label">Escala aplicable</span>
+              <span class="meta-valor">{{ detalle.escala }}</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Trópico</span>
+              <span class="meta-valor">{{ detalle.tropicaAplicable }}</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Dificultad</span>
+              <span class="meta-valor">{{ detalle.dificultad }}</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Duración estimada</span>
+              <span class="meta-valor">{{ detalle.duracionDias }} días</span>
+            </div>
+          </div>
+
+          <!-- Pasos -->
+          @if (detalle.pasos && detalle.pasos.length > 0) {
+            <div class="pasos-card">
+              <h3 class="info-card-titulo">📝 Pasos de implementación</h3>
+              <div class="pasos-lista">
+                @for (paso of detalle.pasos; track $index; let i = $index) {
+                  <div class="paso-item">
+                    <div class="paso-num">{{ i + 1 }}</div>
+                    <p class="paso-texto">{{ paso }}</p>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  }
+</div>
+
+<app-avance-pasos
+  [visible]="overlayAvanceVisible"
+  [idHatoPractica]="practicaAvanceActual?.idHatoPractica ?? ''"
+  [nombrePractica]="practicaAvanceActual?.nombrePractica ?? ''"
+  [pasoTextos]="pasosTextoActual"
+  (cerrar)="cerrarOverlayAvance()"
+  (avanceActualizado)="onAvanceActualizado($event)"
+/>

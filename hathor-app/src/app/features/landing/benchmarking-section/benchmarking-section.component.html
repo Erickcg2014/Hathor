@@ -1,0 +1,44 @@
+<section id="benchmarking" class="bg-gray-50 py-16 sm:py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <div>
+        <p class="text-xs sm:text-sm tracking-[0.14em] font-semibold text-green-600 uppercase">Benchmarking</p>
+        <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 leading-tight">¿Cómo estás versus el sector?</h2>
+
+        <p class="mt-5 text-base sm:text-lg text-emerald-800/85 leading-relaxed">
+          Hathor compara automáticamente tus KPIs contra el promedio y los líderes del sector lechero colombiano. Así sabes exactamente <span class="font-bold text-emerald-950">dónde estás perdiendo dinero</span>.
+        </p>
+
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-center gap-3 text-base sm:text-lg text-emerald-800/90"><span class="dot-icon">◎</span> Comparación automática con hatos similares</li>
+          <li class="flex items-center gap-3 text-base sm:text-lg text-emerald-800/90"><span class="dot-icon">◎</span> Identificación de brechas de desempeño</li>
+          <li class="flex items-center gap-3 text-base sm:text-lg text-emerald-800/90"><span class="dot-icon">◎</span> Recomendaciones de prácticas líderes del sector</li>
+          <li class="flex items-center gap-3 text-base sm:text-lg text-emerald-800/90"><span class="dot-icon">◎</span> Seguimiento de avance en el tiempo</li>
+        </ul>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-emerald-100 shadow-sm bg-white">
+        <div class="grid grid-cols-4 gap-2 px-4 py-3 bg-emerald-950 text-sm font-bold text-white">
+          <span>Indicador</span>
+          <span>Tu hato</span>
+          <span>Promedio</span>
+          <span class="text-hathor-green">Líder</span>
+        </div>
+
+        <div *ngFor="let row of rows; let i = index" [class]="'grid grid-cols-4 gap-2 px-4 py-4 border-t border-emerald-100 ' + (i % 2 === 0 ? 'bg-white' : 'bg-emerald-50/60')">
+          <span class="text-emerald-950 font-semibold">{{ row.indicator }}</span>
+
+          <span class="text-emerald-950 font-bold">
+            {{ row.yourFarm }}
+            <small [class]="'block mt-1 text-sm font-medium ' + (row.yourNoteClass === 'up' ? 'text-green-600' : row.yourNoteClass === 'down' ? 'text-red-500' : 'text-lime-600')">{{ row.yourNote }}</small>
+          </span>
+
+          <span class="text-emerald-700 font-medium">{{ row.average }}</span>
+          <span class="text-green-800 font-bold">{{ row.leader }}</span>
+        </div>
+
+        <p class="px-4 py-3 text-center text-sm text-emerald-700 bg-green-100/70">Datos basados en benchmarks del sector lechero colombiano</p>
+      </div>
+    </div>
+  </div>
+</section>

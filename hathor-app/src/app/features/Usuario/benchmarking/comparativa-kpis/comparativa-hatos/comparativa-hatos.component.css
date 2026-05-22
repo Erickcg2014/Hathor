@@ -1,0 +1,244 @@
+.comparativa-hatos {
+  background: #ffffff;
+  border: 1px solid #e4efe8;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.header-text h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #163f2a;
+}
+
+.header-text p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #5e7d6e;
+}
+
+/* Controles */
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.control-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.control-top {
+  flex: 0 0 auto;
+}
+
+.control-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #6b7280;
+}
+
+/* Chips de KPI */
+.selector-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid #d1fae5;
+  background: #f0fdf4;
+  color: #166534;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.chip.activo {
+  background: #15803d;
+  border-color: #15803d;
+  color: #ffffff;
+}
+
+/* Botones top */
+.top-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.top-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #e4efe8;
+  background: #f7fbf8;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.top-btn:hover {
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.top-btn.activo {
+  background: #15803d;
+  border-color: #15803d;
+  color: #ffffff;
+}
+
+/* Estados */
+.estado-centro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 32px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e4efe8;
+  border-top-color: #15803d;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.estado-error {
+  padding: 12px 16px;
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #b42318;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.estado-vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.vacio-icono {
+  font-size: 28px;
+}
+
+/* Gráfico */
+.grafico-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.leyenda {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #374151;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-verde {
+  background: #15803d;
+}
+.dot-gris {
+  background: #94a3b8;
+}
+
+.chart-wrap {
+  height: 320px;
+}
+
+/* Banner de posición */
+.posicion-banner {
+  display: flex;
+  justify-content: center;
+}
+
+.posicion {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.posicion.top {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.posicion.media {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+@media (max-width: 780px) {
+  .comparativa-hatos {
+    padding: 16px;
+  }
+
+  .chip {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .chart-wrap {
+    height: 260px;
+  }
+}

@@ -1,0 +1,322 @@
+<div class="seccion-wrapper">
+  <!-- MODO READONLY -->
+  @if (modoReadonly) {
+    <div class="readonly-wrapper">
+      <div class="readonly-header">
+        <div class="readonly-check">✓</div>
+        <div>
+          <h2 class="readonly-titulo">¡Producción lechera registrada!</h2>
+          <p class="readonly-mensaje">
+            Los datos de producción están listos. Solo falta un paso para que Hathor pueda darte
+            análisis completos de tu operación. ¡Ya casi! 🥛
+          </p>
+        </div>
+      </div>
+      <div class="paso-actions">
+        <button class="btn-secondary" (click)="irAnterior.emit()">← Anterior</button>
+        <button class="btn-primary" (click)="irSiguiente.emit()">Continuar a finanzas →</button>
+      </div>
+    </div>
+  }
+
+  <!-- MODO EDITABLE -->
+  @if (!modoReadonly) {
+    <div class="paso-header">
+      <span class="paso-icono">🥛</span>
+      <div>
+        <h2 class="paso-titulo">Producción lechera</h2>
+        <p class="paso-subtitulo">Cuéntanos cómo produce leche tu hato actualmente</p>
+      </div>
+    </div>
+
+    @if (loadingRazas) {
+      <div class="loading-razas">
+        <app-spinner size="small" message="Cargando razas registradas..."></app-spinner>
+      </div>
+    }
+
+    <form [formGroup]="form" class="paso-form">
+      <!-- ===== SECCIÓN: GANADO ===== -->
+      <div class="form-seccion">
+        <h3 class="form-seccion-titulo">🐄 Tu ganado lechero</h3>
+
+        <div class="form-row">
+          <div class="field">
+            <label>¿Cuál es la raza predominante en tu hato? <span class="required">*</span></label>
+            <select
+              formControlName="razaPredominante"
+              [class.error]="
+                form.get('razaPredominante')?.invalid && form.get('razaPredominante')?.touched
+              "
+            >
+              <option value="">Selecciona una raza...</option>
+              @for (raza of razasRegistradas; track raza) {
+                <option [value]="raza">{{ raza }}</option>
+              }
+            </select>
+            @if (razasRegistradas.length > 0 && !loadingRazas) {
+              <span class="field-hint">
+                Razas cargadas desde tu inventario de ganado registrado. Raza que más litros de
+                leche produce.
+              </span>
+            }
+            <p
+              class="field-error"
+              *ngIf="form.get('razaPredominante')?.invalid && form.get('razaPredominante')?.touched"
+            >
+              Selecciona la raza predominante
+            </p>
+          </div>
+
+          <div class="field">
+            <label
+              >¿Cuántas vacas tienes actualmente en ordeño? <span class="required">*</span></label
+            >
+            <input
+              type="number"
+              formControlName="vacasEnOrdenio"
+              placeholder="Ej: 25"
+              min="1"
+              [class.error]="
+                form.get('vacasEnOrdenio')?.invalid && form.get('vacasEnOrdenio')?.touched
+              "
+            />
+            @if (vacasPreLlenadas && form.get('vacasEnOrdenio')?.pristine) {
+              <p class="campo-hint">
+                💡 Pre-llenado desde tu inventario de ganado. Puedes ajustarlo si es necesario.
+              </p>
+            }
+            <p
+              class="field-error"
+              *ngIf="form.get('vacasEnOrdenio')?.invalid && form.get('vacasEnOrdenio')?.touched"
+            >
+              Ingresa el número de vacas en ordeño
+            </p>
+          </div>
+          @if (escalaCalculada) {
+            <div class="escala-badge-wrapper">
+              <span class="escala-label">Escala del hato:</span>
+              <span class="escala-badge escala-{{ escalaCalculada.toLowerCase() }}">
+                {{ iconoEscala }} {{ escalaCalculada }}
+              </span>
+              <span class="escala-hint"> Calculado automáticamente según tus vacas en ordeño </span>
+            </div>
+          }
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label>¿Cuál es el período de lactancia promedio de tus vacas? (días)</label>
+            <input
+              type="number"
+              formControlName="periodoLactanciaPromedio"
+              placeholder="Ej: 305"
+              min="1"
+            />
+            <span class="field-hint">El promedio de la industria lechera es de 305 días</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SECCIÓN: SISTEMA DE ORDEÑO ===== -->
+      <div class="form-seccion">
+        <h3 class="form-seccion-titulo">⚙️ Sistema de ordeño</h3>
+
+        <div class="form-row">
+          <div class="field">
+            <label>¿Cómo es tu sistema de ordeño? <span class="required">*</span></label>
+            <select
+              formControlName="sistemaOrdenio"
+              [class.error]="
+                form.get('sistemaOrdenio')?.invalid && form.get('sistemaOrdenio')?.touched
+              "
+            >
+              <option value="">Selecciona...</option>
+              @for (s of sistemasOrdenio; track s) {
+                <option [value]="s">{{ s }}</option>
+              }
+            </select>
+            <p
+              class="field-error"
+              *ngIf="form.get('sistemaOrdenio')?.invalid && form.get('sistemaOrdenio')?.touched"
+            >
+              Selecciona el sistema de ordeño
+            </p>
+          </div>
+
+          <div class="field">
+            <label>¿Cuántas veces al día ordeñas? <span class="required">*</span></label>
+            <input
+              type="number"
+              formControlName="frecuenciaOrdenio"
+              placeholder="Ej: 2"
+              min="1"
+              max="3"
+              [class.error]="
+                form.get('frecuenciaOrdenio')?.invalid && form.get('frecuenciaOrdenio')?.touched
+              "
+            />
+            <span class="field-hint">Generalmente entre 1 y 3 veces al día</span>
+            <p
+              class="field-error"
+              *ngIf="
+                form.get('frecuenciaOrdenio')?.invalid && form.get('frecuenciaOrdenio')?.touched
+              "
+            >
+              Ingresa la frecuencia de ordeño (1-3)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SECCIÓN: PRODUCCIÓN Y VENTAS ===== -->
+      <div class="form-seccion">
+        <h3 class="form-seccion-titulo">💰 Producción y ventas</h3>
+
+        <div class="form-row">
+          <div class="field">
+            <label
+              >¿Cuántos litros produces por día en promedio? <span class="required">*</span></label
+            >
+            <input
+              type="number"
+              formControlName="produccionDiariaLitros"
+              placeholder="Ej: 150"
+              min="1"
+              [class.error]="
+                form.get('produccionDiariaLitros')?.invalid &&
+                form.get('produccionDiariaLitros')?.touched
+              "
+            />
+            @if (litrosPorVacaPorDia > 0) {
+              <span class="field-hint ingreso-hint">
+                📊 {{ litrosPorVacaPorDia }} litros/vaca/día
+              </span>
+            }
+            <p
+              class="field-error"
+              *ngIf="
+                form.get('produccionDiariaLitros')?.invalid &&
+                form.get('produccionDiariaLitros')?.touched
+              "
+            >
+              Producción requerida (mínimo 1 litro)
+            </p>
+          </div>
+
+          <div class="field">
+            <label
+              >¿A qué precio vendes el litro de leche? (COP) <span class="required">*</span></label
+            >
+            <input
+              type="number"
+              formControlName="precioLitroPromedio"
+              placeholder="Ej: 1500"
+              min="1"
+              [class.error]="
+                form.get('precioLitroPromedio')?.invalid && form.get('precioLitroPromedio')?.touched
+              "
+            />
+            <p
+              class="field-error"
+              *ngIf="
+                form.get('precioLitroPromedio')?.invalid && form.get('precioLitroPromedio')?.touched
+              "
+            >
+              Precio requerido (mínimo 1)
+            </p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label
+              >¿Cual es el destino de la leche que produces? <span class="required">*</span></label
+            >
+            <select
+              formControlName="destinoLeche"
+              [class.error]="form.get('destinoLeche')?.invalid && form.get('destinoLeche')?.touched"
+            >
+              <option value="">Selecciona el destino...</option>
+              @for (d of destinosLeche; track d) {
+                <option [value]="d">{{ d }}</option>
+              }
+            </select>
+            <p
+              class="field-error"
+              *ngIf="form.get('destinoLeche')?.invalid && form.get('destinoLeche')?.touched"
+            >
+              Selecciona el destino de la leche
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PREVIEW CALCULADO ===== -->
+      @if (produccionMensualCalculada > 0) {
+        <div class="produccion-preview">
+          <div class="preview-header">
+            <span class="preview-icono">📊</span>
+            <span class="preview-titulo">Estimación basada en tus datos</span>
+            <span class="preview-badge">Calculado automáticamente</span>
+          </div>
+          <div class="preview-grid">
+            <div class="preview-item">
+              <span class="preview-label">Producción mensual estimada</span>
+              <span class="preview-valor"
+                >{{ produccionMensualCalculada | number: '1.0-0' }} litros</span
+              >
+            </div>
+            <div class="preview-item">
+              <span class="preview-label">Ingreso mensual estimado</span>
+              @if (ingresoMensualEstimado > 0) {
+                <span class="preview-valor ingreso">
+                  {{ ingresoMensualEstimado | currency: 'COP' : 'symbol' : '1.0-0' }}
+                </span>
+              } @else {
+                <span class="preview-valor">—</span>
+              }
+            </div>
+            @if (litrosPorVacaPorDia > 0) {
+              <div class="preview-item">
+                <span class="preview-label">Productividad por vaca</span>
+                <span class="preview-valor">{{ litrosPorVacaPorDia }} litros/vaca/día</span>
+              </div>
+            }
+          </div>
+          <p class="preview-nota">
+            * Estos valores son estimaciones. Hathor los irá ajustando automáticamente con base en
+            tus registros reales de producción y ventas.
+          </p>
+        </div>
+      }
+
+      <!-- Error -->
+      @if (error) {
+        <div class="error-box">
+          <p>{{ error }}</p>
+        </div>
+      }
+
+      <!-- Acciones -->
+      <div class="paso-actions">
+        <button type="button" class="btn-secondary" (click)="irAnterior.emit()">← Anterior</button>
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="guardar()"
+          [disabled]="loadingGuardar || form.invalid"
+        >
+          @if (!loadingGuardar) {
+            Guardar y continuar →
+          } @else {
+            <span class="btn-loading">
+              <app-spinner size="small"></app-spinner>
+              Guardando...
+            </span>
+          }
+        </button>
+      </div>
+    </form>
+  }
+</div>

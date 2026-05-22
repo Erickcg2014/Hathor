@@ -1,0 +1,124 @@
+<div class="recomendaciones-page">
+  @if (loading) {
+    <div class="loading-wrapper" data-cy="recomendaciones-loading">
+      <app-spinner size="large" message="Cargando recomendaciones..."></app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- HEADER -->
+    <header class="page-header" data-cy="recomendaciones-header">
+      <div class="header-left">
+        <p class="page-tag">Reglas aplicadas</p>
+        <h1 class="page-title">Recomendaciones <span class="brand">del Hato</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato para consultar recomendaciones.</p>
+        }
+      </div>
+      <div class="header-right">
+        <div class="header-stat">
+          <span class="header-stat-num" data-cy="recomendaciones-no-leidas">{{ noLeidas }}</span>
+          <span class="header-stat-label">No leídas</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SIN HATO -->
+    @if (!hatoActivo) {
+      <div class="empty-state" data-cy="recomendaciones-empty">
+        <span>🐄</span>
+        <p>No hay un hato activo seleccionado.</p>
+      </div>
+    }
+
+    @if (hatoActivo) {
+      <!-- VACÍO -->
+      @if (recomendaciones.length === 0) {
+        <div class="empty-state">
+          <span>✅</span>
+          <p>¡Sin recomendaciones activas!</p>
+          <p class="empty-hint">Tu hato está en buen estado según las reglas del sistema.</p>
+        </div>
+      }
+
+      <!-- GRID DE CARDS -->
+      @if (recomendaciones.length > 0) {
+        <div class="cards-grid" data-cy="recomendaciones-grid">
+          @for (r of recomendaciones; track r.idRecomendacion) {
+            <article class="reco-card" data-cy="reco-card" [class.reco-no-leida]="!r.leida">
+              <!-- TIRA DE COLOR POR PRIORIDAD -->
+              <div class="reco-strip" [class]="'strip-' + r.prioridad.toLowerCase()"></div>
+
+              <div class="reco-body">
+                <!-- HEADER CARD -->
+                <div class="reco-header">
+                  <span class="prioridad-badge" [class]="'prio-' + r.prioridad.toLowerCase()">
+                    {{ iconoPrioridad(r.prioridad) }} {{ prioridadLabel(r.prioridad) }}
+                  </span>
+                  <span class="estado-pill" [class]="r.leida ? 'pill-leida' : 'pill-nueva'">
+                    {{ r.leida ? '✓ Leída' : '● Nueva' }}
+                  </span>
+                </div>
+
+                <!-- MENSAJE -->
+                <p class="reco-mensaje">{{ r.mensaje }}</p>
+
+                <!-- INDICADORES -->
+                <div class="reco-indicadores">
+                  <div class="indicador-item">
+                    <span class="ind-label">Indicador</span>
+                    <span class="ind-valor ind-codigo">{{ r.indicador }}</span>
+                  </div>
+                  <div class="indicador-item">
+                    <span class="ind-label">Valor actual</span>
+                    <span class="ind-valor ind-actual">{{ r.valorActual }}</span>
+                  </div>
+                  <div class="indicador-item">
+                    <span class="ind-label">Referencia</span>
+                    <span class="ind-valor">{{ r.valorReferencia }}</span>
+                  </div>
+                </div>
+
+                <!-- ACCIONES -->
+                <div class="reco-acciones">
+                  <button
+                    class="btn-accion btn-leida"
+                    [disabled]="r.leida"
+                    (click)="marcarLeida(r.idRecomendacion)"
+                  >
+                    ✓ Marcar leída
+                  </button>
+                  <button class="btn-accion btn-descartar" (click)="descartar(r.idRecomendacion)">
+                    Descartar
+                  </button>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+
+        <!-- PAGINACIÓN -->
+        @if (totalPaginas > 1) {
+          <div class="pagination">
+            <button class="btn-pag" (click)="cambiarPagina(-1)" [disabled]="paginaActual === 0">
+              ← Anterior
+            </button>
+            <span class="pag-info"> Página {{ paginaActual + 1 }} de {{ totalPaginas }} </span>
+            <button
+              class="btn-pag"
+              (click)="cambiarPagina(1)"
+              [disabled]="paginaActual >= totalPaginas - 1"
+            >
+              Siguiente →
+            </button>
+          </div>
+        }
+      }
+    }
+  }
+</div>

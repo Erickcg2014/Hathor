@@ -1,0 +1,49 @@
+.dark-panel {
+  background: linear-gradient(180deg, #033e3b 0%, #023632 100%);
+}
+
+.kpi-card {
+  border-radius: 0.9rem;
+  background: white;
+  padding: 0.95rem;
+}
+
+.kpi-value {
+  font-size: 1.8rem;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #052e2b;
+}
+
+.kpi-label {
+  margin-top: 0.35rem;
+  color: #2b7a78;
+  font-size: 1rem;
+}
+
+.bar,
+.bar-active {
+  border-radius: 0.6rem 0.6rem 0 0;
+  width: 100%;
+}
+
+.bar {
+  background: #cae2cb;
+}
+
+.bar-active {
+  background: #bff102;
+}
+
+.bar-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.bar-month {
+  font-size: 0.9rem;
+  color: #2b7a78;
+}

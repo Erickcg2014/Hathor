@@ -1,0 +1,172 @@
+<div class="por-kpi-wrapper">
+  <!-- Selector de KPI -->
+  <div class="selector-section">
+    <h3 class="seccion-titulo">Selecciona un KPI</h3>
+
+    <!-- Filtros categoría -->
+    <div class="filtros-row">
+      @for (cat of categorias; track cat.valor) {
+        <button
+          class="filtro-btn"
+          [class.activo]="filtroCategoria === cat.valor"
+          (click)="setFiltroCategoria(cat.valor)"
+        >
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Grid de KPIs seleccionables -->
+    <div class="kpi-selector-grid">
+      @for (kpi of kpisFiltrados; track kpi.codigo) {
+        <button
+          class="kpi-selector-item"
+          [class.seleccionado]="kpi.codigo === codigoSeleccionado"
+          [class.estado-optimo]="kpi.estado === 'OPTIMO'"
+          [class.estado-aceptable]="kpi.estado === 'ACEPTABLE'"
+          [class.estado-critico]="kpi.estado === 'CRITICO'"
+          [class.estado-sin-datos]="kpi.estado === 'SIN_DATOS'"
+          (click)="seleccionarKpi(kpi.codigo)"
+        >
+          <span class="kpi-selector-icono">{{ iconoCategoria(kpi.categoria) }}</span>
+          <span class="kpi-selector-nombre">{{ kpi.nombre }}</span>
+          <span
+            class="kpi-selector-estado"
+            [class.dot-optimo]="kpi.estado === 'OPTIMO'"
+            [class.dot-aceptable]="kpi.estado === 'ACEPTABLE'"
+            [class.dot-critico]="kpi.estado === 'CRITICO'"
+            [class.dot-sin-datos]="kpi.estado === 'SIN_DATOS'"
+          ></span>
+        </button>
+      }
+
+      @if (kpisFiltrados.length === 0) {
+        <p class="selector-empty">No hay KPIs en esta categoría.</p>
+      }
+    </div>
+  </div>
+
+  <!-- Resultado ranking por KPI -->
+  @if (cargando) {
+    <div class="cargando-wrap">
+      <span class="cargando-spinner"></span>
+      <span class="cargando-texto">Cargando ranking...</span>
+    </div>
+  }
+
+  @if (!cargando && !datos && codigoSeleccionado) {
+    <div class="empty-state">
+      <span>📊</span>
+      <p>No hay datos de ranking para este KPI.</p>
+    </div>
+  }
+
+  @if (!cargando && !codigoSeleccionado) {
+    <div class="empty-state">
+      <span>👆</span>
+      <p>Selecciona un KPI para ver tu posición en el ranking.</p>
+    </div>
+  }
+
+  @if (!cargando && datos) {
+    <!-- Header resultado -->
+    <div class="resultado-header">
+      <div class="resultado-header-left">
+        <h3 class="resultado-titulo">
+          {{ iconoCategoria(datos.categoria) }} {{ datos.nombreKpi }}
+        </h3>
+        <span class="resultado-subtitulo">
+          {{ datos.unidadKpi }} · <strong>{{ labelRegion() }}</strong>
+        </span>
+      </div>
+      <div class="totales-chip">{{ datos.totalHatos }} hatos comparados</div>
+    </div>
+
+    <!-- Mi posición banner -->
+    <div class="mi-posicion-banner">
+      <div class="mi-posicion-left">
+        <span class="mi-posicion-icono">
+          @if (datos.posicionMiHato <= 3) {
+            {{ medallaTop3(datos.posicionMiHato) }}
+          } @else {
+            🏅
+          }
+        </span>
+        <div class="mi-posicion-info">
+          <span class="mi-posicion-label">Tu posición</span>
+          <span class="mi-posicion-valor">#{{ datos.posicionMiHato }}</span>
+          <span class="mi-posicion-total">de {{ datos.totalHatos }} hatos</span>
+        </div>
+      </div>
+      <div class="mi-posicion-right">
+        <div class="mi-stat">
+          <span class="mi-stat-label">Tu valor</span>
+          <span class="mi-stat-valor">
+            {{ formatValor(datos.valorMiHato, datos.unidadKpi) }}
+          </span>
+        </div>
+        <div class="mi-stat">
+          <span class="mi-stat-label">Percentil</span>
+          <span class="mi-stat-valor">{{ percentilMiHato.toFixed(0) }}°</span>
+        </div>
+        @if (kpiActual?.estado) {
+          <div
+            class="estado-badge"
+            [class.badge-optimo]="kpiActual?.estado === 'OPTIMO'"
+            [class.badge-aceptable]="kpiActual?.estado === 'ACEPTABLE'"
+            [class.badge-critico]="kpiActual?.estado === 'CRITICO'"
+            [class.badge-sin-datos]="kpiActual?.estado === 'SIN_DATOS'"
+          >
+            {{ estadoKpi(kpiActual?.estado ?? '') }}
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Tabla ranking -->
+    <div class="tabla-section">
+      <h4 class="tabla-titulo">Ranking completo</h4>
+      <div class="tabla-lista">
+        @for (item of itemsMostrados; track item.posicion) {
+          <div class="tabla-fila" [class.fila-mi-hato]="item.esMiHato">
+            <span class="fila-posicion" [class.posicion-destacada]="item.posicion <= 3">
+              @if (item.posicion <= 3) {
+                {{ medallaTop3(item.posicion) }}
+              } @else {
+                #{{ item.posicion }}
+              }
+            </span>
+
+            <div class="fila-alias-wrap">
+              <span class="fila-alias">{{ item.alias }}</span>
+              @if (item.esMiHato) {
+                <span class="mi-hato-tag">Tú</span>
+              }
+            </div>
+
+            <div class="fila-barra-wrap">
+              <div class="fila-barra">
+                <div
+                  class="fila-barra-fill"
+                  [style.width.%]="anchoBarra(item)"
+                  [style.background]="colorBarra(item)"
+                ></div>
+              </div>
+              <span class="fila-valor">
+                {{ formatValor(item.valor, datos.unidadKpi) }}
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+
+      @if (hayMas) {
+        <div class="cargar-mas-wrap">
+          <button class="btn-cargar-mas" (click)="cargarMas()">
+            Ver más hatos ({{ datos.ranking.length - itemsMostrados.length }} restantes)
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>

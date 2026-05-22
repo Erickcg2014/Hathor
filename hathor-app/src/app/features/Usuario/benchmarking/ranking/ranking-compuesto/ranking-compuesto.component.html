@@ -1,0 +1,138 @@
+<div class="compuesto-wrapper">
+  @if (!datos) {
+    <div class="empty-state">
+      <span>🏆</span>
+      <p>No hay datos de ranking compuesto disponibles.</p>
+    </div>
+  }
+
+  @if (datos) {
+    <!-- Header sección -->
+    <div class="seccion-header">
+      <div class="seccion-header-left">
+        <h3 class="seccion-titulo">Ranking compuesto</h3>
+        <span class="seccion-subtitulo">
+          Score basado en el promedio de percentiles de todos tus KPIs ·
+          <strong>{{ labelRegion() }}</strong>
+        </span>
+      </div>
+      <div class="totales-chip">{{ totalHatos }} hatos comparados</div>
+    </div>
+
+    <!-- Mi posición destacada -->
+    <div class="mi-posicion-banner">
+      <div class="mi-posicion-left">
+        <span class="mi-posicion-icono">🏅</span>
+        <div class="mi-posicion-info">
+          <span class="mi-posicion-label">Tu posición</span>
+          <span class="mi-posicion-valor">#{{ posicionMiHato }}</span>
+          <span class="mi-posicion-total">de {{ totalHatos }} hatos</span>
+        </div>
+      </div>
+      <div class="mi-posicion-right">
+        <div class="mi-score-wrap">
+          <span class="mi-score-label">Tu score</span>
+          <span class="mi-score-valor">{{ formatScore(datos.scoreMiHato) }}</span>
+        </div>
+        <div class="mi-score-wrap">
+          <span class="mi-score-label">Promedio</span>
+          <span class="mi-score-valor secundario">{{ formatScore(datos.scorePromedio) }}</span>
+        </div>
+        <div class="mi-score-wrap">
+          <span class="mi-score-label">Top</span>
+          <span class="mi-score-valor top">{{ formatScore(datos.scoreTop) }}</span>
+        </div>
+        <div class="mi-percentil">
+          <span class="mi-score-label">Percentil</span>
+          <span class="mi-score-valor">{{ percentilMiHato.toFixed(0) }}°</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Podio top 3 -->
+    @if (top3.length >= 3) {
+      <div class="podio-section">
+        <h4 class="podio-titulo">🏆 Podio</h4>
+        <div class="podio-grid">
+          <!-- Plata (posición 2) -->
+          <div class="podio-item plata" [class.es-mi-hato]="top3[1]?.esMiHato">
+            <span class="podio-medalla">{{ medallaTop3(2) }}</span>
+            <span class="podio-alias">{{ top3[1]?.alias }}</span>
+            <span class="podio-score">{{ formatScore(top3[1]?.valor ?? null) }}</span>
+            @if (top3[1]?.esMiHato) {
+              <span class="mi-hato-chip">Tu hato</span>
+            }
+          </div>
+
+          <!-- Oro (posición 1) -->
+          <div class="podio-item oro" [class.es-mi-hato]="top3[0]?.esMiHato">
+            <span class="podio-medalla">{{ medallaTop3(1) }}</span>
+            <span class="podio-alias">{{ top3[0]?.alias }}</span>
+            <span class="podio-score">{{ formatScore(top3[0]?.valor ?? null) }}</span>
+            @if (top3[0]?.esMiHato) {
+              <span class="mi-hato-chip">Tu hato</span>
+            }
+          </div>
+
+          <!-- Bronce (posición 3) -->
+          <div class="podio-item bronce" [class.es-mi-hato]="top3[2]?.esMiHato">
+            <span class="podio-medalla">{{ medallaTop3(3) }}</span>
+            <span class="podio-alias">{{ top3[2]?.alias }}</span>
+            <span class="podio-score">{{ formatScore(top3[2]?.valor ?? null) }}</span>
+            @if (top3[2]?.esMiHato) {
+              <span class="mi-hato-chip">Tu hato</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- Tabla ranking completo -->
+    <div class="tabla-section">
+      <h4 class="tabla-titulo">Ranking completo</h4>
+      <div class="tabla-lista">
+        @for (item of itemsMostrados; track item.posicion) {
+          <div class="tabla-fila" [class.fila-mi-hato]="item.esMiHato">
+            <!-- Posición -->
+            <span class="fila-posicion" [class.posicion-destacada]="item.posicion <= 3">
+              @if (item.posicion <= 3) {
+                {{ medallaTop3(item.posicion) }}
+              } @else {
+                #{{ item.posicion }}
+              }
+            </span>
+
+            <!-- Alias -->
+            <div class="fila-alias-wrap">
+              <span class="fila-alias">{{ item.alias }}</span>
+              @if (item.esMiHato) {
+                <span class="mi-hato-tag">Tú</span>
+              }
+            </div>
+
+            <!-- Barra de score -->
+            <div class="fila-barra-wrap">
+              <div class="fila-barra">
+                <div
+                  class="fila-barra-fill"
+                  [style.width.%]="anchoBarra(item)"
+                  [style.background]="colorBarra(item)"
+                ></div>
+              </div>
+              <span class="fila-score">{{ formatScore(item.valor) }}</span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Cargar más -->
+      @if (hayMas) {
+        <div class="cargar-mas-wrap">
+          <button class="btn-cargar-mas" (click)="cargarMas()">
+            Ver más hatos ({{ datos.ranking.length - itemsMostrados.length }} restantes)
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,259 @@
+<div class="info-finanzas-page">
+  <div class="loading-wrapper" *ngIf="loading">
+    <app-spinner size="large" message="Cargando resumen del inventario ganado..."> </app-spinner>
+  </div>
+
+  <ng-container *ngIf="!loading">
+    <!-- Header -->
+    <div class="page-header">
+      <div class="header-left">
+        <span class="page-tag">Inventario ganado</span>
+        <h1 class="page-title">Resumen <span class="brand">Productivo del Hato</span></h1>
+        <p class="page-subtitle" *ngIf="hatoActivo">
+          Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        </p>
+        <p class="page-subtitle warn" *ngIf="!hatoActivo">
+          ⚠️ Selecciona un hato desde el panel superior.
+        </p>
+      </div>
+      <div class="header-badge">🐄</div>
+    </div>
+
+    <!-- Sin hato -->
+    <div class="empty-hato" *ngIf="!hatoActivo && !error">
+      <span class="empty-icon">🐄</span>
+      <p>No hay un hato seleccionado.</p>
+    </div>
+
+    <div class="empty-hato" *ngIf="error">
+      <span class="empty-icon">⚠️</span>
+      <p>{{ error }}</p>
+    </div>
+
+    <ng-container *ngIf="hatoActivo && !error">
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-icon">🐄</span>
+          <div class="kpi-info">
+            <span class="kpi-value">{{ cabezasTotales }}</span>
+            <span class="kpi-label">Cabezas registradas</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-icon ingreso-icon">$</span>
+          <div class="kpi-info">
+            <span class="kpi-value ingreso-val">{{ formatCOP(valorTotal) }}</span>
+            <span class="kpi-label">Valor total ganado</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-icon">📅</span>
+          <div class="kpi-info">
+            <span class="kpi-value"> {{ edadPromedioPonderada | number: '1.0-1' }} m </span>
+            <span class="kpi-label">Edad promedio actual</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-icon">🏷️</span>
+          <div class="kpi-info">
+            <span class="kpi-value">{{ resumenPorTipo.length }}</span>
+            <span class="kpi-label">Tipos activos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de registros -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h2 class="section-title">Registros de ganado</h2>
+            <span class="section-badge">{{ registros.length }}</span>
+          </div>
+          <p class="section-meta">Puedes editar cantidad, edad y valor de cada grupo.</p>
+        </div>
+
+        @if (registros.length === 0) {
+          <div class="empty-section">
+            <p>No hay registros de ganado para este hato.</p>
+          </div>
+        }
+
+        @if (registros.length > 0) {
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Raza</th>
+                  <th>Tipo</th>
+                  <th>Categoría</th>
+                  <th>Cantidad</th>
+                  <th>Edad actual</th>
+                  <th>Valor unitario</th>
+                  <th>Valor total</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of registros; track item.idInventario) {
+                  <!-- Fila normal -->
+                  @if (filaEditando !== item.idInventario) {
+                    <tr [class.fila-eliminando]="filaEliminando === item.idInventario">
+                      <td>
+                        <span class="cat-nombre">{{ item.raza.nombre }}</span>
+                      </td>
+                      <td>{{ item.raza.tipoRaza }}</td>
+                      <td>{{ item.categoriaGanado.nombreCategoria }}</td>
+                      <td>{{ item.cantidad }}</td>
+                      <td>
+                        {{ calcularEdadActual(item.edadPromedioMeses, item.fechaRegistro) }} m
+                        <span class="edad-hint"> (base: {{ item.edadPromedioMeses }} m) </span>
+                      </td>
+                      <td>{{ formatCOP(item.valorUnitario) }}</td>
+                      <td class="monto-cell ingreso-val">
+                        {{ formatCOP(item.valorTotal) }}
+                      </td>
+                      <td class="acciones-cell">
+                        <!-- Confirmación eliminar -->
+                        @if (confirmandoEliminar === item.idInventario) {
+                          <div class="confirm-eliminar">
+                            <span class="confirm-texto">¿Eliminar?</span>
+                            <button
+                              class="btn-confirmar-eliminar"
+                              (click)="confirmarEliminar(item.idInventario)"
+                            >
+                              Sí
+                            </button>
+                            <button class="btn-cancelar-eliminar" (click)="cancelarEliminar()">
+                              No
+                            </button>
+                          </div>
+                        } @else {
+                          <div class="acciones-btns">
+                            <button class="btn-editar" (click)="abrirEdicion(item)" title="Editar">
+                              ✏️
+                            </button>
+                            <button
+                              class="btn-eliminar"
+                              (click)="solicitarConfirmacion(item.idInventario)"
+                              title="Eliminar"
+                              [disabled]="filaEliminando === item.idInventario"
+                            >
+                              🗑️
+                            </button>
+                          </div>
+                        }
+                      </td>
+                    </tr>
+                  }
+
+                  <!-- Fila de edición inline -->
+                  @if (filaEditando === item.idInventario) {
+                    <tr class="fila-edicion">
+                      <td colspan="2">
+                        <span class="cat-nombre">{{ item.raza.nombre }}</span>
+                        <span class="tipo-hint">{{ item.raza.tipoRaza }}</span>
+                      </td>
+                      <td>{{ item.categoriaGanado.nombreCategoria }}</td>
+
+                      <!-- Cantidad editable -->
+                      <td>
+                        <input
+                          class="input-edicion"
+                          type="number"
+                          [(ngModel)]="datosEdicion.cantidad"
+                          min="1"
+                          placeholder="Cantidad"
+                        />
+                      </td>
+
+                      <!-- Edad editable -->
+                      <td>
+                        <input
+                          class="input-edicion"
+                          type="number"
+                          [(ngModel)]="datosEdicion.edadPromedioMeses"
+                          min="0"
+                          placeholder="Meses"
+                        />
+                        <span class="edad-hint">meses</span>
+                      </td>
+
+                      <!-- Valor unitario editable -->
+                      <td>
+                        <input
+                          class="input-edicion"
+                          type="number"
+                          [(ngModel)]="datosEdicion.valorUnitario"
+                          min="1"
+                          placeholder="Valor"
+                        />
+                      </td>
+
+                      <!-- Valor total calculado -->
+                      <td class="monto-cell ingreso-val">
+                        {{ formatCOP(datosEdicion.cantidad * datosEdicion.valorUnitario) }}
+                      </td>
+
+                      <!-- Acciones edición -->
+                      <td class="acciones-cell">
+                        <div class="acciones-edicion">
+                          @if (errorEdicion) {
+                            <span class="error-edicion">{{ errorEdicion }}</span>
+                          }
+                          <button
+                            class="btn-guardar-edicion"
+                            (click)="guardarEdicion(item)"
+                            [disabled]="guardandoEdicion"
+                          >
+                            @if (guardandoEdicion) {
+                              <app-spinner size="small"></app-spinner>
+                            } @else {
+                              ✓ Guardar
+                            }
+                          </button>
+                          <button
+                            class="btn-cancelar-edicion"
+                            (click)="cancelarEdicion()"
+                            [disabled]="guardandoEdicion"
+                          >
+                            Cancelar
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  }
+                }
+              </tbody>
+            </table>
+          </div>
+        }
+      </div>
+
+      <!-- Resumen por tipo -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h2 class="section-title">Participación por tipo de raza</h2>
+            <span class="section-badge">{{ resumenPorTipo.length }}</span>
+          </div>
+        </div>
+        @if (resumenPorTipo.length > 0) {
+          <div class="perfil-grid">
+            @for (resumen of resumenPorTipo; track resumen.tipo) {
+              <div class="perfil-card">
+                <div class="perfil-card__header">
+                  <span class="cat-nombre">{{ resumen.tipo }}</span>
+                  <span class="cat-cantidad">{{ resumen.cantidad }} cabezas</span>
+                </div>
+                <div class="perfil-card__valor">{{ formatCOP(resumen.total) }}</div>
+                <p>Valor total asociado a este tipo</p>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

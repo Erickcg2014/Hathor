@@ -1,0 +1,6812 @@
+[
+  {
+    "id": 0,
+    "departamento": "Amazonas",
+    "ciudades": [
+      {
+        "nombre": "Leticia",
+        "latitud": -4.2153,
+        "longitud": -69.9406,
+        "altitud": 96
+      },
+      {
+        "nombre": "Puerto Nari\u00f1o",
+        "latitud": -3.7707,
+        "longitud": -70.3831,
+        "altitud": 102
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "departamento": "Antioquia",
+    "ciudades": [
+      {
+        "nombre": "Abejorral",
+        "latitud": 5.7891,
+        "longitud": -75.4281,
+        "altitud": 2275
+      },
+      {
+        "nombre": "Abriaqu\u00ed",
+        "latitud": 6.6319,
+        "longitud": -76.0647,
+        "altitud": 1460
+      },
+      {
+        "nombre": "Alejandr\u00eda",
+        "latitud": 6.3653,
+        "longitud": -75.0906,
+        "altitud": 1980
+      },
+      {
+        "nombre": "Amag\u00e1",
+        "latitud": 6.04,
+        "longitud": -75.7081,
+        "altitud": 1280
+      },
+      {
+        "nombre": "Amalfi",
+        "latitud": 6.9105,
+        "longitud": -75.0776,
+        "altitud": 1550
+      },
+      {
+        "nombre": "Andes",
+        "latitud": 5.6561,
+        "longitud": -75.8788,
+        "altitud": 1360
+      },
+      {
+        "nombre": "Angel\u00f3polis",
+        "latitud": 6.1228,
+        "longitud": -75.7108,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Angostura",
+        "latitud": 6.8712,
+        "longitud": -75.3346,
+        "altitud": 1980
+      },
+      {
+        "nombre": "Anor\u00ed",
+        "latitud": 7.0731,
+        "longitud": -75.1466,
+        "altitud": 1530
+      },
+      {
+        "nombre": "Anz\u00e1",
+        "latitud": 6.3022,
+        "longitud": -75.8531,
+        "altitud": 1350
+      },
+      {
+        "nombre": "Apartad\u00f3",
+        "latitud": 7.8829,
+        "longitud": -76.6259,
+        "altitud": 30
+      },
+      {
+        "nombre": "Arboletes",
+        "latitud": 8.85,
+        "longitud": -76.4269,
+        "altitud": 15
+      },
+      {
+        "nombre": "Argelia",
+        "latitud": 5.731,
+        "longitud": -75.1425,
+        "altitud": 1780
+      },
+      {
+        "nombre": "Armenia",
+        "latitud": 6.1636,
+        "longitud": -75.8096,
+        "altitud": 1670
+      },
+      {
+        "nombre": "Barbosa",
+        "latitud": 6.4383,
+        "longitud": -75.3314,
+        "altitud": 1300
+      },
+      {
+        "nombre": "Bello",
+        "latitud": 6.3373,
+        "longitud": -75.5579,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Belmira",
+        "latitud": 6.6056,
+        "longitud": -75.6653,
+        "altitud": 2550
+      },
+      {
+        "nombre": "Betania",
+        "latitud": 5.7275,
+        "longitud": -75.9892,
+        "altitud": 1550
+      },
+      {
+        "nombre": "Betulia",
+        "latitud": 6.1122,
+        "longitud": -75.9831,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Brice\u00f1o",
+        "latitud": 7.1106,
+        "longitud": -75.5526,
+        "altitud": 1180
+      },
+      {
+        "nombre": "Buritic\u00e1",
+        "latitud": 6.7207,
+        "longitud": -75.9076,
+        "altitud": 1620
+      },
+      {
+        "nombre": "C\u00e1ceres",
+        "latitud": 7.6664,
+        "longitud": -75.3172,
+        "altitud": 120
+      },
+      {
+        "nombre": "Caicedo",
+        "latitud": 6.4058,
+        "longitud": -75.9828,
+        "altitud": 1050
+      },
+      {
+        "nombre": "Caldas",
+        "latitud": 6.0911,
+        "longitud": -75.6357,
+        "altitud": 1750
+      },
+      {
+        "nombre": "Campamento",
+        "latitud": 7.0378,
+        "longitud": -75.2964,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Ca\u00f1asgordas",
+        "latitud": 6.8096,
+        "longitud": -76.025,
+        "altitud": 1300
+      },
+      {
+        "nombre": "Caracol\u00ed",
+        "latitud": 6.411,
+        "longitud": -74.7574,
+        "altitud": 620
+      },
+      {
+        "nombre": "Caramanta",
+        "latitud": 5.5476,
+        "longitud": -75.6434,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Carepa",
+        "latitud": 7.758,
+        "longitud": -76.6527,
+        "altitud": 28
+      },
+      {
+        "nombre": "Carolina del Pr\u00edncipe",
+        "latitud": 6.7243,
+        "longitud": -75.2835,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Caucasia",
+        "latitud": 7.9865,
+        "longitud": -75.1935,
+        "altitud": 50
+      },
+      {
+        "nombre": "Chigorod\u00f3",
+        "latitud": 7.6667,
+        "longitud": -76.6833,
+        "altitud": 34
+      },
+      {
+        "nombre": "Cisneros",
+        "latitud": 6.5383,
+        "longitud": -75.0886,
+        "altitud": 1050
+      },
+      {
+        "nombre": "Ciudad Bol\u00edvar",
+        "latitud": 5.8539,
+        "longitud": -76.0253,
+        "altitud": 1340
+      },
+      {
+        "nombre": "Cocorn\u00e1",
+        "latitud": 6.0578,
+        "longitud": -75.1856,
+        "altitud": 1300
+      },
+      {
+        "nombre": "Concepci\u00f3n",
+        "latitud": 6.3947,
+        "longitud": -75.2581,
+        "altitud": 2000
+      },
+      {
+        "nombre": "Concordia",
+        "latitud": 6.0463,
+        "longitud": -75.9094,
+        "altitud": 2000
+      },
+      {
+        "nombre": "Copacabana",
+        "latitud": 6.3463,
+        "longitud": -75.5089,
+        "altitud": 1420
+      },
+      {
+        "nombre": "Dabeiba",
+        "latitud": 7.0007,
+        "longitud": -76.2674,
+        "altitud": 685
+      },
+      {
+        "nombre": "Donmat\u00edas",
+        "latitud": 6.4857,
+        "longitud": -75.3948,
+        "altitud": 2210
+      },
+      {
+        "nombre": "Eb\u00e9jico",
+        "latitud": 6.3256,
+        "longitud": -75.7683,
+        "altitud": 1150
+      },
+      {
+        "nombre": "El Bagre",
+        "latitud": 7.5964,
+        "longitud": -74.8092,
+        "altitud": 60
+      },
+      {
+        "nombre": "El Carmen de Viboral",
+        "latitud": 6.0824,
+        "longitud": -75.3351,
+        "altitud": 2150
+      },
+      {
+        "nombre": "El Pe\u00f1ol",
+        "latitud": 6.2322,
+        "longitud": -75.2253,
+        "altitud": 2100
+      },
+      {
+        "nombre": "El Retiro",
+        "latitud": 6.0589,
+        "longitud": -75.5037,
+        "altitud": 2175
+      },
+      {
+        "nombre": "El Santuario",
+        "latitud": 6.1397,
+        "longitud": -75.2642,
+        "altitud": 2150
+      },
+      {
+        "nombre": "Entrerr\u00edos",
+        "latitud": 6.5667,
+        "longitud": -75.5167,
+        "altitud": 2300
+      },
+      {
+        "nombre": "Envigado",
+        "latitud": 6.167,
+        "longitud": -75.5875,
+        "altitud": 1580
+      },
+      {
+        "nombre": "Fredonia",
+        "latitud": 5.9267,
+        "longitud": -75.6731,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Frontino",
+        "latitud": 6.7713,
+        "longitud": -76.1325,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Giraldo",
+        "latitud": 6.6803,
+        "longitud": -75.952,
+        "altitud": 1950
+      },
+      {
+        "nombre": "Girardota",
+        "latitud": 6.3776,
+        "longitud": -75.4483,
+        "altitud": 1425
+      },
+      {
+        "nombre": "G\u00f3mez Plata",
+        "latitud": 6.6818,
+        "longitud": -75.2196,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Granada",
+        "latitud": 6.1424,
+        "longitud": -75.1852,
+        "altitud": 2050
+      },
+      {
+        "nombre": "Guadalupe",
+        "latitud": 6.8142,
+        "longitud": -75.2408,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Guarne",
+        "latitud": 6.279,
+        "longitud": -75.4423,
+        "altitud": 2150
+      },
+      {
+        "nombre": "Guatapé",
+        "latitud": 6.2342,
+        "longitud": -75.1594,
+        "altitud": 1925
+      },
+      {
+        "nombre": "Heliconia",
+        "latitud": 6.2083,
+        "longitud": -75.7333,
+        "altitud": 1420
+      },
+      {
+        "nombre": "Hispania",
+        "latitud": 5.7994,
+        "longitud": -75.9072,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Itag\u00fc\u00ed",
+        "latitud": 6.1853,
+        "longitud": -75.5997,
+        "altitud": 1550
+      },
+      {
+        "nombre": "Ituango",
+        "latitud": 7.1712,
+        "longitud": -75.764,
+        "altitud": 1550
+      },
+      {
+        "nombre": "Jard\u00edn",
+        "latitud": 5.5986,
+        "longitud": -75.8194,
+        "altitud": 1730
+      },
+      {
+        "nombre": "Jeric\u00f3",
+        "latitud": 5.7921,
+        "longitud": -75.7856,
+        "altitud": 1950
+      },
+      {
+        "nombre": "La Ceja",
+        "latitud": 6.0306,
+        "longitud": -75.4315,
+        "altitud": 2140
+      },
+      {
+        "nombre": "La Estrella",
+        "latitud": 6.1577,
+        "longitud": -75.6432,
+        "altitud": 1775
+      },
+      {
+        "nombre": "La Pintada",
+        "latitud": 5.7489,
+        "longitud": -75.6067,
+        "altitud": 600
+      },
+      {
+        "nombre": "La Uni\u00f3n",
+        "latitud": 5.9747,
+        "longitud": -75.3618,
+        "altitud": 2500
+      },
+      {
+        "nombre": "Liborina",
+        "latitud": 6.6778,
+        "longitud": -75.8125,
+        "altitud": 1250
+      },
+      {
+        "nombre": "Maceo",
+        "latitud": 6.5539,
+        "longitud": -74.7878,
+        "altitud": 950
+      },
+      {
+        "nombre": "Marinilla",
+        "latitud": 6.1733,
+        "longitud": -75.3356,
+        "altitud": 2120
+      },
+      {
+        "nombre": "Medell\u00edn",
+        "latitud": 6.2442,
+        "longitud": -75.5812,
+        "altitud": 1495
+      },
+      {
+        "nombre": "Montebello",
+        "latitud": 5.9447,
+        "longitud": -75.5272,
+        "altitud": 2350
+      },
+      {
+        "nombre": "Murind\u00f3",
+        "latitud": 6.9853,
+        "longitud": -76.7946,
+        "altitud": 10
+      },
+      {
+        "nombre": "Mutat\u00e1",
+        "latitud": 7.2447,
+        "longitud": -76.435,
+        "altitud": 120
+      },
+      {
+        "nombre": "Nari\u00f1o",
+        "latitud": 5.6114,
+        "longitud": -75.1736,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Nech\u00ed",
+        "latitud": 8.0944,
+        "longitud": -74.7758,
+        "altitud": 30
+      },
+      {
+        "nombre": "Necocl\u00ed",
+        "latitud": 8.4263,
+        "longitud": -76.7893,
+        "altitud": 8
+      },
+      {
+        "nombre": "Olaya",
+        "latitud": 6.6272,
+        "longitud": -75.8128,
+        "altitud": 500
+      },
+      {
+        "nombre": "Peque",
+        "latitud": 7.0217,
+        "longitud": -75.9094,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Pueblorrico",
+        "latitud": 5.7925,
+        "longitud": -75.8406,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Puerto Berr\u00edo",
+        "latitud": 6.485,
+        "longitud": -74.4042,
+        "altitud": 125
+      },
+      {
+        "nombre": "Puerto Nare",
+        "latitud": 6.1914,
+        "longitud": -74.5872,
+        "altitud": 150
+      },
+      {
+        "nombre": "Puerto Triunfo",
+        "latitud": 5.8725,
+        "longitud": -74.6406,
+        "altitud": 150
+      },
+      {
+        "nombre": "Remedios",
+        "latitud": 7.0286,
+        "longitud": -74.6939,
+        "altitud": 700
+      },
+      {
+        "nombre": "Rionegro",
+        "latitud": 6.1552,
+        "longitud": -75.3737,
+        "altitud": 2130
+      },
+      {
+        "nombre": "Sabanalarga",
+        "latitud": 6.8483,
+        "longitud": -75.8178,
+        "altitud": 1550
+      },
+      {
+        "nombre": "Sabaneta",
+        "latitud": 6.15,
+        "longitud": -75.6167,
+        "altitud": 1550
+      },
+      {
+        "nombre": "Salgar",
+        "latitud": 5.9656,
+        "longitud": -75.9761,
+        "altitud": 1250
+      },
+      {
+        "nombre": "San Andr\u00e9s de Cuerquia",
+        "latitud": 6.9167,
+        "longitud": -75.6667,
+        "altitud": 1350
+      },
+      {
+        "nombre": "San Carlos",
+        "latitud": 6.1879,
+        "longitud": -74.9937,
+        "altitud": 1000
+      },
+      {
+        "nombre": "San Francisco",
+        "latitud": 6.1167,
+        "longitud": -75.0167,
+        "altitud": 1250
+      },
+      {
+        "nombre": "San Jer\u00f3nimo",
+        "latitud": 6.4414,
+        "longitud": -75.7306,
+        "altitud": 750
+      },
+      {
+        "nombre": "San Jos\u00e9 de la Monta\u00f1a",
+        "latitud": 6.85,
+        "longitud": -75.6833,
+        "altitud": 2550
+      },
+      {
+        "nombre": "San Juan de Urab\u00e1",
+        "latitud": 8.7619,
+        "longitud": -76.529,
+        "altitud": 20
+      },
+      {
+        "nombre": "San Luis",
+        "latitud": 6.0419,
+        "longitud": -74.994,
+        "altitud": 1100
+      },
+      {
+        "nombre": "San Pedro de Urab\u00e1",
+        "latitud": 8.275,
+        "longitud": -76.3767,
+        "altitud": 25
+      },
+      {
+        "nombre": "San Pedro de los Milagros",
+        "latitud": 6.4617,
+        "longitud": -75.5575,
+        "altitud": 2475
+      },
+      {
+        "nombre": "San Rafael",
+        "latitud": 6.2977,
+        "longitud": -75.0242,
+        "altitud": 1000
+      },
+      {
+        "nombre": "San Roque",
+        "latitud": 6.4853,
+        "longitud": -74.9414,
+        "altitud": 1475
+      },
+      {
+        "nombre": "San Vicente",
+        "latitud": 6.2853,
+        "longitud": -75.3333,
+        "altitud": 2150
+      },
+      {
+        "nombre": "Santa B\u00e1rbara",
+        "latitud": 5.8708,
+        "longitud": -75.5675,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Santa Fe de Antioquia",
+        "latitud": 6.5592,
+        "longitud": -75.8281,
+        "altitud": 550
+      },
+      {
+        "nombre": "Santa Rosa de Osos",
+        "latitud": 6.6489,
+        "longitud": -75.4603,
+        "altitud": 2550
+      },
+      {
+        "nombre": "Santo Domingo",
+        "latitud": 6.4722,
+        "longitud": -75.1658,
+        "altitud": 1975
+      },
+      {
+        "nombre": "Segovia",
+        "latitud": 7.0794,
+        "longitud": -74.7019,
+        "altitud": 650
+      },
+      {
+        "nombre": "Sons\u00f3n",
+        "latitud": 5.7106,
+        "longitud": -75.3097,
+        "altitud": 2475
+      },
+      {
+        "nombre": "Sopetr\u00e1n",
+        "latitud": 6.5017,
+        "longitud": -75.7472,
+        "altitud": 700
+      },
+      {
+        "nombre": "T\u00e1mesis",
+        "latitud": 5.6647,
+        "longitud": -75.7139,
+        "altitud": 1630
+      },
+      {
+        "nombre": "Taraz\u00e1",
+        "latitud": 7.5883,
+        "longitud": -75.4,
+        "altitud": 95
+      },
+      {
+        "nombre": "Tarso",
+        "latitud": 5.8667,
+        "longitud": -75.8333,
+        "altitud": 1230
+      },
+      {
+        "nombre": "Titirib\u00ed",
+        "latitud": 6.0586,
+        "longitud": -75.7939,
+        "altitud": 1600
+      },
+      {
+        "nombre": "Toledo",
+        "latitud": 7.0139,
+        "longitud": -75.6956,
+        "altitud": 1600
+      },
+      {
+        "nombre": "Turbo",
+        "latitud": 8.0926,
+        "longitud": -76.7282,
+        "altitud": 2
+      },
+      {
+        "nombre": "Uramita",
+        "latitud": 6.9,
+        "longitud": -76.1667,
+        "altitud": 1050
+      },
+      {
+        "nombre": "Urrao",
+        "latitud": 6.3167,
+        "longitud": -76.1333,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Valdivia",
+        "latitud": 7.1656,
+        "longitud": -75.4394,
+        "altitud": 600
+      },
+      {
+        "nombre": "Valpara\u00edso",
+        "latitud": 5.6156,
+        "longitud": -75.6247,
+        "altitud": 1850
+      },
+      {
+        "nombre": "Vegach\u00ed",
+        "latitud": 6.7619,
+        "longitud": -74.7944,
+        "altitud": 980
+      },
+      {
+        "nombre": "Venecia",
+        "latitud": 5.9667,
+        "longitud": -75.7333,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Vig\u00eda del Fuerte",
+        "latitud": 6.5894,
+        "longitud": -76.8986,
+        "altitud": 8
+      },
+      {
+        "nombre": "Yal\u00ed",
+        "latitud": 6.6767,
+        "longitud": -74.8419,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Yarumal",
+        "latitud": 6.9636,
+        "longitud": -75.4175,
+        "altitud": 2265
+      },
+      {
+        "nombre": "Yolomb\u00f3",
+        "latitud": 6.5986,
+        "longitud": -75.0131,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Yond\u00f3",
+        "latitud": 7.0061,
+        "longitud": -73.9097,
+        "altitud": 75
+      },
+      {
+        "nombre": "Zaragoza",
+        "latitud": 7.4897,
+        "longitud": -74.8692,
+        "altitud": 50
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "departamento": "Arauca",
+    "ciudades": [
+      {
+        "nombre": "Arauca",
+        "latitud": 7.0903,
+        "longitud": -70.7617,
+        "altitud": 125
+      },
+      {
+        "nombre": "Arauquita",
+        "latitud": 6.801,
+        "longitud": -71.2989,
+        "altitud": 130
+      },
+      {
+        "nombre": "Cravo Norte",
+        "latitud": 6.3017,
+        "longitud": -70.2044,
+        "altitud": 105
+      },
+      {
+        "nombre": "Fortul",
+        "latitud": 6.7464,
+        "longitud": -71.8561,
+        "altitud": 230
+      },
+      {
+        "nombre": "Puerto Rond\u00f3n",
+        "latitud": 6.2808,
+        "longitud": -71.1003,
+        "altitud": 150
+      },
+      {
+        "nombre": "Saravena",
+        "latitud": 6.9556,
+        "longitud": -71.8722,
+        "altitud": 220
+      },
+      {
+        "nombre": "Tame",
+        "latitud": 6.4606,
+        "longitud": -71.7361,
+        "altitud": 320
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "departamento": "Atl\u00e1ntico",
+    "ciudades": [
+      {
+        "nombre": "Baranoa",
+        "latitud": 10.794,
+        "longitud": -74.9208,
+        "altitud": 100
+      },
+      {
+        "nombre": "Barranquilla",
+        "latitud": 10.9685,
+        "longitud": -74.7813,
+        "altitud": 18
+      },
+      {
+        "nombre": "Campo de la Cruz",
+        "latitud": 10.3786,
+        "longitud": -74.8853,
+        "altitud": 12
+      },
+      {
+        "nombre": "Candelaria",
+        "latitud": 10.4597,
+        "longitud": -74.8797,
+        "altitud": 18
+      },
+      {
+        "nombre": "Galapa",
+        "latitud": 10.8978,
+        "longitud": -74.8875,
+        "altitud": 95
+      },
+      {
+        "nombre": "Juan de Acosta",
+        "latitud": 10.8283,
+        "longitud": -75.0339,
+        "altitud": 35
+      },
+      {
+        "nombre": "Luruaco",
+        "latitud": 10.61,
+        "longitud": -75.1422,
+        "altitud": 20
+      },
+      {
+        "nombre": "Malambo",
+        "latitud": 10.8595,
+        "longitud": -74.7739,
+        "altitud": 10
+      },
+      {
+        "nombre": "Manat\u00ed",
+        "latitud": 10.4456,
+        "longitud": -74.9583,
+        "altitud": 10
+      },
+      {
+        "nombre": "Palmar de Varela",
+        "latitud": 10.74,
+        "longitud": -74.7544,
+        "altitud": 15
+      },
+      {
+        "nombre": "Pioj\u00f3",
+        "latitud": 10.7497,
+        "longitud": -75.1075,
+        "altitud": 180
+      },
+      {
+        "nombre": "Polonuevo",
+        "latitud": 10.7761,
+        "longitud": -74.8533,
+        "altitud": 15
+      },
+      {
+        "nombre": "Ponedera",
+        "latitud": 10.6436,
+        "longitud": -74.7531,
+        "altitud": 10
+      },
+      {
+        "nombre": "Puerto Colombia",
+        "latitud": 11.0167,
+        "longitud": -74.95,
+        "altitud": 5
+      },
+      {
+        "nombre": "Repel\u00f3n",
+        "latitud": 10.4906,
+        "longitud": -75.1247,
+        "altitud": 15
+      },
+      {
+        "nombre": "Sabanagrande",
+        "latitud": 10.7964,
+        "longitud": -74.7606,
+        "altitud": 10
+      },
+      {
+        "nombre": "Sabanalarga",
+        "latitud": 10.63,
+        "longitud": -74.92,
+        "altitud": 75
+      },
+      {
+        "nombre": "Santa Luc\u00eda",
+        "latitud": 10.325,
+        "longitud": -74.9606,
+        "altitud": 8
+      },
+      {
+        "nombre": "Santo Tom\u00e1s",
+        "latitud": 10.7578,
+        "longitud": -74.7547,
+        "altitud": 10
+      },
+      {
+        "nombre": "Soledad",
+        "latitud": 10.9184,
+        "longitud": -74.7646,
+        "altitud": 10
+      },
+      {
+        "nombre": "Su\u00e1n",
+        "latitud": 10.3331,
+        "longitud": -74.8803,
+        "altitud": 6
+      },
+      {
+        "nombre": "Tubar\u00e1",
+        "latitud": 10.8756,
+        "longitud": -74.9786,
+        "altitud": 200
+      },
+      {
+        "nombre": "Usiacur\u00ed",
+        "latitud": 10.7436,
+        "longitud": -74.9764,
+        "altitud": 95
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "departamento": "Bol\u00edvar",
+    "ciudades": [
+      {
+        "nombre": "Ach\u00ed",
+        "latitud": 8.5697,
+        "longitud": -74.5572,
+        "altitud": 33
+      },
+      {
+        "nombre": "Altos del Rosario",
+        "latitud": 8.7911,
+        "longitud": -74.165,
+        "altitud": 25
+      },
+      {
+        "nombre": "Arenal",
+        "latitud": 8.4592,
+        "longitud": -73.9428,
+        "altitud": 45
+      },
+      {
+        "nombre": "Arjona",
+        "latitud": 10.2544,
+        "longitud": -75.3439,
+        "altitud": 70
+      },
+      {
+        "nombre": "Arroyohondo",
+        "latitud": 10.2528,
+        "longitud": -75.0197,
+        "altitud": 45
+      },
+      {
+        "nombre": "Barranco de Loba",
+        "latitud": 8.9456,
+        "longitud": -74.1072,
+        "altitud": 30
+      },
+      {
+        "nombre": "Brazuelo de Papayal",
+        "latitud": 8.9644,
+        "longitud": -74.2533,
+        "altitud": 35
+      },
+      {
+        "nombre": "Calamar",
+        "latitud": 10.2514,
+        "longitud": -74.9142,
+        "altitud": 10
+      },
+      {
+        "nombre": "Cantagallo",
+        "latitud": 7.3794,
+        "longitud": -73.9156,
+        "altitud": 65
+      },
+      {
+        "nombre": "Cartagena de Indias",
+        "latitud": 10.391,
+        "longitud": -75.4794,
+        "altitud": 2
+      },
+      {
+        "nombre": "Cicuco",
+        "latitud": 9.2778,
+        "longitud": -74.6433,
+        "altitud": 20
+      },
+      {
+        "nombre": "Clemencia",
+        "latitud": 10.5669,
+        "longitud": -75.3267,
+        "altitud": 95
+      },
+      {
+        "nombre": "C\u00f3rdoba",
+        "latitud": 9.5861,
+        "longitud": -74.8286,
+        "altitud": 25
+      },
+      {
+        "nombre": "El Carmen de Bol\u00edvar",
+        "latitud": 9.7175,
+        "longitud": -75.1206,
+        "altitud": 200
+      },
+      {
+        "nombre": "El Guamo",
+        "latitud": 10.0319,
+        "longitud": -74.9761,
+        "altitud": 15
+      },
+      {
+        "nombre": "El Pe\u00f1\u00f3n",
+        "latitud": 8.9906,
+        "longitud": -73.9253,
+        "altitud": 50
+      },
+      {
+        "nombre": "Hatillo de Loba",
+        "latitud": 8.9561,
+        "longitud": -74.0786,
+        "altitud": 25
+      },
+      {
+        "nombre": "Magangu\u00e9",
+        "latitud": 9.242,
+        "longitud": -74.7547,
+        "altitud": 18
+      },
+      {
+        "nombre": "Mahates",
+        "latitud": 10.2342,
+        "longitud": -75.1892,
+        "altitud": 60
+      },
+      {
+        "nombre": "Margarita",
+        "latitud": 9.0631,
+        "longitud": -74.2819,
+        "altitud": 20
+      },
+      {
+        "nombre": "Mar\u00eda la Baja",
+        "latitud": 10.0003,
+        "longitud": -75.3436,
+        "altitud": 15
+      },
+      {
+        "nombre": "Momp\u00f3s",
+        "latitud": 9.2419,
+        "longitud": -74.4267,
+        "altitud": 18
+      },
+      {
+        "nombre": "Montecristo",
+        "latitud": 8.2994,
+        "longitud": -74.4733,
+        "altitud": 45
+      },
+      {
+        "nombre": "Morales",
+        "latitud": 8.275,
+        "longitud": -73.8686,
+        "altitud": 70
+      },
+      {
+        "nombre": "Noros\u00ed",
+        "latitud": 8.5267,
+        "longitud": -74.0381,
+        "altitud": 30
+      },
+      {
+        "nombre": "Pinillos",
+        "latitud": 8.9153,
+        "longitud": -74.4661,
+        "altitud": 28
+      },
+      {
+        "nombre": "Regidor",
+        "latitud": 8.665,
+        "longitud": -73.8222,
+        "altitud": 40
+      },
+      {
+        "nombre": "R\u00edo Viejo",
+        "latitud": 8.5878,
+        "longitud": -73.8428,
+        "altitud": 35
+      },
+      {
+        "nombre": "San Crist\u00f3bal",
+        "latitud": 10.3956,
+        "longitud": -75.0664,
+        "altitud": 35
+      },
+      {
+        "nombre": "San Estanislao",
+        "latitud": 10.3986,
+        "longitud": -75.1522,
+        "altitud": 40
+      },
+      {
+        "nombre": "San Fernando",
+        "latitud": 9.2797,
+        "longitud": -74.5339,
+        "altitud": 18
+      },
+      {
+        "nombre": "San Jacinto del Cauca",
+        "latitud": 8.2497,
+        "longitud": -74.7206,
+        "altitud": 35
+      },
+      {
+        "nombre": "San Jacinto",
+        "latitud": 9.8275,
+        "longitud": -75.1219,
+        "altitud": 210
+      },
+      {
+        "nombre": "San Juan Nepomuceno",
+        "latitud": 9.9519,
+        "longitud": -75.0814,
+        "altitud": 150
+      },
+      {
+        "nombre": "San Mart\u00edn de Loba",
+        "latitud": 8.9272,
+        "longitud": -74.0383,
+        "altitud": 28
+      },
+      {
+        "nombre": "San Pablo",
+        "latitud": 7.4778,
+        "longitud": -73.9247,
+        "altitud": 60
+      },
+      {
+        "nombre": "Santa Catalina",
+        "latitud": 10.6039,
+        "longitud": -75.2953,
+        "altitud": 80
+      },
+      {
+        "nombre": "Santa Rosa",
+        "latitud": 10.4458,
+        "longitud": -75.3692,
+        "altitud": 20
+      },
+      {
+        "nombre": "Santa Rosa del Sur",
+        "latitud": 7.9644,
+        "longitud": -74.055,
+        "altitud": 650
+      },
+      {
+        "nombre": "Simit\u00ed",
+        "latitud": 7.9572,
+        "longitud": -73.9436,
+        "altitud": 75
+      },
+      {
+        "nombre": "Soplaviento",
+        "latitud": 10.3933,
+        "longitud": -75.1406,
+        "altitud": 25
+      },
+      {
+        "nombre": "Talaigua Nuevo",
+        "latitud": 9.3031,
+        "longitud": -74.5658,
+        "altitud": 20
+      },
+      {
+        "nombre": "Tiquisio",
+        "latitud": 8.5575,
+        "longitud": -74.2631,
+        "altitud": 35
+      },
+      {
+        "nombre": "Turbaco",
+        "latitud": 10.3347,
+        "longitud": -75.4114,
+        "altitud": 180
+      },
+      {
+        "nombre": "Turban\u00e1",
+        "latitud": 10.2717,
+        "longitud": -75.4422,
+        "altitud": 80
+      },
+      {
+        "nombre": "Villanueva",
+        "latitud": 10.4472,
+        "longitud": -75.2739,
+        "altitud": 95
+      },
+      {
+        "nombre": "Zambrano",
+        "latitud": 9.7447,
+        "longitud": -74.8158,
+        "altitud": 25
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "departamento": "Boyac\u00e1",
+    "ciudades": [
+      {
+        "nombre": "Almeida",
+        "latitud": 4.9706,
+        "longitud": -73.3794,
+        "altitud": 1780
+      },
+      {
+        "nombre": "Aquitania",
+        "latitud": 5.5194,
+        "longitud": -72.885,
+        "altitud": 3030
+      },
+      {
+        "nombre": "Arcabuco",
+        "latitud": 5.7547,
+        "longitud": -73.4361,
+        "altitud": 2739
+      },
+      {
+        "nombre": "Bel\u00e9n",
+        "latitud": 6.0033,
+        "longitud": -72.9139,
+        "altitud": 2550
+      },
+      {
+        "nombre": "Berbeo",
+        "latitud": 5.2264,
+        "longitud": -73.1256,
+        "altitud": 1350
+      },
+      {
+        "nombre": "Bet\u00e9itiva",
+        "latitud": 5.9111,
+        "longitud": -72.8069,
+        "altitud": 2900
+      },
+      {
+        "nombre": "Boavita",
+        "latitud": 6.3303,
+        "longitud": -72.5853,
+        "altitud": 2114
+      },
+      {
+        "nombre": "Boyac\u00e1",
+        "latitud": 5.4536,
+        "longitud": -73.3628,
+        "altitud": 2420
+      },
+      {
+        "nombre": "Brice\u00f1o",
+        "latitud": 5.6889,
+        "longitud": -73.9172,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Buenavista",
+        "latitud": 5.4831,
+        "longitud": -73.9669,
+        "altitud": 2150
+      },
+      {
+        "nombre": "Busbanz\u00e1",
+        "latitud": 5.83,
+        "longitud": -72.8847,
+        "altitud": 2740
+      },
+      {
+        "nombre": "Caldas",
+        "latitud": 5.5664,
+        "longitud": -73.8775,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Campohermoso",
+        "latitud": 5.0319,
+        "longitud": -73.1061,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Cerinza",
+        "latitud": 5.9583,
+        "longitud": -72.9478,
+        "altitud": 2660
+      },
+      {
+        "nombre": "Chinavita",
+        "latitud": 5.1722,
+        "longitud": -73.3681,
+        "altitud": 1920
+      },
+      {
+        "nombre": "Chiquinquir\u00e1",
+        "latitud": 5.6164,
+        "longitud": -73.8175,
+        "altitud": 2556
+      },
+      {
+        "nombre": "Ch\u00edquiza",
+        "latitud": 5.6047,
+        "longitud": -73.4883,
+        "altitud": 2650
+      },
+      {
+        "nombre": "Chiscas",
+        "latitud": 6.5567,
+        "longitud": -72.5031,
+        "altitud": 2500
+      },
+      {
+        "nombre": "Chita",
+        "latitud": 6.1883,
+        "longitud": -72.4742,
+        "altitud": 2950
+      },
+      {
+        "nombre": "Chitaraque",
+        "latitud": 5.9639,
+        "longitud": -73.4528,
+        "altitud": 1950
+      },
+      {
+        "nombre": "Chivat\u00e1",
+        "latitud": 5.5567,
+        "longitud": -73.2814,
+        "altitud": 2870
+      },
+      {
+        "nombre": "Chivor",
+        "latitud": 4.885,
+        "longitud": -73.3656,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Ci\u00e9nega",
+        "latitud": 5.4097,
+        "longitud": -73.2961,
+        "altitud": 2540
+      },
+      {
+        "nombre": "C\u00f3mbita",
+        "latitud": 5.6347,
+        "longitud": -73.3247,
+        "altitud": 2850
+      },
+      {
+        "nombre": "Coper",
+        "latitud": 5.4775,
+        "longitud": -74.0447,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Corrales",
+        "latitud": 5.8247,
+        "longitud": -72.8467,
+        "altitud": 2350
+      },
+      {
+        "nombre": "Covarach\u00eda",
+        "latitud": 6.5056,
+        "longitud": -72.7344,
+        "altitud": 2300
+      },
+      {
+        "nombre": "Cubar\u00e1",
+        "latitud": 7.0056,
+        "longitud": -72.06,
+        "altitud": 150
+      },
+      {
+        "nombre": "Cucaita",
+        "latitud": 5.5436,
+        "longitud": -73.4544,
+        "altitud": 2650
+      },
+      {
+        "nombre": "Cu\u00edtiva",
+        "latitud": 5.5803,
+        "longitud": -72.9669,
+        "altitud": 2950
+      },
+      {
+        "nombre": "Duitama",
+        "latitud": 5.8245,
+        "longitud": -73.0341,
+        "altitud": 2530
+      },
+      {
+        "nombre": "El Cocuy",
+        "latitud": 6.4078,
+        "longitud": -72.4442,
+        "altitud": 2750
+      },
+      {
+        "nombre": "El Espino",
+        "latitud": 6.4836,
+        "longitud": -72.5003,
+        "altitud": 2250
+      },
+      {
+        "nombre": "Firavitoba",
+        "latitud": 5.6681,
+        "longitud": -72.9928,
+        "altitud": 2500
+      },
+      {
+        "nombre": "Floresta",
+        "latitud": 5.8608,
+        "longitud": -72.9186,
+        "altitud": 2520
+      },
+      {
+        "nombre": "Gachantiv\u00e1",
+        "latitud": 5.7572,
+        "longitud": -73.5517,
+        "altitud": 2450
+      },
+      {
+        "nombre": "G\u00e1meza",
+        "latitud": 5.8025,
+        "longitud": -72.7994,
+        "altitud": 2850
+      },
+      {
+        "nombre": "Garagoa",
+        "latitud": 5.0836,
+        "longitud": -73.3647,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Guacamayas",
+        "latitud": 6.4617,
+        "longitud": -72.5161,
+        "altitud": 2930
+      },
+      {
+        "nombre": "Guateque",
+        "latitud": 5.0069,
+        "longitud": -73.4725,
+        "altitud": 1815
+      },
+      {
+        "nombre": "Guayat\u00e1",
+        "latitud": 4.965,
+        "longitud": -73.4875,
+        "altitud": 1850
+      },
+      {
+        "nombre": "G\u00fcic\u00e1n",
+        "latitud": 6.4653,
+        "longitud": -72.4125,
+        "altitud": 2930
+      },
+      {
+        "nombre": "Iza",
+        "latitud": 5.6133,
+        "longitud": -72.9794,
+        "altitud": 2950
+      },
+      {
+        "nombre": "Jenesano",
+        "latitud": 5.3867,
+        "longitud": -73.3633,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Jeric\u00f3",
+        "latitud": 6.1486,
+        "longitud": -72.5714,
+        "altitud": 2200
+      },
+      {
+        "nombre": "La Capilla",
+        "latitud": 5.1003,
+        "longitud": -73.4761,
+        "altitud": 1800
+      },
+      {
+        "nombre": "La Uvita",
+        "latitud": 6.3081,
+        "longitud": -72.5631,
+        "altitud": 2100
+      },
+      {
+        "nombre": "La Victoria",
+        "latitud": 5.5225,
+        "longitud": -74.2339,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Labranzagrande",
+        "latitud": 5.5625,
+        "longitud": -72.5772,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Macanal",
+        "latitud": 4.9722,
+        "longitud": -73.3197,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Marip\u00ed",
+        "latitud": 5.5514,
+        "longitud": -74.0083,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Miraflores",
+        "latitud": 5.1964,
+        "longitud": -73.1458,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Mongua",
+        "latitud": 5.7514,
+        "longitud": -72.8047,
+        "altitud": 3000
+      },
+      {
+        "nombre": "Mongu\u00ed",
+        "latitud": 5.6972,
+        "longitud": -72.8347,
+        "altitud": 2900
+      },
+      {
+        "nombre": "Moniquir\u00e1",
+        "latitud": 5.88,
+        "longitud": -73.5725,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Motavita",
+        "latitud": 5.575,
+        "longitud": -73.3664,
+        "altitud": 2800
+      },
+      {
+        "nombre": "Muzo",
+        "latitud": 5.5331,
+        "longitud": -74.1078,
+        "altitud": 815
+      },
+      {
+        "nombre": "Nobsa",
+        "latitud": 5.7697,
+        "longitud": -72.9411,
+        "altitud": 2500
+      },
+      {
+        "nombre": "Nuevo Col\u00f3n",
+        "latitud": 5.3536,
+        "longitud": -73.4569,
+        "altitud": 2500
+      },
+      {
+        "nombre": "Oicat\u00e1",
+        "latitud": 5.595,
+        "longitud": -73.3081,
+        "altitud": 2850
+      },
+      {
+        "nombre": "Otanche",
+        "latitud": 5.6581,
+        "longitud": -74.1825,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Pachavita",
+        "latitud": 5.1392,
+        "longitud": -73.3975,
+        "altitud": 2000
+      },
+      {
+        "nombre": "P\u00e1ez",
+        "latitud": 5.1022,
+        "longitud": -73.0525,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Paipa",
+        "latitud": 5.7806,
+        "longitud": -73.1178,
+        "altitud": 2525
+      },
+      {
+        "nombre": "Pajarito",
+        "latitud": 5.4108,
+        "longitud": -72.7022,
+        "altitud": 800
+      },
+      {
+        "nombre": "Panqueba",
+        "latitud": 6.4469,
+        "longitud": -72.4628,
+        "altitud": 2700
+      },
+      {
+        "nombre": "Pauna",
+        "latitud": 5.6586,
+        "longitud": -73.9814,
+        "altitud": 1300
+      },
+      {
+        "nombre": "Paya",
+        "latitud": 5.6242,
+        "longitud": -72.4228,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Paz del R\u00edo",
+        "latitud": 5.8769,
+        "longitud": -72.7486,
+        "altitud": 2200
+      },
+      {
+        "nombre": "Pesca",
+        "latitud": 5.5569,
+        "longitud": -73.05,
+        "altitud": 2650
+      },
+      {
+        "nombre": "Pisba",
+        "latitud": 5.7247,
+        "longitud": -72.4897,
+        "altitud": 2400
+      },
+      {
+        "nombre": "Puerto Boyac\u00e1",
+        "latitud": 5.9753,
+        "longitud": -74.5883,
+        "altitud": 145
+      },
+      {
+        "nombre": "Qu\u00edpama",
+        "latitud": 5.5194,
+        "longitud": -74.1781,
+        "altitud": 900
+      },
+      {
+        "nombre": "Ramiriqu\u00ed",
+        "latitud": 5.3992,
+        "longitud": -73.3381,
+        "altitud": 2200
+      },
+      {
+        "nombre": "R\u00e1quira",
+        "latitud": 5.5381,
+        "longitud": -73.6322,
+        "altitud": 2150
+      },
+      {
+        "nombre": "Rond\u00f3n",
+        "latitud": 5.3597,
+        "longitud": -73.1969,
+        "altitud": 2200
+      },
+      {
+        "nombre": "Saboy\u00e1",
+        "latitud": 5.6978,
+        "longitud": -73.7681,
+        "altitud": 2550
+      },
+      {
+        "nombre": "S\u00e1chica",
+        "latitud": 5.5842,
+        "longitud": -73.5422,
+        "altitud": 2150
+      },
+      {
+        "nombre": "Samac\u00e1",
+        "latitud": 5.4922,
+        "longitud": -73.4853,
+        "altitud": 2650
+      },
+      {
+        "nombre": "San Eduardo",
+        "latitud": 5.23,
+        "longitud": -73.0833,
+        "altitud": 1500
+      },
+      {
+        "nombre": "San Jos\u00e9 de Pare",
+        "latitud": 6.0175,
+        "longitud": -73.5486,
+        "altitud": 1950
+      },
+      {
+        "nombre": "San Luis de Gaceno",
+        "latitud": 4.8197,
+        "longitud": -73.1681,
+        "altitud": 400
+      },
+      {
+        "nombre": "San Mateo",
+        "latitud": 6.3772,
+        "longitud": -72.5775,
+        "altitud": 2150
+      },
+      {
+        "nombre": "San Miguel de Sema",
+        "latitud": 5.5178,
+        "longitud": -73.7242,
+        "altitud": 2600
+      },
+      {
+        "nombre": "San Pablo de Borbur",
+        "latitud": 5.7208,
+        "longitud": -74.1047,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Santa Mar\u00eda",
+        "latitud": 4.8608,
+        "longitud": -73.2633,
+        "altitud": 850
+      },
+      {
+        "nombre": "Santa Rosa de Viterbo",
+        "latitud": 5.8733,
+        "longitud": -72.9822,
+        "altitud": 2550
+      },
+      {
+        "nombre": "Santa Sof\u00eda",
+        "latitud": 5.7044,
+        "longitud": -73.6297,
+        "altitud": 2380
+      },
+      {
+        "nombre": "Santana",
+        "latitud": 6.0447,
+        "longitud": -73.5117,
+        "altitud": 1850
+      },
+      {
+        "nombre": "Sativanorte",
+        "latitud": 6.1325,
+        "longitud": -72.7072,
+        "altitud": 2450
+      },
+      {
+        "nombre": "Sativasur",
+        "latitud": 6.0897,
+        "longitud": -72.7083,
+        "altitud": 2400
+      },
+      {
+        "nombre": "Siachoque",
+        "latitud": 5.5114,
+        "longitud": -73.2467,
+        "altitud": 2750
+      },
+      {
+        "nombre": "Soat\u00e1",
+        "latitud": 6.3336,
+        "longitud": -72.6822,
+        "altitud": 1950
+      },
+      {
+        "nombre": "Socha",
+        "latitud": 5.9275,
+        "longitud": -72.7006,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Socot\u00e1",
+        "latitud": 6.04,
+        "longitud": -72.6361,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Sogamoso",
+        "latitud": 5.7144,
+        "longitud": -72.9339,
+        "altitud": 2569
+      },
+      {
+        "nombre": "Somondoco",
+        "latitud": 4.985,
+        "longitud": -73.4322,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Sora",
+        "latitud": 5.5658,
+        "longitud": -73.4503,
+        "altitud": 2750
+      },
+      {
+        "nombre": "Sorac\u00e1",
+        "latitud": 5.5019,
+        "longitud": -73.3325,
+        "altitud": 2900
+      },
+      {
+        "nombre": "Sotaquir\u00e1",
+        "latitud": 5.7644,
+        "longitud": -73.2478,
+        "altitud": 2800
+      },
+      {
+        "nombre": "Susac\u00f3n",
+        "latitud": 6.2331,
+        "longitud": -72.6906,
+        "altitud": 2400
+      },
+      {
+        "nombre": "Sutamarch\u00e1n",
+        "latitud": 5.6153,
+        "longitud": -73.6186,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Sutatenza",
+        "latitud": 5.0247,
+        "longitud": -73.4525,
+        "altitud": 1950
+      },
+      {
+        "nombre": "Tasco",
+        "latitud": 5.9114,
+        "longitud": -72.7814,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Tenza",
+        "latitud": 5.0775,
+        "longitud": -73.4208,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Tiban\u00e1",
+        "latitud": 5.3153,
+        "longitud": -73.3967,
+        "altitud": 2110
+      },
+      {
+        "nombre": "Tibasosa",
+        "latitud": 5.7472,
+        "longitud": -72.9869,
+        "altitud": 2530
+      },
+      {
+        "nombre": "Tinjac\u00e1",
+        "latitud": 5.5794,
+        "longitud": -73.6397,
+        "altitud": 2150
+      },
+      {
+        "nombre": "Tipacoque",
+        "latitud": 6.42,
+        "longitud": -72.6914,
+        "altitud": 1850
+      },
+      {
+        "nombre": "Toca",
+        "latitud": 5.565,
+        "longitud": -73.1869,
+        "altitud": 2810
+      },
+      {
+        "nombre": "Tog\u00fc\u00ed",
+        "latitud": 5.9308,
+        "longitud": -73.5331,
+        "altitud": 1650
+      },
+      {
+        "nombre": "T\u00f3paga",
+        "latitud": 5.7619,
+        "longitud": -72.825,
+        "altitud": 2900
+      },
+      {
+        "nombre": "Tota",
+        "latitud": 5.5581,
+        "longitud": -72.9878,
+        "altitud": 2870
+      },
+      {
+        "nombre": "Tunja",
+        "latitud": 5.5353,
+        "longitud": -73.3678,
+        "altitud": 2820
+      },
+      {
+        "nombre": "Tunungu\u00e1",
+        "latitud": 5.7317,
+        "longitud": -73.9392,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Turmequ\u00e9",
+        "latitud": 5.3236,
+        "longitud": -73.4894,
+        "altitud": 2400
+      },
+      {
+        "nombre": "Tuta",
+        "latitud": 5.6897,
+        "longitud": -73.2272,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Tutaz\u00e1",
+        "latitud": 6.0344,
+        "longitud": -72.8564,
+        "altitud": 2750
+      },
+      {
+        "nombre": "\u00dambita",
+        "latitud": 5.2214,
+        "longitud": -73.4567,
+        "altitud": 2250
+      },
+      {
+        "nombre": "Ventaquemada",
+        "latitud": 5.3653,
+        "longitud": -73.5192,
+        "altitud": 2630
+      },
+      {
+        "nombre": "Villa de Leyva",
+        "latitud": 5.6344,
+        "longitud": -73.5247,
+        "altitud": 2143
+      },
+      {
+        "nombre": "Viracach\u00e1",
+        "latitud": 5.4361,
+        "longitud": -73.2953,
+        "altitud": 2520
+      },
+      {
+        "nombre": "Zetaquira",
+        "latitud": 5.2858,
+        "longitud": -73.1739,
+        "altitud": 1875
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "departamento": "Caldas",
+    "ciudades": [
+      {
+        "nombre": "Aguadas",
+        "latitud": 5.6106,
+        "longitud": -75.4567,
+        "altitud": 2180
+      },
+      {
+        "nombre": "Anserma",
+        "latitud": 5.2386,
+        "longitud": -75.7847,
+        "altitud": 2080
+      },
+      {
+        "nombre": "Aranzazu",
+        "latitud": 5.2714,
+        "longitud": -75.4906,
+        "altitud": 1900
+      },
+      {
+        "nombre": "Belalc\u00e1zar",
+        "latitud": 4.995,
+        "longitud": -75.8125,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Chinchin\u00e1",
+        "latitud": 4.9833,
+        "longitud": -75.6036,
+        "altitud": 1360
+      },
+      {
+        "nombre": "Filadelfia",
+        "latitud": 5.2964,
+        "longitud": -75.5636,
+        "altitud": 1920
+      },
+      {
+        "nombre": "La Dorada",
+        "latitud": 5.4539,
+        "longitud": -74.6647,
+        "altitud": 178
+      },
+      {
+        "nombre": "La Merced",
+        "latitud": 5.3806,
+        "longitud": -75.5453,
+        "altitud": 1950
+      },
+      {
+        "nombre": "Manizales",
+        "latitud": 5.0703,
+        "longitud": -75.5138,
+        "altitud": 2160
+      },
+      {
+        "nombre": "Manzanares",
+        "latitud": 5.2531,
+        "longitud": -75.1544,
+        "altitud": 1900
+      },
+      {
+        "nombre": "Marmato",
+        "latitud": 5.4742,
+        "longitud": -75.5992,
+        "altitud": 1310
+      },
+      {
+        "nombre": "Marquetalia",
+        "latitud": 5.2967,
+        "longitud": -75.0556,
+        "altitud": 1600
+      },
+      {
+        "nombre": "Marulanda",
+        "latitud": 5.2853,
+        "longitud": -75.2608,
+        "altitud": 2750
+      },
+      {
+        "nombre": "Neira",
+        "latitud": 5.1661,
+        "longitud": -75.5208,
+        "altitud": 1960
+      },
+      {
+        "nombre": "Norcasia",
+        "latitud": 5.5744,
+        "longitud": -74.8889,
+        "altitud": 550
+      },
+      {
+        "nombre": "P\u00e1cora",
+        "latitud": 5.5278,
+        "longitud": -75.4589,
+        "altitud": 2140
+      },
+      {
+        "nombre": "Palestina",
+        "latitud": 5.0475,
+        "longitud": -75.6286,
+        "altitud": 1050
+      },
+      {
+        "nombre": "Pensilvania",
+        "latitud": 5.3883,
+        "longitud": -75.2044,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Riosucio",
+        "latitud": 5.4203,
+        "longitud": -75.7025,
+        "altitud": 1780
+      },
+      {
+        "nombre": "Risaralda",
+        "latitud": 5.1667,
+        "longitud": -75.7667,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Salamina",
+        "latitud": 5.4075,
+        "longitud": -75.4872,
+        "altitud": 1825
+      },
+      {
+        "nombre": "Saman\u00e1",
+        "latitud": 5.4133,
+        "longitud": -74.9931,
+        "altitud": 1460
+      },
+      {
+        "nombre": "San Jos\u00e9",
+        "latitud": 5.0825,
+        "longitud": -75.7919,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Sup\u00eda",
+        "latitud": 5.4536,
+        "longitud": -75.6508,
+        "altitud": 1180
+      },
+      {
+        "nombre": "Victoria",
+        "latitud": 5.3217,
+        "longitud": -74.9108,
+        "altitud": 510
+      },
+      {
+        "nombre": "Villamar\u00eda",
+        "latitud": 5.0456,
+        "longitud": -75.5131,
+        "altitud": 1920
+      },
+      {
+        "nombre": "Viterbo",
+        "latitud": 5.0628,
+        "longitud": -75.8714,
+        "altitud": 998
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "departamento": "Caquet\u00e1",
+    "ciudades": [
+      {
+        "nombre": "Albania",
+        "latitud": 1.3281,
+        "longitud": -75.8786,
+        "altitud": 290
+      },
+      {
+        "nombre": "Bel\u00e9n de los Andaqu\u00edes",
+        "latitud": 1.4167,
+        "longitud": -75.8725,
+        "altitud": 300
+      },
+      {
+        "nombre": "Cartagena del Chair\u00e1",
+        "latitud": 1.3347,
+        "longitud": -74.8428,
+        "altitud": 210
+      },
+      {
+        "nombre": "Curillo",
+        "latitud": 1.0333,
+        "longitud": -75.9167,
+        "altitud": 220
+      },
+      {
+        "nombre": "El Doncello",
+        "latitud": 1.6789,
+        "longitud": -75.2847,
+        "altitud": 300
+      },
+      {
+        "nombre": "El Paujil",
+        "latitud": 1.5706,
+        "longitud": -75.3281,
+        "altitud": 350
+      },
+      {
+        "nombre": "Florencia",
+        "latitud": 1.6144,
+        "longitud": -75.6062,
+        "altitud": 242
+      },
+      {
+        "nombre": "La Monta\u00f1ita",
+        "latitud": 1.4794,
+        "longitud": -75.4361,
+        "altitud": 470
+      },
+      {
+        "nombre": "Mil\u00e1n",
+        "latitud": 1.2928,
+        "longitud": -75.5119,
+        "altitud": 300
+      },
+      {
+        "nombre": "Morelia",
+        "latitud": 1.4872,
+        "longitud": -75.7253,
+        "altitud": 310
+      },
+      {
+        "nombre": "Puerto Rico",
+        "latitud": 1.9106,
+        "longitud": -75.1456,
+        "altitud": 320
+      },
+      {
+        "nombre": "San Jos\u00e9 del Fragua",
+        "latitud": 1.3289,
+        "longitud": -75.9739,
+        "altitud": 310
+      },
+      {
+        "nombre": "San Vicente del Cagu\u00e1n",
+        "latitud": 2.1153,
+        "longitud": -74.7697,
+        "altitud": 280
+      },
+      {
+        "nombre": "Solano",
+        "latitud": 0.6989,
+        "longitud": -75.2531,
+        "altitud": 180
+      },
+      {
+        "nombre": "Solita",
+        "latitud": 0.8758,
+        "longitud": -75.6203,
+        "altitud": 240
+      },
+      {
+        "nombre": "Valpara\u00edso",
+        "latitud": 1.195,
+        "longitud": -75.7075,
+        "altitud": 300
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "departamento": "Casanare",
+    "ciudades": [
+      {
+        "nombre": "Aguazul",
+        "latitud": 5.1725,
+        "longitud": -72.5475,
+        "altitud": 300
+      },
+      {
+        "nombre": "Ch\u00e1meza",
+        "latitud": 5.2142,
+        "longitud": -72.8694,
+        "altitud": 1050
+      },
+      {
+        "nombre": "Hato Corozal",
+        "latitud": 6.1547,
+        "longitud": -71.7642,
+        "altitud": 200
+      },
+      {
+        "nombre": "La Salina",
+        "latitud": 6.1275,
+        "longitud": -72.3347,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Man\u00ed",
+        "latitud": 4.8167,
+        "longitud": -72.2833,
+        "altitud": 187
+      },
+      {
+        "nombre": "Monterrey",
+        "latitud": 4.8781,
+        "longitud": -72.8986,
+        "altitud": 450
+      },
+      {
+        "nombre": "Nunch\u00eda",
+        "latitud": 5.6464,
+        "longitud": -72.1964,
+        "altitud": 398
+      },
+      {
+        "nombre": "Orocu\u00e9",
+        "latitud": 4.7917,
+        "longitud": -71.3406,
+        "altitud": 180
+      },
+      {
+        "nombre": "Paz de Ariporo",
+        "latitud": 5.8828,
+        "longitud": -71.8931,
+        "altitud": 270
+      },
+      {
+        "nombre": "Pore",
+        "latitud": 5.7281,
+        "longitud": -71.9922,
+        "altitud": 280
+      },
+      {
+        "nombre": "Recetor",
+        "latitud": 5.2297,
+        "longitud": -72.7606,
+        "altitud": 900
+      },
+      {
+        "nombre": "Sabanalarga",
+        "latitud": 4.8539,
+        "longitud": -73.0408,
+        "altitud": 320
+      },
+      {
+        "nombre": "S\u00e1cama",
+        "latitud": 6.0992,
+        "longitud": -72.2475,
+        "altitud": 1450
+      },
+      {
+        "nombre": "San Luis de Palenque",
+        "latitud": 5.4211,
+        "longitud": -71.7319,
+        "altitud": 190
+      },
+      {
+        "nombre": "T\u00e1mara",
+        "latitud": 6.4608,
+        "longitud": -72.1617,
+        "altitud": 1150
+      },
+      {
+        "nombre": "Tauramena",
+        "latitud": 5.0175,
+        "longitud": -72.7467,
+        "altitud": 460
+      },
+      {
+        "nombre": "Trinidad",
+        "latitud": 5.4092,
+        "longitud": -71.6625,
+        "altitud": 190
+      },
+      {
+        "nombre": "Villanueva",
+        "latitud": 4.6125,
+        "longitud": -72.9297,
+        "altitud": 300
+      },
+      {
+        "nombre": "Yopal",
+        "latitud": 5.3378,
+        "longitud": -72.3958,
+        "altitud": 350
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "departamento": "Cauca",
+    "ciudades": [
+      {
+        "nombre": "Almaguer",
+        "latitud": 1.9153,
+        "longitud": -76.8542,
+        "altitud": 1850
+      },
+      {
+        "nombre": "Argelia",
+        "latitud": 2.3156,
+        "longitud": -77.2475,
+        "altitud": 1550
+      },
+      {
+        "nombre": "Balboa",
+        "latitud": 2.0428,
+        "longitud": -77.2161,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Bol\u00edvar",
+        "latitud": 1.8353,
+        "longitud": -76.9719,
+        "altitud": 1760
+      },
+      {
+        "nombre": "Buenos Aires",
+        "latitud": 2.9156,
+        "longitud": -76.6686,
+        "altitud": 1060
+      },
+      {
+        "nombre": "Cajib\u00edo",
+        "latitud": 2.6225,
+        "longitud": -76.5706,
+        "altitud": 1765
+      },
+      {
+        "nombre": "Caldono",
+        "latitud": 2.7967,
+        "longitud": -76.4836,
+        "altitud": 1600
+      },
+      {
+        "nombre": "Caloto",
+        "latitud": 3.0347,
+        "longitud": -76.4075,
+        "altitud": 1050
+      },
+      {
+        "nombre": "Corinto",
+        "latitud": 3.1739,
+        "longitud": -76.2606,
+        "altitud": 1100
+      },
+      {
+        "nombre": "El Tambo",
+        "latitud": 2.4517,
+        "longitud": -76.8106,
+        "altitud": 1750
+      },
+      {
+        "nombre": "Florencia",
+        "latitud": 1.6833,
+        "longitud": -77.0733,
+        "altitud": 1600
+      },
+      {
+        "nombre": "Guachen\u00e9",
+        "latitud": 3.1331,
+        "longitud": -76.3931,
+        "altitud": 980
+      },
+      {
+        "nombre": "Guap\u00ed",
+        "latitud": 2.5736,
+        "longitud": -77.8853,
+        "altitud": 5
+      },
+      {
+        "nombre": "Inz\u00e1",
+        "latitud": 2.5547,
+        "longitud": -76.0658,
+        "altitud": 1750
+      },
+      {
+        "nombre": "Jambal\u00f3",
+        "latitud": 2.8506,
+        "longitud": -76.3186,
+        "altitud": 1850
+      },
+      {
+        "nombre": "La Sierra",
+        "latitud": 2.1786,
+        "longitud": -76.7794,
+        "altitud": 1700
+      },
+      {
+        "nombre": "La Vega",
+        "latitud": 2.0006,
+        "longitud": -76.7775,
+        "altitud": 2270
+      },
+      {
+        "nombre": "L\u00f3pez de Micay",
+        "latitud": 3.0036,
+        "longitud": -77.25,
+        "altitud": 20
+      },
+      {
+        "nombre": "Mercaderes",
+        "latitud": 1.8019,
+        "longitud": -77.1706,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Miranda",
+        "latitud": 3.2511,
+        "longitud": -76.2294,
+        "altitud": 1120
+      },
+      {
+        "nombre": "Morales",
+        "latitud": 2.7533,
+        "longitud": -76.6278,
+        "altitud": 1635
+      },
+      {
+        "nombre": "Padilla",
+        "latitud": 3.2208,
+        "longitud": -76.3136,
+        "altitud": 1040
+      },
+      {
+        "nombre": "P\u00e1ez",
+        "latitud": 2.6461,
+        "longitud": -75.9717,
+        "altitud": 1850
+      },
+      {
+        "nombre": "Pat\u00eda",
+        "latitud": 2.0697,
+        "longitud": -77.0525,
+        "altitud": 910
+      },
+      {
+        "nombre": "Piamonte",
+        "latitud": 1.1181,
+        "longitud": -76.3267,
+        "altitud": 320
+      },
+      {
+        "nombre": "Piendam\u00f3",
+        "latitud": 2.6406,
+        "longitud": -76.5308,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Popay\u00e1n",
+        "latitud": 2.4448,
+        "longitud": -76.6147,
+        "altitud": 1760
+      },
+      {
+        "nombre": "Puerto Tejada",
+        "latitud": 3.2325,
+        "longitud": -76.4186,
+        "altitud": 970
+      },
+      {
+        "nombre": "Purac\u00e9",
+        "latitud": 2.3406,
+        "longitud": -76.4989,
+        "altitud": 2850
+      },
+      {
+        "nombre": "Rosas",
+        "latitud": 2.2647,
+        "longitud": -76.7397,
+        "altitud": 1780
+      },
+      {
+        "nombre": "San Sebasti\u00e1n",
+        "latitud": 1.8386,
+        "longitud": -76.7703,
+        "altitud": 1850
+      },
+      {
+        "nombre": "Santa Rosa",
+        "latitud": 1.7344,
+        "longitud": -76.5775,
+        "altitud": 1750
+      },
+      {
+        "nombre": "Santander de Quilichao",
+        "latitud": 3.0094,
+        "longitud": -76.4847,
+        "altitud": 1070
+      },
+      {
+        "nombre": "Silvia",
+        "latitud": 2.6131,
+        "longitud": -76.3825,
+        "altitud": 2620
+      },
+      {
+        "nombre": "Sotar\u00e1",
+        "latitud": 2.3086,
+        "longitud": -76.6022,
+        "altitud": 1950
+      },
+      {
+        "nombre": "Su\u00e1rez",
+        "latitud": 2.9553,
+        "longitud": -76.6978,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Sucre",
+        "latitud": 1.9706,
+        "longitud": -76.9183,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Timb\u00edo",
+        "latitud": 2.3525,
+        "longitud": -76.6836,
+        "altitud": 1760
+      },
+      {
+        "nombre": "Timbiqu\u00ed",
+        "latitud": 2.7711,
+        "longitud": -77.6653,
+        "altitud": 5
+      },
+      {
+        "nombre": "Torib\u00edo",
+        "latitud": 2.9544,
+        "longitud": -76.2706,
+        "altitud": 1850
+      },
+      {
+        "nombre": "Totor\u00f3",
+        "latitud": 2.5119,
+        "longitud": -76.3936,
+        "altitud": 2750
+      },
+      {
+        "nombre": "Villa Rica",
+        "latitud": 3.1775,
+        "longitud": -76.4622,
+        "altitud": 990
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "departamento": "Cesar",
+    "ciudades": [
+      {
+        "nombre": "Aguachica",
+        "latitud": 8.3078,
+        "longitud": -73.6167,
+        "altitud": 162
+      },
+      {
+        "nombre": "Agust\u00edn Codazzi",
+        "latitud": 10.0375,
+        "longitud": -73.2356,
+        "altitud": 131
+      },
+      {
+        "nombre": "Astrea",
+        "latitud": 9.4981,
+        "longitud": -73.9767,
+        "altitud": 95
+      },
+      {
+        "nombre": "Becerril",
+        "latitud": 9.7047,
+        "longitud": -73.2786,
+        "altitud": 125
+      },
+      {
+        "nombre": "Bosconia",
+        "latitud": 9.9761,
+        "longitud": -73.8903,
+        "altitud": 85
+      },
+      {
+        "nombre": "Chimichagua",
+        "latitud": 9.2575,
+        "longitud": -73.8125,
+        "altitud": 50
+      },
+      {
+        "nombre": "Chiriguan\u00e1",
+        "latitud": 9.3628,
+        "longitud": -73.6036,
+        "altitud": 65
+      },
+      {
+        "nombre": "Curuman\u00ed",
+        "latitud": 9.1997,
+        "longitud": -73.5428,
+        "altitud": 115
+      },
+      {
+        "nombre": "El Copey",
+        "latitud": 10.1508,
+        "longitud": -73.9611,
+        "altitud": 180
+      },
+      {
+        "nombre": "El Paso",
+        "latitud": 9.6583,
+        "longitud": -73.7467,
+        "altitud": 50
+      },
+      {
+        "nombre": "Gamarra",
+        "latitud": 8.3292,
+        "longitud": -73.7431,
+        "altitud": 35
+      },
+      {
+        "nombre": "Gonz\u00e1lez",
+        "latitud": 8.3947,
+        "longitud": -73.3792,
+        "altitud": 220
+      },
+      {
+        "nombre": "La Gloria (Cesar)",
+        "latitud": 8.6167,
+        "longitud": -73.8028,
+        "altitud": 55
+      },
+      {
+        "nombre": "La Jagua de Ibirico",
+        "latitud": 9.5636,
+        "longitud": -73.3342,
+        "altitud": 150
+      },
+      {
+        "nombre": "La Paz",
+        "latitud": 10.3847,
+        "longitud": -73.1736,
+        "altitud": 165
+      },
+      {
+        "nombre": "Manaure Balc\u00f3n del Cesar",
+        "latitud": 10.3919,
+        "longitud": -73.0322,
+        "altitud": 950
+      },
+      {
+        "nombre": "Pailitas",
+        "latitud": 8.9564,
+        "longitud": -73.6267,
+        "altitud": 90
+      },
+      {
+        "nombre": "Pelaya",
+        "latitud": 8.6908,
+        "longitud": -73.6647,
+        "altitud": 40
+      },
+      {
+        "nombre": "Pueblo Bello",
+        "latitud": 10.4167,
+        "longitud": -73.5833,
+        "altitud": 1200
+      },
+      {
+        "nombre": "R\u00edo de Oro",
+        "latitud": 8.2975,
+        "longitud": -73.3878,
+        "altitud": 125
+      },
+      {
+        "nombre": "San Alberto",
+        "latitud": 7.7525,
+        "longitud": -73.3928,
+        "altitud": 125
+      },
+      {
+        "nombre": "San Diego",
+        "latitud": 10.3336,
+        "longitud": -73.1828,
+        "altitud": 190
+      },
+      {
+        "nombre": "San Mart\u00edn",
+        "latitud": 8.0017,
+        "longitud": -73.5117,
+        "altitud": 115
+      },
+      {
+        "nombre": "Tamalameque",
+        "latitud": 8.8647,
+        "longitud": -73.7817,
+        "altitud": 20
+      },
+      {
+        "nombre": "Valledupar",
+        "latitud": 10.4631,
+        "longitud": -73.2532,
+        "altitud": 168
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "departamento": "Choc\u00f3",
+    "ciudades": [
+      {
+        "nombre": "Acand\u00ed",
+        "latitud": 8.5117,
+        "longitud": -77.2789,
+        "altitud": 5
+      },
+      {
+        "nombre": "Alto Baud\u00f3",
+        "latitud": 5.5167,
+        "longitud": -76.9667,
+        "altitud": 60
+      },
+      {
+        "nombre": "Bagad\u00f3",
+        "latitud": 5.4167,
+        "longitud": -76.4167,
+        "altitud": 60
+      },
+      {
+        "nombre": "Bah\u00eda Solano",
+        "latitud": 6.2253,
+        "longitud": -77.4078,
+        "altitud": 10
+      },
+      {
+        "nombre": "Bajo Baud\u00f3",
+        "latitud": 5.3,
+        "longitud": -77.1,
+        "altitud": 15
+      },
+      {
+        "nombre": "Bojay\u00e1",
+        "latitud": 6.5569,
+        "longitud": -76.8842,
+        "altitud": 20
+      },
+      {
+        "nombre": "Cant\u00f3n de San Pablo",
+        "latitud": 5.3333,
+        "longitud": -76.7333,
+        "altitud": 55
+      },
+      {
+        "nombre": "C\u00e9rtegui",
+        "latitud": 5.3667,
+        "longitud": -76.6,
+        "altitud": 45
+      },
+      {
+        "nombre": "Condoto",
+        "latitud": 5.0917,
+        "longitud": -76.6503,
+        "altitud": 50
+      },
+      {
+        "nombre": "El Atrato",
+        "latitud": 5.5167,
+        "longitud": -76.5833,
+        "altitud": 50
+      },
+      {
+        "nombre": "El Carmen de Atrato",
+        "latitud": 5.8986,
+        "longitud": -76.1428,
+        "altitud": 1800
+      },
+      {
+        "nombre": "El Carmen del Dari\u00e9n",
+        "latitud": 7.15,
+        "longitud": -76.97,
+        "altitud": 20
+      },
+      {
+        "nombre": "Istmina",
+        "latitud": 5.1583,
+        "longitud": -76.6917,
+        "altitud": 65
+      },
+      {
+        "nombre": "Jurad\u00f3",
+        "latitud": 7.1047,
+        "longitud": -77.7628,
+        "altitud": 5
+      },
+      {
+        "nombre": "Litoral de San Juan",
+        "latitud": 4.25,
+        "longitud": -77.3667,
+        "altitud": 10
+      },
+      {
+        "nombre": "Llor\u00f3",
+        "latitud": 5.5,
+        "longitud": -76.5333,
+        "altitud": 60
+      },
+      {
+        "nombre": "Medio Atrato",
+        "latitud": 5.85,
+        "longitud": -76.7833,
+        "altitud": 40
+      },
+      {
+        "nombre": "Medio Baud\u00f3",
+        "latitud": 5.05,
+        "longitud": -77.05,
+        "altitud": 25
+      },
+      {
+        "nombre": "Medio San Juan",
+        "latitud": 5.1,
+        "longitud": -76.7,
+        "altitud": 50
+      },
+      {
+        "nombre": "N\u00f3vita",
+        "latitud": 4.95,
+        "longitud": -76.6167,
+        "altitud": 70
+      },
+      {
+        "nombre": "Nuqu\u00ed",
+        "latitud": 5.7167,
+        "longitud": -77.2667,
+        "altitud": 5
+      },
+      {
+        "nombre": "Quibd\u00f3",
+        "latitud": 5.6947,
+        "longitud": -76.6611,
+        "altitud": 43
+      },
+      {
+        "nombre": "R\u00edo Ir\u00f3",
+        "latitud": 5.1833,
+        "longitud": -76.4833,
+        "altitud": 70
+      },
+      {
+        "nombre": "R\u00edo Quito",
+        "latitud": 5.5333,
+        "longitud": -76.7333,
+        "altitud": 50
+      },
+      {
+        "nombre": "Riosucio",
+        "latitud": 7.4375,
+        "longitud": -77.11,
+        "altitud": 15
+      },
+      {
+        "nombre": "San Jos\u00e9 del Palmar",
+        "latitud": 5.6,
+        "longitud": -76.25,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Sip\u00ed",
+        "latitud": 4.6531,
+        "longitud": -76.6444,
+        "altitud": 65
+      },
+      {
+        "nombre": "Tad\u00f3",
+        "latitud": 5.2667,
+        "longitud": -76.5667,
+        "altitud": 75
+      },
+      {
+        "nombre": "Uni\u00f3n Panamericana",
+        "latitud": 5.2833,
+        "longitud": -76.6333,
+        "altitud": 60
+      },
+      {
+        "nombre": "Ungu\u00eda",
+        "latitud": 8.0436,
+        "longitud": -77.0925,
+        "altitud": 5
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "departamento": "Cundinamarca",
+    "ciudades": [
+      {
+        "nombre": "Agua de Dios",
+        "latitud": 4.3775,
+        "longitud": -74.6697,
+        "altitud": 400
+      },
+      {
+        "nombre": "Alb\u00e1n",
+        "latitud": 4.8947,
+        "longitud": -74.4431,
+        "altitud": 1990
+      },
+      {
+        "nombre": "Anapoima",
+        "latitud": 4.55,
+        "longitud": -74.5356,
+        "altitud": 710
+      },
+      {
+        "nombre": "Anolaima",
+        "latitud": 4.8331,
+        "longitud": -74.4997,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Apulo",
+        "latitud": 4.5197,
+        "longitud": -74.5925,
+        "altitud": 420
+      },
+      {
+        "nombre": "Arbel\u00e1ez",
+        "latitud": 4.2725,
+        "longitud": -74.4161,
+        "altitud": 1340
+      },
+      {
+        "nombre": "Beltr\u00e1n",
+        "latitud": 4.7192,
+        "longitud": -74.7417,
+        "altitud": 320
+      },
+      {
+        "nombre": "Bituima",
+        "latitud": 4.8722,
+        "longitud": -74.5394,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Bogot\u00e1",
+        "latitud": 4.711,
+        "longitud": -74.0721,
+        "altitud": 2640
+      },
+      {
+        "nombre": "Bojac\u00e1",
+        "latitud": 4.7317,
+        "longitud": -74.3417,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Cabrera",
+        "latitud": 3.9836,
+        "longitud": -74.4853,
+        "altitud": 2150
+      },
+      {
+        "nombre": "Cachipay",
+        "latitud": 4.7311,
+        "longitud": -74.4364,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Cajic\u00e1",
+        "latitud": 4.9186,
+        "longitud": -74.0275,
+        "altitud": 2558
+      },
+      {
+        "nombre": "Caparrap\u00ed",
+        "latitud": 5.3464,
+        "longitud": -74.4922,
+        "altitud": 1280
+      },
+      {
+        "nombre": "C\u00e1queza",
+        "latitud": 4.4022,
+        "longitud": -73.9467,
+        "altitud": 1740
+      },
+      {
+        "nombre": "Carmen de Carupa",
+        "latitud": 5.345,
+        "longitud": -73.9017,
+        "altitud": 2650
+      },
+      {
+        "nombre": "Chaguan\u00ed",
+        "latitud": 4.9486,
+        "longitud": -74.5931,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Ch\u00eda",
+        "latitud": 4.8614,
+        "longitud": -74.0328,
+        "altitud": 2560
+      },
+      {
+        "nombre": "Chipaque",
+        "latitud": 4.4425,
+        "longitud": -74.0447,
+        "altitud": 2700
+      },
+      {
+        "nombre": "Choach\u00ed",
+        "latitud": 4.5281,
+        "longitud": -73.9228,
+        "altitud": 1920
+      },
+      {
+        "nombre": "Chocont\u00e1",
+        "latitud": 5.145,
+        "longitud": -73.6867,
+        "altitud": 2655
+      },
+      {
+        "nombre": "Cogua",
+        "latitud": 5.0619,
+        "longitud": -73.9797,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Cota",
+        "latitud": 4.8094,
+        "longitud": -74.0981,
+        "altitud": 2566
+      },
+      {
+        "nombre": "Cucunub\u00e1",
+        "latitud": 5.2492,
+        "longitud": -73.7669,
+        "altitud": 2620
+      },
+      {
+        "nombre": "El Colegio",
+        "latitud": 4.58,
+        "longitud": -74.4425,
+        "altitud": 1350
+      },
+      {
+        "nombre": "El Pe\u00f1\u00f3n",
+        "latitud": 5.2508,
+        "longitud": -74.2903,
+        "altitud": 1700
+      },
+      {
+        "nombre": "El Rosal",
+        "latitud": 4.8525,
+        "longitud": -74.2625,
+        "altitud": 2685
+      },
+      {
+        "nombre": "Facatativ\u00e1",
+        "latitud": 4.8133,
+        "longitud": -74.3547,
+        "altitud": 2586
+      },
+      {
+        "nombre": "F\u00f3meque",
+        "latitud": 4.4872,
+        "longitud": -73.8936,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Fosca",
+        "latitud": 4.3394,
+        "longitud": -73.9381,
+        "altitud": 1750
+      },
+      {
+        "nombre": "Funza",
+        "latitud": 4.7164,
+        "longitud": -74.2119,
+        "altitud": 2548
+      },
+      {
+        "nombre": "F\u00faquene",
+        "latitud": 5.4678,
+        "longitud": -73.7694,
+        "altitud": 2540
+      },
+      {
+        "nombre": "Fusagasug\u00e1",
+        "latitud": 4.3372,
+        "longitud": -74.3633,
+        "altitud": 1728
+      },
+      {
+        "nombre": "Gachal\u00e1",
+        "latitud": 4.6936,
+        "longitud": -73.5203,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Gachancip\u00e1",
+        "latitud": 4.9906,
+        "longitud": -73.8711,
+        "altitud": 2560
+      },
+      {
+        "nombre": "Gachet\u00e1",
+        "latitud": 4.8189,
+        "longitud": -73.6367,
+        "altitud": 1745
+      },
+      {
+        "nombre": "Gama",
+        "latitud": 4.7622,
+        "longitud": -73.6106,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Girardot",
+        "latitud": 4.305,
+        "longitud": -74.8017,
+        "altitud": 289
+      },
+      {
+        "nombre": "Granada",
+        "latitud": 4.5186,
+        "longitud": -74.3528,
+        "altitud": 2230
+      },
+      {
+        "nombre": "Guachet\u00e1",
+        "latitud": 5.3833,
+        "longitud": -73.6833,
+        "altitud": 2650
+      },
+      {
+        "nombre": "Guaduas",
+        "latitud": 5.0703,
+        "longitud": -74.5942,
+        "altitud": 992
+      },
+      {
+        "nombre": "Guasca",
+        "latitud": 4.8656,
+        "longitud": -73.8775,
+        "altitud": 2700
+      },
+      {
+        "nombre": "Guataqu\u00ed",
+        "latitud": 4.5175,
+        "longitud": -74.7897,
+        "altitud": 320
+      },
+      {
+        "nombre": "Guatavita",
+        "latitud": 4.9347,
+        "longitud": -73.8336,
+        "altitud": 2680
+      },
+      {
+        "nombre": "Guayabal de S\u00edquima",
+        "latitud": 4.8781,
+        "longitud": -74.4664,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Guayabetal",
+        "latitud": 4.2147,
+        "longitud": -73.8175,
+        "altitud": 900
+      },
+      {
+        "nombre": "Guti\u00e9rrez",
+        "latitud": 4.1917,
+        "longitud": -74.0117,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Jerusal\u00e9n",
+        "latitud": 4.5633,
+        "longitud": -74.6958,
+        "altitud": 420
+      },
+      {
+        "nombre": "Jun\u00edn",
+        "latitud": 4.7075,
+        "longitud": -73.6958,
+        "altitud": 2300
+      },
+      {
+        "nombre": "La Calera",
+        "latitud": 4.7206,
+        "longitud": -73.9692,
+        "altitud": 2718
+      },
+      {
+        "nombre": "La Mesa",
+        "latitud": 4.6325,
+        "longitud": -74.4611,
+        "altitud": 1200
+      },
+      {
+        "nombre": "La Palma",
+        "latitud": 5.36,
+        "longitud": -74.3897,
+        "altitud": 1600
+      },
+      {
+        "nombre": "La Pe\u00f1a",
+        "latitud": 5.1992,
+        "longitud": -74.3936,
+        "altitud": 1500
+      },
+      {
+        "nombre": "La Vega",
+        "latitud": 4.9981,
+        "longitud": -74.3394,
+        "altitud": 1250
+      },
+      {
+        "nombre": "Lenguazaque",
+        "latitud": 5.3078,
+        "longitud": -73.7114,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Machet\u00e1",
+        "latitud": 5.0836,
+        "longitud": -73.615,
+        "altitud": 2700
+      },
+      {
+        "nombre": "Madrid",
+        "latitud": 4.7336,
+        "longitud": -74.2625,
+        "altitud": 2554
+      },
+      {
+        "nombre": "Manta",
+        "latitud": 5.0086,
+        "longitud": -73.5419,
+        "altitud": 1900
+      },
+      {
+        "nombre": "Medina",
+        "latitud": 4.5103,
+        "longitud": -73.3497,
+        "altitud": 540
+      },
+      {
+        "nombre": "Mosquera",
+        "latitud": 4.7053,
+        "longitud": -74.2303,
+        "altitud": 2516
+      },
+      {
+        "nombre": "Nari\u00f1o",
+        "latitud": 4.3978,
+        "longitud": -74.8225,
+        "altitud": 310
+      },
+      {
+        "nombre": "Nemoc\u00f3n",
+        "latitud": 5.0678,
+        "longitud": -73.8767,
+        "altitud": 2580
+      },
+      {
+        "nombre": "Nilo",
+        "latitud": 4.3078,
+        "longitud": -74.6211,
+        "altitud": 336
+      },
+      {
+        "nombre": "Nimaima",
+        "latitud": 5.1264,
+        "longitud": -74.3869,
+        "altitud": 1300
+      },
+      {
+        "nombre": "Nocaima",
+        "latitud": 5.0672,
+        "longitud": -74.3847,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Pacho",
+        "latitud": 5.1328,
+        "longitud": -74.1592,
+        "altitud": 2136
+      },
+      {
+        "nombre": "Paime",
+        "latitud": 5.3706,
+        "longitud": -74.1525,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Pandi",
+        "latitud": 4.1908,
+        "longitud": -74.4853,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Paratebueno",
+        "latitud": 4.3769,
+        "longitud": -73.2158,
+        "altitud": 290
+      },
+      {
+        "nombre": "Pasca",
+        "latitud": 4.3089,
+        "longitud": -74.3,
+        "altitud": 2180
+      },
+      {
+        "nombre": "Puerto Salgar",
+        "latitud": 5.4639,
+        "longitud": -74.65,
+        "altitud": 170
+      },
+      {
+        "nombre": "Pul\u00ed",
+        "latitud": 4.6814,
+        "longitud": -74.7144,
+        "altitud": 950
+      },
+      {
+        "nombre": "Quebradanegra",
+        "latitud": 5.0825,
+        "longitud": -74.5219,
+        "altitud": 1250
+      },
+      {
+        "nombre": "Quetame",
+        "latitud": 4.3303,
+        "longitud": -73.8625,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Quipile",
+        "latitud": 4.7467,
+        "longitud": -74.5325,
+        "altitud": 2010
+      },
+      {
+        "nombre": "Ricaurte",
+        "latitud": 4.2819,
+        "longitud": -74.7647,
+        "altitud": 289
+      },
+      {
+        "nombre": "San Antonio del Tequendama",
+        "latitud": 4.6169,
+        "longitud": -74.3519,
+        "altitud": 2200
+      },
+      {
+        "nombre": "San Bernardo",
+        "latitud": 4.1794,
+        "longitud": -74.4233,
+        "altitud": 2000
+      },
+      {
+        "nombre": "San Cayetano",
+        "latitud": 5.3167,
+        "longitud": -74.0719,
+        "altitud": 2000
+      },
+      {
+        "nombre": "San Francisco",
+        "latitud": 5.0008,
+        "longitud": -74.2878,
+        "altitud": 1500
+      },
+      {
+        "nombre": "San Juan de Rioseco",
+        "latitud": 4.8486,
+        "longitud": -74.6214,
+        "altitud": 1350
+      },
+      {
+        "nombre": "Sasaima",
+        "latitud": 4.9675,
+        "longitud": -74.4356,
+        "altitud": 1150
+      },
+      {
+        "nombre": "Sesquil\u00e9",
+        "latitud": 5.0447,
+        "longitud": -73.795,
+        "altitud": 2595
+      },
+      {
+        "nombre": "Sibat\u00e9",
+        "latitud": 4.4919,
+        "longitud": -74.2597,
+        "altitud": 2560
+      },
+      {
+        "nombre": "Silvania",
+        "latitud": 4.4033,
+        "longitud": -74.3886,
+        "altitud": 1470
+      },
+      {
+        "nombre": "Simijaca",
+        "latitud": 5.5044,
+        "longitud": -73.8519,
+        "altitud": 2558
+      },
+      {
+        "nombre": "Soacha",
+        "latitud": 4.5794,
+        "longitud": -74.2169,
+        "altitud": 2565
+      },
+      {
+        "nombre": "Sop\u00f3",
+        "latitud": 4.9075,
+        "longitud": -73.9386,
+        "altitud": 2650
+      },
+      {
+        "nombre": "Subachoque",
+        "latitud": 4.9278,
+        "longitud": -74.1733,
+        "altitud": 2663
+      },
+      {
+        "nombre": "Suesca",
+        "latitud": 5.1031,
+        "longitud": -73.7983,
+        "altitud": 2584
+      },
+      {
+        "nombre": "Supat\u00e1",
+        "latitud": 5.0608,
+        "longitud": -74.2378,
+        "altitud": 2000
+      },
+      {
+        "nombre": "Susa",
+        "latitud": 5.4519,
+        "longitud": -73.8122,
+        "altitud": 2655
+      },
+      {
+        "nombre": "Sutatausa",
+        "latitud": 5.2475,
+        "longitud": -73.8531,
+        "altitud": 2650
+      },
+      {
+        "nombre": "Tabio",
+        "latitud": 4.9172,
+        "longitud": -74.0967,
+        "altitud": 2569
+      },
+      {
+        "nombre": "Tausa",
+        "latitud": 5.1997,
+        "longitud": -73.8872,
+        "altitud": 2950
+      },
+      {
+        "nombre": "Tena",
+        "latitud": 4.6558,
+        "longitud": -74.3908,
+        "altitud": 1380
+      },
+      {
+        "nombre": "Tenjo",
+        "latitud": 4.8722,
+        "longitud": -74.1447,
+        "altitud": 2587
+      },
+      {
+        "nombre": "Tibacuy",
+        "latitud": 4.3472,
+        "longitud": -74.4525,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Tibirita",
+        "latitud": 5.0511,
+        "longitud": -73.5042,
+        "altitud": 2200
+      },
+      {
+        "nombre": "Tocaima",
+        "latitud": 4.4608,
+        "longitud": -74.6342,
+        "altitud": 400
+      },
+      {
+        "nombre": "Tocancip\u00e1",
+        "latitud": 4.9653,
+        "longitud": -73.9139,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Topaip\u00ed",
+        "latitud": 5.3342,
+        "longitud": -74.3031,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Ubal\u00e1",
+        "latitud": 4.7472,
+        "longitud": -73.5347,
+        "altitud": 1850
+      },
+      {
+        "nombre": "Ubaque",
+        "latitud": 4.4867,
+        "longitud": -73.9364,
+        "altitud": 1910
+      },
+      {
+        "nombre": "Ubat\u00e9",
+        "latitud": 5.3094,
+        "longitud": -73.8206,
+        "altitud": 2556
+      },
+      {
+        "nombre": "Une",
+        "latitud": 4.4039,
+        "longitud": -74.0258,
+        "altitud": 2400
+      },
+      {
+        "nombre": "\u00datica",
+        "latitud": 5.1886,
+        "longitud": -74.4806,
+        "altitud": 497
+      },
+      {
+        "nombre": "Venecia",
+        "latitud": 4.0889,
+        "longitud": -74.4775,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Vergara",
+        "latitud": 5.1178,
+        "longitud": -74.3486,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Vian\u00ed",
+        "latitud": 4.8953,
+        "longitud": -74.5331,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Villag\u00f3mez",
+        "latitud": 5.2739,
+        "longitud": -74.1958,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Villapinz\u00f3n",
+        "latitud": 5.2164,
+        "longitud": -73.5944,
+        "altitud": 2750
+      },
+      {
+        "nombre": "Villeta",
+        "latitud": 5.0089,
+        "longitud": -74.4706,
+        "altitud": 842
+      },
+      {
+        "nombre": "Viot\u00e1",
+        "latitud": 4.4364,
+        "longitud": -74.5333,
+        "altitud": 567
+      },
+      {
+        "nombre": "Yacop\u00ed",
+        "latitud": 5.4608,
+        "longitud": -74.3394,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Zipac\u00f3n",
+        "latitud": 4.7597,
+        "longitud": -74.3808,
+        "altitud": 2550
+      },
+      {
+        "nombre": "Zipaquir\u00e1",
+        "latitud": 5.0219,
+        "longitud": -74.0047,
+        "altitud": 2650
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "departamento": "C\u00f3rdoba",
+    "ciudades": [
+      {
+        "nombre": "Ayapel",
+        "latitud": 8.3125,
+        "longitud": -75.1397,
+        "altitud": 25
+      },
+      {
+        "nombre": "Buenavista",
+        "latitud": 8.2228,
+        "longitud": -75.4831,
+        "altitud": 80
+      },
+      {
+        "nombre": "Canalete",
+        "latitud": 8.6769,
+        "longitud": -76.2047,
+        "altitud": 20
+      },
+      {
+        "nombre": "Ceret\u00e9",
+        "latitud": 8.8847,
+        "longitud": -75.7906,
+        "altitud": 12
+      },
+      {
+        "nombre": "Chim\u00e1",
+        "latitud": 9.1489,
+        "longitud": -75.6281,
+        "altitud": 15
+      },
+      {
+        "nombre": "Chin\u00fa",
+        "latitud": 9.105,
+        "longitud": -75.3981,
+        "altitud": 110
+      },
+      {
+        "nombre": "Ci\u00e9naga de Oro",
+        "latitud": 8.8792,
+        "longitud": -75.6203,
+        "altitud": 15
+      },
+      {
+        "nombre": "Cotorra",
+        "latitud": 9.0386,
+        "longitud": -75.7925,
+        "altitud": 10
+      },
+      {
+        "nombre": "La Apartada",
+        "latitud": 8.0608,
+        "longitud": -75.2833,
+        "altitud": 60
+      },
+      {
+        "nombre": "Lorica",
+        "latitud": 9.2367,
+        "longitud": -75.8139,
+        "altitud": 10
+      },
+      {
+        "nombre": "Los C\u00f3rdobas",
+        "latitud": 8.8903,
+        "longitud": -76.3547,
+        "altitud": 10
+      },
+      {
+        "nombre": "Momil",
+        "latitud": 9.2392,
+        "longitud": -75.6736,
+        "altitud": 15
+      },
+      {
+        "nombre": "Montel\u00edbano",
+        "latitud": 7.9797,
+        "longitud": -75.4206,
+        "altitud": 55
+      },
+      {
+        "nombre": "Monter\u00eda",
+        "latitud": 8.7479,
+        "longitud": -75.8814,
+        "altitud": 18
+      },
+      {
+        "nombre": "Mo\u00f1itos",
+        "latitud": 9.2472,
+        "longitud": -76.135,
+        "altitud": 5
+      },
+      {
+        "nombre": "Planeta Rica",
+        "latitud": 8.4108,
+        "longitud": -75.5858,
+        "altitud": 80
+      },
+      {
+        "nombre": "Pueblo Nuevo",
+        "latitud": 8.5053,
+        "longitud": -75.5078,
+        "altitud": 95
+      },
+      {
+        "nombre": "Puerto Escondido",
+        "latitud": 9.0128,
+        "longitud": -76.265,
+        "altitud": 10
+      },
+      {
+        "nombre": "Puerto Libertador",
+        "latitud": 7.8908,
+        "longitud": -75.6725,
+        "altitud": 90
+      },
+      {
+        "nombre": "Pur\u00edsima",
+        "latitud": 9.2361,
+        "longitud": -75.7219,
+        "altitud": 10
+      },
+      {
+        "nombre": "Sahag\u00fan",
+        "latitud": 8.9461,
+        "longitud": -75.4425,
+        "altitud": 95
+      },
+      {
+        "nombre": "San Andr\u00e9s de Sotavento",
+        "latitud": 9.1222,
+        "longitud": -75.5158,
+        "altitud": 120
+      },
+      {
+        "nombre": "San Antero",
+        "latitud": 9.3744,
+        "longitud": -75.7589,
+        "altitud": 10
+      },
+      {
+        "nombre": "San Bernardo del Viento",
+        "latitud": 9.3539,
+        "longitud": -75.9522,
+        "altitud": 10
+      },
+      {
+        "nombre": "San Carlos",
+        "latitud": 8.7964,
+        "longitud": -75.6981,
+        "altitud": 85
+      },
+      {
+        "nombre": "San Jos\u00e9 de Ur\u00e9",
+        "latitud": 7.7867,
+        "longitud": -75.5333,
+        "altitud": 120
+      },
+      {
+        "nombre": "San Pelayo",
+        "latitud": 8.9581,
+        "longitud": -75.8367,
+        "altitud": 18
+      },
+      {
+        "nombre": "Tierralta",
+        "latitud": 7.8781,
+        "longitud": -76.2131,
+        "altitud": 51
+      },
+      {
+        "nombre": "Tuch\u00edn",
+        "latitud": 9.1875,
+        "longitud": -75.555,
+        "altitud": 130
+      },
+      {
+        "nombre": "Valencia",
+        "latitud": 8.2592,
+        "longitud": -76.1497,
+        "altitud": 60
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "departamento": "Guain\u00eda",
+    "ciudades": [
+      {
+        "nombre": "In\u00edrida",
+        "latitud": 3.8653,
+        "longitud": -67.9239,
+        "altitud": 95
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "departamento": "Guaviare",
+    "ciudades": [
+      {
+        "nombre": "Calamar",
+        "latitud": 1.9592,
+        "longitud": -72.6531,
+        "altitud": 200
+      },
+      {
+        "nombre": "El Retorno",
+        "latitud": 2.3306,
+        "longitud": -72.6272,
+        "altitud": 220
+      },
+      {
+        "nombre": "Miraflores",
+        "latitud": 1.3367,
+        "longitud": -71.9519,
+        "altitud": 180
+      },
+      {
+        "nombre": "San Jos\u00e9 del Guaviare",
+        "latitud": 2.5728,
+        "longitud": -72.6459,
+        "altitud": 175
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "departamento": "Huila",
+    "ciudades": [
+      {
+        "nombre": "Acevedo",
+        "latitud": 1.8364,
+        "longitud": -75.855,
+        "altitud": 1348
+      },
+      {
+        "nombre": "Agrado",
+        "latitud": 2.2578,
+        "longitud": -75.7719,
+        "altitud": 710
+      },
+      {
+        "nombre": "Aipe",
+        "latitud": 3.2219,
+        "longitud": -75.2406,
+        "altitud": 450
+      },
+      {
+        "nombre": "Algeciras",
+        "latitud": 2.5239,
+        "longitud": -75.3178,
+        "altitud": 1040
+      },
+      {
+        "nombre": "Altamira",
+        "latitud": 2.0628,
+        "longitud": -75.7875,
+        "altitud": 780
+      },
+      {
+        "nombre": "Baraya",
+        "latitud": 3.1531,
+        "longitud": -75.0531,
+        "altitud": 650
+      },
+      {
+        "nombre": "Campoalegre",
+        "latitud": 2.6864,
+        "longitud": -75.3253,
+        "altitud": 525
+      },
+      {
+        "nombre": "Colombia",
+        "latitud": 3.3756,
+        "longitud": -74.8011,
+        "altitud": 250
+      },
+      {
+        "nombre": "El Pital",
+        "latitud": 2.2667,
+        "longitud": -75.8167,
+        "altitud": 850
+      },
+      {
+        "nombre": "El\u00edas",
+        "latitud": 2.0164,
+        "longitud": -75.9386,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Garz\u00f3n",
+        "latitud": 2.1961,
+        "longitud": -75.6275,
+        "altitud": 828
+      },
+      {
+        "nombre": "Gigante",
+        "latitud": 2.3856,
+        "longitud": -75.5461,
+        "altitud": 860
+      },
+      {
+        "nombre": "Guadalupe",
+        "latitud": 2.0242,
+        "longitud": -75.7578,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Hobo",
+        "latitud": 2.5817,
+        "longitud": -75.4497,
+        "altitud": 560
+      },
+      {
+        "nombre": "\u00cdquira",
+        "latitud": 2.6489,
+        "longitud": -75.6342,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Isnos",
+        "latitud": 1.9358,
+        "longitud": -76.2153,
+        "altitud": 1700
+      },
+      {
+        "nombre": "La Argentina",
+        "latitud": 2.1978,
+        "longitud": -75.9792,
+        "altitud": 1500
+      },
+      {
+        "nombre": "La Plata",
+        "latitud": 2.3939,
+        "longitud": -76.0439,
+        "altitud": 1050
+      },
+      {
+        "nombre": "N\u00e1taga",
+        "latitud": 2.5431,
+        "longitud": -75.8089,
+        "altitud": 1850
+      },
+      {
+        "nombre": "Neiva",
+        "latitud": 2.9386,
+        "longitud": -75.2811,
+        "altitud": 442
+      },
+      {
+        "nombre": "Oporapa",
+        "latitud": 2.0233,
+        "longitud": -75.9958,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Paicol",
+        "latitud": 2.4492,
+        "longitud": -75.775,
+        "altitud": 900
+      },
+      {
+        "nombre": "Palermo",
+        "latitud": 2.8889,
+        "longitud": -75.4378,
+        "altitud": 475
+      },
+      {
+        "nombre": "Palestina",
+        "latitud": 1.7239,
+        "longitud": -76.1342,
+        "altitud": 1300
+      },
+      {
+        "nombre": "Pitalito",
+        "latitud": 1.8485,
+        "longitud": -76.05,
+        "altitud": 1318
+      },
+      {
+        "nombre": "Rivera",
+        "latitud": 2.7772,
+        "longitud": -75.2589,
+        "altitud": 700
+      },
+      {
+        "nombre": "Saladoblanco",
+        "latitud": 1.9956,
+        "longitud": -76.0436,
+        "altitud": 1550
+      },
+      {
+        "nombre": "San Agust\u00edn",
+        "latitud": 1.8803,
+        "longitud": -76.2772,
+        "altitud": 1695
+      },
+      {
+        "nombre": "Santa Mar\u00eda",
+        "latitud": 2.9397,
+        "longitud": -75.5864,
+        "altitud": 850
+      },
+      {
+        "nombre": "Suaza",
+        "latitud": 1.9775,
+        "longitud": -75.7944,
+        "altitud": 950
+      },
+      {
+        "nombre": "Tarqui",
+        "latitud": 2.1106,
+        "longitud": -75.8231,
+        "altitud": 795
+      },
+      {
+        "nombre": "Tello",
+        "latitud": 3.0664,
+        "longitud": -75.1381,
+        "altitud": 580
+      },
+      {
+        "nombre": "Teruel",
+        "latitud": 2.7417,
+        "longitud": -75.5681,
+        "altitud": 920
+      },
+      {
+        "nombre": "Tesalia",
+        "latitud": 2.4842,
+        "longitud": -75.7303,
+        "altitud": 720
+      },
+      {
+        "nombre": "Timan\u00e1",
+        "latitud": 1.9711,
+        "longitud": -75.9331,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Villavieja",
+        "latitud": 3.2197,
+        "longitud": -75.2186,
+        "altitud": 430
+      },
+      {
+        "nombre": "Yaguar\u00e1",
+        "latitud": 2.6628,
+        "longitud": -75.5175,
+        "altitud": 720
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "departamento": "La Guajira",
+    "ciudades": [
+      {
+        "nombre": "Albania",
+        "latitud": 11.1603,
+        "longitud": -72.5928,
+        "altitud": 80
+      },
+      {
+        "nombre": "Barrancas",
+        "latitud": 10.9572,
+        "longitud": -72.7944,
+        "altitud": 40
+      },
+      {
+        "nombre": "Dibulla",
+        "latitud": 11.2725,
+        "longitud": -73.3092,
+        "altitud": 10
+      },
+      {
+        "nombre": "Distracci\u00f3n",
+        "latitud": 10.8975,
+        "longitud": -72.8869,
+        "altitud": 70
+      },
+      {
+        "nombre": "El Molino",
+        "latitud": 10.6536,
+        "longitud": -72.9242,
+        "altitud": 240
+      },
+      {
+        "nombre": "Fonseca",
+        "latitud": 10.8864,
+        "longitud": -72.8489,
+        "altitud": 180
+      },
+      {
+        "nombre": "Hatonuevo",
+        "latitud": 11.0683,
+        "longitud": -72.7667,
+        "altitud": 120
+      },
+      {
+        "nombre": "La Jagua del Pilar",
+        "latitud": 10.5131,
+        "longitud": -73.0703,
+        "altitud": 260
+      },
+      {
+        "nombre": "Maicao",
+        "latitud": 11.3842,
+        "longitud": -72.2392,
+        "altitud": 40
+      },
+      {
+        "nombre": "Manaure",
+        "latitud": 11.7753,
+        "longitud": -72.4442,
+        "altitud": 5
+      },
+      {
+        "nombre": "Riohacha",
+        "latitud": 11.5444,
+        "longitud": -72.9072,
+        "altitud": 5
+      },
+      {
+        "nombre": "San Juan del Cesar",
+        "latitud": 10.7719,
+        "longitud": -73.0036,
+        "altitud": 200
+      },
+      {
+        "nombre": "Uribia",
+        "latitud": 11.7136,
+        "longitud": -72.2656,
+        "altitud": 20
+      },
+      {
+        "nombre": "Urumita",
+        "latitud": 10.5581,
+        "longitud": -73.0122,
+        "altitud": 255
+      },
+      {
+        "nombre": "Villanueva",
+        "latitud": 10.605,
+        "longitud": -72.9794,
+        "altitud": 250
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "departamento": "Magdalena",
+    "ciudades": [
+      {
+        "nombre": "Algarrobo",
+        "latitud": 10.1861,
+        "longitud": -74.0606,
+        "altitud": 20
+      },
+      {
+        "nombre": "Aracataca",
+        "latitud": 10.5911,
+        "longitud": -74.1894,
+        "altitud": 40
+      },
+      {
+        "nombre": "Ariguan\u00ed",
+        "latitud": 10.2281,
+        "longitud": -74.2106,
+        "altitud": 35
+      },
+      {
+        "nombre": "Cerro de San Antonio",
+        "latitud": 10.3256,
+        "longitud": -74.8692,
+        "altitud": 10
+      },
+      {
+        "nombre": "Chibolo",
+        "latitud": 10.0925,
+        "longitud": -74.6231,
+        "altitud": 30
+      },
+      {
+        "nombre": "Ci\u00e9naga",
+        "latitud": 11.0078,
+        "longitud": -74.2478,
+        "altitud": 5
+      },
+      {
+        "nombre": "Concordia",
+        "latitud": 10.2589,
+        "longitud": -74.8333,
+        "altitud": 20
+      },
+      {
+        "nombre": "El Banco",
+        "latitud": 9.0019,
+        "longitud": -73.9753,
+        "altitud": 25
+      },
+      {
+        "nombre": "El Pi\u00f1\u00f3n",
+        "latitud": 10.4022,
+        "longitud": -74.8231,
+        "altitud": 10
+      },
+      {
+        "nombre": "El Ret\u00e9n",
+        "latitud": 10.6119,
+        "longitud": -74.2664,
+        "altitud": 40
+      },
+      {
+        "nombre": "Fundaci\u00f3n",
+        "latitud": 10.5206,
+        "longitud": -74.1858,
+        "altitud": 45
+      },
+      {
+        "nombre": "Guamal",
+        "latitud": 9.1433,
+        "longitud": -74.2231,
+        "altitud": 25
+      },
+      {
+        "nombre": "Nueva Granada",
+        "latitud": 9.8025,
+        "longitud": -74.395,
+        "altitud": 50
+      },
+      {
+        "nombre": "Pedraza",
+        "latitud": 10.1878,
+        "longitud": -74.9156,
+        "altitud": 10
+      },
+      {
+        "nombre": "Piji\u00f1o del Carmen",
+        "latitud": 9.3333,
+        "longitud": -74.45,
+        "altitud": 30
+      },
+      {
+        "nombre": "Pivijay",
+        "latitud": 10.4628,
+        "longitud": -74.6169,
+        "altitud": 25
+      },
+      {
+        "nombre": "Plato",
+        "latitud": 9.7914,
+        "longitud": -74.7825,
+        "altitud": 20
+      },
+      {
+        "nombre": "Pueblo Viejo",
+        "latitud": 10.9969,
+        "longitud": -74.2844,
+        "altitud": 5
+      },
+      {
+        "nombre": "Remolino",
+        "latitud": 10.7014,
+        "longitud": -74.7161,
+        "altitud": 10
+      },
+      {
+        "nombre": "Sabanas de San \u00c1ngel",
+        "latitud": 10.0314,
+        "longitud": -74.2153,
+        "altitud": 70
+      },
+      {
+        "nombre": "Salamina",
+        "latitud": 10.4914,
+        "longitud": -74.7939,
+        "altitud": 10
+      },
+      {
+        "nombre": "San Sebasti\u00e1n de Buenavista",
+        "latitud": 9.2439,
+        "longitud": -74.3528,
+        "altitud": 20
+      },
+      {
+        "nombre": "San Zen\u00f3n",
+        "latitud": 9.2456,
+        "longitud": -74.4997,
+        "altitud": 15
+      },
+      {
+        "nombre": "Santa Ana",
+        "latitud": 9.3217,
+        "longitud": -74.5694,
+        "altitud": 25
+      },
+      {
+        "nombre": "Santa B\u00e1rbara de Pinto",
+        "latitud": 9.4367,
+        "longitud": -74.7042,
+        "altitud": 20
+      },
+      {
+        "nombre": "Santa Marta",
+        "latitud": 11.2408,
+        "longitud": -74.199,
+        "altitud": 6
+      },
+      {
+        "nombre": "Sitionuevo",
+        "latitud": 10.7778,
+        "longitud": -74.7206,
+        "altitud": 10
+      },
+      {
+        "nombre": "Tenerife",
+        "latitud": 9.8967,
+        "longitud": -74.8594,
+        "altitud": 25
+      },
+      {
+        "nombre": "Zapay\u00e1n",
+        "latitud": 10.13,
+        "longitud": -74.7447,
+        "altitud": 15
+      },
+      {
+        "nombre": "Zona Bananera",
+        "latitud": 10.7775,
+        "longitud": -74.1397,
+        "altitud": 35
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "departamento": "Meta",
+    "ciudades": [
+      {
+        "nombre": "Acac\u00edas",
+        "latitud": 3.9861,
+        "longitud": -73.7572,
+        "altitud": 498
+      },
+      {
+        "nombre": "Barranca de Up\u00eda",
+        "latitud": 4.5717,
+        "longitud": -72.9667,
+        "altitud": 150
+      },
+      {
+        "nombre": "Cabuyaro",
+        "latitud": 4.2917,
+        "longitud": -72.7939,
+        "altitud": 165
+      },
+      {
+        "nombre": "Castilla la Nueva",
+        "latitud": 3.8306,
+        "longitud": -73.6889,
+        "altitud": 350
+      },
+      {
+        "nombre": "Cubarral",
+        "latitud": 3.7956,
+        "longitud": -73.8408,
+        "altitud": 535
+      },
+      {
+        "nombre": "Cumaral",
+        "latitud": 4.2708,
+        "longitud": -73.4864,
+        "altitud": 452
+      },
+      {
+        "nombre": "El Calvario",
+        "latitud": 4.3536,
+        "longitud": -73.7136,
+        "altitud": 1700
+      },
+      {
+        "nombre": "El Castillo",
+        "latitud": 3.565,
+        "longitud": -73.7922,
+        "altitud": 450
+      },
+      {
+        "nombre": "El Dorado",
+        "latitud": 3.7392,
+        "longitud": -73.8311,
+        "altitud": 620
+      },
+      {
+        "nombre": "Fuente de Oro",
+        "latitud": 3.4608,
+        "longitud": -73.6125,
+        "altitud": 310
+      },
+      {
+        "nombre": "Granada",
+        "latitud": 3.5461,
+        "longitud": -73.7067,
+        "altitud": 372
+      },
+      {
+        "nombre": "Guamal",
+        "latitud": 3.88,
+        "longitud": -73.7681,
+        "altitud": 525
+      },
+      {
+        "nombre": "La Macarena",
+        "latitud": 2.1836,
+        "longitud": -73.7847,
+        "altitud": 220
+      },
+      {
+        "nombre": "La Uribe",
+        "latitud": 3.2397,
+        "longitud": -74.3522,
+        "altitud": 735
+      },
+      {
+        "nombre": "Lejan\u00edas",
+        "latitud": 3.5272,
+        "longitud": -74.0236,
+        "altitud": 650
+      },
+      {
+        "nombre": "Mapirip\u00e1n",
+        "latitud": 2.8894,
+        "longitud": -72.1347,
+        "altitud": 180
+      },
+      {
+        "nombre": "Mesetas",
+        "latitud": 3.3789,
+        "longitud": -74.0444,
+        "altitud": 650
+      },
+      {
+        "nombre": "Puerto Concordia",
+        "latitud": 2.6228,
+        "longitud": -72.76,
+        "altitud": 185
+      },
+      {
+        "nombre": "Puerto Gait\u00e1n",
+        "latitud": 4.3142,
+        "longitud": -72.0819,
+        "altitud": 150
+      },
+      {
+        "nombre": "Puerto Lleras",
+        "latitud": 3.2703,
+        "longitud": -73.375,
+        "altitud": 300
+      },
+      {
+        "nombre": "Puerto L\u00f3pez",
+        "latitud": 4.0928,
+        "longitud": -72.9567,
+        "altitud": 180
+      },
+      {
+        "nombre": "Puerto Rico",
+        "latitud": 2.9381,
+        "longitud": -73.2089,
+        "altitud": 250
+      },
+      {
+        "nombre": "Restrepo",
+        "latitud": 4.2586,
+        "longitud": -73.5625,
+        "altitud": 570
+      },
+      {
+        "nombre": "San Carlos de Guaroa",
+        "latitud": 3.7122,
+        "longitud": -73.2433,
+        "altitud": 300
+      },
+      {
+        "nombre": "San Juan de Arama",
+        "latitud": 3.3475,
+        "longitud": -73.8897,
+        "altitud": 480
+      },
+      {
+        "nombre": "San Juanito",
+        "latitud": 4.4589,
+        "longitud": -73.6764,
+        "altitud": 2100
+      },
+      {
+        "nombre": "San Mart\u00edn",
+        "latitud": 3.6972,
+        "longitud": -73.6992,
+        "altitud": 420
+      },
+      {
+        "nombre": "Villavicencio",
+        "latitud": 4.142,
+        "longitud": -73.6266,
+        "altitud": 467
+      },
+      {
+        "nombre": "Vista Hermosa",
+        "latitud": 3.1242,
+        "longitud": -73.7511,
+        "altitud": 310
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "departamento": "Nari\u00f1o",
+    "ciudades": [
+      {
+        "nombre": "Aldana",
+        "latitud": 0.8825,
+        "longitud": -77.7014,
+        "altitud": 2980
+      },
+      {
+        "nombre": "Ancuy\u00e1",
+        "latitud": 1.2631,
+        "longitud": -77.5133,
+        "altitud": 1780
+      },
+      {
+        "nombre": "Arboleda",
+        "latitud": 1.5022,
+        "longitud": -77.1375,
+        "altitud": 2500
+      },
+      {
+        "nombre": "Barbacoas",
+        "latitud": 1.6717,
+        "longitud": -78.1397,
+        "altitud": 36
+      },
+      {
+        "nombre": "Bel\u00e9n",
+        "latitud": 1.5958,
+        "longitud": -77.0072,
+        "altitud": 2500
+      },
+      {
+        "nombre": "Buesaco",
+        "latitud": 1.3836,
+        "longitud": -77.1569,
+        "altitud": 1950
+      },
+      {
+        "nombre": "Chachag\u00fc\u00ed",
+        "latitud": 1.3594,
+        "longitud": -77.2836,
+        "altitud": 1910
+      },
+      {
+        "nombre": "Col\u00f3n",
+        "latitud": 1.6372,
+        "longitud": -77.0336,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Consac\u00e1",
+        "latitud": 1.2078,
+        "longitud": -77.4631,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Contadero",
+        "latitud": 0.9308,
+        "longitud": -77.5333,
+        "altitud": 2700
+      },
+      {
+        "nombre": "C\u00f3rdoba",
+        "latitud": 0.8547,
+        "longitud": -77.5189,
+        "altitud": 2850
+      },
+      {
+        "nombre": "Cuaspud",
+        "latitud": 0.8642,
+        "longitud": -77.7297,
+        "altitud": 2950
+      },
+      {
+        "nombre": "Cumbal",
+        "latitud": 0.9094,
+        "longitud": -77.7908,
+        "altitud": 3050
+      },
+      {
+        "nombre": "Cumbitara",
+        "latitud": 1.6475,
+        "longitud": -77.5822,
+        "altitud": 1700
+      },
+      {
+        "nombre": "El Charco",
+        "latitud": 2.4806,
+        "longitud": -78.11,
+        "altitud": 5
+      },
+      {
+        "nombre": "El Pe\u00f1ol",
+        "latitud": 1.4547,
+        "longitud": -77.4369,
+        "altitud": 2400
+      },
+      {
+        "nombre": "El Rosario",
+        "latitud": 1.7381,
+        "longitud": -77.4108,
+        "altitud": 1800
+      },
+      {
+        "nombre": "El Tabl\u00f3n",
+        "latitud": 1.4269,
+        "longitud": -77.0964,
+        "altitud": 2150
+      },
+      {
+        "nombre": "El Tambo",
+        "latitud": 1.4086,
+        "longitud": -77.395,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Francisco Pizarro",
+        "latitud": 2.0408,
+        "longitud": -78.6583,
+        "altitud": 10
+      },
+      {
+        "nombre": "Funes",
+        "latitud": 1.0,
+        "longitud": -77.45,
+        "altitud": 2750
+      },
+      {
+        "nombre": "Guachucal",
+        "latitud": 0.96,
+        "longitud": -77.7319,
+        "altitud": 3000
+      },
+      {
+        "nombre": "Guaitarilla",
+        "latitud": 1.1319,
+        "longitud": -77.5475,
+        "altitud": 2700
+      },
+      {
+        "nombre": "Gualmat\u00e1n",
+        "latitud": 0.9197,
+        "longitud": -77.5672,
+        "altitud": 2800
+      },
+      {
+        "nombre": "Iles",
+        "latitud": 0.9756,
+        "longitud": -77.5219,
+        "altitud": 2800
+      },
+      {
+        "nombre": "Imu\u00e9s",
+        "latitud": 1.0619,
+        "longitud": -77.4967,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Ipiales",
+        "latitud": 0.8303,
+        "longitud": -77.6444,
+        "altitud": 2890
+      },
+      {
+        "nombre": "La Cruz",
+        "latitud": 1.6022,
+        "longitud": -76.9719,
+        "altitud": 2850
+      },
+      {
+        "nombre": "La Florida",
+        "latitud": 1.2981,
+        "longitud": -77.4092,
+        "altitud": 1850
+      },
+      {
+        "nombre": "La Llanada",
+        "latitud": 1.4736,
+        "longitud": -77.5833,
+        "altitud": 2300
+      },
+      {
+        "nombre": "La Tola",
+        "latitud": 2.3992,
+        "longitud": -78.19,
+        "altitud": 5
+      },
+      {
+        "nombre": "La Uni\u00f3n",
+        "latitud": 1.6047,
+        "longitud": -77.1319,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Leiva",
+        "latitud": 1.9347,
+        "longitud": -77.3072,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Linares",
+        "latitud": 1.3517,
+        "longitud": -77.5219,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Los Andes",
+        "latitud": 1.4953,
+        "longitud": -77.5214,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Mag\u00fc\u00ed Pay\u00e1n",
+        "latitud": 1.7672,
+        "longitud": -78.19,
+        "altitud": 30
+      },
+      {
+        "nombre": "Mallama",
+        "latitud": 1.1394,
+        "longitud": -77.8647,
+        "altitud": 2800
+      },
+      {
+        "nombre": "Mosquera",
+        "latitud": 2.5086,
+        "longitud": -78.4511,
+        "altitud": 10
+      },
+      {
+        "nombre": "Nari\u00f1o",
+        "latitud": 1.29,
+        "longitud": -77.3572,
+        "altitud": 2000
+      },
+      {
+        "nombre": "Olaya Herrera",
+        "latitud": 2.2761,
+        "longitud": -78.3406,
+        "altitud": 5
+      },
+      {
+        "nombre": "Ospina",
+        "latitud": 1.0586,
+        "longitud": -77.5661,
+        "altitud": 2700
+      },
+      {
+        "nombre": "Pasto",
+        "latitud": 1.2136,
+        "longitud": -77.2811,
+        "altitud": 2527
+      },
+      {
+        "nombre": "Policarpa",
+        "latitud": 1.6289,
+        "longitud": -77.4608,
+        "altitud": 700
+      },
+      {
+        "nombre": "Potos\u00ed",
+        "latitud": 0.8061,
+        "longitud": -77.5728,
+        "altitud": 2900
+      },
+      {
+        "nombre": "Providencia",
+        "latitud": 1.2372,
+        "longitud": -77.5983,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Puerres",
+        "latitud": 0.8858,
+        "longitud": -77.5033,
+        "altitud": 2900
+      },
+      {
+        "nombre": "Pupiales",
+        "latitud": 0.8711,
+        "longitud": -77.64,
+        "altitud": 2900
+      },
+      {
+        "nombre": "Ricaurte",
+        "latitud": 1.2139,
+        "longitud": -78.1506,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Roberto Pay\u00e1n",
+        "latitud": 1.9197,
+        "longitud": -78.3825,
+        "altitud": 20
+      },
+      {
+        "nombre": "Samaniego",
+        "latitud": 1.3389,
+        "longitud": -77.5958,
+        "altitud": 1450
+      },
+      {
+        "nombre": "San Bernardo",
+        "latitud": 1.5106,
+        "longitud": -77.0461,
+        "altitud": 2500
+      },
+      {
+        "nombre": "San Jos\u00e9 de Alb\u00e1n",
+        "latitud": 1.4731,
+        "longitud": -77.0781,
+        "altitud": 2400
+      },
+      {
+        "nombre": "San Lorenzo",
+        "latitud": 1.5039,
+        "longitud": -77.215,
+        "altitud": 2400
+      },
+      {
+        "nombre": "San Pablo",
+        "latitud": 1.6725,
+        "longitud": -77.0147,
+        "altitud": 2500
+      },
+      {
+        "nombre": "San Pedro de Cartago",
+        "latitud": 1.5517,
+        "longitud": -77.1192,
+        "altitud": 2500
+      },
+      {
+        "nombre": "Sandon\u00e1",
+        "latitud": 1.2875,
+        "longitud": -77.4725,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Santa B\u00e1rbara",
+        "latitud": 2.4519,
+        "longitud": -77.9794,
+        "altitud": 15
+      },
+      {
+        "nombre": "Santacruz",
+        "latitud": 1.5189,
+        "longitud": -78.1436,
+        "altitud": 1000
+      },
+      {
+        "nombre": "Sapuyes",
+        "latitud": 1.0381,
+        "longitud": -77.62,
+        "altitud": 2800
+      },
+      {
+        "nombre": "Taminango",
+        "latitud": 1.5714,
+        "longitud": -77.28,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Tangua",
+        "latitud": 1.0989,
+        "longitud": -77.3956,
+        "altitud": 2400
+      },
+      {
+        "nombre": "Tumaco",
+        "latitud": 1.8092,
+        "longitud": -78.7647,
+        "altitud": 2
+      },
+      {
+        "nombre": "T\u00faquerres",
+        "latitud": 1.0867,
+        "longitud": -77.6181,
+        "altitud": 3100
+      },
+      {
+        "nombre": "Yacuanquer",
+        "latitud": 1.1169,
+        "longitud": -77.4019,
+        "altitud": 2400
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "departamento": "Norte de Santander",
+    "ciudades": [
+      {
+        "nombre": "\u00c1brego",
+        "latitud": 8.08,
+        "longitud": -73.22,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Arboledas",
+        "latitud": 7.6431,
+        "longitud": -72.7994,
+        "altitud": 1550
+      },
+      {
+        "nombre": "Bochalema",
+        "latitud": 7.6125,
+        "longitud": -72.6475,
+        "altitud": 1050
+      },
+      {
+        "nombre": "Bucarasica",
+        "latitud": 8.0406,
+        "longitud": -72.8672,
+        "altitud": 960
+      },
+      {
+        "nombre": "C\u00e1chira",
+        "latitud": 7.7411,
+        "longitud": -73.0481,
+        "altitud": 1950
+      },
+      {
+        "nombre": "C\u00e1cota",
+        "latitud": 7.2678,
+        "longitud": -72.6422,
+        "altitud": 1740
+      },
+      {
+        "nombre": "Chin\u00e1cota",
+        "latitud": 7.6078,
+        "longitud": -72.6017,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Chitag\u00e1",
+        "latitud": 7.1378,
+        "longitud": -72.6647,
+        "altitud": 1850
+      },
+      {
+        "nombre": "Convenci\u00f3n",
+        "latitud": 8.8222,
+        "longitud": -73.2292,
+        "altitud": 950
+      },
+      {
+        "nombre": "C\u00facuta",
+        "latitud": 7.8939,
+        "longitud": -72.5078,
+        "altitud": 320
+      },
+      {
+        "nombre": "Cucutilla",
+        "latitud": 7.5408,
+        "longitud": -72.7717,
+        "altitud": 1350
+      },
+      {
+        "nombre": "Duran\u00eda",
+        "latitud": 7.7139,
+        "longitud": -72.6575,
+        "altitud": 1050
+      },
+      {
+        "nombre": "El Carmen",
+        "latitud": 8.5108,
+        "longitud": -73.4489,
+        "altitud": 760
+      },
+      {
+        "nombre": "El Tarra",
+        "latitud": 8.5756,
+        "longitud": -73.0944,
+        "altitud": 450
+      },
+      {
+        "nombre": "El Zulia",
+        "latitud": 7.9392,
+        "longitud": -72.6019,
+        "altitud": 220
+      },
+      {
+        "nombre": "Gramalote",
+        "latitud": 7.8875,
+        "longitud": -72.7975,
+        "altitud": 1040
+      },
+      {
+        "nombre": "Hacar\u00ed",
+        "latitud": 8.3236,
+        "longitud": -73.1467,
+        "altitud": 1050
+      },
+      {
+        "nombre": "Herr\u00e1n",
+        "latitud": 7.5069,
+        "longitud": -72.4822,
+        "altitud": 1250
+      },
+      {
+        "nombre": "La Esperanza",
+        "latitud": 7.6392,
+        "longitud": -73.3267,
+        "altitud": 1400
+      },
+      {
+        "nombre": "La Playa de Bel\u00e9n",
+        "latitud": 8.2172,
+        "longitud": -73.2383,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Labateca",
+        "latitud": 7.2911,
+        "longitud": -72.4925,
+        "altitud": 1560
+      },
+      {
+        "nombre": "Los Patios",
+        "latitud": 7.8347,
+        "longitud": -72.5033,
+        "altitud": 410
+      },
+      {
+        "nombre": "Lourdes",
+        "latitud": 7.9442,
+        "longitud": -72.8319,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Mutiscua",
+        "latitud": 7.2989,
+        "longitud": -72.7467,
+        "altitud": 2700
+      },
+      {
+        "nombre": "Oca\u00f1a",
+        "latitud": 8.2375,
+        "longitud": -73.3567,
+        "altitud": 1202
+      },
+      {
+        "nombre": "Pamplona",
+        "latitud": 7.3756,
+        "longitud": -72.6475,
+        "altitud": 2340
+      },
+      {
+        "nombre": "Pamplonita",
+        "latitud": 7.4364,
+        "longitud": -72.6406,
+        "altitud": 1780
+      },
+      {
+        "nombre": "Puerto Santander",
+        "latitud": 8.3636,
+        "longitud": -72.4069,
+        "altitud": 80
+      },
+      {
+        "nombre": "Ragonvalia",
+        "latitud": 7.5772,
+        "longitud": -72.4758,
+        "altitud": 900
+      },
+      {
+        "nombre": "Salazar de Las Palmas",
+        "latitud": 7.7844,
+        "longitud": -72.8094,
+        "altitud": 1280
+      },
+      {
+        "nombre": "San Calixto",
+        "latitud": 8.4028,
+        "longitud": -73.2069,
+        "altitud": 1600
+      },
+      {
+        "nombre": "San Cayetano",
+        "latitud": 7.8478,
+        "longitud": -72.6103,
+        "altitud": 280
+      },
+      {
+        "nombre": "Santiago",
+        "latitud": 7.8706,
+        "longitud": -72.7161,
+        "altitud": 1000
+      },
+      {
+        "nombre": "Santo Domingo de Silos",
+        "latitud": 7.2042,
+        "longitud": -72.7556,
+        "altitud": 2600
+      },
+      {
+        "nombre": "Sardinata",
+        "latitud": 8.0822,
+        "longitud": -72.8008,
+        "altitud": 330
+      },
+      {
+        "nombre": "Teorama",
+        "latitud": 8.4369,
+        "longitud": -73.2867,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Tib\u00fa",
+        "latitud": 8.6381,
+        "longitud": -72.7356,
+        "altitud": 75
+      },
+      {
+        "nombre": "Toledo",
+        "latitud": 7.3106,
+        "longitud": -72.4839,
+        "altitud": 1680
+      },
+      {
+        "nombre": "Villa Caro",
+        "latitud": 7.9153,
+        "longitud": -72.9717,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Villa del Rosario",
+        "latitud": 7.8353,
+        "longitud": -72.4742,
+        "altitud": 440
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "departamento": "Putumayo",
+    "ciudades": [
+      {
+        "nombre": "Col\u00f3n",
+        "latitud": 1.1906,
+        "longitud": -76.9736,
+        "altitud": 2120
+      },
+      {
+        "nombre": "Mocoa",
+        "latitud": 1.1494,
+        "longitud": -76.6475,
+        "altitud": 604
+      },
+      {
+        "nombre": "Orito",
+        "latitud": 0.6747,
+        "longitud": -76.8725,
+        "altitud": 310
+      },
+      {
+        "nombre": "Puerto As\u00eds",
+        "latitud": 0.505,
+        "longitud": -76.5008,
+        "altitud": 254
+      },
+      {
+        "nombre": "Puerto Caicedo",
+        "latitud": 0.6853,
+        "longitud": -76.6047,
+        "altitud": 280
+      },
+      {
+        "nombre": "Puerto Guzm\u00e1n",
+        "latitud": 0.9703,
+        "longitud": -76.5858,
+        "altitud": 350
+      },
+      {
+        "nombre": "Puerto Legu\u00edzamo",
+        "latitud": -0.1931,
+        "longitud": -74.7819,
+        "altitud": 220
+      },
+      {
+        "nombre": "San Francisco",
+        "latitud": 1.1767,
+        "longitud": -76.8789,
+        "altitud": 2100
+      },
+      {
+        "nombre": "San Miguel",
+        "latitud": 0.3397,
+        "longitud": -76.9158,
+        "altitud": 300
+      },
+      {
+        "nombre": "Santiago",
+        "latitud": 1.1489,
+        "longitud": -77.0058,
+        "altitud": 2150
+      },
+      {
+        "nombre": "Sibundoy",
+        "latitud": 1.2031,
+        "longitud": -76.9197,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Valle del Guamuez",
+        "latitud": 0.4522,
+        "longitud": -76.9194,
+        "altitud": 280
+      },
+      {
+        "nombre": "Villagarz\u00f3n",
+        "latitud": 0.8975,
+        "longitud": -76.7286,
+        "altitud": 320
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "departamento": "Quind\u00edo",
+    "ciudades": [
+      {
+        "nombre": "Armenia",
+        "latitud": 4.5339,
+        "longitud": -75.6811,
+        "altitud": 1483
+      },
+      {
+        "nombre": "Buenavista",
+        "latitud": 4.3597,
+        "longitud": -75.7386,
+        "altitud": 1470
+      },
+      {
+        "nombre": "Calarc\u00e1",
+        "latitud": 4.5294,
+        "longitud": -75.6436,
+        "altitud": 1573
+      },
+      {
+        "nombre": "Circasia",
+        "latitud": 4.6181,
+        "longitud": -75.6367,
+        "altitud": 1770
+      },
+      {
+        "nombre": "C\u00f3rdoba",
+        "latitud": 4.3925,
+        "longitud": -75.6875,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Filandia",
+        "latitud": 4.6756,
+        "longitud": -75.6592,
+        "altitud": 1923
+      },
+      {
+        "nombre": "G\u00e9nova",
+        "latitud": 4.2056,
+        "longitud": -75.7928,
+        "altitud": 1820
+      },
+      {
+        "nombre": "La Tebaida",
+        "latitud": 4.4525,
+        "longitud": -75.7914,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Montenegro",
+        "latitud": 4.5661,
+        "longitud": -75.7514,
+        "altitud": 1290
+      },
+      {
+        "nombre": "Pijao",
+        "latitud": 4.3347,
+        "longitud": -75.7047,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Quimbaya",
+        "latitud": 4.6239,
+        "longitud": -75.7628,
+        "altitud": 1340
+      },
+      {
+        "nombre": "Salento",
+        "latitud": 4.6375,
+        "longitud": -75.5703,
+        "altitud": 1895
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "departamento": "Risaralda",
+    "ciudades": [
+      {
+        "nombre": "Ap\u00eda",
+        "latitud": 5.1067,
+        "longitud": -75.9428,
+        "altitud": 1630
+      },
+      {
+        "nombre": "Balboa",
+        "latitud": 4.9497,
+        "longitud": -75.9583,
+        "altitud": 1320
+      },
+      {
+        "nombre": "Bel\u00e9n de Umbr\u00eda",
+        "latitud": 5.2006,
+        "longitud": -75.8692,
+        "altitud": 1525
+      },
+      {
+        "nombre": "Dosquebradas",
+        "latitud": 4.8394,
+        "longitud": -75.6675,
+        "altitud": 1460
+      },
+      {
+        "nombre": "Gu\u00e1tica",
+        "latitud": 5.3164,
+        "longitud": -75.7994,
+        "altitud": 1820
+      },
+      {
+        "nombre": "La Celia",
+        "latitud": 5.0033,
+        "longitud": -76.0039,
+        "altitud": 1380
+      },
+      {
+        "nombre": "La Virginia",
+        "latitud": 4.8994,
+        "longitud": -75.8836,
+        "altitud": 899
+      },
+      {
+        "nombre": "Marsella",
+        "latitud": 4.9375,
+        "longitud": -75.7378,
+        "altitud": 1575
+      },
+      {
+        "nombre": "Mistrat\u00f3",
+        "latitud": 5.2978,
+        "longitud": -75.8839,
+        "altitud": 1518
+      },
+      {
+        "nombre": "Pereira",
+        "latitud": 4.8133,
+        "longitud": -75.6961,
+        "altitud": 1411
+      },
+      {
+        "nombre": "Pueblo Rico",
+        "latitud": 5.2225,
+        "longitud": -76.0308,
+        "altitud": 1560
+      },
+      {
+        "nombre": "Quinch\u00eda",
+        "latitud": 5.3386,
+        "longitud": -75.73,
+        "altitud": 1825
+      },
+      {
+        "nombre": "Santa Rosa de Cabal",
+        "latitud": 4.8681,
+        "longitud": -75.6214,
+        "altitud": 1715
+      },
+      {
+        "nombre": "Santuario",
+        "latitud": 5.0831,
+        "longitud": -75.9653,
+        "altitud": 1700
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "departamento": "San Andr\u00e9s y Providencia",
+    "ciudades": [
+      {
+        "nombre": "Providencia y Santa Catalina Islas",
+        "latitud": 13.3533,
+        "longitud": -81.3725,
+        "altitud": 10
+      },
+      {
+        "nombre": "San Andr\u00e9s",
+        "latitud": 12.5847,
+        "longitud": -81.7006,
+        "altitud": 7
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "departamento": "Santander",
+    "ciudades": [
+      {
+        "nombre": "Aguada",
+        "latitud": 6.1625,
+        "longitud": -73.5231,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Albania",
+        "latitud": 5.7556,
+        "longitud": -73.9139,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Aratoca",
+        "latitud": 6.6936,
+        "longitud": -73.0178,
+        "altitud": 1790
+      },
+      {
+        "nombre": "Barbosa",
+        "latitud": 5.9317,
+        "longitud": -73.615,
+        "altitud": 1610
+      },
+      {
+        "nombre": "Barichara",
+        "latitud": 6.6353,
+        "longitud": -73.2231,
+        "altitud": 1336
+      },
+      {
+        "nombre": "Barrancabermeja",
+        "latitud": 7.0653,
+        "longitud": -73.8547,
+        "altitud": 75
+      },
+      {
+        "nombre": "Betulia",
+        "latitud": 6.9,
+        "longitud": -73.2833,
+        "altitud": 1600
+      },
+      {
+        "nombre": "Bol\u00edvar",
+        "latitud": 5.9897,
+        "longitud": -73.7697,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Bucaramanga",
+        "latitud": 7.1193,
+        "longitud": -73.1227,
+        "altitud": 959
+      },
+      {
+        "nombre": "Cabrera",
+        "latitud": 6.5928,
+        "longitud": -73.2528,
+        "altitud": 2100
+      },
+      {
+        "nombre": "California",
+        "latitud": 7.3472,
+        "longitud": -72.9606,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Capitanejo",
+        "latitud": 6.5283,
+        "longitud": -72.6956,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Carcas\u00ed",
+        "latitud": 6.6258,
+        "longitud": -72.6261,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Cepit\u00e1",
+        "latitud": 6.7547,
+        "longitud": -72.9728,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Cerrito",
+        "latitud": 6.8422,
+        "longitud": -72.6947,
+        "altitud": 2200
+      },
+      {
+        "nombre": "Charal\u00e1",
+        "latitud": 6.2856,
+        "longitud": -73.1472,
+        "altitud": 1290
+      },
+      {
+        "nombre": "Charta",
+        "latitud": 7.2803,
+        "longitud": -72.9675,
+        "altitud": 1900
+      },
+      {
+        "nombre": "Chima",
+        "latitud": 6.3444,
+        "longitud": -73.3747,
+        "altitud": 1600
+      },
+      {
+        "nombre": "Chipat\u00e1",
+        "latitud": 6.0617,
+        "longitud": -73.6372,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Cimitarra",
+        "latitud": 6.3161,
+        "longitud": -73.9508,
+        "altitud": 200
+      },
+      {
+        "nombre": "Concepci\u00f3n",
+        "latitud": 6.7661,
+        "longitud": -72.6953,
+        "altitud": 1900
+      },
+      {
+        "nombre": "Confines",
+        "latitud": 6.3561,
+        "longitud": -73.2425,
+        "altitud": 1600
+      },
+      {
+        "nombre": "Contrataci\u00f3n",
+        "latitud": 6.2925,
+        "longitud": -73.4736,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Coromoro",
+        "latitud": 6.2942,
+        "longitud": -73.0419,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Curit\u00ed",
+        "latitud": 6.6064,
+        "longitud": -73.0681,
+        "altitud": 1300
+      },
+      {
+        "nombre": "El Carmen de Chucur\u00ed",
+        "latitud": 6.6978,
+        "longitud": -73.5117,
+        "altitud": 1600
+      },
+      {
+        "nombre": "El Guacamayo",
+        "latitud": 6.2472,
+        "longitud": -73.4953,
+        "altitud": 1800
+      },
+      {
+        "nombre": "El Pe\u00f1\u00f3n",
+        "latitud": 6.0553,
+        "longitud": -73.8153,
+        "altitud": 1100
+      },
+      {
+        "nombre": "El Play\u00f3n",
+        "latitud": 7.4769,
+        "longitud": -73.2033,
+        "altitud": 520
+      },
+      {
+        "nombre": "El Socorro",
+        "latitud": 6.4683,
+        "longitud": -73.2611,
+        "altitud": 1230
+      },
+      {
+        "nombre": "Encino",
+        "latitud": 6.1386,
+        "longitud": -73.0994,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Enciso",
+        "latitud": 6.67,
+        "longitud": -72.7078,
+        "altitud": 1950
+      },
+      {
+        "nombre": "Flori\u00e1n",
+        "latitud": 5.8036,
+        "longitud": -73.9717,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Floridablanca",
+        "latitud": 7.0647,
+        "longitud": -73.0967,
+        "altitud": 925
+      },
+      {
+        "nombre": "Gal\u00e1n",
+        "latitud": 6.6397,
+        "longitud": -73.2869,
+        "altitud": 1300
+      },
+      {
+        "nombre": "G\u00e1mbita",
+        "latitud": 5.9494,
+        "longitud": -73.3442,
+        "altitud": 1900
+      },
+      {
+        "nombre": "Gir\u00f3n",
+        "latitud": 7.0681,
+        "longitud": -73.1692,
+        "altitud": 777
+      },
+      {
+        "nombre": "Guaca",
+        "latitud": 6.8761,
+        "longitud": -72.8556,
+        "altitud": 2000
+      },
+      {
+        "nombre": "Guadalupe",
+        "latitud": 6.2453,
+        "longitud": -73.4181,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Guapot\u00e1",
+        "latitud": 6.3092,
+        "longitud": -73.3206,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Guavat\u00e1",
+        "latitud": 5.9558,
+        "longitud": -73.6983,
+        "altitud": 2000
+      },
+      {
+        "nombre": "G\u00fcepsa",
+        "latitud": 6.0289,
+        "longitud": -73.5733,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Hato",
+        "latitud": 6.5664,
+        "longitud": -73.3581,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Jes\u00fas Mar\u00eda",
+        "latitud": 5.875,
+        "longitud": -73.7822,
+        "altitud": 1650
+      },
+      {
+        "nombre": "Jord\u00e1n",
+        "latitud": 6.7331,
+        "longitud": -73.095,
+        "altitud": 1400
+      },
+      {
+        "nombre": "La Belleza",
+        "latitud": 5.8633,
+        "longitud": -73.9644,
+        "altitud": 1800
+      },
+      {
+        "nombre": "La Paz",
+        "latitud": 6.1786,
+        "longitud": -73.5919,
+        "altitud": 1900
+      },
+      {
+        "nombre": "Land\u00e1zuri",
+        "latitud": 6.2181,
+        "longitud": -73.8111,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Lebrija",
+        "latitud": 7.1131,
+        "longitud": -73.2178,
+        "altitud": 1050
+      },
+      {
+        "nombre": "Los Santos",
+        "latitud": 6.7986,
+        "longitud": -73.0969,
+        "altitud": 1280
+      },
+      {
+        "nombre": "Macaravita",
+        "latitud": 6.5053,
+        "longitud": -72.5928,
+        "altitud": 2000
+      },
+      {
+        "nombre": "M\u00e1laga",
+        "latitud": 6.6994,
+        "longitud": -72.7322,
+        "altitud": 2200
+      },
+      {
+        "nombre": "Matanza",
+        "latitud": 7.32,
+        "longitud": -73.0164,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Mogotes",
+        "latitud": 6.475,
+        "longitud": -72.9706,
+        "altitud": 1700
+      },
+      {
+        "nombre": "Molagavita",
+        "latitud": 6.6731,
+        "longitud": -72.8089,
+        "altitud": 2200
+      },
+      {
+        "nombre": "Ocamonte",
+        "latitud": 6.3394,
+        "longitud": -73.1228,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Oiba",
+        "latitud": 6.2642,
+        "longitud": -73.2994,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Onzaga",
+        "latitud": 6.3442,
+        "longitud": -72.8158,
+        "altitud": 1900
+      },
+      {
+        "nombre": "Palmar",
+        "latitud": 6.5219,
+        "longitud": -73.2925,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Palmas del Socorro",
+        "latitud": 6.4086,
+        "longitud": -73.2878,
+        "altitud": 1600
+      },
+      {
+        "nombre": "P\u00e1ramo",
+        "latitud": 6.4372,
+        "longitud": -73.1706,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Piedecuesta",
+        "latitud": 6.9879,
+        "longitud": -73.05,
+        "altitud": 1005
+      },
+      {
+        "nombre": "Pinchote",
+        "latitud": 6.5325,
+        "longitud": -73.1731,
+        "altitud": 1350
+      },
+      {
+        "nombre": "Puente Nacional",
+        "latitud": 5.8772,
+        "longitud": -73.6786,
+        "altitud": 1620
+      },
+      {
+        "nombre": "Puerto Parra",
+        "latitud": 6.6514,
+        "longitud": -74.0542,
+        "altitud": 120
+      },
+      {
+        "nombre": "Puerto Wilches",
+        "latitud": 7.3486,
+        "longitud": -73.8967,
+        "altitud": 85
+      },
+      {
+        "nombre": "Rionegro",
+        "latitud": 7.265,
+        "longitud": -73.15,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Sabana de Torres",
+        "latitud": 7.3914,
+        "longitud": -73.4953,
+        "altitud": 150
+      },
+      {
+        "nombre": "San Andr\u00e9s",
+        "latitud": 6.8114,
+        "longitud": -72.8481,
+        "altitud": 1900
+      },
+      {
+        "nombre": "San Benito",
+        "latitud": 6.1286,
+        "longitud": -73.5083,
+        "altitud": 2000
+      },
+      {
+        "nombre": "San Gil",
+        "latitud": 6.5597,
+        "longitud": -73.1364,
+        "altitud": 1114
+      },
+      {
+        "nombre": "San Joaqu\u00edn",
+        "latitud": 6.4642,
+        "longitud": -72.8506,
+        "altitud": 1950
+      },
+      {
+        "nombre": "San Jos\u00e9 de Miranda",
+        "latitud": 6.6417,
+        "longitud": -72.7308,
+        "altitud": 2100
+      },
+      {
+        "nombre": "San Miguel",
+        "latitud": 6.575,
+        "longitud": -72.6458,
+        "altitud": 1700
+      },
+      {
+        "nombre": "San Vicente de Chucur\u00ed",
+        "latitud": 6.8833,
+        "longitud": -73.4097,
+        "altitud": 950
+      },
+      {
+        "nombre": "Santa B\u00e1rbara",
+        "latitud": 6.9908,
+        "longitud": -72.9078,
+        "altitud": 1800
+      },
+      {
+        "nombre": "Santa Helena del Op\u00f3n",
+        "latitud": 6.3411,
+        "longitud": -73.5892,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Simacota",
+        "latitud": 6.4425,
+        "longitud": -73.3361,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Suaita",
+        "latitud": 6.1033,
+        "longitud": -73.4386,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Sucre",
+        "latitud": 5.9189,
+        "longitud": -73.7919,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Surat\u00e1",
+        "latitud": 7.3672,
+        "longitud": -72.9836,
+        "altitud": 2000
+      },
+      {
+        "nombre": "Tona",
+        "latitud": 7.2053,
+        "longitud": -72.9672,
+        "altitud": 2100
+      },
+      {
+        "nombre": "Valle de San Jos\u00e9",
+        "latitud": 6.4192,
+        "longitud": -73.1464,
+        "altitud": 1250
+      },
+      {
+        "nombre": "V\u00e9lez",
+        "latitud": 6.0139,
+        "longitud": -73.6736,
+        "altitud": 1985
+      },
+      {
+        "nombre": "Vetas",
+        "latitud": 7.3092,
+        "longitud": -72.8717,
+        "altitud": 3200
+      },
+      {
+        "nombre": "Villanueva",
+        "latitud": 6.6719,
+        "longitud": -73.1747,
+        "altitud": 1350
+      },
+      {
+        "nombre": "Zapatoca",
+        "latitud": 6.8156,
+        "longitud": -73.2675,
+        "altitud": 1720
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "departamento": "Sucre",
+    "ciudades": [
+      {
+        "nombre": "Buenavista",
+        "latitud": 9.3183,
+        "longitud": -74.9736,
+        "altitud": 30
+      },
+      {
+        "nombre": "Caimito",
+        "latitud": 8.7897,
+        "longitud": -75.1353,
+        "altitud": 20
+      },
+      {
+        "nombre": "Chal\u00e1n",
+        "latitud": 9.5422,
+        "longitud": -75.3125,
+        "altitud": 150
+      },
+      {
+        "nombre": "Colos\u00f3",
+        "latitud": 9.4981,
+        "longitud": -75.3533,
+        "altitud": 180
+      },
+      {
+        "nombre": "Corozal",
+        "latitud": 9.3186,
+        "longitud": -75.2928,
+        "altitud": 92
+      },
+      {
+        "nombre": "Cove\u00f1as",
+        "latitud": 9.4003,
+        "longitud": -75.6794,
+        "altitud": 5
+      },
+      {
+        "nombre": "El Roble",
+        "latitud": 9.1017,
+        "longitud": -75.1967,
+        "altitud": 100
+      },
+      {
+        "nombre": "Galeras",
+        "latitud": 9.1583,
+        "longitud": -75.0481,
+        "altitud": 80
+      },
+      {
+        "nombre": "Guaranda",
+        "latitud": 8.4683,
+        "longitud": -74.5367,
+        "altitud": 20
+      },
+      {
+        "nombre": "La Uni\u00f3n",
+        "latitud": 9.2361,
+        "longitud": -75.3167,
+        "altitud": 120
+      },
+      {
+        "nombre": "Los Palmitos",
+        "latitud": 9.3778,
+        "longitud": -75.2675,
+        "altitud": 160
+      },
+      {
+        "nombre": "Majagual",
+        "latitud": 8.5358,
+        "longitud": -74.6292,
+        "altitud": 25
+      },
+      {
+        "nombre": "Morroa",
+        "latitud": 9.3356,
+        "longitud": -75.3042,
+        "altitud": 140
+      },
+      {
+        "nombre": "Ovejas",
+        "latitud": 9.5278,
+        "longitud": -75.2286,
+        "altitud": 200
+      },
+      {
+        "nombre": "Sampu\u00e9s",
+        "latitud": 9.1831,
+        "longitud": -75.3817,
+        "altitud": 160
+      },
+      {
+        "nombre": "San Antonio de Palmito",
+        "latitud": 9.3306,
+        "longitud": -75.5472,
+        "altitud": 60
+      },
+      {
+        "nombre": "San Benito Abad",
+        "latitud": 8.9283,
+        "longitud": -75.0278,
+        "altitud": 30
+      },
+      {
+        "nombre": "San Juan de Betulia",
+        "latitud": 9.2714,
+        "longitud": -75.2417,
+        "altitud": 80
+      },
+      {
+        "nombre": "San Marcos",
+        "latitud": 8.66,
+        "longitud": -75.1286,
+        "altitud": 25
+      },
+      {
+        "nombre": "San Onofre",
+        "latitud": 9.7353,
+        "longitud": -75.5269,
+        "altitud": 10
+      },
+      {
+        "nombre": "San Pedro",
+        "latitud": 9.3967,
+        "longitud": -75.0633,
+        "altitud": 150
+      },
+      {
+        "nombre": "Sinc\u00e9",
+        "latitud": 9.2436,
+        "longitud": -75.1469,
+        "altitud": 165
+      },
+      {
+        "nombre": "Sincelejo",
+        "latitud": 9.3047,
+        "longitud": -75.3978,
+        "altitud": 213
+      },
+      {
+        "nombre": "Sucre",
+        "latitud": 9.0383,
+        "longitud": -74.9908,
+        "altitud": 120
+      },
+      {
+        "nombre": "Tol\u00fa",
+        "latitud": 9.5239,
+        "longitud": -75.5825,
+        "altitud": 7
+      },
+      {
+        "nombre": "Tol\u00fa Viejo",
+        "latitud": 9.4525,
+        "longitud": -75.4381,
+        "altitud": 120
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "departamento": "Tolima",
+    "ciudades": [
+      {
+        "nombre": "Alpujarra",
+        "latitud": 3.3925,
+        "longitud": -74.9325,
+        "altitud": 1300
+      },
+      {
+        "nombre": "Alvarado",
+        "latitud": 4.5667,
+        "longitud": -74.9553,
+        "altitud": 439
+      },
+      {
+        "nombre": "Ambalema",
+        "latitud": 4.7847,
+        "longitud": -74.7644,
+        "altitud": 240
+      },
+      {
+        "nombre": "Anzo\u00e1tegui",
+        "latitud": 4.6297,
+        "longitud": -75.0944,
+        "altitud": 2010
+      },
+      {
+        "nombre": "Armero",
+        "latitud": 4.9675,
+        "longitud": -74.9033,
+        "altitud": 352
+      },
+      {
+        "nombre": "Ataco",
+        "latitud": 3.5914,
+        "longitud": -75.3819,
+        "altitud": 446
+      },
+      {
+        "nombre": "Cajamarca",
+        "latitud": 4.4425,
+        "longitud": -75.4267,
+        "altitud": 1814
+      },
+      {
+        "nombre": "Carmen de Apical\u00e1",
+        "latitud": 4.1533,
+        "longitud": -74.72,
+        "altitud": 328
+      },
+      {
+        "nombre": "Casabianca",
+        "latitud": 5.0781,
+        "longitud": -75.1214,
+        "altitud": 2650
+      },
+      {
+        "nombre": "Chaparral",
+        "latitud": 3.7233,
+        "longitud": -75.4831,
+        "altitud": 854
+      },
+      {
+        "nombre": "Coello",
+        "latitud": 4.2897,
+        "longitud": -74.8953,
+        "altitud": 250
+      },
+      {
+        "nombre": "Coyaima",
+        "latitud": 3.7961,
+        "longitud": -75.1942,
+        "altitud": 392
+      },
+      {
+        "nombre": "Cunday",
+        "latitud": 4.0025,
+        "longitud": -74.6925,
+        "altitud": 470
+      },
+      {
+        "nombre": "Dolores",
+        "latitud": 3.6056,
+        "longitud": -74.805,
+        "altitud": 1150
+      },
+      {
+        "nombre": "El Espinal",
+        "latitud": 4.1492,
+        "longitud": -74.8844,
+        "altitud": 323
+      },
+      {
+        "nombre": "Fal\u00e1n",
+        "latitud": 5.1239,
+        "longitud": -74.9511,
+        "altitud": 1200
+      },
+      {
+        "nombre": "Flandes",
+        "latitud": 4.2894,
+        "longitud": -74.8158,
+        "altitud": 285
+      },
+      {
+        "nombre": "Fresno",
+        "latitud": 5.1522,
+        "longitud": -75.0369,
+        "altitud": 1465
+      },
+      {
+        "nombre": "Guamo",
+        "latitud": 4.0308,
+        "longitud": -74.97,
+        "altitud": 321
+      },
+      {
+        "nombre": "Herveo",
+        "latitud": 5.0833,
+        "longitud": -75.1736,
+        "altitud": 2250
+      },
+      {
+        "nombre": "Honda",
+        "latitud": 5.2069,
+        "longitud": -74.7367,
+        "altitud": 225
+      },
+      {
+        "nombre": "Ibagu\u00e9",
+        "latitud": 4.4389,
+        "longitud": -75.2322,
+        "altitud": 1285
+      },
+      {
+        "nombre": "Icononzo",
+        "latitud": 4.1761,
+        "longitud": -74.5328,
+        "altitud": 1300
+      },
+      {
+        "nombre": "L\u00e9rida",
+        "latitud": 4.8622,
+        "longitud": -74.9094,
+        "altitud": 366
+      },
+      {
+        "nombre": "L\u00edbano",
+        "latitud": 4.9217,
+        "longitud": -75.0625,
+        "altitud": 1565
+      },
+      {
+        "nombre": "Mariquita",
+        "latitud": 5.1989,
+        "longitud": -74.8925,
+        "altitud": 495
+      },
+      {
+        "nombre": "Melgar",
+        "latitud": 4.2047,
+        "longitud": -74.6403,
+        "altitud": 323
+      },
+      {
+        "nombre": "Murillo",
+        "latitud": 4.8731,
+        "longitud": -75.1708,
+        "altitud": 2950
+      },
+      {
+        "nombre": "Natagaima",
+        "latitud": 3.6206,
+        "longitud": -75.0944,
+        "altitud": 350
+      },
+      {
+        "nombre": "Ortega",
+        "latitud": 3.9367,
+        "longitud": -75.2214,
+        "altitud": 402
+      },
+      {
+        "nombre": "Palocabildo",
+        "latitud": 5.1197,
+        "longitud": -75.0194,
+        "altitud": 1450
+      },
+      {
+        "nombre": "Piedras",
+        "latitud": 4.5403,
+        "longitud": -74.8828,
+        "altitud": 400
+      },
+      {
+        "nombre": "Planadas",
+        "latitud": 3.1972,
+        "longitud": -75.6456,
+        "altitud": 1475
+      },
+      {
+        "nombre": "Prado",
+        "latitud": 3.7325,
+        "longitud": -74.8814,
+        "altitud": 350
+      },
+      {
+        "nombre": "Purificaci\u00f3n",
+        "latitud": 3.8581,
+        "longitud": -74.9317,
+        "altitud": 330
+      },
+      {
+        "nombre": "Rioblanco",
+        "latitud": 3.5278,
+        "longitud": -75.6803,
+        "altitud": 1250
+      },
+      {
+        "nombre": "Roncesvalles",
+        "latitud": 4.0119,
+        "longitud": -75.6067,
+        "altitud": 2640
+      },
+      {
+        "nombre": "Rovira",
+        "latitud": 4.2394,
+        "longitud": -75.2394,
+        "altitud": 850
+      },
+      {
+        "nombre": "Salda\u00f1a",
+        "latitud": 3.9297,
+        "longitud": -75.0158,
+        "altitud": 320
+      },
+      {
+        "nombre": "San Antonio",
+        "latitud": 3.9156,
+        "longitud": -75.4814,
+        "altitud": 1400
+      },
+      {
+        "nombre": "San Luis",
+        "latitud": 4.1322,
+        "longitud": -75.0936,
+        "altitud": 500
+      },
+      {
+        "nombre": "Santa Isabel",
+        "latitud": 4.7267,
+        "longitud": -75.2228,
+        "altitud": 2250
+      },
+      {
+        "nombre": "Su\u00e1rez",
+        "latitud": 4.0503,
+        "longitud": -74.8347,
+        "altitud": 350
+      },
+      {
+        "nombre": "Valle de San Juan",
+        "latitud": 4.1989,
+        "longitud": -75.1167,
+        "altitud": 550
+      },
+      {
+        "nombre": "Venadillo",
+        "latitud": 4.6919,
+        "longitud": -74.9361,
+        "altitud": 360
+      },
+      {
+        "nombre": "Villahermosa",
+        "latitud": 4.9653,
+        "longitud": -75.1561,
+        "altitud": 2350
+      },
+      {
+        "nombre": "Villarrica",
+        "latitud": 3.8308,
+        "longitud": -74.6522,
+        "altitud": 450
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "departamento": "Valle del Cauca",
+    "ciudades": [
+      {
+        "nombre": "Alcal\u00e1",
+        "latitud": 4.6758,
+        "longitud": -75.7811,
+        "altitud": 1290
+      },
+      {
+        "nombre": "Andaluc\u00eda",
+        "latitud": 4.1717,
+        "longitud": -76.1669,
+        "altitud": 995
+      },
+      {
+        "nombre": "Ansermanuevo",
+        "latitud": 4.7975,
+        "longitud": -75.9958,
+        "altitud": 1530
+      },
+      {
+        "nombre": "Argelia",
+        "latitud": 4.7272,
+        "longitud": -76.1197,
+        "altitud": 1560
+      },
+      {
+        "nombre": "Bol\u00edvar",
+        "latitud": 4.3383,
+        "longitud": -76.1828,
+        "altitud": 970
+      },
+      {
+        "nombre": "Buenaventura",
+        "latitud": 3.8772,
+        "longitud": -77.0267,
+        "altitud": 7
+      },
+      {
+        "nombre": "Buga",
+        "latitud": 3.9009,
+        "longitud": -76.2978,
+        "altitud": 969
+      },
+      {
+        "nombre": "Bugalagrande",
+        "latitud": 4.2125,
+        "longitud": -76.1556,
+        "altitud": 960
+      },
+      {
+        "nombre": "Caicedonia",
+        "latitud": 4.3322,
+        "longitud": -75.8264,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Cali",
+        "latitud": 3.4516,
+        "longitud": -76.532,
+        "altitud": 1018
+      },
+      {
+        "nombre": "Calima",
+        "latitud": 3.9347,
+        "longitud": -76.5125,
+        "altitud": 1480
+      },
+      {
+        "nombre": "Candelaria",
+        "latitud": 3.4067,
+        "longitud": -76.3481,
+        "altitud": 980
+      },
+      {
+        "nombre": "Cartago",
+        "latitud": 4.7464,
+        "longitud": -75.9117,
+        "altitud": 917
+      },
+      {
+        "nombre": "Dagua",
+        "latitud": 3.6575,
+        "longitud": -76.69,
+        "altitud": 828
+      },
+      {
+        "nombre": "El \u00c1guila",
+        "latitud": 4.9136,
+        "longitud": -76.055,
+        "altitud": 1840
+      },
+      {
+        "nombre": "El Cairo",
+        "latitud": 4.745,
+        "longitud": -76.2447,
+        "altitud": 1850
+      },
+      {
+        "nombre": "El Cerrito",
+        "latitud": 3.6858,
+        "longitud": -76.3136,
+        "altitud": 987
+      },
+      {
+        "nombre": "El Dovio",
+        "latitud": 4.5117,
+        "longitud": -76.2369,
+        "altitud": 1500
+      },
+      {
+        "nombre": "Florida",
+        "latitud": 3.3275,
+        "longitud": -76.2347,
+        "altitud": 1100
+      },
+      {
+        "nombre": "Ginebra",
+        "latitud": 3.7242,
+        "longitud": -76.2683,
+        "altitud": 1050
+      },
+      {
+        "nombre": "Guacar\u00ed",
+        "latitud": 3.7628,
+        "longitud": -76.3347,
+        "altitud": 968
+      },
+      {
+        "nombre": "Jamund\u00ed",
+        "latitud": 3.2607,
+        "longitud": -76.5353,
+        "altitud": 995
+      },
+      {
+        "nombre": "La Cumbre",
+        "latitud": 3.6489,
+        "longitud": -76.5672,
+        "altitud": 1470
+      },
+      {
+        "nombre": "La Uni\u00f3n",
+        "latitud": 4.5328,
+        "longitud": -76.1031,
+        "altitud": 975
+      },
+      {
+        "nombre": "La Victoria",
+        "latitud": 4.5239,
+        "longitud": -76.0394,
+        "altitud": 950
+      },
+      {
+        "nombre": "Obando",
+        "latitud": 4.5753,
+        "longitud": -75.9492,
+        "altitud": 920
+      },
+      {
+        "nombre": "Palmira",
+        "latitud": 3.5394,
+        "longitud": -76.3036,
+        "altitud": 1001
+      },
+      {
+        "nombre": "Pradera",
+        "latitud": 3.4219,
+        "longitud": -76.2442,
+        "altitud": 1070
+      },
+      {
+        "nombre": "Restrepo",
+        "latitud": 3.8219,
+        "longitud": -76.5228,
+        "altitud": 1400
+      },
+      {
+        "nombre": "Riofr\u00edo",
+        "latitud": 4.1569,
+        "longitud": -76.2883,
+        "altitud": 960
+      },
+      {
+        "nombre": "Roldanillo",
+        "latitud": 4.4128,
+        "longitud": -76.1547,
+        "altitud": 966
+      },
+      {
+        "nombre": "San Pedro",
+        "latitud": 3.9983,
+        "longitud": -76.2275,
+        "altitud": 980
+      },
+      {
+        "nombre": "Sevilla",
+        "latitud": 4.2647,
+        "longitud": -75.9311,
+        "altitud": 1612
+      },
+      {
+        "nombre": "Toro",
+        "latitud": 4.6117,
+        "longitud": -76.0822,
+        "altitud": 960
+      },
+      {
+        "nombre": "Trujillo",
+        "latitud": 4.2117,
+        "longitud": -76.3208,
+        "altitud": 1250
+      },
+      {
+        "nombre": "Tulu\u00e1",
+        "latitud": 4.0897,
+        "longitud": -76.1953,
+        "altitud": 960
+      },
+      {
+        "nombre": "Ulloa",
+        "latitud": 4.7061,
+        "longitud": -75.7394,
+        "altitud": 1350
+      },
+      {
+        "nombre": "Versalles",
+        "latitud": 4.5758,
+        "longitud": -76.1997,
+        "altitud": 1860
+      },
+      {
+        "nombre": "Vijes",
+        "latitud": 3.6997,
+        "longitud": -76.4414,
+        "altitud": 1040
+      },
+      {
+        "nombre": "Yotoco",
+        "latitud": 3.8597,
+        "longitud": -76.3825,
+        "altitud": 972
+      },
+      {
+        "nombre": "Yumbo",
+        "latitud": 3.5825,
+        "longitud": -76.4911,
+        "altitud": 1000
+      },
+      {
+        "nombre": "Zarzal",
+        "latitud": 4.3947,
+        "longitud": -76.0714,
+        "altitud": 916
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "departamento": "Vaup\u00e9s",
+    "ciudades": [
+      {
+        "nombre": "Carur\u00fa",
+        "latitud": 1.0131,
+        "longitud": -71.2964,
+        "altitud": 180
+      },
+      {
+        "nombre": "Mit\u00fa",
+        "latitud": 1.2536,
+        "longitud": -70.2339,
+        "altitud": 183
+      },
+      {
+        "nombre": "Taraira",
+        "latitud": 0.1819,
+        "longitud": -69.9828,
+        "altitud": 120
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "departamento": "Vichada",
+    "ciudades": [
+      {
+        "nombre": "Cumaribo",
+        "latitud": 4.4453,
+        "longitud": -69.7989,
+        "altitud": 130
+      },
+      {
+        "nombre": "La Primavera",
+        "latitud": 5.4925,
+        "longitud": -70.4097,
+        "altitud": 150
+      },
+      {
+        "nombre": "Puerto Carre\u00f1o",
+        "latitud": 6.1878,
+        "longitud": -67.4858,
+        "altitud": 51
+      },
+      {
+        "nombre": "Santa Rosal\u00eda",
+        "latitud": 5.1325,
+        "longitud": -70.8631,
+        "altitud": 120
+      }
+    ]
+  }
+]

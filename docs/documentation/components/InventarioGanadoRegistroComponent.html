@@ -1,0 +1,2199 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  InventarioGanadoRegistroComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-inventario-ganado-registro</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/ReactiveFormsModule" target="_blank" >ReactiveFormsModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./inventario-ganado-registro.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./inventario-ganado-registro.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#categorias" >categorias</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#guardando" >guardando</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#razasPorFila" >razasPorFila</a>
+                            </li>
+                            <li>
+                                <a href="#razasPorTipo" >razasPorTipo</a>
+                            </li>
+                            <li>
+                                <a href="#submitted" >submitted</a>
+                            </li>
+                            <li>
+                                <a href="#success" >success</a>
+                            </li>
+                            <li>
+                                <a href="#tiposRaza" >tiposRaza</a>
+                            </li>
+                            <li>
+                                <a href="#toastVisible" >toastVisible</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#agregarRegistro" >agregarRegistro</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarCatalogos" >cargarCatalogos</a>
+                            </li>
+                            <li>
+                                <a href="#controlInvalido" >controlInvalido</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearRegistroForm" >crearRegistroForm</a>
+                            </li>
+                            <li>
+                                <a href="#eliminarRegistro" >eliminarRegistro</a>
+                            </li>
+                            <li>
+                                <a href="#formatCOP" >formatCOP</a>
+                            </li>
+                            <li>
+                                <a href="#guardar" >guardar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#mostrarToast" >mostrarToast</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#onTipoRazaChange" >onTipoRazaChange</a>
+                            </li>
+                            <li>
+                                <a href="#seleccionarTipoRaza" >seleccionarTipoRaza</a>
+                            </li>
+                            <li>
+                                <a href="#subtotalFila" >subtotalFila</a>
+                            </li>
+                            <li>
+                                <a href="#tieneErrores" >tieneErrores</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#registros" >registros</a>
+                                </li>
+                                <li>
+                                    <a href="#totalEstimado" >totalEstimado</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, categoriaService: <a href="../injectables/CategoriaGanadoService.html" target="_self">CategoriaGanadoService</a>, razaService: <a href="../injectables/RazaService.html" target="_self">RazaService</a>, inventarioService: <a href="../injectables/InventarioGanadoService.html" target="_self">InventarioGanadoService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:41</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>categoriaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CategoriaGanadoService.html" target="_self" >CategoriaGanadoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>razaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RazaService.html" target="_self" >RazaService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>inventarioService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/InventarioGanadoService.html" target="_self" >InventarioGanadoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="agregarRegistro"></a>
+                    <span class="name">
+                        <span ><b>agregarRegistro</b></span>
+                        <a href="#agregarRegistro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>agregarRegistro()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarCatalogos"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarCatalogos</b></span>
+                        <a href="#cargarCatalogos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarCatalogos()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="controlInvalido"></a>
+                    <span class="name">
+                        <span ><b>controlInvalido</b></span>
+                        <a href="#controlInvalido"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>controlInvalido(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, controlName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>controlName</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearRegistroForm"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearRegistroForm</b></span>
+                        <a href="#crearRegistroForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearRegistroForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:99</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarRegistro"></a>
+                    <span class="name">
+                        <span ><b>eliminarRegistro</b></span>
+                        <a href="#eliminarRegistro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarRegistro(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:115</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatCOP"></a>
+                    <span class="name">
+                        <span ><b>formatCOP</b></span>
+                        <a href="#formatCOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatCOP(valor: number | null | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="162"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:162</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardar"></a>
+                    <span class="name">
+                        <span ><b>guardar</b></span>
+                        <a href="#guardar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="167"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:167</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarToast"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>mostrarToast</b></span>
+                        <a href="#mostrarToast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>mostrarToast()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:208</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="215"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:215</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTipoRazaChange"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>onTipoRazaChange</b></span>
+                        <a href="#onTipoRazaChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onTipoRazaChange(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="121"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:121</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="seleccionarTipoRaza"></a>
+                    <span class="name">
+                        <span ><b>seleccionarTipoRaza</b></span>
+                        <a href="#seleccionarTipoRaza"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>seleccionarTipoRaza(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:140</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>tipo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subtotalFila"></a>
+                    <span class="name">
+                        <span ><b>subtotalFila</b></span>
+                        <a href="#subtotalFila"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>subtotalFila(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="146"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tieneErrores"></a>
+                    <span class="name">
+                        <span ><b>tieneErrores</b></span>
+                        <a href="#tieneErrores"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>tieneErrores(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="153"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:153</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="categorias"></a>
+                    <span class="name">
+                        <span ><b>categorias</b></span>
+                        <a href="#categorias"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CategoriaGanado.html" target="_self" >CategoriaGanado[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardando"></a>
+                    <span class="name">
+                        <span ><b>guardando</b></span>
+                        <a href="#guardando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="razasPorFila"></a>
+                    <span class="name">
+                        <span ><b>razasPorFila</b></span>
+                        <a href="#razasPorFila"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Raza.html" target="_self" >Raza[][]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="razasPorTipo"></a>
+                    <span class="name">
+                        <span ><b>razasPorTipo</b></span>
+                        <a href="#razasPorTipo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Map&lt;string, Raza[]&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitted"></a>
+                    <span class="name">
+                        <span ><b>submitted</b></span>
+                        <a href="#submitted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="success"></a>
+                    <span class="name">
+                        <span ><b>success</b></span>
+                        <a href="#success"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tiposRaza"></a>
+                    <span class="name">
+                        <span ><b>tiposRaza</b></span>
+                        <a href="#tiposRaza"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toastVisible"></a>
+                    <span class="name">
+                        <span ><b>toastVisible</b></span>
+                        <a href="#toastVisible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registros"></a>
+                        <span class="name"><b>registros</b><a href="#registros"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>registros()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:69</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalEstimado"></a>
+                        <span class="name"><b>totalEstimado</b><a href="#totalEstimado"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalEstimado()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/registro/inventario-ganado-registro.component.ts:73</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
+import { firstValueFrom, Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+import { Hato } from &#x27;../../../../../../core/services/hato/hato.service&#x27;;
+import { HatoStateService } from &#x27;../../../../../../core/services/ui-state/hato-state.service&#x27;;
+import {
+  CategoriaGanado,
+  CategoriaGanadoService,
+} from &#x27;../../../../../../core/services/inventario/categoria-ganado.service&#x27;;
+import { Raza, RazaService } from &#x27;../../../../../../core/services/inventario/raza.service&#x27;;
+import {
+  InventarioGanadoDTO,
+  InventarioGanadoService,
+} from &#x27;../../../../../../core/services/inventario/inventario-ganado.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../../../shared/spinner/spinner.component&#x27;;
+
+@Component({
+  selector: &#x27;app-inventario-ganado-registro&#x27;,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, SpinnerComponent],
+  templateUrl: &#x27;./inventario-ganado-registro.component.html&#x27;,
+  styleUrl: &#x27;./inventario-ganado-registro.component.css&#x27;,
+})
+export class InventarioGanadoRegistroComponent implements OnInit, OnDestroy {
+  hatoActivo: Hato | null &#x3D; null;
+  categorias: CategoriaGanado[] &#x3D; [];
+  tiposRaza: string[] &#x3D; [];
+  razasPorFila: Raza[][] &#x3D; [];
+  razasPorTipo &#x3D; new Map&lt;string, Raza[]&gt;();
+  loading &#x3D; false;
+  guardando &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  success &#x3D; &#x27;&#x27;;
+  submitted &#x3D; false;
+  toastVisible &#x3D; false;
+
+  form!: FormGroup;
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private fb: FormBuilder,
+    private hatoState: HatoStateService,
+    private categoriaService: CategoriaGanadoService,
+    private razaService: RazaService,
+    private inventarioService: InventarioGanadoService,
+  ) {
+    this.form &#x3D; this.fb.group({
+      registros: this.fb.array([]),
+    });
+  }
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      this.submitted &#x3D; false;
+      this.error &#x3D; &#x27;&#x27;;
+      this.success &#x3D; &#x27;&#x27;;
+      this.form.setControl(&#x27;registros&#x27;, this.fb.array([]));
+      this.razasPorFila &#x3D; [];
+      this.agregarRegistro();
+    });
+
+    this.cargarCatalogos();
+  }
+
+  get registros(): FormArray {
+    return this.form.get(&#x27;registros&#x27;) as FormArray;
+  }
+
+  get totalEstimado(): number {
+    return this.registros.controls.reduce((acc, ctrl) &#x3D;&gt; {
+      const cantidad &#x3D; Number(ctrl.get(&#x27;cantidad&#x27;)?.value ?? 0);
+      const valor &#x3D; Number(ctrl.get(&#x27;valorUnitario&#x27;)?.value ?? 0);
+      return acc + cantidad * valor;
+    }, 0);
+  }
+
+  private cargarCatalogos(): void {
+    this.loading &#x3D; true;
+
+    Promise.all([
+      firstValueFrom(this.categoriaService.getCategorias()),
+      firstValueFrom(this.razaService.getTiposRaza()),
+    ])
+      .then(([categorias, tipos]) &#x3D;&gt; {
+        this.categorias &#x3D; categorias;
+        this.tiposRaza &#x3D; tipos;
+        this.loading &#x3D; false;
+      })
+      .catch(() &#x3D;&gt; {
+        this.error &#x3D; &#x27;No se pudieron cargar categorías y razas.&#x27;;
+        this.loading &#x3D; false;
+      });
+  }
+
+  private crearRegistroForm(): FormGroup {
+    return this.fb.group({
+      tipoRaza: [null as string | null, [Validators.required]],
+      idRaza: [null as number | null, [Validators.required]],
+      idCategoria: [null as number | null, [Validators.required]],
+      cantidad: [0, [Validators.required, Validators.min(1)]],
+      edadPromedioMeses: [0, [Validators.required, Validators.min(0)]],
+      valorUnitario: [0, [Validators.required, Validators.min(1)]],
+    });
+  }
+
+  agregarRegistro(): void {
+    this.registros.push(this.crearRegistroForm());
+    this.razasPorFila.push([]);
+  }
+
+  eliminarRegistro(index: number): void {
+    if (this.registros.length &lt;&#x3D; 1) return;
+    this.registros.removeAt(index);
+    this.razasPorFila.splice(index, 1);
+  }
+
+  async onTipoRazaChange(index: number): Promise&lt;void&gt; {
+    const group &#x3D; this.registros.at(index) as FormGroup;
+    const tipo &#x3D; group.get(&#x27;tipoRaza&#x27;)?.value as string | null;
+
+    if (!tipo) {
+      this.razasPorFila[index] &#x3D; [];
+      group.patchValue({ idRaza: null });
+      return;
+    }
+
+    if (!this.razasPorTipo.has(tipo)) {
+      const razas &#x3D; await firstValueFrom(this.razaService.getRazasPorTipo(tipo));
+      this.razasPorTipo.set(tipo, razas);
+    }
+
+    this.razasPorFila[index] &#x3D; this.razasPorTipo.get(tipo) ?? [];
+    group.patchValue({ idRaza: null });
+  }
+
+  seleccionarTipoRaza(index: number, tipo: string): void {
+    const group &#x3D; this.registros.at(index) as FormGroup;
+    group.patchValue({ tipoRaza: tipo });
+    void this.onTipoRazaChange(index);
+  }
+
+  subtotalFila(index: number): number {
+    const group &#x3D; this.registros.at(index) as FormGroup;
+    const cantidad &#x3D; Number(group.get(&#x27;cantidad&#x27;)?.value ?? 0);
+    const valor &#x3D; Number(group.get(&#x27;valorUnitario&#x27;)?.value ?? 0);
+    return cantidad * valor;
+  }
+
+  tieneErrores(index: number): boolean {
+    return (this.registros.at(index) as FormGroup).invalid;
+  }
+
+  controlInvalido(index: number, controlName: string): boolean {
+    const control &#x3D; this.registros.at(index)?.get(controlName);
+    return !!control &amp;&amp; this.submitted &amp;&amp; control.invalid;
+  }
+
+  formatCOP(valor: number | null | undefined): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;$ 0&#x27;;
+    return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(valor);
+  }
+
+  guardar(): void {
+    this.submitted &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.success &#x3D; &#x27;&#x27;;
+
+    if (!this.hatoActivo?.idHato) {
+      this.error &#x3D; &#x27;Selecciona un hato activo para registrar ganado.&#x27;;
+      return;
+    }
+
+    if (!this.registros.length || this.form.invalid) {
+      this.registros.markAllAsTouched();
+      return;
+    }
+
+    const payload: InventarioGanadoDTO[] &#x3D; this.registros.controls.map((ctrl) &#x3D;&gt; ({
+      idHato: this.hatoActivo!.idHato!,
+      idRaza: ctrl.get(&#x27;idRaza&#x27;)?.value as number,
+      idCategoria: ctrl.get(&#x27;idCategoria&#x27;)?.value as number,
+      cantidad: Number(ctrl.get(&#x27;cantidad&#x27;)?.value ?? 0),
+      edadPromedioMeses: Number(ctrl.get(&#x27;edadPromedioMeses&#x27;)?.value ?? 0),
+      valorUnitario: Number(ctrl.get(&#x27;valorUnitario&#x27;)?.value ?? 0),
+    }));
+
+    this.guardando &#x3D; true;
+    Promise.all(payload.map((dto) &#x3D;&gt; firstValueFrom(this.inventarioService.crearRegistro(dto))))
+      .then(() &#x3D;&gt; {
+        this.guardando &#x3D; false;
+        this.success &#x3D; &#x27;Registros de inventario ganado guardados correctamente.&#x27;;
+        this.submitted &#x3D; false;
+        this.form.setControl(&#x27;registros&#x27;, this.fb.array([]));
+        this.razasPorFila &#x3D; [];
+        this.agregarRegistro();
+        this.mostrarToast();
+      })
+      .catch(() &#x3D;&gt; {
+        this.guardando &#x3D; false;
+        this.error &#x3D; &#x27;No fue posible guardar los registros de ganado.&#x27;;
+      });
+  }
+
+  private mostrarToast(): void {
+    this.toastVisible &#x3D; true;
+    setTimeout(() &#x3D;&gt; {
+      this.toastVisible &#x3D; false;
+    }, 3500);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;finanzas-page&quot;&gt;
+  &lt;div class&#x3D;&quot;toast&quot; [class.visible]&#x3D;&quot;toastVisible&quot;&gt;
+    &lt;span class&#x3D;&quot;toast-icon&quot;&gt;✓&lt;/span&gt;
+    &lt;span&gt;Registros de inventario ganado agregados exitosamente&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;page-header&quot;&gt;
+    &lt;div class&#x3D;&quot;header-left&quot;&gt;
+      &lt;span class&#x3D;&quot;page-tag&quot;&gt;Inventario ganado&lt;/span&gt;
+      &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Nuevo Registro &lt;span class&#x3D;&quot;brand&quot;&gt;Ganadero&lt;/span&gt;&lt;/h1&gt;
+      &lt;p class&#x3D;&quot;page-subtitle&quot; *ngIf&#x3D;&quot;hatoActivo&quot;&gt;
+        Hato: &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }}, {{ hatoActivo.departamento }}
+      &lt;/p&gt;
+      &lt;p class&#x3D;&quot;page-subtitle warn&quot; *ngIf&#x3D;&quot;!hatoActivo&quot;&gt;
+        ⚠️ Selecciona un hato desde el panel de control para continuar.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;header-badge&quot;&gt;🐄&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;empty-hato&quot; *ngIf&#x3D;&quot;!hatoActivo&quot;&gt;
+    &lt;span class&#x3D;&quot;empty-icon&quot;&gt;🐄&lt;/span&gt;
+    &lt;p&gt;No hay un hato seleccionado. Por favor selecciona uno desde el menú superior.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;loading-wrapper&quot; *ngIf&#x3D;&quot;hatoActivo &amp;&amp; loading&quot;&gt;
+    &lt;app-spinner size&#x3D;&quot;large&quot;&gt;&lt;/app-spinner&gt;
+    &lt;p&gt;Cargando categorías y razas...&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;p class&#x3D;&quot;error&quot; *ngIf&#x3D;&quot;error&quot;&gt;{{ error }}&lt;/p&gt;
+  &lt;p class&#x3D;&quot;success&quot; *ngIf&#x3D;&quot;success&quot;&gt;{{ success }}&lt;/p&gt;
+
+  &lt;form [formGroup]&#x3D;&quot;form&quot; (ngSubmit)&#x3D;&quot;guardar()&quot; *ngIf&#x3D;&quot;hatoActivo &amp;&amp; !loading&quot;&gt;
+    &lt;div formArrayName&#x3D;&quot;registros&quot; class&#x3D;&quot;registros-list&quot;&gt;
+      &lt;div
+        class&#x3D;&quot;registro-card&quot;
+        *ngFor&#x3D;&quot;let registro of registros.controls; let i &#x3D; index&quot;
+        [formGroupName]&#x3D;&quot;i&quot;
+        [class.error-card]&#x3D;&quot;submitted &amp;&amp; tieneErrores(i)&quot;
+      &gt;
+        &lt;div class&#x3D;&quot;card-header&quot;&gt;
+          &lt;div class&#x3D;&quot;card-num&quot;&gt;
+            &lt;span class&#x3D;&quot;num-label&quot;&gt;Registro&lt;/span&gt;
+            &lt;span class&#x3D;&quot;num-value&quot;&gt;#{{ i + 1 }}&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;button
+            class&#x3D;&quot;btn-remove&quot;
+            *ngIf&#x3D;&quot;registros.length &gt; 1&quot;
+            (click)&#x3D;&quot;eliminarRegistro(i)&quot;
+            type&#x3D;&quot;button&quot;
+            title&#x3D;&quot;Eliminar registro&quot;
+          &gt;
+            &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2.5&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+              &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M6 18L18 6M6 6l12 12&quot;/&gt;
+            &lt;/svg&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;label class&#x3D;&quot;form-label&quot;&gt;Tipo de raza &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+          &lt;div class&#x3D;&quot;tipo-selector&quot;&gt;
+            &lt;button
+              *ngFor&#x3D;&quot;let tipo of tiposRaza&quot;
+              class&#x3D;&quot;tipo-btn&quot;
+              [class.selected]&#x3D;&quot;registro.get(&#x27;tipoRaza&#x27;)?.value &#x3D;&#x3D;&#x3D; tipo&quot;
+              [class.tipo-activo]&#x3D;&quot;registro.get(&#x27;tipoRaza&#x27;)?.value &#x3D;&#x3D;&#x3D; tipo&quot;
+              (click)&#x3D;&quot;seleccionarTipoRaza(i, tipo)&quot;
+              type&#x3D;&quot;button&quot;
+            &gt;
+              &lt;span class&#x3D;&quot;tipo-icon&quot;&gt;🐮&lt;/span&gt;
+              {{ tipo }}
+            &lt;/button&gt;
+          &lt;/div&gt;
+          &lt;span class&#x3D;&quot;error-msg&quot; *ngIf&#x3D;&quot;controlInvalido(i, &#x27;tipoRaza&#x27;)&quot;&gt;Selecciona un tipo de raza&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;form-row&quot;&gt;
+          &lt;div class&#x3D;&quot;form-group flex-1&quot;&gt;
+            &lt;label class&#x3D;&quot;form-label&quot;&gt;Raza &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;div class&#x3D;&quot;select-wrapper&quot; [class.input-error]&#x3D;&quot;controlInvalido(i, &#x27;idRaza&#x27;)&quot;&gt;
+              &lt;select class&#x3D;&quot;form-select&quot; formControlName&#x3D;&quot;idRaza&quot;&gt;
+                &lt;option [ngValue]&#x3D;&quot;null&quot;&gt;Selecciona una raza&lt;/option&gt;
+                &lt;option *ngFor&#x3D;&quot;let raza of razasPorFila[i]&quot; [ngValue]&#x3D;&quot;raza.idRaza&quot;&gt;{{ raza.nombre }}&lt;/option&gt;
+              &lt;/select&gt;
+              &lt;svg class&#x3D;&quot;select-chevron&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2.5&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+                &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M19 9l-7 7-7-7&quot;/&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;error-msg&quot; *ngIf&#x3D;&quot;controlInvalido(i, &#x27;idRaza&#x27;)&quot;&gt;Selecciona una raza&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-group flex-1&quot;&gt;
+            &lt;label class&#x3D;&quot;form-label&quot;&gt;Categoría de ganado &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;div class&#x3D;&quot;select-wrapper&quot; [class.input-error]&#x3D;&quot;controlInvalido(i, &#x27;idCategoria&#x27;)&quot;&gt;
+              &lt;select class&#x3D;&quot;form-select&quot; formControlName&#x3D;&quot;idCategoria&quot;&gt;
+                &lt;option [ngValue]&#x3D;&quot;null&quot;&gt;Selecciona una categoría&lt;/option&gt;
+                &lt;option *ngFor&#x3D;&quot;let c of categorias&quot; [ngValue]&#x3D;&quot;c.idCategoria&quot;&gt;{{ c.nombreCategoria }}&lt;/option&gt;
+              &lt;/select&gt;
+              &lt;svg class&#x3D;&quot;select-chevron&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2.5&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+                &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M19 9l-7 7-7-7&quot;/&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;error-msg&quot; *ngIf&#x3D;&quot;controlInvalido(i, &#x27;idCategoria&#x27;)&quot;&gt;Selecciona una categoría&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;form-row&quot;&gt;
+          &lt;div class&#x3D;&quot;form-group flex-1&quot;&gt;
+            &lt;label class&#x3D;&quot;form-label&quot;&gt;Cantidad &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;input
+              class&#x3D;&quot;form-input&quot;
+              [class.input-error]&#x3D;&quot;controlInvalido(i, &#x27;cantidad&#x27;)&quot;
+              type&#x3D;&quot;number&quot;
+              formControlName&#x3D;&quot;cantidad&quot;
+              min&#x3D;&quot;1&quot;
+            /&gt;
+            &lt;span class&#x3D;&quot;error-msg&quot; *ngIf&#x3D;&quot;controlInvalido(i, &#x27;cantidad&#x27;)&quot;&gt;Ingresa una cantidad válida&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-group flex-1&quot;&gt;
+            &lt;label class&#x3D;&quot;form-label&quot;&gt;Edad promedio (meses) &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;input
+              class&#x3D;&quot;form-input&quot;
+              [class.input-error]&#x3D;&quot;controlInvalido(i, &#x27;edadPromedioMeses&#x27;)&quot;
+              type&#x3D;&quot;number&quot;
+              formControlName&#x3D;&quot;edadPromedioMeses&quot;
+              min&#x3D;&quot;0&quot;
+            /&gt;
+            &lt;span class&#x3D;&quot;error-msg&quot; *ngIf&#x3D;&quot;controlInvalido(i, &#x27;edadPromedioMeses&#x27;)&quot;&gt;Ingresa una edad válida&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-group flex-1&quot;&gt;
+            &lt;label class&#x3D;&quot;form-label&quot;&gt;Valor unitario (COP) &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;div class&#x3D;&quot;input-prefix-wrapper&quot; [class.input-error]&#x3D;&quot;controlInvalido(i, &#x27;valorUnitario&#x27;)&quot;&gt;
+              &lt;span class&#x3D;&quot;input-prefix&quot;&gt;$&lt;/span&gt;
+              &lt;input
+                class&#x3D;&quot;form-input prefix-input&quot;
+                type&#x3D;&quot;number&quot;
+                formControlName&#x3D;&quot;valorUnitario&quot;
+                min&#x3D;&quot;1&quot;
+                placeholder&#x3D;&quot;0&quot;
+              /&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;error-msg&quot; *ngIf&#x3D;&quot;controlInvalido(i, &#x27;valorUnitario&#x27;)&quot;&gt;Ingresa un valor válido&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;monto-calculado-row&quot;&gt;
+          &lt;span class&#x3D;&quot;monto-label&quot;&gt;Subtotal estimado&lt;/span&gt;
+          &lt;div class&#x3D;&quot;monto-calculado&quot;&gt;
+            &lt;span class&#x3D;&quot;monto-valor&quot;&gt;{{ formatCOP(subtotalFila(i)) }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;actions-row&quot;&gt;
+      &lt;button class&#x3D;&quot;btn-add&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;agregarRegistro()&quot;&gt;
+        &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2.5&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+          &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M12 4v16m8-8H4&quot;/&gt;
+        &lt;/svg&gt;
+        Añadir otro registro
+      &lt;/button&gt;
+
+      &lt;div class&#x3D;&quot;actions-right&quot;&gt;
+        &lt;span class&#x3D;&quot;registros-count&quot;&gt;{{ registros.length }} registro{{ registros.length !&#x3D;&#x3D; 1 ? &#x27;s&#x27; : &#x27;&#x27; }}&lt;/span&gt;
+        &lt;span class&#x3D;&quot;registros-total&quot;&gt;{{ formatCOP(totalEstimado) }}&lt;/span&gt;
+        &lt;button class&#x3D;&quot;btn-guardar&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;guardando&quot;&gt;
+          &lt;app-spinner *ngIf&#x3D;&quot;guardando&quot; size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+          &lt;svg *ngIf&#x3D;&quot;!guardando&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2.5&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+            &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M5 13l4 4L19 7&quot;/&gt;
+          &lt;/svg&gt;
+          {{ guardando ? &#x27;Guardando...&#x27; : &#x27;Guardar registros&#x27; }}
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="finanzas-page">  <div class="toast" [class.visible]="toastVisible">    <span class="toast-icon">✓</span>    <span>Registros de inventario ganado agregados exitosamente</span>  </div>  <div class="page-header">    <div class="header-left">      <span class="page-tag">Inventario ganado</span>      <h1 class="page-title">Nuevo Registro <span class="brand">Ganadero</span></h1>      <p class="page-subtitle" *ngIf="hatoActivo">        Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }}, {{ hatoActivo.departamento }}      </p>      <p class="page-subtitle warn" *ngIf="!hatoActivo">        ⚠️ Selecciona un hato desde el panel de control para continuar.      </p>    </div>    <div class="header-badge">🐄</div>  </div>  <div class="empty-hato" *ngIf="!hatoActivo">    <span class="empty-icon">🐄</span>    <p>No hay un hato seleccionado. Por favor selecciona uno desde el menú superior.</p>  </div>  <div class="loading-wrapper" *ngIf="hatoActivo && loading">    <app-spinner size="large"></app-spinner>    <p>Cargando categorías y razas...</p>  </div>  <p class="error" *ngIf="error">{{ error }}</p>  <p class="success" *ngIf="success">{{ success }}</p>  <form [formGroup]="form" (ngSubmit)="guardar()" *ngIf="hatoActivo && !loading">    <div formArrayName="registros" class="registros-list">      <div        class="registro-card"        *ngFor="let registro of registros.controls; let i = index"        [formGroupName]="i"        [class.error-card]="submitted && tieneErrores(i)"      >        <div class="card-header">          <div class="card-num">            <span class="num-label">Registro</span>            <span class="num-value">#{{ i + 1 }}</span>          </div>          <button            class="btn-remove"            *ngIf="registros.length > 1"            (click)="eliminarRegistro(i)"            type="button"            title="Eliminar registro"          >            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>            </svg>          </button>        </div>        <div class="form-group">          <label class="form-label">Tipo de raza <span class="required">*</span></label>          <div class="tipo-selector">            <button              *ngFor="let tipo of tiposRaza"              class="tipo-btn"              [class.selected]="registro.get(\'tipoRaza\')?.value === tipo"              [class.tipo-activo]="registro.get(\'tipoRaza\')?.value === tipo"              (click)="seleccionarTipoRaza(i, tipo)"              type="button"            >              <span class="tipo-icon">🐮</span>              {{ tipo }}            </button>          </div>          <span class="error-msg" *ngIf="controlInvalido(i, \'tipoRaza\')">Selecciona un tipo de raza</span>        </div>        <div class="form-row">          <div class="form-group flex-1">            <label class="form-label">Raza <span class="required">*</span></label>            <div class="select-wrapper" [class.input-error]="controlInvalido(i, \'idRaza\')">              <select class="form-select" formControlName="idRaza">                <option [ngValue]="null">Selecciona una raza</option>                <option *ngFor="let raza of razasPorFila[i]" [ngValue]="raza.idRaza">{{ raza.nombre }}</option>              </select>              <svg class="select-chevron" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>              </svg>            </div>            <span class="error-msg" *ngIf="controlInvalido(i, \'idRaza\')">Selecciona una raza</span>          </div>          <div class="form-group flex-1">            <label class="form-label">Categoría de ganado <span class="required">*</span></label>            <div class="select-wrapper" [class.input-error]="controlInvalido(i, \'idCategoria\')">              <select class="form-select" formControlName="idCategoria">                <option [ngValue]="null">Selecciona una categoría</option>                <option *ngFor="let c of categorias" [ngValue]="c.idCategoria">{{ c.nombreCategoria }}</option>              </select>              <svg class="select-chevron" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>              </svg>            </div>            <span class="error-msg" *ngIf="controlInvalido(i, \'idCategoria\')">Selecciona una categoría</span>          </div>        </div>        <div class="form-row">          <div class="form-group flex-1">            <label class="form-label">Cantidad <span class="required">*</span></label>            <input              class="form-input"              [class.input-error]="controlInvalido(i, \'cantidad\')"              type="number"              formControlName="cantidad"              min="1"            />            <span class="error-msg" *ngIf="controlInvalido(i, \'cantidad\')">Ingresa una cantidad válida</span>          </div>          <div class="form-group flex-1">            <label class="form-label">Edad promedio (meses) <span class="required">*</span></label>            <input              class="form-input"              [class.input-error]="controlInvalido(i, \'edadPromedioMeses\')"              type="number"              formControlName="edadPromedioMeses"              min="0"            />            <span class="error-msg" *ngIf="controlInvalido(i, \'edadPromedioMeses\')">Ingresa una edad válida</span>          </div>          <div class="form-group flex-1">            <label class="form-label">Valor unitario (COP) <span class="required">*</span></label>            <div class="input-prefix-wrapper" [class.input-error]="controlInvalido(i, \'valorUnitario\')">              <span class="input-prefix">$</span>              <input                class="form-input prefix-input"                type="number"                formControlName="valorUnitario"                min="1"                placeholder="0"              />            </div>            <span class="error-msg" *ngIf="controlInvalido(i, \'valorUnitario\')">Ingresa un valor válido</span>          </div>        </div>        <div class="monto-calculado-row">          <span class="monto-label">Subtotal estimado</span>          <div class="monto-calculado">            <span class="monto-valor">{{ formatCOP(subtotalFila(i)) }}</span>          </div>        </div>      </div>    </div>    <div class="actions-row">      <button class="btn-add" type="button" (click)="agregarRegistro()">        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>        </svg>        Añadir otro registro      </button>      <div class="actions-right">        <span class="registros-count">{{ registros.length }} registro{{ registros.length !== 1 ? \'s\' : \'\' }}</span>        <span class="registros-total">{{ formatCOP(totalEstimado) }}</span>        <button class="btn-guardar" type="submit" [disabled]="guardando">          <app-spinner *ngIf="guardando" size="small"></app-spinner>          <svg *ngIf="!guardando" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>          </svg>          {{ guardando ? \'Guardando...\' : \'Guardar registros\' }}        </button>      </div>    </div>  </form></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'InventarioGanadoRegistroComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'InventarioGanadoRegistroComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

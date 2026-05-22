@@ -1,0 +1,151 @@
+<!-- Loading -->
+<div class="loading-wrapper" data-cy="hato-loading" *ngIf="loading">
+  <app-spinner size="large" message="Cargando tus hatos..."></app-spinner>
+</div>
+
+<!-- Contenido principal (cuando tiene hatos) -->
+<div class="hato-page" data-cy="hato-page" *ngIf="!loading && tieneHatos && hatoActivo">
+  <div class="page-header">
+    <div class="header-left">
+      <span class="page-tag">Hato · Información general</span>
+      <h1 class="page-title">Mi <span class="brand">Hato</span></h1>
+      <p class="page-subtitle" data-cy="hato-nombre" *ngIf="hatoActivo">
+        <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+        {{ hatoActivo.departamento }}
+      </p>
+      <p class="page-subtitle warn" *ngIf="!hatoActivo">⚠️ No hay un hato activo seleccionado.</p>
+    </div>
+    <div class="header-right">
+      <div class="header-badge">🐄</div>
+      <button data-cy="btn-nuevo-hato" *ngIf="!esAdmin" class="btn-nuevo" (click)="irAFormulario()">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+        </svg>
+        Nuevo Hato
+      </button>
+    </div>
+  </div>
+
+  <!-- Barra de completitud -->
+  <div class="completitud-bar-wrapper" data-cy="completitud-bar">
+    <div class="completitud-info">
+      <span class="completitud-label">Completitud del registro inicial</span>
+      <span class="completitud-pct" data-cy="completitud-pct"
+        >{{ hatoActivo.porcentajeCompletitud ?? 25 }}%</span
+      >
+    </div>
+    <div class="completitud-track">
+      <div
+        class="completitud-fill"
+        [style.width.%]="hatoActivo.porcentajeCompletitud ?? 25"
+        [class.completo]="(hatoActivo.porcentajeCompletitud ?? 25) === 100"
+      ></div>
+    </div>
+    <p class="completitud-hint" *ngIf="(hatoActivo.porcentajeCompletitud ?? 25) < 100 && !esAdmin">
+      Completa el registro inicial para acceder a todas las funcionalidades
+      <button class="btn-completar" (click)="irAFormulario()">Continuar registro →</button>
+    </p>
+  </div>
+
+  <!-- Cards de info general -->
+  <div class="info-grid" data-cy="info-grid">
+    <div class="info-card" data-cy="card-ubicacion">
+      <div class="info-card-icon">📍</div>
+      <div class="info-card-body">
+        <span class="info-card-label">Ubicación</span>
+        <span class="info-card-sub">{{ hatoActivo.ciudad }}, {{ hatoActivo.departamento }}</span>
+      </div>
+    </div>
+
+    <div class="info-card" data-cy="card-altitud">
+      <div class="info-card-icon">🌄</div>
+      <div class="info-card-body">
+        <span class="info-card-label">Altitud / Trópico</span>
+        <span class="info-card-value">{{ hatoActivo.altitud }} m.s.n.m</span>
+        <span class="info-card-sub">{{ hatoActivo.tropico }}</span>
+      </div>
+    </div>
+
+    <div class="info-card" data-cy="card-area">
+      <div class="info-card-icon">🌿</div>
+      <div class="info-card-body">
+        <span class="info-card-label">Área total / Pastoreo</span>
+        <span class="info-card-value">{{ hatoActivo.areaHato }} ha</span>
+        <span class="info-card-sub">{{ hatoActivo.areaPastoreo }} ha de pastoreo</span>
+      </div>
+    </div>
+
+    <div class="info-card" data-cy="card-infraestructura">
+      <div class="info-card-icon">🏠</div>
+      <div class="info-card-body">
+        <span class="info-card-label">Infraestructura</span>
+        <span class="info-card-value">{{ hatoActivo.cantCorrales }} corrales</span>
+        <span class="info-card-sub">{{ hatoActivo.cantSalasOrdenio }} salas de ordeño</span>
+      </div>
+    </div>
+
+    <div class="info-card" data-cy="card-empleados">
+      <div class="info-card-icon">👷</div>
+      <div class="info-card-body">
+        <span class="info-card-label">Empleados</span>
+        <span class="info-card-value">{{ hatoActivo.cantEmpleadosPermanentes }} permanentes</span>
+        <span class="info-card-sub">{{ hatoActivo.cantEmpleadosTemporales }} temporales</span>
+      </div>
+    </div>
+
+    <div class="info-card" data-cy="card-almacenamiento">
+      <div class="info-card-icon">🥛</div>
+      <div class="info-card-body">
+        <span class="info-card-label">Cap. almacenamiento leche</span>
+        <span class="info-card-value">{{ hatoActivo.capacidadAlmacenarLeche }} L</span>
+        <span class="info-card-sub">Tipo: {{ hatoActivo.tipoHato }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay de bienvenida (cuando NO tiene hatos) -->
+<div class="overlay-backdrop" *ngIf="!loading && mostrarOverlay && !esAdmin">
+  <div class="overlay-card">
+    <div class="overlay-icon">🐄</div>
+    <div class="overlay-content">
+      <p class="overlay-tag">Bienvenido a Hathor</p>
+      <h2 class="overlay-title">Da el primer paso: registra tu hato</h2>
+      <p class="overlay-desc">
+        Para comenzar a gestionar tu operación financiera, necesitamos conocer los detalles de tu
+        unidad productiva. Este proceso te tomará alrededor de 10 minutos y está dividido en
+        <strong>4 secciones</strong> que puedes completar a tu propio ritmo.
+      </p>
+    </div>
+    <div class="overlay-steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <span>Información del hato</span>
+      </div>
+      <div class="step-divider"></div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <span>Inventario general</span>
+      </div>
+      <div class="step-divider"></div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <span>Producción lechera</span>
+      </div>
+      <div class="step-divider"></div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <span>Registros financieros</span>
+      </div>
+    </div>
+    <button class="btn-configurar" (click)="irAFormulario()">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+      Registrar mi hato ahora
+    </button>
+    <p class="overlay-hint">
+      Puedes pausar y continuar en cualquier momento, tus datos se guardan automáticamente.
+    </p>
+  </div>
+</div>

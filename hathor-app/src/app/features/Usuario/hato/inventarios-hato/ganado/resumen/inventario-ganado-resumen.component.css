@@ -1,0 +1,510 @@
+﻿/* ===== PAGINA ===== */
+.info-finanzas-page {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== LOADING ===== */
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+/* ===== HEADER ===== */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #052e0f, #15803d);
+  border-radius: 16px;
+  padding: 28px 36px;
+  color: #ffffff;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #86efac;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.brand {
+  color: #19e64d;
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: #bbf7d0;
+  margin: 0;
+}
+
+.page-subtitle.warn {
+  color: #fde68a;
+}
+
+.header-badge {
+  font-size: 40px;
+  width: 68px;
+  height: 68px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ===== EMPTY HATO ===== */
+.empty-hato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px;
+  background: #f9fafb;
+  border: 1px dashed #d1fae5;
+  border-radius: 16px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.empty-icon {
+  font-size: 40px;
+}
+
+.error-global {
+  color: #dc2626;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+/* ===== KPI GRID ===== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #e9f5eb;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 8px rgba(21, 128, 61, 0.04);
+}
+
+.kpi-icon {
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #f0fdf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpi-icon.ingreso-icon {
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.kpi-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kpi-value {
+  font-size: 20px;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.kpi-value.ingreso-val {
+  color: #15803d;
+}
+
+.kpi-label {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+/* ===== SECCIONES ===== */
+.section {
+  background: #ffffff;
+  border: 1px solid #e9f5eb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(21, 128, 61, 0.04);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #f0fdf4;
+  flex-wrap: wrap;
+}
+
+.section-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+}
+
+.section-badge {
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid #86efac;
+}
+
+.section-meta {
+  font-size: 12.5px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ===== TABLA ===== */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.data-table thead tr {
+  background: #f9fafb;
+  border-bottom: 1px solid #e9f5eb;
+}
+
+.data-table th {
+  padding: 11px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #6b7280;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+  color: #374151;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.data-table tbody tr:hover td {
+  background: #f9fafb;
+}
+
+.cat-nombre {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  background: #f0fdf4;
+  padding: 3px 9px;
+  border-radius: 6px;
+  border: 1px solid #d1fae5;
+  display: inline-block;
+}
+
+.cat-none {
+  color: #d1d5db;
+}
+
+.monto-cell {
+  font-weight: 800;
+  white-space: nowrap;
+}
+.ingreso-val {
+  color: #15803d;
+}
+
+.desc-text {
+  color: #9ca3af;
+  font-size: 12.5px;
+}
+
+/* ===== EMPTY SECTION ===== */
+.empty-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 40px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13.5px;
+}
+
+.empty-section span {
+  font-size: 32px;
+}
+.empty-section p {
+  margin: 0;
+}
+
+/* ===== PERFIL GRID ===== */
+.perfil-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  padding: 20px 24px;
+}
+
+.perfil-card {
+  background: #f0fdf4;
+  border: 1px solid #d1fae5;
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.perfil-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cat-cantidad {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.perfil-card__valor {
+  font-size: 18px;
+  font-weight: 900;
+  color: #15803d;
+}
+
+.perfil-card p {
+  font-size: 11.5px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ── Acciones de tabla ────────────────────────────────────── */
+.acciones-cell {
+  white-space: nowrap;
+  min-width: 120px;
+}
+.acciones-btns {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.btn-editar,
+.btn-eliminar {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.btn-editar:hover {
+  background: #dcfce7;
+}
+.btn-eliminar:hover {
+  background: #fef2f2;
+}
+.btn-eliminar:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Confirmación eliminar ────────────────────────────────── */
+.confirm-eliminar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.confirm-texto {
+  font-size: 12px;
+  font-weight: 600;
+  color: #dc2626;
+}
+.btn-confirmar-eliminar {
+  padding: 3px 10px;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-cancelar-eliminar {
+  padding: 3px 10px;
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ── Fila eliminando ──────────────────────────────────────── */
+.fila-eliminando {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ── Fila edición inline ──────────────────────────────────── */
+.fila-edicion {
+  background: #f0fdf4;
+}
+.input-edicion {
+  width: 80px;
+  padding: 5px 8px;
+  border: 1.5px solid #19e64d;
+  border-radius: 7px;
+  font-size: 13px;
+  color: #111827;
+  outline: none;
+  background: #fff;
+}
+.input-edicion:focus {
+  box-shadow: 0 0 0 3px rgba(25, 230, 77, 0.15);
+}
+.acciones-edicion {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+.btn-guardar-edicion {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: #19e64d;
+  color: #052e0f;
+  border: none;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-guardar-edicion:hover:not(:disabled) {
+  background: #15c944;
+}
+.btn-guardar-edicion:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-cancelar-edicion {
+  padding: 5px 12px;
+  background: transparent;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.error-edicion {
+  font-size: 11px;
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* ── Hints ────────────────────────────────────────────────── */
+.edad-hint {
+  font-size: 10px;
+  color: #9ca3af;
+  display: block;
+  margin-top: 2px;
+}
+.tipo-hint {
+  font-size: 11px;
+  color: #6b7280;
+  display: block;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .info-finanzas-page {
+    padding: 16px;
+  }
+  .page-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .header-badge {
+    display: none;
+  }
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .section-header {
+    flex-direction: column;
+  }
+}

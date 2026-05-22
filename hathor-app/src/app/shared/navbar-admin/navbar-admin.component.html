@@ -1,0 +1,218 @@
+<ng-container>
+  <header class="navbar-admin">
+    <!-- Izquierda: Logo -->
+    <div class="navbar-left">
+      <img src="assets/hathor-logo.png" alt="Hathor" class="navbar-logo" (click)="irHome()" />
+      <span class="navbar-divider"></span>
+      <div class="admin-badge">
+        <span class="admin-badge-icono">⚙️</span>
+        <span class="admin-badge-label">Administrador</span>
+      </div>
+    </div>
+
+    <!-- Centro: Selector en cascada -->
+    <div class="navbar-center selector-cascada">
+      <!-- Departamento -->
+      <div class="selector-wrap">
+        <button
+          class="selector-btn"
+          [class.activo]="dropdownDeptoAbierto"
+          [class.seleccionado]="departamentoSeleccionado"
+          (click)="toggleDepto()"
+        >
+          <span class="selector-icono">📍</span>
+          <span class="selector-texto">
+            {{ departamentoSeleccionado ?? 'Departamento' }}
+          </span>
+          <svg
+            class="chevron"
+            [class.rotated]="dropdownDeptoAbierto"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        @if (dropdownDeptoAbierto) {
+          <div class="selector-dropdown">
+            @if (loadingDepartamentos) {
+              <div class="dropdown-loading">
+                <app-spinner size="small"></app-spinner>
+              </div>
+            } @else if (departamentos.length === 0) {
+              <p class="dropdown-empty">Sin departamentos</p>
+            } @else {
+              @for (depto of departamentos; track depto) {
+                <button
+                  class="dropdown-item"
+                  [class.item-activo]="departamentoSeleccionado === depto"
+                  (click)="seleccionarDepartamento(depto)"
+                >
+                  {{ depto }}
+                </button>
+              }
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Flecha -->
+      <span class="selector-arrow">›</span>
+
+      <!-- Región -->
+      <div class="selector-wrap">
+        <button
+          class="selector-btn"
+          [class.activo]="dropdownRegionAbierto"
+          [class.seleccionado]="regionSeleccionada"
+          [disabled]="!departamentoSeleccionado"
+          (click)="toggleRegion()"
+        >
+          <span class="selector-icono">🏙️</span>
+          <span class="selector-texto">
+            {{ regionSeleccionada ?? 'Región' }}
+          </span>
+          <svg
+            class="chevron"
+            [class.rotated]="dropdownRegionAbierto"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        @if (dropdownRegionAbierto) {
+          <div class="selector-dropdown">
+            @if (loadingRegiones) {
+              <div class="dropdown-loading">
+                <app-spinner size="small"></app-spinner>
+              </div>
+            } @else if (regiones.length === 0) {
+              <p class="dropdown-empty">Sin regiones</p>
+            } @else {
+              @for (region of regiones; track region) {
+                <button
+                  class="dropdown-item"
+                  [class.item-activo]="regionSeleccionada === region"
+                  (click)="seleccionarRegion(region)"
+                >
+                  {{ region }}
+                </button>
+              }
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Flecha -->
+      <span class="selector-arrow">›</span>
+
+      <!-- Hato -->
+      <div class="selector-wrap">
+        <button
+          class="selector-btn"
+          [class.activo]="dropdownHatoAbierto"
+          [class.seleccionado]="hatoSeleccionado"
+          [disabled]="!regionSeleccionada"
+          (click)="toggleHato()"
+        >
+          <span class="selector-icono">🐄</span>
+          <span class="selector-texto">
+            {{ hatoSeleccionado?.nombreHato ?? 'Hato' }}
+          </span>
+          <svg
+            class="chevron"
+            [class.rotated]="dropdownHatoAbierto"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        @if (dropdownHatoAbierto) {
+          <div class="selector-dropdown selector-dropdown-hatos">
+            @if (loadingHatos) {
+              <div class="dropdown-loading">
+                <app-spinner size="small"></app-spinner>
+              </div>
+            } @else if (hatos.length === 0) {
+              <p class="dropdown-empty">Sin hatos en esta región</p>
+            } @else {
+              <div class="dropdown-header">{{ hatos.length }} hato(s) encontrado(s)</div>
+              @for (hato of hatos; track hato.idHato) {
+                <button
+                  class="dropdown-item dropdown-item-hato"
+                  [class.item-activo]="hatoSeleccionado?.idHato === hato.idHato"
+                  (click)="seleccionarHato(hato)"
+                >
+                  <div class="hato-avatar">
+                    {{ hato.nombreHato.charAt(0).toUpperCase() }}
+                  </div>
+                  <div class="hato-info">
+                    <span class="hato-nombre">{{ hato.nombreHato }}</span>
+                    <span class="hato-meta">
+                      {{ hato.escala ?? '—' }} · {{ hato.tropico ?? '—' }} ·
+                      {{ hato.porcentajeCompletitud }}%
+                    </span>
+                  </div>
+                </button>
+              }
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Derecha: Cuenta + Logout -->
+    <div class="navbar-right">
+      <button class="btn-account" (click)="irMiCuenta()">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        Mi Cuenta
+      </button>
+      <button class="btn-logout" (click)="logout()" [disabled]="logoutLoading">
+        @if (!logoutLoading) {
+          <span class="btn-inner">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            Salir
+          </span>
+        } @else {
+          <span class="btn-inner">
+            <app-spinner size="small"></app-spinner>
+            Saliendo...
+          </span>
+        }
+      </button>
+    </div>
+  </header>
+
+  <!-- Subnav -->
+  @if (seccionActiva && seccionActiva.items.length > 0) {
+    <nav class="subnav">
+      @for (item of seccionActiva.items; track item.route) {
+        <button
+          class="subnav-item"
+          [class.activo]="isSubitemActivo(item)"
+          (click)="irASubitem(item)"
+        >
+          {{ item.label }}
+        </button>
+      }
+    </nav>
+  }
+</ng-container>

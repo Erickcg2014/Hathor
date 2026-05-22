@@ -1,0 +1,177 @@
+<div class="finanzas-page">
+  <div class="toast" [class.visible]="toastVisible">
+    <span class="toast-icon">✓</span>
+    <span>Items del inventario general agregados exitosamente</span>
+  </div>
+
+  <div class="page-header">
+    <div class="header-left">
+      <span class="page-tag">Inventario general</span>
+      <h1 class="page-title">Nuevo Registro <span class="brand">de Activos</span></h1>
+      <p class="page-subtitle" *ngIf="hatoActivo">
+        Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }}, {{ hatoActivo.departamento }}
+      </p>
+      <p class="page-subtitle warn" *ngIf="!hatoActivo">
+        ⚠️ Selecciona un hato desde el panel de control para continuar.
+      </p>
+    </div>
+    <div class="header-badge">📦</div>
+  </div>
+
+  <div class="empty-hato" *ngIf="!hatoActivo">
+    <span class="empty-icon">🐄</span>
+    <p>No hay un hato seleccionado. Por favor selecciona uno desde el menú superior.</p>
+  </div>
+
+  <div class="loading-wrapper" *ngIf="hatoActivo && loading">
+    <app-spinner size="large"></app-spinner>
+    <p>Cargando categorías del inventario...</p>
+  </div>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <p class="success" *ngIf="success">{{ success }}</p>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()" *ngIf="hatoActivo && !loading">
+    <div formArrayName="registros" class="registros-list">
+      <div
+        class="registro-card"
+        *ngFor="let registro of registros.controls; let i = index"
+        [formGroupName]="i"
+        [class.error-card]="submitted && tieneErrores(i)"
+      >
+        <div class="card-header">
+          <div class="card-num">
+            <span class="num-label">Registro</span>
+            <span class="num-value">#{{ i + 1 }}</span>
+          </div>
+          <button
+            class="btn-remove"
+            *ngIf="registros.length > 1"
+            (click)="eliminarRegistro(i)"
+            type="button"
+            title="Eliminar registro"
+          >
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label class="form-label">Categoría principal <span class="required">*</span></label>
+            <div class="select-wrapper" [class.input-error]="controlInvalido(i, 'idCategoriaPadre')">
+              <select class="form-select" formControlName="idCategoriaPadre" (change)="onCategoriaPadreChange(i)">
+                <option [ngValue]="null">Selecciona una categoría principal</option>
+                <option *ngFor="let cat of categoriasPadre" [ngValue]="cat.idCategoriaInventario">
+                  {{ cat.nombre }}
+                </option>
+              </select>
+              <svg class="select-chevron" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+            <span class="error-msg" *ngIf="controlInvalido(i, 'idCategoriaPadre')">Selecciona una categoría principal</span>
+          </div>
+
+          <div class="form-group flex-1">
+            <label class="form-label">Subcategoría <span class="required">*</span></label>
+            <div class="select-wrapper" [class.input-error]="controlInvalido(i, 'idCategoriaInventario')">
+              <select class="form-select" formControlName="idCategoriaInventario" (change)="onSubcategoriaChange(i)">
+                <option [ngValue]="null">Selecciona una subcategoría</option>
+                <option *ngFor="let sub of subcategoriasPorFila[i]" [ngValue]="sub.idCategoriaInventario">
+                  {{ sub.nombre }}
+                </option>
+              </select>
+              <svg class="select-chevron" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+            <span class="error-msg" *ngIf="controlInvalido(i, 'idCategoriaInventario')">Selecciona una subcategoría</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-2">
+            <label class="form-label">Nombre del item <span class="required">*</span></label>
+            <input
+              class="form-input"
+              [class.input-error]="controlInvalido(i, 'nombreItem')"
+              type="text"
+              formControlName="nombreItem"
+              placeholder="Ej: Cerca eléctrica"
+            />
+            <span class="error-msg" *ngIf="controlInvalido(i, 'nombreItem')">Ingresa un nombre válido</span>
+          </div>
+
+          <div class="form-group flex-1">
+            <label class="form-label">Cantidad <span class="required">*</span></label>
+            <input
+              class="form-input"
+              [class.input-error]="controlInvalido(i, 'cantidad')"
+              type="number"
+              formControlName="cantidad"
+              min="1"
+            />
+            <span class="error-msg" *ngIf="controlInvalido(i, 'cantidad')">Ingresa una cantidad válida</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label class="form-label">Valor unitario (COP) <span class="required">*</span></label>
+            <div class="input-prefix-wrapper" [class.input-error]="controlInvalido(i, 'valorUnitario')">
+              <span class="input-prefix">$</span>
+              <input
+                class="form-input prefix-input"
+                type="number"
+                formControlName="valorUnitario"
+                min="1"
+                placeholder="0"
+              />
+            </div>
+            <span class="error-msg" *ngIf="controlInvalido(i, 'valorUnitario')">Ingresa un valor válido</span>
+          </div>
+
+          <div class="form-group flex-2">
+            <label class="form-label">Descripción <span class="optional">(opcional)</span></label>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="descripcion"
+              placeholder="Notas adicionales sobre el item"
+            />
+          </div>
+        </div>
+
+        <div class="monto-calculado-row">
+          <span class="monto-label">Subtotal estimado</span>
+          <div class="monto-calculado">
+            <span class="monto-valor">{{ formatCOP(subtotalFila(i)) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions-row">
+      <button class="btn-add" type="button" (click)="agregarRegistro()">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+        </svg>
+        Añadir otro item
+      </button>
+
+      <div class="actions-right">
+        <span class="registros-count">{{ registros.length }} item{{ registros.length !== 1 ? 's' : '' }}</span>
+        <span class="registros-total">{{ formatCOP(totalEstimado) }}</span>
+        <button class="btn-guardar" type="submit" [disabled]="guardando">
+          <app-spinner *ngIf="guardando" size="small"></app-spinner>
+          <svg *ngIf="!guardando" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+          {{ guardando ? 'Guardando...' : 'Guardar registros' }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

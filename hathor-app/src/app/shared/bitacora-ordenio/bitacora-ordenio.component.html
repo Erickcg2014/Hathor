@@ -1,0 +1,359 @@
+@if (visible && !esAdmin && hatoActivo) {
+  <!-- Fondo oscuro -->
+  <div class="bitacora-backdrop" (click)="cerrar()"></div>
+
+  <!-- Modal -->
+  <div class="bitacora-modal" (click)="$event.stopPropagation()">
+    <!-- ===== HEADER ===== -->
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <span class="modal-icono">📋</span>
+        <div>
+          <p class="modal-saludo">{{ saludoHora }}</p>
+          <h2 class="modal-titulo">Bitácora de ordeño</h2>
+          <p class="modal-fecha">{{ fechaHoy }}</p>
+        </div>
+      </div>
+      <button class="btn-cerrar" (click)="cerrar()">✕</button>
+    </div>
+
+    <!-- ===== STEPPER ===== -->
+    <div class="stepper">
+      <div
+        class="step"
+        [class.activo]="paso === 'produccion'"
+        [class.completado]="produccionGuardada || paso === 'venta' || paso === 'resumen'"
+      >
+        <div class="step-num">
+          @if (produccionGuardada) {
+            ✓
+          } @else {
+            1
+          }
+        </div>
+        <span class="step-label">Producción</span>
+      </div>
+      <div class="step-linea" [class.completada]="paso === 'venta' || paso === 'resumen'"></div>
+      <div
+        class="step"
+        [class.activo]="paso === 'venta'"
+        [class.completado]="ventaGuardada || paso === 'resumen'"
+      >
+        <div class="step-num">
+          @if (ventaGuardada) {
+            ✓
+          } @else {
+            2
+          }
+        </div>
+        <span class="step-label">Venta</span>
+      </div>
+      <div class="step-linea" [class.completada]="paso === 'resumen'"></div>
+      <div class="step" [class.activo]="paso === 'resumen'">
+        <div class="step-num">3</div>
+        <span class="step-label">Resumen</span>
+      </div>
+    </div>
+
+    <!-- ===== ERROR ===== -->
+    @if (error) {
+      <div class="msg-error">
+        <span>⚠️</span>
+        <p>{{ error }}</p>
+      </div>
+    }
+
+    <!-- ═══════════════════════════════════════════════
+         PASO 1: PRODUCCIÓN
+    ═══════════════════════════════════════════════ -->
+    @if (paso === 'produccion') {
+      <div class="paso-contenido">
+        <div class="paso-header">
+          <span class="paso-icono">🥛</span>
+          <div>
+            <h3 class="paso-titulo">¿Cuánta leche produciste hoy?</h3>
+            <p class="paso-desc">
+              Registra la producción de
+              <strong>{{ hatoActivo.nombreHato }}</strong>
+              del día de hoy.
+            </p>
+          </div>
+        </div>
+
+        @if (!registroProduccion.omitir) {
+          <div class="campos-grid">
+            <div class="campo-group">
+              <label class="campo-label"> Litros producidos * </label>
+              <div class="input-suffix-wrap">
+                <input
+                  type="number"
+                  class="campo-input"
+                  placeholder="Ej: 185"
+                  min="0"
+                  step="0.1"
+                  [(ngModel)]="registroProduccion.litrosProducidos"
+                />
+                <span class="input-suffix">L</span>
+              </div>
+            </div>
+
+            <div class="campo-group">
+              <label class="campo-label">
+                Vacas ordeñadas
+                <span class="campo-opcional">(opcional)</span>
+              </label>
+              <input
+                type="number"
+                class="campo-input"
+                placeholder="Ej: 25"
+                min="0"
+                [(ngModel)]="registroProduccion.vacasOrdenadas"
+              />
+            </div>
+          </div>
+
+          <!-- Preview productividad -->
+          @if (registroProduccion.litrosProducidos && registroProduccion.vacasOrdenadas) {
+            <div class="preview-kpi">
+              <span class="preview-label"> Productividad calculada: </span>
+              <span class="preview-valor">
+                {{
+                  registroProduccion.litrosProducidos / registroProduccion.vacasOrdenadas
+                    | number: '1.1-1'
+                }}
+                L/vaca/día
+              </span>
+            </div>
+          }
+        }
+
+        <!-- Toggle omitir -->
+        <div
+          class="omitir-wrap"
+          (click)="registroProduccion.omitir = !registroProduccion.omitir; error = ''"
+        >
+          <div class="toggle-pill" [class.on]="registroProduccion.omitir">
+            <div class="toggle-dot"></div>
+          </div>
+          <span class="omitir-label"> Hoy no hubo producción de leche </span>
+        </div>
+
+        <div class="paso-acciones">
+          <button class="btn-omitir" data-cy="btn-recordar-despues" (click)="cerrar()">
+            Recordar después
+          </button>
+          <button class="btn-siguiente" [disabled]="guardando" (click)="guardarProduccion()">
+            @if (guardando) {
+              Guardando...
+            } @else if (registroProduccion.omitir) {
+              Siguiente →
+            } @else {
+              💾 Guardar y continuar →
+            }
+          </button>
+        </div>
+      </div>
+    }
+
+    <!-- ═══════════════════════════════════════════════
+         PASO 2: VENTA
+    ═══════════════════════════════════════════════ -->
+    @if (paso === 'venta') {
+      <div class="paso-contenido">
+        <div class="paso-header">
+          <span class="paso-icono">💰</span>
+          <div>
+            <h3 class="paso-titulo">¿Vendiste leche hoy?</h3>
+            <p class="paso-desc">Registra si realizaste alguna venta de leche hoy.</p>
+          </div>
+        </div>
+
+        <!-- Toggle registrar venta -->
+        <div
+          class="omitir-wrap"
+          (click)="registroVenta.registrar = !registroVenta.registrar; error = ''"
+        >
+          <div class="toggle-pill" [class.on]="registroVenta.registrar">
+            <div class="toggle-dot"></div>
+          </div>
+          <span class="omitir-label"> Sí, vendí leche hoy </span>
+        </div>
+
+        @if (registroVenta.registrar) {
+          <div class="campos-grid">
+            <div class="campo-group">
+              <label class="campo-label">Litros vendidos *</label>
+              <div class="input-suffix-wrap">
+                <input
+                  type="number"
+                  class="campo-input"
+                  placeholder="Ej: 150"
+                  min="0"
+                  step="0.1"
+                  [(ngModel)]="registroVenta.litrosVendidos"
+                />
+                <span class="input-suffix">L</span>
+              </div>
+            </div>
+
+            <div class="campo-group">
+              <label class="campo-label">Precio por litro *</label>
+              <div class="input-suffix-wrap">
+                <span class="input-prefix">$</span>
+                <input
+                  type="number"
+                  class="campo-input campo-input-prefix"
+                  placeholder="Ej: 1200"
+                  min="0"
+                  [(ngModel)]="registroVenta.precioLitro"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Total calculado -->
+          @if (totalVentaHoy > 0) {
+            <div class="preview-kpi">
+              <span class="preview-label">Total venta:</span>
+              <span class="preview-valor verde">
+                {{ formatCOP(totalVentaHoy) }}
+              </span>
+            </div>
+          }
+        }
+
+        <div class="paso-acciones">
+          <button class="btn-omitir" (click)="irAPaso('produccion')">← Volver</button>
+          <button class="btn-siguiente" [disabled]="guardando" (click)="guardarVenta()">
+            @if (guardando) {
+              Guardando...
+            } @else if (!registroVenta.registrar) {
+              Siguiente →
+            } @else {
+              💾 Guardar y continuar →
+            }
+          </button>
+        </div>
+      </div>
+    }
+
+    @if (alertaProduccion) {
+      <div class="paso-contenido">
+        <div class="paso-header">
+          <span class="paso-icono">⚠️</span>
+          <div>
+            <h3 class="paso-titulo">Producción no registrada</h3>
+            <p class="paso-desc">{{ mensajeAlerta }}</p>
+          </div>
+        </div>
+
+        <div class="alerta-detalle">
+          <div class="alerta-litros">
+            <span class="alerta-litros-valor"> {{ litrosFaltantes | number: '1.1-1' }} L </span>
+            <span class="alerta-litros-label"> litros sin registrar como producción </span>
+          </div>
+        </div>
+
+        <div class="paso-acciones">
+          <button
+            class="btn-omitir"
+            [disabled]="agregandoProduccionSugerida"
+            (click)="rechazarProduccionSugerida()"
+          >
+            No, continuar sin registrar
+          </button>
+          <button
+            class="btn-siguiente"
+            [disabled]="agregandoProduccionSugerida"
+            (click)="aceptarProduccionSugerida()"
+          >
+            @if (agregandoProduccionSugerida) {
+              Guardando...
+            } @else {
+              ✅ Sí, agregar {{ litrosFaltantes | number: '1.1-1' }} L a producción
+            }
+          </button>
+        </div>
+      </div>
+    }
+
+    <!-- ═══════════════════════════════════════════════
+         PASO 3: RESUMEN
+    ═══════════════════════════════════════════════ -->
+    @if (paso === 'resumen') {
+      <div class="paso-contenido">
+        <div class="resumen-header">
+          <span class="resumen-check">✅</span>
+          <h3 class="resumen-titulo">¡Bitácora del día registrada!</h3>
+          <p class="resumen-desc">Tu información del día ha sido guardada correctamente.</p>
+        </div>
+
+        <!-- Resumen de lo registrado -->
+        <div class="resumen-items">
+          @if (produccionGuardada) {
+            <div class="resumen-item">
+              <span class="resumen-item-icono">🥛</span>
+              <div class="resumen-item-info">
+                <span class="resumen-item-label">Producción</span>
+                <span class="resumen-item-valor">
+                  {{ registroProduccion.litrosProducidos }}
+                  litros registrados
+                </span>
+              </div>
+              <span class="resumen-item-check">✓</span>
+            </div>
+          } @else {
+            <div class="resumen-item omitido">
+              <span class="resumen-item-icono">🥛</span>
+              <div class="resumen-item-info">
+                <span class="resumen-item-label">Producción</span>
+                <span class="resumen-item-valor">Sin producción hoy</span>
+              </div>
+              <span class="resumen-item-omitido">—</span>
+            </div>
+          }
+
+          @if (ventaGuardada) {
+            <div class="resumen-item">
+              <span class="resumen-item-icono">💰</span>
+              <div class="resumen-item-info">
+                <span class="resumen-item-label">Venta de leche</span>
+                <span class="resumen-item-valor">
+                  {{ registroVenta.litrosVendidos }} L ·
+                  {{ formatCOP(totalVentaHoy) }}
+                </span>
+              </div>
+              <span class="resumen-item-check">✓</span>
+            </div>
+          } @else {
+            <div class="resumen-item omitido">
+              <span class="resumen-item-icono">💰</span>
+              <div class="resumen-item-info">
+                <span class="resumen-item-label">Venta de leche</span>
+                <span class="resumen-item-valor">Sin ventas hoy</span>
+              </div>
+              <span class="resumen-item-omitido">—</span>
+            </div>
+          }
+        </div>
+
+        <!-- Inventario -->
+        <div class="inventario-sugerencia">
+          <div class="inventario-sugerencia-left">
+            <span class="inventario-icono">📦</span>
+            <div>
+              <p class="inventario-titulo">¿Cambió algo en tu inventario?</p>
+              <p class="inventario-desc">
+                Si compraste insumos, vendiste ganado o hubo cambios en tu inventario, actualízalo
+                ahora.
+              </p>
+            </div>
+          </div>
+          <button class="btn-inventario" (click)="irAInventarios()">Ir a inventarios →</button>
+        </div>
+
+        <button class="btn-finalizar" (click)="cerrar()">✓ Finalizar</button>
+      </div>
+    }
+  </div>
+}

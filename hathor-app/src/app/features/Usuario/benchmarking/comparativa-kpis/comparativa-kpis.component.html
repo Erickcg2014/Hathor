@@ -1,0 +1,187 @@
+<section class="benchmarking-page">
+  @if (loading) {
+    <div class="loading-wrapper" data-cy="benchmarking-loading">
+      <app-spinner size="large" message="Cargando benchmarking..."></app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <header class="page-header" data-cy="benchmarking-header">
+      <div class="header-left">
+        <p class="page-tag">Benchmarking · Comparativa</p>
+        <h1 class="page-title">Comparativa de <span class="brand">KPIs</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle" data-cy="benchmarking-hato-nombre">
+            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">Selecciona un hato para iniciar la comparativa.</p>
+        }
+      </div>
+
+      @if (hatoActivo) {
+        <div class="header-right">
+          <button
+            class="btn-recalcular"
+            data-cy="btn-recalcular"
+            [disabled]="calculando"
+            (click)="calcularBenchmarking()"
+          >
+            @if (calculando) {
+              <app-spinner size="small"></app-spinner>
+              Calculando... (puede tardar hasta 2 min)
+            } @else {
+              Recalcular benchmarking
+            }
+          </button>
+        </div>
+      }
+    </header>
+
+    @if (!hatoActivo) {
+      <article class="empty-card">
+        <h3>No hay hato activo</h3>
+        <p>Selecciona un hato desde el menú superior para ver su comparativa de KPIs.</p>
+      </article>
+    }
+
+    @if (error) {
+      <article class="error-card">{{ error }}</article>
+    }
+
+    @if (hatoActivo && !tieneResultados && !calculando && modoActivo === 'REFERENCIA') {
+      <article class="empty-card highlight">
+        <div>
+          <h3>Aún no tienes benchmarking calculado</h3>
+          <p>
+            Genera el cálculo inicial para comparar tus KPIs contra referencia nacional y otros
+            hatos del sistema.
+          </p>
+        </div>
+        <button class="btn-primary" (click)="calcularBenchmarking()">Calcular benchmarking</button>
+      </article>
+    }
+
+    <div class="filtros-wrapper" data-cy="filtros-wrapper">
+      <!-- Modo -->
+      <div class="filtros-modo">
+        <span class="filtros-row-label">Comparar contra</span>
+        @for (m of modos; track m.valor) {
+          <button
+            class="filtro-btn"
+            [class.activo]="modoActivo === m.valor"
+            (click)="setModo(m.valor)"
+          >
+            {{ m.label }}
+            <span class="tooltip">{{ m.descripcion }}</span>
+          </button>
+        }
+      </div>
+
+      <div class="filtros-divider"></div>
+
+      <!-- Nivel -->
+      @if (modoActivo === 'REFERENCIA') {
+        <div class="filtros-nivel">
+          <span class="filtros-row-label">Nivel</span>
+          @for (n of niveles; track n.valor) {
+            <button
+              class="filtro-btn"
+              [class.activo]="nivelActivo === n.valor"
+              (click)="setNivel(n.valor)"
+            >
+              {{ n.label }}
+              <span class="tooltip">{{ n.descripcion }}</span>
+            </button>
+          }
+        </div>
+        <div class="filtros-divider"></div>
+      }
+
+      <!-- Categoría -->
+      <div class="filtros-categoria">
+        <span class="filtros-row-label">Categoría</span>
+        @for (c of categorias; track c.valor) {
+          <button
+            class="filtro-btn"
+            [class.activo]="categoriaActiva === c.valor"
+            (click)="setCategoria(c.valor)"
+          >
+            {{ c.label }}
+            <span class="tooltip">{{ c.descripcion }}</span>
+          </button>
+        }
+      </div>
+
+      <!-- Filtros aplicados -->
+      @if (filtrosAplicados.length > 0) {
+        <div class="filtros-divider"></div>
+        <div class="filtros-aplicados">
+          <span class="filtros-aplicados-label">Filtros activos</span>
+          @for (f of filtrosAplicados; track f.texto) {
+            <span [class]="'filtro-tag filtro-tag--' + f.tipo">{{ f.texto }}</span>
+          }
+        </div>
+      }
+    </div>
+
+    @if (tieneResultados || modoActivo === 'PLATAFORMA') {
+      <!-- Resumen — solo en modo REFERENCIA -->
+      @if (modoActivo === 'REFERENCIA') {
+        <div class="summary-grid" data-cy="summary-grid">
+          <article class="summary-card" data-cy="summary-kpis-comparados">
+            <div class="summary-icono">📊</div>
+            <div class="summary-info">
+              <span class="summary-value">{{ resultados.length }}</span>
+              <span class="summary-label">KPIs comparados</span>
+            </div>
+          </article>
+
+          <article class="summary-card" data-cy="summary-con-referencia">
+            <div class="summary-icono">🎯</div>
+            <div class="summary-info">
+              <span class="summary-value">{{ totalComparadosReferencia }}</span>
+              <span class="summary-label">Con benchmark referencia</span>
+            </div>
+          </article>
+
+          <article class="summary-card destaca" data-cy="summary-kpis-optimos">
+            <div class="summary-icono">✅</div>
+            <div class="summary-info">
+              <span class="summary-value verde">
+                {{ kpisOptimos }}
+              </span>
+              <span class="summary-label">KPIs óptimos</span>
+            </div>
+          </article>
+
+          <article class="summary-card" data-cy="summary-fecha-calculo">
+            <div class="summary-icono">📅</div>
+            <div class="summary-info">
+              <span class="summary-value fecha">
+                {{ fechaCalculo | date: 'dd/MM/yyyy' }}
+              </span>
+              <span class="summary-label">Fecha de cálculo</span>
+            </div>
+          </article>
+        </div>
+      }
+
+      <!-- Gráficas estándar — solo en modo REFERENCIA -->
+      @if (modoActivo === 'REFERENCIA') {
+        <app-graficas-benchmarking
+          [resultados]="resultados"
+          [modo]="modoActivo"
+          [categoriaFiltro]="categoriaActiva"
+        >
+        </app-graficas-benchmarking>
+      }
+
+      <!-- Benchmark global — solo en modo PLATAFORMA -->
+      @if (modoActivo === 'PLATAFORMA') {
+        <app-benchmark-global [idHato]="hatoActivo!.idHato ?? ''"> </app-benchmark-global>
+      }
+    }
+  }
+</section>

@@ -1,0 +1,40 @@
+<section id="como-funciona" class="bg-green-50 py-16 sm:py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs sm:text-sm tracking-[0.14em] font-semibold text-green-600 uppercase">Proceso</p>
+      <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 leading-tight">¿Cómo funciona Hathor?</h2>
+      <p class="mt-4 text-base sm:text-lg text-emerald-800/80 leading-relaxed">
+        En cuatro simples pasos, transforma datos en decisiones inteligentes para tu hato lechero.
+      </p>
+    </div>
+
+    <div class="relative mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+      <div class="hidden xl:block step-line" aria-hidden="true"></div>
+
+      <article *ngFor="let step of steps" class="relative rounded-2xl bg-white border border-emerald-100 p-6 text-center shadow-sm">
+        <div class="mx-auto relative h-14 w-14 rounded-2xl bg-emerald-900 flex items-center justify-center text-hathor-green">
+          <span class="absolute -top-2 -right-2 h-6 min-w-6 px-1 rounded-full bg-hathor-green text-[11px] font-bold text-emerald-950 flex items-center justify-center">{{ step.number }}</span>
+
+          <svg *ngIf="step.icon === 'upload'" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0l-4 4m4-4l4 4" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3" />
+          </svg>
+          <svg *ngIf="step.icon === 'process'" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 3h6M9 21h6M4 9v6M20 9v6" />
+            <rect x="8" y="8" width="8" height="8" rx="1" />
+          </svg>
+          <svg *ngIf="step.icon === 'chart'" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 15v-4m5 4V7m5 8v-2" />
+          </svg>
+          <svg *ngIf="step.icon === 'idea'" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 18h6M10 22h4M12 2a7 7 0 00-4 13.75c.5.35 1 .95 1 1.57V18h6v-.68c0-.62.5-1.22 1-1.57A7 7 0 0012 2z" />
+          </svg>
+        </div>
+
+        <h3 class="mt-5 text-2xl font-extrabold text-emerald-950">{{ step.title }}</h3>
+        <p class="mt-3 text-lg leading-relaxed text-emerald-800/85">{{ step.description }}</p>
+      </article>
+    </div>
+  </div>
+</section>

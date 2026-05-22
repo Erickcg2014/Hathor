@@ -1,0 +1,1865 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SeccionFinancieroComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-seccion-financiero</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                                <code><a href="../components/FinanzasExcelComponent.html" target="_self" >FinanzasExcelComponent</a></code>
+                                <code><a href="../components/FinanzasManualComponent.html" target="_self" >FinanzasManualComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./seccion-financiero.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./seccion-financiero.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#datosManual" >datosManual</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#excelListo" >excelListo</a>
+                            </li>
+                            <li>
+                                <a href="#gastoMensualAlimentacion" >gastoMensualAlimentacion</a>
+                            </li>
+                            <li>
+                                <a href="#gastoMensualNomina" >gastoMensualNomina</a>
+                            </li>
+                            <li>
+                                <a href="#loadingGuardar" >loadingGuardar</a>
+                            </li>
+                            <li>
+                                <a href="#mostrarOverlayOmitir" >mostrarOverlayOmitir</a>
+                            </li>
+                            <li>
+                                <a href="#opcionSeleccionada" >opcionSeleccionada</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cancelarOmitir" >cancelarOmitir</a>
+                            </li>
+                            <li>
+                                <a href="#confirmarOmitir" >confirmarOmitir</a>
+                            </li>
+                            <li>
+                                <a href="#formatCOP" >formatCOP</a>
+                            </li>
+                            <li>
+                                <a href="#getNombreOpcion" >getNombreOpcion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#guardar" >guardar</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onExcelCargaExitosa" >onExcelCargaExitosa</a>
+                            </li>
+                            <li>
+                                <a href="#onManualDatosListos" >onManualDatosListos</a>
+                            </li>
+                            <li>
+                                <a href="#seleccionarOpcion" >seleccionarOpcion</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#hatoActual" >hatoActual</a>
+                            </li>
+                            <li>
+                                <a href="#modoReadonly" >modoReadonly</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#irAnterior" >irAnterior</a>
+                            </li>
+                            <li>
+                                <a href="#seccionCompletada" >seccionCompletada</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#puedeGuardar" >puedeGuardar</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoService: <a href="../injectables/HatoService.html" target="_self">HatoService</a>, perfilFinancieroService: <a href="../injectables/PerfilFinancieroService.html" target="_self">PerfilFinancieroService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:62</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoService.html" target="_self" >HatoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>perfilFinancieroService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PerfilFinancieroService.html" target="_self" >PerfilFinancieroService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hatoActual"></a>
+                        <b>hatoActual</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:44</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modoReadonly"></a>
+                        <b>modoReadonly</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:45</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="irAnterior"></a>
+                        <b>irAnterior</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:48</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="seccionCompletada"></a>
+                        <b>seccionCompletada</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:47</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelarOmitir"></a>
+                    <span class="name">
+                        <span ><b>cancelarOmitir</b></span>
+                        <a href="#cancelarOmitir"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelarOmitir()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmarOmitir"></a>
+                    <span class="name">
+                        <span ><b>confirmarOmitir</b></span>
+                        <a href="#confirmarOmitir"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirmarOmitir()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatCOP"></a>
+                    <span class="name">
+                        <span ><b>formatCOP</b></span>
+                        <a href="#formatCOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatCOP(valor: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNombreOpcion"></a>
+                    <span class="name">
+                        <span ><b>getNombreOpcion</b></span>
+                        <a href="#getNombreOpcion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNombreOpcion(opcion: <a href="../miscellaneous/typealiases.html#OpcionRegistro" target="_self">OpcionRegistro</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>opcion</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#OpcionRegistro" target="_self" >OpcionRegistro</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardar"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>guardar</b></span>
+                        <a href="#guardar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>guardar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onExcelCargaExitosa"></a>
+                    <span class="name">
+                        <span ><b>onExcelCargaExitosa</b></span>
+                        <a href="#onExcelCargaExitosa"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onExcelCargaExitosa()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onManualDatosListos"></a>
+                    <span class="name">
+                        <span ><b>onManualDatosListos</b></span>
+                        <a href="#onManualDatosListos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onManualDatosListos(datos: <a href="../interfaces/DatosManual.html" target="_self">DatosManual</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>datos</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DatosManual.html" target="_self" >DatosManual</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="seleccionarOpcion"></a>
+                    <span class="name">
+                        <span ><b>seleccionarOpcion</b></span>
+                        <a href="#seleccionarOpcion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>seleccionarOpcion(opcion: <a href="../miscellaneous/typealiases.html#OpcionRegistro" target="_self">OpcionRegistro</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>opcion</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#OpcionRegistro" target="_self" >OpcionRegistro</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosManual"></a>
+                    <span class="name">
+                        <span ><b>datosManual</b></span>
+                        <a href="#datosManual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DatosManual.html" target="_self" >DatosManual | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="excelListo"></a>
+                    <span class="name">
+                        <span ><b>excelListo</b></span>
+                        <a href="#excelListo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="gastoMensualAlimentacion"></a>
+                    <span class="name">
+                        <span ><b>gastoMensualAlimentacion</b></span>
+                        <a href="#gastoMensualAlimentacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="gastoMensualNomina"></a>
+                    <span class="name">
+                        <span ><b>gastoMensualNomina</b></span>
+                        <a href="#gastoMensualNomina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingGuardar"></a>
+                    <span class="name">
+                        <span ><b>loadingGuardar</b></span>
+                        <a href="#loadingGuardar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarOverlayOmitir"></a>
+                    <span class="name">
+                        <span ><b>mostrarOverlayOmitir</b></span>
+                        <a href="#mostrarOverlayOmitir"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="opcionSeleccionada"></a>
+                    <span class="name">
+                        <span ><b>opcionSeleccionada</b></span>
+                        <a href="#opcionSeleccionada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#OpcionRegistro" target="_self" >OpcionRegistro</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="puedeGuardar"></a>
+                        <span class="name"><b>puedeGuardar</b><a href="#puedeGuardar"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>puedeGuardar()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/seccion-financiero.component.ts:126</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { firstValueFrom } from &#x27;rxjs&#x27;;
+import { Hato, HatoService } from &#x27;../../../../../../core/services/hato/hato.service&#x27;;
+import {
+  PerfilFinancieroService,
+  RegistroPerfilFinancieroDTO,
+} from &#x27;../../../../../../core/services/finanzas/perfil-financiero.service&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { SpinnerComponent } from &#x27;../../../../../../shared/spinner/spinner.component&#x27;;
+import { FinanzasExcelComponent } from &#x27;./finanzas-excel/finanzas-excel.component&#x27;;
+import { FinanzasManualComponent } from &#x27;./finanzas-manual/finanzas-manual.component&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+export type OpcionRegistro &#x3D; &#x27;EXCEL&#x27; | &#x27;MANUAL&#x27; | &#x27;OMITIDO&#x27; | null;
+export type ModoManual &#x3D; &#x27;PROMEDIO&#x27; | &#x27;MENSUAL&#x27; | &#x27;ANUAL&#x27;;
+
+export interface RegistroManualItem {
+  idCategoria: string;
+  nombre: string;
+  tipo: &#x27;INGRESO&#x27; | &#x27;GASTO&#x27; | &#x27;COSTO&#x27; | &#x27;INVERSION&#x27;;
+  periodos: { fecha: string; monto: number }[];
+}
+
+export interface DatosManual {
+  modo: ModoManual;
+  registros: RegistroManualItem[];
+}
+
+@Component({
+  selector: &#x27;app-seccion-financiero&#x27;,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    SpinnerComponent,
+    FinanzasExcelComponent,
+    FinanzasManualComponent,
+  ],
+  templateUrl: &#x27;./seccion-financiero.component.html&#x27;,
+  styleUrl: &#x27;./seccion-financiero.component.css&#x27;,
+})
+export class SeccionFinancieroComponent implements OnInit {
+  @Input() hatoActual: Hato | null &#x3D; null;
+  @Input() modoReadonly &#x3D; false;
+
+  @Output() seccionCompletada &#x3D; new EventEmitter&lt;Hato&gt;();
+  @Output() irAnterior &#x3D; new EventEmitter&lt;void&gt;();
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ESTADO PRINCIPAL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  opcionSeleccionada: OpcionRegistro &#x3D; null;
+  loadingGuardar &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+
+  //&#x3D;&#x3D;&#x3D;&#x3D;CAMPOS DE COSTOS FIJOS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  gastoMensualNomina: number | null &#x3D; null;
+  gastoMensualAlimentacion: number | null &#x3D; null;
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ESTADO DE HIJOS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  excelListo &#x3D; false;
+  datosManual: DatosManual | null &#x3D; null;
+  mostrarOverlayOmitir &#x3D; false;
+
+  constructor(
+    private hatoService: HatoService,
+    private perfilFinancieroService: PerfilFinancieroService,
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+  ) {}
+
+  ngOnInit(): void {
+    if (this.hatoActual) {
+      this.gastoMensualNomina &#x3D; this.hatoActual.gastoMensualNomina ?? null;
+      this.gastoMensualAlimentacion &#x3D; this.hatoActual.gastoMensualAlimentacion ?? null;
+    }
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; SELECCIÓN DE OPCIÓN &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  seleccionarOpcion(opcion: OpcionRegistro): void {
+    this.opcionSeleccionada &#x3D; opcion;
+    this.excelListo &#x3D; false;
+    this.datosManual &#x3D; null;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+  }
+
+  confirmarOmitir(): void {
+    this.mostrarOverlayOmitir &#x3D; true;
+    this.cdr.markForCheck();
+  }
+
+  cancelarOmitir(): void {
+    this.mostrarOverlayOmitir &#x3D; false;
+    this.cdr.markForCheck();
+  }
+
+  getNombreOpcion(opcion: OpcionRegistro): string {
+    const nombres: Record&lt;string, string&gt; &#x3D; {
+      EXCEL: &#x27;Cargar Excel&#x27;,
+      MANUAL: &#x27;Registro manual&#x27;,
+      OMITIDO: &#x27;Omitir por ahora&#x27;,
+    };
+    return opcion ? nombres[opcion] : &#x27;&#x27;;
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; CALLBACKS DE HIJOS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  onExcelCargaExitosa(): void {
+    this.excelListo &#x3D; true;
+    this.cdr.markForCheck();
+  }
+
+  onManualDatosListos(datos: DatosManual): void {
+    this.datosManual &#x3D; datos;
+    this.cdr.markForCheck();
+  }
+
+  formatCOP(valor: number | null): string {
+    if (!valor) return &#x27;&#x27;;
+    return new Intl.NumberFormat(&#x27;es-CO&#x27;).format(valor);
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; VALIDACIÓN &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  get puedeGuardar(): boolean {
+    if (this.opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;EXCEL&#x27;) return this.excelListo;
+    if (this.opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;MANUAL&#x27;)
+      return this.datosManual !&#x3D;&#x3D; null &amp;&amp; this.datosManual.registros.length &gt; 0;
+    if (this.opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;OMITIDO&#x27;) return true;
+    return false;
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GUARDAR &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  async guardar(): Promise&lt;void&gt; {
+    if (!this.hatoActual?.idHato || !this.puedeGuardar) return;
+
+    this.loadingGuardar &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+
+    try {
+      if (this.gastoMensualNomina !&#x3D;&#x3D; null || this.gastoMensualAlimentacion !&#x3D;&#x3D; null) {
+        await firstValueFrom(
+          this.hatoService.actualizarCostosFijos(
+            this.hatoActual.idHato!,
+            this.gastoMensualNomina ?? 0,
+            this.gastoMensualAlimentacion ?? 0,
+          ),
+        );
+      }
+
+      const periodo &#x3D; new Date().toISOString().substring(0, 7);
+
+      const perfilDto: RegistroPerfilFinancieroDTO &#x3D; {
+        idHato: this.hatoActual.idHato!,
+        metodoRegistro: this.opcionSeleccionada!,
+        periodo,
+        ...(this.opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;MANUAL&#x27; &amp;&amp; this.datosManual
+          ? {
+              detalles: this.datosManual.registros.flatMap((r) &#x3D;&gt;
+                r.periodos.map((p) &#x3D;&gt; ({
+                  idCategoria: r.idCategoria,
+                  tipo: r.tipo,
+                  titulo: r.nombre,
+                  fecha: p.fecha,
+                  montoMensual: p.monto,
+                })),
+              ),
+            }
+          : {}),
+      };
+
+      await firstValueFrom(this.perfilFinancieroService.crearPerfil(perfilDto));
+
+      const hatoActualizado &#x3D; await firstValueFrom(
+        this.hatoService.actualizarCompletitud(this.hatoActual.idHato!, 100),
+      );
+
+      this.seccionCompletada.emit(hatoActualizado);
+      if (this.opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;OMITIDO&#x27;) {
+        this.router.navigate([&#x27;/home&#x27;]);
+      }
+    } catch {
+      this.error &#x3D; &#x27;Error al guardar. Intenta de nuevo.&#x27;;
+      this.cdr.markForCheck();
+    } finally {
+      this.loadingGuardar &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;seccion-wrapper&quot;&gt;
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; MODO READONLY &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (modoReadonly) {
+    &lt;div class&#x3D;&quot;readonly-wrapper completo&quot;&gt;
+      &lt;div class&#x3D;&quot;readonly-header&quot;&gt;
+        &lt;div class&#x3D;&quot;readonly-check completo&quot;&gt;🎉&lt;/div&gt;
+        &lt;div&gt;
+          &lt;h2 class&#x3D;&quot;readonly-titulo&quot;&gt;¡Hato completamente configurado!&lt;/h2&gt;
+          &lt;p class&#x3D;&quot;readonly-mensaje&quot;&gt;
+            Tu finca está 100% registrada en Hathor. Ahora tienes acceso completo a todos los
+            módulos de análisis, benchmarking y recomendaciones personalizadas.
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;paso-actions&quot;&gt;
+        &lt;button class&#x3D;&quot;btn-primary&quot; (click)&#x3D;&quot;irAnterior.emit()&quot;&gt;← Ver producción&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; MODO EDITABLE &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (!modoReadonly) {
+    &lt;div class&#x3D;&quot;paso-header&quot;&gt;
+      &lt;span class&#x3D;&quot;paso-icono&quot;&gt;💰&lt;/span&gt;
+      &lt;div&gt;
+        &lt;h2 class&#x3D;&quot;paso-titulo&quot;&gt;Registros financieros&lt;/h2&gt;
+        &lt;p class&#x3D;&quot;paso-subtitulo&quot;&gt;
+          Elige cómo quieres registrar la información financiera de tu hato
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; COSTOS FIJOS — siempre visible &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;div class&#x3D;&quot;costos-fijos-card&quot;&gt;
+      &lt;div class&#x3D;&quot;costos-fijos-header&quot;&gt;
+        &lt;span class&#x3D;&quot;costos-fijos-icono&quot;&gt;📋&lt;/span&gt;
+        &lt;div&gt;
+          &lt;h3 class&#x3D;&quot;costos-fijos-titulo&quot;&gt;Costos fijos mensuales&lt;/h3&gt;
+          &lt;p class&#x3D;&quot;costos-fijos-sub&quot;&gt;
+            Revisemos promedios generales de la información más importante de tu productividad.
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;costos-fijos-grid&quot;&gt;
+        &lt;!-- Nómina --&gt;
+        &lt;div class&#x3D;&quot;costo-campo&quot;&gt;
+          &lt;label class&#x3D;&quot;costo-label&quot;&gt;
+            👷 ¿Cuánto gastas mensualmente en nómina y mano de obra?
+          &lt;/label&gt;
+          &lt;p class&#x3D;&quot;costo-hint&quot;&gt;
+            Incluye salarios, jornales, parafiscales y seguridad social de todos tus empleados.
+          &lt;/p&gt;
+          &lt;div class&#x3D;&quot;costo-input-wrapper&quot;&gt;
+            &lt;span class&#x3D;&quot;costo-prefix&quot;&gt;$&lt;/span&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              class&#x3D;&quot;costo-input&quot;
+              placeholder&#x3D;&quot;0&quot;
+              min&#x3D;&quot;0&quot;
+              [(ngModel)]&#x3D;&quot;gastoMensualNomina&quot;
+            /&gt;
+            &lt;span class&#x3D;&quot;costo-suffix&quot;&gt;COP / mes&lt;/span&gt;
+          &lt;/div&gt;
+          @if (gastoMensualNomina &amp;&amp; gastoMensualNomina &gt; 0) {
+            &lt;span class&#x3D;&quot;costo-preview&quot;&gt; ≈ {{ formatCOP(gastoMensualNomina) }} COP/mes &lt;/span&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;!-- Alimentación --&gt;
+        &lt;div class&#x3D;&quot;costo-campo&quot;&gt;
+          &lt;label class&#x3D;&quot;costo-label&quot;&gt;
+            🌾 ¿Cuánto gastas mensualmente en alimentación del ganado?
+          &lt;/label&gt;
+          &lt;p class&#x3D;&quot;costo-hint&quot;&gt;
+            Incluye concentrado, sal mineralizada, forraje suplementario y cualquier otro insumo
+            alimenticio para el hato.
+          &lt;/p&gt;
+          &lt;div class&#x3D;&quot;costo-input-wrapper&quot;&gt;
+            &lt;span class&#x3D;&quot;costo-prefix&quot;&gt;$&lt;/span&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              class&#x3D;&quot;costo-input&quot;
+              placeholder&#x3D;&quot;0&quot;
+              min&#x3D;&quot;0&quot;
+              [(ngModel)]&#x3D;&quot;gastoMensualAlimentacion&quot;
+            /&gt;
+            &lt;span class&#x3D;&quot;costo-suffix&quot;&gt;COP / mes&lt;/span&gt;
+          &lt;/div&gt;
+          @if (gastoMensualAlimentacion &amp;&amp; gastoMensualAlimentacion &gt; 0) {
+            &lt;span class&#x3D;&quot;costo-preview&quot;&gt; ≈ {{ formatCOP(gastoMensualAlimentacion) }} COP/mes &lt;/span&gt;
+          }
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; SELECTOR DE OPCIÓN &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    @if (!opcionSeleccionada) {
+      &lt;div class&#x3D;&quot;opciones-grid&quot;&gt;
+        &lt;!-- Excel --&gt;
+        &lt;div class&#x3D;&quot;opcion-card&quot; (click)&#x3D;&quot;seleccionarOpcion(&#x27;EXCEL&#x27;)&quot;&gt;
+          &lt;div class&#x3D;&quot;opcion-icono&quot;&gt;📊&lt;/div&gt;
+          &lt;h3 class&#x3D;&quot;opcion-titulo&quot;&gt;Cargar Excel&lt;/h3&gt;
+          &lt;p class&#x3D;&quot;opcion-desc&quot;&gt;Sube un archivo con tus movimientos históricos pasados&lt;/p&gt;
+          &lt;div class&#x3D;&quot;opcion-tooltip&quot;&gt;
+            &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+              &lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;12&quot; r&#x3D;&quot;10&quot; /&gt;
+              &lt;path stroke-linecap&#x3D;&quot;round&quot; d&#x3D;&quot;M12 16v-4M12 8h.01&quot; /&gt;
+            &lt;/svg&gt;
+            &lt;div class&#x3D;&quot;tooltip-texto&quot;&gt;
+              Descarga nuestra plantilla, llénala con tus movimientos financieros pasados y súbela.
+              Ideal si ya llevas un registro en Excel o cuaderno.
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class&#x3D;&quot;opcion-badge&quot;&gt;Recomendado si tienes historial&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Manual --&gt;
+        &lt;div class&#x3D;&quot;opcion-card&quot; (click)&#x3D;&quot;seleccionarOpcion(&#x27;MANUAL&#x27;)&quot;&gt;
+          &lt;div class&#x3D;&quot;opcion-icono&quot;&gt;✏️&lt;/div&gt;
+          &lt;h3 class&#x3D;&quot;opcion-titulo&quot;&gt;Registro manual&lt;/h3&gt;
+          &lt;p class&#x3D;&quot;opcion-desc&quot;&gt;Hagamos un análisis general estudiando detalles a alto nivel&lt;/p&gt;
+          &lt;div class&#x3D;&quot;opcion-tooltip&quot;&gt;
+            &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+              &lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;12&quot; r&#x3D;&quot;10&quot; /&gt;
+              &lt;path stroke-linecap&#x3D;&quot;round&quot; d&#x3D;&quot;M12 16v-4M12 8h.01&quot; /&gt;
+            &lt;/svg&gt;
+            &lt;div class&#x3D;&quot;tooltip-texto&quot;&gt;
+              Registra tus principales ingresos y gastos usando nuestras categorías. Perfecto si
+              prefieres ingresar la información directamente en el sistema.
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class&#x3D;&quot;opcion-badge&quot;&gt;Paso a paso guiado&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Omitir --&gt;
+        &lt;div class&#x3D;&quot;opcion-card opcion-omitir&quot; (click)&#x3D;&quot;seleccionarOpcion(&#x27;OMITIDO&#x27;)&quot;&gt;
+          &lt;div class&#x3D;&quot;opcion-icono&quot;&gt;⏭️&lt;/div&gt;
+          &lt;h3 class&#x3D;&quot;opcion-titulo&quot;&gt;Comenzar desde 0&lt;/h3&gt;
+          &lt;p class&#x3D;&quot;opcion-desc&quot;&gt;Comienza con las funcionalidades de hathor desde cero&lt;/p&gt;
+          &lt;div class&#x3D;&quot;opcion-tooltip&quot;&gt;
+            &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+              &lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;12&quot; r&#x3D;&quot;10&quot; /&gt;
+              &lt;path stroke-linecap&#x3D;&quot;round&quot; d&#x3D;&quot;M12 16v-4M12 8h.01&quot; /&gt;
+            &lt;/svg&gt;
+            &lt;div class&#x3D;&quot;tooltip-texto&quot;&gt;
+              Puedes registrar tu historial financiero más adelante desde el módulo de Finanzas. El
+              sistema funcionará con datos limitados hasta entonces.
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class&#x3D;&quot;opcion-badge omitir&quot;&gt;Sin registros financieros aún&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HEADER OPCIÓN SELECCIONADA &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    @if (opcionSeleccionada) {
+      &lt;div class&#x3D;&quot;opcion-seleccionada-header&quot;&gt;
+        &lt;div class&#x3D;&quot;opcion-seleccionada-info&quot;&gt;
+          &lt;span class&#x3D;&quot;opcion-seleccionada-icono&quot;&gt;
+            {{
+              opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;EXCEL&#x27; ? &#x27;📊&#x27; : opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;MANUAL&#x27; ? &#x27;✏️&#x27; : &#x27;⏭️&#x27;
+            }}
+          &lt;/span&gt;
+          &lt;span class&#x3D;&quot;opcion-seleccionada-nombre&quot;&gt;{{ getNombreOpcion(opcionSeleccionada) }}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;button class&#x3D;&quot;btn-cambiar&quot; (click)&#x3D;&quot;seleccionarOpcion(null)&quot;&gt;Cambiar opción&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HIJO: EXCEL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      @if (opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;EXCEL&#x27;) {
+        &lt;div class&#x3D;&quot;contenido-opcion&quot;&gt;
+          &lt;app-finanzas-excel [hatoActual]&#x3D;&quot;hatoActual&quot; (cargaExitosa)&#x3D;&quot;onExcelCargaExitosa()&quot; /&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HIJO: MANUAL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      @if (opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;MANUAL&#x27;) {
+        &lt;div class&#x3D;&quot;contenido-opcion&quot;&gt;
+          &lt;app-finanzas-manual
+            [hatoActual]&#x3D;&quot;hatoActual&quot;
+            (datosListos)&#x3D;&quot;onManualDatosListos($event)&quot;
+          /&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; OMITIR &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      @if (opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;OMITIDO&#x27;) {
+        &lt;div class&#x3D;&quot;contenido-opcion&quot;&gt;
+          &lt;div class&#x3D;&quot;omitir-card&quot;&gt;
+            &lt;span class&#x3D;&quot;omitir-icono&quot;&gt;⚠️&lt;/span&gt;
+            &lt;div&gt;
+              &lt;h4 class&#x3D;&quot;omitir-titulo&quot;&gt;¿Seguro que quieres omitir esta sección?&lt;/h4&gt;
+              &lt;p class&#x3D;&quot;omitir-desc&quot;&gt;
+                Podrás registrar tu historial financiero más adelante desde el módulo de
+                &lt;strong&gt;Finanzas&lt;/strong&gt;. Ten en cuenta que los análisis de rentabilidad y
+                benchmarking financiero no estarán disponibles hasta que registres información.
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ERROR GENERAL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      @if (error) {
+        &lt;div class&#x3D;&quot;error-box&quot;&gt;
+          &lt;p&gt;{{ error }}&lt;/p&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ACCIONES &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;paso-actions&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-secondary&quot; (click)&#x3D;&quot;irAnterior.emit()&quot;&gt;← Anterior&lt;/button&gt;
+        &lt;button
+          type&#x3D;&quot;button&quot;
+          class&#x3D;&quot;btn-primary&quot;
+          (click)&#x3D;&quot;opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;OMITIDO&#x27; ? confirmarOmitir() : guardar()&quot;
+          [disabled]&#x3D;&quot;loadingGuardar || !puedeGuardar&quot;
+        &gt;
+          @if (!loadingGuardar) {
+            {{
+              opcionSeleccionada &#x3D;&#x3D;&#x3D; &#x27;OMITIDO&#x27;
+                ? &#x27;Finalizar Formulario 🎉&#x27;
+                : &#x27;Guardar y finalizar 🎉&#x27;
+            }}
+          } @else {
+            &lt;span class&#x3D;&quot;btn-loading&quot;&gt;
+              &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+              Guardando...
+            &lt;/span&gt;
+          }
+        &lt;/button&gt;
+      &lt;/div&gt;
+    }
+  }
+  @if (mostrarOverlayOmitir) {
+    &lt;div class&#x3D;&quot;overlay-omitir&quot;&gt;
+      &lt;div class&#x3D;&quot;overlay-omitir-card&quot;&gt;
+        &lt;div class&#x3D;&quot;overlay-omitir-icono&quot;&gt;🚀&lt;/div&gt;
+        &lt;h3 class&#x3D;&quot;overlay-omitir-titulo&quot;&gt;¿Comenzar desde cero?&lt;/h3&gt;
+        &lt;p class&#x3D;&quot;overlay-omitir-desc&quot;&gt;
+          Al continuar, Hathor estará listo para usar pero
+          &lt;strong&gt;sin historial financiero&lt;/strong&gt;. Los módulos de benchmarking, KPIs y
+          recomendaciones trabajarán con datos limitados hasta que registres tu información
+          financiera.
+        &lt;/p&gt;
+        &lt;p class&#x3D;&quot;overlay-omitir-desc&quot;&gt;
+          Podrás agregar tus registros en cualquier momento desde el módulo de
+          &lt;strong&gt;Finanzas&lt;/strong&gt;.
+        &lt;/p&gt;
+        &lt;div class&#x3D;&quot;overlay-omitir-actions&quot;&gt;
+          &lt;button class&#x3D;&quot;btn-overlay-secundario&quot; (click)&#x3D;&quot;cancelarOmitir()&quot;&gt;Volver atrás&lt;/button&gt;
+          &lt;button class&#x3D;&quot;btn-overlay-primario&quot; (click)&#x3D;&quot;guardar()&quot; [disabled]&#x3D;&quot;loadingGuardar&quot;&gt;
+            @if (!loadingGuardar) {
+              Sí, continuar sin historial 🚀
+            } @else {
+              &lt;span class&#x3D;&quot;btn-loading&quot;&gt;
+                &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+                Configurando...
+              &lt;/span&gt;
+            }
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="seccion-wrapper">  <!-- ===== MODO READONLY ===== -->  @if (modoReadonly) {    <div class="readonly-wrapper completo">      <div class="readonly-header">        <div class="readonly-check completo">🎉</div>        <div>          <h2 class="readonly-titulo">¡Hato completamente configurado!</h2>          <p class="readonly-mensaje">            Tu finca está 100% registrada en Hathor. Ahora tienes acceso completo a todos los            módulos de análisis, benchmarking y recomendaciones personalizadas.          </p>        </div>      </div>      <div class="paso-actions">        <button class="btn-primary" (click)="irAnterior.emit()">← Ver producción</button>      </div>    </div>  }  <!-- ===== MODO EDITABLE ===== -->  @if (!modoReadonly) {    <div class="paso-header">      <span class="paso-icono">💰</span>      <div>        <h2 class="paso-titulo">Registros financieros</h2>        <p class="paso-subtitulo">          Elige cómo quieres registrar la información financiera de tu hato        </p>      </div>    </div>    <!-- ===== COSTOS FIJOS — siempre visible ===== -->    <div class="costos-fijos-card">      <div class="costos-fijos-header">        <span class="costos-fijos-icono">📋</span>        <div>          <h3 class="costos-fijos-titulo">Costos fijos mensuales</h3>          <p class="costos-fijos-sub">            Revisemos promedios generales de la información más importante de tu productividad.          </p>        </div>      </div>      <div class="costos-fijos-grid">        <!-- Nómina -->        <div class="costo-campo">          <label class="costo-label">            👷 ¿Cuánto gastas mensualmente en nómina y mano de obra?          </label>          <p class="costo-hint">            Incluye salarios, jornales, parafiscales y seguridad social de todos tus empleados.          </p>          <div class="costo-input-wrapper">            <span class="costo-prefix">$</span>            <input              type="number"              class="costo-input"              placeholder="0"              min="0"              [(ngModel)]="gastoMensualNomina"            />            <span class="costo-suffix">COP / mes</span>          </div>          @if (gastoMensualNomina && gastoMensualNomina > 0) {            <span class="costo-preview"> ≈ {{ formatCOP(gastoMensualNomina) }} COP/mes </span>          }        </div>        <!-- Alimentación -->        <div class="costo-campo">          <label class="costo-label">            🌾 ¿Cuánto gastas mensualmente en alimentación del ganado?          </label>          <p class="costo-hint">            Incluye concentrado, sal mineralizada, forraje suplementario y cualquier otro insumo            alimenticio para el hato.          </p>          <div class="costo-input-wrapper">            <span class="costo-prefix">$</span>            <input              type="number"              class="costo-input"              placeholder="0"              min="0"              [(ngModel)]="gastoMensualAlimentacion"            />            <span class="costo-suffix">COP / mes</span>          </div>          @if (gastoMensualAlimentacion && gastoMensualAlimentacion > 0) {            <span class="costo-preview"> ≈ {{ formatCOP(gastoMensualAlimentacion) }} COP/mes </span>          }        </div>      </div>    </div>    <!-- ===== SELECTOR DE OPCIÓN ===== -->    @if (!opcionSeleccionada) {      <div class="opciones-grid">        <!-- Excel -->        <div class="opcion-card" (click)="seleccionarOpcion(\'EXCEL\')">          <div class="opcion-icono">📊</div>          <h3 class="opcion-titulo">Cargar Excel</h3>          <p class="opcion-desc">Sube un archivo con tus movimientos históricos pasados</p>          <div class="opcion-tooltip">            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">              <circle cx="12" cy="12" r="10" />              <path stroke-linecap="round" d="M12 16v-4M12 8h.01" />            </svg>            <div class="tooltip-texto">              Descarga nuestra plantilla, llénala con tus movimientos financieros pasados y súbela.              Ideal si ya llevas un registro en Excel o cuaderno.            </div>          </div>          <span class="opcion-badge">Recomendado si tienes historial</span>        </div>        <!-- Manual -->        <div class="opcion-card" (click)="seleccionarOpcion(\'MANUAL\')">          <div class="opcion-icono">✏️</div>          <h3 class="opcion-titulo">Registro manual</h3>          <p class="opcion-desc">Hagamos un análisis general estudiando detalles a alto nivel</p>          <div class="opcion-tooltip">            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">              <circle cx="12" cy="12" r="10" />              <path stroke-linecap="round" d="M12 16v-4M12 8h.01" />            </svg>            <div class="tooltip-texto">              Registra tus principales ingresos y gastos usando nuestras categorías. Perfecto si              prefieres ingresar la información directamente en el sistema.            </div>          </div>          <span class="opcion-badge">Paso a paso guiado</span>        </div>        <!-- Omitir -->        <div class="opcion-card opcion-omitir" (click)="seleccionarOpcion(\'OMITIDO\')">          <div class="opcion-icono">⏭️</div>          <h3 class="opcion-titulo">Comenzar desde 0</h3>          <p class="opcion-desc">Comienza con las funcionalidades de hathor desde cero</p>          <div class="opcion-tooltip">            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">              <circle cx="12" cy="12" r="10" />              <path stroke-linecap="round" d="M12 16v-4M12 8h.01" />            </svg>            <div class="tooltip-texto">              Puedes registrar tu historial financiero más adelante desde el módulo de Finanzas. El              sistema funcionará con datos limitados hasta entonces.            </div>          </div>          <span class="opcion-badge omitir">Sin registros financieros aún</span>        </div>      </div>    }    <!-- ===== HEADER OPCIÓN SELECCIONADA ===== -->    @if (opcionSeleccionada) {      <div class="opcion-seleccionada-header">        <div class="opcion-seleccionada-info">          <span class="opcion-seleccionada-icono">            {{              opcionSeleccionada === \'EXCEL\' ? \'📊\' : opcionSeleccionada === \'MANUAL\' ? \'✏️\' : \'⏭️\'            }}          </span>          <span class="opcion-seleccionada-nombre">{{ getNombreOpcion(opcionSeleccionada) }}</span>        </div>        <button class="btn-cambiar" (click)="seleccionarOpcion(null)">Cambiar opción</button>      </div>      <!-- ===== HIJO: EXCEL ===== -->      @if (opcionSeleccionada === \'EXCEL\') {        <div class="contenido-opcion">          <app-finanzas-excel [hatoActual]="hatoActual" (cargaExitosa)="onExcelCargaExitosa()" />        </div>      }      <!-- ===== HIJO: MANUAL ===== -->      @if (opcionSeleccionada === \'MANUAL\') {        <div class="contenido-opcion">          <app-finanzas-manual            [hatoActual]="hatoActual"            (datosListos)="onManualDatosListos($event)"          />        </div>      }      <!-- ===== OMITIR ===== -->      @if (opcionSeleccionada === \'OMITIDO\') {        <div class="contenido-opcion">          <div class="omitir-card">            <span class="omitir-icono">⚠️</span>            <div>              <h4 class="omitir-titulo">¿Seguro que quieres omitir esta sección?</h4>              <p class="omitir-desc">                Podrás registrar tu historial financiero más adelante desde el módulo de                <strong>Finanzas</strong>. Ten en cuenta que los análisis de rentabilidad y                benchmarking financiero no estarán disponibles hasta que registres información.              </p>            </div>          </div>        </div>      }      <!-- ===== ERROR GENERAL ===== -->      @if (error) {        <div class="error-box">          <p>{{ error }}</p>        </div>      }      <!-- ===== ACCIONES ===== -->      <div class="paso-actions">        <button type="button" class="btn-secondary" (click)="irAnterior.emit()">← Anterior</button>        <button          type="button"          class="btn-primary"          (click)="opcionSeleccionada === \'OMITIDO\' ? confirmarOmitir() : guardar()"          [disabled]="loadingGuardar || !puedeGuardar"        >          @if (!loadingGuardar) {            {{              opcionSeleccionada === \'OMITIDO\'                ? \'Finalizar Formulario 🎉\'                : \'Guardar y finalizar 🎉\'            }}          } @else {            <span class="btn-loading">              <app-spinner size="small"></app-spinner>              Guardando...            </span>          }        </button>      </div>    }  }  @if (mostrarOverlayOmitir) {    <div class="overlay-omitir">      <div class="overlay-omitir-card">        <div class="overlay-omitir-icono">🚀</div>        <h3 class="overlay-omitir-titulo">¿Comenzar desde cero?</h3>        <p class="overlay-omitir-desc">          Al continuar, Hathor estará listo para usar pero          <strong>sin historial financiero</strong>. Los módulos de benchmarking, KPIs y          recomendaciones trabajarán con datos limitados hasta que registres tu información          financiera.        </p>        <p class="overlay-omitir-desc">          Podrás agregar tus registros en cualquier momento desde el módulo de          <strong>Finanzas</strong>.        </p>        <div class="overlay-omitir-actions">          <button class="btn-overlay-secundario" (click)="cancelarOmitir()">Volver atrás</button>          <button class="btn-overlay-primario" (click)="guardar()" [disabled]="loadingGuardar">            @if (!loadingGuardar) {              Sí, continuar sin historial 🚀            } @else {              <span class="btn-loading">                <app-spinner size="small"></app-spinner>                Configurando...              </span>            }          </button>        </div>      </div>    </div>  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'SeccionFinancieroComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SeccionFinancieroComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

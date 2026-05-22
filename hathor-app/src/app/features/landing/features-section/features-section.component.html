@@ -1,0 +1,46 @@
+<section id="caracteristicas" class="bg-[#EEF3F0] py-16 sm:py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs sm:text-sm tracking-[0.14em] font-semibold text-green-600 uppercase">Módulos del sistema</p>
+      <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 leading-tight">
+        Todo lo que necesitas para gestionar tu hato
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-emerald-800/80 leading-relaxed">
+        Hathor integra seis módulos diseñados para cubrir cada aspecto de la gestión financiera y productiva de tu finca lechera.
+      </p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+      <article *ngFor="let feature of features" class="rounded-2xl border border-emerald-100 bg-white p-6 shadow-[0_6px_24px_rgba(8,47,46,0.04)]">
+        <div class="h-10 w-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
+          <svg *ngIf="feature.icon === 'hatos'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9h6m-6 4h3" />
+          </svg>
+          <svg *ngIf="feature.icon === 'finanzas'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 15v-4m5 4V7m5 8v-2" />
+          </svg>
+          <svg *ngIf="feature.icon === 'kpi'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l4-4 3 3 7-7" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 7h5v5" />
+          </svg>
+          <svg *ngIf="feature.icon === 'estadisticas'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3" />
+            <circle cx="12" cy="12" r="9" />
+          </svg>
+          <svg *ngIf="feature.icon === 'reportes'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 3v5h5M9 13h6M9 17h6" />
+          </svg>
+          <svg *ngIf="feature.icon === 'benchmarking'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="8" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+
+        <h3 class="mt-5 text-2xl font-extrabold tracking-tight text-emerald-950">{{ feature.title }}</h3>
+        <p class="mt-3 text-lg leading-relaxed text-emerald-800/85">{{ feature.description }}</p>
+      </article>
+    </div>
+  </div>
+</section>

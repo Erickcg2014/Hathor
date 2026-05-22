@@ -1,0 +1,309 @@
+<div class="reportes-page">
+  <!-- ===== HEADER ===== -->
+  <header class="page-header">
+    <div class="header-left">
+      <p class="page-tag">Hathor · Reportes</p>
+      <h1 class="page-title">Genera tu <span class="brand">Reporte PDF</span></h1>
+      @if (hatoActivo) {
+        <p class="page-subtitle">
+          <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        </p>
+      } @else {
+        <p class="page-subtitle warn">⚠️ Selecciona un hato para generar el reporte.</p>
+      }
+    </div>
+    <div class="header-right">
+      <div class="header-icon">📄</div>
+    </div>
+  </header>
+
+  @if (!hatoActivo) {
+    <div class="empty-state">
+      <span>🐄</span>
+      <p>Selecciona un hato desde el menú superior para continuar.</p>
+    </div>
+  }
+
+  @if (hatoActivo) {
+    <!-- ===== MENSAJES ===== -->
+    @if (error) {
+      <div class="msg-error">
+        <span>❌</span>
+        <p>{{ error }}</p>
+      </div>
+    }
+    @if (exito) {
+      <div class="msg-exito">
+        <span>✅</span>
+        <p>{{ exito }}</p>
+      </div>
+    }
+
+    <div class="reporte-layout">
+      <!-- ===== COLUMNA IZQUIERDA: Configuración ===== -->
+      <div class="config-col">
+        <!-- SECCIONES -->
+        <div class="config-card">
+          <div class="config-card-header">
+            <div class="config-card-header-left">
+              <span class="config-card-icono">📋</span>
+              <div>
+                <h2 class="config-card-titulo">Secciones del reporte</h2>
+                <p class="config-card-subtitulo">
+                  {{ seccionesSeleccionadasCount }} de {{ secciones.length }} secciones
+                  seleccionadas
+                </p>
+              </div>
+            </div>
+            <div class="config-card-acciones">
+              <button class="btn-accion" (click)="seleccionarTodo()">Todas</button>
+              <button class="btn-accion" (click)="deseleccionarTodo()">Ninguna</button>
+            </div>
+          </div>
+
+          <div class="secciones-grid">
+            @for (seccion of secciones; track seccion.key) {
+              <div
+                class="seccion-item"
+                [class.activa]="isSeccionActiva(seccion.key)"
+                (click)="toggleSeccion(seccion.key)"
+              >
+                <div class="seccion-item-top">
+                  <span class="seccion-icono">{{ seccion.icono }}</span>
+                  <div class="seccion-info">
+                    <span class="seccion-label">{{ seccion.label }}</span>
+                    <span class="seccion-desc">{{ seccion.desc }}</span>
+                  </div>
+                  <div class="seccion-toggle">
+                    <div class="toggle-pill" [class.on]="isSeccionActiva(seccion.key)">
+                      <div class="toggle-dot"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- PERÍODO -->
+        <div class="config-card">
+          <div class="config-card-header">
+            <div class="config-card-header-left">
+              <span class="config-card-icono">📅</span>
+              <div>
+                <h2 class="config-card-titulo">Período del reporte</h2>
+                <p class="config-card-subtitulo">{{ labelPeriodo }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="periodos-grid">
+            @for (periodo of periodos; track $index) {
+              <button
+                class="periodo-btn"
+                [class.activo]="periodoSeleccionado === $index"
+                (click)="setPeriodo($index)"
+              >
+                {{ periodo.label }}
+              </button>
+            }
+          </div>
+
+          @if (periodoPersonalizado) {
+            <div class="periodo-custom">
+              <div class="periodo-custom-field">
+                <label class="campo-label">Desde</label>
+                <input
+                  type="date"
+                  class="campo-input"
+                  [value]="config.periodoDesde ?? ''"
+                  (change)="onPeriodoDesdeChange($any($event.target).value)"
+                />
+              </div>
+              <div class="periodo-custom-field">
+                <label class="campo-label">Hasta</label>
+                <input
+                  type="date"
+                  class="campo-input"
+                  [value]="config.periodoHasta ?? ''"
+                  (change)="onPeriodoHastaChange($any($event.target).value)"
+                />
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- NIVEL BENCHMARKING -->
+        @if (isSeccionActiva('incluirBenchmarking')) {
+          <div class="config-card">
+            <div class="config-card-header">
+              <div class="config-card-header-left">
+                <span class="config-card-icono">🔍</span>
+                <div>
+                  <h2 class="config-card-titulo">Nivel de benchmarking</h2>
+                  <p class="config-card-subtitulo">Contexto de comparación sectorial</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="niveles-grid">
+              @for (nivel of nivelesKenchmark; track nivel.valor) {
+                <div
+                  class="nivel-item"
+                  [class.activo]="config.nivelBenchmark === nivel.valor"
+                  (click)="setNivelBenchmark($any(nivel.valor))"
+                >
+                  <span class="nivel-label">{{ nivel.label }}</span>
+                  <span class="nivel-desc">{{ nivel.desc }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- TÍTULO PERSONALIZADO -->
+        <div class="config-card">
+          <div class="config-card-header">
+            <div class="config-card-header-left">
+              <span class="config-card-icono">✏️</span>
+              <div>
+                <h2 class="config-card-titulo">Título personalizado</h2>
+                <p class="config-card-subtitulo">Opcional — por defecto usa el nombre del hato</p>
+              </div>
+            </div>
+          </div>
+
+          <input
+            type="text"
+            class="campo-input"
+            placeholder="Ej: Reporte anual Hacienda El Prado 2024"
+            [value]="config.tituloPersonalizado ?? ''"
+            (input)="onTituloChange($any($event.target).value)"
+          />
+        </div>
+      </div>
+
+      <!-- ===== COLUMNA DERECHA: Preview + Generar ===== -->
+      <div class="preview-col">
+        <!-- PREVIEW DEL REPORTE -->
+        <div class="preview-card">
+          <div class="preview-header">
+            <span class="preview-tag">Vista previa</span>
+            <h3 class="preview-titulo">
+              {{ config.tituloPersonalizado || hatoActivo.nombreHato }}
+            </h3>
+            <p class="preview-subtitulo">
+              {{ hatoActivo.ciudad }}, {{ hatoActivo.departamento }} ·
+              {{ hatoActivo.tropico }}
+            </p>
+          </div>
+
+          <!-- Miniaturas de secciones -->
+          <div class="preview-secciones">
+            <div class="preview-seccion portada-preview">
+              <span class="preview-seccion-icono">🏠</span>
+              <span class="preview-seccion-label">Portada</span>
+              <span class="preview-seccion-badge siempre">Siempre</span>
+            </div>
+
+            @for (seccion of secciones; track seccion.key) {
+              <div
+                class="preview-seccion"
+                [class.incluida]="isSeccionActiva(seccion.key)"
+                [class.excluida]="!isSeccionActiva(seccion.key)"
+              >
+                <span class="preview-seccion-icono">{{ seccion.icono }}</span>
+                <span class="preview-seccion-label">{{ seccion.label }}</span>
+                @if (isSeccionActiva(seccion.key)) {
+                  <span class="preview-seccion-badge incluida">✓</span>
+                } @else {
+                  <span class="preview-seccion-badge excluida">—</span>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Info del reporte -->
+          <div class="preview-info">
+            <div class="preview-info-item">
+              <span class="preview-info-label">Período</span>
+              <span class="preview-info-valor">{{ labelPeriodo }}</span>
+            </div>
+            @if (isSeccionActiva('incluirBenchmarking')) {
+              <div class="preview-info-item">
+                <span class="preview-info-label">Benchmarking</span>
+                <span class="preview-info-valor">
+                  {{
+                    config.nivelBenchmark === 'NACIONAL'
+                      ? '🇨🇴 Nacional'
+                      : config.nivelBenchmark === 'TROPICO'
+                        ? '🌿 Por trópico'
+                        : '📐 Trópico + escala'
+                  }}
+                </span>
+              </div>
+            }
+            <div class="preview-info-item">
+              <span class="preview-info-label">Secciones</span>
+              <span class="preview-info-valor">
+                {{ seccionesSeleccionadasCount + 1 }} páginas est.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTÓN GENERAR -->
+        <div class="generar-card">
+          @if (!haySeccionesSeleccionadas) {
+            <div class="generar-aviso">
+              <span>⚠️</span>
+              <p>Selecciona al menos una sección para generar el reporte.</p>
+            </div>
+          }
+
+          <button
+            class="btn-generar"
+            [disabled]="generando || !haySeccionesSeleccionadas"
+            (click)="generarReporte()"
+          >
+            @if (generando) {
+              <app-spinner size="small"></app-spinner>
+              <span>Generando reporte...</span>
+            } @else {
+              <span class="btn-generar-icono">📥</span>
+              <span>Generar y descargar PDF</span>
+            }
+          </button>
+
+          <p class="generar-nota">
+            El reporte se generará con los datos más recientes del hato y se descargará
+            automáticamente en tu dispositivo.
+          </p>
+        </div>
+
+        <!-- TIPS -->
+        <div class="tips-card">
+          <h4 class="tips-titulo">💡 Consejos</h4>
+          <ul class="tips-lista">
+            <li>
+              Incluye el <strong>Resumen ejecutivo</strong> para una visión rápida del estado del
+              hato.
+            </li>
+            <li>
+              Usa el nivel <strong>Trópico + escala</strong> en benchmarking para comparativas más
+              precisas.
+            </li>
+            <li>
+              Selecciona un <strong>período específico</strong> para reportes mensuales o
+              trimestrales.
+            </li>
+            <li>
+              El reporte incluye siempre la <strong>portada</strong> con información del hato.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,172 @@
+<div class="ranking-page">
+  <!-- Loading inicial -->
+  @if (loading) {
+    <div class="loading-wrapper">
+      <app-spinner size="large" message="Cargando ranking..."></app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- Header página -->
+    <header class="page-header">
+      <div class="header-left">
+        <p class="page-tag">Benchmarking · Ranking</p>
+        <h1 class="page-title">Ranking de <span class="brand">Hatos</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">Selecciona un hato para ver su ranking.</p>
+        }
+      </div>
+      @if (hatoActivo) {
+        <div class="header-right">
+          <div class="header-badge">🏆</div>
+        </div>
+      }
+    </header>
+
+    <!-- Sin hato -->
+    @if (!hatoActivo) {
+      <div class="empty-state">
+        <span>🐄</span>
+        <p>Selecciona un hato para ver su ranking.</p>
+      </div>
+    }
+
+    @if (hatoActivo) {
+      <!-- Sin KPIs -->
+      @if (!hayKpis) {
+        <div class="sin-datos-card">
+          <span class="sin-datos-icono">📊</span>
+          <div>
+            <h3>Primero calcula tus KPIs</h3>
+            <p>
+              Ve a <strong>Mis KPIs</strong> y calcula los indicadores de tu hato para poder ver tu
+              posición en el ranking.
+            </p>
+          </div>
+        </div>
+      }
+
+      @if (hayKpis) {
+        <!-- Error -->
+        @if (error) {
+          <div class="error-box">{{ error }}</div>
+        }
+
+        <!-- Filtro de región -->
+        <div class="filtro-region-row">
+          <span class="filtro-label">Ámbito de comparación:</span>
+          <button
+            class="filtro-btn"
+            [class.activo]="regionFiltro === null"
+            (click)="onRegionCambiada(null)"
+          >
+            🇨🇴 Nacional
+          </button>
+          @if (hatoActivo.departamento) {
+            <button
+              class="filtro-btn"
+              [class.activo]="regionFiltro === hatoActivo.departamento"
+              (click)="onRegionCambiada(hatoActivo.departamento)"
+            >
+              📍 {{ hatoActivo.departamento }}
+            </button>
+          }
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-row">
+          @for (tab of tabs; track tab.id) {
+            <button class="tab-btn" [class.activo]="tabActivo === tab.id" (click)="setTab(tab.id)">
+              <span class="tab-icono">{{ tab.icono }}</span>
+              <span class="tab-label">{{ tab.label }}</span>
+            </button>
+          }
+        </div>
+
+        <!-- Contenido tabs -->
+        <div class="tab-content">
+          <!-- Tab: Resumen -->
+          @if (tabActivo === 'resumen') {
+            @if (cargandoResumen) {
+              <div class="tab-loading">
+                <app-spinner size="medium" message="Calculando posición..."></app-spinner>
+              </div>
+            } @else {
+              <app-ranking-resumen [resumen]="resumen" [nombreHato]="hatoActivo.nombreHato" />
+            }
+          }
+
+          <!-- Tab: Compuesto -->
+          @if (tabActivo === 'compuesto') {
+            @if (cargandoCompuesto) {
+              <div class="tab-loading">
+                <app-spinner size="medium" message="Construyendo ranking..."></app-spinner>
+              </div>
+            } @else {
+              <app-ranking-compuesto [datos]="compuesto" [region]="regionFiltro" />
+            }
+          }
+
+          <!-- Tab: Por KPI -->
+          @if (tabActivo === 'por-kpi') {
+            <app-ranking-por-kpi
+              [datos]="porKpi"
+              [kpisDisponibles]="kpis"
+              [codigoSeleccionado]="codigoKpiSeleccionado"
+              [region]="regionFiltro"
+              [cargando]="cargandoPorKpi"
+              (kpiCambiado)="onKpiCambiado($event)"
+              (regionCambiada)="onRegionCambiada($event)"
+            />
+          }
+
+          <!-- Tab: Evolución -->
+          @if (tabActivo === 'evolucion') {
+            <div class="evolucion-controles">
+              <!-- Selector KPI evolución -->
+              <div class="control-group">
+                <label class="control-label">KPI a analizar</label>
+                <div class="kpi-evolucion-selector">
+                  @for (kpi of kpis; track kpi.codigo) {
+                    @if (kpi.valor !== null) {
+                      <button
+                        class="kpi-evol-btn"
+                        [class.activo]="codigoKpiEvolucion === kpi.codigo"
+                        (click)="onKpiEvolucionCambiado(kpi.codigo)"
+                      >
+                        {{ kpi.nombre }}
+                      </button>
+                    }
+                  }
+                </div>
+              </div>
+
+              <!-- Selector meses -->
+              <div class="control-group">
+                <label class="control-label">Período</label>
+                <div class="meses-selector">
+                  @for (m of opcionesMeses; track m) {
+                    <button
+                      class="meses-btn"
+                      [class.activo]="mesesEvolucion === m"
+                      (click)="onMesesCambiado(m)"
+                    >
+                      {{ m }} meses
+                    </button>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <app-grafica-evolucion-posicion [datos]="evolucion" [cargando]="cargandoEvolucion" />
+          }
+        </div>
+      }
+    }
+  }
+</div>

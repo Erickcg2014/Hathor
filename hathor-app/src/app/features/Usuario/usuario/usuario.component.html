@@ -1,0 +1,226 @@
+<div class="container">
+  <h2>Mi Cuenta</h2>
+
+  <div *ngIf="loading" class="loading">Cargando información...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error">
+    <!-- ===== SECCIÓN: Información Administrador ===== -->
+    <div class="section-card">
+      <div class="section-header">
+        <h3 class="section-title">Información Administrador</h3>
+        <button class="btn-edit">Editar</button>
+      </div>
+
+      <div class="fields-grid">
+        <!-- Avatar + Nombre: full width -->
+        <div class="row full-width row--profile">
+          <div class="avatar">
+            <span class="avatar-initials">
+              {{ usuario?.nombre?.charAt(0) }}{{ usuario?.apellido?.charAt(0) }}
+            </span>
+          </div>
+          <div class="profile-info">
+            <span class="value">{{ usuario?.nombre }} {{ usuario?.apellido }}</span>
+            <span class="label">Nombre</span>
+          </div>
+        </div>
+
+        <!-- Correo -->
+        <div class="row">
+          <span class="value">{{ usuario?.correo }}</span>
+          <span class="label">Correo Electrónico</span>
+        </div>
+
+        <!-- Celular -->
+        <div class="row">
+          <span class="value">{{ usuario?.celular }}</span>
+          <span class="label">Celular</span>
+        </div>
+
+        <!-- Estado -->
+        <div class="row">
+          <span class="value">
+            <span [class.badge-activo]="usuario?.estado" [class.badge-inactivo]="!usuario?.estado">
+              {{ usuario?.estado ? 'Activo' : 'Inactivo' }}
+            </span>
+          </span>
+          <span class="label">Estado</span>
+        </div>
+
+        <!-- Fecha creación -->
+        <div class="row">
+          <span class="value">{{ usuario?.fecha_creacion | date: 'mediumDate' }}</span>
+          <span class="label">Fecha de Creación</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECCIÓN: Información Acceso ===== -->
+    <div class="section-card">
+      <div class="section-header">
+        <h3 class="section-title">Información Acceso</h3>
+        <button class="btn-edit">Editar</button>
+      </div>
+
+      <div class="fields-grid">
+        <!-- Correo (login) -->
+        <div class="row">
+          <span class="value">{{ usuario?.correo }}</span>
+          <span class="label">Usuario</span>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="row">
+          <span class="value font-mono">••••••••••</span>
+          <span class="label">Contraseña</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECCIÓN: Mis Hatos ===== -->
+    <div class="section-card" *ngIf="hatos.length > 0">
+      <div class="section-header">
+        <h3 class="section-title">Mis Hatos</h3>
+        <span class="hatos-count"
+          >{{ hatos.length }} {{ hatos.length === 1 ? 'hato' : 'hatos' }}</span
+        >
+      </div>
+
+      <!-- Card por cada hato -->
+      <div class="hato-card" *ngFor="let hato of hatos; let i = index">
+        <div class="hato-card-header">
+          <div class="hato-index">{{ i + 1 }}</div>
+          <span class="hato-nombre">{{ hato.nombreHato }}</span>
+          <button class="btn-edit btn-edit--sm">Editar</button>
+        </div>
+
+        <div class="fields-grid">
+          <!-- Departamento -->
+          <div class="row">
+            <span class="value">{{ hato.departamento }}</span>
+            <span class="label">Departamento</span>
+          </div>
+
+          <!-- Ciudad -->
+          <div class="row">
+            <span class="value">{{ hato.ciudad }}</span>
+            <span class="label">Ciudad</span>
+          </div>
+
+          <!-- Tipo de hato -->
+          <div class="row">
+            <span class="value">{{ hato.tipoHato }}</span>
+            <span class="label">Tipo de Hato</span>
+          </div>
+
+          <!-- Trópico -->
+          <div class="row">
+            <span class="value">{{ hato.tropico }}</span>
+            <span class="label">Piso Térmico</span>
+          </div>
+
+          <!-- Área hato -->
+          <div class="row">
+            <span class="value">{{ hato.areaHato }} ha</span>
+            <span class="label">Área Total</span>
+          </div>
+
+          <!-- Área pastoreo -->
+          <div class="row">
+            <span class="value">{{ hato.areaPastoreo }} ha</span>
+            <span class="label">Área Pastoreo</span>
+          </div>
+
+          <!-- Corrales -->
+          <div class="row">
+            <span class="value">{{ hato.cantCorrales }}</span>
+            <span class="label">Corrales</span>
+          </div>
+
+          <!-- Salas ordeño -->
+          <div class="row">
+            <span class="value">{{ hato.cantSalasOrdenio }}</span>
+            <span class="label">Salas de Ordeño</span>
+          </div>
+
+          <!-- Cap. almacenar leche -->
+          <div class="row">
+            <span class="value">{{ hato.capacidadAlmacenarLeche }} L</span>
+            <span class="label">Cap. Almacenamiento</span>
+          </div>
+
+          <!-- Empleados permanentes -->
+          <div class="row">
+            <span class="value">{{ hato.cantEmpleadosPermanentes }}</span>
+            <span class="label">Empleados Permanentes</span>
+          </div>
+
+          <!-- Empleados temporales -->
+          <div class="row">
+            <span class="value">{{ hato.cantEmpleadosTemporales }}</span>
+            <span class="label">Empleados Temporales</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sin hatos -->
+    <div class="section-card empty-state" *ngIf="hatos.length === 0">
+      <p class="empty-text">Aún no tienes hatos registrados.</p>
+      <button class="btn-edit">Crear Hato</button>
+    </div>
+    <!-- ===== SECCIÓN: Zona de peligro ===== -->
+    <div class="section-card danger-zone">
+      <div class="section-header">
+        <h3 class="section-title danger-title">Eliminar mi cuenta</h3>
+      </div>
+      <p class="danger-desc">
+        Eliminar tu cuenta borrará permanentemente toda tu información: hatos, inventarios,
+        registros financieros y datos de producción. Esta acción
+        <strong>no se puede deshacer</strong>.
+      </p>
+      <button class="btn-eliminar-cuenta" (click)="abrirModalEliminar()">
+        🗑 Eliminar mi cuenta
+      </button>
+      <!-- ===== MODAL CONFIRMAR ELIMINACIÓN ===== -->
+      @if (mostrarModalEliminar) {
+        <div class="modal-overlay" (click)="cerrarModalEliminar()">
+          <div class="modal-card" (click)="$event.stopPropagation()">
+            <div class="modal-icon">⚠️</div>
+            <h3 class="modal-titulo">¿Eliminar tu cuenta?</h3>
+            <p class="modal-desc">
+              Se eliminarán permanentemente todos tus datos: hatos, inventarios, finanzas y
+              registros de producción. Esta acción no se puede deshacer.
+            </p>
+
+            @if (errorEliminar) {
+              <div class="modal-error">{{ errorEliminar }}</div>
+            }
+
+            <div class="modal-actions">
+              <button
+                class="btn-modal-cancelar"
+                [disabled]="eliminando"
+                (click)="cerrarModalEliminar()"
+              >
+                Cancelar
+              </button>
+              <button
+                class="btn-modal-confirmar"
+                [disabled]="eliminando"
+                (click)="confirmarEliminarCuenta()"
+              >
+                @if (eliminando) {
+                  <span class="spinner-inline"></span> Eliminando...
+                } @else {
+                  Sí, eliminar cuenta
+                }
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,214 @@
+<div class="graficas-wrap">
+  @if (!tieneResultados) {
+    <p class="sin-datos">No hay datos para mostrar con los filtros seleccionados.</p>
+  }
+
+  @if (tieneResultados) {
+    <!-- FILA RESUMEN: solo semáforo -->
+    <div class="resumen-grid resumen-grid--solo">
+      <article class="chart-card">
+        <div class="chart-header">
+          <div class="chart-header-text">
+            <h3>{{ graficas[4].titulo }}</h3>
+            <p>{{ graficas[4].subtitulo }}</p>
+          </div>
+          <button class="btn-detalle" (click)="abrirDetalle(graficas[4])">
+            <span class="btn-detalle-icono">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </span>
+            <span class="btn-detalle-texto">Ver detalle</span>
+          </button>
+        </div>
+        <div class="chart-wrap chart-wrap--sm">
+          <canvas #chartSemaforo></canvas>
+        </div>
+        <div class="semaforo-stats">
+          <span class="stat alto">{{ datosSemaforo.alto }} alto</span>
+          <span class="stat medio">{{ datosSemaforo.medio }} medio</span>
+          <span class="stat bajo">{{ datosSemaforo.bajo }} bajo</span>
+        </div>
+      </article>
+    </div>
+
+    <!-- RADARES POR CATEGORÍA -->
+    <div class="radares-grid">
+      @for (grupo of gruposVisibles; track trackByGrupo($index, grupo)) {
+        <article class="chart-card">
+          <div class="chart-header">
+            <div class="chart-header-text">
+              <h3>{{ grupo.icono }} {{ grupo.label }}</h3>
+              <p>Perfil de desempeño · {{ grupo.items.length }} KPIs</p>
+            </div>
+            <button
+              class="btn-detalle"
+              (click)="abrirDetalle(getGraficaCategoria(grupo.categoria))"
+            >
+              <span class="btn-detalle-icono">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                </svg>
+              </span>
+              <span class="btn-detalle-texto">Ver detalle</span>
+            </button>
+          </div>
+          <div class="chart-wrap chart-wrap--radar-sm">
+            <canvas #chartRadarCategoria></canvas>
+          </div>
+        </article>
+      }
+    </div>
+
+    <!-- SECCIONES POR CATEGORÍA -->
+    @for (grupo of gruposVisibles; track trackByGrupo($index, grupo)) {
+      <section class="categoria-seccion">
+        <div class="categoria-header">
+          <span class="categoria-icono">{{ grupo.icono }}</span>
+          <div>
+            <h3>{{ grupo.label }}</h3>
+            <p>{{ grupo.items.length }} indicadores · percentil comparado contra el sector</p>
+          </div>
+        </div>
+
+        <!-- Gráfica de barras de percentil -->
+        <article class="chart-card">
+          <div class="chart-header">
+            <div class="chart-header-text">
+              <h3>Posición competitiva — {{ grupo.label }}</h3>
+              <p>Percentil de cada KPI respecto al sector. Línea punteada = promedio (P50).</p>
+            </div>
+            <button
+              class="btn-detalle"
+              (click)="abrirDetalle(getGraficaBarrasCategoria(grupo.categoria))"
+            >
+              <span class="btn-detalle-icono">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                </svg>
+              </span>
+              <span class="btn-detalle-texto">Ver detalle</span>
+            </button>
+          </div>
+          <div class="chart-wrap">
+            <canvas #chartCanvas></canvas>
+          </div>
+        </article>
+
+        <!-- Tabla compacta -->
+        <div class="tabla-compacta">
+          <table>
+            <thead>
+              <tr>
+                <th>KPI</th>
+                <th>Tu valor</th>
+                <th>Percentil</th>
+                <th>Promedio sector</th>
+                <th>Top sector</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (r of grupo.items; track trackByKpi($index, r)) {
+                <tr>
+                  <td class="td-nombre">{{ r.kpi.nombre }}</td>
+                  <td>{{ formatValor(r.valorHato, r.kpi.unidad) }}</td>
+                  <td>
+                    <div class="percentil-cell">
+                      <div
+                        class="percentil-bar"
+                        [style.width.%]="r.percentil ?? 0"
+                        [style.background]="colorPorPercentil(r.percentil)"
+                      ></div>
+                      <span>{{ (+(r.percentil ?? 0)).toFixed(1) }}</span>
+                    </div>
+                  </td>
+                  <td>
+                    {{ formatValor(r.benchReferencia?.valorPromedio ?? null, r.kpi.unidad) }}
+                  </td>
+                  <td>{{ formatValor(r.benchReferencia?.valorTop ?? null, r.kpi.unidad) }}</td>
+                  <td>
+                    <span [class]="'badge ' + interpretacionClass(r.interpretacion)">
+                      {{ r.interpretacion ?? '—' }}
+                    </span>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    }
+
+    <!-- POTENCIAL DE MEJORA -->
+    @if (datosPotencial.length > 0) {
+      <article class="chart-card">
+        <div class="chart-header">
+          <div class="chart-header-text">
+            <h3>{{ graficas[5].titulo }}</h3>
+            <p>{{ graficas[5].subtitulo }}</p>
+          </div>
+          <button class="btn-detalle" (click)="abrirDetalle(graficas[5])">
+            <span class="btn-detalle-icono">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </span>
+
+            <span class="btn-detalle-texto">Ver detalle</span>
+          </button>
+        </div>
+        <div class="chart-wrap">
+          <canvas #chartPotencial></canvas>
+        </div>
+      </article>
+    }
+
+    <!-- MODAL DE DETALLE -->
+    @if (graficaAbierta) {
+      <app-grafica-detalle-modal
+        [grafica]="graficaAbierta"
+        [resultados]="resultados"
+        [grupos]="gruposVisibles"
+        (cerrar)="cerrarDetalle()"
+      >
+      </app-grafica-detalle-modal>
+    }
+  }
+</div>

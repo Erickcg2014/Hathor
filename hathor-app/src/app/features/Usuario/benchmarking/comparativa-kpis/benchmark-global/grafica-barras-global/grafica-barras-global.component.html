@@ -1,0 +1,11 @@
+<div class="barras-global-wrap">
+  @if (!kpisResumen.length) {
+    <p class="sin-datos">No hay KPIs disponibles para mostrar.</p>
+  }
+
+  @if (kpisResumen.length) {
+    <div class="chart-wrap">
+      <canvas #chartCanvas></canvas>
+    </div>
+  }
+</div>

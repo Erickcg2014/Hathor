@@ -1,0 +1,17 @@
+@import '../shared/_mod-shared.css';
+
+:host {
+  display: contents;
+}
+
+.modulo-card {
+  max-height: 320px;
+}
+
+.grafica-mini-wrap {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  height: 200px;
+  max-height: 200px;
+}

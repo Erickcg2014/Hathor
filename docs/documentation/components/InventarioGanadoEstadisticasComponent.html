@@ -1,0 +1,3187 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  InventarioGanadoEstadisticasComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-inventario-ganado-estadisticas</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./inventario-ganado-estadisticas.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./inventario-ganado-estadisticas.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cargandoReferencias" >cargandoReferencias</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#chartCategorias" >chartCategorias</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartCategoriasRef" >chartCategoriasRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#chartDona" >chartDona</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartDonaRef" >chartDonaRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#chartEdad" >chartEdad</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartEdadRef" >chartEdadRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#chartValor" >chartValor</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartValorRef" >chartValorRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#COLORES" >COLORES</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#Math" >Math</a>
+                            </li>
+                            <li>
+                                <a href="#registros" >registros</a>
+                            </li>
+                            <li>
+                                <a href="#valoresReferencia" >valoresReferencia</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#viewIniciado" >viewIniciado</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#calcularEdadActual" >calcularEdadActual</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargar" >cargar</a>
+                            </li>
+                            <li>
+                                <a href="#claseEstadoValor" >claseEstadoValor</a>
+                            </li>
+                            <li>
+                                <a href="#colorEdad" >colorEdad</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destruirGraficas" >destruirGraficas</a>
+                            </li>
+                            <li>
+                                <a href="#formatCOP" >formatCOP</a>
+                            </li>
+                            <li>
+                                <a href="#labelEstadoValor" >labelEstadoValor</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderCategorias" >renderCategorias</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderDona" >renderDona</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderEdad" >renderEdad</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderizarGraficas" >renderizarGraficas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderValor" >renderValor</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#valorTotal" >valorTotal</a>
+                                </li>
+                                <li>
+                                    <a href="#cabezasTotales" >cabezasTotales</a>
+                                </li>
+                                <li>
+                                    <a href="#edadPromedioPonderada" >edadPromedioPonderada</a>
+                                </li>
+                                <li>
+                                    <a href="#tipoLider" >tipoLider</a>
+                                </li>
+                                <li>
+                                    <a href="#valorPromedioPorCabeza" >valorPromedioPorCabeza</a>
+                                </li>
+                                <li>
+                                    <a href="#topTiposRaza" >topTiposRaza</a>
+                                </li>
+                                <li>
+                                    <a href="#topCategoriasValor" >topCategoriasValor</a>
+                                </li>
+                                <li>
+                                    <a href="#razasValor" >razasValor</a>
+                                </li>
+                                <li>
+                                    <a href="#edadPorGrupo" >edadPorGrupo</a>
+                                </li>
+                                <li>
+                                    <a href="#comparativaValores" >comparativaValores</a>
+                                </li>
+                                <li>
+                                    <a href="#totalSobreMercado" >totalSobreMercado</a>
+                                </li>
+                                <li>
+                                    <a href="#totalEnMercado" >totalEnMercado</a>
+                                </li>
+                                <li>
+                                    <a href="#totalBajoMercado" >totalBajoMercado</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, inventarioService: <a href="../injectables/InventarioGanadoService.html" target="_self">InventarioGanadoService</a>, valorReferenciaService: <a href="../injectables/ValorReferenciaGanadoService.html" target="_self">ValorReferenciaGanadoService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:105</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>inventarioService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/InventarioGanadoService.html" target="_self" >InventarioGanadoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>valorReferenciaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ValorReferenciaGanadoService.html" target="_self" >ValorReferenciaGanadoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcularEdadActual"></a>
+                    <span class="name">
+                        <span ><b>calcularEdadActual</b></span>
+                        <a href="#calcularEdadActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calcularEdadActual(edadPromedioMeses: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, fechaRegistro: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="293"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:293</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>edadPromedioMeses</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>fechaRegistro</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargar"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargar</b></span>
+                        <a href="#cargar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargar(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="338"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:338</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="claseEstadoValor"></a>
+                    <span class="name">
+                        <span ><b>claseEstadoValor</b></span>
+                        <a href="#claseEstadoValor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>claseEstadoValor(estado: <a href="../interfaces/ComparativaValorStat.html" target="_self">ComparativaValorStat</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="326"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:326</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="../interfaces/ComparativaValorStat.html" target="_self" >ComparativaValorStat</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorEdad"></a>
+                    <span class="name">
+                        <span ><b>colorEdad</b></span>
+                        <a href="#colorEdad"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorEdad(meses: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="309"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:309</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>meses</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destruirGraficas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destruirGraficas</b></span>
+                        <a href="#destruirGraficas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>destruirGraficas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="606"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:606</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatCOP"></a>
+                    <span class="name">
+                        <span ><b>formatCOP</b></span>
+                        <a href="#formatCOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatCOP(valor: number | null | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="304"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:304</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelEstadoValor"></a>
+                    <span class="name">
+                        <span ><b>labelEstadoValor</b></span>
+                        <a href="#labelEstadoValor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>labelEstadoValor(estado: <a href="../interfaces/ComparativaValorStat.html" target="_self">ComparativaValorStat</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="316"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:316</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="../interfaces/ComparativaValorStat.html" target="_self" >ComparativaValorStat</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="617"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:617</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderCategorias"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderCategorias</b></span>
+                        <a href="#renderCategorias"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderCategorias()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="415"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:415</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderDona"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderDona</b></span>
+                        <a href="#renderDona"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderDona()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="374"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:374</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderEdad"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderEdad</b></span>
+                        <a href="#renderEdad"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderEdad()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="551"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:551</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderizarGraficas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderizarGraficas</b></span>
+                        <a href="#renderizarGraficas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderizarGraficas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="365"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:365</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderValor"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderValor</b></span>
+                        <a href="#renderValor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderValor()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="469"
+                                    class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:469</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargandoReferencias"></a>
+                    <span class="name">
+                        <span ><b>cargandoReferencias</b></span>
+                        <a href="#cargandoReferencias"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartCategorias"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>chartCategorias</b></span>
+                        <a href="#chartCategorias"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartCategoriasRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartCategoriasRef</b></span>
+                        <a href="#chartCategoriasRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartCategorias&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartDona"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>chartDona</b></span>
+                        <a href="#chartDona"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartDonaRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartDonaRef</b></span>
+                        <a href="#chartDonaRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartDona&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartEdad"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>chartEdad</b></span>
+                        <a href="#chartEdad"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartEdadRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartEdadRef</b></span>
+                        <a href="#chartEdadRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartEdad&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartValor"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>chartValor</b></span>
+                        <a href="#chartValor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartValorRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartValorRef</b></span>
+                        <a href="#chartValorRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartValor&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="COLORES"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>COLORES</b></span>
+                        <a href="#COLORES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    &#x27;#19e64d&#x27;,
+    &#x27;#15803d&#x27;,
+    &#x27;#052e0f&#x27;,
+    &#x27;#86efac&#x27;,
+    &#x27;#4ade80&#x27;,
+    &#x27;#bbf7d0&#x27;,
+    &#x27;#166534&#x27;,
+    &#x27;#dcfce7&#x27;,
+    &#x27;#22c55e&#x27;,
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Math"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>Math</b></span>
+                        <a href="#Math"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Math</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registros"></a>
+                    <span class="name">
+                        <span ><b>registros</b></span>
+                        <a href="#registros"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/InventarioGanado.html" target="_self" >InventarioGanado[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="valoresReferencia"></a>
+                    <span class="name">
+                        <span ><b>valoresReferencia</b></span>
+                        <a href="#valoresReferencia"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ValorReferenciaGanado.html" target="_self" >ValorReferenciaGanado[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewIniciado"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>viewIniciado</b></span>
+                        <a href="#viewIniciado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="valorTotal"></a>
+                        <span class="name"><b>valorTotal</b><a href="#valorTotal"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>valorTotal()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:150</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cabezasTotales"></a>
+                        <span class="name"><b>cabezasTotales</b><a href="#cabezasTotales"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>cabezasTotales()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:154</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edadPromedioPonderada"></a>
+                        <span class="name"><b>edadPromedioPonderada</b><a href="#edadPromedioPonderada"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>edadPromedioPonderada()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:158</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tipoLider"></a>
+                        <span class="name"><b>tipoLider</b><a href="#tipoLider"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>tipoLider()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:168</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="valorPromedioPorCabeza"></a>
+                        <span class="name"><b>valorPromedioPorCabeza</b><a href="#valorPromedioPorCabeza"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>valorPromedioPorCabeza()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:172</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="topTiposRaza"></a>
+                        <span class="name"><b>topTiposRaza</b><a href="#topTiposRaza"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>topTiposRaza()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:179</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="topCategoriasValor"></a>
+                        <span class="name"><b>topCategoriasValor</b><a href="#topCategoriasValor"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>topCategoriasValor()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:195</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="razasValor"></a>
+                        <span class="name"><b>razasValor</b><a href="#razasValor"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>razasValor()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:215</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edadPorGrupo"></a>
+                        <span class="name"><b>edadPorGrupo</b><a href="#edadPorGrupo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>edadPorGrupo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="233" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:233</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="comparativaValores"></a>
+                        <span class="name"><b>comparativaValores</b><a href="#comparativaValores"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>comparativaValores()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="242" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:242</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalSobreMercado"></a>
+                        <span class="name"><b>totalSobreMercado</b><a href="#totalSobreMercado"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalSobreMercado()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="282" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:282</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalEnMercado"></a>
+                        <span class="name"><b>totalEnMercado</b><a href="#totalEnMercado"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalEnMercado()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="285" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:285</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalBajoMercado"></a>
+                        <span class="name"><b>totalBajoMercado</b><a href="#totalBajoMercado"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalBajoMercado()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="288" class="link-to-prism">src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts:288</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnDestroy,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+  OnChanges,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+import { Chart, registerables } from &#x27;chart.js&#x27;;
+
+import { Hato } from &#x27;../../../../../../core/services/hato/hato.service&#x27;;
+import { HatoStateService } from &#x27;../../../../../../core/services/ui-state/hato-state.service&#x27;;
+import {
+  InventarioGanado,
+  InventarioGanadoService,
+} from &#x27;../../../../../../core/services/inventario/inventario-ganado.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../../../shared/spinner/spinner.component&#x27;;
+
+import {
+  ValorReferenciaGanadoService,
+  ValorReferenciaGanado,
+} from &#x27;../../../../../../core/services/inventario/valor-referencia-ganado.service&#x27;;
+
+Chart.register(...registerables);
+
+interface TipoStat {
+  tipo: string;
+  cantidad: number;
+  pct: number;
+}
+
+interface CategoriaStat {
+  categoria: string;
+  total: number;
+  pct: number;
+}
+
+interface RazaValorStat {
+  raza: string;
+  valor: number;
+  cantidad: number;
+}
+
+interface EdadGrupoStat {
+  label: string;
+  edadActual: number;
+}
+
+interface ComparativaValorStat {
+  raza: string;
+  categoria: string;
+  valorUsuario: number;
+  valorMercado: number | null;
+  diferenciaCOP: number | null;
+  diferenciaPct: number | null;
+  estado: &#x27;SOBRE_MERCADO&#x27; | &#x27;EN_MERCADO&#x27; | &#x27;BAJO_MERCADO&#x27; | &#x27;SIN_REFERENCIA&#x27;;
+}
+
+@Component({
+  selector: &#x27;app-inventario-ganado-estadisticas&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent],
+  templateUrl: &#x27;./inventario-ganado-estadisticas.component.html&#x27;,
+  styleUrl: &#x27;./inventario-ganado-estadisticas.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class InventarioGanadoEstadisticasComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild(&#x27;chartDona&#x27;) chartDonaRef!: ElementRef;
+  @ViewChild(&#x27;chartCategorias&#x27;) chartCategoriasRef!: ElementRef;
+  @ViewChild(&#x27;chartValor&#x27;) chartValorRef!: ElementRef;
+  @ViewChild(&#x27;chartEdad&#x27;) chartEdadRef!: ElementRef;
+
+  readonly Math &#x3D; Math;
+
+  hatoActivo: Hato | null &#x3D; null;
+  loading &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  registros: InventarioGanado[] &#x3D; [];
+  cargandoReferencias &#x3D; true;
+
+  valoresReferencia: ValorReferenciaGanado[] &#x3D; [];
+
+  private chartDona: Chart | null &#x3D; null;
+  private chartCategorias: Chart | null &#x3D; null;
+  private chartValor: Chart | null &#x3D; null;
+  private chartEdad: Chart | null &#x3D; null;
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+  private viewIniciado &#x3D; false;
+
+  private readonly COLORES &#x3D; [
+    &#x27;#19e64d&#x27;,
+    &#x27;#15803d&#x27;,
+    &#x27;#052e0f&#x27;,
+    &#x27;#86efac&#x27;,
+    &#x27;#4ade80&#x27;,
+    &#x27;#bbf7d0&#x27;,
+    &#x27;#166534&#x27;,
+    &#x27;#dcfce7&#x27;,
+    &#x27;#22c55e&#x27;,
+  ];
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private hatoState: HatoStateService,
+    private inventarioService: InventarioGanadoService,
+    private valorReferenciaService: ValorReferenciaGanadoService,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato?.idHato) {
+        this.cargar(hato.idHato);
+      } else {
+        this.registros &#x3D; [];
+        this.destruirGraficas();
+        this.cdr.markForCheck();
+      }
+    });
+    this.valorReferenciaService
+      .getAll()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (valores) &#x3D;&gt; {
+          this.valoresReferencia &#x3D; valores;
+          this.cargandoReferencias &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.cargandoReferencias &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  ngAfterViewInit(): void {
+    this.viewIniciado &#x3D; true;
+    if (this.registros.length &gt; 0) {
+      this.renderizarGraficas();
+    }
+  }
+
+  // ── Getters KPI cards ─────────────────────────────────────
+
+  get valorTotal(): number {
+    return this.registros.reduce((acc, r) &#x3D;&gt; acc + r.valorTotal, 0);
+  }
+
+  get cabezasTotales(): number {
+    return this.registros.reduce((acc, r) &#x3D;&gt; acc + r.cantidad, 0);
+  }
+
+  get edadPromedioPonderada(): number {
+    const totalCabezas &#x3D; this.cabezasTotales;
+    if (!totalCabezas) return 0;
+    const suma &#x3D; this.registros.reduce(
+      (acc, r) &#x3D;&gt; acc + this.calcularEdadActual(r.edadPromedioMeses, r.fechaRegistro) * r.cantidad,
+      0,
+    );
+    return suma / totalCabezas;
+  }
+
+  get tipoLider(): string {
+    return this.topTiposRaza[0]?.tipo ?? &#x27;Sin datos&#x27;;
+  }
+
+  get valorPromedioPorCabeza(): number {
+    if (!this.cabezasTotales) return 0;
+    return this.valorTotal / this.cabezasTotales;
+  }
+
+  // ── Getters para gráficas ─────────────────────────────────
+
+  get topTiposRaza(): TipoStat[] {
+    const map &#x3D; new Map&lt;string, number&gt;();
+    this.registros.forEach((r) &#x3D;&gt;
+      map.set(r.raza.tipoRaza, (map.get(r.raza.tipoRaza) ?? 0) + r.cantidad),
+    );
+    const raw &#x3D; Array.from(map.entries()).map(([tipo, cantidad]) &#x3D;&gt; ({ tipo, cantidad }));
+    const max &#x3D; raw.reduce((acc, r) &#x3D;&gt; Math.max(acc, r.cantidad), 0);
+    return raw
+      .sort((a, b) &#x3D;&gt; b.cantidad - a.cantidad)
+      .map((r) &#x3D;&gt; ({
+        tipo: r.tipo,
+        cantidad: r.cantidad,
+        pct: max ? (r.cantidad / max) * 100 : 0,
+      }));
+  }
+
+  get topCategoriasValor(): CategoriaStat[] {
+    const map &#x3D; new Map&lt;string, number&gt;();
+    this.registros.forEach((r) &#x3D;&gt;
+      map.set(
+        r.categoriaGanado.nombreCategoria,
+        (map.get(r.categoriaGanado.nombreCategoria) ?? 0) + r.valorTotal,
+      ),
+    );
+    const raw &#x3D; Array.from(map.entries()).map(([categoria, total]) &#x3D;&gt; ({ categoria, total }));
+    const max &#x3D; raw.reduce((acc, r) &#x3D;&gt; Math.max(acc, r.total), 0);
+    return raw
+      .sort((a, b) &#x3D;&gt; b.total - a.total)
+      .slice(0, 6)
+      .map((r) &#x3D;&gt; ({
+        categoria: r.categoria,
+        total: r.total,
+        pct: max ? (r.total / max) * 100 : 0,
+      }));
+  }
+
+  get razasValor(): RazaValorStat[] {
+    const map &#x3D; new Map&lt;string, { valor: number; cantidad: number }&gt;();
+    this.registros.forEach((r) &#x3D;&gt; {
+      const actual &#x3D; map.get(r.raza.nombre) ?? { valor: 0, cantidad: 0 };
+      actual.valor +&#x3D; r.valorTotal;
+      actual.cantidad +&#x3D; r.cantidad;
+      map.set(r.raza.nombre, actual);
+    });
+    return Array.from(map.entries())
+      .map(([raza, data]) &#x3D;&gt; ({
+        raza,
+        valor: data.valor,
+        cantidad: data.cantidad,
+      }))
+      .sort((a, b) &#x3D;&gt; b.valor - a.valor)
+      .slice(0, 6);
+  }
+
+  get edadPorGrupo(): EdadGrupoStat[] {
+    return this.registros
+      .map((r) &#x3D;&gt; ({
+        label: &#x60;${r.raza.nombre} (${r.categoriaGanado.nombreCategoria})&#x60;,
+        edadActual: this.calcularEdadActual(r.edadPromedioMeses, r.fechaRegistro),
+      }))
+      .sort((a, b) &#x3D;&gt; b.edadActual - a.edadActual);
+  }
+
+  get comparativaValores(): ComparativaValorStat[] {
+    return this.registros.map((r) &#x3D;&gt; {
+      const referencia &#x3D; this.valoresReferencia.find(
+        (v) &#x3D;&gt;
+          v.raza.idRaza &#x3D;&#x3D;&#x3D; r.raza.idRaza &amp;&amp;
+          v.categoriaGanado.idCategoria &#x3D;&#x3D;&#x3D; r.categoriaGanado.idCategoria,
+      );
+
+      if (!referencia) {
+        return {
+          raza: r.raza.nombre,
+          categoria: r.categoriaGanado.nombreCategoria,
+          valorUsuario: r.valorUnitario,
+          valorMercado: null,
+          diferenciaCOP: null,
+          diferenciaPct: null,
+          estado: &#x27;SIN_REFERENCIA&#x27; as const,
+        };
+      }
+
+      const diferenciaCOP &#x3D; r.valorUnitario - referencia.valorPromedio;
+      const diferenciaPct &#x3D; (diferenciaCOP / referencia.valorPromedio) * 100;
+
+      let estado: ComparativaValorStat[&#x27;estado&#x27;];
+      if (diferenciaPct &gt; 5) estado &#x3D; &#x27;SOBRE_MERCADO&#x27;;
+      else if (diferenciaPct &lt; -5) estado &#x3D; &#x27;BAJO_MERCADO&#x27;;
+      else estado &#x3D; &#x27;EN_MERCADO&#x27;;
+
+      return {
+        raza: r.raza.nombre,
+        categoria: r.categoriaGanado.nombreCategoria,
+        valorUsuario: r.valorUnitario,
+        valorMercado: referencia.valorPromedio,
+        diferenciaCOP,
+        diferenciaPct,
+        estado,
+      };
+    });
+  }
+
+  get totalSobreMercado(): number {
+    return this.comparativaValores.filter((c) &#x3D;&gt; c.estado &#x3D;&#x3D;&#x3D; &#x27;SOBRE_MERCADO&#x27;).length;
+  }
+  get totalEnMercado(): number {
+    return this.comparativaValores.filter((c) &#x3D;&gt; c.estado &#x3D;&#x3D;&#x3D; &#x27;EN_MERCADO&#x27;).length;
+  }
+  get totalBajoMercado(): number {
+    return this.comparativaValores.filter((c) &#x3D;&gt; c.estado &#x3D;&#x3D;&#x3D; &#x27;BAJO_MERCADO&#x27;).length;
+  }
+  // ── Edad dinámica ─────────────────────────────────────────
+
+  calcularEdadActual(edadPromedioMeses: number, fechaRegistro: string): number {
+    if (!fechaRegistro) return edadPromedioMeses;
+    const registro &#x3D; new Date(fechaRegistro);
+    const hoy &#x3D; new Date();
+    const mesesTranscurridos &#x3D;
+      (hoy.getFullYear() - registro.getFullYear()) * 12 + (hoy.getMonth() - registro.getMonth());
+    return edadPromedioMeses + Math.max(0, mesesTranscurridos);
+  }
+
+  // ── Helpers ───────────────────────────────────────────────
+
+  formatCOP(valor: number | null | undefined): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;$ 0&#x27;;
+    return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(valor));
+  }
+
+  colorEdad(meses: number): string {
+    if (meses &lt; 12) return &#x27;#86efac&#x27;;
+    if (meses &lt; 36) return &#x27;#19e64d&#x27;;
+    if (meses &lt; 72) return &#x27;#15803d&#x27;;
+    return &#x27;#052e0f&#x27;;
+  }
+
+  labelEstadoValor(estado: ComparativaValorStat[&#x27;estado&#x27;]): string {
+    const map: Record&lt;ComparativaValorStat[&#x27;estado&#x27;], string&gt; &#x3D; {
+      SOBRE_MERCADO: &#x27;Superior al Mercado&#x27;,
+      EN_MERCADO: &#x27;Igual al mercado&#x27;,
+      BAJO_MERCADO: &#x27;Inferior al mercado&#x27;,
+      SIN_REFERENCIA: &#x27;Sin referencia&#x27;,
+    };
+    return map[estado];
+  }
+
+  claseEstadoValor(estado: ComparativaValorStat[&#x27;estado&#x27;]): string {
+    const map: Record&lt;ComparativaValorStat[&#x27;estado&#x27;], string&gt; &#x3D; {
+      SOBRE_MERCADO: &#x27;estado-sobre&#x27;,
+      EN_MERCADO: &#x27;estado-mercado&#x27;,
+      BAJO_MERCADO: &#x27;estado-bajo&#x27;,
+      SIN_REFERENCIA: &#x27;estado-sin&#x27;,
+    };
+    return map[estado];
+  }
+
+  // ── Carga de datos ────────────────────────────────────────
+
+  private cargar(idHato: string): void {
+    this.loading &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    this.inventarioService
+      .getByHato(idHato)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (registros) &#x3D;&gt; {
+          this.registros &#x3D; registros;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+
+          // Renderizar después del ciclo de detección
+          setTimeout(() &#x3D;&gt; this.renderizarGraficas(), 100);
+        },
+        error: () &#x3D;&gt; {
+          this.error &#x3D; &#x27;No fue posible calcular estadísticas.&#x27;;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Gráficas ──────────────────────────────────────────────
+
+  private renderizarGraficas(): void {
+    if (!this.viewIniciado || !this.registros.length) return;
+    this.destruirGraficas();
+    this.renderDona();
+    this.renderCategorias();
+    this.renderValor();
+    this.renderEdad();
+  }
+
+  private renderDona(): void {
+    if (!this.chartDonaRef?.nativeElement) return;
+    const labels &#x3D; this.topTiposRaza.map((t) &#x3D;&gt; t.tipo);
+    const data &#x3D; this.topTiposRaza.map((t) &#x3D;&gt; t.cantidad);
+
+    this.chartDona &#x3D; new Chart(this.chartDonaRef.nativeElement, {
+      type: &#x27;doughnut&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            data,
+            backgroundColor: this.COLORES.slice(0, labels.length),
+            borderWidth: 2,
+            borderColor: &#x27;#ffffff&#x27;,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: &#x27;bottom&#x27;,
+            labels: {
+              font: { size: 12, weight: &#x27;bold&#x27; },
+              color: &#x27;#374151&#x27;,
+              padding: 16,
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60; ${ctx.label}: ${ctx.parsed} cabezas&#x60;,
+            },
+          },
+        },
+        cutout: &#x27;62%&#x27;,
+      },
+    });
+  }
+
+  private renderCategorias(): void {
+    if (!this.chartCategoriasRef?.nativeElement) return;
+    const stats &#x3D; this.topCategoriasValor;
+    const labels &#x3D; stats.map((s) &#x3D;&gt; s.categoria);
+    const data &#x3D; stats.map((s) &#x3D;&gt; s.total);
+
+    this.chartCategorias &#x3D; new Chart(this.chartCategoriasRef.nativeElement, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: &#x27;Valor total (COP)&#x27;,
+            data,
+            backgroundColor: this.COLORES[0],
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60; $ ${new Intl.NumberFormat(&#x27;es-CO&#x27;).format(ctx.parsed.x ?? 0)}&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: {
+              callback: (v) &#x3D;&gt;
+                &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Number(v) / 1000000) + &#x27;M&#x27;,
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          y: {
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#374151&#x27;,
+              font: { size: 12, weight: &#x27;bold&#x27; },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private renderValor(): void {
+    if (!this.chartValorRef?.nativeElement) return;
+    const stats &#x3D; this.razasValor;
+    const labels &#x3D; stats.map((s) &#x3D;&gt; s.raza);
+
+    this.chartValor &#x3D; new Chart(this.chartValorRef.nativeElement, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: &#x27;Valor total (COP)&#x27;,
+            data: stats.map((s) &#x3D;&gt; s.valor),
+            backgroundColor: this.COLORES[1],
+            borderRadius: 6,
+            borderSkipped: false,
+            yAxisID: &#x27;yValor&#x27;,
+          },
+          {
+            label: &#x27;Cabezas&#x27;,
+            data: stats.map((s) &#x3D;&gt; s.cantidad),
+            backgroundColor: this.COLORES[3],
+            borderRadius: 6,
+            borderSkipped: false,
+            yAxisID: &#x27;yCabezas&#x27;,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: &#x27;top&#x27;,
+            labels: {
+              font: { size: 12 },
+              color: &#x27;#374151&#x27;,
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 0)
+                  return &#x60; $ ${new Intl.NumberFormat(&#x27;es-CO&#x27;).format(ctx.parsed.y ?? 0)}&#x60;;
+                return &#x60; ${ctx.parsed.y ?? 0} cabezas&#x60;;
+              },
+            },
+          },
+        },
+        scales: {
+          yValor: {
+            type: &#x27;linear&#x27;,
+            position: &#x27;left&#x27;,
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: {
+              callback: (v) &#x3D;&gt;
+                &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Number(v) / 1000000) + &#x27;M&#x27;,
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          yCabezas: {
+            type: &#x27;linear&#x27;,
+            position: &#x27;right&#x27;,
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          x: {
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#374151&#x27;,
+              font: { size: 12 },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private renderEdad(): void {
+    if (!this.chartEdadRef?.nativeElement) return;
+    const stats &#x3D; this.edadPorGrupo;
+    const labels &#x3D; stats.map((s) &#x3D;&gt; s.label);
+    const data &#x3D; stats.map((s) &#x3D;&gt; s.edadActual);
+    const colors &#x3D; data.map((m) &#x3D;&gt; this.colorEdad(m));
+
+    this.chartEdad &#x3D; new Chart(this.chartEdadRef.nativeElement, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: &#x27;Edad actual (meses)&#x27;,
+            data,
+            backgroundColor: colors,
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60; ${ctx.parsed.x} meses&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: {
+              callback: (v) &#x3D;&gt; &#x60;${v} m&#x60;,
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          y: {
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#374151&#x27;,
+              font: { size: 11 },
+              maxRotation: 0,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private destruirGraficas(): void {
+    this.chartDona?.destroy();
+    this.chartCategorias?.destroy();
+    this.chartValor?.destroy();
+    this.chartEdad?.destroy();
+    this.chartDona &#x3D; null;
+    this.chartCategorias &#x3D; null;
+    this.chartValor &#x3D; null;
+    this.chartEdad &#x3D; null;
+  }
+
+  ngOnDestroy(): void {
+    this.destruirGraficas();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;estadisticas-page&quot;&gt;
+  @if (loading) {
+    &lt;div class&#x3D;&quot;loading-wrapper&quot;&gt;
+      &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Calculando estadísticas...&quot;&gt; &lt;/app-spinner&gt;
+    &lt;/div&gt;
+  }
+
+  @if (!loading) {
+    &lt;!-- Header --&gt;
+    &lt;div class&#x3D;&quot;page-header&quot;&gt;
+      &lt;div class&#x3D;&quot;header-left&quot;&gt;
+        &lt;span class&#x3D;&quot;page-tag&quot;&gt;Inventario ganado&lt;/span&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Estadísticas &lt;span class&#x3D;&quot;brand&quot;&gt;Productivas&lt;/span&gt;&lt;/h1&gt;
+        @if (hatoActivo) {
+          &lt;p class&#x3D;&quot;page-subtitle&quot;&gt;
+            Hato: &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          &lt;/p&gt;
+        } @else {
+          &lt;p class&#x3D;&quot;page-subtitle warn&quot;&gt;⚠️ Selecciona un hato desde el panel superior.&lt;/p&gt;
+        }
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;header-badge&quot;&gt;🐂&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Sin hato --&gt;
+    @if (!hatoActivo &amp;&amp; !error) {
+      &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+        &lt;h2&gt;Selecciona un hato&lt;/h2&gt;
+        &lt;p&gt;Activa un hato para consultar sus estadísticas.&lt;/p&gt;
+      &lt;/div&gt;
+    }
+
+    @if (error) {
+      &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+        &lt;h2&gt;Error al cargar&lt;/h2&gt;
+        &lt;p&gt;{{ error }}&lt;/p&gt;
+      &lt;/div&gt;
+    }
+
+    @if (hatoActivo &amp;&amp; !error) {
+      &lt;!-- KPI Cards --&gt;
+      &lt;div class&#x3D;&quot;kpi-row&quot;&gt;
+        &lt;div class&#x3D;&quot;kpi-hero&quot;&gt;
+          &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Valor total del ganado&lt;/span&gt;
+          &lt;strong&gt;{{ formatCOP(valorTotal) }}&lt;/strong&gt;
+          &lt;p&gt;Valor estimado de todo el inventario pecuario registrado&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;kpi-secondary-grid&quot;&gt;
+          &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Cabezas totales&lt;/span&gt;
+            &lt;strong&gt;{{ cabezasTotales }}&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Registros&lt;/span&gt;
+            &lt;strong&gt;{{ registros.length }}&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Edad promedio actual&lt;/span&gt;
+            &lt;strong&gt; {{ edadPromedioPonderada | number: &#x27;1.0-1&#x27; }} m &lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Valor por cabeza&lt;/span&gt;
+            &lt;strong&gt;{{ formatCOP(valorPromedioPorCabeza) }}&lt;/strong&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      @if (registros.length &#x3D;&#x3D;&#x3D; 0) {
+        &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+          &lt;h2&gt;Sin datos suficientes&lt;/h2&gt;
+          &lt;p&gt;Registra animales para habilitar el panel estadístico del inventario ganado.&lt;/p&gt;
+        &lt;/div&gt;
+      }
+
+      @if (registros.length &gt; 0) {
+        &lt;!-- Fila 1: Dona + Categorías --&gt;
+        &lt;div class&#x3D;&quot;charts-row&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-card&quot;&gt;
+            &lt;div class&#x3D;&quot;chart-header&quot;&gt;
+              &lt;span class&#x3D;&quot;section-badge&quot;&gt;Distribución&lt;/span&gt;
+              &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Cabezas por tipo de raza&lt;/h2&gt;
+              &lt;p class&#x3D;&quot;chart-subtitle&quot;&gt;Composición del hato según tipo productivo&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;chart-container chart-dona&quot;&gt;
+              &lt;canvas #chartDona&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;chart-card&quot;&gt;
+            &lt;div class&#x3D;&quot;chart-header&quot;&gt;
+              &lt;span class&#x3D;&quot;section-badge&quot;&gt;Valor&lt;/span&gt;
+              &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Categorías por valor económico&lt;/h2&gt;
+              &lt;p class&#x3D;&quot;chart-subtitle&quot;&gt;Valor total acumulado por categoría de ganado&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;chart-container chart-barras&quot;&gt;
+              &lt;canvas #chartCategorias&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Fila 2: Valor por raza (ancho completo) --&gt;
+        &lt;div class&#x3D;&quot;chart-card chart-full&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-header&quot;&gt;
+            &lt;span class&#x3D;&quot;section-badge&quot;&gt;Comparativa&lt;/span&gt;
+            &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Valor y cabezas por raza&lt;/h2&gt;
+            &lt;p class&#x3D;&quot;chart-subtitle&quot;&gt;
+              Comparación de valor económico vs cantidad de animales por raza
+            &lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;chart-container chart-agrupado&quot;&gt;
+            &lt;canvas #chartValor&gt;&lt;/canvas&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Fila 3: Edad por grupo (ancho completo) --&gt;
+        &lt;div class&#x3D;&quot;chart-card chart-full&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-header&quot;&gt;
+            &lt;span class&#x3D;&quot;section-badge&quot;&gt;Envejecimiento&lt;/span&gt;
+            &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Edad actual por grupo&lt;/h2&gt;
+            &lt;p class&#x3D;&quot;chart-subtitle&quot;&gt;
+              Edad calculada automáticamente desde la fecha de registro — se actualiza cada mes
+            &lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Leyenda de colores de edad --&gt;
+          &lt;div class&#x3D;&quot;leyenda-edad&quot;&gt;
+            &lt;div class&#x3D;&quot;leyenda-item&quot;&gt;
+              &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #86efac&quot;&gt;&lt;/span&gt;
+              &lt;span&gt;Menos de 12 m&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;leyenda-item&quot;&gt;
+              &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #19e64d&quot;&gt;&lt;/span&gt;
+              &lt;span&gt;12 – 35 m&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;leyenda-item&quot;&gt;
+              &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #15803d&quot;&gt;&lt;/span&gt;
+              &lt;span&gt;36 – 71 m&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;leyenda-item&quot;&gt;
+              &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #052e0f&quot;&gt;&lt;/span&gt;
+              &lt;span&gt;72 m o más&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div
+            class&#x3D;&quot;chart-container chart-edad&quot;
+            [style.height.px]&#x3D;&quot;Math.max(200, edadPorGrupo.length * 44)&quot;
+          &gt;
+            &lt;canvas #chartEdad&gt;&lt;/canvas&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Comparativa valor mercado --&gt;
+        &lt;div class&#x3D;&quot;chart-card chart-full&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-header&quot;&gt;
+            &lt;span class&#x3D;&quot;section-badge&quot;&gt;Comparativa&lt;/span&gt;
+            &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Valor unitario vs mercado&lt;/h2&gt;
+            &lt;p class&#x3D;&quot;chart-subtitle&quot;&gt;
+              Comparación del valor registrado por cabeza contra el valor de referencia del mercado
+              colombiano 2025
+            &lt;/p&gt;
+          &lt;/div&gt;
+
+          @if (cargandoReferencias) {
+            &lt;div class&#x3D;&quot;comparativa-loading&quot;&gt;
+              &lt;app-spinner size&#x3D;&quot;medium&quot; message&#x3D;&quot;Cargando valores de referencia...&quot;&gt; &lt;/app-spinner&gt;
+            &lt;/div&gt;
+          }
+
+          @if (!cargandoReferencias) {
+            @if (comparativaValores.length &#x3D;&#x3D;&#x3D; 0) {
+              &lt;div class&#x3D;&quot;empty-comparativa&quot;&gt;
+                &lt;p&gt;No hay datos suficientes para la comparativa.&lt;/p&gt;
+              &lt;/div&gt;
+            }
+
+            @if (comparativaValores.length &gt; 0) {
+              &lt;div class&#x3D;&quot;comparativa-tabla&quot;&gt;
+                &lt;table class&#x3D;&quot;tabla-comparativa&quot;&gt;
+                  &lt;thead&gt;
+                    &lt;tr&gt;
+                      &lt;th&gt;Raza&lt;/th&gt;
+                      &lt;th&gt;Categoría&lt;/th&gt;
+                      &lt;th&gt;Tu valor&lt;/th&gt;
+                      &lt;th&gt;Valor mercado&lt;/th&gt;
+                      &lt;th&gt;Diferencia&lt;/th&gt;
+                      &lt;th&gt;Estado&lt;/th&gt;
+                    &lt;/tr&gt;
+                  &lt;/thead&gt;
+                  &lt;tbody&gt;
+                    @for (item of comparativaValores; track item.raza) {
+                      &lt;tr&gt;
+                        &lt;td class&#x3D;&quot;td-raza&quot;&gt;{{ item.raza }}&lt;/td&gt;
+                        &lt;td class&#x3D;&quot;td-categoria&quot;&gt;{{ item.categoria }}&lt;/td&gt;
+                        &lt;td class&#x3D;&quot;td-valor&quot;&gt;
+                          {{ formatCOP(item.valorUsuario) }}
+                        &lt;/td&gt;
+                        &lt;td class&#x3D;&quot;td-valor&quot;&gt;
+                          @if (item.valorMercado) {
+                            {{ formatCOP(item.valorMercado) }}
+                          } @else {
+                            &lt;span class&#x3D;&quot;sin-ref&quot;&gt;—&lt;/span&gt;
+                          }
+                        &lt;/td&gt;
+                        &lt;td class&#x3D;&quot;td-diferencia&quot;&gt;
+                          @if (item.diferenciaCOP !&#x3D;&#x3D; null) {
+                            &lt;div class&#x3D;&quot;diferencia-wrap&quot;&gt;
+                              &lt;span
+                                class&#x3D;&quot;diferencia-cop&quot;
+                                [class.positivo]&#x3D;&quot;item.diferenciaCOP &gt; 0&quot;
+                                [class.negativo]&#x3D;&quot;item.diferenciaCOP &lt; 0&quot;
+                              &gt;
+                                {{ item.diferenciaCOP &gt; 0 ? &#x27;+&#x27; : &#x27;&#x27; }}
+                                {{ formatCOP(item.diferenciaCOP) }}
+                              &lt;/span&gt;
+                              &lt;span
+                                class&#x3D;&quot;diferencia-pct&quot;
+                                [class.positivo]&#x3D;&quot;(item.diferenciaPct ?? 0) &gt; 0&quot;
+                                [class.negativo]&#x3D;&quot;(item.diferenciaPct ?? 0) &lt; 0&quot;
+                              &gt;
+                                {{ (item.diferenciaPct ?? 0) &gt; 0 ? &#x27;+&#x27; : &#x27;&#x27; }}
+                                {{ item.diferenciaPct | number: &#x27;1.1-1&#x27; }}%
+                              &lt;/span&gt;
+                            &lt;/div&gt;
+                          } @else {
+                            &lt;span class&#x3D;&quot;sin-ref&quot;&gt;—&lt;/span&gt;
+                          }
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                          &lt;span class&#x3D;&quot;estado-badge&quot; [class]&#x3D;&quot;claseEstadoValor(item.estado)&quot;&gt;
+                            {{ labelEstadoValor(item.estado) }}
+                          &lt;/span&gt;
+                        &lt;/td&gt;
+                      &lt;/tr&gt;
+                    }
+                  &lt;/tbody&gt;
+                &lt;/table&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Resumen de estados --&gt;
+              &lt;div class&#x3D;&quot;comparativa-resumen&quot;&gt;
+                &lt;div class&#x3D;&quot;resumen-item&quot;&gt;
+                  &lt;span class&#x3D;&quot;resumen-dot estado-sobre&quot;&gt;&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;resumen-label&quot;&gt;Sobre mercado&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;resumen-count&quot;&gt;{{ totalSobreMercado }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;resumen-item&quot;&gt;
+                  &lt;span class&#x3D;&quot;resumen-dot estado-mercado&quot;&gt;&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;resumen-label&quot;&gt;En mercado&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;resumen-count&quot;&gt;{{ totalEnMercado }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;resumen-item&quot;&gt;
+                  &lt;span class&#x3D;&quot;resumen-dot estado-bajo&quot;&gt;&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;resumen-label&quot;&gt;Bajo mercado&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;resumen-count&quot;&gt;{{ totalBajoMercado }}&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            }
+          }
+        &lt;/div&gt;
+      }
+    }
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="estadisticas-page">  @if (loading) {    <div class="loading-wrapper">      <app-spinner size="large" message="Calculando estadísticas..."> </app-spinner>    </div>  }  @if (!loading) {    <!-- Header -->    <div class="page-header">      <div class="header-left">        <span class="page-tag">Inventario ganado</span>        <h1 class="page-title">Estadísticas <span class="brand">Productivas</span></h1>        @if (hatoActivo) {          <p class="page-subtitle">            Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},            {{ hatoActivo.departamento }}          </p>        } @else {          <p class="page-subtitle warn">⚠️ Selecciona un hato desde el panel superior.</p>        }      </div>      <div class="header-badge">🐂</div>    </div>    <!-- Sin hato -->    @if (!hatoActivo && !error) {      <div class="empty-state">        <h2>Selecciona un hato</h2>        <p>Activa un hato para consultar sus estadísticas.</p>      </div>    }    @if (error) {      <div class="empty-state">        <h2>Error al cargar</h2>        <p>{{ error }}</p>      </div>    }    @if (hatoActivo && !error) {      <!-- KPI Cards -->      <div class="kpi-row">        <div class="kpi-hero">          <span class="kpi-label">Valor total del ganado</span>          <strong>{{ formatCOP(valorTotal) }}</strong>          <p>Valor estimado de todo el inventario pecuario registrado</p>        </div>        <div class="kpi-secondary-grid">          <div class="kpi-card">            <span class="kpi-label">Cabezas totales</span>            <strong>{{ cabezasTotales }}</strong>          </div>          <div class="kpi-card">            <span class="kpi-label">Registros</span>            <strong>{{ registros.length }}</strong>          </div>          <div class="kpi-card">            <span class="kpi-label">Edad promedio actual</span>            <strong> {{ edadPromedioPonderada | number: \'1.0-1\' }} m </strong>          </div>          <div class="kpi-card">            <span class="kpi-label">Valor por cabeza</span>            <strong>{{ formatCOP(valorPromedioPorCabeza) }}</strong>          </div>        </div>      </div>      @if (registros.length === 0) {        <div class="empty-state">          <h2>Sin datos suficientes</h2>          <p>Registra animales para habilitar el panel estadístico del inventario ganado.</p>        </div>      }      @if (registros.length > 0) {        <!-- Fila 1: Dona + Categorías -->        <div class="charts-row">          <div class="chart-card">            <div class="chart-header">              <span class="section-badge">Distribución</span>              <h2 class="section-title">Cabezas por tipo de raza</h2>              <p class="chart-subtitle">Composición del hato según tipo productivo</p>            </div>            <div class="chart-container chart-dona">              <canvas #chartDona></canvas>            </div>          </div>          <div class="chart-card">            <div class="chart-header">              <span class="section-badge">Valor</span>              <h2 class="section-title">Categorías por valor económico</h2>              <p class="chart-subtitle">Valor total acumulado por categoría de ganado</p>            </div>            <div class="chart-container chart-barras">              <canvas #chartCategorias></canvas>            </div>          </div>        </div>        <!-- Fila 2: Valor por raza (ancho completo) -->        <div class="chart-card chart-full">          <div class="chart-header">            <span class="section-badge">Comparativa</span>            <h2 class="section-title">Valor y cabezas por raza</h2>            <p class="chart-subtitle">              Comparación de valor económico vs cantidad de animales por raza            </p>          </div>          <div class="chart-container chart-agrupado">            <canvas #chartValor></canvas>          </div>        </div>        <!-- Fila 3: Edad por grupo (ancho completo) -->        <div class="chart-card chart-full">          <div class="chart-header">            <span class="section-badge">Envejecimiento</span>            <h2 class="section-title">Edad actual por grupo</h2>            <p class="chart-subtitle">              Edad calculada automáticamente desde la fecha de registro — se actualiza cada mes            </p>          </div>          <!-- Leyenda de colores de edad -->          <div class="leyenda-edad">            <div class="leyenda-item">              <span class="leyenda-dot" style="background: #86efac"></span>              <span>Menos de 12 m</span>            </div>            <div class="leyenda-item">              <span class="leyenda-dot" style="background: #19e64d"></span>              <span>12 – 35 m</span>            </div>            <div class="leyenda-item">              <span class="leyenda-dot" style="background: #15803d"></span>              <span>36 – 71 m</span>            </div>            <div class="leyenda-item">              <span class="leyenda-dot" style="background: #052e0f"></span>              <span>72 m o más</span>            </div>          </div>          <div            class="chart-container chart-edad"            [style.height.px]="Math.max(200, edadPorGrupo.length * 44)"          >            <canvas #chartEdad></canvas>          </div>        </div>        <!-- Comparativa valor mercado -->        <div class="chart-card chart-full">          <div class="chart-header">            <span class="section-badge">Comparativa</span>            <h2 class="section-title">Valor unitario vs mercado</h2>            <p class="chart-subtitle">              Comparación del valor registrado por cabeza contra el valor de referencia del mercado              colombiano 2025            </p>          </div>          @if (cargandoReferencias) {            <div class="comparativa-loading">              <app-spinner size="medium" message="Cargando valores de referencia..."> </app-spinner>            </div>          }          @if (!cargandoReferencias) {            @if (comparativaValores.length === 0) {              <div class="empty-comparativa">                <p>No hay datos suficientes para la comparativa.</p>              </div>            }            @if (comparativaValores.length > 0) {              <div class="comparativa-tabla">                <table class="tabla-comparativa">                  <thead>                    <tr>                      <th>Raza</th>                      <th>Categoría</th>                      <th>Tu valor</th>                      <th>Valor mercado</th>                      <th>Diferencia</th>                      <th>Estado</th>                    </tr>                  </thead>                  <tbody>                    @for (item of comparativaValores; track item.raza) {                      <tr>                        <td class="td-raza">{{ item.raza }}</td>                        <td class="td-categoria">{{ item.categoria }}</td>                        <td class="td-valor">                          {{ formatCOP(item.valorUsuario) }}                        </td>                        <td class="td-valor">                          @if (item.valorMercado) {                            {{ formatCOP(item.valorMercado) }}                          } @else {                            <span class="sin-ref">—</span>                          }                        </td>                        <td class="td-diferencia">                          @if (item.diferenciaCOP !== null) {                            <div class="diferencia-wrap">                              <span                                class="diferencia-cop"                                [class.positivo]="item.diferenciaCOP > 0"                                [class.negativo]="item.diferenciaCOP < 0"                              >                                {{ item.diferenciaCOP > 0 ? \'+\' : \'\' }}                                {{ formatCOP(item.diferenciaCOP) }}                              </span>                              <span                                class="diferencia-pct"                                [class.positivo]="(item.diferenciaPct ?? 0) > 0"                                [class.negativo]="(item.diferenciaPct ?? 0) < 0"                              >                                {{ (item.diferenciaPct ?? 0) > 0 ? \'+\' : \'\' }}                                {{ item.diferenciaPct | number: \'1.1-1\' }}%                              </span>                            </div>                          } @else {                            <span class="sin-ref">—</span>                          }                        </td>                        <td>                          <span class="estado-badge" [class]="claseEstadoValor(item.estado)">                            {{ labelEstadoValor(item.estado) }}                          </span>                        </td>                      </tr>                    }                  </tbody>                </table>              </div>              <!-- Resumen de estados -->              <div class="comparativa-resumen">                <div class="resumen-item">                  <span class="resumen-dot estado-sobre"></span>                  <span class="resumen-label">Sobre mercado</span>                  <span class="resumen-count">{{ totalSobreMercado }}</span>                </div>                <div class="resumen-item">                  <span class="resumen-dot estado-mercado"></span>                  <span class="resumen-label">En mercado</span>                  <span class="resumen-count">{{ totalEnMercado }}</span>                </div>                <div class="resumen-item">                  <span class="resumen-dot estado-bajo"></span>                  <span class="resumen-label">Bajo mercado</span>                  <span class="resumen-count">{{ totalBajoMercado }}</span>                </div>              </div>            }          }        </div>      }    }  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'InventarioGanadoEstadisticasComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'InventarioGanadoEstadisticasComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,499 @@
+<div class="proyecciones-page">
+  <!-- ===== LOADING ===== -->
+  @if (loading) {
+    <div class="loading-wrap">
+      <app-spinner size="large" message="Calculando proyecciones..."> </app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- ===== HEADER ===== -->
+    <header class="page-header">
+      <div class="header-left">
+        <p class="page-tag">Finanzas · Proyecciones</p>
+        <h1 class="page-title">Proyecciones <span class="brand">Financieras</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato para ver proyecciones.</p>
+        }
+      </div>
+      <div class="header-right">
+        <div class="header-icon">📊</div>
+      </div>
+    </header>
+
+    @if (error) {
+      <div class="msg-error">
+        <span>❌</span>
+        <p>{{ error }}</p>
+      </div>
+    }
+
+    @if (!hatoActivo) {
+      <div class="empty-state">
+        <span>🐄</span>
+        <p>Selecciona un hato para ver proyecciones.</p>
+      </div>
+    }
+
+    @if (hatoActivo && respuesta) {
+      <!-- ===== DATOS INSUFICIENTES ===== -->
+      @if (respuesta.datosInsuficientes) {
+        <div class="insuficiente-card">
+          <div class="insuficiente-icono">📅</div>
+          <div class="insuficiente-info">
+            <h3 class="insuficiente-titulo">Datos insuficientes para proyectar</h3>
+            <p class="insuficiente-mensaje">
+              {{ respuesta.mensajeInsuficiente }}
+            </p>
+            <div class="insuficiente-progreso">
+              <div class="progreso-track">
+                <div
+                  class="progreso-fill"
+                  [style.width.%]="(respuesta.mesesHistorial / 3) * 100"
+                ></div>
+              </div>
+              <span class="progreso-label"> {{ respuesta.mesesHistorial }} / 3 meses </span>
+            </div>
+            <p class="insuficiente-hint">
+              💡 Registra tus ingresos y egresos mensualmente para que el sistema genere
+              proyecciones precisas.
+            </p>
+          </div>
+        </div>
+      }
+
+      <!-- ===== CONTENIDO CON DATOS ===== -->
+      @if (!respuesta.datosInsuficientes) {
+        <!-- Controles + botón inversión -->
+        <div class="controles-row">
+          <div class="selector-meses">
+            <span class="selector-label">Proyectar:</span>
+            <button
+              class="selector-btn"
+              [class.activo]="mesesSeleccionados === 3"
+              (click)="cambiarMeses(3)"
+            >
+              3 meses
+            </button>
+            <button
+              class="selector-btn"
+              [class.activo]="mesesSeleccionados === 6"
+              (click)="cambiarMeses(6)"
+            >
+              6 meses
+            </button>
+          </div>
+
+          <div class="modelos-wrap">
+            <span class="selector-label">Modelos Aplicados:</span>
+            @for (m of respuesta.modelosAplicados; track m) {
+              <span class="modelo-chip">{{ labelModelo(m) }}</span>
+            }
+          </div>
+
+          <button class="btn-agregar-inversion" (click)="abrirModal()">+ Planear inversión</button>
+        </div>
+
+        <!-- Stats del historial -->
+        <div class="historial-stats">
+          <div class="hstat-card">
+            <span class="hstat-label">Historial</span>
+            <span class="hstat-valor"> {{ respuesta.mesesHistorial }} meses </span>
+          </div>
+          <div class="hstat-card">
+            <span class="hstat-label">Ingreso promedio</span>
+            <span class="hstat-valor verde">
+              {{ formatCOP(respuesta.promedioIngresosMensual) }}
+            </span>
+          </div>
+          <div class="hstat-card">
+            <span class="hstat-label">Egreso promedio</span>
+            <span class="hstat-valor rojo">
+              {{ formatCOP(respuesta.promedioEgresosMensual) }}
+            </span>
+          </div>
+          <div class="hstat-card">
+            <span class="hstat-label">Tendencia ingresos</span>
+            <span class="hstat-valor">{{ tendenciaIngresosLabel }}</span>
+          </div>
+          <div class="hstat-card">
+            <span class="hstat-label">Tendencia egresos</span>
+            <span class="hstat-valor">{{ tendenciaEgresosLabel }}</span>
+          </div>
+          @if (inversiones.length > 0) {
+            <div class="hstat-card inversion">
+              <span class="hstat-label">Inversiones planeadas</span>
+              <span class="hstat-valor naranja">
+                {{ inversiones.length }}
+              </span>
+            </div>
+          }
+        </div>
+
+        <!-- Inversiones planeadas resumen -->
+        @if (inversiones.length > 0) {
+          <div class="inversiones-resumen">
+            <div class="inversiones-resumen-header">
+              <h3 class="inversiones-resumen-titulo">📦 Inversiones planeadas</h3>
+              <span class="inversiones-resumen-hint"> Incluidas en las proyecciones </span>
+            </div>
+            <div class="inversiones-lista">
+              @for (inv of inversiones; track inv.idInversion) {
+                <div class="inversion-item">
+                  <div class="inversion-item-left">
+                    <span class="inversion-cat-icono">📦</span>
+                    <div class="inversion-item-info">
+                      <span class="inversion-item-desc">
+                        {{ inv.descripcion }}
+                      </span>
+                      <div class="inversion-item-meta">
+                        <span class="inversion-mes-chip"> 📅 {{ inv.mesEjecucionLabel }} </span>
+                        @if (inv.nombreCategoria) {
+                          <span class="inversion-cat-chip">
+                            {{ inv.nombreCategoria }}
+                          </span>
+                        }
+                        @if (inv.retornoEsperadoPct) {
+                          <span class="inversion-ret-chip">
+                            📈 +{{ inv.retornoEsperadoPct }}% retorno en
+                            {{ inv.mesesRetorno }} meses
+                          </span>
+                        }
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inversion-item-right">
+                    <span class="inversion-monto">
+                      {{ formatCOP(inv.monto) }}
+                    </span>
+                    <button
+                      class="btn-ejecutar-inv"
+                      (click)="ejecutarInversion(inv)"
+                      title="Marcar como ejecutada"
+                    >
+                      ✓
+                    </button>
+                    <button
+                      class="btn-cancelar-inv"
+                      (click)="cancelarInversion(inv.idInversion)"
+                      title="Cancelar inversión"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Nota de incertidumbre -->
+        <div class="nota-incertidumbre">
+          <span>ℹ️</span>
+          <p>
+            Las proyecciones muestran un <strong>rango estimado</strong>
+            basado en tu historial. Las inversiones planeadas se suman a los egresos del mes de
+            ejecución y el retorno estimado se distribuye en los meses siguientes.
+          </p>
+        </div>
+
+        <!-- ===== GRID DE PROYECCIONES ===== -->
+        <div class="proyecciones-grid">
+          @for (p of respuesta.proyecciones; track p.periodo; let i = $index) {
+            <div
+              class="proy-card"
+              [class]="claseMargen(p.estadoMargen)"
+              [class.proy-card-inversion]="p.tieneInversion"
+              [class.proy-card-retorno]="p.tieneRetorno"
+            >
+              <!-- Header -->
+              <div class="proy-header">
+                <div class="proy-mes">
+                  <span class="proy-num">+{{ i + 1 }}</span>
+                  <h3 class="proy-label">{{ p.periodoLabel }}</h3>
+                </div>
+                <div class="proy-badges">
+                  @if (p.tieneInversion) {
+                    <span class="badge-inversion">📦 Inversión</span>
+                  }
+                  @if (p.tieneRetorno) {
+                    <span class="badge-retorno">📈 Retorno</span>
+                  }
+                  <span class="proy-margen-badge" [class]="claseMargen(p.estadoMargen)">
+                    {{ iconoMargen(p.estadoMargen) }}
+                    {{ p.estadoMargen }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Inversiones del mes -->
+              @if (p.tieneInversion && p.inversionesDelMes.length > 0) {
+                <div class="proy-inversiones">
+                  @for (inv of p.inversionesDelMes; track inv.idInversion) {
+                    <div class="proy-inversion-item">
+                      <span>📦</span>
+                      <span class="proy-inversion-desc">
+                        {{ inv.descripcion }}
+                      </span>
+                      <span class="proy-inversion-monto"> -{{ formatCOP(inv.monto) }} </span>
+                    </div>
+                  }
+                </div>
+              }
+
+              <!-- Retornos activos -->
+              @if (p.tieneRetorno && p.retornosDelMes.length > 0) {
+                <div class="proy-retornos">
+                  @for (ret of p.retornosDelMes; track ret.idInversion) {
+                    <div class="proy-retorno-item">
+                      <span>📈</span>
+                      <span class="proy-retorno-desc"> Retorno: {{ ret.descripcion }} </span>
+                      <span class="proy-retorno-monto"> +{{ formatCOP(ret.monto) }} </span>
+                    </div>
+                  }
+                </div>
+              }
+
+              <!-- Filas de proyección -->
+              <div class="proy-filas">
+                <!-- Ingresos -->
+                <div class="proy-fila ingreso">
+                  <div class="proy-fila-header">
+                    <span class="proy-fila-icono">💰</span>
+                    <span class="proy-fila-label">Ingresos</span>
+                    <span class="proy-fila-proy">
+                      {{ formatCOP(p.ingresoProyectado) }}
+                    </span>
+                  </div>
+                  <div class="proy-rango">
+                    <span class="rango-min">
+                      {{ formatCOP(p.ingresoMin) }}
+                    </span>
+                    <div class="rango-barra">
+                      <div class="rango-fill ingreso-fill"></div>
+                    </div>
+                    <span class="rango-max">
+                      {{ formatCOP(p.ingresoMax) }}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Egresos -->
+                <div class="proy-fila egreso">
+                  <div class="proy-fila-header">
+                    <span class="proy-fila-icono">📤</span>
+                    <span class="proy-fila-label">
+                      Egresos
+                      @if (p.tieneInversion) {
+                        <span class="fila-badge-inv"> + inversión </span>
+                      }
+                    </span>
+                    <span class="proy-fila-proy">
+                      {{ formatCOP(p.egresoProyectado) }}
+                    </span>
+                  </div>
+                  <div class="proy-rango">
+                    <span class="rango-min">
+                      {{ formatCOP(p.egresoMin) }}
+                    </span>
+                    <div class="rango-barra">
+                      <div class="rango-fill egreso-fill"></div>
+                    </div>
+                    <span class="rango-max">
+                      {{ formatCOP(p.egresoMax) }}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Margen neto -->
+                <div class="proy-fila margen">
+                  <div class="proy-fila-header">
+                    <span class="proy-fila-icono">📈</span>
+                    <span class="proy-fila-label">Margen neto</span>
+                    <span
+                      class="proy-fila-proy"
+                      [class.valor-pos]="p.margenProyectado >= 0"
+                      [class.valor-neg]="p.margenProyectado < 0"
+                    >
+                      {{ formatCOP(p.margenProyectado) }}
+                    </span>
+                  </div>
+                  <div class="proy-rango">
+                    <span class="rango-min" [class.valor-neg]="p.margenMin < 0">
+                      {{ formatCOP(p.margenMin) }}
+                    </span>
+                    <div class="rango-barra">
+                      <div
+                        class="rango-fill"
+                        [class.margen-fill-pos]="p.estadoMargen === 'POSITIVO'"
+                        [class.margen-fill-neu]="p.estadoMargen === 'NEUTRO'"
+                        [class.margen-fill-neg]="p.estadoMargen === 'NEGATIVO'"
+                      ></div>
+                    </div>
+                    <span class="rango-max" [class.valor-pos]="p.margenMax >= 0">
+                      {{ formatCOP(p.margenMax) }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Alertas contextuales -->
+              @if (p.alertas && p.alertas.length > 0) {
+                <div class="proy-alertas">
+                  @for (alerta of p.alertas; track alerta) {
+                    <p class="proy-alerta">{{ alerta }}</p>
+                  }
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    }
+  }
+
+  <!-- ===== MODAL INVERSIÓN ===== -->
+  @if (modalVisible) {
+    <div class="modal-overlay" (click)="cerrarModal()">
+      <div class="modal-card" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2 class="modal-titulo">📦 Planear inversión</h2>
+          <button class="modal-cerrar" (click)="cerrarModal()">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <p class="modal-desc">
+            Registra una inversión futura para visualizar su impacto en tus proyecciones
+            financieras.
+          </p>
+
+          <!-- Descripción -->
+          <div class="form-grupo">
+            <label class="form-label">Descripción *</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Ej: Compra de 5 vacas Holstein"
+              [(ngModel)]="form.descripcion"
+            />
+          </div>
+
+          <!-- Monto -->
+          <div class="form-grupo">
+            <label class="form-label">Monto a invertir (COP) *</label>
+            <input
+              type="number"
+              class="form-input"
+              placeholder="Ej: 5000000"
+              [(ngModel)]="form.monto"
+              min="0"
+            />
+          </div>
+
+          <!-- Mes de ejecución -->
+          <div class="form-grupo">
+            <label class="form-label">Mes de ejecución *</label>
+            <select class="form-select" [(ngModel)]="form.mesEjecucion">
+              <option value="">Selecciona un mes</option>
+              @for (mes of mesesDisponibles; track mes.valor) {
+                <option [value]="mes.valor">{{ mes.label }}</option>
+              }
+            </select>
+          </div>
+
+          <!-- Categoría -->
+          <div class="form-grupo">
+            <label class="form-label">Categoría de inversión</label>
+            @if (loadingCategorias) {
+              <div class="form-loading">
+                <app-spinner size="small"></app-spinner>
+              </div>
+            } @else {
+              <select class="form-select" [(ngModel)]="form.idCategoria">
+                <option [value]="null">Sin categoría</option>
+                @for (cat of categoriasInversion; track cat.idCategoriaFinanciera) {
+                  <option [value]="cat.idCategoriaFinanciera">
+                    {{ cat.nombre }}
+                  </option>
+                }
+              </select>
+            }
+          </div>
+
+          <!-- Retorno esperado -->
+          <div class="form-seccion">
+            <p class="form-seccion-titulo">
+              📈 Retorno esperado <span class="form-opcional">(opcional)</span>
+            </p>
+            <p class="form-seccion-desc">
+              Si esta inversión generará más ingresos, indica el porcentaje de mejora estimado y en
+              cuántos meses se materializará.
+            </p>
+            <div class="form-row">
+              <div class="form-grupo">
+                <label class="form-label"> % mejora en ingresos </label>
+                <input
+                  type="number"
+                  class="form-input"
+                  placeholder="Ej: 15"
+                  [(ngModel)]="form.retornoEsperadoPct"
+                  min="0"
+                  max="100"
+                />
+              </div>
+              <div class="form-grupo">
+                <label class="form-label"> Meses de retorno </label>
+                <input
+                  type="number"
+                  class="form-input"
+                  placeholder="Ej: 6"
+                  [(ngModel)]="form.mesesRetorno"
+                  min="1"
+                  max="24"
+                />
+              </div>
+            </div>
+
+            <!-- Preview del retorno -->
+            @if (form.monto > 0 && form.retornoEsperadoPct && form.mesesRetorno) {
+              <div class="retorno-preview">
+                <span>📊</span>
+                <p>
+                  Retorno total estimado:
+                  <strong>
+                    {{ formatCOP((form.monto * form.retornoEsperadoPct) / 100) }}
+                  </strong>
+                  distribuido en
+                  <strong>{{ form.mesesRetorno }} meses</strong>
+                  (~{{
+                    formatCOP((form.monto * form.retornoEsperadoPct) / 100 / form.mesesRetorno)
+                  }}/mes)
+                </p>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-cancelar-modal" (click)="cerrarModal()">Cancelar</button>
+          <button
+            class="btn-guardar-modal"
+            [disabled]="!formValido || guardandoInversion"
+            (click)="guardarInversion()"
+          >
+            @if (guardandoInversion) {
+              <app-spinner size="small"></app-spinner>
+            } @else {
+              💾 Guardar inversión
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
