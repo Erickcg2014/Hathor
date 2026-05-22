@@ -13,7 +13,6 @@ El **API Gateway** es la puerta de entrada única al ecosistema de Hathor. Toda 
 | **Resilience4j**              | Resiliencia: circuit breakers y retries      |
 | **Redis (Upstash)**           | Rate limiting distribuido                    |
 | **Spring Cloud LoadBalancer** | Balanceo de carga entre instancias           |
-| **Reactor**                   | Programación reactiva (Project Reactor)      |
 
 ---
 
