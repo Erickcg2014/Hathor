@@ -1,0 +1,1870 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SeccionProduccionComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-seccion-produccion</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                                <code><a href="https://angular.io/api/forms/ReactiveFormsModule" target="_blank" >ReactiveFormsModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./seccion-produccion.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./seccion-produccion.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#CATEGORIAS_PRODUCCION" >CATEGORIAS_PRODUCCION</a>
+                            </li>
+                            <li>
+                                <a href="#destinosLeche" >destinosLeche</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#loadingGuardar" >loadingGuardar</a>
+                            </li>
+                            <li>
+                                <a href="#loadingRazas" >loadingRazas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#razasFallback" >razasFallback</a>
+                            </li>
+                            <li>
+                                <a href="#razasRegistradas" >razasRegistradas</a>
+                            </li>
+                            <li>
+                                <a href="#sistemasOrdenio" >sistemasOrdenio</a>
+                            </li>
+                            <li>
+                                <a href="#vacasPreLlenadas" >vacasPreLlenadas</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#cargarRazasRegistradas" >cargarRazasRegistradas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#guardar" >guardar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#initForm" >initForm</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#hatoActual" >hatoActual</a>
+                            </li>
+                            <li>
+                                <a href="#modoReadonly" >modoReadonly</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#irAnterior" >irAnterior</a>
+                            </li>
+                            <li>
+                                <a href="#irSiguiente" >irSiguiente</a>
+                            </li>
+                            <li>
+                                <a href="#seccionCompletada" >seccionCompletada</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#escalaCalculada" >escalaCalculada</a>
+                                </li>
+                                <li>
+                                    <a href="#iconoEscala" >iconoEscala</a>
+                                </li>
+                                <li>
+                                    <a href="#produccionMensualCalculada" >produccionMensualCalculada</a>
+                                </li>
+                                <li>
+                                    <a href="#ingresoMensualEstimado" >ingresoMensualEstimado</a>
+                                </li>
+                                <li>
+                                    <a href="#litrosPorVacaPorDia" >litrosPorVacaPorDia</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, hatoService: <a href="../injectables/HatoService.html" target="_self">HatoService</a>, perfilProductivoService: <a href="../injectables/PerfilProductivoService.html" target="_self">PerfilProductivoService</a>, inventarioGanadoService: <a href="../injectables/InventarioGanadoService.html" target="_self">InventarioGanadoService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:51</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoService.html" target="_self" >HatoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>perfilProductivoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PerfilProductivoService.html" target="_self" >PerfilProductivoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>inventarioGanadoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/InventarioGanadoService.html" target="_self" >InventarioGanadoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hatoActual"></a>
+                        <b>hatoActual</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:27</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modoReadonly"></a>
+                        <b>modoReadonly</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:28</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="irAnterior"></a>
+                        <b>irAnterior</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="irSiguiente"></a>
+                        <b>irSiguiente</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:31</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="seccionCompletada"></a>
+                        <b>seccionCompletada</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:30</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarRazasRegistradas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>cargarRazasRegistradas</b></span>
+                        <a href="#cargarRazasRegistradas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarRazasRegistradas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardar"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>guardar</b></span>
+                        <a href="#guardar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>guardar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="180"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:180</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initForm"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>initForm</b></span>
+                        <a href="#initForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CATEGORIAS_PRODUCCION"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>CATEGORIAS_PRODUCCION</b></span>
+                        <a href="#CATEGORIAS_PRODUCCION"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    &#x27;producción&#x27;,
+    &#x27;produccion&#x27;,
+    &#x27;ordeño&#x27;,
+    &#x27;ordenio&#x27;,
+    &#x27;lactancia&#x27;,
+    &#x27;lactante&#x27;,
+    &#x27;vaca&#x27;,
+    &#x27;lechera&#x27;,
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:100</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destinosLeche"></a>
+                    <span class="name">
+                        <span ><b>destinosLeche</b></span>
+                        <a href="#destinosLeche"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    &#x27;Industria láctea (Alquería, Colanta, etc.)&#x27;,
+    &#x27;Quesería artesanal&#x27;,
+    &#x27;Venta directa al consumidor&#x27;,
+    &#x27;Cooperativa&#x27;,
+    &#x27;Intermediario local&#x27;,
+    &#x27;Autoconsumo&#x27;,
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingGuardar"></a>
+                    <span class="name">
+                        <span ><b>loadingGuardar</b></span>
+                        <a href="#loadingGuardar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingRazas"></a>
+                    <span class="name">
+                        <span ><b>loadingRazas</b></span>
+                        <a href="#loadingRazas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="razasFallback"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>razasFallback</b></span>
+                        <a href="#razasFallback"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    &#x27;Holstein&#x27;,
+    &#x27;Jersey&#x27;,
+    &#x27;Pardo Suizo&#x27;,
+    &#x27;Normando&#x27;,
+    &#x27;Gyr Lechero&#x27;,
+    &#x27;Girolando&#x27;,
+    &#x27;Simmental&#x27;,
+    &#x27;Brahman&#x27;,
+    &#x27;Cebu&#x27;,
+    &#x27;Criolla&#x27;,
+    &#x27;Otra&#x27;,
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:144</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="razasRegistradas"></a>
+                    <span class="name">
+                        <span ><b>razasRegistradas</b></span>
+                        <a href="#razasRegistradas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sistemasOrdenio"></a>
+                    <span class="name">
+                        <span ><b>sistemasOrdenio</b></span>
+                        <a href="#sistemasOrdenio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;MANUAL&#x27;, &#x27;MECÁNICO&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vacasPreLlenadas"></a>
+                    <span class="name">
+                        <span ><b>vacasPreLlenadas</b></span>
+                        <a href="#vacasPreLlenadas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="escalaCalculada"></a>
+                        <span class="name"><b>escalaCalculada</b><a href="#escalaCalculada"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>escalaCalculada()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:81</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="iconoEscala"></a>
+                        <span class="name"><b>iconoEscala</b><a href="#iconoEscala"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>iconoEscala()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:90</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="produccionMensualCalculada"></a>
+                        <span class="name"><b>produccionMensualCalculada</b><a href="#produccionMensualCalculada"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>produccionMensualCalculada()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:160</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ingresoMensualEstimado"></a>
+                        <span class="name"><b>ingresoMensualEstimado</b><a href="#ingresoMensualEstimado"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>ingresoMensualEstimado()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:165</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="litrosPorVacaPorDia"></a>
+                        <span class="name"><b>litrosPorVacaPorDia</b><a href="#litrosPorVacaPorDia"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>litrosPorVacaPorDia()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-produccion/seccion-produccion.component.ts:171</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from &#x27;@angular/forms&#x27;;
+import { firstValueFrom } from &#x27;rxjs&#x27;;
+import { Hato, HatoService } from &#x27;../../../../../../core/services/hato/hato.service&#x27;;
+import {
+  PerfilProductivoService,
+  RegistroPerfilProductivoDTO,
+} from &#x27;../../../../../../core/services/produccion/perfil-productivo.service&#x27;;
+import { InventarioGanadoService } from &#x27;../../../../../../core/services/inventario/inventario-ganado.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../../../shared/spinner/spinner.component&#x27;;
+
+@Component({
+  selector: &#x27;app-seccion-produccion&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SpinnerComponent],
+  templateUrl: &#x27;./seccion-produccion.component.html&#x27;,
+  styleUrl: &#x27;./seccion-produccion.component.css&#x27;,
+})
+export class SeccionProduccionComponent implements OnInit {
+  @Input() hatoActual: Hato | null &#x3D; null;
+  @Input() modoReadonly &#x3D; false;
+
+  @Output() seccionCompletada &#x3D; new EventEmitter&lt;Hato&gt;();
+  @Output() irSiguiente &#x3D; new EventEmitter&lt;void&gt;();
+  @Output() irAnterior &#x3D; new EventEmitter&lt;void&gt;();
+
+  form!: FormGroup;
+  loadingGuardar &#x3D; false;
+  loadingRazas &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+
+  razasRegistradas: string[] &#x3D; [];
+
+  vacasPreLlenadas &#x3D; false;
+
+  sistemasOrdenio &#x3D; [&#x27;MANUAL&#x27;, &#x27;MECÁNICO&#x27;];
+  destinosLeche &#x3D; [
+    &#x27;Industria láctea (Alquería, Colanta, etc.)&#x27;,
+    &#x27;Quesería artesanal&#x27;,
+    &#x27;Venta directa al consumidor&#x27;,
+    &#x27;Cooperativa&#x27;,
+    &#x27;Intermediario local&#x27;,
+    &#x27;Autoconsumo&#x27;,
+  ];
+
+  constructor(
+    private fb: FormBuilder,
+    private hatoService: HatoService,
+    private perfilProductivoService: PerfilProductivoService,
+    private inventarioGanadoService: InventarioGanadoService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.initForm();
+    if (!this.modoReadonly) {
+      this.cargarRazasRegistradas();
+    }
+  }
+
+  private initForm(): void {
+    this.form &#x3D; this.fb.group({
+      razaPredominante: [&#x27;&#x27;, Validators.required],
+      produccionDiariaLitros: [null, [Validators.required, Validators.min(1)]],
+      precioLitroPromedio: [null, [Validators.required, Validators.min(1)]],
+      vacasEnOrdenio: [null, [Validators.required, Validators.min(1)]],
+      frecuenciaOrdenio: [null, [Validators.required, Validators.min(1), Validators.max(3)]],
+      sistemaOrdenio: [&#x27;&#x27;, Validators.required],
+      destinoLeche: [&#x27;&#x27;, Validators.required],
+      periodoLactanciaPromedio: [null, [Validators.min(1)]],
+    });
+  }
+
+  get escalaCalculada(): string {
+    const vacas &#x3D; this.form.get(&#x27;vacasEnOrdenio&#x27;)?.value;
+    if (!vacas) return &#x27;&#x27;;
+    if (vacas &lt; 25) return &#x27;PEQUEÑA&#x27;;
+    if (vacas &lt;&#x3D; 200) return &#x27;MEDIANA&#x27;;
+    if (vacas &lt;&#x3D; 500) return &#x27;GRANDE&#x27;;
+    return &#x27;EMPRESARIAL&#x27;;
+  }
+
+  get iconoEscala(): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      PEQUEÑA: &#x27;🏡&#x27;,
+      MEDIANA: &#x27;🏘️&#x27;,
+      GRANDE: &#x27;🏭&#x27;,
+      EMPRESARIAL: &#x27;🏢&#x27;,
+    };
+    return map[this.escalaCalculada] ?? &#x27;&#x27;;
+  }
+
+  private readonly CATEGORIAS_PRODUCCION &#x3D; [
+    &#x27;producción&#x27;,
+    &#x27;produccion&#x27;,
+    &#x27;ordeño&#x27;,
+    &#x27;ordenio&#x27;,
+    &#x27;lactancia&#x27;,
+    &#x27;lactante&#x27;,
+    &#x27;vaca&#x27;,
+    &#x27;lechera&#x27;,
+  ];
+
+  private async cargarRazasRegistradas(): Promise&lt;void&gt; {
+    if (!this.hatoActual?.idHato) return;
+    this.loadingRazas &#x3D; true;
+    try {
+      const inventario &#x3D; await firstValueFrom(
+        this.inventarioGanadoService.getByHato(this.hatoActual.idHato),
+      );
+
+      const razasUnicas &#x3D; [...new Set(inventario.map((i) &#x3D;&gt; i.raza.nombre))];
+      this.razasRegistradas &#x3D; razasUnicas.length &gt; 0 ? razasUnicas : this.razasFallback;
+
+      const vacasActual &#x3D; this.form.get(&#x27;vacasEnOrdenio&#x27;)?.value;
+      if (!vacasActual) {
+        const vacasEnProduccion &#x3D; inventario
+          .filter((item) &#x3D;&gt; {
+            const nombreCategoria &#x3D; item.categoriaGanado?.nombreCategoria?.toLowerCase() ?? &#x27;&#x27;;
+            return this.CATEGORIAS_PRODUCCION.some((cat) &#x3D;&gt; nombreCategoria.includes(cat));
+          })
+          .reduce((total, item) &#x3D;&gt; total + (item.cantidad ?? 0), 0);
+
+        if (vacasEnProduccion &gt; 0) {
+          this.form.patchValue({ vacasEnOrdenio: vacasEnProduccion });
+          this.vacasPreLlenadas &#x3D; true;
+        }
+      }
+    } catch {
+      this.razasRegistradas &#x3D; this.razasFallback;
+    } finally {
+      this.loadingRazas &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  private readonly razasFallback &#x3D; [
+    &#x27;Holstein&#x27;,
+    &#x27;Jersey&#x27;,
+    &#x27;Pardo Suizo&#x27;,
+    &#x27;Normando&#x27;,
+    &#x27;Gyr Lechero&#x27;,
+    &#x27;Girolando&#x27;,
+    &#x27;Simmental&#x27;,
+    &#x27;Brahman&#x27;,
+    &#x27;Cebu&#x27;,
+    &#x27;Criolla&#x27;,
+    &#x27;Otra&#x27;,
+  ];
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GETTERS CALCULADOS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  get produccionMensualCalculada(): number {
+    const diaria &#x3D; this.form.get(&#x27;produccionDiariaLitros&#x27;)?.value;
+    return diaria ? Math.round(diaria * 30) : 0;
+  }
+
+  get ingresoMensualEstimado(): number {
+    const mensual &#x3D; this.produccionMensualCalculada;
+    const precio &#x3D; this.form.get(&#x27;precioLitroPromedio&#x27;)?.value;
+    return mensual &amp;&amp; precio ? mensual * precio : 0;
+  }
+
+  get litrosPorVacaPorDia(): number {
+    const litros &#x3D; this.form.get(&#x27;produccionDiariaLitros&#x27;)?.value;
+    const vacas &#x3D; this.form.get(&#x27;vacasEnOrdenio&#x27;)?.value;
+    if (!litros || !vacas || vacas &#x3D;&#x3D;&#x3D; 0) return 0;
+    return Math.round((litros / vacas) * 10) / 10;
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GUARDAR &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  async guardar(): Promise&lt;void&gt; {
+    if (this.form.invalid || !this.hatoActual?.idHato) {
+      this.form.markAllAsTouched();
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.loadingGuardar &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+
+    try {
+      const v &#x3D; this.form.value;
+      const dto: RegistroPerfilProductivoDTO &#x3D; {
+        idHato: this.hatoActual.idHato!,
+        razaPredominante: v.razaPredominante,
+        produccionDiariaLitros: v.produccionDiariaLitros,
+        precioLitroPromedio: v.precioLitroPromedio,
+        vacasEnOrdenio: v.vacasEnOrdenio,
+        frecuenciaOrdenio: v.frecuenciaOrdenio,
+        sistemaOrdenio: v.sistemaOrdenio,
+        destinoLeche: v.destinoLeche,
+        periodoLactanciaPromedio: v.periodoLactanciaPromedio,
+      };
+
+      await firstValueFrom(this.perfilProductivoService.crearPerfil(dto));
+
+      const hatoActualizado &#x3D; await firstValueFrom(
+        this.hatoService.actualizarCompletitud(this.hatoActual.idHato!, 75),
+      );
+
+      this.seccionCompletada.emit(hatoActualizado);
+    } catch {
+      this.error &#x3D; &#x27;Error al guardar. Intenta de nuevo.&#x27;;
+      this.cdr.markForCheck();
+    } finally {
+      this.loadingGuardar &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;seccion-wrapper&quot;&gt;
+  &lt;!-- MODO READONLY --&gt;
+  @if (modoReadonly) {
+    &lt;div class&#x3D;&quot;readonly-wrapper&quot;&gt;
+      &lt;div class&#x3D;&quot;readonly-header&quot;&gt;
+        &lt;div class&#x3D;&quot;readonly-check&quot;&gt;✓&lt;/div&gt;
+        &lt;div&gt;
+          &lt;h2 class&#x3D;&quot;readonly-titulo&quot;&gt;¡Producción lechera registrada!&lt;/h2&gt;
+          &lt;p class&#x3D;&quot;readonly-mensaje&quot;&gt;
+            Los datos de producción están listos. Solo falta un paso para que Hathor pueda darte
+            análisis completos de tu operación. ¡Ya casi! 🥛
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;paso-actions&quot;&gt;
+        &lt;button class&#x3D;&quot;btn-secondary&quot; (click)&#x3D;&quot;irAnterior.emit()&quot;&gt;← Anterior&lt;/button&gt;
+        &lt;button class&#x3D;&quot;btn-primary&quot; (click)&#x3D;&quot;irSiguiente.emit()&quot;&gt;Continuar a finanzas →&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+
+  &lt;!-- MODO EDITABLE --&gt;
+  @if (!modoReadonly) {
+    &lt;div class&#x3D;&quot;paso-header&quot;&gt;
+      &lt;span class&#x3D;&quot;paso-icono&quot;&gt;🥛&lt;/span&gt;
+      &lt;div&gt;
+        &lt;h2 class&#x3D;&quot;paso-titulo&quot;&gt;Producción lechera&lt;/h2&gt;
+        &lt;p class&#x3D;&quot;paso-subtitulo&quot;&gt;Cuéntanos cómo produce leche tu hato actualmente&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    @if (loadingRazas) {
+      &lt;div class&#x3D;&quot;loading-razas&quot;&gt;
+        &lt;app-spinner size&#x3D;&quot;small&quot; message&#x3D;&quot;Cargando razas registradas...&quot;&gt;&lt;/app-spinner&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;form [formGroup]&#x3D;&quot;form&quot; class&#x3D;&quot;paso-form&quot;&gt;
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; SECCIÓN: GANADO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;form-seccion&quot;&gt;
+        &lt;h3 class&#x3D;&quot;form-seccion-titulo&quot;&gt;🐄 Tu ganado lechero&lt;/h3&gt;
+
+        &lt;div class&#x3D;&quot;form-row&quot;&gt;
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label&gt;¿Cuál es la raza predominante en tu hato? &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;select
+              formControlName&#x3D;&quot;razaPredominante&quot;
+              [class.error]&#x3D;&quot;
+                form.get(&#x27;razaPredominante&#x27;)?.invalid &amp;&amp; form.get(&#x27;razaPredominante&#x27;)?.touched
+              &quot;
+            &gt;
+              &lt;option value&#x3D;&quot;&quot;&gt;Selecciona una raza...&lt;/option&gt;
+              @for (raza of razasRegistradas; track raza) {
+                &lt;option [value]&#x3D;&quot;raza&quot;&gt;{{ raza }}&lt;/option&gt;
+              }
+            &lt;/select&gt;
+            @if (razasRegistradas.length &gt; 0 &amp;&amp; !loadingRazas) {
+              &lt;span class&#x3D;&quot;field-hint&quot;&gt;
+                Razas cargadas desde tu inventario de ganado registrado. Raza que más litros de
+                leche produce.
+              &lt;/span&gt;
+            }
+            &lt;p
+              class&#x3D;&quot;field-error&quot;
+              *ngIf&#x3D;&quot;form.get(&#x27;razaPredominante&#x27;)?.invalid &amp;&amp; form.get(&#x27;razaPredominante&#x27;)?.touched&quot;
+            &gt;
+              Selecciona la raza predominante
+            &lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label
+              &gt;¿Cuántas vacas tienes actualmente en ordeño? &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label
+            &gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              formControlName&#x3D;&quot;vacasEnOrdenio&quot;
+              placeholder&#x3D;&quot;Ej: 25&quot;
+              min&#x3D;&quot;1&quot;
+              [class.error]&#x3D;&quot;
+                form.get(&#x27;vacasEnOrdenio&#x27;)?.invalid &amp;&amp; form.get(&#x27;vacasEnOrdenio&#x27;)?.touched
+              &quot;
+            /&gt;
+            @if (vacasPreLlenadas &amp;&amp; form.get(&#x27;vacasEnOrdenio&#x27;)?.pristine) {
+              &lt;p class&#x3D;&quot;campo-hint&quot;&gt;
+                💡 Pre-llenado desde tu inventario de ganado. Puedes ajustarlo si es necesario.
+              &lt;/p&gt;
+            }
+            &lt;p
+              class&#x3D;&quot;field-error&quot;
+              *ngIf&#x3D;&quot;form.get(&#x27;vacasEnOrdenio&#x27;)?.invalid &amp;&amp; form.get(&#x27;vacasEnOrdenio&#x27;)?.touched&quot;
+            &gt;
+              Ingresa el número de vacas en ordeño
+            &lt;/p&gt;
+          &lt;/div&gt;
+          @if (escalaCalculada) {
+            &lt;div class&#x3D;&quot;escala-badge-wrapper&quot;&gt;
+              &lt;span class&#x3D;&quot;escala-label&quot;&gt;Escala del hato:&lt;/span&gt;
+              &lt;span class&#x3D;&quot;escala-badge escala-{{ escalaCalculada.toLowerCase() }}&quot;&gt;
+                {{ iconoEscala }} {{ escalaCalculada }}
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;escala-hint&quot;&gt; Calculado automáticamente según tus vacas en ordeño &lt;/span&gt;
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;form-row&quot;&gt;
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label&gt;¿Cuál es el período de lactancia promedio de tus vacas? (días)&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              formControlName&#x3D;&quot;periodoLactanciaPromedio&quot;
+              placeholder&#x3D;&quot;Ej: 305&quot;
+              min&#x3D;&quot;1&quot;
+            /&gt;
+            &lt;span class&#x3D;&quot;field-hint&quot;&gt;El promedio de la industria lechera es de 305 días&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; SECCIÓN: SISTEMA DE ORDEÑO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;form-seccion&quot;&gt;
+        &lt;h3 class&#x3D;&quot;form-seccion-titulo&quot;&gt;⚙️ Sistema de ordeño&lt;/h3&gt;
+
+        &lt;div class&#x3D;&quot;form-row&quot;&gt;
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label&gt;¿Cómo es tu sistema de ordeño? &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;select
+              formControlName&#x3D;&quot;sistemaOrdenio&quot;
+              [class.error]&#x3D;&quot;
+                form.get(&#x27;sistemaOrdenio&#x27;)?.invalid &amp;&amp; form.get(&#x27;sistemaOrdenio&#x27;)?.touched
+              &quot;
+            &gt;
+              &lt;option value&#x3D;&quot;&quot;&gt;Selecciona...&lt;/option&gt;
+              @for (s of sistemasOrdenio; track s) {
+                &lt;option [value]&#x3D;&quot;s&quot;&gt;{{ s }}&lt;/option&gt;
+              }
+            &lt;/select&gt;
+            &lt;p
+              class&#x3D;&quot;field-error&quot;
+              *ngIf&#x3D;&quot;form.get(&#x27;sistemaOrdenio&#x27;)?.invalid &amp;&amp; form.get(&#x27;sistemaOrdenio&#x27;)?.touched&quot;
+            &gt;
+              Selecciona el sistema de ordeño
+            &lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label&gt;¿Cuántas veces al día ordeñas? &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              formControlName&#x3D;&quot;frecuenciaOrdenio&quot;
+              placeholder&#x3D;&quot;Ej: 2&quot;
+              min&#x3D;&quot;1&quot;
+              max&#x3D;&quot;3&quot;
+              [class.error]&#x3D;&quot;
+                form.get(&#x27;frecuenciaOrdenio&#x27;)?.invalid &amp;&amp; form.get(&#x27;frecuenciaOrdenio&#x27;)?.touched
+              &quot;
+            /&gt;
+            &lt;span class&#x3D;&quot;field-hint&quot;&gt;Generalmente entre 1 y 3 veces al día&lt;/span&gt;
+            &lt;p
+              class&#x3D;&quot;field-error&quot;
+              *ngIf&#x3D;&quot;
+                form.get(&#x27;frecuenciaOrdenio&#x27;)?.invalid &amp;&amp; form.get(&#x27;frecuenciaOrdenio&#x27;)?.touched
+              &quot;
+            &gt;
+              Ingresa la frecuencia de ordeño (1-3)
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; SECCIÓN: PRODUCCIÓN Y VENTAS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;form-seccion&quot;&gt;
+        &lt;h3 class&#x3D;&quot;form-seccion-titulo&quot;&gt;💰 Producción y ventas&lt;/h3&gt;
+
+        &lt;div class&#x3D;&quot;form-row&quot;&gt;
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label
+              &gt;¿Cuántos litros produces por día en promedio? &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label
+            &gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              formControlName&#x3D;&quot;produccionDiariaLitros&quot;
+              placeholder&#x3D;&quot;Ej: 150&quot;
+              min&#x3D;&quot;1&quot;
+              [class.error]&#x3D;&quot;
+                form.get(&#x27;produccionDiariaLitros&#x27;)?.invalid &amp;&amp;
+                form.get(&#x27;produccionDiariaLitros&#x27;)?.touched
+              &quot;
+            /&gt;
+            @if (litrosPorVacaPorDia &gt; 0) {
+              &lt;span class&#x3D;&quot;field-hint ingreso-hint&quot;&gt;
+                📊 {{ litrosPorVacaPorDia }} litros/vaca/día
+              &lt;/span&gt;
+            }
+            &lt;p
+              class&#x3D;&quot;field-error&quot;
+              *ngIf&#x3D;&quot;
+                form.get(&#x27;produccionDiariaLitros&#x27;)?.invalid &amp;&amp;
+                form.get(&#x27;produccionDiariaLitros&#x27;)?.touched
+              &quot;
+            &gt;
+              Producción requerida (mínimo 1 litro)
+            &lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label
+              &gt;¿A qué precio vendes el litro de leche? (COP) &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label
+            &gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              formControlName&#x3D;&quot;precioLitroPromedio&quot;
+              placeholder&#x3D;&quot;Ej: 1500&quot;
+              min&#x3D;&quot;1&quot;
+              [class.error]&#x3D;&quot;
+                form.get(&#x27;precioLitroPromedio&#x27;)?.invalid &amp;&amp; form.get(&#x27;precioLitroPromedio&#x27;)?.touched
+              &quot;
+            /&gt;
+            &lt;p
+              class&#x3D;&quot;field-error&quot;
+              *ngIf&#x3D;&quot;
+                form.get(&#x27;precioLitroPromedio&#x27;)?.invalid &amp;&amp; form.get(&#x27;precioLitroPromedio&#x27;)?.touched
+              &quot;
+            &gt;
+              Precio requerido (mínimo 1)
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;form-row&quot;&gt;
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label
+              &gt;¿Cual es el destino de la leche que produces? &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label
+            &gt;
+            &lt;select
+              formControlName&#x3D;&quot;destinoLeche&quot;
+              [class.error]&#x3D;&quot;form.get(&#x27;destinoLeche&#x27;)?.invalid &amp;&amp; form.get(&#x27;destinoLeche&#x27;)?.touched&quot;
+            &gt;
+              &lt;option value&#x3D;&quot;&quot;&gt;Selecciona el destino...&lt;/option&gt;
+              @for (d of destinosLeche; track d) {
+                &lt;option [value]&#x3D;&quot;d&quot;&gt;{{ d }}&lt;/option&gt;
+              }
+            &lt;/select&gt;
+            &lt;p
+              class&#x3D;&quot;field-error&quot;
+              *ngIf&#x3D;&quot;form.get(&#x27;destinoLeche&#x27;)?.invalid &amp;&amp; form.get(&#x27;destinoLeche&#x27;)?.touched&quot;
+            &gt;
+              Selecciona el destino de la leche
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; PREVIEW CALCULADO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      @if (produccionMensualCalculada &gt; 0) {
+        &lt;div class&#x3D;&quot;produccion-preview&quot;&gt;
+          &lt;div class&#x3D;&quot;preview-header&quot;&gt;
+            &lt;span class&#x3D;&quot;preview-icono&quot;&gt;📊&lt;/span&gt;
+            &lt;span class&#x3D;&quot;preview-titulo&quot;&gt;Estimación basada en tus datos&lt;/span&gt;
+            &lt;span class&#x3D;&quot;preview-badge&quot;&gt;Calculado automáticamente&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;preview-grid&quot;&gt;
+            &lt;div class&#x3D;&quot;preview-item&quot;&gt;
+              &lt;span class&#x3D;&quot;preview-label&quot;&gt;Producción mensual estimada&lt;/span&gt;
+              &lt;span class&#x3D;&quot;preview-valor&quot;
+                &gt;{{ produccionMensualCalculada | number: &#x27;1.0-0&#x27; }} litros&lt;/span
+              &gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;preview-item&quot;&gt;
+              &lt;span class&#x3D;&quot;preview-label&quot;&gt;Ingreso mensual estimado&lt;/span&gt;
+              @if (ingresoMensualEstimado &gt; 0) {
+                &lt;span class&#x3D;&quot;preview-valor ingreso&quot;&gt;
+                  {{ ingresoMensualEstimado | currency: &#x27;COP&#x27; : &#x27;symbol&#x27; : &#x27;1.0-0&#x27; }}
+                &lt;/span&gt;
+              } @else {
+                &lt;span class&#x3D;&quot;preview-valor&quot;&gt;—&lt;/span&gt;
+              }
+            &lt;/div&gt;
+            @if (litrosPorVacaPorDia &gt; 0) {
+              &lt;div class&#x3D;&quot;preview-item&quot;&gt;
+                &lt;span class&#x3D;&quot;preview-label&quot;&gt;Productividad por vaca&lt;/span&gt;
+                &lt;span class&#x3D;&quot;preview-valor&quot;&gt;{{ litrosPorVacaPorDia }} litros/vaca/día&lt;/span&gt;
+              &lt;/div&gt;
+            }
+          &lt;/div&gt;
+          &lt;p class&#x3D;&quot;preview-nota&quot;&gt;
+            * Estos valores son estimaciones. Hathor los irá ajustando automáticamente con base en
+            tus registros reales de producción y ventas.
+          &lt;/p&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- Error --&gt;
+      @if (error) {
+        &lt;div class&#x3D;&quot;error-box&quot;&gt;
+          &lt;p&gt;{{ error }}&lt;/p&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- Acciones --&gt;
+      &lt;div class&#x3D;&quot;paso-actions&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-secondary&quot; (click)&#x3D;&quot;irAnterior.emit()&quot;&gt;← Anterior&lt;/button&gt;
+        &lt;button
+          type&#x3D;&quot;button&quot;
+          class&#x3D;&quot;btn-primary&quot;
+          (click)&#x3D;&quot;guardar()&quot;
+          [disabled]&#x3D;&quot;loadingGuardar || form.invalid&quot;
+        &gt;
+          @if (!loadingGuardar) {
+            Guardar y continuar →
+          } @else {
+            &lt;span class&#x3D;&quot;btn-loading&quot;&gt;
+              &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+              Guardando...
+            &lt;/span&gt;
+          }
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="seccion-wrapper">  <!-- MODO READONLY -->  @if (modoReadonly) {    <div class="readonly-wrapper">      <div class="readonly-header">        <div class="readonly-check">✓</div>        <div>          <h2 class="readonly-titulo">¡Producción lechera registrada!</h2>          <p class="readonly-mensaje">            Los datos de producción están listos. Solo falta un paso para que Hathor pueda darte            análisis completos de tu operación. ¡Ya casi! 🥛          </p>        </div>      </div>      <div class="paso-actions">        <button class="btn-secondary" (click)="irAnterior.emit()">← Anterior</button>        <button class="btn-primary" (click)="irSiguiente.emit()">Continuar a finanzas →</button>      </div>    </div>  }  <!-- MODO EDITABLE -->  @if (!modoReadonly) {    <div class="paso-header">      <span class="paso-icono">🥛</span>      <div>        <h2 class="paso-titulo">Producción lechera</h2>        <p class="paso-subtitulo">Cuéntanos cómo produce leche tu hato actualmente</p>      </div>    </div>    @if (loadingRazas) {      <div class="loading-razas">        <app-spinner size="small" message="Cargando razas registradas..."></app-spinner>      </div>    }    <form [formGroup]="form" class="paso-form">      <!-- ===== SECCIÓN: GANADO ===== -->      <div class="form-seccion">        <h3 class="form-seccion-titulo">🐄 Tu ganado lechero</h3>        <div class="form-row">          <div class="field">            <label>¿Cuál es la raza predominante en tu hato? <span class="required">*</span></label>            <select              formControlName="razaPredominante"              [class.error]="                form.get(\'razaPredominante\')?.invalid && form.get(\'razaPredominante\')?.touched              "            >              <option value="">Selecciona una raza...</option>              @for (raza of razasRegistradas; track raza) {                <option [value]="raza">{{ raza }}</option>              }            </select>            @if (razasRegistradas.length > 0 && !loadingRazas) {              <span class="field-hint">                Razas cargadas desde tu inventario de ganado registrado. Raza que más litros de                leche produce.              </span>            }            <p              class="field-error"              *ngIf="form.get(\'razaPredominante\')?.invalid && form.get(\'razaPredominante\')?.touched"            >              Selecciona la raza predominante            </p>          </div>          <div class="field">            <label              >¿Cuántas vacas tienes actualmente en ordeño? <span class="required">*</span></label            >            <input              type="number"              formControlName="vacasEnOrdenio"              placeholder="Ej: 25"              min="1"              [class.error]="                form.get(\'vacasEnOrdenio\')?.invalid && form.get(\'vacasEnOrdenio\')?.touched              "            />            @if (vacasPreLlenadas && form.get(\'vacasEnOrdenio\')?.pristine) {              <p class="campo-hint">                💡 Pre-llenado desde tu inventario de ganado. Puedes ajustarlo si es necesario.              </p>            }            <p              class="field-error"              *ngIf="form.get(\'vacasEnOrdenio\')?.invalid && form.get(\'vacasEnOrdenio\')?.touched"            >              Ingresa el número de vacas en ordeño            </p>          </div>          @if (escalaCalculada) {            <div class="escala-badge-wrapper">              <span class="escala-label">Escala del hato:</span>              <span class="escala-badge escala-{{ escalaCalculada.toLowerCase() }}">                {{ iconoEscala }} {{ escalaCalculada }}              </span>              <span class="escala-hint"> Calculado automáticamente según tus vacas en ordeño </span>            </div>          }        </div>        <div class="form-row">          <div class="field">            <label>¿Cuál es el período de lactancia promedio de tus vacas? (días)</label>            <input              type="number"              formControlName="periodoLactanciaPromedio"              placeholder="Ej: 305"              min="1"            />            <span class="field-hint">El promedio de la industria lechera es de 305 días</span>          </div>        </div>      </div>      <!-- ===== SECCIÓN: SISTEMA DE ORDEÑO ===== -->      <div class="form-seccion">        <h3 class="form-seccion-titulo">⚙️ Sistema de ordeño</h3>        <div class="form-row">          <div class="field">            <label>¿Cómo es tu sistema de ordeño? <span class="required">*</span></label>            <select              formControlName="sistemaOrdenio"              [class.error]="                form.get(\'sistemaOrdenio\')?.invalid && form.get(\'sistemaOrdenio\')?.touched              "            >              <option value="">Selecciona...</option>              @for (s of sistemasOrdenio; track s) {                <option [value]="s">{{ s }}</option>              }            </select>            <p              class="field-error"              *ngIf="form.get(\'sistemaOrdenio\')?.invalid && form.get(\'sistemaOrdenio\')?.touched"            >              Selecciona el sistema de ordeño            </p>          </div>          <div class="field">            <label>¿Cuántas veces al día ordeñas? <span class="required">*</span></label>            <input              type="number"              formControlName="frecuenciaOrdenio"              placeholder="Ej: 2"              min="1"              max="3"              [class.error]="                form.get(\'frecuenciaOrdenio\')?.invalid && form.get(\'frecuenciaOrdenio\')?.touched              "            />            <span class="field-hint">Generalmente entre 1 y 3 veces al día</span>            <p              class="field-error"              *ngIf="                form.get(\'frecuenciaOrdenio\')?.invalid && form.get(\'frecuenciaOrdenio\')?.touched              "            >              Ingresa la frecuencia de ordeño (1-3)            </p>          </div>        </div>      </div>      <!-- ===== SECCIÓN: PRODUCCIÓN Y VENTAS ===== -->      <div class="form-seccion">        <h3 class="form-seccion-titulo">💰 Producción y ventas</h3>        <div class="form-row">          <div class="field">            <label              >¿Cuántos litros produces por día en promedio? <span class="required">*</span></label            >            <input              type="number"              formControlName="produccionDiariaLitros"              placeholder="Ej: 150"              min="1"              [class.error]="                form.get(\'produccionDiariaLitros\')?.invalid &&                form.get(\'produccionDiariaLitros\')?.touched              "            />            @if (litrosPorVacaPorDia > 0) {              <span class="field-hint ingreso-hint">                📊 {{ litrosPorVacaPorDia }} litros/vaca/día              </span>            }            <p              class="field-error"              *ngIf="                form.get(\'produccionDiariaLitros\')?.invalid &&                form.get(\'produccionDiariaLitros\')?.touched              "            >              Producción requerida (mínimo 1 litro)            </p>          </div>          <div class="field">            <label              >¿A qué precio vendes el litro de leche? (COP) <span class="required">*</span></label            >            <input              type="number"              formControlName="precioLitroPromedio"              placeholder="Ej: 1500"              min="1"              [class.error]="                form.get(\'precioLitroPromedio\')?.invalid && form.get(\'precioLitroPromedio\')?.touched              "            />            <p              class="field-error"              *ngIf="                form.get(\'precioLitroPromedio\')?.invalid && form.get(\'precioLitroPromedio\')?.touched              "            >              Precio requerido (mínimo 1)            </p>          </div>        </div>        <div class="form-row">          <div class="field">            <label              >¿Cual es el destino de la leche que produces? <span class="required">*</span></label            >            <select              formControlName="destinoLeche"              [class.error]="form.get(\'destinoLeche\')?.invalid && form.get(\'destinoLeche\')?.touched"            >              <option value="">Selecciona el destino...</option>              @for (d of destinosLeche; track d) {                <option [value]="d">{{ d }}</option>              }            </select>            <p              class="field-error"              *ngIf="form.get(\'destinoLeche\')?.invalid && form.get(\'destinoLeche\')?.touched"            >              Selecciona el destino de la leche            </p>          </div>        </div>      </div>      <!-- ===== PREVIEW CALCULADO ===== -->      @if (produccionMensualCalculada > 0) {        <div class="produccion-preview">          <div class="preview-header">            <span class="preview-icono">📊</span>            <span class="preview-titulo">Estimación basada en tus datos</span>            <span class="preview-badge">Calculado automáticamente</span>          </div>          <div class="preview-grid">            <div class="preview-item">              <span class="preview-label">Producción mensual estimada</span>              <span class="preview-valor"                >{{ produccionMensualCalculada | number: \'1.0-0\' }} litros</span              >            </div>            <div class="preview-item">              <span class="preview-label">Ingreso mensual estimado</span>              @if (ingresoMensualEstimado > 0) {                <span class="preview-valor ingreso">                  {{ ingresoMensualEstimado | currency: \'COP\' : \'symbol\' : \'1.0-0\' }}                </span>              } @else {                <span class="preview-valor">—</span>              }            </div>            @if (litrosPorVacaPorDia > 0) {              <div class="preview-item">                <span class="preview-label">Productividad por vaca</span>                <span class="preview-valor">{{ litrosPorVacaPorDia }} litros/vaca/día</span>              </div>            }          </div>          <p class="preview-nota">            * Estos valores son estimaciones. Hathor los irá ajustando automáticamente con base en            tus registros reales de producción y ventas.          </p>        </div>      }      <!-- Error -->      @if (error) {        <div class="error-box">          <p>{{ error }}</p>        </div>      }      <!-- Acciones -->      <div class="paso-actions">        <button type="button" class="btn-secondary" (click)="irAnterior.emit()">← Anterior</button>        <button          type="button"          class="btn-primary"          (click)="guardar()"          [disabled]="loadingGuardar || form.invalid"        >          @if (!loadingGuardar) {            Guardar y continuar →          } @else {            <span class="btn-loading">              <app-spinner size="small"></app-spinner>              Guardando...            </span>          }        </button>      </div>    </form>  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'SeccionProduccionComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SeccionProduccionComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

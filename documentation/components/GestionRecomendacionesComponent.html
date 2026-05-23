@@ -1,0 +1,3087 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  GestionRecomendacionesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-gestion-recomendaciones</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./gestion-recomendaciones.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./gestion-recomendaciones.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#estados" >estados</a>
+                            </li>
+                            <li>
+                                <a href="#exito" >exito</a>
+                            </li>
+                            <li>
+                                <a href="#filtroBusqueda" >filtroBusqueda</a>
+                            </li>
+                            <li>
+                                <a href="#filtroEstado" >filtroEstado</a>
+                            </li>
+                            <li>
+                                <a href="#filtroPrioridad" >filtroPrioridad</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#guardando" >guardando</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#prioridades" >prioridades</a>
+                            </li>
+                            <li>
+                                <a href="#recomendaciones" >recomendaciones</a>
+                            </li>
+                            <li>
+                                <a href="#tabActivo" >tabActivo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tipos" >tipos</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abrirForm" >abrirForm</a>
+                            </li>
+                            <li>
+                                <a href="#cambiarEstado" >cambiarEstado</a>
+                            </li>
+                            <li>
+                                <a href="#cancelarForm" >cancelarForm</a>
+                            </li>
+                            <li>
+                                <a href="#cargarRecomendaciones" >cargarRecomendaciones</a>
+                            </li>
+                            <li>
+                                <a href="#claseEstado" >claseEstado</a>
+                            </li>
+                            <li>
+                                <a href="#clasePrioridad" >clasePrioridad</a>
+                            </li>
+                            <li>
+                                <a href="#eliminar" >eliminar</a>
+                            </li>
+                            <li>
+                                <a href="#guardar" >guardar</a>
+                            </li>
+                            <li>
+                                <a href="#iconoPrioridad" >iconoPrioridad</a>
+                            </li>
+                            <li>
+                                <a href="#labelEstado" >labelEstado</a>
+                            </li>
+                            <li>
+                                <a href="#limpiarFiltros" >limpiarFiltros</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onBusquedaChange" >onBusquedaChange</a>
+                            </li>
+                            <li>
+                                <a href="#onFiltroEstadoChange" >onFiltroEstadoChange</a>
+                            </li>
+                            <li>
+                                <a href="#onFiltroPrioridadChange" >onFiltroPrioridadChange</a>
+                            </li>
+                            <li>
+                                <a href="#onFormChange" >onFormChange</a>
+                            </li>
+                            <li>
+                                <a href="#onFormChangeStr" >onFormChangeStr</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#resetForm" >resetForm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#recomendacionesFiltradas" >recomendacionesFiltradas</a>
+                                </li>
+                                <li>
+                                    <a href="#hayFiltrosActivos" >hayFiltrosActivos</a>
+                                </li>
+                                <li>
+                                    <a href="#countActivas" >countActivas</a>
+                                </li>
+                                <li>
+                                    <a href="#countDescartadas" >countDescartadas</a>
+                                </li>
+                                <li>
+                                    <a href="#countCompletadas" >countCompletadas</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(recomendacionesService: <a href="../injectables/GestionRecomendacionesService.html" target="_self">GestionRecomendacionesService</a>, adminState: <a href="../injectables/AdminStateService.html" target="_self">AdminStateService</a>, adminService: <a href="../injectables/AdminService.html" target="_self">AdminService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:83</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>recomendacionesService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GestionRecomendacionesService.html" target="_self" >GestionRecomendacionesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>adminState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AdminStateService.html" target="_self" >AdminStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>adminService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AdminService.html" target="_self" >AdminService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirForm"></a>
+                    <span class="name">
+                        <span ><b>abrirForm</b></span>
+                        <a href="#abrirForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="195"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:195</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cambiarEstado"></a>
+                    <span class="name">
+                        <span ><b>cambiarEstado</b></span>
+                        <a href="#cambiarEstado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cambiarEstado(rec: <a href="../interfaces/RecomendacionAdminDTO.html" target="_self">RecomendacionAdminDTO</a>, nuevoEstado: "ACTIVA" | "DESCARTADA" | "COMPLETADA", event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="270"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:270</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>rec</td>
+                                            <td>
+                                                            <code><a href="../interfaces/RecomendacionAdminDTO.html" target="_self" >RecomendacionAdminDTO</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>nuevoEstado</td>
+                                            <td>
+                                                        <code>&quot;ACTIVA&quot; | &quot;DESCARTADA&quot; | &quot;COMPLETADA&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelarForm"></a>
+                    <span class="name">
+                        <span ><b>cancelarForm</b></span>
+                        <a href="#cancelarForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelarForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="203"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:203</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarRecomendaciones"></a>
+                    <span class="name">
+                        <span ><b>cargarRecomendaciones</b></span>
+                        <a href="#cargarRecomendaciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarRecomendaciones()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="claseEstado"></a>
+                    <span class="name">
+                        <span ><b>claseEstado</b></span>
+                        <a href="#claseEstado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>claseEstado(estado: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="322"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:322</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clasePrioridad"></a>
+                    <span class="name">
+                        <span ><b>clasePrioridad</b></span>
+                        <a href="#clasePrioridad"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clasePrioridad(prioridad: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="313"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:313</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>prioridad</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminar"></a>
+                    <span class="name">
+                        <span ><b>eliminar</b></span>
+                        <a href="#eliminar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminar(rec: <a href="../interfaces/RecomendacionAdminDTO.html" target="_self">RecomendacionAdminDTO</a>, event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="294"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:294</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>rec</td>
+                                            <td>
+                                                            <code><a href="../interfaces/RecomendacionAdminDTO.html" target="_self" >RecomendacionAdminDTO</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardar"></a>
+                    <span class="name">
+                        <span ><b>guardar</b></span>
+                        <a href="#guardar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="236"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:236</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoPrioridad"></a>
+                    <span class="name">
+                        <span ><b>iconoPrioridad</b></span>
+                        <a href="#iconoPrioridad"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoPrioridad(prioridad: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="340"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:340</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>prioridad</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelEstado"></a>
+                    <span class="name">
+                        <span ><b>labelEstado</b></span>
+                        <a href="#labelEstado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>labelEstado(estado: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="331"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:331</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="limpiarFiltros"></a>
+                    <span class="name">
+                        <span ><b>limpiarFiltros</b></span>
+                        <a href="#limpiarFiltros"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>limpiarFiltros()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="158"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:158</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="349"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:349</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBusquedaChange"></a>
+                    <span class="name">
+                        <span ><b>onBusquedaChange</b></span>
+                        <a href="#onBusquedaChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onBusquedaChange(v: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="153"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:153</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>v</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFiltroEstadoChange"></a>
+                    <span class="name">
+                        <span ><b>onFiltroEstadoChange</b></span>
+                        <a href="#onFiltroEstadoChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFiltroEstadoChange(v: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="143"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:143</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>v</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFiltroPrioridadChange"></a>
+                    <span class="name">
+                        <span ><b>onFiltroPrioridadChange</b></span>
+                        <a href="#onFiltroPrioridadChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFiltroPrioridadChange(v: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="148"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:148</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>v</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFormChange"></a>
+                    <span class="name">
+                        <span ><b>onFormChange</b></span>
+                        <a href="#onFormChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFormChange(campo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, valor: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="224"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:224</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>campo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFormChangeStr"></a>
+                    <span class="name">
+                        <span ><b>onFormChangeStr</b></span>
+                        <a href="#onFormChangeStr"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFormChangeStr(campo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, valor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="229"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:229</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>campo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetForm"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>resetForm</b></span>
+                        <a href="#resetForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="211"
+                                    class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:211</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="estados"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>estados</b></span>
+                        <a href="#estados"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { valor: &#x27;ACTIVA&#x27;, label: &#x27;✅ Activa&#x27; },
+    { valor: &#x27;DESCARTADA&#x27;, label: &#x27;🚫 Descartada&#x27; },
+    { valor: &#x27;COMPLETADA&#x27;, label: &#x27;🏆 Completada&#x27; },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exito"></a>
+                    <span class="name">
+                        <span ><b>exito</b></span>
+                        <a href="#exito"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroBusqueda"></a>
+                    <span class="name">
+                        <span ><b>filtroBusqueda</b></span>
+                        <a href="#filtroBusqueda"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroEstado"></a>
+                    <span class="name">
+                        <span ><b>filtroEstado</b></span>
+                        <a href="#filtroEstado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroPrioridad"></a>
+                    <span class="name">
+                        <span ><b>filtroPrioridad</b></span>
+                        <a href="#filtroPrioridad"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CrearRecomendacionDTO.html" target="_self" >CrearRecomendacionDTO</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    idHato: &#x27;&#x27;,
+    tipo: null,
+    mensaje: &#x27;&#x27;,
+    indicador: null,
+    valorActual: null,
+    valorReferencia: null,
+    prioridad: &#x27;MEDIA&#x27;,
+    idRegla: null,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardando"></a>
+                    <span class="name">
+                        <span ><b>guardando</b></span>
+                        <a href="#guardando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HatoAdminSeleccionado | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prioridades"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>prioridades</b></span>
+                        <a href="#prioridades"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { valor: &#x27;ALTA&#x27;, label: &#x27;🔴 Alta&#x27;, clase: &#x27;prio-alta&#x27; },
+    { valor: &#x27;MEDIA&#x27;, label: &#x27;🟡 Media&#x27;, clase: &#x27;prio-media&#x27; },
+    { valor: &#x27;BAJA&#x27;, label: &#x27;🟢 Baja&#x27;, clase: &#x27;prio-baja&#x27; },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="recomendaciones"></a>
+                    <span class="name">
+                        <span ><b>recomendaciones</b></span>
+                        <a href="#recomendaciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RecomendacionAdminDTO.html" target="_self" >RecomendacionAdminDTO[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabActivo"></a>
+                    <span class="name">
+                        <span ><b>tabActivo</b></span>
+                        <a href="#tabActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#TabActivo" target="_self" >TabActivo</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;lista&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tipos"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tipos</b></span>
+                        <a href="#tipos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    &#x27;MEJORA_KPI&#x27;,
+    &#x27;ALERTA_CRITICA&#x27;,
+    &#x27;BUENAS_PRACTICAS&#x27;,
+    &#x27;EFICIENCIA&#x27;,
+    &#x27;FINANCIERO&#x27;,
+    &#x27;MANUAL&#x27;,
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="recomendacionesFiltradas"></a>
+                        <span class="name"><b>recomendacionesFiltradas</b><a href="#recomendacionesFiltradas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>recomendacionesFiltradas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:165</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hayFiltrosActivos"></a>
+                        <span class="name"><b>hayFiltrosActivos</b><a href="#hayFiltrosActivos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>hayFiltrosActivos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:175</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="countActivas"></a>
+                        <span class="name"><b>countActivas</b><a href="#countActivas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>countActivas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:181</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="countDescartadas"></a>
+                        <span class="name"><b>countDescartadas</b><a href="#countDescartadas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>countDescartadas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:185</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="countCompletadas"></a>
+                        <span class="name"><b>countCompletadas</b><a href="#countCompletadas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>countCompletadas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="189" class="link-to-prism">src/app/features/admin/gestion-recomendaciones/gestion-recomendaciones.component.ts:189</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Subject, takeUntil, distinctUntilChanged } from &#x27;rxjs&#x27;;
+
+import {
+  GestionRecomendacionesService,
+  RecomendacionAdminDTO,
+  CrearRecomendacionDTO,
+  CambiarEstadoDTO,
+} from &#x27;../../../core/services/admin/gestion-recomendaciones.service&#x27;;
+import {
+  AdminStateService,
+  HatoAdminSeleccionado,
+} from &#x27;../../../core/services/ui-state/admin-state.service&#x27;;
+import { AdminService } from &#x27;../../../core/services/admin/admin.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../shared/spinner/spinner.component&#x27;;
+
+type TabActivo &#x3D; &#x27;lista&#x27; | &#x27;form&#x27;;
+
+@Component({
+  selector: &#x27;app-gestion-recomendaciones&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent],
+  templateUrl: &#x27;./gestion-recomendaciones.component.html&#x27;,
+  styleUrl: &#x27;./gestion-recomendaciones.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class GestionRecomendacionesComponent implements OnInit, OnDestroy {
+  // ── Estado ────────────────────────────────────────────────────────────
+  tabActivo: TabActivo &#x3D; &#x27;lista&#x27;;
+  loading &#x3D; false;
+  guardando &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  exito &#x3D; &#x27;&#x27;;
+
+  hatoActivo: HatoAdminSeleccionado | null &#x3D; null;
+  recomendaciones: RecomendacionAdminDTO[] &#x3D; [];
+
+  // ── Filtros ───────────────────────────────────────────────────────────
+  filtroEstado: string &#x3D; &#x27;&#x27;;
+  filtroPrioridad: string &#x3D; &#x27;&#x27;;
+  filtroBusqueda: string &#x3D; &#x27;&#x27;;
+
+  // ── Formulario ────────────────────────────────────────────────────────
+  form: CrearRecomendacionDTO &#x3D; {
+    idHato: &#x27;&#x27;,
+    tipo: null,
+    mensaje: &#x27;&#x27;,
+    indicador: null,
+    valorActual: null,
+    valorReferencia: null,
+    prioridad: &#x27;MEDIA&#x27;,
+    idRegla: null,
+  };
+
+  readonly prioridades &#x3D; [
+    { valor: &#x27;ALTA&#x27;, label: &#x27;🔴 Alta&#x27;, clase: &#x27;prio-alta&#x27; },
+    { valor: &#x27;MEDIA&#x27;, label: &#x27;🟡 Media&#x27;, clase: &#x27;prio-media&#x27; },
+    { valor: &#x27;BAJA&#x27;, label: &#x27;🟢 Baja&#x27;, clase: &#x27;prio-baja&#x27; },
+  ];
+
+  readonly estados &#x3D; [
+    { valor: &#x27;ACTIVA&#x27;, label: &#x27;✅ Activa&#x27; },
+    { valor: &#x27;DESCARTADA&#x27;, label: &#x27;🚫 Descartada&#x27; },
+    { valor: &#x27;COMPLETADA&#x27;, label: &#x27;🏆 Completada&#x27; },
+  ];
+
+  readonly tipos &#x3D; [
+    &#x27;MEJORA_KPI&#x27;,
+    &#x27;ALERTA_CRITICA&#x27;,
+    &#x27;BUENAS_PRACTICAS&#x27;,
+    &#x27;EFICIENCIA&#x27;,
+    &#x27;FINANCIERO&#x27;,
+    &#x27;MANUAL&#x27;,
+  ];
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private recomendacionesService: GestionRecomendacionesService,
+    private adminState: AdminStateService,
+    private adminService: AdminService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    // Suscribirse al hato seleccionado del navbar admin
+    this.adminState
+      .getHatoSeleccionado$()
+      .pipe(
+        takeUntil(this.destroy$),
+        distinctUntilChanged((a, b) &#x3D;&gt; a?.idHato &#x3D;&#x3D;&#x3D; b?.idHato),
+      )
+      .subscribe((hato) &#x3D;&gt; {
+        this.hatoActivo &#x3D; hato;
+        if (hato) {
+          this.form.idHato &#x3D; hato.idHato;
+          this.cargarRecomendaciones();
+        } else {
+          this.recomendaciones &#x3D; [];
+        }
+        this.cdr.markForCheck();
+      });
+  }
+
+  // ── Carga ─────────────────────────────────────────────────────────────
+
+  cargarRecomendaciones(): void {
+    if (!this.hatoActivo?.idHato) return;
+
+    this.loading &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    this.recomendacionesService
+      .getFiltradas(
+        this.hatoActivo.idHato,
+        this.filtroEstado || undefined,
+        this.filtroPrioridad || undefined,
+      )
+      .subscribe({
+        next: (data) &#x3D;&gt; {
+          this.recomendaciones &#x3D; data;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.error &#x3D; &#x27;Error al cargar las recomendaciones.&#x27;;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Filtros ───────────────────────────────────────────────────────────
+
+  onFiltroEstadoChange(v: string): void {
+    this.filtroEstado &#x3D; v;
+    this.cargarRecomendaciones();
+  }
+
+  onFiltroPrioridadChange(v: string): void {
+    this.filtroPrioridad &#x3D; v;
+    this.cargarRecomendaciones();
+  }
+
+  onBusquedaChange(v: string): void {
+    this.filtroBusqueda &#x3D; v.toLowerCase().trim();
+    this.cdr.markForCheck();
+  }
+
+  limpiarFiltros(): void {
+    this.filtroEstado &#x3D; &#x27;&#x27;;
+    this.filtroPrioridad &#x3D; &#x27;&#x27;;
+    this.filtroBusqueda &#x3D; &#x27;&#x27;;
+    this.cargarRecomendaciones();
+  }
+
+  get recomendacionesFiltradas(): RecomendacionAdminDTO[] {
+    if (!this.filtroBusqueda) return this.recomendaciones;
+    return this.recomendaciones.filter(
+      (r) &#x3D;&gt;
+        (r.mensaje ?? &#x27;&#x27;).toLowerCase().includes(this.filtroBusqueda) ||
+        (r.indicador ?? &#x27;&#x27;).toLowerCase().includes(this.filtroBusqueda) ||
+        (r.tipo ?? &#x27;&#x27;).toLowerCase().includes(this.filtroBusqueda),
+    );
+  }
+
+  get hayFiltrosActivos(): boolean {
+    return !!(this.filtroEstado || this.filtroPrioridad || this.filtroBusqueda);
+  }
+
+  // ── Contadores por estado ─────────────────────────────────────────────
+
+  get countActivas(): number {
+    return this.recomendaciones.filter((r) &#x3D;&gt; r.tipoEstado &#x3D;&#x3D;&#x3D; &#x27;ACTIVA&#x27;).length;
+  }
+
+  get countDescartadas(): number {
+    return this.recomendaciones.filter((r) &#x3D;&gt; r.tipoEstado &#x3D;&#x3D;&#x3D; &#x27;DESCARTADA&#x27;).length;
+  }
+
+  get countCompletadas(): number {
+    return this.recomendaciones.filter((r) &#x3D;&gt; r.tipoEstado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;).length;
+  }
+
+  // ── Formulario ────────────────────────────────────────────────────────
+
+  abrirForm(): void {
+    this.resetForm();
+    this.tabActivo &#x3D; &#x27;form&#x27;;
+    this.error &#x3D; &#x27;&#x27;;
+    this.exito &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+  }
+
+  cancelarForm(): void {
+    this.tabActivo &#x3D; &#x27;lista&#x27;;
+    this.resetForm();
+    this.error &#x3D; &#x27;&#x27;;
+    this.exito &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+  }
+
+  private resetForm(): void {
+    this.form &#x3D; {
+      idHato: this.hatoActivo?.idHato ?? &#x27;&#x27;,
+      tipo: null,
+      mensaje: &#x27;&#x27;,
+      indicador: null,
+      valorActual: null,
+      valorReferencia: null,
+      prioridad: &#x27;MEDIA&#x27;,
+      idRegla: null,
+    };
+  }
+
+  onFormChange(campo: string, valor: any): void {
+    (this.form as any)[campo] &#x3D; valor || null;
+    this.cdr.markForCheck();
+  }
+
+  onFormChangeStr(campo: string, valor: string): void {
+    (this.form as any)[campo] &#x3D; valor;
+    this.cdr.markForCheck();
+  }
+
+  // ── Guardar ───────────────────────────────────────────────────────────
+
+  guardar(): void {
+    if (!this.form.mensaje?.trim()) {
+      this.error &#x3D; &#x27;El mensaje de la recomendación es obligatorio.&#x27;;
+      this.cdr.markForCheck();
+      return;
+    }
+    if (!this.form.idHato) {
+      this.error &#x3D; &#x27;Selecciona un hato desde el navbar superior.&#x27;;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.guardando &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    this.recomendacionesService.crearRecomendacion(this.form).subscribe({
+      next: () &#x3D;&gt; {
+        this.exito &#x3D; &#x27;✅ Recomendación creada correctamente.&#x27;;
+        this.guardando &#x3D; false;
+        this.cargarRecomendaciones();
+        this.cancelarForm();
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.error &#x3D; &#x27;Error al crear la recomendación.&#x27;;
+        this.guardando &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  // ── Cambiar estado ────────────────────────────────────────────────────
+
+  cambiarEstado(
+    rec: RecomendacionAdminDTO,
+    nuevoEstado: &#x27;ACTIVA&#x27; | &#x27;DESCARTADA&#x27; | &#x27;COMPLETADA&#x27;,
+    event: Event,
+  ): void {
+    event.stopPropagation();
+
+    const dto: CambiarEstadoDTO &#x3D; { tipoEstado: nuevoEstado };
+
+    this.recomendacionesService.cambiarEstado(rec.idRecomendacion, dto).subscribe({
+      next: () &#x3D;&gt; {
+        this.exito &#x3D; &#x60;✅ Estado cambiado a ${nuevoEstado}.&#x60;;
+        this.cargarRecomendaciones();
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.error &#x3D; &#x27;Error al cambiar el estado.&#x27;;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  // ── Eliminar ──────────────────────────────────────────────────────────
+
+  eliminar(rec: RecomendacionAdminDTO, event: Event): void {
+    event.stopPropagation();
+    if (!confirm(&#x27;¿Eliminar esta recomendación permanentemente?&#x27;)) return;
+
+    this.recomendacionesService.eliminar(rec.idRecomendacion).subscribe({
+      next: () &#x3D;&gt; {
+        this.exito &#x3D; &#x27;✅ Recomendación eliminada.&#x27;;
+        this.cargarRecomendaciones();
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.error &#x3D; &#x27;Error al eliminar la recomendación.&#x27;;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  // ── Helpers visuales ─────────────────────────────────────────────────
+
+  clasePrioridad(prioridad: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      ALTA: &#x27;prio-alta&#x27;,
+      MEDIA: &#x27;prio-media&#x27;,
+      BAJA: &#x27;prio-baja&#x27;,
+    };
+    return map[prioridad] ?? &#x27;&#x27;;
+  }
+
+  claseEstado(estado: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      ACTIVA: &#x27;estado-activa&#x27;,
+      DESCARTADA: &#x27;estado-descartada&#x27;,
+      COMPLETADA: &#x27;estado-completada&#x27;,
+    };
+    return map[estado] ?? &#x27;&#x27;;
+  }
+
+  labelEstado(estado: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      ACTIVA: &#x27;✅ Activa&#x27;,
+      DESCARTADA: &#x27;🚫 Descartada&#x27;,
+      COMPLETADA: &#x27;🏆 Completada&#x27;,
+    };
+    return map[estado] ?? estado;
+  }
+
+  iconoPrioridad(prioridad: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      ALTA: &#x27;🔴&#x27;,
+      MEDIA: &#x27;🟡&#x27;,
+      BAJA: &#x27;🟢&#x27;,
+    };
+    return map[prioridad] ?? &#x27;⚪&#x27;;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;gestion-rec-page&quot;&gt;
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HEADER &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  &lt;header class&#x3D;&quot;page-header&quot;&gt;
+    &lt;div class&#x3D;&quot;header-left&quot;&gt;
+      &lt;p class&#x3D;&quot;page-tag&quot;&gt;Administración · Recomendaciones&lt;/p&gt;
+      &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Gestión de &lt;span class&#x3D;&quot;brand&quot;&gt;Recomendaciones&lt;/span&gt;&lt;/h1&gt;
+      @if (hatoActivo) {
+        &lt;p class&#x3D;&quot;page-subtitle&quot;&gt;
+          🐄 {{ hatoActivo.nombreHato }} · {{ hatoActivo.departamento }}, {{ hatoActivo.ciudad }}
+        &lt;/p&gt;
+      } @else {
+        &lt;p class&#x3D;&quot;page-subtitle warn&quot;&gt;⚠️ Selecciona un hato desde el selector superior&lt;/p&gt;
+      }
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;header-right&quot;&gt;
+      &lt;div class&#x3D;&quot;header-icon&quot;&gt;💬&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; MENSAJES &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (error) {
+    &lt;div class&#x3D;&quot;msg-error&quot;&gt;
+      &lt;span&gt;❌&lt;/span&gt;
+      &lt;p&gt;{{ error }}&lt;/p&gt;
+    &lt;/div&gt;
+  }
+  @if (exito) {
+    &lt;div class&#x3D;&quot;msg-exito&quot;&gt;
+      &lt;span&gt;✅&lt;/span&gt;
+      &lt;p&gt;{{ exito }}&lt;/p&gt;
+    &lt;/div&gt;
+  }
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; SIN HATO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (!hatoActivo) {
+    &lt;div class&#x3D;&quot;empty-hato&quot;&gt;
+      &lt;span&gt;🐄&lt;/span&gt;
+      &lt;p&gt;
+        Selecciona un departamento, región y hato desde el navbar superior para gestionar sus
+        recomendaciones.
+      &lt;/p&gt;
+    &lt;/div&gt;
+  }
+
+  @if (hatoActivo) {
+    &lt;!-- ═══════════════════════════════════════════════════
+         VISTA: LISTA
+    ═══════════════════════════════════════════════════ --&gt;
+    @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;lista&#x27;) {
+      &lt;!-- Stats --&gt;
+      @if (!loading) {
+        &lt;div class&#x3D;&quot;stats-row&quot;&gt;
+          &lt;div class&#x3D;&quot;stat-chip activa&quot; (click)&#x3D;&quot;onFiltroEstadoChange(&#x27;ACTIVA&#x27;)&quot;&gt;
+            ✅ {{ countActivas }} activas
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;stat-chip completada&quot; (click)&#x3D;&quot;onFiltroEstadoChange(&#x27;COMPLETADA&#x27;)&quot;&gt;
+            🏆 {{ countCompletadas }} completadas
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;stat-chip descartada&quot; (click)&#x3D;&quot;onFiltroEstadoChange(&#x27;DESCARTADA&#x27;)&quot;&gt;
+            🚫 {{ countDescartadas }} descartadas
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;stat-chip total&quot; (click)&#x3D;&quot;onFiltroEstadoChange(&#x27;&#x27;)&quot;&gt;
+            📋 {{ recomendaciones.length }} total
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- Filtros --&gt;
+      &lt;div class&#x3D;&quot;filtros-card&quot;&gt;
+        &lt;div class&#x3D;&quot;filtros-row&quot;&gt;
+          &lt;!-- Búsqueda --&gt;
+          &lt;div class&#x3D;&quot;filtro-busqueda-wrap&quot;&gt;
+            &lt;svg
+              class&#x3D;&quot;busqueda-icono&quot;
+              fill&#x3D;&quot;none&quot;
+              stroke&#x3D;&quot;currentColor&quot;
+              stroke-width&#x3D;&quot;2&quot;
+              viewBox&#x3D;&quot;0 0 24 24&quot;
+            &gt;
+              &lt;circle cx&#x3D;&quot;11&quot; cy&#x3D;&quot;11&quot; r&#x3D;&quot;8&quot; /&gt;
+              &lt;path d&#x3D;&quot;m21 21-4.35-4.35&quot; /&gt;
+            &lt;/svg&gt;
+            &lt;input
+              type&#x3D;&quot;text&quot;
+              class&#x3D;&quot;filtro-busqueda&quot;
+              placeholder&#x3D;&quot;Buscar por mensaje, indicador o tipo...&quot;
+              [value]&#x3D;&quot;filtroBusqueda&quot;
+              (input)&#x3D;&quot;onBusquedaChange($any($event.target).value)&quot;
+            /&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Estado --&gt;
+          &lt;select
+            class&#x3D;&quot;filtro-select&quot;
+            [value]&#x3D;&quot;filtroEstado&quot;
+            (change)&#x3D;&quot;onFiltroEstadoChange($any($event.target).value)&quot;
+          &gt;
+            &lt;option value&#x3D;&quot;&quot;&gt;Todos los estados&lt;/option&gt;
+            @for (e of estados; track e.valor) {
+              &lt;option [value]&#x3D;&quot;e.valor&quot;&gt;{{ e.label }}&lt;/option&gt;
+            }
+          &lt;/select&gt;
+
+          &lt;!-- Prioridad --&gt;
+          &lt;select
+            class&#x3D;&quot;filtro-select&quot;
+            [value]&#x3D;&quot;filtroPrioridad&quot;
+            (change)&#x3D;&quot;onFiltroPrioridadChange($any($event.target).value)&quot;
+          &gt;
+            &lt;option value&#x3D;&quot;&quot;&gt;Toda prioridad&lt;/option&gt;
+            @for (p of prioridades; track p.valor) {
+              &lt;option [value]&#x3D;&quot;p.valor&quot;&gt;{{ p.label }}&lt;/option&gt;
+            }
+          &lt;/select&gt;
+
+          @if (hayFiltrosActivos) {
+            &lt;button class&#x3D;&quot;btn-limpiar&quot; (click)&#x3D;&quot;limpiarFiltros()&quot;&gt;✕ Limpiar&lt;/button&gt;
+          }
+
+          &lt;button class&#x3D;&quot;btn-crear&quot; (click)&#x3D;&quot;abrirForm()&quot;&gt;+ Nueva recomendación&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;resultados-row&quot;&gt;
+          &lt;span class&#x3D;&quot;resultados-texto&quot;&gt;
+            &lt;strong&gt;{{ recomendacionesFiltradas.length }}&lt;/strong&gt;
+            recomendación(es)
+          &lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Loading --&gt;
+      @if (loading) {
+        &lt;div class&#x3D;&quot;loading-wrap&quot;&gt;
+          &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Cargando recomendaciones...&quot;&gt; &lt;/app-spinner&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- Lista --&gt;
+      @if (!loading) {
+        @if (recomendacionesFiltradas.length &#x3D;&#x3D;&#x3D; 0) {
+          &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+            &lt;span&gt;💬&lt;/span&gt;
+            &lt;p&gt;
+              @if (hayFiltrosActivos) {
+                No hay recomendaciones con los filtros aplicados.
+              } @else {
+                Este hato no tiene recomendaciones registradas.
+              }
+            &lt;/p&gt;
+            &lt;button class&#x3D;&quot;btn-crear-empty&quot; (click)&#x3D;&quot;abrirForm()&quot;&gt;
+              + Crear recomendación manual
+            &lt;/button&gt;
+          &lt;/div&gt;
+        } @else {
+          &lt;div class&#x3D;&quot;rec-lista&quot;&gt;
+            @for (rec of recomendacionesFiltradas; track rec.idRecomendacion) {
+              &lt;div
+                class&#x3D;&quot;rec-card&quot;
+                [class.card-alta]&#x3D;&quot;rec.prioridad &#x3D;&#x3D;&#x3D; &#x27;ALTA&#x27;&quot;
+                [class.card-completada]&#x3D;&quot;rec.tipoEstado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;&quot;
+                [class.card-descartada]&#x3D;&quot;rec.tipoEstado &#x3D;&#x3D;&#x3D; &#x27;DESCARTADA&#x27;&quot;
+              &gt;
+                &lt;!-- Header --&gt;
+                &lt;div class&#x3D;&quot;rec-header&quot;&gt;
+                  &lt;div class&#x3D;&quot;rec-header-left&quot;&gt;
+                    &lt;span class&#x3D;&quot;rec-prio-icono&quot;&gt;
+                      {{ iconoPrioridad(rec.prioridad) }}
+                    &lt;/span&gt;
+                    &lt;div&gt;
+                      &lt;span class&#x3D;&quot;rec-prio-label&quot; [class]&#x3D;&quot;clasePrioridad(rec.prioridad)&quot;&gt;
+                        {{ rec.prioridad }}
+                      &lt;/span&gt;
+                      @if (rec.tipo) {
+                        &lt;span class&#x3D;&quot;rec-tipo&quot;&gt;{{ rec.tipo }}&lt;/span&gt;
+                      }
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;rec-header-right&quot;&gt;
+                    &lt;span class&#x3D;&quot;rec-estado-chip&quot; [class]&#x3D;&quot;claseEstado(rec.tipoEstado)&quot;&gt;
+                      {{ labelEstado(rec.tipoEstado) }}
+                    &lt;/span&gt;
+                    @if (rec.leida &#x3D;&#x3D;&#x3D; false) {
+                      &lt;span class&#x3D;&quot;rec-no-leida&quot;&gt;No leída&lt;/span&gt;
+                    }
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Mensaje --&gt;
+                &lt;p class&#x3D;&quot;rec-mensaje&quot;&gt;{{ rec.mensaje }}&lt;/p&gt;
+
+                &lt;!-- Info KPI --&gt;
+                @if (rec.indicador || rec.valorActual !&#x3D; null) {
+                  &lt;div class&#x3D;&quot;rec-kpi-row&quot;&gt;
+                    @if (rec.indicador) {
+                      &lt;span class&#x3D;&quot;rec-kpi-indicador&quot;&gt; 📈 {{ rec.indicador }} &lt;/span&gt;
+                    }
+                    @if (rec.valorActual !&#x3D; null) {
+                      &lt;span class&#x3D;&quot;rec-kpi-valor&quot;&gt;
+                        Actual: &lt;strong&gt;{{ rec.valorActual }}&lt;/strong&gt;
+                      &lt;/span&gt;
+                    }
+                    @if (rec.valorReferencia !&#x3D; null) {
+                      &lt;span class&#x3D;&quot;rec-kpi-ref&quot;&gt;
+                        Ref: &lt;strong&gt;{{ rec.valorReferencia }}&lt;/strong&gt;
+                      &lt;/span&gt;
+                    }
+                  &lt;/div&gt;
+                }
+
+                &lt;!-- Regla origen --&gt;
+                @if (rec.idRegla) {
+                  &lt;div class&#x3D;&quot;rec-regla-row&quot;&gt;
+                    &lt;span class&#x3D;&quot;rec-regla-icono&quot;&gt;⚡&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;rec-regla-texto&quot;&gt;
+                      Generada por regla —
+                      {{ rec.nombreKpiRegla ?? rec.codigoKpiRegla ?? &#x27;—&#x27; }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                }
+
+                &lt;!-- Fecha --&gt;
+                @if (rec.fechaCreacion) {
+                  &lt;span class&#x3D;&quot;rec-fecha&quot;&gt; 📅 {{ rec.fechaCreacion }} &lt;/span&gt;
+                }
+
+                &lt;!-- Acciones --&gt;
+                &lt;div class&#x3D;&quot;rec-acciones&quot;&gt;
+                  &lt;!-- Cambiar estado --&gt;
+                  @if (rec.tipoEstado !&#x3D;&#x3D; &#x27;COMPLETADA&#x27;) {
+                    &lt;button
+                      class&#x3D;&quot;btn-estado completar&quot;
+                      (click)&#x3D;&quot;cambiarEstado(rec, &#x27;COMPLETADA&#x27;, $event)&quot;
+                    &gt;
+                      🏆 Completar
+                    &lt;/button&gt;
+                  }
+                  @if (rec.tipoEstado &#x3D;&#x3D;&#x3D; &#x27;ACTIVA&#x27;) {
+                    &lt;button
+                      class&#x3D;&quot;btn-estado descartar&quot;
+                      (click)&#x3D;&quot;cambiarEstado(rec, &#x27;DESCARTADA&#x27;, $event)&quot;
+                    &gt;
+                      🚫 Descartar
+                    &lt;/button&gt;
+                  }
+                  @if (rec.tipoEstado !&#x3D;&#x3D; &#x27;ACTIVA&#x27;) {
+                    &lt;button
+                      class&#x3D;&quot;btn-estado reactivar&quot;
+                      (click)&#x3D;&quot;cambiarEstado(rec, &#x27;ACTIVA&#x27;, $event)&quot;
+                    &gt;
+                      ✅ Reactivar
+                    &lt;/button&gt;
+                  }
+
+                  &lt;button class&#x3D;&quot;btn-eliminar&quot; (click)&#x3D;&quot;eliminar(rec, $event)&quot;&gt;🗑️ Eliminar&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            }
+          &lt;/div&gt;
+        }
+      }
+    }
+
+    &lt;!-- ═══════════════════════════════════════════════════
+         VISTA: FORMULARIO
+    ═══════════════════════════════════════════════════ --&gt;
+    @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;form&#x27;) {
+      &lt;div class&#x3D;&quot;form-layout&quot;&gt;
+        &lt;!-- Header --&gt;
+        &lt;div class&#x3D;&quot;form-header-row&quot;&gt;
+          &lt;button class&#x3D;&quot;btn-volver&quot; (click)&#x3D;&quot;cancelarForm()&quot;&gt;← Volver&lt;/button&gt;
+          &lt;h2 class&#x3D;&quot;form-titulo&quot;&gt;+ Nueva recomendación manual&lt;/h2&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;form-grid&quot;&gt;
+          &lt;!-- Columna izquierda --&gt;
+          &lt;div class&#x3D;&quot;form-col&quot;&gt;
+            &lt;!-- Hato destino --&gt;
+            &lt;div class&#x3D;&quot;form-card&quot;&gt;
+              &lt;h3 class&#x3D;&quot;form-card-titulo&quot;&gt;🐄 Hato destino&lt;/h3&gt;
+              &lt;div class&#x3D;&quot;hato-destino-info&quot;&gt;
+                &lt;div class&#x3D;&quot;hato-avatar&quot;&gt;
+                  {{ hatoActivo.nombreHato.charAt(0).toUpperCase() }}
+                &lt;/div&gt;
+                &lt;div&gt;
+                  &lt;span class&#x3D;&quot;hato-dest-nombre&quot;&gt;
+                    {{ hatoActivo.nombreHato }}
+                  &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;hato-dest-meta&quot;&gt;
+                    {{ hatoActivo.departamento }} · {{ hatoActivo.ciudad }} ·
+                    {{ hatoActivo.escala ?? &#x27;—&#x27; }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Prioridad y tipo --&gt;
+            &lt;div class&#x3D;&quot;form-card&quot;&gt;
+              &lt;h3 class&#x3D;&quot;form-card-titulo&quot;&gt;⚙️ Configuración&lt;/h3&gt;
+
+              &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+                &lt;label class&#x3D;&quot;campo-label&quot;&gt;Prioridad *&lt;/label&gt;
+                &lt;div class&#x3D;&quot;prioridad-btns&quot;&gt;
+                  @for (p of prioridades; track p.valor) {
+                    &lt;button
+                      class&#x3D;&quot;prio-btn&quot;
+                      [class]&#x3D;&quot;p.clase&quot;
+                      [class.seleccionada]&#x3D;&quot;form.prioridad &#x3D;&#x3D;&#x3D; p.valor&quot;
+                      (click)&#x3D;&quot;onFormChangeStr(&#x27;prioridad&#x27;, p.valor)&quot;
+                    &gt;
+                      {{ p.label }}
+                    &lt;/button&gt;
+                  }
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+                &lt;label class&#x3D;&quot;campo-label&quot;&gt;Tipo&lt;/label&gt;
+                &lt;select
+                  class&#x3D;&quot;campo-select&quot;
+                  [value]&#x3D;&quot;form.tipo ?? &#x27;&#x27;&quot;
+                  (change)&#x3D;&quot;onFormChange(&#x27;tipo&#x27;, $any($event.target).value)&quot;
+                &gt;
+                  &lt;option value&#x3D;&quot;&quot;&gt;— Sin tipo —&lt;/option&gt;
+                  @for (t of tipos; track t) {
+                    &lt;option [value]&#x3D;&quot;t&quot;&gt;{{ t }}&lt;/option&gt;
+                  }
+                &lt;/select&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+                &lt;label class&#x3D;&quot;campo-label&quot;&gt; ID de regla relacionada (opcional) &lt;/label&gt;
+                &lt;input
+                  type&#x3D;&quot;number&quot;
+                  class&#x3D;&quot;campo-input&quot;
+                  placeholder&#x3D;&quot;Ej: 12&quot;
+                  [value]&#x3D;&quot;form.idRegla ?? &#x27;&#x27;&quot;
+                  (input)&#x3D;&quot;onFormChange(&#x27;idRegla&#x27;, +$any($event.target).value || null)&quot;
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Columna derecha --&gt;
+          &lt;div class&#x3D;&quot;form-col&quot;&gt;
+            &lt;!-- Mensaje --&gt;
+            &lt;div class&#x3D;&quot;form-card&quot;&gt;
+              &lt;h3 class&#x3D;&quot;form-card-titulo&quot;&gt;💬 Mensaje&lt;/h3&gt;
+
+              &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+                &lt;label class&#x3D;&quot;campo-label&quot;&gt;Mensaje *&lt;/label&gt;
+                &lt;textarea
+                  class&#x3D;&quot;campo-textarea&quot;
+                  rows&#x3D;&quot;5&quot;
+                  placeholder&#x3D;&quot;Escribe el mensaje de recomendación para el ganadero...&quot;
+                  [value]&#x3D;&quot;form.mensaje&quot;
+                  (input)&#x3D;&quot;onFormChangeStr(&#x27;mensaje&#x27;, $any($event.target).value)&quot;
+                &gt;&lt;/textarea&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- KPI relacionado --&gt;
+            &lt;div class&#x3D;&quot;form-card&quot;&gt;
+              &lt;h3 class&#x3D;&quot;form-card-titulo&quot;&gt;📈 KPI relacionado (opcional)&lt;/h3&gt;
+
+              &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+                &lt;label class&#x3D;&quot;campo-label&quot;&gt;Código del indicador&lt;/label&gt;
+                &lt;input
+                  type&#x3D;&quot;text&quot;
+                  class&#x3D;&quot;campo-input&quot;
+                  placeholder&#x3D;&quot;Ej: KPI_LITROS_VACA_DIA&quot;
+                  [value]&#x3D;&quot;form.indicador ?? &#x27;&#x27;&quot;
+                  (input)&#x3D;&quot;onFormChange(&#x27;indicador&#x27;, $any($event.target).value)&quot;
+                /&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;campos-row&quot;&gt;
+                &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+                  &lt;label class&#x3D;&quot;campo-label&quot;&gt;Valor actual&lt;/label&gt;
+                  &lt;input
+                    type&#x3D;&quot;number&quot;
+                    class&#x3D;&quot;campo-input&quot;
+                    placeholder&#x3D;&quot;Ej: 6.5&quot;
+                    [value]&#x3D;&quot;form.valorActual ?? &#x27;&#x27;&quot;
+                    (input)&#x3D;&quot;onFormChange(&#x27;valorActual&#x27;, +$any($event.target).value || null)&quot;
+                  /&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;campo-group&quot;&gt;
+                  &lt;label class&#x3D;&quot;campo-label&quot;&gt;Valor de referencia&lt;/label&gt;
+                  &lt;input
+                    type&#x3D;&quot;number&quot;
+                    class&#x3D;&quot;campo-input&quot;
+                    placeholder&#x3D;&quot;Ej: 10.0&quot;
+                    [value]&#x3D;&quot;form.valorReferencia ?? &#x27;&#x27;&quot;
+                    (input)&#x3D;&quot;onFormChange(&#x27;valorReferencia&#x27;, +$any($event.target).value || null)&quot;
+                  /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Footer --&gt;
+        &lt;div class&#x3D;&quot;form-footer&quot;&gt;
+          &lt;button class&#x3D;&quot;btn-cancelar&quot; (click)&#x3D;&quot;cancelarForm()&quot;&gt;Cancelar&lt;/button&gt;
+          &lt;button class&#x3D;&quot;btn-guardar&quot; [disabled]&#x3D;&quot;guardando&quot; (click)&#x3D;&quot;guardar()&quot;&gt;
+            @if (guardando) {
+              &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+              Guardando...
+            } @else {
+              + Crear recomendación
+            }
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    }
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="gestion-rec-page">  <!-- ===== HEADER ===== -->  <header class="page-header">    <div class="header-left">      <p class="page-tag">Administración · Recomendaciones</p>      <h1 class="page-title">Gestión de <span class="brand">Recomendaciones</span></h1>      @if (hatoActivo) {        <p class="page-subtitle">          🐄 {{ hatoActivo.nombreHato }} · {{ hatoActivo.departamento }}, {{ hatoActivo.ciudad }}        </p>      } @else {        <p class="page-subtitle warn">⚠️ Selecciona un hato desde el selector superior</p>      }    </div>    <div class="header-right">      <div class="header-icon">💬</div>    </div>  </header>  <!-- ===== MENSAJES ===== -->  @if (error) {    <div class="msg-error">      <span>❌</span>      <p>{{ error }}</p>    </div>  }  @if (exito) {    <div class="msg-exito">      <span>✅</span>      <p>{{ exito }}</p>    </div>  }  <!-- ===== SIN HATO ===== -->  @if (!hatoActivo) {    <div class="empty-hato">      <span>🐄</span>      <p>        Selecciona un departamento, región y hato desde el navbar superior para gestionar sus        recomendaciones.      </p>    </div>  }  @if (hatoActivo) {    <!-- ═══════════════════════════════════════════════════         VISTA: LISTA    ═══════════════════════════════════════════════════ -->    @if (tabActivo === \'lista\') {      <!-- Stats -->      @if (!loading) {        <div class="stats-row">          <div class="stat-chip activa" (click)="onFiltroEstadoChange(\'ACTIVA\')">            ✅ {{ countActivas }} activas          </div>          <div class="stat-chip completada" (click)="onFiltroEstadoChange(\'COMPLETADA\')">            🏆 {{ countCompletadas }} completadas          </div>          <div class="stat-chip descartada" (click)="onFiltroEstadoChange(\'DESCARTADA\')">            🚫 {{ countDescartadas }} descartadas          </div>          <div class="stat-chip total" (click)="onFiltroEstadoChange(\'\')">            📋 {{ recomendaciones.length }} total          </div>        </div>      }      <!-- Filtros -->      <div class="filtros-card">        <div class="filtros-row">          <!-- Búsqueda -->          <div class="filtro-busqueda-wrap">            <svg              class="busqueda-icono"              fill="none"              stroke="currentColor"              stroke-width="2"              viewBox="0 0 24 24"            >              <circle cx="11" cy="11" r="8" />              <path d="m21 21-4.35-4.35" />            </svg>            <input              type="text"              class="filtro-busqueda"              placeholder="Buscar por mensaje, indicador o tipo..."              [value]="filtroBusqueda"              (input)="onBusquedaChange($any($event.target).value)"            />          </div>          <!-- Estado -->          <select            class="filtro-select"            [value]="filtroEstado"            (change)="onFiltroEstadoChange($any($event.target).value)"          >            <option value="">Todos los estados</option>            @for (e of estados; track e.valor) {              <option [value]="e.valor">{{ e.label }}</option>            }          </select>          <!-- Prioridad -->          <select            class="filtro-select"            [value]="filtroPrioridad"            (change)="onFiltroPrioridadChange($any($event.target).value)"          >            <option value="">Toda prioridad</option>            @for (p of prioridades; track p.valor) {              <option [value]="p.valor">{{ p.label }}</option>            }          </select>          @if (hayFiltrosActivos) {            <button class="btn-limpiar" (click)="limpiarFiltros()">✕ Limpiar</button>          }          <button class="btn-crear" (click)="abrirForm()">+ Nueva recomendación</button>        </div>        <div class="resultados-row">          <span class="resultados-texto">            <strong>{{ recomendacionesFiltradas.length }}</strong>            recomendación(es)          </span>        </div>      </div>      <!-- Loading -->      @if (loading) {        <div class="loading-wrap">          <app-spinner size="large" message="Cargando recomendaciones..."> </app-spinner>        </div>      }      <!-- Lista -->      @if (!loading) {        @if (recomendacionesFiltradas.length === 0) {          <div class="empty-state">            <span>💬</span>            <p>              @if (hayFiltrosActivos) {                No hay recomendaciones con los filtros aplicados.              } @else {                Este hato no tiene recomendaciones registradas.              }            </p>            <button class="btn-crear-empty" (click)="abrirForm()">              + Crear recomendación manual            </button>          </div>        } @else {          <div class="rec-lista">            @for (rec of recomendacionesFiltradas; track rec.idRecomendacion) {              <div                class="rec-card"                [class.card-alta]="rec.prioridad === \'ALTA\'"                [class.card-completada]="rec.tipoEstado === \'COMPLETADA\'"                [class.card-descartada]="rec.tipoEstado === \'DESCARTADA\'"              >                <!-- Header -->                <div class="rec-header">                  <div class="rec-header-left">                    <span class="rec-prio-icono">                      {{ iconoPrioridad(rec.prioridad) }}                    </span>                    <div>                      <span class="rec-prio-label" [class]="clasePrioridad(rec.prioridad)">                        {{ rec.prioridad }}                      </span>                      @if (rec.tipo) {                        <span class="rec-tipo">{{ rec.tipo }}</span>                      }                    </div>                  </div>                  <div class="rec-header-right">                    <span class="rec-estado-chip" [class]="claseEstado(rec.tipoEstado)">                      {{ labelEstado(rec.tipoEstado) }}                    </span>                    @if (rec.leida === false) {                      <span class="rec-no-leida">No leída</span>                    }                  </div>                </div>                <!-- Mensaje -->                <p class="rec-mensaje">{{ rec.mensaje }}</p>                <!-- Info KPI -->                @if (rec.indicador || rec.valorActual != null) {                  <div class="rec-kpi-row">                    @if (rec.indicador) {                      <span class="rec-kpi-indicador"> 📈 {{ rec.indicador }} </span>                    }                    @if (rec.valorActual != null) {                      <span class="rec-kpi-valor">                        Actual: <strong>{{ rec.valorActual }}</strong>                      </span>                    }                    @if (rec.valorReferencia != null) {                      <span class="rec-kpi-ref">                        Ref: <strong>{{ rec.valorReferencia }}</strong>                      </span>                    }                  </div>                }                <!-- Regla origen -->                @if (rec.idRegla) {                  <div class="rec-regla-row">                    <span class="rec-regla-icono">⚡</span>                    <span class="rec-regla-texto">                      Generada por regla —                      {{ rec.nombreKpiRegla ?? rec.codigoKpiRegla ?? \'—\' }}                    </span>                  </div>                }                <!-- Fecha -->                @if (rec.fechaCreacion) {                  <span class="rec-fecha"> 📅 {{ rec.fechaCreacion }} </span>                }                <!-- Acciones -->                <div class="rec-acciones">                  <!-- Cambiar estado -->                  @if (rec.tipoEstado !== \'COMPLETADA\') {                    <button                      class="btn-estado completar"                      (click)="cambiarEstado(rec, \'COMPLETADA\', $event)"                    >                      🏆 Completar                    </button>                  }                  @if (rec.tipoEstado === \'ACTIVA\') {                    <button                      class="btn-estado descartar"                      (click)="cambiarEstado(rec, \'DESCARTADA\', $event)"                    >                      🚫 Descartar                    </button>                  }                  @if (rec.tipoEstado !== \'ACTIVA\') {                    <button                      class="btn-estado reactivar"                      (click)="cambiarEstado(rec, \'ACTIVA\', $event)"                    >                      ✅ Reactivar                    </button>                  }                  <button class="btn-eliminar" (click)="eliminar(rec, $event)">🗑️ Eliminar</button>                </div>              </div>            }          </div>        }      }    }    <!-- ═══════════════════════════════════════════════════         VISTA: FORMULARIO    ═══════════════════════════════════════════════════ -->    @if (tabActivo === \'form\') {      <div class="form-layout">        <!-- Header -->        <div class="form-header-row">          <button class="btn-volver" (click)="cancelarForm()">← Volver</button>          <h2 class="form-titulo">+ Nueva recomendación manual</h2>        </div>        <div class="form-grid">          <!-- Columna izquierda -->          <div class="form-col">            <!-- Hato destino -->            <div class="form-card">              <h3 class="form-card-titulo">🐄 Hato destino</h3>              <div class="hato-destino-info">                <div class="hato-avatar">                  {{ hatoActivo.nombreHato.charAt(0).toUpperCase() }}                </div>                <div>                  <span class="hato-dest-nombre">                    {{ hatoActivo.nombreHato }}                  </span>                  <span class="hato-dest-meta">                    {{ hatoActivo.departamento }} · {{ hatoActivo.ciudad }} ·                    {{ hatoActivo.escala ?? \'—\' }}                  </span>                </div>              </div>            </div>            <!-- Prioridad y tipo -->            <div class="form-card">              <h3 class="form-card-titulo">⚙️ Configuración</h3>              <div class="campo-group">                <label class="campo-label">Prioridad *</label>                <div class="prioridad-btns">                  @for (p of prioridades; track p.valor) {                    <button                      class="prio-btn"                      [class]="p.clase"                      [class.seleccionada]="form.prioridad === p.valor"                      (click)="onFormChangeStr(\'prioridad\', p.valor)"                    >                      {{ p.label }}                    </button>                  }                </div>              </div>              <div class="campo-group">                <label class="campo-label">Tipo</label>                <select                  class="campo-select"                  [value]="form.tipo ?? \'\'"                  (change)="onFormChange(\'tipo\', $any($event.target).value)"                >                  <option value="">— Sin tipo —</option>                  @for (t of tipos; track t) {                    <option [value]="t">{{ t }}</option>                  }                </select>              </div>              <div class="campo-group">                <label class="campo-label"> ID de regla relacionada (opcional) </label>                <input                  type="number"                  class="campo-input"                  placeholder="Ej: 12"                  [value]="form.idRegla ?? \'\'"                  (input)="onFormChange(\'idRegla\', +$any($event.target).value || null)"                />              </div>            </div>          </div>          <!-- Columna derecha -->          <div class="form-col">            <!-- Mensaje -->            <div class="form-card">              <h3 class="form-card-titulo">💬 Mensaje</h3>              <div class="campo-group">                <label class="campo-label">Mensaje *</label>                <textarea                  class="campo-textarea"                  rows="5"                  placeholder="Escribe el mensaje de recomendación para el ganadero..."                  [value]="form.mensaje"                  (input)="onFormChangeStr(\'mensaje\', $any($event.target).value)"                ></textarea>              </div>            </div>            <!-- KPI relacionado -->            <div class="form-card">              <h3 class="form-card-titulo">📈 KPI relacionado (opcional)</h3>              <div class="campo-group">                <label class="campo-label">Código del indicador</label>                <input                  type="text"                  class="campo-input"                  placeholder="Ej: KPI_LITROS_VACA_DIA"                  [value]="form.indicador ?? \'\'"                  (input)="onFormChange(\'indicador\', $any($event.target).value)"                />              </div>              <div class="campos-row">                <div class="campo-group">                  <label class="campo-label">Valor actual</label>                  <input                    type="number"                    class="campo-input"                    placeholder="Ej: 6.5"                    [value]="form.valorActual ?? \'\'"                    (input)="onFormChange(\'valorActual\', +$any($event.target).value || null)"                  />                </div>                <div class="campo-group">                  <label class="campo-label">Valor de referencia</label>                  <input                    type="number"                    class="campo-input"                    placeholder="Ej: 10.0"                    [value]="form.valorReferencia ?? \'\'"                    (input)="onFormChange(\'valorReferencia\', +$any($event.target).value || null)"                  />                </div>              </div>            </div>          </div>        </div>        <!-- Footer -->        <div class="form-footer">          <button class="btn-cancelar" (click)="cancelarForm()">Cancelar</button>          <button class="btn-guardar" [disabled]="guardando" (click)="guardar()">            @if (guardando) {              <app-spinner size="small"></app-spinner>              Guardando...            } @else {              + Crear recomendación            }          </button>        </div>      </div>    }  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'GestionRecomendacionesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GestionRecomendacionesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

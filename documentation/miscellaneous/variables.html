@@ -1,0 +1,1720 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#angularApp" title="src/server.ts" ><b>angularApp</b>&nbsp;&nbsp;&nbsp;(src/.../server.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#app" title="src/server.ts" ><b>app</b>&nbsp;&nbsp;&nbsp;(src/.../server.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#appConfig" title="src/app/app.config.ts" ><b>appConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#authInterceptor" title="src/app/core/interceptors/auth-interceptor.ts" ><b>authInterceptor</b>&nbsp;&nbsp;&nbsp;(src/.../auth-interceptor.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#bootstrap" title="src/main.server.ts" ><b>bootstrap</b>&nbsp;&nbsp;&nbsp;(src/.../main.server.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#browserDistFolder" title="src/server.ts" ><b>browserDistFolder</b>&nbsp;&nbsp;&nbsp;(src/.../server.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CATEGORIAS_RADAR" title="src/app/features/Usuario/home/home-modulos/mod-kpis/mod-kpis.component.ts" ><b>CATEGORIAS_RADAR</b>&nbsp;&nbsp;&nbsp;(src/.../mod-kpis.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#COLORES_GANADO" title="src/app/features/Usuario/home/home-modulos/mod-ganado/mod-ganado.component.ts" ><b>COLORES_GANADO</b>&nbsp;&nbsp;&nbsp;(src/.../mod-ganado.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#config" title="src/app/app.config.server.ts" ><b>config</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.server.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#doLogin" title="cypress/e2e/05_practicas.cy.ts" ><b>doLogin</b>&nbsp;&nbsp;&nbsp;(cypress/.../05_practicas.cy.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#doLogin" title="cypress/e2e/06_finanzas.cy.ts" ><b>doLogin</b>&nbsp;&nbsp;&nbsp;(cypress/.../06_finanzas.cy.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#doLogin" title="cypress/e2e/07_produccion.cy.ts" ><b>doLogin</b>&nbsp;&nbsp;&nbsp;(cypress/.../07_produccion.cy.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#environment" title="src/environments/environment.production.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.production.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#environment" title="src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FILTRO_INICIAL" title="src/app/core/services/ui-state/admin-state.service.ts" ><b>FILTRO_INICIAL</b>&nbsp;&nbsp;&nbsp;(src/.../admin-state.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LABELS_RADAR" title="src/app/features/Usuario/home/home-modulos/mod-kpis/mod-kpis.component.ts" ><b>LABELS_RADAR</b>&nbsp;&nbsp;&nbsp;(src/.../mod-kpis.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MESES" title="src/app/features/Usuario/produccion/estadisticas-produccion/estadisticas-produccion.component.ts" ><b>MESES</b>&nbsp;&nbsp;&nbsp;(src/.../estadisticas-produccion.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MESES_ES" title="src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/finanzas-excel/finanzas-excel.component.ts" ><b>MESES_ES</b>&nbsp;&nbsp;&nbsp;(src/.../finanzas-excel.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MESES_ES" title="src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/finanzas-manual/finanzas-manual.component.ts" ><b>MESES_ES</b>&nbsp;&nbsp;&nbsp;(src/.../finanzas-manual.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NAVBAR_SECTIONS" title="src/app/core/services/ui-state/navbar-state.service.ts" ><b>NAVBAR_SECTIONS</b>&nbsp;&nbsp;&nbsp;(src/.../navbar-state.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#REPORTE_CONFIG_DEFAULT" title="src/app/core/services/reportes/reporte.service.ts" ><b>REPORTE_CONFIG_DEFAULT</b>&nbsp;&nbsp;&nbsp;(src/.../reporte.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#reqHandler" title="src/server.ts" ><b>reqHandler</b>&nbsp;&nbsp;&nbsp;(src/.../server.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#routes" title="src/app/app.routes.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(src/.../app.routes.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#serverConfig" title="src/app/app.config.server.ts" ><b>serverConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.server.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#serverRoutes" title="src/app/app.routes.server.ts" ><b>serverRoutes</b>&nbsp;&nbsp;&nbsp;(src/.../app.routes.server.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SUPABASE_CONFIG" title="src/app/core/config/supabase.config.example.ts" ><b>SUPABASE_CONFIG</b>&nbsp;&nbsp;&nbsp;(src/.../supabase.config.example.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SUPABASE_CONFIG" title="src/app/core/config/supabase.config.ts" ><b>SUPABASE_CONFIG</b>&nbsp;&nbsp;&nbsp;(src/.../supabase.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#usuarioValido" title="cypress/e2e/02_home.cy.ts" ><b>usuarioValido</b>&nbsp;&nbsp;&nbsp;(cypress/.../02_home.cy.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#usuarioValido" title="cypress/e2e/03_hato.cy.ts" ><b>usuarioValido</b>&nbsp;&nbsp;&nbsp;(cypress/.../03_hato.cy.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#usuarioValido" title="cypress/e2e/04_benchmarking_kpis.cy.ts" ><b>usuarioValido</b>&nbsp;&nbsp;&nbsp;(cypress/.../04_benchmarking_kpis.cy.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#usuarioValido" title="cypress/e2e/05_practicas.cy.ts" ><b>usuarioValido</b>&nbsp;&nbsp;&nbsp;(cypress/.../05_practicas.cy.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#usuarioValido" title="cypress/e2e/06_finanzas.cy.ts" ><b>usuarioValido</b>&nbsp;&nbsp;&nbsp;(cypress/.../06_finanzas.cy.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#usuarioValido" title="cypress/e2e/07_produccion.cy.ts" ><b>usuarioValido</b>&nbsp;&nbsp;&nbsp;(cypress/.../07_produccion.cy.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/server.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="angularApp"></a>
+                    <span class="name">
+                        <span ><b>angularApp</b></span>
+                        <a href="#angularApp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new AngularNodeAppEngine()</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="app"></a>
+                    <span class="name">
+                        <span ><b>app</b></span>
+                        <a href="#app"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>express()</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="browserDistFolder"></a>
+                    <span class="name">
+                        <span ><b>browserDistFolder</b></span>
+                        <a href="#browserDistFolder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>join(import.meta.dirname, &#x27;../browser&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reqHandler"></a>
+                    <span class="name">
+                        <span ><b>reqHandler</b></span>
+                        <a href="#reqHandler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createNodeRequestHandler(app)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appConfig"></a>
+                    <span class="name">
+                        <span ><b>appConfig</b></span>
+                        <a href="#appConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/App.html" target="_self" >ApplicationConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZonelessChangeDetection(),
+    provideRouter(
+      routes,
+      withInMemoryScrolling({
+        anchorScrolling: &#x27;enabled&#x27;,
+        scrollPositionRestoration: &#x27;enabled&#x27;,
+      }),
+      withViewTransitions(),
+    ),
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor])), provideServiceWorker(&#x27;ngsw-worker.js&#x27;, {
+            enabled: !isDevMode(),
+            registrationStrategy: &#x27;registerWhenStable:30000&#x27;
+          }),
+  ],
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/interceptors/auth-interceptor.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authInterceptor"></a>
+                    <span class="name">
+                        <span ><b>authInterceptor</b></span>
+                        <a href="#authInterceptor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HttpInterceptorFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(req, next) &#x3D;&gt; {
+  const authService &#x3D; inject(AuthService);
+
+  return from(authService.getAccessToken()).pipe(
+    switchMap((token) &#x3D;&gt; {
+      if (token) {
+        const authReq &#x3D; req.clone({
+          setHeaders: {
+            Authorization: &#x60;Bearer ${token}&#x60;,
+            &#x27;ngrok-skip-browser-warning&#x27;: &#x27;true&#x27;,
+          },
+        });
+        return next(authReq);
+      }
+      const reqConHeader &#x3D; req.clone({
+        setHeaders: {
+          &#x27;ngrok-skip-browser-warning&#x27;: &#x27;true&#x27;,
+        },
+      });
+      return next(reqConHeader);
+    }),
+  );
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/main.server.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bootstrap"></a>
+                    <span class="name">
+                        <span ><b>bootstrap</b></span>
+                        <a href="#bootstrap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(context: BootstrapContext) &#x3D;&gt;
+    bootstrapApplication(App, config, context)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/features/Usuario/home/home-modulos/mod-kpis/mod-kpis.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CATEGORIAS_RADAR"></a>
+                    <span class="name">
+                        <span ><b>CATEGORIAS_RADAR</b></span>
+                        <a href="#CATEGORIAS_RADAR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;PRODUCTIVIDAD&#x27;, &#x27;HATO&#x27;, &#x27;FINANCIERO&#x27;, &#x27;EFICIENCIA&#x27;] as const</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LABELS_RADAR"></a>
+                    <span class="name">
+                        <span ><b>LABELS_RADAR</b></span>
+                        <a href="#LABELS_RADAR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;Productividad&#x27;, &#x27;Hato&#x27;, &#x27;Financiero&#x27;, &#x27;Eficiencia&#x27;]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/features/Usuario/home/home-modulos/mod-ganado/mod-ganado.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="COLORES_GANADO"></a>
+                    <span class="name">
+                        <span ><b>COLORES_GANADO</b></span>
+                        <a href="#COLORES_GANADO"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  &#x27;rgba(25,230,77,0.82)&#x27;,
+  &#x27;rgba(21,128,61,0.82)&#x27;,
+  &#x27;rgba(59,130,246,0.82)&#x27;,
+  &#x27;rgba(245,158,11,0.82)&#x27;,
+  &#x27;rgba(239,68,68,0.82)&#x27;,
+  &#x27;rgba(168,85,247,0.82)&#x27;,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.config.server.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="config"></a>
+                    <span class="name">
+                        <span ><b>config</b></span>
+                        <a href="#config"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>mergeApplicationConfig(appConfig, serverConfig)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="serverConfig"></a>
+                    <span class="name">
+                        <span ><b>serverConfig</b></span>
+                        <a href="#serverConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/App.html" target="_self" >ApplicationConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  providers: [
+    provideServerRendering(withRoutes(serverRoutes))
+  ]
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>cypress/e2e/05_practicas.cy.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doLogin"></a>
+                    <span class="name">
+                        <span ><b>doLogin</b></span>
+                        <a href="#doLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {
+  cy.visit(&#x27;/login&#x27;);
+  cy.get(&#x27;[data-cy&#x3D;&quot;input-email&quot;]&#x27;).type(usuarioValido.email);
+  cy.get(&#x27;[data-cy&#x3D;&quot;input-password&quot;]&#x27;).type(usuarioValido.password);
+  cy.get(&#x27;[data-cy&#x3D;&quot;btn-login&quot;]&#x27;).click();
+  cy.url().should(&#x27;include&#x27;, &#x27;/home&#x27;);
+  cy.get(&#x27;[data-cy&#x3D;&quot;home-modulos&quot;]&#x27;, { timeout: 20000 }).should(&#x27;exist&#x27;);
+  cy.wait(2000);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioValido"></a>
+                    <span class="name">
+                        <span ><b>usuarioValido</b></span>
+                        <a href="#usuarioValido"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  email: &#x27;loadtest_01@loadtest.com&#x27;,
+  password: &#x27;LoadTest123!&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>cypress/e2e/06_finanzas.cy.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doLogin"></a>
+                    <span class="name">
+                        <span ><b>doLogin</b></span>
+                        <a href="#doLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {
+  cy.visit(&#x27;/login&#x27;);
+  cy.get(&#x27;[data-cy&#x3D;&quot;input-email&quot;]&#x27;).type(usuarioValido.email);
+  cy.get(&#x27;[data-cy&#x3D;&quot;input-password&quot;]&#x27;).type(usuarioValido.password);
+  cy.get(&#x27;[data-cy&#x3D;&quot;btn-login&quot;]&#x27;).click();
+  cy.url().should(&#x27;include&#x27;, &#x27;/home&#x27;);
+  cy.get(&#x27;[data-cy&#x3D;&quot;home-modulos&quot;]&#x27;, { timeout: 20000 }).should(&#x27;exist&#x27;);
+
+  cy.get(&#x27;body&#x27;).then(($body) &#x3D;&gt; {
+    if ($body.find(&#x27;[data-cy&#x3D;&quot;btn-recordar-despues&quot;]&#x27;).length &gt; 0) {
+      cy.get(&#x27;[data-cy&#x3D;&quot;btn-recordar-despues&quot;]&#x27;).click({ force: true });
+      cy.wait(500);
+    }
+  });
+
+  cy.wait(1000);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioValido"></a>
+                    <span class="name">
+                        <span ><b>usuarioValido</b></span>
+                        <a href="#usuarioValido"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  email: &#x27;loadtest_01@loadtest.com&#x27;,
+  password: &#x27;LoadTest123!&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>cypress/e2e/07_produccion.cy.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doLogin"></a>
+                    <span class="name">
+                        <span ><b>doLogin</b></span>
+                        <a href="#doLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {
+  cy.visit(&#x27;/login&#x27;);
+  cy.get(&#x27;[data-cy&#x3D;&quot;input-email&quot;]&#x27;).type(usuarioValido.email);
+  cy.get(&#x27;[data-cy&#x3D;&quot;input-password&quot;]&#x27;).type(usuarioValido.password);
+  cy.get(&#x27;[data-cy&#x3D;&quot;btn-login&quot;]&#x27;).click();
+  cy.url().should(&#x27;include&#x27;, &#x27;/home&#x27;);
+  cy.get(&#x27;[data-cy&#x3D;&quot;home-modulos&quot;]&#x27;, { timeout: 20000 }).should(&#x27;exist&#x27;);
+
+  cy.get(&#x27;body&#x27;).then(($body) &#x3D;&gt; {
+    if ($body.find(&#x27;[data-cy&#x3D;&quot;bitacora-backdrop&quot;]&#x27;).length &gt; 0) {
+      cy.get(&#x27;[data-cy&#x3D;&quot;bitacora-backdrop&quot;]&#x27;).click({ force: true });
+      cy.wait(500);
+    }
+  });
+  cy.wait(1000);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioValido"></a>
+                    <span class="name">
+                        <span ><b>usuarioValido</b></span>
+                        <a href="#usuarioValido"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  email: &#x27;loadtest_01@loadtest.com&#x27;,
+  password: &#x27;LoadTest123!&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/environments/environment.production.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="environment"></a>
+                    <span class="name">
+                        <span ><b>environment</b></span>
+                        <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  production: true,
+  apiUrl: &#x27;https://regain-legend-deny.ngrok-free.dev/api&#x27;,
+  appUrl: &#x27;https://project-v9g4l.vercel.app&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/environments/environment.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="environment"></a>
+                    <span class="name">
+                        <span ><b>environment</b></span>
+                        <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  production: false,
+  apiUrl: &#x27;http://localhost:8081/api&#x27;,
+  appUrl: &#x27;http://localhost:4200&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/services/ui-state/admin-state.service.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FILTRO_INICIAL"></a>
+                    <span class="name">
+                        <span ><b>FILTRO_INICIAL</b></span>
+                        <a href="#FILTRO_INICIAL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/FiltroAdmin.html" target="_self" >FiltroAdmin</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  departamento: null,
+  region: null,
+  idHato: null,
+  nombreHato: null,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/features/Usuario/produccion/estadisticas-produccion/estadisticas-produccion.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MESES"></a>
+                    <span class="name">
+                        <span ><b>MESES</b></span>
+                        <a href="#MESES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;Ene&#x27;, &#x27;Feb&#x27;, &#x27;Mar&#x27;, &#x27;Abr&#x27;, &#x27;May&#x27;, &#x27;Jun&#x27;, &#x27;Jul&#x27;, &#x27;Ago&#x27;, &#x27;Sep&#x27;, &#x27;Oct&#x27;, &#x27;Nov&#x27;, &#x27;Dic&#x27;]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/finanzas-excel/finanzas-excel.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MESES_ES"></a>
+                    <span class="name">
+                        <span ><b>MESES_ES</b></span>
+                        <a href="#MESES_ES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  &#x27;ENERO&#x27;,
+  &#x27;FEBRERO&#x27;,
+  &#x27;MARZO&#x27;,
+  &#x27;ABRIL&#x27;,
+  &#x27;MAYO&#x27;,
+  &#x27;JUNIO&#x27;,
+  &#x27;JULIO&#x27;,
+  &#x27;AGOSTO&#x27;,
+  &#x27;SEPTIEMBRE&#x27;,
+  &#x27;OCTUBRE&#x27;,
+  &#x27;NOVIEMBRE&#x27;,
+  &#x27;DICIEMBRE&#x27;,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/finanzas-manual/finanzas-manual.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MESES_ES"></a>
+                    <span class="name">
+                        <span ><b>MESES_ES</b></span>
+                        <a href="#MESES_ES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  &#x27;ENERO&#x27;,
+  &#x27;FEBRERO&#x27;,
+  &#x27;MARZO&#x27;,
+  &#x27;ABRIL&#x27;,
+  &#x27;MAYO&#x27;,
+  &#x27;JUNIO&#x27;,
+  &#x27;JULIO&#x27;,
+  &#x27;AGOSTO&#x27;,
+  &#x27;SEPTIEMBRE&#x27;,
+  &#x27;OCTUBRE&#x27;,
+  &#x27;NOVIEMBRE&#x27;,
+  &#x27;DICIEMBRE&#x27;,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/services/ui-state/navbar-state.service.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NAVBAR_SECTIONS"></a>
+                    <span class="name">
+                        <span ><b>NAVBAR_SECTIONS</b></span>
+                        <a href="#NAVBAR_SECTIONS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NavbarSection.html" target="_self" >NavbarSection[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    seccion: &#x27;/home&#x27;,
+    items: [],
+  },
+  {
+    seccion: &#x27;/progreso&#x27;,
+    items: [{ label: &#x27;Mi progreso&#x27;, route: &#x27;/progreso&#x27; }],
+  },
+  { seccion: &#x27;/alertas&#x27;, items: [] },
+  {
+    seccion: &#x27;/hato&#x27;,
+    items: [
+      { label: &#x27;Información del hato&#x27;, route: &#x27;/hato&#x27; },
+      { label: &#x27;Registrar nuevo item&#x27;, route: &#x27;/inventarios/general/registro&#x27;, soloUsuario: true },
+    ],
+  },
+  {
+    seccion: &#x27;/inventarios&#x27;,
+    items: [
+      { label: &#x27;Inventario general&#x27;, route: &#x27;/inventarios/general/resumen&#x27; },
+      { label: &#x27;Inventario ganado&#x27;, route: &#x27;/inventarios/ganado/resumen&#x27; },
+    ],
+  },
+  {
+    seccion: &#x27;/inventarios/general&#x27;,
+    items: [
+      { label: &#x27;Resumen general&#x27;, route: &#x27;/inventarios/general/resumen&#x27; },
+      { label: &#x27;Registrar nuevo item&#x27;, route: &#x27;/inventarios/general/registro&#x27;, soloUsuario: true },
+      { label: &#x27;Estadísticas&#x27;, route: &#x27;/inventarios/general/estadisticas&#x27; },
+    ],
+  },
+  {
+    seccion: &#x27;/inventarios/ganado&#x27;,
+    items: [
+      { label: &#x27;Resumen ganado&#x27;, route: &#x27;/inventarios/ganado/resumen&#x27; },
+      { label: &#x27;Registrar nuevo item&#x27;, route: &#x27;/inventarios/ganado/registro&#x27;, soloUsuario: true },
+      { label: &#x27;Estadísticas&#x27;, route: &#x27;/inventarios/ganado/estadisticas&#x27; },
+    ],
+  },
+  {
+    seccion: &#x27;/finanzas&#x27;,
+    items: [
+      { label: &#x27;Resumen financiero&#x27;, route: &#x27;/finanzas&#x27; },
+      { label: &#x27;Nuevo registro&#x27;, route: &#x27;/finanzas/registro&#x27;, soloUsuario: true },
+      { label: &#x27;Estadísticas&#x27;, route: &#x27;/finanzas/estadisticas&#x27; },
+      { label: &#x27;Proyecciones&#x27;, route: &#x27;/finanzas/proyecciones&#x27; },
+    ],
+  },
+  {
+    seccion: &#x27;/produccion&#x27;,
+    items: [
+      { label: &#x27;Resumen producción&#x27;, route: &#x27;/produccion&#x27; },
+      { label: &#x27;Nuevo registro&#x27;, route: &#x27;/produccion/registro&#x27;, soloUsuario: true },
+      { label: &#x27;Estadísticas&#x27;, route: &#x27;/produccion/estadisticas&#x27; },
+    ],
+  },
+  {
+    seccion: &#x27;/benchmarking&#x27;,
+    items: [
+      { label: &#x27;Mis KPIs&#x27;, route: &#x27;/benchmarking&#x27; },
+      { label: &#x27;Benchmarking KPIs&#x27;, route: &#x27;/benchmarking/kpis&#x27; },
+      { label: &#x27;Ranking&#x27;, route: &#x27;/benchmarking/ranking&#x27; },
+    ],
+  },
+  {
+    seccion: &#x27;/practicas&#x27;,
+    items: [
+      { label: &#x27;Sugeridas&#x27;, route: &#x27;/practicas/sugeridas&#x27; },
+      { label: &#x27;Mis prácticas&#x27;, route: &#x27;/practicas/mis-practicas&#x27; },
+      { label: &#x27;Recomendaciones&#x27;, route: &#x27;/practicas/recomendaciones&#x27; },
+      { label: &#x27;Progreso&#x27;, route: &#x27;/practicas/progreso&#x27; },
+    ],
+  },
+  {
+    seccion: &#x27;/reportes&#x27;,
+    items: [
+      { label: &#x27;Mis reportes&#x27;, route: &#x27;/reportes&#x27; },
+      { label: &#x27;Generar reporte&#x27;, route: &#x27;/reportes/generar&#x27; },
+    ],
+  },
+  {
+    seccion: &#x27;/admin&#x27;,
+    items: [
+      { label: &#x27;Dashboard&#x27;, route: &#x27;/admin&#x27; },
+      { label: &#x27;Hatos&#x27;, route: &#x27;/admin/hatos&#x27; },
+      { label: &#x27;Reglas&#x27;, route: &#x27;/admin/reglas&#x27; },
+      { label: &#x27;Prácticas&#x27;, route: &#x27;/admin/practicas&#x27; },
+      { label: &#x27;Recomendaciones&#x27;, route: &#x27;/admin/recomendaciones&#x27; },
+    ],
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/services/reportes/reporte.service.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="REPORTE_CONFIG_DEFAULT"></a>
+                    <span class="name">
+                        <span ><b>REPORTE_CONFIG_DEFAULT</b></span>
+                        <a href="#REPORTE_CONFIG_DEFAULT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ReporteConfigDTO.html" target="_self" >ReporteConfigDTO</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  incluirResumenEjecutivo: true,
+  incluirKpis: true,
+  incluirBenchmarking: true,
+  incluirRanking: true,
+  incluirFinanzas: true,
+  incluirProduccion: true,
+  incluirPracticas: true,
+  nivelBenchmark: &#x27;NACIONAL&#x27;,
+  periodoDesde: null,
+  periodoHasta: null,
+  tituloPersonalizado: null,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.routes.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routes"></a>
+                    <span class="name">
+                        <span ><b>routes</b></span>
+                        <a href="#routes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/router/Routes" target="_blank" >Routes</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  { path: &#x27;&#x27;, component: LandingComponent, pathMatch: &#x27;full&#x27; },
+
+  // Públicas
+  { path: &#x27;login&#x27;, component: LoginComponent },
+  { path: &#x27;register&#x27;, component: RegisterComponent },
+  { path: &#x27;auth/reset-password&#x27;, component: ResetPasswordComponent },
+
+  // Privadas
+  {
+    path: &#x27;&#x27;,
+    component: DashboardLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: &#x27;home&#x27;, component: HomeComponent },
+      { path: &#x27;miCuenta&#x27;, component: UsuarioComponent },
+
+      // Hato
+      {
+        path: &#x27;hato&#x27;,
+        component: HatoComponent,
+        children: [
+          { path: &#x27;&#x27;, component: InfoHatoComponent },
+          { path: &#x27;inventarios&#x27;, pathMatch: &#x27;full&#x27;, redirectTo: &#x27;/inventarios/general/resumen&#x27; },
+          { path: &#x27;nuevo&#x27;, component: NuevoHatoComponent },
+        ],
+      },
+
+      { path: &#x27;alertas&#x27;, component: AlertasComponent },
+
+      { path: &#x27;progreso&#x27;, component: MiProgresoComponent },
+
+      // Inventarios
+      {
+        path: &#x27;inventarios&#x27;,
+        component: InventariosHatoComponent,
+        children: [
+          { path: &#x27;&#x27;, pathMatch: &#x27;full&#x27;, redirectTo: &#x27;general/resumen&#x27; },
+          {
+            path: &#x27;general&#x27;,
+            component: InventarioGeneralComponent,
+            children: [
+              { path: &#x27;&#x27;, pathMatch: &#x27;full&#x27;, redirectTo: &#x27;resumen&#x27; },
+              { path: &#x27;registro&#x27;, component: InventarioGeneralRegistroComponent },
+              { path: &#x27;resumen&#x27;, component: InventarioGeneralResumenComponent },
+              { path: &#x27;estadisticas&#x27;, component: InventarioGeneralEstadisticasComponent },
+            ],
+          },
+          {
+            path: &#x27;ganado&#x27;,
+            component: InventarioGanadoComponent,
+            children: [
+              { path: &#x27;&#x27;, pathMatch: &#x27;full&#x27;, redirectTo: &#x27;resumen&#x27; },
+              { path: &#x27;registro&#x27;, component: InventarioGanadoRegistroComponent },
+              { path: &#x27;resumen&#x27;, component: InventarioGanadoResumenComponent },
+              { path: &#x27;estadisticas&#x27;, component: InventarioGanadoEstadisticasComponent },
+            ],
+          },
+        ],
+      },
+
+      // Finanzas
+      {
+        path: &#x27;finanzas&#x27;,
+        component: FinanzasComponent,
+        children: [
+          { path: &#x27;&#x27;, component: InfoFinanzasComponent },
+          { path: &#x27;registro&#x27;, component: RegistroFinancieroComponent },
+          { path: &#x27;estadisticas&#x27;, component: EstadisticasFinanzasComponent },
+          { path: &#x27;proyecciones&#x27;, component: ProyeccionesComponent },
+        ],
+      },
+
+      // Producción de leche
+      {
+        path: &#x27;produccion&#x27;,
+        component: ProduccionComponent,
+        children: [
+          { path: &#x27;&#x27;, component: InfoProduccionComponent },
+          { path: &#x27;registro&#x27;, component: RegistroProduccionComponent },
+          { path: &#x27;estadisticas&#x27;, component: EstadisticasProduccionComponent },
+        ],
+      },
+
+      // Benchmarking
+      {
+        path: &#x27;benchmarking&#x27;,
+        component: BenchmarkingComponent,
+        children: [
+          { path: &#x27;&#x27;, component: InfoBenchmarkingComponent },
+          { path: &#x27;kpis&#x27;, component: ComparativaKpisComponent },
+          { path: &#x27;kpi/:codigo&#x27;, component: KpiDetalleComponent },
+          { path: &#x27;ranking&#x27;, component: RankingComponent },
+        ],
+      },
+
+      // Prácticas
+      {
+        path: &#x27;practicas&#x27;,
+        component: PracticasComponent,
+        children: [
+          { path: &#x27;&#x27;, redirectTo: &#x27;sugeridas&#x27;, pathMatch: &#x27;full&#x27; },
+          { path: &#x27;sugeridas&#x27;, component: PracticasSugeridasComponent },
+          { path: &#x27;mis-practicas&#x27;, component: MisPracticasComponent },
+          { path: &#x27;recomendaciones&#x27;, component: RecomendacionesComponent },
+          { path: &#x27;progreso&#x27;, component: ProgresoPracticasComponent },
+          { path: &#x27;detalle/:idHatoPractica&#x27;, component: DetallePracticaComponent },
+        ],
+      },
+
+      // Reportes
+      {
+        path: &#x27;reportes&#x27;,
+        component: ReportesComponent,
+        children: [
+          { path: &#x27;&#x27;, component: HistorialReportesComponent },
+          { path: &#x27;generar&#x27;, component: CrearReporteComponent },
+          { path: &#x27;historial&#x27;, redirectTo: &#x27;&#x27;, pathMatch: &#x27;full&#x27; },
+        ],
+      },
+      // Admin
+
+      {
+        path: &#x27;admin&#x27;,
+        component: AdminComponent,
+        canActivate: [AdminGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            component: DashboardAdminComponent,
+          },
+          {
+            path: &#x27;hatos&#x27;,
+            component: GestionHatosComponent,
+          },
+          {
+            path: &#x27;hatos/:idHato&#x27;,
+            component: DetalleHatoAdminComponent,
+          },
+          {
+            path: &#x27;reglas&#x27;,
+            component: GestionReglasComponent,
+          },
+          {
+            path: &#x27;practicas&#x27;,
+            component: GestionPracticasComponent,
+          },
+          {
+            path: &#x27;recomendaciones&#x27;,
+            component: GestionRecomendacionesComponent,
+          },
+        ],
+      },
+    ],
+  },
+
+  { path: &#x27;**&#x27;, component: NotFoundComponent },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.routes.server.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="serverRoutes"></a>
+                    <span class="name">
+                        <span ><b>serverRoutes</b></span>
+                        <a href="#serverRoutes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ServerRoute[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  // Públicas — Prerender
+  { path: &#x27;&#x27;, renderMode: RenderMode.Prerender },
+  { path: &#x27;login&#x27;, renderMode: RenderMode.Prerender },
+  { path: &#x27;register&#x27;, renderMode: RenderMode.Prerender },
+  { path: &#x27;auth/reset-password&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;progreso&#x27;, renderMode: RenderMode.Client },
+
+  // Privadas — Client
+  { path: &#x27;home&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;miCuenta&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;admin&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;alertas&#x27;, renderMode: RenderMode.Client },
+
+  // Hato
+  { path: &#x27;hato&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;hato/inventarios&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;hato/nuevo&#x27;, renderMode: RenderMode.Client },
+
+  // Finanzas
+  { path: &#x27;finanzas&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;finanzas/registro&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;finanzas/estadisticas&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;finanzas/proyecciones&#x27;, renderMode: RenderMode.Client },
+
+  // Producción
+  { path: &#x27;produccion&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;produccion/registro&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;produccion/estadisticas&#x27;, renderMode: RenderMode.Client },
+
+  // Benchmarking
+  { path: &#x27;benchmarking&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;benchmarking/kpis&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;benchmarking/kpi/:codigo&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;benchmarking/ranking&#x27;, renderMode: RenderMode.Client },
+
+  // Prácticas
+  { path: &#x27;practicas&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;practicas/recomendaciones&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;practicas/sugeridas&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;practicas/mis-practicas&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;practicas/progreso&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;practicas/detalle/:idHatoPractica&#x27;, renderMode: RenderMode.Client },
+
+  // Reportes
+  { path: &#x27;reportes&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;reportes/generar&#x27;, renderMode: RenderMode.Client },
+  // Admin
+  { path: &#x27;admin&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;admin/hatos&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;admin/hatos/:idHato&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;admin/reglas&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;admin/practicas&#x27;, renderMode: RenderMode.Client },
+  { path: &#x27;admin/recomendaciones&#x27;, renderMode: RenderMode.Client },
+
+  // Fallback
+  { path: &#x27;**&#x27;, renderMode: RenderMode.Prerender },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/config/supabase.config.example.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SUPABASE_CONFIG"></a>
+                    <span class="name">
+                        <span ><b>SUPABASE_CONFIG</b></span>
+                        <a href="#SUPABASE_CONFIG"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  url: &#x27;https://your-project.supabase.co&#x27;,
+  key: &#x27;your-public-anon-key&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/config/supabase.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SUPABASE_CONFIG"></a>
+                    <span class="name">
+                        <span ><b>SUPABASE_CONFIG</b></span>
+                        <a href="#SUPABASE_CONFIG"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  url: &#x27;https://utqxqrwdisufsykfhbth.supabase.co&#x27;,
+  key: &#x27;sb_publishable_R4A5KGbwMrNzDXu0CnGVcg_DW8dCeFc&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>cypress/e2e/02_home.cy.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioValido"></a>
+                    <span class="name">
+                        <span ><b>usuarioValido</b></span>
+                        <a href="#usuarioValido"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  email: &#x27;loadtest_01@loadtest.com&#x27;,
+  password: &#x27;LoadTest123!&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>cypress/e2e/03_hato.cy.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioValido"></a>
+                    <span class="name">
+                        <span ><b>usuarioValido</b></span>
+                        <a href="#usuarioValido"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  email: &#x27;loadtest_01@loadtest.com&#x27;,
+  password: &#x27;LoadTest123!&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>cypress/e2e/04_benchmarking_kpis.cy.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioValido"></a>
+                    <span class="name">
+                        <span ><b>usuarioValido</b></span>
+                        <a href="#usuarioValido"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  email: &#x27;loadtest_01@loadtest.com&#x27;,
+  password: &#x27;LoadTest123!&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

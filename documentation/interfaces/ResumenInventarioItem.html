@@ -1,0 +1,967 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  ResumenInventarioItem</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-inventario/seccion-inventario.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#cantidad" 
+>
+                                            cantidad
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#nombreCategoriaPadre" 
+>
+                                            nombreCategoriaPadre
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#nombreSubcategoria" 
+>
+                                            nombreSubcategoria
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#total" 
+>
+                                            total
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#valorUnitario" 
+>
+                                            valorUnitario
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="cantidad"></a>
+                                        <span class="name "><b>cantidad</b>
+                                            <a href="#cantidad">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>cantidad:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="nombreCategoriaPadre"></a>
+                                        <span class="name "><b>nombreCategoriaPadre</b>
+                                            <a href="#nombreCategoriaPadre">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>nombreCategoriaPadre:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="nombreSubcategoria"></a>
+                                        <span class="name "><b>nombreSubcategoria</b>
+                                            <a href="#nombreSubcategoria">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>nombreSubcategoria:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="total"></a>
+                                        <span class="name "><b>total</b>
+                                            <a href="#total">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>total:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="valorUnitario"></a>
+                                        <span class="name "><b>valorUnitario</b>
+                                            <a href="#valorUnitario">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>valorUnitario:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  FormArray,
+  Validators,
+} from &#x27;@angular/forms&#x27;;
+import { firstValueFrom } from &#x27;rxjs&#x27;;
+import {
+  Hato,
+  HatoService,
+  InfraestructuraBasicaDTO,
+} from &#x27;../../../../../../core/services/hato/hato.service&#x27;;
+import {
+  CategoriaInventarioService,
+  CategoriaInventario,
+} from &#x27;../../../../../../core/services/inventario/categoria-inventario.service&#x27;;
+import {
+  CategoriaGanadoService,
+  CategoriaGanado,
+} from &#x27;../../../../../../core/services/inventario/categoria-ganado.service&#x27;;
+import { RazaService, Raza } from &#x27;../../../../../../core/services/inventario/raza.service&#x27;;
+import {
+  InventarioGeneralService,
+  InventarioGeneralDTO,
+} from &#x27;../../../../../../core/services/inventario/inventario-general.service&#x27;;
+import {
+  InventarioGanadoService,
+  InventarioGanadoDTO,
+} from &#x27;../../../../../../core/services/inventario/inventario-ganado.service&#x27;;
+
+import { SpinnerComponent } from &#x27;../../../../../../shared/spinner/spinner.component&#x27;;
+
+interface ResumenInventarioItem {
+  nombreCategoriaPadre: string;
+  nombreSubcategoria: string;
+  cantidad: number;
+  valorUnitario: number;
+  total: number;
+}
+
+interface ResumenGanadoItem {
+  nombreRaza: string;
+  tipoRaza: string;
+  nombreCategoria: string;
+  cantidad: number;
+  edadPromedioMeses: number;
+  valorUnitario: number;
+  total: number;
+}
+
+@Component({
+  selector: &#x27;app-seccion-inventario&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SpinnerComponent],
+  templateUrl: &#x27;./seccion-inventario.component.html&#x27;,
+  styleUrl: &#x27;./seccion-inventario.component.css&#x27;,
+})
+export class SeccionInventarioComponent implements OnInit {
+  @Input() hatoActual: Hato | null &#x3D; null;
+  @Input() modoReadonly &#x3D; false;
+
+  @Output() seccionCompletada &#x3D; new EventEmitter&lt;Hato&gt;();
+  @Output() irSiguiente &#x3D; new EventEmitter&lt;void&gt;();
+  @Output() irAnterior &#x3D; new EventEmitter&lt;void&gt;();
+
+  categoriasInventario: CategoriaInventario[] &#x3D; [];
+  categoriasGanado: CategoriaGanado[] &#x3D; [];
+  loadingCatalogos &#x3D; false;
+  loadingGuardar &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+
+  inventarioGuardado: any[] &#x3D; [];
+  ganadoGuardado: any[] &#x3D; [];
+  loadingReadonly &#x3D; false;
+
+  tiposRaza: string[] &#x3D; [];
+  razasSeleccionadas &#x3D; new Map&lt;string, Set&lt;number&gt;&gt;();
+
+  formInfraestructura!: FormGroup;
+
+  seccionesInventarioAbiertas &#x3D; new Set&lt;number&gt;();
+  inventarioPorCategoria &#x3D; new Map&lt;number, FormArray&gt;();
+
+  tiposRazaAbiertos &#x3D; new Set&lt;string&gt;();
+  ganadoPorTipo &#x3D; new Map&lt;string, { raza: Raza; filas: FormArray }[]&gt;();
+  razasPorTipo &#x3D; new Map&lt;string, Raza[]&gt;();
+
+  categoriasParent: CategoriaInventario[] &#x3D; [];
+
+  razasPorFila: Raza[][] &#x3D; [];
+
+  ganadoFormArray!: FormArray;
+
+  get totalInventarioGeneral(): number {
+    let total &#x3D; 0;
+    this.inventarioPorCategoria.forEach((formArray) &#x3D;&gt; {
+      formArray.controls.forEach((ctrl) &#x3D;&gt; {
+        total +&#x3D; (ctrl.get(&#x27;cantidad&#x27;)?.value ?? 0) * (ctrl.get(&#x27;valorUnitario&#x27;)?.value ?? 0);
+      });
+    });
+    return total;
+  }
+
+  get totalInventarioGanado(): number {
+    let total &#x3D; 0;
+    this.ganadoPorTipo.forEach((razasConFilas) &#x3D;&gt; {
+      razasConFilas.forEach((entry) &#x3D;&gt; {
+        entry.filas.controls.forEach((ctrl) &#x3D;&gt; {
+          total +&#x3D; (ctrl.get(&#x27;cantidad&#x27;)?.value ?? 0) * (ctrl.get(&#x27;valorUnitario&#x27;)?.value ?? 0);
+        });
+      });
+    });
+    return total;
+  }
+
+  get seccionValida(): boolean {
+    const tieneInventario &#x3D; this.totalInventarioGeneral &gt; 0;
+    const tieneGanado &#x3D; this.totalInventarioGanado &gt; 0;
+    return this.formInfraestructura.valid &amp;&amp; tieneInventario &amp;&amp; tieneGanado;
+  }
+
+  constructor(
+    private fb: FormBuilder,
+    private hatoService: HatoService,
+    private categoriaInventarioService: CategoriaInventarioService,
+    private categoriaGanadoService: CategoriaGanadoService,
+    private razaService: RazaService,
+    private inventarioGeneralService: InventarioGeneralService,
+    private inventarioGanadoService: InventarioGanadoService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.initForms();
+    if (!this.modoReadonly) {
+      this.cargarCatalogos();
+    } else {
+      this.cargarDatosGuardados();
+    }
+  }
+
+  private initForms(): void {
+    this.formInfraestructura &#x3D; this.fb.group({
+      cantCorrales: [null, [Validators.required, Validators.min(0)]],
+      cantSalasOrdenio: [null, [Validators.required, Validators.min(0)]],
+      capacidadAlmacenarLeche: [null, [Validators.required, Validators.min(0)]],
+      cantEmpleadosPermanentes: [null, [Validators.required, Validators.min(0)]],
+      cantEmpleadosTemporales: [null, [Validators.required, Validators.min(0)]],
+    });
+  }
+
+  private async cargarDatosGuardados(): Promise&lt;void&gt; {
+    if (!this.hatoActual?.idHato) return;
+    this.loadingReadonly &#x3D; true;
+    try {
+      const [inventario, ganado] &#x3D; await Promise.all([
+        firstValueFrom(this.inventarioGeneralService.getByHato(this.hatoActual.idHato)),
+        firstValueFrom(this.inventarioGanadoService.getByHato(this.hatoActual.idHato)),
+      ]);
+      this.inventarioGuardado &#x3D; inventario;
+      this.ganadoGuardado &#x3D; ganado;
+    } catch {
+    } finally {
+      this.loadingReadonly &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  private async cargarCatalogos(): Promise&lt;void&gt; {
+    this.loadingCatalogos &#x3D; true;
+    try {
+      const [categorias, categoriasGanado, tiposRaza] &#x3D; await Promise.all([
+        firstValueFrom(this.categoriaInventarioService.getCategorias()),
+        firstValueFrom(this.categoriaGanadoService.getCategorias()),
+        firstValueFrom(this.razaService.getTiposRaza()),
+      ]);
+
+      this.categoriasInventario &#x3D; categorias;
+      this.categoriasGanado &#x3D; categoriasGanado;
+      this.tiposRaza &#x3D; tiposRaza;
+      this.categoriasParent &#x3D; categorias.filter((c) &#x3D;&gt; c.tipo &#x3D;&#x3D;&#x3D; &#x27;PADRE&#x27;);
+
+      this.categoriasParent.forEach((padre) &#x3D;&gt; {
+        this.inventarioPorCategoria.set(padre.idCategoriaInventario, this.fb.array([]));
+      });
+
+      tiposRaza.forEach((tipo) &#x3D;&gt; {
+        this.ganadoPorTipo.set(tipo, []);
+        this.razasPorTipo.set(tipo, []);
+      });
+    } catch (err) {
+      console.error(&#x27;❌ Error en cargarCatalogos:&#x27;, err);
+      this.error &#x3D; &#x27;Error al cargar catálogos. Recarga la página.&#x27;;
+    } finally {
+      this.loadingCatalogos &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; INVENTARIO GENERAL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ACORDEÓN INVENTARIO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  toggleSeccionInventario(idPadre: number): void {
+    const idPadreNum &#x3D; Number(idPadre);
+
+    if (this.seccionesInventarioAbiertas.has(idPadreNum)) {
+      this.seccionesInventarioAbiertas.delete(idPadreNum);
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.seccionesInventarioAbiertas.add(idPadreNum);
+
+    if (!this.inventarioPorCategoria.has(idPadreNum)) {
+      this.inventarioPorCategoria.set(idPadreNum, this.fb.array([]));
+    }
+
+    const formArray &#x3D; this.inventarioPorCategoria.get(idPadreNum)!;
+
+    if (formArray.length &#x3D;&#x3D;&#x3D; 0) {
+      const subcategorias &#x3D; this.getSubcategorias(idPadreNum);
+
+      subcategorias.forEach((sub) &#x3D;&gt; {
+        formArray.push(
+          this.fb.group({
+            idCategoriaInventario: [sub.idCategoriaInventario],
+            nombreSubcategoria: [sub.nombre],
+            cantidad: [null, [Validators.min(0)]],
+            valorUnitario: [null, [Validators.min(0)]],
+            descripcion: [&#x27;&#x27;],
+          }),
+        );
+      });
+    }
+
+    this.cdr.markForCheck();
+  }
+
+  estaAbiertaInventario(idPadre: number): boolean {
+    return this.seccionesInventarioAbiertas.has(Number(idPadre));
+  }
+
+  getSubcategorias(idPadre: number): CategoriaInventario[] {
+    return this.categoriasInventario.filter(
+      (c) &#x3D;&gt; c.tipo &#x3D;&#x3D;&#x3D; &#x27;HIJA&#x27; &amp;&amp; c.categoriaPadre?.idCategoriaInventario &#x3D;&#x3D;&#x3D; idPadre,
+    );
+  }
+
+  getFormArrayInventario(idPadre: number): FormArray {
+    return this.inventarioPorCategoria.get(Number(idPadre)) ?? this.fb.array([]);
+  }
+
+  getFilaInventario(idPadre: number, index: number): FormGroup {
+    return this.getFormArrayInventario(Number(idPadre)).at(index) as FormGroup;
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ACORDEÓN GANADO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; INVENTARIO GANADO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  async toggleSeccionGanado(tipo: string): Promise&lt;void&gt; {
+    if (this.tiposRazaAbiertos.has(tipo)) {
+      this.tiposRazaAbiertos.delete(tipo);
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.tiposRazaAbiertos.add(tipo);
+
+    if (!this.razasPorTipo.get(tipo)?.length) {
+      try {
+        const razas &#x3D; await firstValueFrom(this.razaService.getRazasPorTipo(tipo));
+        this.razasPorTipo.set(tipo, razas);
+
+        const razasConFilas &#x3D; razas.map((raza) &#x3D;&gt; ({
+          raza,
+          filas: this.fb.array([this.crearFilaGanado()]),
+        }));
+
+        this.ganadoPorTipo.set(tipo, razasConFilas);
+      } catch {
+        this.error &#x3D; &#x27;Error al cargar razas.&#x27;;
+      }
+    }
+
+    this.cdr.markForCheck();
+  }
+  toggleRaza(tipo: string, idRaza: number): void {
+    if (!this.razasSeleccionadas.has(tipo)) {
+      this.razasSeleccionadas.set(tipo, new Set());
+    }
+    const set &#x3D; this.razasSeleccionadas.get(tipo)!;
+    if (set.has(idRaza)) {
+      set.delete(idRaza);
+      const entry &#x3D; this.ganadoPorTipo.get(tipo)?.find((e) &#x3D;&gt; e.raza.idRaza &#x3D;&#x3D;&#x3D; idRaza);
+      if (entry) entry.filas &#x3D; this.fb.array([this.crearFilaGanado()]);
+    } else {
+      set.add(idRaza);
+    }
+    this.cdr.markForCheck();
+  }
+
+  isRazaSeleccionada(tipo: string, idRaza: number): boolean {
+    return this.razasSeleccionadas.get(tipo)?.has(idRaza) ?? false;
+  }
+
+  private crearFilaGanado(): FormGroup {
+    return this.fb.group({
+      idCategoria: [null, Validators.required],
+      cantidad: [null, [Validators.min(1)]],
+      edadPromedioMeses: [null, [Validators.min(0)]],
+      valorUnitario: [null, [Validators.min(0)]],
+    });
+  }
+
+  // &#x3D;&#x3D;&#x3D; GANADO &#x3D;&#x3D;&#x3D;
+  agregarFilaGanado(tipo: string, idRaza: number): void {
+    const razasConFilas &#x3D; this.ganadoPorTipo.get(tipo);
+    if (!razasConFilas) return;
+    const entry &#x3D; razasConFilas.find((r) &#x3D;&gt; r.raza.idRaza &#x3D;&#x3D;&#x3D; idRaza);
+    if (!entry) return;
+    entry.filas.push(this.crearFilaGanado());
+    this.cdr.markForCheck();
+  }
+
+  eliminarFilaGanado(tipo: string, idRaza: number, index: number): void {
+    const razasConFilas &#x3D; this.ganadoPorTipo.get(tipo);
+    if (!razasConFilas) return;
+    const entry &#x3D; razasConFilas.find((r) &#x3D;&gt; r.raza.idRaza &#x3D;&#x3D;&#x3D; idRaza);
+    if (!entry || entry.filas.length &lt;&#x3D; 1) return;
+    entry.filas.removeAt(index);
+    this.cdr.markForCheck();
+  }
+
+  getFilasGanado(tipo: string, idRaza: number): FormArray {
+    const razasConFilas &#x3D; this.ganadoPorTipo.get(tipo);
+    if (!razasConFilas) return this.fb.array([]);
+    return razasConFilas.find((r) &#x3D;&gt; r.raza.idRaza &#x3D;&#x3D;&#x3D; idRaza)?.filas ?? this.fb.array([]);
+  }
+
+  estaAbiertoGanado(tipo: string): boolean {
+    return this.tiposRazaAbiertos.has(tipo);
+  }
+
+  getFilaGanado(tipo: string, idRaza: number, index: number): FormGroup {
+    const entry &#x3D; this.ganadoPorTipo.get(tipo)?.find((e) &#x3D;&gt; e.raza.idRaza &#x3D;&#x3D;&#x3D; idRaza);
+    return entry?.filas.at(index) as FormGroup;
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HELPERS NOMBRES &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  getNombreCategoria(id: number): string {
+    return this.categoriasInventario.find((c) &#x3D;&gt; c.idCategoriaInventario &#x3D;&#x3D;&#x3D; id)?.nombre ?? &#x27;-&#x27;;
+  }
+
+  getTotalSeccionInventario(idPadre: number): number {
+    const formArray &#x3D; this.getFormArrayInventario(Number(idPadre));
+    return formArray.controls.reduce((acc, ctrl) &#x3D;&gt; {
+      return acc + (ctrl.get(&#x27;cantidad&#x27;)?.value ?? 0) * (ctrl.get(&#x27;valorUnitario&#x27;)?.value ?? 0);
+    }, 0);
+  }
+
+  getTotalSeccionGanado(tipo: string): number {
+    const razasConFilas &#x3D; this.ganadoPorTipo.get(tipo);
+    if (!razasConFilas) return 0;
+    return razasConFilas.reduce((total, entry) &#x3D;&gt; {
+      return (
+        total +
+        entry.filas.controls.reduce((acc, ctrl) &#x3D;&gt; {
+          return acc + (ctrl.get(&#x27;cantidad&#x27;)?.value ?? 0) * (ctrl.get(&#x27;valorUnitario&#x27;)?.value ?? 0);
+        }, 0)
+      );
+    }, 0);
+  }
+  // &#x3D;&#x3D; GETTERS RESUMEN &#x3D;&#x3D;
+  get resumenInfraestructura() {
+    const v &#x3D; this.formInfraestructura.value;
+    return [
+      { label: &#x27;Corrales&#x27;, valor: v.cantCorrales, sufijo: &#x27;unidades&#x27; },
+      { label: &#x27;Salas de ordeño&#x27;, valor: v.cantSalasOrdenio, sufijo: &#x27;unidades&#x27; },
+      { label: &#x27;Cap. almacenamiento&#x27;, valor: v.capacidadAlmacenarLeche, sufijo: &#x27;litros&#x27; },
+      { label: &#x27;Empleados permanentes&#x27;, valor: v.cantEmpleadosPermanentes, sufijo: &#x27;personas&#x27; },
+      { label: &#x27;Empleados temporales&#x27;, valor: v.cantEmpleadosTemporales, sufijo: &#x27;personas&#x27; },
+    ].filter((item) &#x3D;&gt; item.valor !&#x3D;&#x3D; null &amp;&amp; item.valor !&#x3D;&#x3D; undefined &amp;&amp; item.valor !&#x3D;&#x3D; &#x27;&#x27;);
+  }
+
+  get resumenInventario(): ResumenInventarioItem[] {
+    const items: ResumenInventarioItem[] &#x3D; [];
+
+    this.inventarioPorCategoria.forEach((formArray, idPadre) &#x3D;&gt; {
+      const padre &#x3D; this.categoriasParent.find((p) &#x3D;&gt; p.idCategoriaInventario &#x3D;&#x3D;&#x3D; idPadre);
+      if (!padre) return;
+
+      formArray.controls.forEach((ctrl) &#x3D;&gt; {
+        const v &#x3D; ctrl.value;
+        if (!v.cantidad || !v.valorUnitario) return;
+        items.push({
+          nombreCategoriaPadre: padre.nombre,
+          nombreSubcategoria: v.nombreSubcategoria,
+          cantidad: v.cantidad,
+          valorUnitario: v.valorUnitario,
+          total: v.cantidad * v.valorUnitario,
+        });
+      });
+    });
+
+    return items;
+  }
+
+  get resumenGanado(): ResumenGanadoItem[] {
+    const items: ResumenGanadoItem[] &#x3D; [];
+
+    this.ganadoPorTipo.forEach((razasConFilas, tipo) &#x3D;&gt; {
+      razasConFilas.forEach((entry) &#x3D;&gt; {
+        entry.filas.controls.forEach((ctrl) &#x3D;&gt; {
+          const v &#x3D; ctrl.value;
+          if (!v.cantidad) return;
+          const categoria &#x3D; this.categoriasGanado.find((c) &#x3D;&gt; c.idCategoria &#x3D;&#x3D;&#x3D; v.idCategoria);
+          items.push({
+            nombreRaza: entry.raza.nombre,
+            tipoRaza: tipo,
+            nombreCategoria: categoria?.nombreCategoria ?? &#x27;-&#x27;,
+            cantidad: v.cantidad,
+            edadPromedioMeses: v.edadPromedioMeses ?? 0,
+            valorUnitario: v.valorUnitario ?? 0,
+            total: (v.cantidad ?? 0) * (v.valorUnitario ?? 0),
+          });
+        });
+      });
+    });
+
+    return items;
+  }
+
+  get totalGeneral(): number {
+    return this.totalInventarioGeneral + this.totalInventarioGanado;
+  }
+
+  get tieneResumen(): boolean {
+    return (
+      this.resumenInfraestructura.length &gt; 0 ||
+      this.resumenInventario.length &gt; 0 ||
+      this.resumenGanado.length &gt; 0
+    );
+  }
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GUARDAR &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  async guardar(): Promise&lt;void&gt; {
+    if (!this.seccionValida || !this.hatoActual?.idHato) return;
+
+    this.loadingGuardar &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+
+    try {
+      // 1. Infraestructura básica
+      const infraDto: InfraestructuraBasicaDTO &#x3D; this.formInfraestructura.value;
+      await firstValueFrom(
+        this.hatoService.actualizarInfraestructuraBasica(this.hatoActual.idHato!, infraDto),
+      );
+
+      // 2. Inventario general
+      for (const [idPadre, formArray] of this.inventarioPorCategoria) {
+        for (const ctrl of formArray.controls) {
+          const v &#x3D; ctrl.value;
+          if (!v.cantidad || !v.valorUnitario) continue;
+          const dto: InventarioGeneralDTO &#x3D; {
+            idHato: this.hatoActual.idHato!,
+            idCategoriaInventario: v.idCategoriaInventario,
+            nombreItem: v.nombreSubcategoria,
+            cantidad: v.cantidad,
+            valorUnitario: v.valorUnitario,
+            descripcion: v.descripcion,
+          };
+          await firstValueFrom(this.inventarioGeneralService.crearItem(dto));
+        }
+      }
+
+      // 3. Inventario ganado
+      for (const [tipo, razasConFilas] of this.ganadoPorTipo) {
+        for (const entry of razasConFilas) {
+          for (const ctrl of entry.filas.controls) {
+            const v &#x3D; ctrl.value;
+            if (!v.cantidad || !v.idCategoria) continue;
+            const dto: InventarioGanadoDTO &#x3D; {
+              idHato: this.hatoActual.idHato!,
+              idRaza: entry.raza.idRaza,
+              idCategoria: v.idCategoria,
+              cantidad: v.cantidad,
+              edadPromedioMeses: v.edadPromedioMeses ?? 0,
+              valorUnitario: v.valorUnitario ?? 0,
+            };
+            await firstValueFrom(this.inventarioGanadoService.crearRegistro(dto));
+          }
+        }
+      }
+
+      // 4. Actualizar completitud a 50%
+      const hatoActualizado &#x3D; await firstValueFrom(
+        this.hatoService.actualizarCompletitud(this.hatoActual.idHato!, 50),
+      );
+
+      this.seccionCompletada.emit(hatoActualizado);
+    } catch {
+      this.error &#x3D; &#x27;Error al guardar. Intenta de nuevo.&#x27;;
+      this.cdr.markForCheck();
+    } finally {
+      this.loadingGuardar &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'ResumenInventarioItem.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

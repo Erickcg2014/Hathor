@@ -1,0 +1,1028 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  KpiGrupo</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/features/Usuario/benchmarking/comparativa-kpis/grafica-detalle-modal/grafica-detalle-modal.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#categoria" 
+>
+                                            categoria
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#icono" 
+>
+                                            icono
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#items" 
+>
+                                            items
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#label" 
+>
+                                            label
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="categoria"></a>
+                                        <span class="name "><b>categoria</b>
+                                            <a href="#categoria">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>categoria:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="icono"></a>
+                                        <span class="name "><b>icono</b>
+                                            <a href="#icono">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>icono:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="items"></a>
+                                        <span class="name "><b>items</b>
+                                            <a href="#items">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>items:     <code>BenchmarkHatoResultado[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>BenchmarkHatoResultado[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="label"></a>
+                                        <span class="name "><b>label</b>
+                                            <a href="#label">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>label:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnDestroy,
+  Output,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Chart, registerables, TooltipItem } from &#x27;chart.js&#x27;;
+import { BenchmarkHatoResultado } from &#x27;../../../../../core/services/benchmarking/benchmarking.service&#x27;;
+
+Chart.register(...registerables);
+
+interface GraficaDetalle {
+  id: string;
+  titulo: string;
+  subtitulo: string;
+  descripcion: string;
+  guiaLectura: string;
+}
+
+interface KpiGrupo {
+  categoria: string;
+  label: string;
+  icono: string;
+  items: BenchmarkHatoResultado[];
+}
+
+@Component({
+  selector: &#x27;app-grafica-detalle-modal&#x27;,
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: &#x27;./grafica-detalle-modal.component.html&#x27;,
+  styleUrl: &#x27;./grafica-detalle-modal.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class GraficaDetalleModalComponent implements AfterViewInit, OnDestroy {
+  @Input() grafica!: GraficaDetalle;
+  @Input() resultados: BenchmarkHatoResultado[] &#x3D; [];
+  @Input() grupos: KpiGrupo[] &#x3D; [];
+  @Output() cerrar &#x3D; new EventEmitter&lt;void&gt;();
+
+  @ViewChild(&#x27;chartDetalle&#x27;) chartDetalleRef!: ElementRef&lt;HTMLCanvasElement&gt;;
+
+  private chart: Chart&lt;any, any, any&gt; | null &#x3D; null;
+  rangoRadar: 100 | 75 | 50 | 25 &#x3D; 100;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
+    setTimeout(() &#x3D;&gt; this.construirChart(), 100);
+  }
+
+  @HostListener(&#x27;document:keydown.escape&#x27;)
+  onEsc(): void {
+    this.cerrar.emit();
+  }
+
+  onOverlayClick(event: MouseEvent): void {
+    if ((event.target as HTMLElement).classList.contains(&#x27;modal-overlay&#x27;)) {
+      this.cerrar.emit();
+    }
+  }
+
+  // ── Helpers ──────────────────────────────────────────────
+
+  colorPorPercentil(p: number | null): string {
+    const n &#x3D; Number(p ?? 0);
+    if (n &gt;&#x3D; 70) return &#x27;rgba(25,230,77,0.82)&#x27;;
+    if (n &gt;&#x3D; 40) return &#x27;rgba(245,182,66,0.85)&#x27;;
+    return &#x27;rgba(239,68,68,0.78)&#x27;;
+  }
+
+  borderPorPercentil(p: number | null): string {
+    const n &#x3D; Number(p ?? 0);
+    if (n &gt;&#x3D; 70) return &#x27;#15c944&#x27;;
+    if (n &gt;&#x3D; 40) return &#x27;#f59e0b&#x27;;
+    return &#x27;#dc2626&#x27;;
+  }
+
+  formatValor(valor: number | null, unidad?: string): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;—&#x27;;
+    if (!unidad) return Number(valor).toFixed(2);
+    if (unidad.includes(&#x27;COP&#x27;) || unidad &#x3D;&#x3D;&#x3D; &#x27;COP/vaca&#x27; || unidad &#x3D;&#x3D;&#x3D; &#x27;COP/L&#x27;)
+      return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(Number(valor)));
+    if (unidad &#x3D;&#x3D;&#x3D; &#x27;%&#x27;) return Number(valor).toFixed(1) + &#x27;%&#x27;;
+    if (unidad &#x3D;&#x3D;&#x3D; &#x27;ratio&#x27; || unidad &#x3D;&#x3D;&#x3D; &#x27;veces&#x27;) return Number(valor).toFixed(2) + &#x27;x&#x27;;
+    return &#x60;${Number(valor).toFixed(2)} ${unidad}&#x60;;
+  }
+
+  interpretacionClass(interp: string | null): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      OPTIMO: &#x27;badge-optimo&#x27;,
+      BUENO: &#x27;badge-bueno&#x27;,
+      ACEPTABLE: &#x27;badge-aceptable&#x27;,
+      CRITICO: &#x27;badge-critico&#x27;,
+    };
+    return map[interp ?? &#x27;&#x27;] ?? &#x27;badge-default&#x27;;
+  }
+
+  get guiaItems(): { rango: string; descripcion: string; color: string }[] {
+    return [
+      { rango: &#x27;P0 – 49&#x27;, descripcion: &#x27;Por debajo del promedio del sector&#x27;, color: &#x27;#dc2626&#x27; },
+      { rango: &#x27;P50&#x27;, descripcion: &#x27;En el promedio del sector&#x27;, color: &#x27;#f59e0b&#x27; },
+      { rango: &#x27;P51 – 100&#x27;, descripcion: &#x27;Por encima del promedio del sector&#x27;, color: &#x27;#15803d&#x27; },
+    ];
+  }
+
+  setRangoRadar(rango: 100 | 75 | 50 | 25): void {
+    if (this.rangoRadar &#x3D;&#x3D;&#x3D; rango) return;
+    this.rangoRadar &#x3D; rango;
+    this.construirChart();
+  }
+
+  get datosParaTabla(): BenchmarkHatoResultado[] {
+    if (this.grafica.id &#x3D;&#x3D;&#x3D; &#x27;semaforo&#x27; || this.grafica.id &#x3D;&#x3D;&#x3D; &#x27;radar&#x27;) {
+      return this.resultados;
+    }
+    const grupo &#x3D; this.grupos.find((g) &#x3D;&gt;
+      this.grafica.id.toLowerCase().includes(g.categoria.toLowerCase()),
+    );
+    return grupo?.items ?? this.resultados;
+  }
+
+  get top3Mejores(): BenchmarkHatoResultado[] {
+    return [...this.resultados]
+      .filter((r) &#x3D;&gt; r.percentil !&#x3D;&#x3D; null)
+      .sort((a, b) &#x3D;&gt; Number(b.percentil) - Number(a.percentil))
+      .slice(0, 3);
+  }
+
+  get top3AMejorar(): BenchmarkHatoResultado[] {
+    return [...this.resultados]
+      .filter((r) &#x3D;&gt; r.percentil !&#x3D;&#x3D; null)
+      .sort((a, b) &#x3D;&gt; Number(a.percentil) - Number(b.percentil))
+      .slice(0, 3);
+  }
+
+  // ── Construcción gráfica ────────────────────────────────
+
+  private destruirChart(): void {
+    this.chart?.destroy();
+    this.chart &#x3D; null;
+  }
+
+  private construirChart(): void {
+    this.destruirChart();
+    if (!this.chartDetalleRef?.nativeElement) return;
+
+    const canvas &#x3D; this.chartDetalleRef.nativeElement;
+    const id &#x3D; this.grafica.id;
+
+    if (id &#x3D;&#x3D;&#x3D; &#x27;percentiles&#x27;) {
+      this.buildPercentiles(canvas);
+    } else if (id &#x3D;&#x3D;&#x3D; &#x27;radar&#x27;) {
+      this.buildRadar(canvas);
+    } else if (id &#x3D;&#x3D;&#x3D; &#x27;semaforo&#x27;) {
+      this.buildSemaforo(canvas);
+    } else if (id &#x3D;&#x3D;&#x3D; &#x27;potencial&#x27;) {
+      this.buildPotencial(canvas);
+    } else if (id.startsWith(&#x27;radar_&#x27;)) {
+      this.buildRadarCategoria(canvas, id.replace(&#x27;radar_&#x27;, &#x27;&#x27;).toUpperCase());
+    } else if (id.startsWith(&#x27;barras_&#x27;)) {
+      this.buildBarrasCategoria(canvas, id.replace(&#x27;barras_&#x27;, &#x27;&#x27;).toUpperCase());
+    } else {
+      this.buildCategoria(canvas);
+    }
+
+    this.cdr.markForCheck();
+  }
+
+  private getDedupData(): BenchmarkHatoResultado[] {
+    const seen &#x3D; new Map&lt;string, BenchmarkHatoResultado&gt;();
+    for (const r of this.resultados) {
+      if (r.kpi?.codigo &amp;&amp; !seen.has(r.kpi.codigo)) seen.set(r.kpi.codigo, r);
+    }
+    return Array.from(seen.values());
+  }
+
+  private buildPercentiles(canvas: HTMLCanvasElement): void {
+    const data &#x3D; this.getDedupData()
+      .filter((r) &#x3D;&gt; r.percentil !&#x3D;&#x3D; null)
+      .sort((a, b) &#x3D;&gt; Number(b.percentil) - Number(a.percentil));
+
+    if (!data.length) return;
+    canvas.parentElement!.style.height &#x3D; Math.max(400, data.length * 44) + &#x27;px&#x27;;
+
+    this.chart &#x3D; new Chart(canvas, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: data.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+        datasets: [
+          {
+            label: &#x27;Tu hato (percentil)&#x27;,
+            data: data.map((r) &#x3D;&gt; Number(r.percentil ?? 0)),
+            backgroundColor: data.map((r) &#x3D;&gt; this.colorPorPercentil(r.percentil)),
+            borderColor: data.map((r) &#x3D;&gt; this.borderPorPercentil(r.percentil)),
+            borderWidth: 1.5,
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+          {
+            label: &#x27;Promedio sector&#x27;,
+            data: data.map(() &#x3D;&gt; 50),
+            backgroundColor: &#x27;rgba(0,0,0,0)&#x27;,
+            borderColor: &#x27;rgba(99,102,241,0.6)&#x27;,
+            borderWidth: 1.5,
+            type: &#x27;line&#x27; as any,
+            pointRadius: 0,
+            order: 0,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: &#x27;bottom&#x27; },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;bar&#x27;&gt;) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 1) return &#x27;Promedio sector: P50&#x27;;
+                const r &#x3D; data[ctx.dataIndex];
+                const pct &#x3D; Number(ctx.parsed.x ?? 0).toFixed(1);
+                return [
+                  &#x60;Percentil: ${pct}&#x60;,
+                  &#x60;Valor: ${this.formatValor(r.valorHato, r.kpi?.unidad)}&#x60;,
+                  &#x60;Estado: ${r.interpretacion}&#x60;,
+                ];
+              },
+            },
+          },
+        },
+        scales: {
+          x: { min: 0, max: 100, ticks: { callback: (v: string | number) &#x3D;&gt; &#x60;P${v}&#x60; } },
+          y: { ticks: { font: { size: 12 } } },
+        },
+      },
+    });
+  }
+
+  private buildCategoria(canvas: HTMLCanvasElement): void {
+    const grupo &#x3D; this.grupos.find((g) &#x3D;&gt;
+      this.grafica.id.toLowerCase().includes(g.categoria.toLowerCase()),
+    );
+    const items &#x3D; grupo?.items ?? [];
+    if (!items.length) return;
+
+    canvas.parentElement!.style.height &#x3D; Math.max(400, items.length * 44) + &#x27;px&#x27;;
+
+    const data &#x3D; items.map((r) &#x3D;&gt; Number(r.percentil ?? 0));
+    const colors &#x3D; data.map((v) &#x3D;&gt; this.colorPorPercentil(v));
+
+    this.chart &#x3D; new Chart(canvas, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: items.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+        datasets: [
+          {
+            label: &#x27;Tu hato (percentil)&#x27;,
+            data,
+            backgroundColor: colors,
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+          {
+            label: &#x27;Promedio sector&#x27;,
+            data: data.map(() &#x3D;&gt; 50),
+            backgroundColor: &#x27;rgba(0,0,0,0)&#x27;,
+            borderColor: &#x27;rgba(99,102,241,0.6)&#x27;,
+            borderWidth: 1.5,
+            type: &#x27;line&#x27; as any,
+            pointRadius: 0,
+            order: 0,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: &#x27;bottom&#x27; },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;bar&#x27;&gt;) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 1) return &#x27;Promedio sector: P50&#x27;;
+                const r &#x3D; items[ctx.dataIndex];
+                const pct &#x3D; Number(ctx.parsed.x ?? 0).toFixed(1);
+                return [
+                  &#x60;Percentil: ${pct}&#x60;,
+                  &#x60;Valor: ${this.formatValor(r.valorHato, r.kpi?.unidad)}&#x60;,
+                  &#x60;Estado: ${r.interpretacion}&#x60;,
+                ];
+              },
+            },
+          },
+        },
+        scales: {
+          x: { min: 0, max: 100, ticks: { callback: (v: string | number) &#x3D;&gt; &#x60;P${v}&#x60; } },
+          y: { ticks: { font: { size: 13 } } },
+        },
+      },
+    });
+  }
+
+  private buildBarrasCategoria(canvas: HTMLCanvasElement, categoria: string): void {
+    const grupo &#x3D; this.grupos.find((g) &#x3D;&gt; g.categoria &#x3D;&#x3D;&#x3D; categoria);
+    const items &#x3D; grupo?.items ?? [];
+    if (!items.length) return;
+
+    canvas.parentElement!.style.height &#x3D; Math.max(400, items.length * 44) + &#x27;px&#x27;;
+
+    const data &#x3D; items.map((r) &#x3D;&gt; Number(r.percentil ?? 0));
+    const colors &#x3D; data.map((v) &#x3D;&gt; this.colorPorPercentil(v));
+
+    this.chart &#x3D; new Chart(canvas, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: items.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+        datasets: [
+          {
+            label: &#x27;Tu hato (percentil)&#x27;,
+            data,
+            backgroundColor: colors,
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+          {
+            label: &#x27;Promedio sector&#x27;,
+            data: data.map(() &#x3D;&gt; 50),
+            backgroundColor: &#x27;rgba(0,0,0,0)&#x27;,
+            borderColor: &#x27;rgba(99,102,241,0.6)&#x27;,
+            borderWidth: 1.5,
+            type: &#x27;line&#x27; as any,
+            pointRadius: 0,
+            order: 0,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: &#x27;bottom&#x27; },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;bar&#x27;&gt;) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 1) return &#x27;Promedio sector: P50&#x27;;
+                const r &#x3D; items[ctx.dataIndex];
+                const pct &#x3D; Number(ctx.parsed.x ?? 0).toFixed(1);
+                return [
+                  &#x60;Percentil: P${pct}&#x60;,
+                  &#x60;Valor: ${this.formatValor(r.valorHato, r.kpi?.unidad)}&#x60;,
+                  &#x60;Estado: ${r.interpretacion}&#x60;,
+                ];
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            min: 0,
+            max: 100,
+            ticks: { callback: (v: string | number) &#x3D;&gt; &#x60;P${v}&#x60; },
+          },
+          y: { ticks: { font: { size: 13 } } },
+        },
+      },
+    });
+  }
+
+  private buildRadar(canvas: HTMLCanvasElement): void {
+    const data &#x3D; this.getDedupData();
+    const values &#x3D; data.map((r) &#x3D;&gt; Math.min(Number(r.percentil ?? 0), this.rangoRadar));
+    const realValues &#x3D; data.map((r) &#x3D;&gt; Number(r.percentil ?? 0));
+
+    this.chart &#x3D; new Chart&lt;&#x27;radar&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;radar&#x27;,
+      data: {
+        labels: data.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+        datasets: [
+          {
+            label: &#x27;Tu hato&#x27;,
+            data: values,
+            backgroundColor: &#x27;rgba(21,128,61,0.15)&#x27;,
+            borderColor: &#x27;#15803d&#x27;,
+            borderWidth: 2.5,
+            pointBackgroundColor: realValues.map((v) &#x3D;&gt; this.colorPorPercentil(v)),
+            pointBorderColor: &#x27;#fff&#x27;,
+            pointRadius: 6,
+          },
+          {
+            label: &#x27;Promedio sector (P50)&#x27;,
+            data: values.map(() &#x3D;&gt; Math.min(50, this.rangoRadar)),
+            backgroundColor: &#x27;rgba(148,163,184,0.06)&#x27;,
+            borderColor: &#x27;rgba(148,163,184,0.5)&#x27;,
+            borderWidth: 1.5,
+            borderDash: [5, 4],
+            pointRadius: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: &#x27;bottom&#x27; } },
+        scales: {
+          r: {
+            min: this.rangoRadar,
+            max: 100,
+            ticks: {
+              stepSize: this.rangoRadar &lt;&#x3D; 25 ? 5 : this.rangoRadar / 4,
+              backdropColor: &#x27;transparent&#x27;,
+              color: &#x27;#9ca3af&#x27;,
+              font: { size: 10 },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private buildRadarCategoria(canvas: HTMLCanvasElement, categoria: string): void {
+    const grupo &#x3D; this.grupos.find((g) &#x3D;&gt; g.categoria &#x3D;&#x3D;&#x3D; categoria);
+    const items &#x3D; grupo?.items ?? [];
+    if (!items.length) return;
+
+    const values &#x3D; items.map((r) &#x3D;&gt; Math.min(Number(r.percentil ?? 0), this.rangoRadar));
+    const realValues &#x3D; items.map((r) &#x3D;&gt; Number(r.percentil ?? 0));
+
+    this.chart &#x3D; new Chart&lt;&#x27;radar&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;radar&#x27;,
+      data: {
+        labels: items.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+        datasets: [
+          {
+            label: &#x27;Tu hato&#x27;,
+            data: values,
+            backgroundColor: &#x27;rgba(21,128,61,0.15)&#x27;,
+            borderColor: &#x27;#15803d&#x27;,
+            borderWidth: 2.5,
+            pointBackgroundColor: realValues.map((v) &#x3D;&gt; this.colorPorPercentil(v)),
+            pointBorderColor: &#x27;#fff&#x27;,
+            pointRadius: 7,
+            pointHoverRadius: 9,
+          },
+          {
+            label: &#x27;Promedio sector (P50)&#x27;,
+            data: values.map(() &#x3D;&gt; Math.min(50, this.rangoRadar)),
+            backgroundColor: &#x27;rgba(148,163,184,0.06)&#x27;,
+            borderColor: &#x27;rgba(148,163,184,0.5)&#x27;,
+            borderWidth: 1.5,
+            borderDash: [5, 4],
+            pointRadius: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: &#x27;bottom&#x27;,
+            labels: { color: &#x27;#374151&#x27;, font: { size: 11 } },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;radar&#x27;&gt;) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 1) return &#x27;Promedio: P50&#x27;;
+                const r &#x3D; items[ctx.dataIndex];
+                const pct &#x3D; Number(ctx.parsed.r ?? 0).toFixed(1);
+                return [
+                  &#x60;Percentil: P${pct}&#x60;,
+                  &#x60;Valor: ${this.formatValor(r.valorHato, r.kpi?.unidad)}&#x60;,
+                  &#x60;Estado: ${r.interpretacion}&#x60;,
+                ];
+              },
+            },
+          },
+        },
+        scales: {
+          r: {
+            min: 0,
+            max: this.rangoRadar,
+            ticks: {
+              stepSize: this.rangoRadar &lt;&#x3D; 25 ? 5 : this.rangoRadar / 4,
+              backdropColor: &#x27;transparent&#x27;,
+              color: &#x27;#9ca3af&#x27;,
+              font: { size: 10 },
+            },
+            grid: { color: &#x27;rgba(148,163,184,0.2)&#x27; },
+            angleLines: { color: &#x27;rgba(148,163,184,0.2)&#x27; },
+            pointLabels: { font: { size: 12 }, color: &#x27;#374151&#x27; },
+          },
+        },
+      },
+    });
+  }
+
+  private buildSemaforo(canvas: HTMLCanvasElement): void {
+    const data &#x3D; this.getDedupData();
+    const alto &#x3D; data.filter((r) &#x3D;&gt; Number(r.percentil ?? 0) &gt;&#x3D; 70).length;
+    const medio &#x3D; data.filter((r) &#x3D;&gt; {
+      const p &#x3D; Number(r.percentil ?? 0);
+      return p &gt;&#x3D; 40 &amp;&amp; p &lt; 70;
+    }).length;
+    const bajo &#x3D; data.filter((r) &#x3D;&gt; Number(r.percentil ?? 0) &lt; 40).length;
+    const total &#x3D; data.length;
+
+    this.chart &#x3D; new Chart&lt;&#x27;doughnut&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;doughnut&#x27;,
+      data: {
+        labels: [&#x27;Alto (≥70)&#x27;, &#x27;Medio (40–69)&#x27;, &#x27;Bajo (&lt;40)&#x27;],
+        datasets: [
+          {
+            data: [alto, medio, bajo],
+            backgroundColor: [
+              &#x27;rgba(25,230,77,0.85)&#x27;,
+              &#x27;rgba(245,182,66,0.85)&#x27;,
+              &#x27;rgba(239,68,68,0.82)&#x27;,
+            ],
+            borderColor: [&#x27;#15c944&#x27;, &#x27;#f59e0b&#x27;, &#x27;#dc2626&#x27;],
+            borderWidth: 2,
+            hoverOffset: 10,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: &#x27;58%&#x27;,
+        plugins: {
+          legend: { position: &#x27;bottom&#x27; },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;doughnut&#x27;&gt;) &#x3D;&gt; {
+                const v &#x3D; Number(ctx.parsed ?? 0);
+                const pct &#x3D; total &gt; 0 ? ((v / total) * 100).toFixed(1) : &#x27;0&#x27;;
+                return &#x60;${v} KPI(s) — ${pct}% del total&#x60;;
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private buildPotencial(canvas: HTMLCanvasElement): void {
+    const items &#x3D; this.getDedupData()
+      .map((r) &#x3D;&gt; ({
+        nombre: r.kpi?.nombre ?? &#x27;&#x27;,
+        potencial: Math.max(0, 100 - Number(r.percentil ?? 0)),
+      }))
+      .filter((x) &#x3D;&gt; x.potencial &gt; 0)
+      .sort((a, b) &#x3D;&gt; b.potencial - a.potencial)
+      .slice(0, 15);
+
+    if (!items.length) return;
+    canvas.parentElement!.style.height &#x3D; Math.max(400, items.length * 44) + &#x27;px&#x27;;
+
+    this.chart &#x3D; new Chart&lt;&#x27;bar&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: items.map((x) &#x3D;&gt; x.nombre),
+        datasets: [
+          {
+            label: &#x27;Brecha hacia el top&#x27;,
+            data: items.map((x) &#x3D;&gt; x.potencial),
+            backgroundColor: items.map((x) &#x3D;&gt;
+              x.potencial &lt;&#x3D; 15
+                ? &#x27;rgba(34,197,94,0.78)&#x27;
+                : x.potencial &lt;&#x3D; 50
+                  ? &#x27;rgba(245,182,66,0.85)&#x27;
+                  : &#x27;rgba(239,68,68,0.78)&#x27;,
+            ),
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;bar&#x27;&gt;) &#x3D;&gt;
+                &#x60;${Number(ctx.parsed.x ?? 0).toFixed(1)} puntos de mejora&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: { min: 0, max: 100, ticks: { callback: (v: string | number) &#x3D;&gt; &#x60;${v}pts&#x60; } },
+          y: { ticks: { font: { size: 13 } } },
+        },
+      },
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destruirChart();
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'KpiGrupo.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

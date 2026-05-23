@@ -1,0 +1,1783 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación técnica del sistema Hathor">
+      
+      
+        <meta name="author" content="Equipo Hathor">
+      
+      
+      
+        <link rel="prev" href="../arquitectura/">
+      
+      
+        <link rel="next" href="../sql/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>API Gateway - Hathor Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-gateway-documentacion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Hathor Docs" class="md-header__button md-logo" aria-label="Hathor Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hathor Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API Gateway
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Hathor Docs" class="md-nav__button md-logo" aria-label="Hathor Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hathor Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitectura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stack-del-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧱 Stack del Gateway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Arquitectura General
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responsabilidades-del-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Responsabilidades del Gateway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-de-filtros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Pipeline de Filtros
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-rutas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛣️ Configuración de Rutas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛣️ Configuración de Rutas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ruta-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ruta principal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rutas-con-politicas-especializadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rutas con políticas especializadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rutas-publicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rutas públicas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#balanceo-de-carga" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚖️ Balanceo de Carga
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resiliencia-circuit-breakers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ Resiliencia — Circuit Breakers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛡️ Resiliencia — Circuit Breakers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estados-del-circuit-breaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estados del Circuit Breaker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perfil-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perfil General
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perfil-intensivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perfil Intensivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perfil-asistente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perfil Asistente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpoints-de-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints de Fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚦 Rate Limiting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚦 Rate Limiting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-identificacion-del-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estrategia de identificación del cliente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limites-configurados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Límites configurados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#respuesta-ante-exceso-de-peticiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Respuesta ante exceso de peticiones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validacion-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 Validación JWT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 Validación JWT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validaciones-realizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validaciones realizadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrategia-de-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗃️ Estrategia de Caché
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔒 Seguridad HTTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observabilidad-y-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Observabilidad y Logging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Observabilidad y Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#campos-registrados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Campos registrados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigo-de-severidad-visual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Código de severidad visual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌍 Configuración CORS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-centralizado-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔁 Manejo Centralizado de Errores
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pruebas_carga/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Carga de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apidocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend - JavaDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend - Compodoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stack-del-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧱 Stack del Gateway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Arquitectura General
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responsabilidades-del-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Responsabilidades del Gateway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-de-filtros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Pipeline de Filtros
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-rutas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛣️ Configuración de Rutas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛣️ Configuración de Rutas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ruta-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ruta principal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rutas-con-politicas-especializadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rutas con políticas especializadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rutas-publicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rutas públicas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#balanceo-de-carga" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚖️ Balanceo de Carga
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resiliencia-circuit-breakers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ Resiliencia — Circuit Breakers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛡️ Resiliencia — Circuit Breakers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estados-del-circuit-breaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estados del Circuit Breaker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perfil-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perfil General
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perfil-intensivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perfil Intensivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perfil-asistente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perfil Asistente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpoints-de-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints de Fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚦 Rate Limiting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚦 Rate Limiting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-identificacion-del-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estrategia de identificación del cliente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limites-configurados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Límites configurados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#respuesta-ante-exceso-de-peticiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Respuesta ante exceso de peticiones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validacion-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 Validación JWT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 Validación JWT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validaciones-realizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validaciones realizadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrategia-de-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗃️ Estrategia de Caché
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔒 Seguridad HTTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observabilidad-y-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Observabilidad y Logging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Observabilidad y Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#campos-registrados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Campos registrados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigo-de-severidad-visual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Código de severidad visual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌍 Configuración CORS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-centralizado-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔁 Manejo Centralizado de Errores
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api-gateway-documentacion">🌐 API Gateway — Documentación</h1>
+<p>El <strong>API Gateway</strong> es la puerta de entrada única al ecosistema de Hathor. Toda solicitud originada desde el frontend Angular o desde clientes externos pasa obligatoriamente por aquí antes de alcanzar cualquier servicio backend. Su responsabilidad va mucho más allá del simple enrutamiento: actúa como guardián, árbitro de tráfico, optimizador de rendimiento y primera línea de defensa del sistema.</p>
+<hr />
+<h2 id="stack-del-gateway">🧱 Stack del Gateway</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tecnología</th>
+<th style="text-align: left;">Rol en el sistema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Spring Cloud Gateway</strong></td>
+<td style="text-align: left;">Motor de enrutamiento reactivo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Spring WebFlux</strong></td>
+<td style="text-align: left;">Procesamiento no bloqueante (async/reactive)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resilience4j</strong></td>
+<td style="text-align: left;">Resiliencia: circuit breakers y retries</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Redis (Upstash)</strong></td>
+<td style="text-align: left;">Rate limiting distribuido</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Spring Cloud LoadBalancer</strong></td>
+<td style="text-align: left;">Balanceo de carga entre instancias</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="arquitectura-general">🗺️ Arquitectura General</h2>
+<p>El gateway opera como capa intermedia entre el cliente y el backend, intercalando un pipeline de filtros reactivos en cada solicitud entrante y saliente.</p>
+<pre><code class="language-mermaid">flowchart LR
+    A[Frontend Angular]
+    --&gt; B[🌐 API Gateway]
+
+    B --&gt; C[JWT Validation]
+    B --&gt; D[Rate Limiter]
+    B --&gt; E[Circuit Breaker]
+    B --&gt; F[Cache Policy]
+
+    B --&gt; G[Backend Instance 1]
+    B --&gt; H[Backend Instance 2]
+
+    D --&gt; I[(Redis)]
+</code></pre>
+<hr />
+<h2 id="responsabilidades-del-gateway">🎯 Responsabilidades del Gateway</h2>
+<p>El diseño del gateway está orientado a cumplir ocho funciones estructurales del sistema:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Función</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Routing</strong></td>
+<td style="text-align: left;">Redirección centralizada de todo el tráfico HTTP</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Load Balancing</strong></td>
+<td style="text-align: left;">Distribución de carga entre instancias backend</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resilience</strong></td>
+<td style="text-align: left;">Protección activa ante fallos con circuit breakers</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rate Limiting</strong></td>
+<td style="text-align: left;">Control de tráfico para prevenir abuso y saturación</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>JWT Prevalidation</strong></td>
+<td style="text-align: left;">Rechazo temprano de tokens malformados o expirados</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Security Headers</strong></td>
+<td style="text-align: left;">Endurecimiento HTTP en cada respuesta</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Smart Caching</strong></td>
+<td style="text-align: left;">Políticas diferenciadas de caché por tipo de dato</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Observability</strong></td>
+<td style="text-align: left;">Logging estructurado con métricas de tiempo y severidad</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="pipeline-de-filtros">🔄 Pipeline de Filtros</h2>
+<p>Cada request atraviesa un pipeline de filtros reactivos de manera secuencial. El orden importa: un token inválido es rechazado antes de llegar al circuit breaker, y un límite de tasa excedido nunca consume recursos del backend.</p>
+<pre><code class="language-mermaid">flowchart TD
+    A[📥 Incoming Request]
+    --&gt; B[LoggingFilter]
+    --&gt; C[JwtValidationFilter]
+    --&gt; D[RateLimiterFilter]
+    --&gt; E[CircuitBreakerFilter]
+    --&gt; F[🖥️ Backend]
+
+    F --&gt; G[SecurityHeadersFilter]
+    --&gt; H[CacheHeadersFilter]
+    --&gt; I[📤 Response]
+</code></pre>
+<hr />
+<h2 id="configuracion-de-rutas">🛣️ Configuración de Rutas</h2>
+<h3 id="ruta-principal">Ruta principal</h3>
+<p>Todas las solicitudes bajo el patrón <code>/api/**</code> son redirigidas automáticamente al backend mediante balanceo de carga:</p>
+<pre><code class="language-yaml">- id: service
+  uri: lb://hathor-backend
+  predicates:
+    - Path=/api/**
+</code></pre>
+<h3 id="rutas-con-politicas-especializadas">Rutas con políticas especializadas</h3>
+<p>Algunas rutas reciben tratamiento diferenciado por su alta carga computacional o sensibilidad operativa:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Ruta</th>
+<th style="text-align: left;">Motivo del trato especial</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>/api/KPIs/calcular/**</code></td>
+<td style="text-align: left;">Cálculos financieros intensivos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/api/Benchmarking/calcularBenchmarking/**</code></td>
+<td style="text-align: left;">Comparativas de alto cómputo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/api/asistente/**</code></td>
+<td style="text-align: left;">Integración con IA conversacional</td>
+</tr>
+</tbody>
+</table>
+<p>Estas rutas tienen asignados circuit breakers, rate limiters y timeouts propios, distintos a la configuración general del sistema.</p>
+<h3 id="rutas-publicas">Rutas públicas</h3>
+<p>Las siguientes rutas no requieren autenticación y omiten el filtro JWT:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Ruta</th>
+<th style="text-align: left;">Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>/api/Usuario</code></td>
+<td style="text-align: left;">Registro e inicio de sesión</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/api/seed</code></td>
+<td style="text-align: left;">Inicialización de datos base</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="balanceo-de-carga">⚖️ Balanceo de Carga</h2>
+<p>El gateway usa <code>ServiceInstanceListSupplier</code> para gestionar las instancias backend disponibles.</p>
+<ul>
+<li><strong>Entorno local:</strong> instancia única en <code>localhost:8080</code></li>
+<li><strong>Entorno productivo:</strong> múltiples instancias remotas vía HTTPS, con alta disponibilidad y tolerancia a fallos</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Nota de diseño:</strong> La configuración de instancias está centralizada en <code>BackendInstancesConfig</code>, lo que facilita la transición entre ambientes sin tocar la lógica de enrutamiento.</p>
+</blockquote>
+<hr />
+<h2 id="resiliencia-circuit-breakers">🛡️ Resiliencia — Circuit Breakers</h2>
+<p>El gateway implementa Resilience4j con tres perfiles de circuit breaker, calibrados según la naturaleza de cada operación.</p>
+<h3 id="estados-del-circuit-breaker">Estados del Circuit Breaker</h3>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; CLOSED
+    CLOSED --&gt; OPEN : failure threshold exceeded
+    OPEN --&gt; HALF_OPEN : timeout elapsed
+    HALF_OPEN --&gt; CLOSED : successful recovery
+    HALF_OPEN --&gt; OPEN : failures continue
+</code></pre>
+<h3 id="perfil-general">Perfil General</h3>
+<p>Para operaciones estándar del sistema.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parámetro</th>
+<th style="text-align: left;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Sliding Window</td>
+<td style="text-align: left;">20</td>
+</tr>
+<tr>
+<td style="text-align: left;">Failure Threshold</td>
+<td style="text-align: left;">70%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slow Call Threshold</td>
+<td style="text-align: left;">70%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slow Call Duration</td>
+<td style="text-align: left;">15 s</td>
+</tr>
+<tr>
+<td style="text-align: left;">Timeout</td>
+<td style="text-align: left;">180 s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="perfil-intensivo">Perfil Intensivo</h3>
+<p>Aplicado a KPIs y Benchmarking. Más estricto en detección de lentitud.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parámetro</th>
+<th style="text-align: left;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Sliding Window</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Failure Threshold</td>
+<td style="text-align: left;">60%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slow Call Threshold</td>
+<td style="text-align: left;">60%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slow Call Duration</td>
+<td style="text-align: left;">20 s</td>
+</tr>
+<tr>
+<td style="text-align: left;">Timeout</td>
+<td style="text-align: left;">30 s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="perfil-asistente">Perfil Asistente</h3>
+<p>Aplicado al módulo de IA conversacional. Tolerancia alta a latencia por la naturaleza del servicio.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parámetro</th>
+<th style="text-align: left;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Sliding Window</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Failure Threshold</td>
+<td style="text-align: left;">80%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slow Call Threshold</td>
+<td style="text-align: left;">80%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slow Call Duration</td>
+<td style="text-align: left;">40 s</td>
+</tr>
+<tr>
+<td style="text-align: left;">Timeout</td>
+<td style="text-align: left;">50 s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="endpoints-de-fallback">Endpoints de Fallback</h3>
+<p>Cuando un circuit breaker se abre, el gateway responde desde un endpoint de fallback para mantener la consistencia:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Fallback</th>
+<th style="text-align: left;">Aplicado a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>/fallback/general</code></td>
+<td style="text-align: left;">Servicios estándar</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/fallback/intensivo</code></td>
+<td style="text-align: left;">KPIs, Benchmarking, procesos de cómputo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="rate-limiting">🚦 Rate Limiting</h2>
+<p>El rate limiter protege los recursos del sistema contra abuso, spam y saturación. Está implementado sobre Redis para mantener los contadores entre reinicios del gateway.</p>
+<h3 id="estrategia-de-identificacion-del-cliente">Estrategia de identificación del cliente</h3>
+<p>El limitador identifica al cliente en orden de prioridad:</p>
+<ol>
+<li><strong>Usuario autenticado</strong> — extraído del claim <code>sub</code> del JWT. Permite aplicar límites individuales por cuenta.</li>
+<li><strong>Dirección IP</strong> — fallback cuando no existe un JWT válido.</li>
+</ol>
+<h3 id="limites-configurados">Límites configurados</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Servicio</th>
+<th style="text-align: center;">replenishRate</th>
+<th style="text-align: center;">burstCapacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>KPIs</strong></td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Benchmarking</strong></td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Asistente IA</strong></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="respuesta-ante-exceso-de-peticiones">Respuesta ante exceso de peticiones</h3>
+<p>Cuando se supera el límite, el gateway responde con <code>HTTP 429</code> e incluye los siguientes headers orientativos:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Header</th>
+<th style="text-align: left;">Información que provee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Retry-After</code></td>
+<td style="text-align: left;">Segundos sugeridos de espera</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>X-RateLimit-Limit</code></td>
+<td style="text-align: left;">Límite configurado para la ruta</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;TOO_MANY_REQUESTS&quot;,
+  &quot;mensaje&quot;: &quot;Has excedido el límite de peticiones.&quot;,
+  &quot;status&quot;: 429
+}
+</code></pre>
+<hr />
+<h2 id="validacion-jwt">🔑 Validación JWT</h2>
+<p>El gateway realiza una validación ligera del JWT <strong>antes</strong> de que la solicitud llegue al backend. El objetivo no es reemplazar la autenticación del backend, sino rechazar tempranamente tráfico que definitivamente es inválido.</p>
+<h3 id="validaciones-realizadas">Validaciones realizadas</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Validación</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Authorization Header</td>
+<td style="text-align: left;">Existencia del token <code>Bearer</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Estructura JWT</td>
+<td style="text-align: left;">Formato de tres segmentos (<code>x.y.z</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Expiración</td>
+<td style="text-align: left;">Validación del claim <code>exp</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Importante:</strong> La validación criptográfica de la firma y toda la lógica de autorización por roles es <strong>responsabilidad exclusiva del backend</strong>. El gateway solo hace una revisión estructural y preventiva.</p>
+</blockquote>
+<hr />
+<h2 id="estrategia-de-cache">🗃️ Estrategia de Caché</h2>
+<p>Las políticas de caché son diferenciadas por la volatilidad de los datos. Cachear datos en tiempo real sería un error de diseño; no cachear datos estáticos sería un desperdicio de rendimiento.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Categoría de datos</th>
+<th style="text-align: left;">TTL</th>
+<th style="text-align: left;">Ejemplos</th>
+<th style="text-align: left;">Política HTTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Tiempo real</strong></td>
+<td style="text-align: left;">Sin caché</td>
+<td style="text-align: left;">KPIs, finanzas, alertas, proyecciones</td>
+<td style="text-align: left;"><code>no-store, no-cache</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Semi-estáticos</strong></td>
+<td style="text-align: left;">5 minutos</td>
+<td style="text-align: left;">Benchmarking general, perfil productivo</td>
+<td style="text-align: left;"><code>max-age=300</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rankings</strong></td>
+<td style="text-align: left;">10 minutos</td>
+<td style="text-align: left;">Rankings de benchmarking</td>
+<td style="text-align: left;"><code>max-age=600</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Estáticos</strong></td>
+<td style="text-align: left;">1 hora</td>
+<td style="text-align: left;">Razas, categorías, reglas, prácticas BPG</td>
+<td style="text-align: left;"><code>max-age=3600</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="seguridad-http">🔒 Seguridad HTTP</h2>
+<p>El gateway agrega headers de seguridad en todas las respuestas salientes como capa de endurecimiento HTTP.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Header</th>
+<th style="text-align: left;">Protección que ofrece</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>X-Content-Type-Options</code></td>
+<td style="text-align: left;">Previene MIME sniffing</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>X-Frame-Options</code></td>
+<td style="text-align: left;">Bloquea ataques de clickjacking</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Strict-Transport-Security</code></td>
+<td style="text-align: left;">Fuerza uso de HTTPS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Content-Security-Policy</code></td>
+<td style="text-align: left;">Mitiga inyección de scripts (XSS)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Referrer-Policy</code></td>
+<td style="text-align: left;">Controla la exposición del header Referer</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Permissions-Policy</code></td>
+<td style="text-align: left;">Restringe acceso a APIs sensibles del navegador</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>X-XSS-Protection</code></td>
+<td style="text-align: left;">Compatibilidad con protección XSS en browsers legacy</td>
+</tr>
+</tbody>
+</table>
+<p>La política CSP configurada es restrictiva por defecto:</p>
+<pre><code class="language-text">default-src 'self'
+</code></pre>
+<p>Solo se permiten recursos del mismo origen.</p>
+<hr />
+<h2 id="observabilidad-y-logging">📊 Observabilidad y Logging</h2>
+<p>El gateway registra información estructurada de cada solicitud para facilitar el monitoreo, la trazabilidad y el diagnóstico de problemas.</p>
+<h3 id="campos-registrados">Campos registrados</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Método HTTP</td>
+<td style="text-align: left;"><code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, etc.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ruta</td>
+<td style="text-align: left;">Endpoint solicitado</td>
+</tr>
+<tr>
+<td style="text-align: left;">IP Cliente</td>
+<td style="text-align: left;">Origen de la solicitud</td>
+</tr>
+<tr>
+<td style="text-align: left;">User ID</td>
+<td style="text-align: left;">Extraído del JWT (si aplica)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status HTTP</td>
+<td style="text-align: left;">Código de respuesta del backend</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tiempo</td>
+<td style="text-align: left;">Duración total de la request en ms</td>
+</tr>
+</tbody>
+</table>
+<h3 id="codigo-de-severidad-visual">Código de severidad visual</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Código</th>
+<th style="text-align: left;">Estado</th>
+<th style="text-align: center;">Indicador</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>2xx</code></td>
+<td style="text-align: left;">Exitoso</td>
+<td style="text-align: center;">🟢</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>3xx</code></td>
+<td style="text-align: left;">Redirección</td>
+<td style="text-align: center;">🔵</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>4xx</code></td>
+<td style="text-align: left;">Error del cliente</td>
+<td style="text-align: center;">🟡</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>5xx</code></td>
+<td style="text-align: left;">Error del servidor</td>
+<td style="text-align: center;">🔴</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🐢 <strong>Requests lentos:</strong> Toda solicitud que supere los <strong>3000 ms</strong> es marcada adicionalmente con la etiqueta <code>REQUEST LENTO</code> en el log para facilitar su identificación durante el monitoreo.</p>
+</blockquote>
+<hr />
+<h2 id="configuracion-cors">🌍 Configuración CORS</h2>
+<p>El gateway gestiona las políticas de CORS centralizando los orígenes autorizados:</p>
+<ul>
+<li><code>localhost</code> (desarrollo Angular)</li>
+<li>Dominios de <strong>Vercel</strong> (producción frontend)</li>
+<li>Tunnels de <strong>ngrok</strong> (testing y demos)</li>
+</ul>
+<p><strong>Métodos HTTP permitidos:</strong> <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, <code>OPTIONS</code>, <code>PATCH</code></p>
+<hr />
+<h2 id="manejo-centralizado-de-errores">🔁 Manejo Centralizado de Errores</h2>
+<p>Para mantener consistencia entre servicios, el gateway estandariza todas las respuestas de error en el mismo formato JSON:</p>
+<p><strong>HTTP 503 — Servicio no disponible:</strong></p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;SERVICIO_NO_DISPONIBLE&quot;,
+  &quot;mensaje&quot;: &quot;El servicio no está disponible.&quot;,
+  &quot;status&quot;: 503
+}
+</code></pre>
+<p><strong>HTTP 429 — Límite de tasa excedido:</strong></p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;TOO_MANY_REQUESTS&quot;,
+  &quot;mensaje&quot;: &quot;Has excedido el límite de peticiones.&quot;,
+  &quot;status&quot;: 429
+}
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

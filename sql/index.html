@@ -1,0 +1,2530 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación técnica del sistema Hathor">
+      
+      
+        <meta name="author" content="Equipo Hathor">
+      
+      
+      
+        <link rel="prev" href="../apigateway/">
+      
+      
+        <link rel="next" href="../pruebas_carga/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>SQL - Hathor Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#base-de-datos-documentacion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Hathor Docs" class="md-header__button md-logo" aria-label="Hathor Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hathor Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Hathor Docs" class="md-nav__button md-logo" aria-label="Hathor Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hathor Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitectura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apigateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-del-modelo-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Objetivos del Modelo de Datos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-entidad-relacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Modelo Entidad-Relación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-del-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏗️ Arquitectura del Modelo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nucleo-operacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧱 Núcleo Operacional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧱 Núcleo Operacional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usuario
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hato
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-productivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🥛 Módulo Productivo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🥛 Módulo Productivo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#produccion-de-leche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Producción de Leche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perfil-productivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perfil Productivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kpis-y-benchmarking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 KPIs y Benchmarking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 KPIs y Benchmarking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kpis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KPIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="KPIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kpi-hato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KPI Hato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmarking-de-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmarking de Referencia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benchmarking de Referencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ranking-nacional-y-regional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ranking Nacional y Regional
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motor-de-reglas-y-recomendaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Motor de Reglas y Recomendaciones
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Motor de Reglas y Recomendaciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reglas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reglas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reglas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practicas-productivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prácticas Productivas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prácticas Productivas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacion-regla-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relación Regla-Práctica
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relación Regla-Práctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-del-motor-de-reglas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flujo del Motor de Reglas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alertas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inventarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 Inventarios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Inventarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventario-ganadero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventario Ganadero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventario-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventario General
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#catalogos-y-parametrizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏷️ Catálogos y Parametrización
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏷️ Catálogos y Parametrización">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#categorias-de-inventario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Categorías de Inventario
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Categorías de Inventario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categorias-de-ganado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Categorías de Ganado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Categorías de Ganado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categorias-financieras" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Categorías Financieras
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Categorías Financieras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#razas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Razas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Razas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valores-de-referencia-de-ganado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valores de Referencia de Ganado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Valores de Referencia de Ganado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-financiero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💰 Módulo Financiero
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💰 Módulo Financiero">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#perfil-financiero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perfil Financiero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detalle-financiero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detalle Financiero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registro-financiero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registro Financiero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inversiones-planeadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inversiones Planeadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reportes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Reportes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consideraciones-tecnicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔩 Consideraciones Técnicas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔩 Consideraciones Técnicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integridad-referencial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integridad Referencial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escalabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escalabilidad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pruebas_carga/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Carga de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apidocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend - JavaDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend - Compodoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-del-modelo-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Objetivos del Modelo de Datos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-entidad-relacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Modelo Entidad-Relación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-del-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏗️ Arquitectura del Modelo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nucleo-operacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧱 Núcleo Operacional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧱 Núcleo Operacional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usuario
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hato
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-productivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🥛 Módulo Productivo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🥛 Módulo Productivo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#produccion-de-leche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Producción de Leche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perfil-productivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perfil Productivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kpis-y-benchmarking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 KPIs y Benchmarking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 KPIs y Benchmarking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kpis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KPIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="KPIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kpi-hato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KPI Hato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmarking-de-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmarking de Referencia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benchmarking de Referencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ranking-nacional-y-regional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ranking Nacional y Regional
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motor-de-reglas-y-recomendaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Motor de Reglas y Recomendaciones
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Motor de Reglas y Recomendaciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reglas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reglas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reglas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practicas-productivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prácticas Productivas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prácticas Productivas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacion-regla-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relación Regla-Práctica
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relación Regla-Práctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-del-motor-de-reglas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flujo del Motor de Reglas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alertas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inventarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 Inventarios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Inventarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventario-ganadero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventario Ganadero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventario-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventario General
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#catalogos-y-parametrizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏷️ Catálogos y Parametrización
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏷️ Catálogos y Parametrización">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#categorias-de-inventario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Categorías de Inventario
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Categorías de Inventario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categorias-de-ganado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Categorías de Ganado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Categorías de Ganado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categorias-financieras" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Categorías Financieras
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Categorías Financieras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#razas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Razas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Razas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valores-de-referencia-de-ganado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valores de Referencia de Ganado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Valores de Referencia de Ganado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-insercion_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de inserción
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-financiero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💰 Módulo Financiero
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💰 Módulo Financiero">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#perfil-financiero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perfil Financiero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detalle-financiero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detalle Financiero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registro-financiero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registro Financiero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inversiones-planeadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inversiones Planeadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reportes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Reportes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consideraciones-tecnicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔩 Consideraciones Técnicas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔩 Consideraciones Técnicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integridad-referencial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integridad Referencial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escalabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escalabilidad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="base-de-datos-documentacion">🗄️ Base de Datos — Documentación</h1>
+<p>La base de datos de <strong>Hathor</strong> constituye el núcleo de persistencia y parametrización del sistema. Su diseño está orientado a soportar procesos de análisis productivo, benchmarking ganadero, evaluación financiera, recomendaciones inteligentes y seguimiento operativo de hatos lecheros.</p>
+<p>La arquitectura fue diseñada bajo un enfoque relacional que garantiza integridad referencial, consistencia transaccional, parametrización flexible, desacoplamiento de reglas de negocio y soporte analítico para KPIs y benchmarking.</p>
+<hr />
+<h2 id="objetivos-del-modelo-de-datos">🎯 Objetivos del Modelo de Datos</h2>
+<p>El modelo fue estructurado para soportar las siguientes capacidades funcionales:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Área</th>
+<th style="text-align: left;">Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Gestión de Hatos</strong></td>
+<td style="text-align: left;">Administración de información ganadera</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Producción</strong></td>
+<td style="text-align: left;">Registro y análisis de producción lechera</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>KPIs</strong></td>
+<td style="text-align: left;">Almacenamiento y evaluación de indicadores</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Benchmarking</strong></td>
+<td style="text-align: left;">Comparación con referencias regionales</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Recomendaciones</strong></td>
+<td style="text-align: left;">Generación de alertas y acciones</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Finanzas</strong></td>
+<td style="text-align: left;">Control financiero y categorización</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Inventarios</strong></td>
+<td style="text-align: left;">Seguimiento de activos y ganado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Prácticas</strong></td>
+<td style="text-align: left;">Adopción y seguimiento de prácticas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Reportes</strong></td>
+<td style="text-align: left;">Historial y trazabilidad documental</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="modelo-entidad-relacion">🗺️ Modelo Entidad-Relación</h2>
+<p>El sistema utiliza un modelo relacional compuesto por entidades operativas, entidades analíticas y tablas de parametrización.</p>
+<div align="center">
+    <img src="../assets/erd/modelo_bd.png" width="1200">
+</div>
+
+<hr />
+<h2 id="arquitectura-del-modelo">🏗️ Arquitectura del Modelo</h2>
+<p>La estructura puede dividirse conceptualmente en múltiples dominios funcionales, con el <strong>Usuario</strong> y el <strong>Hato</strong> como entidades raíz del sistema.</p>
+<pre><code class="language-mermaid">flowchart TD
+    A[Usuarios]
+    --&gt; B[Hatos]
+
+    B --&gt; C[Producción]
+    B --&gt; D[Finanzas]
+    B --&gt; E[Inventarios]
+    B --&gt; F[KPIs]
+    B --&gt; G[Benchmarking]
+    B --&gt; H[Recomendaciones]
+    B --&gt; I[Prácticas]
+
+    F --&gt; J[Reglas]
+    J --&gt; K[Prácticas Productivas]
+</code></pre>
+<hr />
+<h2 id="nucleo-operacional">🧱 Núcleo Operacional</h2>
+<h3 id="usuario">Usuario</h3>
+<p>La entidad <code>usuario</code> representa los usuarios autenticados del sistema y actúa como punto de asociación principal para la administración de hatos. Sus responsabilidades incluyen autenticación lógica, gestión de roles, asociación de hatos y ownership de información financiera.</p>
+<h3 id="hato">Hato</h3>
+<p>La entidad <code>hato</code> constituye el núcleo principal del dominio ganadero. Almacena información de ubicación geográfica, características productivas, infraestructura, capacidad operativa, escala productiva e información laboral. Además, funciona como entidad raíz para múltiples módulos del sistema.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Relación</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Producción</strong></td>
+<td style="text-align: left;">Registros lecheros</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>KPIs</strong></td>
+<td style="text-align: left;">Indicadores calculados</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Finanzas</strong></td>
+<td style="text-align: left;">Movimientos financieros</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Inventarios</strong></td>
+<td style="text-align: left;">Activos y ganado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Benchmarking</strong></td>
+<td style="text-align: left;">Comparaciones analíticas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Recomendaciones</strong></td>
+<td style="text-align: left;">Alertas y sugerencias</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="modulo-productivo">🥛 Módulo Productivo</h2>
+<h3 id="produccion-de-leche">Producción de Leche</h3>
+<p>La tabla <code>produccion_leche</code> registra información diaria de litros producidos, vacas ordeñadas y fechas de producción. Estos registros sirven como base para cálculos analíticos y generación de KPIs.</p>
+<h3 id="perfil-productivo">Perfil Productivo</h3>
+<p>La entidad <code>perfil_productivo</code> almacena las características generales del sistema productivo del hato: raza predominante, producción diaria, sistema y frecuencia de ordeño, y destino de la leche. Esta información es consumida por los módulos de benchmarking, recomendaciones y contextualización de indicadores.</p>
+<hr />
+<h2 id="kpis-y-benchmarking">📊 KPIs y Benchmarking</h2>
+<h3 id="kpis">KPIs</h3>
+<p>La tabla <code>kpi</code> define los indicadores utilizados por el sistema. Cada KPI incluye nombre, descripción, fórmula, unidad de medida, código único y categoría.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>nombre</strong></td>
+<td style="text-align: left;">Nombre del indicador</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>descripción</strong></td>
+<td style="text-align: left;">Explicación funcional</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>fórmula</strong></td>
+<td style="text-align: left;">Expresión de cálculo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>unidad</strong></td>
+<td style="text-align: left;">Unidad de medida</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>código</strong></td>
+<td style="text-align: left;">Identificador único</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplo-de-insercion">Ejemplo de inserción</h4>
+<pre><code class="language-sql">INSERT INTO kpi (
+    nombre,
+    descripcion,
+    formula,
+    unidad,
+    codigo
+)
+VALUES
+(
+    'Litros/Vaca/Día',
+    'Productividad diaria por vaca en ordeño.',
+    'produccion_diaria_litros / vacas_en_ordenio',
+    'L/vaca/día',
+    'KPI_LITROS_VACA_DIA'
+),
+(
+    'Litros/Ha/Año',
+    'Producción anual de leche por hectárea.',
+    'SUM(litros_producidos_anio) / area_pastoreo',
+    'L/ha/año',
+    'KPI_LITROS_HA_ANIO'
+);
+</code></pre>
+<h3 id="kpi-hato">KPI Hato</h3>
+<p>La tabla <code>kpi_hato</code> almacena los valores calculados para cada hato, permitiendo historial de indicadores, seguimiento temporal y análisis comparativo.</p>
+<h3 id="benchmarking-de-referencia">Benchmarking de Referencia</h3>
+<p>La tabla <code>benchmarkreferencia</code> almacena los valores de referencia utilizados para comparar el desempeño de los hatos: promedios nacionales y valores altos esperados del mercado para cada KPI.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>KPI asociado</strong></td>
+<td style="text-align: left;">Indicador evaluado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>valor_promedio</strong></td>
+<td style="text-align: left;">Promedio esperado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>valor_top</strong></td>
+<td style="text-align: left;">Valor alto de referencia</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>región</strong></td>
+<td style="text-align: left;">Alcance geográfico</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>trópico</strong></td>
+<td style="text-align: left;">Contexto productivo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>escala</strong></td>
+<td style="text-align: left;">Tamaño del hato</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>sistema de ordeño</strong></td>
+<td style="text-align: left;">Tipo de producción</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplo-de-insercion_1">Ejemplo de inserción</h4>
+<pre><code class="language-sql">INSERT INTO benchmarkreferencia (
+    id_kpi,
+    region,
+    valor_promedio,
+    valor_top,
+    anio,
+    tropico,
+    sistema_ordenio,
+    escala
+)
+SELECT
+    id_kpi,
+    'NACIONAL',
+    4.5,
+    15.0,
+    2024,
+    NULL,
+    NULL,
+    NULL
+FROM kpi
+WHERE codigo = 'KPI_LITROS_VACA_DIA';
+</code></pre>
+<blockquote>
+<p>💡 <strong>Nota de diseño:</strong> En este ejemplo el promedio nacional esperado es <code>4.5</code> L/vaca/día y el valor alto de referencia es <code>15.0</code>. El sistema utiliza estos valores para calcular percentiles, estados del KPI, rankings, alertas y recomendaciones.</p>
+</blockquote>
+<h3 id="ranking-nacional-y-regional">Ranking Nacional y Regional</h3>
+<p>La tabla <code>ranking_hato</code> consolida score compuesto, posición nacional, posición regional y métricas comparativas, permitiendo evaluar la competitividad productiva entre hatos.</p>
+<pre><code class="language-mermaid">flowchart LR
+    A[KPI]
+    --&gt; B[Benchmark de referencia]
+
+    B --&gt; C[Comparación del hato]
+
+    C --&gt; D[Estado del KPI]
+
+    D --&gt; E[Ranking y recomendaciones]
+</code></pre>
+<hr />
+<h2 id="motor-de-reglas-y-recomendaciones">⚙️ Motor de Reglas y Recomendaciones</h2>
+<p>Uno de los componentes más importantes del modelo es el sistema parametrizado de reglas y recomendaciones. Su objetivo es detectar situaciones críticas dentro del hato y activar acciones automáticas de apoyo al usuario.</p>
+<h3 id="reglas">Reglas</h3>
+<p>La entidad <code>regla</code> define condiciones evaluables sobre KPIs. Permite detectar estados críticos, disparar recomendaciones y asociar prácticas productivas.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Capacidad</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Umbrales</strong></td>
+<td style="text-align: left;">Absolutos o relativos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Operadores</strong></td>
+<td style="text-align: left;">Comparación configurable</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Escalas</strong></td>
+<td style="text-align: left;">Adaptación por tamaño de hato</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Estados KPI</strong></td>
+<td style="text-align: left;">Clasificación automática</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplo-de-insercion_2">Ejemplo de inserción</h4>
+<pre><code class="language-sql">INSERT INTO regla (
+    id_kpi,
+    operador,
+    umbral_1,
+    umbral_2,
+    umbral_tipo,
+    estado_kpi_objetivo,
+    escala_aplicable,
+    estado,
+    mensaje,
+    prioridad
+)
+SELECT
+    id_kpi,
+    'MENOR_PCT_PROMEDIO',
+    0.70,
+    NULL,
+    'PCT_PROMEDIO',
+    'CRITICO',
+    'TODAS',
+    'ACTIVA',
+    'Tu producción por vaca está más del 30% por debajo del promedio de hatos similares.',
+    1
+FROM kpi
+WHERE codigo = 'KPI_LITROS_VACA_DIA';
+</code></pre>
+<blockquote>
+<p>📌 <strong>Funcionamiento:</strong> El sistema evalúa <code>KPI_LITROS_VACA_DIA</code> y, si el valor actual es menor al 70% del promedio esperado, el KPI se clasifica como crítico y se activan las recomendaciones y prácticas asociadas.</p>
+</blockquote>
+<h3 id="practicas-productivas">Prácticas Productivas</h3>
+<p>La tabla <code>practica</code> almacena acciones sugeridas para mejorar indicadores productivos. Cada práctica incluye nombre, descripción, objetivo, impacto esperado, dificultad, duración estimada, pasos sugeridos y KPI relacionado.</p>
+<h4 id="ejemplo-de-insercion_3">Ejemplo de inserción</h4>
+<pre><code class="language-sql">INSERT INTO practica (
+    nombre,
+    descripcion,
+    objetivo,
+    categoria,
+    impacto_esperado,
+    estado,
+    pasos,
+    kpi_impactado,
+    dificultad,
+    duracion_dias,
+    escala,
+    tropico_aplicable
+)
+VALUES (
+    'Optimización de estructura de personal',
+    'Revisión de la asignación de tareas del personal del hato.',
+    'Reducir el costo laboral por litro producido.',
+    'EFICIENCIA',
+    'Mejora indicadores de productividad laboral.',
+    'ACTIVA',
+    '[...]',
+    'KPI_COSTO_LABORAL_PCT',
+    'MEDIA',
+    60,
+    'TODAS',
+    'TODOS'
+);
+</code></pre>
+<h3 id="relacion-regla-practica">Relación Regla-Práctica</h3>
+<p>La tabla <code>regla_practica</code> desacopla la lógica de recomendación implementando una relación muchos-a-muchos entre reglas y prácticas. Esto permite múltiples prácticas por regla, priorización configurable y flexibilidad evolutiva.</p>
+<h4 id="ejemplo-de-insercion_4">Ejemplo de inserción</h4>
+<pre><code class="language-sql">INSERT INTO regla_practica (
+    id_regla,
+    id_practica,
+    orden
+)
+SELECT
+    r.id_regla,
+    p.id_practica,
+    1
+FROM regla r, practica p
+WHERE r.id_kpi = (
+    SELECT id_kpi
+    FROM kpi
+    WHERE codigo = 'KPI_LITROS_VACA_DIA'
+)
+AND r.estado_kpi_objetivo = 'CRITICO'
+AND p.nombre = 'Protocolo de ordeño higiénico'
+AND p.escala = 'TODAS';
+</code></pre>
+<h3 id="flujo-del-motor-de-reglas">Flujo del Motor de Reglas</h3>
+<pre><code class="language-mermaid">flowchart LR
+    A[KPI calculado]
+    --&gt; B[Evaluación de reglas]
+
+    B --&gt; C[Condición cumplida]
+
+    C --&gt; D[Regla activada]
+
+    D --&gt; E[Práctica relacionada]
+
+    E --&gt; F[Recomendación al usuario]
+</code></pre>
+<h3 id="recomendaciones">Recomendaciones</h3>
+<p>El sistema maneja dos tipos de recomendaciones para garantizar seguimiento, priorización y persistencia histórica:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>recomendacion_hato</strong></td>
+<td style="text-align: left;">Recomendaciones específicas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>recomendacion_general</strong></td>
+<td style="text-align: left;">Recomendaciones globales</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alertas">Alertas</h3>
+<p>La tabla <code>alerta_hato</code> administra eventos críticos relacionados con indicadores y estados operativos, incluyendo severidad, expiración, estado y asociación a KPIs.</p>
+<hr />
+<h2 id="inventarios">📦 Inventarios</h2>
+<h3 id="inventario-ganadero">Inventario Ganadero</h3>
+<p>La tabla <code>inventario_ganado</code> almacena razas, categorías, cantidades y valorización económica del ganado.</p>
+<h3 id="inventario-general">Inventario General</h3>
+<p>La tabla <code>inventario_general</code> administra activos, herramientas, recursos y elementos operativos del hato.</p>
+<hr />
+<h2 id="catalogos-y-parametrizacion">🏷️ Catálogos y Parametrización</h2>
+<p>El sistema utiliza múltiples tablas de referencia para evitar lógica hardcodeada. Una parte significativa de la lógica funcional se encuentra parametrizada en base de datos, lo que permite ajustes evolutivos, cambios sin recompilación, adaptación regional y flexibilidad operativa.</p>
+<h3 id="categorias-de-inventario">Categorías de Inventario</h3>
+<p>La tabla <code>categoria_inventario</code> define estructuras jerárquicas para clasificar activos e infraestructura del hato: maquinaria, instalaciones, equipos, herramientas y recursos operativos. La estructura implementa relaciones padre-hijo para permitir agrupaciones jerárquicas.</p>
+<h4 id="ejemplo-de-insercion_5">Ejemplo de inserción</h4>
+<pre><code class="language-sql">-- Categoría padre
+INSERT INTO public.categoria_inventario
+    (nombre, descripcion, tipo, es_predefinida, orden, activa)
+VALUES
+    (
+        'INFRAESTRUCTURA E INSTALACIONES',
+        'Instalaciones físicas del hato',
+        'PADRE',
+        true,
+        10,
+        true
+    );
+
+-- Categorías hijas
+WITH padre AS (
+    SELECT id_categoria
+    FROM public.categoria_inventario
+    WHERE nombre = 'INFRAESTRUCTURA E INSTALACIONES'
+)
+INSERT INTO public.categoria_inventario
+    (nombre, descripcion, tipo, id_categoria_padre, es_predefinida, unidad_medida, orden, activa)
+VALUES
+    (
+        'Cuartos de leche',
+        'Área de almacenamiento y enfriamiento',
+        'HIJA',
+        (SELECT id_categoria FROM padre),
+        true,
+        'metros²',
+        13,
+        true
+    );
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Jerarquía</strong></td>
+<td style="text-align: left;">Soporte padre-hijo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Personalización</strong></td>
+<td style="text-align: left;">Usuarios pueden crear categorías</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Parametrización</strong></td>
+<td style="text-align: left;">Categorías reutilizables</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Organización</strong></td>
+<td style="text-align: left;">Clasificación estructurada</td>
+</tr>
+</tbody>
+</table>
+<h3 id="categorias-de-ganado">Categorías de Ganado</h3>
+<p>La tabla <code>categoria_ganado</code> parametriza los tipos de ganado según edad, sexo, etapa productiva y condición reproductiva. Son utilizadas por inventarios ganaderos, valorización, análisis productivos y referencias estadísticas.</p>
+<h4 id="ejemplo-de-insercion_6">Ejemplo de inserción</h4>
+<pre><code class="language-sql">INSERT INTO public.categoria_ganado
+    (nombre_categoria, descripcion)
+VALUES
+    ('Ternero',           'Machos desde el nacimiento hasta el destete'),
+    ('Ternera',           'Hembras desde el nacimiento hasta el destete'),
+    ('Vaca de producción','Vaca en etapa de lactancia'),
+    ('Vaca seca',         'Vaca en periodo seco');
+</code></pre>
+<h3 id="categorias-financieras">Categorías Financieras</h3>
+<p>La tabla <code>categoria_financiera</code> implementa un sistema jerárquico flexible para clasificar movimientos financieros: ingresos, gastos, costos e inversiones. El sistema incluye categorías iniciales predefinidas y permite que cada usuario amplíe la estructura según sus necesidades.</p>
+<p>La estructura financiera utiliza múltiples niveles jerárquicos:</p>
+<pre><code class="language-text">GENERAL
+└── INGRESOS
+    ├── VENTA DE LECHE
+    ├── VENTA DE ANIMALES
+    └── VENTA DE DERIVADOS LÁCTEOS
+</code></pre>
+<h4 id="ejemplo-de-insercion_7">Ejemplo de inserción</h4>
+<pre><code class="language-sql">-- Nodo principal
+WITH general AS (
+    SELECT id_categoria
+    FROM public.categoria_financiera
+    WHERE nombre = 'GENERAL'
+)
+INSERT INTO public.categoria_financiera
+    (id_usuario, nombre, descripcion, tipo, id_categoria_padre, es_predefinida, orden)
+VALUES
+    (
+        NULL,
+        'INGRESOS',
+        'Todo tipo de entradas de capital',
+        'INGRESO',
+        (SELECT id_categoria FROM general),
+        true,
+        1
+    );
+
+-- Subcategorías
+WITH ingresos_root AS (
+    SELECT id_categoria
+    FROM public.categoria_financiera
+    WHERE nombre = 'INGRESOS'
+)
+INSERT INTO public.categoria_financiera
+    (id_usuario, nombre, descripcion, tipo, id_categoria_padre, es_predefinida, orden)
+VALUES
+(
+    NULL,
+    'VENTA DE LECHE',
+    'Venta de leche cruda a industria o terceros',
+    'INGRESO',
+    (SELECT id_categoria FROM ingresos_root),
+    true,
+    2
+),
+(
+    NULL,
+    'VENTA DE ANIMALES',
+    'Venta de ganado',
+    'INGRESO',
+    (SELECT id_categoria FROM ingresos_root),
+    true,
+    3
+);
+</code></pre>
+<h3 id="razas">Razas</h3>
+<p>La tabla <code>raza</code> almacena las diferentes razas de ganado utilizadas dentro del sistema, agrupadas por tipo general. Son utilizadas para clasificar inventario, análisis productivos, benchmarking y valorización económica.</p>
+<h4 id="ejemplo-de-insercion_8">Ejemplo de inserción</h4>
+<pre><code class="language-sql">INSERT INTO public.raza (tipo_raza, nombre) VALUES
+    ('PURA ESPECIALIZADA', 'Holstein-Friesian'),
+    ('PURA ESPECIALIZADA', 'Jersey'),
+    ('PURA ESPECIALIZADA', 'Pardo Suizo (Brown Swiss)'),
+    ('PURA ESPECIALIZADA', 'Ayrshire');
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Módulo</th>
+<th style="text-align: left;">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Inventario</strong></td>
+<td style="text-align: left;">Clasificación del ganado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>KPIs</strong></td>
+<td style="text-align: left;">Análisis productivo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Benchmarking</strong></td>
+<td style="text-align: left;">Comparación entre hatos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Referencias</strong></td>
+<td style="text-align: left;">Valores promedio de mercado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="valores-de-referencia-de-ganado">Valores de Referencia de Ganado</h3>
+<p>La tabla <code>valorreferenciaganado</code> almacena valores promedio de mercado para diferentes tipos de ganado, definidos según raza, categoría, región y año. Sirven como referencia económica para valorización de inventarios, análisis financieros y estimaciones patrimoniales.</p>
+<h4 id="ejemplo-de-insercion_9">Ejemplo de inserción</h4>
+<pre><code class="language-sql">INSERT INTO public.valorreferenciaganado
+    (id_raza, id_categoria, valor_promedio, region, anio)
+VALUES
+-- Holstein-Friesian
+(
+    2,
+    (SELECT id_categoria FROM public.categoria_ganado WHERE nombre_categoria = 'Vaca de producción'),
+    8500000,
+    'Nacional',
+    2025
+),
+-- Jersey
+(
+    3,
+    (SELECT id_categoria FROM public.categoria_ganado WHERE nombre_categoria = 'Vaca de producción'),
+    7800000,
+    'Nacional',
+    2025
+);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>id_raza</strong></td>
+<td style="text-align: left;">Raza asociada</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>id_categoria</strong></td>
+<td style="text-align: left;">Categoría del ganado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>valor_promedio</strong></td>
+<td style="text-align: left;">Precio promedio de referencia</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>region</strong></td>
+<td style="text-align: left;">Región de referencia</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>anio</strong></td>
+<td style="text-align: left;">Año del valor registrado</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="modulo-financiero">💰 Módulo Financiero</h2>
+<h3 id="perfil-financiero">Perfil Financiero</h3>
+<p>La tabla <code>perfil_financiero</code> almacena configuraciones generales del modelo financiero del hato.</p>
+<h3 id="detalle-financiero">Detalle Financiero</h3>
+<p>La entidad <code>perfil_financiero_detalle</code> registra ingresos, gastos, costos e inversiones.</p>
+<h3 id="registro-financiero">Registro Financiero</h3>
+<p>La tabla <code>registrofinanciero</code> administra movimientos financieros históricos y operativos.</p>
+<h3 id="inversiones-planeadas">Inversiones Planeadas</h3>
+<p>La entidad <code>inversion_planeada</code> permite gestionar inversiones futuras con retorno esperado y horizonte de recuperación.</p>
+<hr />
+<h2 id="reportes">📋 Reportes</h2>
+<p>La tabla <code>reporte_historial</code> almacena información relacionada con generación de reportes, archivos exportados, configuraciones utilizadas y trazabilidad documental.</p>
+<hr />
+<h2 id="consideraciones-tecnicas">🔩 Consideraciones Técnicas</h2>
+<h3 id="integridad-referencial">Integridad Referencial</h3>
+<p>El modelo utiliza claves foráneas para garantizar consistencia entre todas las entidades relacionadas.</p>
+<h3 id="identificadores">Identificadores</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>UUID</strong></td>
+<td style="text-align: left;">Entidades operativas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Identity</strong></td>
+<td style="text-align: left;">Catálogos y referencias</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sequences</strong></td>
+<td style="text-align: left;">Registros históricos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="escalabilidad">Escalabilidad</h3>
+<p>La separación entre datos operativos, datos analíticos y datos parametrizados permite escalar módulos funcionales de forma independiente.</p>
+<blockquote>
+<p>💡 <strong>Filosofía de parametrización:</strong> La mayor parte de la lógica funcional del sistema — reglas, benchmarking, recomendaciones, categorías y referencias productivas — está administrada desde base de datos y no hardcodeada en el backend. Esto permite evolución funcional sin recompilar, adaptación regional y personalización por usuario.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
