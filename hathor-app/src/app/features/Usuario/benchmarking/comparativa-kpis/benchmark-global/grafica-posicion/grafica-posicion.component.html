@@ -1,0 +1,80 @@
+<div class="posicion-wrap">
+  <!-- Stats rápidos del KPI seleccionado -->
+  <div class="posicion-stats">
+    <div class="posicion-stat">
+      <span class="posicion-stat-label">Tu valor</span>
+      <span class="posicion-stat-valor verde">
+        {{
+          kpi.valorHatoActual !== null
+            ? kpi.unidadKpi.includes('COP')
+              ? '$ ' + (kpi.valorHatoActual | number: '1.0-0' : 'es-CO')
+              : (kpi.valorHatoActual | number: '1.2-2') + ' ' + kpi.unidadKpi
+            : '—'
+        }}
+      </span>
+    </div>
+
+    <div class="posicion-stat">
+      <span class="posicion-stat-label">Posición</span>
+      <span class="posicion-stat-valor">{{ posicionTexto }}</span>
+    </div>
+
+    <div class="posicion-stat">
+      <span class="posicion-stat-label">vs promedio</span>
+      <span
+        class="posicion-stat-valor"
+        [class.positivo]="diferenciaPromedio.startsWith('+')"
+        [class.negativo]="diferenciaPromedio.startsWith('-')"
+      >
+        {{ diferenciaPromedio }}
+      </span>
+    </div>
+
+    <div class="posicion-stat">
+      <span class="posicion-stat-label">Estado</span>
+      <span [class]="'badge ' + interpretacionClass">
+        {{ kpi.interpretacion ?? '—' }}
+      </span>
+    </div>
+
+    <div class="posicion-stat">
+      <span class="posicion-stat-label">Hatos</span>
+      <span class="posicion-stat-valor">{{ kpi.totalHatosGrupo }}</span>
+    </div>
+  </div>
+
+  <!-- Gráfica de líneas -->
+  <div class="chart-wrap">
+    <canvas #chartCanvas></canvas>
+  </div>
+
+  <!-- Ranking tabla compacta -->
+  @if (kpi.rankingHatos.length) {
+    <div class="ranking-tabla">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Hato</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (h of kpi.rankingHatos; track h.alias) {
+            <tr [class.fila-mihato]="h.esMiHato">
+              <td class="td-pos">{{ h.posicion }}</td>
+              <td class="td-alias">
+                @if (h.esMiHato) {
+                  <span class="mihato-badge">📍 Tu hato</span>
+                } @else {
+                  {{ h.alias }}
+                }
+              </td>
+              <td class="td-valor">{{ h.valor | number: '1.2-2' }} {{ kpi.unidadKpi }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

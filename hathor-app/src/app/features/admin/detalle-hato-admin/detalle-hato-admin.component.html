@@ -1,0 +1,189 @@
+<div class="detalle-admin-page">
+  <!-- ===== LOADING ===== -->
+  @if (loading) {
+    <div class="loading-wrap">
+      <app-spinner size="large" message="Cargando hato..."></app-spinner>
+    </div>
+  }
+
+  <!-- ===== ERROR ===== -->
+  @if (error) {
+    <div class="error-wrap">
+      <div class="msg-error">
+        <span>❌</span>
+        <div>
+          <p>{{ error }}</p>
+          <button class="btn-volver-error" (click)="volver()">← Volver a la lista</button>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (!loading && !error) {
+    <!-- ===== HEADER ===== -->
+    <header class="page-header">
+      <div class="header-left">
+        <button class="btn-volver" (click)="volver()">← Volver</button>
+        <p class="page-tag">Administración · Hatos</p>
+        <h1 class="page-title">
+          <span class="brand">{{ nombreHato }}</span>
+        </h1>
+        <p class="page-subtitle">Vista de administrador — datos reales sin anonimizar</p>
+      </div>
+      <div class="header-right">
+        <div class="header-icon">🔎</div>
+      </div>
+    </header>
+
+    <!-- ===== SELECTOR DE SECCIONES ===== -->
+    <div class="secciones-card">
+      <div class="secciones-header">
+        <div class="secciones-header-left">
+          <span class="secciones-icono">⚙️</span>
+          <div>
+            <h3 class="secciones-titulo">Secciones visibles</h3>
+            <p class="secciones-subtitulo">
+              {{ seccionesActivasCount }} de {{ secciones.length }}
+              secciones activas
+            </p>
+          </div>
+        </div>
+        <div class="secciones-acciones">
+          <button class="btn-accion" (click)="activarTodo()">Todas</button>
+          <button class="btn-accion" (click)="desactivarTodo()">Ninguna</button>
+        </div>
+      </div>
+
+      <div class="secciones-grid">
+        @for (seccion of secciones; track seccion.id) {
+          <div
+            class="seccion-toggle-item"
+            [class.activa]="seccion.activa"
+            (click)="toggleSeccion(seccion.id)"
+          >
+            <span class="seccion-toggle-icono">{{ seccion.icono }}</span>
+            <span class="seccion-toggle-label">{{ seccion.label }}</span>
+            <div class="toggle-pill" [class.on]="seccion.activa">
+              <div class="toggle-dot"></div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- ===== SECCIONES ===== -->
+    <div class="secciones-content">
+      <!-- Información del hato -->
+      @if (isActiva('info')) {
+        <div class="seccion-wrap">
+          <div class="seccion-label-row">
+            <span class="seccion-label-icono">🏡</span>
+            <span class="seccion-label-texto">Información del hato</span>
+          </div>
+          <div class="seccion-componente">
+            <app-info-hato></app-info-hato>
+          </div>
+        </div>
+      }
+
+      <!-- KPIs -->
+      @if (isActiva('kpis')) {
+        <div class="seccion-wrap">
+          <div class="seccion-label-row">
+            <span class="seccion-label-icono">📈</span>
+            <span class="seccion-label-texto">KPIs</span>
+          </div>
+          <div class="seccion-componente">
+            <app-info-benchmarking></app-info-benchmarking>
+          </div>
+        </div>
+      }
+
+      <!-- Benchmarking -->
+      @if (isActiva('benchmarking')) {
+        <div class="seccion-wrap">
+          <div class="seccion-label-row">
+            <span class="seccion-label-icono">🔍</span>
+            <span class="seccion-label-texto">Benchmarking</span>
+          </div>
+          <div class="seccion-componente">
+            <app-comparativa-kpis></app-comparativa-kpis>
+          </div>
+        </div>
+      }
+
+      <!-- Finanzas -->
+      @if (isActiva('finanzas')) {
+        <div class="seccion-wrap">
+          <div class="seccion-label-row">
+            <span class="seccion-label-icono">💰</span>
+            <span class="seccion-label-texto">Finanzas</span>
+          </div>
+          <div class="seccion-componente">
+            <app-info-finanzas [modoLectura]="true"></app-info-finanzas>
+          </div>
+        </div>
+      }
+
+      <!-- Producción -->
+      @if (isActiva('produccion')) {
+        <div class="seccion-wrap">
+          <div class="seccion-label-row">
+            <span class="seccion-label-icono">🥛</span>
+            <span class="seccion-label-texto">Producción</span>
+          </div>
+          <div class="seccion-componente">
+            <app-info-produccion [modoLectura]="true"></app-info-produccion>
+          </div>
+        </div>
+      }
+
+      <!-- Inventario general -->
+      @if (isActiva('inv-general')) {
+        <div class="seccion-wrap">
+          <div class="seccion-label-row">
+            <span class="seccion-label-icono">📦</span>
+            <span class="seccion-label-texto">Inventario general</span>
+          </div>
+          <div class="seccion-componente">
+            <app-inventario-general-resumen></app-inventario-general-resumen>
+          </div>
+        </div>
+      }
+
+      <!-- Inventario ganado -->
+      @if (isActiva('inv-ganado')) {
+        <div class="seccion-wrap">
+          <div class="seccion-label-row">
+            <span class="seccion-label-icono">🐄</span>
+            <span class="seccion-label-texto">Inventario ganado</span>
+          </div>
+          <div class="seccion-componente">
+            <app-inventario-ganado-resumen></app-inventario-ganado-resumen>
+          </div>
+        </div>
+      }
+
+      <!-- Prácticas -->
+      @if (isActiva('practicas')) {
+        <div class="seccion-wrap">
+          <div class="seccion-label-row">
+            <span class="seccion-label-icono">🌱</span>
+            <span class="seccion-label-texto">Prácticas</span>
+          </div>
+          <div class="seccion-componente">
+            <app-mis-practicas></app-mis-practicas>
+          </div>
+        </div>
+      }
+
+      <!-- Sin secciones -->
+      @if (seccionesActivasCount === 0) {
+        <div class="empty-secciones">
+          <span>👆</span>
+          <p>Activa al menos una sección para ver la información del hato.</p>
+        </div>
+      }
+    </div>
+  }
+</div>

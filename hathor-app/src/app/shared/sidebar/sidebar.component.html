@@ -1,0 +1,89 @@
+<aside class="sidebar" [class.collapsed]="collapsed">
+  <!-- Brand + Toggle -->
+  <div class="sidebar-brand">
+    <div class="brand-content" *ngIf="!collapsed">
+      <img src="assets/hathor-logo.png" alt="Hathor" class="brand-logo" />
+      <span class="brand-sub">Gestión Ganadera</span>
+    </div>
+    <button class="toggle-btn" (click)="toggle()" [title]="collapsed ? 'Expandir' : 'Colapsar'">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path
+          *ngIf="!collapsed"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 19l-7-7 7-7"
+        />
+        <path *ngIf="collapsed" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Loading -->
+  <div class="sidebar-loading" *ngIf="loading">
+    <app-spinner size="small" [message]="collapsed ? '' : 'Cargando...'"></app-spinner>
+  </div>
+
+  <!-- Menú -->
+  <nav class="menu" *ngIf="!loading">
+    <div class="menu-section" *ngIf="!collapsed">
+      <span class="menu-label">Principal</span>
+    </div>
+
+    <ng-container *ngFor="let item of menuItems">
+      <a
+        *ngIf="hasAccess(item)"
+        [routerLink]="item.route"
+        routerLinkActive="active-link"
+        class="menu-item"
+        [class.menu-item-alertas]="item.route === '/alertas'"
+        [title]="collapsed ? item.label : ''"
+      >
+        <span class="icon">{{ item.icon }}</span>
+        <span class="label" *ngIf="!collapsed">{{ item.label }}</span>
+
+        <!-- Badge alertas -->
+        @if (item.route === '/alertas' && totalNoLeidas > 0) {
+          <span
+            class="badge-alertas"
+            [style.background]="colorBadge"
+            [class.badge-collapsed]="collapsed"
+          >
+            {{ totalNoLeidas > 99 ? '99+' : totalNoLeidas }}
+          </span>
+        }
+        <span class="active-dot" *ngIf="collapsed"></span>
+      </a>
+    </ng-container>
+  </nav>
+
+  <a
+    routerLink="/alertas"
+    routerLinkActive="active-link"
+    class="alertas-fijas"
+    [class.collapsed]="collapsed"
+    (click)="navigate('/alertas')"
+  >
+    <div class="alertas-fijas-left">
+      <span class="icon">🔔</span>
+      <span class="label" *ngIf="!collapsed">Alertas</span>
+    </div>
+    @if (totalNoLeidas > 0) {
+      <span
+        class="badge-alertas"
+        [style.background]="colorBadge"
+        [class.badge-collapsed]="collapsed"
+      >
+        {{ totalNoLeidas > 10 ? '10+' : totalNoLeidas }}
+      </span>
+    }
+  </a>
+
+  <!-- Footer usuario -->
+  <div class="sidebar-footer" *ngIf="!loading && usuario">
+    <div class="user-avatar">{{ usuario.nombre.charAt(0).toUpperCase() }}</div>
+    <div class="user-info" *ngIf="!collapsed">
+      <span class="user-name">{{ usuario.nombre }} {{ usuario.apellido }}</span>
+      <span class="user-role">{{ usuario.rol === 'USER' ? 'Usuario' : 'Administrador' }}</span>
+    </div>
+  </div>
+</aside>

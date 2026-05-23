@@ -1,0 +1,43 @@
+<div class="modulo-card">
+  <div class="modulo-header">
+    <div class="modulo-header-left">
+      <div class="modulo-icono" aria-hidden="true">💰</div>
+      <div>
+        <h3 class="modulo-titulo">Finanzas</h3>
+        <p class="modulo-subtitulo">Últimos 6 meses</p>
+      </div>
+    </div>
+    <a class="modulo-btn" [attr.href]="ruta" (click)="$event.preventDefault()"> Ver más → </a>
+  </div>
+
+  @if (loading) {
+    <div class="card-loading-mini">
+      <app-spinner size="small"></app-spinner>
+    </div>
+  } @else {
+    <div class="modulo-stats-row">
+      <div class="modulo-stat">
+        <span class="stat-label">Ingresos</span>
+        <span class="stat-valor ingreso">{{ formatCOP(totalIngresos) }}</span>
+      </div>
+      <div class="modulo-stat">
+        <span class="stat-label">Egresos</span>
+        <span class="stat-valor egreso">{{ formatCOP(totalEgresos) }}</span>
+      </div>
+      <div class="modulo-stat">
+        <span class="stat-label">Balance</span>
+        <span class="stat-valor" [class]="colorBalanceNeto">
+          {{ formatCOP(balanceNeto) }}
+        </span>
+      </div>
+    </div>
+
+    @if (finanzasPorMes.length > 0) {
+      <div class="grafica-mini-wrap">
+        <canvas #chartCanvas></canvas>
+      </div>
+    } @else {
+      <div class="card-empty-mini">Sin registros financieros</div>
+    }
+  }
+</div>

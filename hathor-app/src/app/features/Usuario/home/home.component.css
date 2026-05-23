@@ -1,0 +1,55 @@
+/* ═══════════════════════════════════════════════════════════
+   HOME COMPONENT — wrapper y estado de carga
+   El resto de estilos vive en cada componente hijo.
+   Breakpoints: móvil 360-480px · tablet 768px · desktop 1024px+
+═══════════════════════════════════════════════════════════ */
+
+.home-page {
+  padding: 28px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: inherit;
+}
+
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 768px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .home-page {
+    padding: 20px 20px 32px;
+    gap: 16px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL GRANDE (≤ 480px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .home-page {
+    padding: 14px 14px 28px;
+    gap: 12px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL PEQUEÑO (≤ 360px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 360px) {
+  .home-page {
+    padding: 12px 12px 24px;
+    gap: 10px;
+  }
+}

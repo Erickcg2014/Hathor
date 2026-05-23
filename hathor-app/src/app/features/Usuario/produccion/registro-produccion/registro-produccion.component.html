@@ -1,0 +1,132 @@
+<!-- features/Usuario/produccion/registro-produccion/registro-produccion.component.html -->
+
+<div class="registro-prod-page">
+  <!-- ===== HEADER ===== -->
+  <div class="page-header">
+    <div class="header-left">
+      <span class="page-tag">Producción · Nuevo registro</span>
+      <h1 class="page-title">Registrar <span class="brand">Producción</span></h1>
+      @if (hatoActivo) {
+        <p class="page-subtitle">
+          Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        </p>
+      } @else {
+        <p class="page-subtitle warn">⚠️ Selecciona un hato para registrar producción.</p>
+      }
+    </div>
+    <div class="header-badge">🥛</div>
+  </div>
+
+  <!-- ===== MENSAJES ===== -->
+  @if (error) {
+    <div class="msg-error">
+      <span>❌</span>
+      <p>{{ error }}</p>
+    </div>
+  }
+  @if (exito) {
+    <div class="msg-exito">
+      <span>✅</span>
+      <p>{{ exito }}</p>
+    </div>
+  }
+
+  @if (!hatoActivo) {
+    <div class="empty-state">
+      <span>🐄</span>
+      <p>Selecciona un hato para registrar producción.</p>
+    </div>
+  }
+
+  @if (hatoActivo) {
+    <div class="layout">
+      <!-- ── Columna izquierda: formulario ── -->
+      <div class="form-col">
+        <!-- Stats rápidas del mes -->
+        @if (!loadingRegistros) {
+          <div class="stats-row">
+            <div class="stat-card">
+              <span class="stat-icono">🥛</span>
+              <div class="stat-info">
+                <span class="stat-label">Total este mes</span>
+                <span class="stat-valor"> {{ totalEsteMes | number: '1.1-1' }} L </span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icono">📊</span>
+              <div class="stat-info">
+                <span class="stat-label">Promedio diario</span>
+                <span class="stat-valor"> {{ promedioMensual | number: '1.1-1' }} L/día </span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icono">📋</span>
+              <div class="stat-info">
+                <span class="stat-label">Total registros</span>
+                <span class="stat-valor">{{ registros.length }}</span>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- Formulario -->
+        <div class="form-card">
+          <h3 class="form-card-titulo">📝 Nuevo registro de producción</h3>
+
+          <div class="campo-group">
+            <label class="campo-label">Fecha *</label>
+            <input type="date" class="campo-input" [(ngModel)]="nuevo.fecha" [max]="nuevo.fecha" />
+          </div>
+
+          <div class="campos-row">
+            <div class="campo-group">
+              <label class="campo-label">Litros producidos *</label>
+              <div class="input-suffix-wrap">
+                <input
+                  type="number"
+                  class="campo-input"
+                  placeholder="Ej: 185.5"
+                  min="0"
+                  step="0.1"
+                  [(ngModel)]="nuevo.litrosProducidos"
+                />
+                <span class="input-suffix">L</span>
+              </div>
+            </div>
+            <div class="campo-group">
+              <label class="campo-label">
+                Vacas ordeñadas
+                <span class="campo-opcional">(opcional)</span>
+              </label>
+              <input
+                type="number"
+                class="campo-input"
+                placeholder="Ej: 25"
+                min="0"
+                [(ngModel)]="nuevo.vacasOrdenadas"
+              />
+            </div>
+          </div>
+
+          <!-- Preview litros/vaca -->
+          @if (litrosPorVaca !== null) {
+            <div class="preview-kpi">
+              <span class="preview-kpi-label"> Productividad calculada: </span>
+              <span class="preview-kpi-valor"> {{ litrosPorVaca }} L/vaca/día </span>
+            </div>
+          }
+
+          <button class="btn-guardar" [disabled]="guardando" (click)="guardar()">
+            @if (guardando) {
+              <app-spinner size="small"></app-spinner>
+              Guardando...
+            } @else {
+              💾 Guardar registro
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

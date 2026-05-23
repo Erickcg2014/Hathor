@@ -1,0 +1,43 @@
+<div class="modulo-card">
+  <div class="modulo-header">
+    <div class="modulo-header-left">
+      <div class="modulo-icono" aria-hidden="true">📈</div>
+      <div>
+        <h3 class="modulo-titulo">KPIs</h3>
+        <p class="modulo-subtitulo">Perfil de desempeño vs sector</p>
+      </div>
+    </div>
+    <a class="modulo-btn" [attr.href]="ruta" (click)="$event.preventDefault()"> Ver más → </a>
+  </div>
+
+  @if (loading) {
+    <div class="card-loading-mini">
+      <app-spinner size="small"></app-spinner>
+    </div>
+  } @else {
+    @if (rankingResumen) {
+      <div class="modulo-stats-row">
+        <div class="modulo-stat">
+          <span class="stat-label">Óptimos</span>
+          <span class="stat-valor verde">{{ rankingResumen.kpisOptimos }}</span>
+        </div>
+        <div class="modulo-stat">
+          <span class="stat-label">Aceptables</span>
+          <span class="stat-valor amarillo">{{ rankingResumen.kpisAceptables }}</span>
+        </div>
+        <div class="modulo-stat">
+          <span class="stat-label">Críticos</span>
+          <span class="stat-valor rojo">{{ rankingResumen.kpisCriticos }}</span>
+        </div>
+      </div>
+    }
+
+    @if (benchmarks.length > 0) {
+      <div class="grafica-mini-wrap">
+        <canvas #chartCanvas></canvas>
+      </div>
+    } @else {
+      <div class="card-empty-mini">Calcula tus KPIs para ver el radar</div>
+    }
+  }
+</div>

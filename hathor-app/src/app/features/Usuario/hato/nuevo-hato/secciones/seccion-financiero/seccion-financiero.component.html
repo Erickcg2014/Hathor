@@ -1,0 +1,266 @@
+<div class="seccion-wrapper">
+  <!-- ===== MODO READONLY ===== -->
+  @if (modoReadonly) {
+    <div class="readonly-wrapper completo">
+      <div class="readonly-header">
+        <div class="readonly-check completo">🎉</div>
+        <div>
+          <h2 class="readonly-titulo">¡Hato completamente configurado!</h2>
+          <p class="readonly-mensaje">
+            Tu finca está 100% registrada en Hathor. Ahora tienes acceso completo a todos los
+            módulos de análisis, benchmarking y recomendaciones personalizadas.
+          </p>
+        </div>
+      </div>
+      <div class="paso-actions">
+        <button class="btn-primary" (click)="irAnterior.emit()">← Ver producción</button>
+      </div>
+    </div>
+  }
+
+  <!-- ===== MODO EDITABLE ===== -->
+  @if (!modoReadonly) {
+    <div class="paso-header">
+      <span class="paso-icono">💰</span>
+      <div>
+        <h2 class="paso-titulo">Registros financieros</h2>
+        <p class="paso-subtitulo">
+          Elige cómo quieres registrar la información financiera de tu hato
+        </p>
+      </div>
+    </div>
+    <!-- ===== COSTOS FIJOS — siempre visible ===== -->
+    <div class="costos-fijos-card">
+      <div class="costos-fijos-header">
+        <span class="costos-fijos-icono">📋</span>
+        <div>
+          <h3 class="costos-fijos-titulo">Costos fijos mensuales</h3>
+          <p class="costos-fijos-sub">
+            Revisemos promedios generales de la información más importante de tu productividad.
+          </p>
+        </div>
+      </div>
+
+      <div class="costos-fijos-grid">
+        <!-- Nómina -->
+        <div class="costo-campo">
+          <label class="costo-label">
+            👷 ¿Cuánto gastas mensualmente en nómina y mano de obra?
+          </label>
+          <p class="costo-hint">
+            Incluye salarios, jornales, parafiscales y seguridad social de todos tus empleados.
+          </p>
+          <div class="costo-input-wrapper">
+            <span class="costo-prefix">$</span>
+            <input
+              type="number"
+              class="costo-input"
+              placeholder="0"
+              min="0"
+              [(ngModel)]="gastoMensualNomina"
+            />
+            <span class="costo-suffix">COP / mes</span>
+          </div>
+          @if (gastoMensualNomina && gastoMensualNomina > 0) {
+            <span class="costo-preview"> ≈ {{ formatCOP(gastoMensualNomina) }} COP/mes </span>
+          }
+        </div>
+
+        <!-- Alimentación -->
+        <div class="costo-campo">
+          <label class="costo-label">
+            🌾 ¿Cuánto gastas mensualmente en alimentación del ganado?
+          </label>
+          <p class="costo-hint">
+            Incluye concentrado, sal mineralizada, forraje suplementario y cualquier otro insumo
+            alimenticio para el hato.
+          </p>
+          <div class="costo-input-wrapper">
+            <span class="costo-prefix">$</span>
+            <input
+              type="number"
+              class="costo-input"
+              placeholder="0"
+              min="0"
+              [(ngModel)]="gastoMensualAlimentacion"
+            />
+            <span class="costo-suffix">COP / mes</span>
+          </div>
+          @if (gastoMensualAlimentacion && gastoMensualAlimentacion > 0) {
+            <span class="costo-preview"> ≈ {{ formatCOP(gastoMensualAlimentacion) }} COP/mes </span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SELECTOR DE OPCIÓN ===== -->
+    @if (!opcionSeleccionada) {
+      <div class="opciones-grid">
+        <!-- Excel -->
+        <div class="opcion-card" (click)="seleccionarOpcion('EXCEL')">
+          <div class="opcion-icono">📊</div>
+          <h3 class="opcion-titulo">Cargar Excel</h3>
+          <p class="opcion-desc">Sube un archivo con tus movimientos históricos pasados</p>
+          <div class="opcion-tooltip">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path stroke-linecap="round" d="M12 16v-4M12 8h.01" />
+            </svg>
+            <div class="tooltip-texto">
+              Descarga nuestra plantilla, llénala con tus movimientos financieros pasados y súbela.
+              Ideal si ya llevas un registro en Excel o cuaderno.
+            </div>
+          </div>
+          <span class="opcion-badge">Recomendado si tienes historial</span>
+        </div>
+
+        <!-- Manual -->
+        <div class="opcion-card" (click)="seleccionarOpcion('MANUAL')">
+          <div class="opcion-icono">✏️</div>
+          <h3 class="opcion-titulo">Registro manual</h3>
+          <p class="opcion-desc">Hagamos un análisis general estudiando detalles a alto nivel</p>
+          <div class="opcion-tooltip">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path stroke-linecap="round" d="M12 16v-4M12 8h.01" />
+            </svg>
+            <div class="tooltip-texto">
+              Registra tus principales ingresos y gastos usando nuestras categorías. Perfecto si
+              prefieres ingresar la información directamente en el sistema.
+            </div>
+          </div>
+          <span class="opcion-badge">Paso a paso guiado</span>
+        </div>
+
+        <!-- Omitir -->
+        <div class="opcion-card opcion-omitir" (click)="seleccionarOpcion('OMITIDO')">
+          <div class="opcion-icono">⏭️</div>
+          <h3 class="opcion-titulo">Comenzar desde 0</h3>
+          <p class="opcion-desc">Comienza con las funcionalidades de hathor desde cero</p>
+          <div class="opcion-tooltip">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path stroke-linecap="round" d="M12 16v-4M12 8h.01" />
+            </svg>
+            <div class="tooltip-texto">
+              Puedes registrar tu historial financiero más adelante desde el módulo de Finanzas. El
+              sistema funcionará con datos limitados hasta entonces.
+            </div>
+          </div>
+          <span class="opcion-badge omitir">Sin registros financieros aún</span>
+        </div>
+      </div>
+    }
+
+    <!-- ===== HEADER OPCIÓN SELECCIONADA ===== -->
+    @if (opcionSeleccionada) {
+      <div class="opcion-seleccionada-header">
+        <div class="opcion-seleccionada-info">
+          <span class="opcion-seleccionada-icono">
+            {{
+              opcionSeleccionada === 'EXCEL' ? '📊' : opcionSeleccionada === 'MANUAL' ? '✏️' : '⏭️'
+            }}
+          </span>
+          <span class="opcion-seleccionada-nombre">{{ getNombreOpcion(opcionSeleccionada) }}</span>
+        </div>
+        <button class="btn-cambiar" (click)="seleccionarOpcion(null)">Cambiar opción</button>
+      </div>
+
+      <!-- ===== HIJO: EXCEL ===== -->
+      @if (opcionSeleccionada === 'EXCEL') {
+        <div class="contenido-opcion">
+          <app-finanzas-excel [hatoActual]="hatoActual" (cargaExitosa)="onExcelCargaExitosa()" />
+        </div>
+      }
+
+      <!-- ===== HIJO: MANUAL ===== -->
+      @if (opcionSeleccionada === 'MANUAL') {
+        <div class="contenido-opcion">
+          <app-finanzas-manual
+            [hatoActual]="hatoActual"
+            (datosListos)="onManualDatosListos($event)"
+          />
+        </div>
+      }
+
+      <!-- ===== OMITIR ===== -->
+      @if (opcionSeleccionada === 'OMITIDO') {
+        <div class="contenido-opcion">
+          <div class="omitir-card">
+            <span class="omitir-icono">⚠️</span>
+            <div>
+              <h4 class="omitir-titulo">¿Seguro que quieres omitir esta sección?</h4>
+              <p class="omitir-desc">
+                Podrás registrar tu historial financiero más adelante desde el módulo de
+                <strong>Finanzas</strong>. Ten en cuenta que los análisis de rentabilidad y
+                benchmarking financiero no estarán disponibles hasta que registres información.
+              </p>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- ===== ERROR GENERAL ===== -->
+      @if (error) {
+        <div class="error-box">
+          <p>{{ error }}</p>
+        </div>
+      }
+
+      <!-- ===== ACCIONES ===== -->
+      <div class="paso-actions">
+        <button type="button" class="btn-secondary" (click)="irAnterior.emit()">← Anterior</button>
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="opcionSeleccionada === 'OMITIDO' ? confirmarOmitir() : guardar()"
+          [disabled]="loadingGuardar || !puedeGuardar"
+        >
+          @if (!loadingGuardar) {
+            {{
+              opcionSeleccionada === 'OMITIDO'
+                ? 'Finalizar Formulario 🎉'
+                : 'Guardar y finalizar 🎉'
+            }}
+          } @else {
+            <span class="btn-loading">
+              <app-spinner size="small"></app-spinner>
+              Guardando...
+            </span>
+          }
+        </button>
+      </div>
+    }
+  }
+  @if (mostrarOverlayOmitir) {
+    <div class="overlay-omitir">
+      <div class="overlay-omitir-card">
+        <div class="overlay-omitir-icono">🚀</div>
+        <h3 class="overlay-omitir-titulo">¿Comenzar desde cero?</h3>
+        <p class="overlay-omitir-desc">
+          Al continuar, Hathor estará listo para usar pero
+          <strong>sin historial financiero</strong>. Los módulos de benchmarking, KPIs y
+          recomendaciones trabajarán con datos limitados hasta que registres tu información
+          financiera.
+        </p>
+        <p class="overlay-omitir-desc">
+          Podrás agregar tus registros en cualquier momento desde el módulo de
+          <strong>Finanzas</strong>.
+        </p>
+        <div class="overlay-omitir-actions">
+          <button class="btn-overlay-secundario" (click)="cancelarOmitir()">Volver atrás</button>
+          <button class="btn-overlay-primario" (click)="guardar()" [disabled]="loadingGuardar">
+            @if (!loadingGuardar) {
+              Sí, continuar sin historial 🚀
+            } @else {
+              <span class="btn-loading">
+                <app-spinner size="small"></app-spinner>
+                Configurando...
+              </span>
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,591 @@
+/* ═══════════════════════════════════════════════════════════
+   HOME HEADER COMPONENT
+   Breakpoints: móvil 360-480px · tablet 768px · desktop 1024px+
+═══════════════════════════════════════════════════════════ */
+
+/* ── Contenedor principal ── */
+.home-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* ── Gradientes por hora del día ── */
+.header-manana {
+  background: linear-gradient(145deg, #021a09 0%, #064e1e 35%, #15803d 70%, #1a9a4a 100%);
+}
+.header-tarde {
+  background: linear-gradient(145deg, #021a09 0%, #064e1e 30%, #15803d 60%, #92400e 100%);
+}
+.header-noche {
+  background: linear-gradient(145deg, #010409 0%, #0a1628 40%, #0f172a 70%, #052e0f 100%);
+}
+
+/* Glow decorativo superior-izquierdo */
+.home-header::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -40px;
+  width: 320px;
+  height: 220px;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.07) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── SVG astro (sol / luna) ── */
+.header-astro {
+  position: absolute;
+  right: 24px;
+  top: 16px;
+  width: 80px;
+  height: 80px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.astro-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ══════════════════════════════════════════════════════════
+   PARTE 1 — Saludo + frase
+══════════════════════════════════════════════════════════ */
+
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 36px 16px;
+  /* espacio para que el astro no tape el texto */
+  padding-right: 120px;
+  z-index: 1;
+  position: relative;
+}
+
+.header-top-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header-saludo {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.header-saludo .nombre {
+  background: rgba(74, 222, 128, 0.18);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  color: #4ade80;
+  padding: 2px 12px;
+  border-radius: 999px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+/* Frase motivacional */
+.header-frase-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 3px solid #4ade80;
+  border-radius: 0 10px 10px 0;
+  padding: 10px 16px;
+  max-width: 500px;
+}
+
+.header-frase {
+  font-size: 15px;
+  font-style: italic;
+  color: #f0fdf4;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.header-frase-autor {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  color: #86efac;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Divisor ── */
+.header-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0 36px;
+  z-index: 1;
+  position: relative;
+}
+
+/* ══════════════════════════════════════════════════════════
+   PARTE 2 — Panel + hato + stats ranking
+══════════════════════════════════════════════════════════ */
+
+.header-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 36px 24px;
+  gap: 24px;
+  flex-wrap: wrap;
+  z-index: 1;
+  position: relative;
+}
+
+.header-bottom-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header-titulo {
+  font-size: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.brand {
+  color: #19e64d;
+  position: relative;
+}
+
+.header-sub {
+  font-size: 14px;
+  color: #bbf7d0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.header-sub.warn {
+  color: #fde68a;
+}
+
+.hato-chip {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sep {
+  color: #86efac;
+}
+
+/* ── Stats ranking ── */
+.header-stats {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  backdrop-filter: blur(8px);
+  flex-shrink: 0;
+}
+
+.header-stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+}
+
+.header-stat-divider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 8px 0;
+}
+
+.header-stat-icono {
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.header-stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #86efac;
+  white-space: nowrap;
+}
+
+.header-stat-valor {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.header-stat-de {
+  font-size: 11px;
+  color: #bbf7d0;
+  font-weight: 400;
+}
+
+/* ══════════════════════════════════════════════════════════
+   ANIMACIONES — Sol mañana
+══════════════════════════════════════════════════════════ */
+
+.rayos-sol {
+  transform-origin: 60px 60px;
+  animation: rotar-sol 12s linear infinite;
+}
+
+@keyframes rotar-sol {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sol-cuerpo {
+  animation: pulsar-sol 3s ease-in-out infinite;
+}
+
+@keyframes pulsar-sol {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* ── Sol tarde ── */
+.rayos-tarde {
+  animation: rotar-sol 8s linear infinite;
+}
+
+.sol-halo {
+  animation: pulsar-halo 2s ease-in-out infinite;
+}
+
+@keyframes pulsar-halo {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ── Luna / estrellas ── */
+.luna-cuerpo {
+  animation: pulsar-luna 4s ease-in-out infinite;
+}
+
+@keyframes pulsar-luna {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.estrella {
+  animation: parpadear 3s ease-in-out infinite;
+}
+.estrella-1 {
+  animation-duration: 2.5s;
+  animation-delay: 0s;
+}
+.estrella-2 {
+  animation-duration: 3.2s;
+  animation-delay: 0.5s;
+}
+.estrella-3 {
+  animation-duration: 2.8s;
+  animation-delay: 1s;
+}
+.estrella-4 {
+  animation-duration: 3.5s;
+  animation-delay: 1.5s;
+}
+.estrella-5 {
+  animation-duration: 2.2s;
+  animation-delay: 0.8s;
+}
+.estrella-6 {
+  animation-duration: 3.8s;
+  animation-delay: 1.2s;
+}
+.estrella-7 {
+  animation-duration: 2.6s;
+  animation-delay: 0.3s;
+}
+
+@keyframes parpadear {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 900px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  /* Ocultar stats en tablet pequeña y no saturar el header */
+  .header-stats {
+    display: none;
+  }
+
+  /* Astro un poco más pequeño y semi-transparente */
+  .header-astro {
+    width: 70px;
+    height: 70px;
+    right: 20px;
+    opacity: 0.6;
+  }
+
+  .header-top {
+    padding-right: 100px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET (768px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .home-header {
+    border-radius: 16px;
+  }
+
+  .header-top {
+    padding: 18px 24px 14px;
+    padding-right: 90px;
+  }
+
+  .header-divider {
+    margin: 0 24px;
+  }
+
+  .header-bottom {
+    padding: 14px 24px 20px;
+    gap: 16px;
+  }
+
+  .header-titulo {
+    font-size: 24px;
+  }
+
+  .header-saludo {
+    font-size: 16px;
+  }
+
+  .header-saludo .nombre {
+    font-size: 15px;
+  }
+
+  .header-frase-wrap {
+    max-width: 100%;
+    padding: 8px 14px;
+  }
+
+  .header-frase {
+    font-size: 13px;
+  }
+
+  /* Stats en tablet: compactar en vez de ocultar */
+  .header-stats {
+    display: flex;
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .header-stat {
+    flex: 1;
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .header-stat-icono {
+    font-size: 20px;
+  }
+
+  .header-stat-valor {
+    font-size: 17px;
+  }
+
+  .header-stat-label {
+    font-size: 10px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL GRANDE (480px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .home-header {
+    border-radius: 14px;
+  }
+
+  /* Astro: ocultar en móvil para no competir con el texto */
+  .header-astro {
+    display: none;
+  }
+
+  .header-top {
+    padding: 16px 18px 12px;
+    /* Sin astro, no hace falta padding-right extra */
+    padding-right: 18px;
+  }
+
+  .header-divider {
+    margin: 0 18px;
+  }
+
+  .header-bottom {
+    padding: 12px 18px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-titulo {
+    font-size: 22px;
+  }
+
+  .header-saludo {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .header-saludo .nombre {
+    font-size: 14px;
+    padding: 2px 10px;
+  }
+
+  .header-frase {
+    font-size: 12px;
+  }
+
+  .header-frase-autor {
+    font-size: 11px;
+  }
+
+  .header-sub {
+    font-size: 13px;
+  }
+
+  .hato-chip {
+    font-size: 11px;
+  }
+
+  /* Stats en móvil: mostrar en fila compacta */
+  .header-stats {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .header-stat {
+    flex: 1;
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .header-stat-icono {
+    font-size: 18px;
+  }
+
+  .header-stat-valor {
+    font-size: 15px;
+  }
+
+  .header-stat-label {
+    font-size: 9px;
+    letter-spacing: 0.04em;
+  }
+
+  .header-stat-de {
+    font-size: 9px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL PEQUEÑO (360px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 360px) {
+  .header-top {
+    padding: 14px 14px 10px;
+    padding-right: 14px;
+  }
+
+  .header-divider {
+    margin: 0 14px;
+  }
+
+  .header-bottom {
+    padding: 10px 14px 16px;
+  }
+
+  .header-titulo {
+    font-size: 20px;
+  }
+
+  .header-saludo {
+    font-size: 14px;
+  }
+
+  .header-saludo .nombre {
+    font-size: 13px;
+  }
+
+  /* Stats: al ser muy pequeño, ocultar el segundo stat
+     para que no se aprieten los textos */
+  .header-stat:last-child,
+  .header-stat-divider {
+    display: none;
+  }
+
+  .header-stat {
+    width: 100%;
+  }
+}

@@ -1,0 +1,1811 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  NavbarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/navbar/navbar.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-navbar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/router/RouterModule" target="_blank" >RouterModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./navbar.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./navbar.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#dropdownAbierto" >dropdownAbierto</a>
+                            </li>
+                            <li>
+                                <a href="#esAdmin" >esAdmin</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#hatos" >hatos</a>
+                            </li>
+                            <li>
+                                <a href="#loadingHatos" >loadingHatos</a>
+                            </li>
+                            <li>
+                                <a href="#logoutLoading" >logoutLoading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#router" >router</a>
+                            </li>
+                            <li>
+                                <a href="#seccionActiva" >seccionActiva</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cargarHatos" >cargarHatos</a>
+                            </li>
+                            <li>
+                                <a href="#irAHato" >irAHato</a>
+                            </li>
+                            <li>
+                                <a href="#irASubitem" >irASubitem</a>
+                            </li>
+                            <li>
+                                <a href="#irHome" >irHome</a>
+                            </li>
+                            <li>
+                                <a href="#irMiCuenta" >irMiCuenta</a>
+                            </li>
+                            <li>
+                                <a href="#isSubitemActivo" >isSubitemActivo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#logout" >logout</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#nuevoHato" >nuevoHato</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#onDocumentClick" >onDocumentClick</a>
+                            </li>
+                            <li>
+                                <a href="#toggleDropdown" >toggleDropdown</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#document:click" >document:click</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#itemsVisibles" >itemsVisibles</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, hatoService: <a href="../injectables/HatoService.html" target="_self">HatoService</a>, hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, navbarState: <a href="../injectables/NavbarStateService.html" target="_self">NavbarStateService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoService.html" target="_self" >HatoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navbarState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavbarStateService.html" target="_self" >NavbarStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+    <section data-compodoc="block-methods">
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="document:click"></a>
+                    <span class="name">
+                        <span ><b>document:click</b></span>
+                        <a href="#document:click"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>document:click(event: MouseEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="154"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:154</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarHatos"></a>
+                    <span class="name">
+                        <span ><b>cargarHatos</b></span>
+                        <a href="#cargarHatos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarHatos()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irAHato"></a>
+                    <span class="name">
+                        <span ><b>irAHato</b></span>
+                        <a href="#irAHato"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irAHato(hato: <a href="../interfaces/Hato.html" target="_self">Hato</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:100</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>hato</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Hato.html" target="_self" >Hato</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irASubitem"></a>
+                    <span class="name">
+                        <span ><b>irASubitem</b></span>
+                        <a href="#irASubitem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irASubitem(item: <a href="../interfaces/NavSubItem.html" target="_self">NavSubItem</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NavSubItem.html" target="_self" >NavSubItem</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irHome"></a>
+                    <span class="name">
+                        <span ><b>irHome</b></span>
+                        <a href="#irHome"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irHome()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irMiCuenta"></a>
+                    <span class="name">
+                        <span ><b>irMiCuenta</b></span>
+                        <a href="#irMiCuenta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irMiCuenta()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSubitemActivo"></a>
+                    <span class="name">
+                        <span ><b>isSubitemActivo</b></span>
+                        <a href="#isSubitemActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isSubitemActivo(item: <a href="../interfaces/NavSubItem.html" target="_self">NavSubItem</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:127</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NavSubItem.html" target="_self" >NavSubItem</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>logout</b></span>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>logout()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="139"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:139</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="162"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:162</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nuevoHato"></a>
+                    <span class="name">
+                        <span ><b>nuevoHato</b></span>
+                        <a href="#nuevoHato"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>nuevoHato()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:108</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDocumentClick"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>onDocumentClick</b></span>
+                        <a href="#onDocumentClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onDocumentClick(event: MouseEvent)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;document:click&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="154"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:154</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>MouseEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleDropdown"></a>
+                    <span class="name">
+                        <span ><b>toggleDropdown</b></span>
+                        <a href="#toggleDropdown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleDropdown()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dropdownAbierto"></a>
+                    <span class="name">
+                        <span ><b>dropdownAbierto</b></span>
+                        <a href="#dropdownAbierto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="esAdmin"></a>
+                    <span class="name">
+                        <span ><b>esAdmin</b></span>
+                        <a href="#esAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatos"></a>
+                    <span class="name">
+                        <span ><b>hatos</b></span>
+                        <a href="#hatos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingHatos"></a>
+                    <span class="name">
+                        <span ><b>loadingHatos</b></span>
+                        <a href="#loadingHatos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logoutLoading"></a>
+                    <span class="name">
+                        <span ><b>logoutLoading</b></span>
+                        <a href="#logoutLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="seccionActiva"></a>
+                    <span class="name">
+                        <span ><b>seccionActiva</b></span>
+                        <a href="#seccionActiva"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NavbarSection.html" target="_self" >NavbarSection | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="itemsVisibles"></a>
+                        <span class="name"><b>itemsVisibles</b><a href="#itemsVisibles"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>itemsVisibles()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/app/shared/navbar/navbar.component.ts:131</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ChangeDetectorRef, OnInit, OnDestroy, HostListener } from &#x27;@angular/core&#x27;;
+import { Router, NavigationEnd, RouterModule } from &#x27;@angular/router&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Subject, takeUntil, filter } from &#x27;rxjs&#x27;;
+import { AuthService } from &#x27;../../core/services/auth/auth.service&#x27;;
+import { HatoService, Hato } from &#x27;../../core/services/hato/hato.service&#x27;;
+import { HatoStateService } from &#x27;../../core/services/ui-state/hato-state.service&#x27;;
+import { UserService } from &#x27;../../core/services/usuario/user.service&#x27;;
+import {
+  NavbarStateService,
+  NavbarSection,
+  NavSubItem,
+} from &#x27;../../core/services/ui-state/navbar-state.service&#x27;;
+import { SpinnerComponent } from &#x27;../spinner/spinner.component&#x27;;
+
+@Component({
+  selector: &#x27;app-navbar&#x27;,
+  standalone: true,
+  imports: [CommonModule, RouterModule, SpinnerComponent],
+  templateUrl: &#x27;./navbar.component.html&#x27;,
+  styleUrl: &#x27;./navbar.component.css&#x27;,
+})
+export class NavbarComponent implements OnInit, OnDestroy {
+  logoutLoading &#x3D; false;
+  dropdownAbierto &#x3D; false;
+  loadingHatos &#x3D; false;
+  hatos: Hato[] &#x3D; [];
+  hatoActivo: Hato | null &#x3D; null;
+  esAdmin &#x3D; false;
+
+  seccionActiva: NavbarSection | null &#x3D; null;
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private authService: AuthService,
+    private hatoService: HatoService,
+    private hatoState: HatoStateService,
+    private navbarState: NavbarStateService,
+    private userService: UserService,
+    public router: Router,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.cargarHatos();
+
+    this.userService
+      .getUsuarioLogueado()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((usuario) &#x3D;&gt; {
+        this.esAdmin &#x3D; usuario?.rol &#x3D;&#x3D;&#x3D; &#x27;ADMIN&#x27;;
+        this.cdr.markForCheck();
+      });
+
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      this.cdr.markForCheck();
+    });
+
+    this.navbarState.seccionActiva$.pipe(takeUntil(this.destroy$)).subscribe((seccion) &#x3D;&gt; {
+      this.seccionActiva &#x3D; seccion;
+      this.cdr.markForCheck();
+    });
+
+    this.router.events
+      .pipe(
+        filter((e) &#x3D;&gt; e instanceof NavigationEnd),
+        takeUntil(this.destroy$),
+      )
+      .subscribe((e: any) &#x3D;&gt; {
+        this.navbarState.setSeccionPorRuta(e.urlAfterRedirects);
+        this.cdr.markForCheck();
+      });
+  }
+
+  cargarHatos(): void {
+    this.loadingHatos &#x3D; true;
+    this.hatoService.getMisHatos().subscribe({
+      next: (hatos) &#x3D;&gt; {
+        this.hatos &#x3D; hatos;
+        this.loadingHatos &#x3D; false;
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.loadingHatos &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  toggleDropdown(): void {
+    if (!this.dropdownAbierto &amp;&amp; this.hatos.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; !this.loadingHatos) {
+      this.cargarHatos();
+    }
+    this.dropdownAbierto &#x3D; !this.dropdownAbierto;
+    this.cdr.markForCheck();
+  }
+
+  irAHato(hato: Hato): void {
+    this.dropdownAbierto &#x3D; false;
+    this.hatoState.setHatoActivo(hato);
+    this.navbarState.setSeccionPorRuta(&#x27;/hato&#x27;);
+    this.router.navigate([&#x27;/hato&#x27;]);
+    this.cdr.markForCheck();
+  }
+
+  nuevoHato(): void {
+    this.dropdownAbierto &#x3D; false;
+    this.router.navigate([&#x27;/hato/nuevo&#x27;]);
+    this.cdr.markForCheck();
+  }
+
+  irHome(): void {
+    this.router.navigate([&#x27;/home&#x27;]);
+  }
+
+  irMiCuenta(): void {
+    this.router.navigate([&#x27;/miCuenta&#x27;]);
+  }
+
+  irASubitem(item: NavSubItem): void {
+    this.navbarState.setSeccionPorRuta(item.route);
+    this.router.navigateByUrl(item.route);
+  }
+
+  isSubitemActivo(item: NavSubItem): boolean {
+    return this.router.url &#x3D;&#x3D;&#x3D; item.route;
+  }
+
+  get itemsVisibles(): NavSubItem[] {
+    if (!this.seccionActiva) return [];
+    if (this.esAdmin) {
+      return this.seccionActiva.items.filter((item) &#x3D;&gt; !item.soloUsuario);
+    }
+    return this.seccionActiva.items;
+  }
+
+  async logout(): Promise&lt;void&gt; {
+    this.logoutLoading &#x3D; true;
+    this.cdr.markForCheck();
+    try {
+      await this.authService.signOut();
+      this.hatoState.limpiarHato();
+      this.navbarState.limpiar();
+      this.router.navigate([&#x27;/login&#x27;], { replaceUrl: true });
+    } finally {
+      this.logoutLoading &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  @HostListener(&#x27;document:click&#x27;, [&#x27;$event&#x27;])
+  onDocumentClick(event: MouseEvent): void {
+    const target &#x3D; event.target as HTMLElement;
+    if (!target.closest(&#x27;.hatos-dropdown-wrapper&#x27;)) {
+      this.dropdownAbierto &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ng-container&gt;
+  &lt;header class&#x3D;&quot;navbar&quot;&gt;
+    &lt;!-- Izquierda --&gt;
+    &lt;div class&#x3D;&quot;navbar-left&quot;&gt;
+      &lt;img src&#x3D;&quot;assets/hathor-logo.png&quot; alt&#x3D;&quot;Hathor&quot; class&#x3D;&quot;navbar-logo&quot; (click)&#x3D;&quot;irHome()&quot; /&gt;
+      &lt;span class&#x3D;&quot;navbar-divider&quot;&gt;&lt;/span&gt;
+      &lt;span class&#x3D;&quot;navbar-title&quot;&gt;Panel de Control&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Centro: dropdown Mis Hatos --&gt;
+    &lt;div class&#x3D;&quot;navbar-center&quot;&gt;
+      &lt;div class&#x3D;&quot;hatos-dropdown-wrapper&quot;&gt;
+        &lt;button class&#x3D;&quot;btn-hatos&quot; (click)&#x3D;&quot;toggleDropdown()&quot; [class.active]&#x3D;&quot;dropdownAbierto&quot;&gt;
+          &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+            &lt;path
+              stroke-linecap&#x3D;&quot;round&quot;
+              stroke-linejoin&#x3D;&quot;round&quot;
+              d&#x3D;&quot;M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6&quot;
+            /&gt;
+          &lt;/svg&gt;
+          Mis Hatos
+          &lt;span class&#x3D;&quot;hatos-count&quot; *ngIf&#x3D;&quot;hatos.length &gt; 0&quot;&gt;{{ hatos.length }}&lt;/span&gt;
+          &lt;svg
+            class&#x3D;&quot;chevron&quot;
+            [class.rotated]&#x3D;&quot;dropdownAbierto&quot;
+            fill&#x3D;&quot;none&quot;
+            stroke&#x3D;&quot;currentColor&quot;
+            stroke-width&#x3D;&quot;2.5&quot;
+            viewBox&#x3D;&quot;0 0 24 24&quot;
+          &gt;
+            &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M19 9l-7 7-7-7&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/button&gt;
+
+        &lt;!-- Dropdown --&gt;
+        &lt;div class&#x3D;&quot;dropdown&quot; [class.visible]&#x3D;&quot;dropdownAbierto&quot;&gt;
+          &lt;!-- Loading --&gt;
+          &lt;div class&#x3D;&quot;dropdown-loading&quot; *ngIf&#x3D;&quot;loadingHatos&quot;&gt;
+            &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+            &lt;span&gt;Cargando hatos...&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Sin hatos --&gt;
+          &lt;div class&#x3D;&quot;dropdown-empty&quot; *ngIf&#x3D;&quot;!loadingHatos &amp;&amp; hatos.length &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+            &lt;span class&#x3D;&quot;empty-icon&quot;&gt;🐄&lt;/span&gt;
+            &lt;p&gt;Aún no tienes hatos registrados&lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Lista de hatos --&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;!loadingHatos &amp;&amp; hatos.length &gt; 0&quot;&gt;
+            &lt;div class&#x3D;&quot;dropdown-header&quot;&gt;Tus unidades productivas&lt;/div&gt;
+            &lt;div class&#x3D;&quot;dropdown-list&quot;&gt;
+              &lt;button class&#x3D;&quot;dropdown-item&quot; *ngFor&#x3D;&quot;let hato of hatos&quot; (click)&#x3D;&quot;irAHato(hato)&quot;&gt;
+                &lt;div class&#x3D;&quot;hato-avatar&quot;&gt;
+                  {{ hato.nombreHato.charAt(0).toUpperCase() }}
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;hato-info&quot;&gt;
+                  &lt;span class&#x3D;&quot;hato-nombre&quot;&gt;{{ hato.nombreHato }}&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;hato-meta&quot;&gt;{{ hato.departamento }} · {{ hato.ciudad }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;hato-progress-wrapper&quot;&gt;
+                  &lt;div
+                    class&#x3D;&quot;hato-progress-bar&quot;
+                    [style.width.%]&#x3D;&quot;hato.porcentajeCompletitud ?? 25&quot;
+                  &gt;&lt;/div&gt;
+                  &lt;span class&#x3D;&quot;hato-pct&quot;&gt;{{ hato.porcentajeCompletitud ?? 25 }}%&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/ng-container&gt;
+
+          &lt;!-- Botón nuevo hato --&gt;
+          &lt;div class&#x3D;&quot;dropdown-footer&quot;&gt;
+            &lt;button class&#x3D;&quot;btn-nuevo-hato&quot; (click)&#x3D;&quot;nuevoHato()&quot;&gt;
+              &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2.5&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+                &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M12 4v16m8-8H4&quot; /&gt;
+              &lt;/svg&gt;
+              Registrar nuevo hato
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Derecha --&gt;
+    &lt;div class&#x3D;&quot;navbar-right&quot;&gt;
+      &lt;button class&#x3D;&quot;btn-account&quot; (click)&#x3D;&quot;irMiCuenta()&quot;&gt;
+        &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+          &lt;path d&#x3D;&quot;M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2&quot; /&gt;
+          &lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;7&quot; r&#x3D;&quot;4&quot; /&gt;
+        &lt;/svg&gt;
+        Mi Cuenta
+      &lt;/button&gt;
+      &lt;button class&#x3D;&quot;btn-logout&quot; (click)&#x3D;&quot;logout()&quot; [disabled]&#x3D;&quot;logoutLoading&quot;&gt;
+        &lt;span *ngIf&#x3D;&quot;!logoutLoading&quot; class&#x3D;&quot;btn-inner&quot;&gt;
+          &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+            &lt;path d&#x3D;&quot;M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4&quot; /&gt;
+            &lt;polyline points&#x3D;&quot;16 17 21 12 16 7&quot; /&gt;
+            &lt;line x1&#x3D;&quot;21&quot; y1&#x3D;&quot;12&quot; x2&#x3D;&quot;9&quot; y2&#x3D;&quot;12&quot; /&gt;
+          &lt;/svg&gt;
+          Salir
+        &lt;/span&gt;
+        &lt;span *ngIf&#x3D;&quot;logoutLoading&quot; class&#x3D;&quot;btn-inner&quot;&gt;
+          &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+          Saliendo...
+        &lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  @if (seccionActiva &amp;&amp; itemsVisibles.length &gt; 0) {
+    &lt;nav class&#x3D;&quot;subnav&quot;&gt;
+      @for (item of itemsVisibles; track item.route) {
+        &lt;button
+          class&#x3D;&quot;subnav-item&quot;
+          [class.activo]&#x3D;&quot;isSubitemActivo(item)&quot;
+          (click)&#x3D;&quot;irASubitem(item)&quot;
+        &gt;
+          {{ item.label }}
+        &lt;/button&gt;
+      }
+    &lt;/nav&gt;
+  }
+&lt;/ng-container&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ng-container>  <header class="navbar">    <!-- Izquierda -->    <div class="navbar-left">      <img src="assets/hathor-logo.png" alt="Hathor" class="navbar-logo" (click)="irHome()" />      <span class="navbar-divider"></span>      <span class="navbar-title">Panel de Control</span>    </div>    <!-- Centro: dropdown Mis Hatos -->    <div class="navbar-center">      <div class="hatos-dropdown-wrapper">        <button class="btn-hatos" (click)="toggleDropdown()" [class.active]="dropdownAbierto">          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">            <path              stroke-linecap="round"              stroke-linejoin="round"              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"            />          </svg>          Mis Hatos          <span class="hatos-count" *ngIf="hatos.length > 0">{{ hatos.length }}</span>          <svg            class="chevron"            [class.rotated]="dropdownAbierto"            fill="none"            stroke="currentColor"            stroke-width="2.5"            viewBox="0 0 24 24"          >            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />          </svg>        </button>        <!-- Dropdown -->        <div class="dropdown" [class.visible]="dropdownAbierto">          <!-- Loading -->          <div class="dropdown-loading" *ngIf="loadingHatos">            <app-spinner size="small"></app-spinner>            <span>Cargando hatos...</span>          </div>          <!-- Sin hatos -->          <div class="dropdown-empty" *ngIf="!loadingHatos && hatos.length === 0">            <span class="empty-icon">🐄</span>            <p>Aún no tienes hatos registrados</p>          </div>          <!-- Lista de hatos -->          <ng-container *ngIf="!loadingHatos && hatos.length > 0">            <div class="dropdown-header">Tus unidades productivas</div>            <div class="dropdown-list">              <button class="dropdown-item" *ngFor="let hato of hatos" (click)="irAHato(hato)">                <div class="hato-avatar">                  {{ hato.nombreHato.charAt(0).toUpperCase() }}                </div>                <div class="hato-info">                  <span class="hato-nombre">{{ hato.nombreHato }}</span>                  <span class="hato-meta">{{ hato.departamento }} · {{ hato.ciudad }}</span>                </div>                <div class="hato-progress-wrapper">                  <div                    class="hato-progress-bar"                    [style.width.%]="hato.porcentajeCompletitud ?? 25"                  ></div>                  <span class="hato-pct">{{ hato.porcentajeCompletitud ?? 25 }}%</span>                </div>              </button>            </div>          </ng-container>          <!-- Botón nuevo hato -->          <div class="dropdown-footer">            <button class="btn-nuevo-hato" (click)="nuevoHato()">              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />              </svg>              Registrar nuevo hato            </button>          </div>        </div>      </div>    </div>    <!-- Derecha -->    <div class="navbar-right">      <button class="btn-account" (click)="irMiCuenta()">        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />          <circle cx="12" cy="7" r="4" />        </svg>        Mi Cuenta      </button>      <button class="btn-logout" (click)="logout()" [disabled]="logoutLoading">        <span *ngIf="!logoutLoading" class="btn-inner">          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />            <polyline points="16 17 21 12 16 7" />            <line x1="21" y1="12" x2="9" y2="12" />          </svg>          Salir        </span>        <span *ngIf="logoutLoading" class="btn-inner">          <app-spinner size="small"></app-spinner>          Saliendo...        </span>      </button>    </div>  </header>  @if (seccionActiva && itemsVisibles.length > 0) {    <nav class="subnav">      @for (item of itemsVisibles; track item.route) {        <button          class="subnav-item"          [class.activo]="isSubitemActivo(item)"          (click)="irASubitem(item)"        >          {{ item.label }}        </button>      }    </nav>  }</ng-container></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'NavbarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NavbarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

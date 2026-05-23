@@ -1,0 +1,141 @@
+<!-- ── Botón flotante ─────────────────────────────────────────────────── -->
+@if (!abierto) {
+  <button
+    class="chat-fab"
+    [class.fab-colapsado]="!fabExpandido"
+    (click)="togglePanel()"
+    title="Hathor AI"
+  >
+    <img src="assets/hathor-ia-logo.png" alt="Hathor AI" class="fab-logo" />
+    @if (fabExpandido) {
+      <span class="fab-label">Hathor AI</span>
+    }
+  </button>
+}
+
+<!-- ── Panel del chat ─────────────────────────────────────────────────── -->
+@if (abierto) {
+  <div class="chat-panel" [class.minimizado]="minimizado">
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar-wrap">
+          <img src="assets/hathor-ia-logo.png" alt="Hathor AI" class="avatar-logo" />
+        </div>
+        <div class="chat-header-info">
+          <span class="chat-title">Hathor AI</span>
+          @if (nombreHato) {
+            <span class="chat-subtitle">{{ nombreHato }}</span>
+          } @else {
+            <span class="chat-status">
+              <span class="status-dot"></span>
+              En línea
+            </span>
+          }
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="header-btn" (click)="limpiarConversacion()" title="Nueva conversación">
+          🗑️
+        </button>
+        <button
+          class="header-btn"
+          (click)="minimizado ? restaurar() : minimizar()"
+          [title]="minimizado ? 'Restaurar' : 'Minimizar'"
+        >
+          {{ minimizado ? '▲' : '▼' }}
+        </button>
+        <button class="header-btn" (click)="cerrar()" title="Cerrar">✕</button>
+      </div>
+    </div>
+
+    @if (!minimizado) {
+      <!-- Advertencia historial largo -->
+      @if (historialLargo) {
+        <div class="historial-aviso">
+          ⚠️ La conversación es larga. Puedes reiniciarla para mejor rendimiento.
+        </div>
+      }
+
+      <!-- Sin hato activo -->
+      @if (!idHatoActivo) {
+        <div class="chat-sin-hato">
+          <span>🐄</span>
+          <p>Selecciona un hato para usar el asistente.</p>
+        </div>
+      }
+
+      @if (idHatoActivo) {
+        @if (cargandoHistorial) {
+          <div class="chat-cargando-historial">
+            <app-spinner size="small" message="Cargando conversación..."></app-spinner>
+          </div>
+        }
+        @if (!cargandoHistorial) {
+          <!-- Mensajes -->
+          <div class="chat-mensajes" #mensajesContainer>
+            @for (msg of mensajes; track msg.timestamp) {
+              <div
+                class="mensaje"
+                [class.mensaje-user]="msg.role === 'user'"
+                [class.mensaje-assistant]="msg.role === 'assistant'"
+              >
+                @if (msg.role === 'assistant') {
+                  <div class="msg-avatar-wrap">
+                    <img src="assets/hathor-ia-logo.png" alt="AI" class="msg-avatar-logo" />
+                  </div>
+                }
+                <div class="msg-burbuja">
+                  @if (msg.role === 'assistant' && msg.contentHtml) {
+                    <div class="msg-content markdown-body" [innerHTML]="msg.contentHtml"></div>
+                  } @else {
+                    <p class="msg-content">{{ msg.content }}</p>
+                  }
+                  <span class="msg-hora">{{ formatearHora(msg.timestamp) }}</span>
+                </div>
+              </div>
+            }
+
+            <!-- Indicador de escritura -->
+            @if (enviando) {
+              <div class="mensaje mensaje-assistant">
+                <div class="msg-avatar-wrap">
+                  <img src="assets/hathor-ia-logo.png" alt="AI" class="msg-avatar-logo" />
+                </div>
+                <div class="msg-burbuja typing"><span></span><span></span><span></span></div>
+              </div>
+            }
+
+            <!-- Error -->
+            @if (error) {
+              <div class="chat-error">{{ error }}</div>
+            }
+          </div>
+        }
+
+        <!-- Input -->
+        <div class="chat-input-area">
+          <textarea
+            class="chat-input"
+            [(ngModel)]="inputMensaje"
+            (keydown)="onKeydown($event)"
+            placeholder="Escribe tu pregunta..."
+            rows="2"
+            [disabled]="enviando"
+          ></textarea>
+          <button
+            class="chat-send"
+            (click)="enviar()"
+            [disabled]="!inputMensaje.trim() || enviando"
+          >
+            @if (enviando) {
+              <app-spinner size="small"></app-spinner>
+            } @else {
+              ➤
+            }
+          </button>
+        </div>
+      }
+    }
+  </div>
+}

@@ -1,0 +1,492 @@
+<div class="excel-wrapper">
+  @if (loadingCategorias) {
+    <div class="loading-categorias">
+      <app-spinner size="small" message="Cargando categorías..."></app-spinner>
+    </div>
+  }
+
+  @if (!loadingCategorias) {
+    <!-- ===== PASO 1: SELECCIÓN DE CATEGORÍAS ===== -->
+    @if (pasoActual === 1) {
+      <div class="excel-paso">
+        <div class="excel-paso-numero">1</div>
+        <div class="excel-paso-contenido">
+          <h4>Selecciona las categorías a incluir</h4>
+          <p>Elige qué ingresos y gastos quieres registrar en tu plantilla.</p>
+
+          <!-- INGRESOS -->
+          <div class="categoria-seccion">
+            <div class="categoria-seccion-header ingreso" (click)="toggleSeccionIngresos()">
+              <span class="categoria-seccion-icono">💰</span>
+              <span class="categoria-seccion-titulo">Ingresos</span>
+              <span class="categoria-seccion-count">
+                {{ ingresosSeleccionados.length }}/{{ categoriasIngresos.length }}
+              </span>
+              <button
+                class="btn-seleccionar-todos"
+                (click)="$event.stopPropagation(); seleccionarTodasIngresos()"
+              >
+                {{ todosIngresosSeleccionados() ? 'Deseleccionar todos' : 'Seleccionar todos' }}
+              </button>
+              <svg
+                class="chevron-seccion"
+                [class.rotado]="seccionIngresosAbierta"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="categoria-lista" [class.cerrada]="!seccionIngresosAbierta">
+              @for (cat of categoriasIngresos; track cat.idCategoria) {
+                <label class="categoria-item" [class.seleccionada]="cat.seleccionada">
+                  <input
+                    type="checkbox"
+                    [checked]="cat.seleccionada"
+                    (change)="toggleCategoria(cat)"
+                    class="categoria-checkbox"
+                  />
+                  <span class="categoria-nombre">{{ cat.nombre }}</span>
+                  <span class="categoria-tipo-badge ingreso-badge">INGRESO</span>
+                </label>
+              }
+            </div>
+            <!-- Agregar ingreso personalizado -->
+            <div class="agregar-personalizado">
+              @if (otrosIngresos.length > 0) {
+                @for (otro of otrosIngresos; track otro.tempId) {
+                  <div class="seleccion-item ingreso-item">
+                    <span class="seleccion-dot ingreso-dot"></span>
+                    <span class="seleccion-item-nombre">{{ otro.nombre }}</span>
+                    <span class="seleccion-personalizado-badge">Personalizado</span>
+                  </div>
+                }
+              }
+              <div class="agregar-input-row">
+                <input
+                  type="text"
+                  class="input-personalizado"
+                  placeholder="Agregar otro ingreso..."
+                  [(ngModel)]="nuevaCatIngreso"
+                  (keydown.enter)="agregarOtroIngreso()"
+                  maxlength="80"
+                />
+
+                <button
+                  class="btn-agregar-personalizado"
+                  [disabled]="!nuevaCatIngreso.trim()"
+                  (click)="agregarOtroIngreso()"
+                >
+                  + Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- EGRESOS -->
+          <div class="categoria-seccion">
+            <div class="categoria-seccion-header egreso" (click)="toggleSeccionGastos()">
+              <span class="categoria-seccion-icono">💸</span>
+              <span class="categoria-seccion-titulo">Egresos</span>
+              <span class="categoria-seccion-count egreso-count">
+                {{ gastosSeleccionados.length }}/{{ categoriasGastos.length }}
+              </span>
+              <button
+                class="btn-seleccionar-todos egreso-btn"
+                (click)="$event.stopPropagation(); seleccionarTodasGastos()"
+              >
+                {{ todosGastosSeleccionados() ? 'Deseleccionar todos' : 'Seleccionar todos' }}
+              </button>
+              <svg
+                class="chevron-seccion"
+                [class.rotado]="seccionGastosAbierta"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="categoria-lista" [class.cerrada]="!seccionGastosAbierta">
+              @for (cat of categoriasGastos; track cat.idCategoria) {
+                <label class="categoria-item" [class.seleccionada]="cat.seleccionada">
+                  <input
+                    type="checkbox"
+                    [checked]="cat.seleccionada"
+                    (change)="toggleCategoria(cat)"
+                    class="categoria-checkbox"
+                  />
+                  <span class="categoria-nombre">{{ cat.nombre }}</span>
+                  <span class="categoria-tipo-badge egreso-badge">GASTO</span>
+                </label>
+              }
+            </div>
+            <!-- Agregar gasto personalizado -->
+            <div class="agregar-personalizado">
+              @if (otrosGastos.length > 0) {
+                @for (otro of otrosGastos; track otro.tempId) {
+                  <div class="seleccion-item egreso-item">
+                    <span class="seleccion-dot egreso-dot"></span>
+                    <span class="seleccion-item-nombre">{{ otro.nombre }}</span>
+                    <span class="seleccion-personalizado-badge egreso-personalizado"
+                      >Personalizado</span
+                    >
+                  </div>
+                }
+              }
+              <div class="agregar-input-row">
+                <input
+                  type="text"
+                  class="input-personalizado"
+                  placeholder="Agregar otro gasto..."
+                  [(ngModel)]="nuevaCatGasto"
+                  (keydown.enter)="agregarOtroGasto()"
+                  maxlength="80"
+                />
+                <button
+                  class="btn-agregar-personalizado egreso-agregar"
+                  [disabled]="!nuevaCatGasto.trim()"
+                  (click)="agregarOtroGasto()"
+                >
+                  + Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resumen selección -->
+          @if (haySeleccion) {
+            <div class="seleccion-resumen">
+              @if (ingresosSeleccionados.length > 0 || otrosIngresos.length > 0) {
+                <div class="seleccion-grupo">
+                  <div class="seleccion-grupo-header">
+                    <span class="seleccion-chip ingreso-chip">
+                      {{ ingresosSeleccionados.length + otrosIngresos.length }}
+                      ingreso{{
+                        ingresosSeleccionados.length + otrosIngresos.length > 1 ? 's' : ''
+                      }}
+                    </span>
+                  </div>
+                  <div class="seleccion-lista">
+                    @for (cat of ingresosSeleccionados; track cat.idCategoria) {
+                      <div class="seleccion-item ingreso-item">
+                        <span class="seleccion-dot ingreso-dot"></span>
+                        <span class="seleccion-item-nombre">{{ cat.nombre }}</span>
+                      </div>
+                    }
+                    @for (otro of otrosIngresos; track otro.tempId) {
+                      <div class="seleccion-item ingreso-item">
+                        <span class="seleccion-dot ingreso-dot"></span>
+                        <span class="seleccion-item-nombre">{{ otro.nombre }}</span>
+                        <span class="seleccion-personalizado-badge">Personalizado</span>
+                      </div>
+                    }
+                  </div>
+                </div>
+              }
+
+              @if (gastosSeleccionados.length > 0 || otrosGastos.length > 0) {
+                <div class="seleccion-grupo">
+                  <div class="seleccion-grupo-header">
+                    <span class="seleccion-chip egreso-chip">
+                      {{ gastosSeleccionados.length + otrosGastos.length }}
+                      egreso{{ gastosSeleccionados.length + otrosGastos.length > 1 ? 's' : '' }}
+                    </span>
+                  </div>
+                  <div class="seleccion-lista seleccion-lista-egreso">
+                    @for (cat of gastosSeleccionados; track cat.idCategoria) {
+                      <div class="seleccion-item egreso-item">
+                        <span class="seleccion-dot egreso-dot"></span>
+                        <span class="seleccion-item-nombre">{{ cat.nombre }}</span>
+                      </div>
+                    }
+                    @for (otro of otrosGastos; track otro.tempId) {
+                      <div class="seleccion-item egreso-item">
+                        <span class="seleccion-dot egreso-dot"></span>
+                        <span class="seleccion-item-nombre">{{ otro.nombre }}</span>
+                        <span class="seleccion-personalizado-badge egreso-personalizado"
+                          >Personalizado</span
+                        >
+                      </div>
+                    }
+                  </div>
+                </div>
+              }
+
+              <span class="seleccion-hint">seleccionados para la plantilla</span>
+            </div>
+          }
+
+          <div class="paso1-actions">
+            @if (mensajeSeleccion) {
+              <p class="seleccion-aviso">⚠️ {{ mensajeSeleccion }}</p>
+            }
+            <button class="btn-continuar" [disabled]="!haySeleccion" (click)="avanzarAPaso2()">
+              Continuar →
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- ===== PASO 2: PLANTILLA + SUBIR ===== -->
+    @if (pasoActual === 2) {
+      <!-- Header paso 2 -->
+      <div class="paso2-header">
+        <button class="btn-volver" (click)="volverAPaso1()">← Cambiar categorías</button>
+        <div class="seleccion-resumen">
+          @if (ingresosSeleccionados.length > 0) {
+            <span class="seleccion-chip ingreso-chip">
+              {{ ingresosSeleccionados.length }} ingreso{{
+                ingresosSeleccionados.length > 1 ? 's' : ''
+              }}
+            </span>
+          }
+          @if (gastosSeleccionados.length > 0) {
+            <span class="seleccion-chip egreso-chip">
+              {{ gastosSeleccionados.length }} egreso{{ gastosSeleccionados.length > 1 ? 's' : '' }}
+            </span>
+          }
+        </div>
+      </div>
+
+      <!-- Tipo de plantilla -->
+      <div class="excel-paso">
+        <div class="excel-paso-numero">2</div>
+        <div class="excel-paso-contenido">
+          <h4>Elige el período de registro</h4>
+          <p>Selecciona cómo quieres organizar los datos en el tiempo.</p>
+
+          <div class="plantilla-opciones-inline">
+            <!-- Detallado -->
+            <div
+              class="plantilla-opcion-inline"
+              [class.seleccionada]="tipoPlantilla === 'DETALLADO'"
+              (click)="seleccionarTipoPlantilla('DETALLADO')"
+            >
+              <div class="plantilla-opcion-header">
+                <span class="plantilla-opcion-icono">📝</span>
+                <div>
+                  <span class="plantilla-opcion-titulo">Registro detallado</span>
+                  <span class="plantilla-opcion-badge">Fila por fila</span>
+                </div>
+                <div class="plantilla-radio" [class.activo]="tipoPlantilla === 'DETALLADO'"></div>
+              </div>
+              <p class="plantilla-opcion-desc">
+                Registra cada movimiento individualmente con fecha exacta.
+              </p>
+              <div class="plantilla-columnas-mini">
+                <code>fecha</code><code>tipo</code><code>categoria</code> <code>titulo</code
+                ><code>descripcion</code><code>monto_asociado</code>
+              </div>
+              @if (tipoPlantilla === 'DETALLADO') {
+                <div class="plantilla-config" (click)="$event.stopPropagation()">
+                  <label class="config-label">¿Desde qué fecha quieres empezar?</label>
+                  <input type="date" [(ngModel)]="fechaInicioDetallado" class="config-input" />
+                  <span class="config-hint">
+                    Esta fecha aparecerá en la primera fila del Excel.
+                  </span>
+                </div>
+              }
+            </div>
+
+            <!-- Mensual -->
+            <div
+              class="plantilla-opcion-inline"
+              [class.seleccionada]="tipoPlantilla === 'MENSUAL'"
+              (click)="seleccionarTipoPlantilla('MENSUAL')"
+            >
+              <div class="plantilla-opcion-header">
+                <span class="plantilla-opcion-icono">📅</span>
+                <div>
+                  <span class="plantilla-opcion-titulo">Registro mensual</span>
+                  <span class="plantilla-opcion-badge">Por mes</span>
+                </div>
+                <div class="plantilla-radio" [class.activo]="tipoPlantilla === 'MENSUAL'"></div>
+              </div>
+              <p class="plantilla-opcion-desc">
+                Una fila por mes. Ideal si llevas resúmenes mensuales.
+              </p>
+              @if (tipoPlantilla === 'MENSUAL') {
+                <div class="plantilla-config" (click)="$event.stopPropagation()">
+                  <label class="config-label">¿Desde qué mes quieres empezar?</label>
+                  <input type="month" [(ngModel)]="mesInicio" class="config-input" />
+                  <span class="config-hint"
+                    >Se generarán filas desde ese mes hasta el mes actual</span
+                  >
+                </div>
+              }
+            </div>
+
+            @if (mostrarAnual) {
+              <!-- Anual -->
+              <div
+                class="plantilla-opcion-inline"
+                [class.seleccionada]="tipoPlantilla === 'ANUAL'"
+                (click)="seleccionarTipoPlantilla('ANUAL')"
+              >
+                <div class="plantilla-opcion-header">
+                  <span class="plantilla-opcion-icono">📆</span>
+                  <div>
+                    <span class="plantilla-opcion-titulo">Registro anual</span>
+                    <span class="plantilla-opcion-badge">Por año</span>
+                  </div>
+                  <div class="plantilla-radio" [class.activo]="tipoPlantilla === 'ANUAL'"></div>
+                </div>
+                <p class="plantilla-opcion-desc">
+                  Una fila por año. Ideal para registrar el histórico de varios años.
+                </p>
+                @if (tipoPlantilla === 'ANUAL') {
+                  <div class="plantilla-config" (click)="$event.stopPropagation()">
+                    <label class="config-label">¿Desde qué año quieres empezar?</label>
+                    <input
+                      type="number"
+                      [(ngModel)]="anioInicio"
+                      class="config-input"
+                      placeholder="Ej: 2020"
+                      [min]="2000"
+                      [max]="anioActual"
+                    />
+                    <span class="config-hint"
+                      >Se generarán filas desde ese año hasta {{ anioActual }}</span
+                    >
+                  </div>
+                }
+              </div>
+            }
+          </div>
+
+          @if (puedeDescargarPlantilla) {
+            <button class="btn-descargar" (click)="marcarPlantillaDescargada()">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+              Descargar plantilla
+              {{
+                tipoPlantilla === 'DETALLADO'
+                  ? 'detallada'
+                  : tipoPlantilla === 'MENSUAL'
+                    ? 'mensual'
+                    : 'anual'
+              }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Paso 3: Subir archivo -->
+      @if (plantillaDescargada) {
+        <div class="excel-paso">
+          <div class="excel-paso-numero">3</div>
+          <div class="excel-paso-contenido">
+            <h4>Sube tu archivo completado</h4>
+            <div
+              class="dropzone"
+              [class.drag-over]="isDragOver"
+              [class.tiene-archivo]="archivoExcel"
+              (dragover)="onDragOver($event)"
+              (dragleave)="onDragLeave()"
+              (drop)="onDrop($event)"
+              (click)="fileInput.click()"
+            >
+              <input
+                #fileInput
+                type="file"
+                accept=".xlsx,.xls"
+                style="display: none"
+                (change)="onFileSelected($event)"
+              />
+              @if (!archivoExcel) {
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <p class="dropzone-titulo">Arrastra tu archivo aquí</p>
+                <p class="dropzone-sub">o haz clic para seleccionarlo</p>
+                <span class="dropzone-formato">Formatos: .xlsx, .xls</span>
+              } @else {
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0"
+                  />
+                </svg>
+                <p class="dropzone-titulo">{{ nombreArchivo }}</p>
+                <p class="dropzone-sub">Haz clic para cambiar el archivo</p>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Paso 4: Procesar -->
+      @if (archivoExcel && !cargaCompletada && plantillaDescargada) {
+        <div class="excel-paso">
+          <div class="excel-paso-numero">4</div>
+          <div class="excel-paso-contenido">
+            <h4>Procesar archivo</h4>
+            <p>Revisaremos cada fila y te mostraremos el resultado antes de confirmar.</p>
+            <button class="btn-procesar" (click)="procesarExcel()" [disabled]="loadingCarga">
+              @if (!loadingCarga) {
+                Procesar archivo →
+              } @else {
+                <span class="btn-loading">
+                  <app-spinner size="small"></app-spinner>
+                  Procesando...
+                </span>
+              }
+            </button>
+          </div>
+        </div>
+      }
+
+      <!-- Resultado carga -->
+      @if (cargaCompletada) {
+        <div class="resultado-carga">
+          <div class="resultado-resumen">
+            <div class="resultado-item exitoso">
+              <span class="resultado-numero">{{ registrosExitosos }}</span>
+              <span class="resultado-label">Períodos procesados exitosamente</span>
+            </div>
+            @if (registrosConError > 0) {
+              <div class="resultado-item error">
+                <span class="resultado-numero">{{ registrosConError }}</span>
+                <span class="resultado-label">Con errores</span>
+              </div>
+            }
+          </div>
+          @if (registrosConError > 0) {
+            <div class="errores-lista">
+              <p class="errores-titulo">Filas con errores:</p>
+              @for (r of resultadosCarga; track r.fila) {
+                @if (r.estado === 'ERROR') {
+                  <div class="error-fila fila-error">
+                    <span class="fila-num">Fila {{ r.fila }}</span>
+                    <span class="fila-msg">{{ r.mensaje }}</span>
+                  </div>
+                }
+              }
+            </div>
+          }
+        </div>
+      }
+
+      @if (error) {
+        <div class="error-box">
+          <p>{{ error }}</p>
+        </div>
+      }
+    }
+  }
+</div>

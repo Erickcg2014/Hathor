@@ -1,0 +1,427 @@
+/* ── Layout principal ─────────────────────────────────────────────────── */
+.recomendaciones-page {
+  padding: 28px 32px 48px;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loading-wrapper {
+  min-height: 50vh;
+  display: grid;
+  place-items: center;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────── */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #052e0f 0%, #15803d 100%);
+  border-radius: 16px;
+  padding: 28px 36px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(25, 230, 77, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.page-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #86efac;
+  margin: 0;
+}
+.page-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.brand {
+  color: #19e64d;
+}
+.page-subtitle {
+  font-size: 13px;
+  color: #bbf7d0;
+  margin: 0;
+}
+.page-subtitle.warn {
+  color: #fde68a;
+}
+
+.header-right {
+  flex-shrink: 0;
+}
+.header-stat {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 14px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  backdrop-filter: blur(4px);
+  min-width: 100px;
+}
+.header-stat-num {
+  font-size: 32px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+}
+.header-stat-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Empty state ──────────────────────────────────────────────────────── */
+.empty-state {
+  border: 1.5px dashed #d1fae5;
+  border-radius: 16px;
+  background: #f9fafb;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #6b7280;
+  text-align: center;
+  padding: 40px;
+}
+.empty-state span {
+  font-size: 44px;
+}
+.empty-state p {
+  margin: 0;
+  font-size: 15px;
+  color: #374151;
+  font-weight: 600;
+}
+.empty-hint {
+  font-size: 13px !important;
+  color: #9ca3af !important;
+  font-weight: 400 !important;
+}
+
+/* ── Grid de cards ────────────────────────────────────────────────────── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+/* ── Card recomendación ───────────────────────────────────────────────── */
+.reco-card {
+  background: #ffffff;
+  border: 1px solid #e9f5eb;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+  position: relative;
+}
+.reco-card:hover {
+  box-shadow: 0 4px 20px rgba(5, 46, 15, 0.08);
+  transform: translateY(-1px);
+}
+.reco-no-leida {
+  border-color: #bbf7d0;
+  box-shadow: 0 0 0 1px #bbf7d0;
+}
+
+/* Tira lateral de color por prioridad */
+.reco-strip {
+  width: 5px;
+  flex-shrink: 0;
+}
+.strip-alta {
+  background: linear-gradient(180deg, #ef4444, #dc2626);
+}
+.strip-media {
+  background: linear-gradient(180deg, #f59e0b, #d97706);
+}
+.strip-baja {
+  background: linear-gradient(180deg, #19e64d, #15803d);
+}
+
+.reco-body {
+  flex: 1;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* ── Header de la card ────────────────────────────────────────────────── */
+.reco-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.prioridad-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.prio-alta {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+.prio-media {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+.prio-baja {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.estado-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+}
+.pill-nueva {
+  background: #dcfce7;
+  color: #15803d;
+}
+.pill-leida {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* ── Mensaje ──────────────────────────────────────────────────────────── */
+.reco-mensaje {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #111827;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Indicadores ──────────────────────────────────────────────────────── */
+.reco-indicadores {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.indicador-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: #f8fdf9;
+  border: 1px solid #e2f5e8;
+  border-radius: 8px;
+  padding: 6px 10px;
+  min-width: 80px;
+}
+.ind-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+.ind-valor {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+.ind-codigo {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #15803d;
+}
+.ind-actual {
+  color: #dc2626;
+}
+
+/* ── Prácticas asociadas ──────────────────────────────────────────────── */
+.practicas-wrap {
+  background: #f8fdf9;
+  border: 1px solid #e2f5e8;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.practicas-titulo {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+.practicas-empty {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0;
+  font-style: italic;
+}
+.practicas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.practica-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.practica-nombre {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #111827;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.practica-estado {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+.est-pendiente {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+.est-en_curso {
+  background: #fef9c3;
+  color: #854d0e;
+}
+.est-completada {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* ── Acciones ─────────────────────────────────────────────────────────── */
+.reco-acciones {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+.btn-accion {
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+.btn-leida {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1.5px solid #86efac;
+}
+.btn-leida:hover:not(:disabled) {
+  background: #dcfce7;
+}
+.btn-leida:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn-descartar {
+  background: #fff1f2;
+  color: #be123c;
+  border: 1.5px solid #fecdd3;
+}
+.btn-descartar:hover {
+  background: #ffe4e6;
+}
+
+/* ── Paginación ───────────────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.btn-pag {
+  padding: 8px 18px;
+  background: #ffffff;
+  border: 1.5px solid #e9f5eb;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-pag:hover:not(:disabled) {
+  border-color: #19e64d;
+  color: #15803d;
+  background: #f0fdf4;
+}
+.btn-pag:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.pag-info {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .recomendaciones-page {
+    padding: 16px;
+  }
+  .page-header {
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .reco-indicadores {
+    flex-direction: column;
+  }
+}

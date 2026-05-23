@@ -1,0 +1,2657 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  RankingComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/benchmarking/ranking/ranking.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-ranking</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                                <code><a href="../components/RankingResumenComponent.html" target="_self" >RankingResumenComponent</a></code>
+                                <code><a href="../components/RankingCompuestoComponent.html" target="_self" >RankingCompuestoComponent</a></code>
+                                <code><a href="../components/RankingPorKpiComponent.html" target="_self" >RankingPorKpiComponent</a></code>
+                                <code><a href="../components/GraficaEvolucionPosicionComponent.html" target="_self" >GraficaEvolucionPosicionComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ranking.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./ranking.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cargandoCompuesto" >cargandoCompuesto</a>
+                            </li>
+                            <li>
+                                <a href="#cargandoEvolucion" >cargandoEvolucion</a>
+                            </li>
+                            <li>
+                                <a href="#cargandoPorKpi" >cargandoPorKpi</a>
+                            </li>
+                            <li>
+                                <a href="#cargandoResumen" >cargandoResumen</a>
+                            </li>
+                            <li>
+                                <a href="#codigoKpiEvolucion" >codigoKpiEvolucion</a>
+                            </li>
+                            <li>
+                                <a href="#codigoKpiSeleccionado" >codigoKpiSeleccionado</a>
+                            </li>
+                            <li>
+                                <a href="#compuesto" >compuesto</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#evolucion" >evolucion</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#kpis" >kpis</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#mesesEvolucion" >mesesEvolucion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#opcionesMeses" >opcionesMeses</a>
+                            </li>
+                            <li>
+                                <a href="#porKpi" >porKpi</a>
+                            </li>
+                            <li>
+                                <a href="#regionFiltro" >regionFiltro</a>
+                            </li>
+                            <li>
+                                <a href="#resumen" >resumen</a>
+                            </li>
+                            <li>
+                                <a href="#tabActivo" >tabActivo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tabs" >tabs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#tabsCargados" >tabsCargados</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarCompuesto" >cargarCompuesto</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarEvolucion" >cargarEvolucion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarHatoInicial" >cargarHatoInicial</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarPorKpi" >cargarPorKpi</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarResumen" >cargarResumen</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarTab" >cargarTab</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#inicializar" >inicializar</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onKpiCambiado" >onKpiCambiado</a>
+                            </li>
+                            <li>
+                                <a href="#onKpiEvolucionCambiado" >onKpiEvolucionCambiado</a>
+                            </li>
+                            <li>
+                                <a href="#onMesesCambiado" >onMesesCambiado</a>
+                            </li>
+                            <li>
+                                <a href="#onRegionCambiada" >onRegionCambiada</a>
+                            </li>
+                            <li>
+                                <a href="#setTab" >setTab</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#hayKpis" >hayKpis</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, hatoService: <a href="../injectables/HatoService.html" target="_self">HatoService</a>, kpiService: <a href="../injectables/KpiService.html" target="_self">KpiService</a>, rankingService: <a href="../injectables/RankingService.html" target="_self">RankingService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:81</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoService.html" target="_self" >HatoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>kpiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/KpiService.html" target="_self" >KpiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>rankingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RankingService.html" target="_self" >RankingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarCompuesto"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarCompuesto</b></span>
+                        <a href="#cargarCompuesto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarCompuesto(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarEvolucion"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarEvolucion</b></span>
+                        <a href="#cargarEvolucion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarEvolucion(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="239"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:239</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarHatoInicial"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarHatoInicial</b></span>
+                        <a href="#cargarHatoInicial"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarHatoInicial()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:105</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarPorKpi"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarPorKpi</b></span>
+                        <a href="#cargarPorKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarPorKpi(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="217"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:217</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarResumen"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarResumen</b></span>
+                        <a href="#cargarResumen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarResumen(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="179"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:179</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarTab"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarTab</b></span>
+                        <a href="#cargarTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarTab(tab: <a href="../miscellaneous/typealiases.html#TabActivo" target="_self">TabActivo</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tab</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#TabActivo" target="_self" >TabActivo</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inicializar"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>inicializar</b></span>
+                        <a href="#inicializar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>inicializar(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="305"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:305</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onKpiCambiado"></a>
+                    <span class="name">
+                        <span ><b>onKpiCambiado</b></span>
+                        <a href="#onKpiCambiado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onKpiCambiado(codigo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="263"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:263</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>codigo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onKpiEvolucionCambiado"></a>
+                    <span class="name">
+                        <span ><b>onKpiEvolucionCambiado</b></span>
+                        <a href="#onKpiEvolucionCambiado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onKpiEvolucionCambiado(codigo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="271"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:271</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>codigo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onMesesCambiado"></a>
+                    <span class="name">
+                        <span ><b>onMesesCambiado</b></span>
+                        <a href="#onMesesCambiado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onMesesCambiado(meses: "3" | "6" | "12")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="279"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:279</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>meses</td>
+                                            <td>
+                                                        <code>&quot;3&quot; | &quot;6&quot; | &quot;12&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onRegionCambiada"></a>
+                    <span class="name">
+                        <span ><b>onRegionCambiada</b></span>
+                        <a href="#onRegionCambiada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onRegionCambiada(region: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="287"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:287</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>region</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setTab"></a>
+                    <span class="name">
+                        <span ><b>setTab</b></span>
+                        <a href="#setTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setTab(tab: <a href="../miscellaneous/typealiases.html#TabActivo" target="_self">TabActivo</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="149"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:149</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tab</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#TabActivo" target="_self" >TabActivo</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargandoCompuesto"></a>
+                    <span class="name">
+                        <span ><b>cargandoCompuesto</b></span>
+                        <a href="#cargandoCompuesto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargandoEvolucion"></a>
+                    <span class="name">
+                        <span ><b>cargandoEvolucion</b></span>
+                        <a href="#cargandoEvolucion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargandoPorKpi"></a>
+                    <span class="name">
+                        <span ><b>cargandoPorKpi</b></span>
+                        <a href="#cargandoPorKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargandoResumen"></a>
+                    <span class="name">
+                        <span ><b>cargandoResumen</b></span>
+                        <a href="#cargandoResumen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="codigoKpiEvolucion"></a>
+                    <span class="name">
+                        <span ><b>codigoKpiEvolucion</b></span>
+                        <a href="#codigoKpiEvolucion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="codigoKpiSeleccionado"></a>
+                    <span class="name">
+                        <span ><b>codigoKpiSeleccionado</b></span>
+                        <a href="#codigoKpiSeleccionado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="compuesto"></a>
+                    <span class="name">
+                        <span ><b>compuesto</b></span>
+                        <a href="#compuesto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RankingCompuestoDTO.html" target="_self" >RankingCompuestoDTO | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="evolucion"></a>
+                    <span class="name">
+                        <span ><b>evolucion</b></span>
+                        <a href="#evolucion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/EvolucionPosicionDTO.html" target="_self" >EvolucionPosicionDTO | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="kpis"></a>
+                    <span class="name">
+                        <span ><b>kpis</b></span>
+                        <a href="#kpis"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/KpiResultado.html" target="_self" >KpiResultado[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mesesEvolucion"></a>
+                    <span class="name">
+                        <span ><b>mesesEvolucion</b></span>
+                        <a href="#mesesEvolucion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;3&quot; | &quot;6&quot; | &quot;12&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>6</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="opcionesMeses"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>opcionesMeses</b></span>
+                        <a href="#opcionesMeses"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>(&quot;3&quot; | &quot;6&quot; | &quot;12&quot;)[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[3, 6, 12]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="porKpi"></a>
+                    <span class="name">
+                        <span ><b>porKpi</b></span>
+                        <a href="#porKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RankingPorKpiDTO.html" target="_self" >RankingPorKpiDTO | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="regionFiltro"></a>
+                    <span class="name">
+                        <span ><b>regionFiltro</b></span>
+                        <a href="#regionFiltro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resumen"></a>
+                    <span class="name">
+                        <span ><b>resumen</b></span>
+                        <a href="#resumen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RankingResumenDTO.html" target="_self" >RankingResumenDTO | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabActivo"></a>
+                    <span class="name">
+                        <span ><b>tabActivo</b></span>
+                        <a href="#tabActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#TabActivo" target="_self" >TabActivo</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;resumen&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabs"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tabs</b></span>
+                        <a href="#tabs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { id: &#x27;resumen&#x27;, label: &#x27;Resumen&#x27;, icono: &#x27;🏅&#x27; },
+    { id: &#x27;compuesto&#x27;, label: &#x27;Posición General&#x27;, icono: &#x27;🏆&#x27; },
+    { id: &#x27;por-kpi&#x27;, label: &#x27;Por KPI&#x27;, icono: &#x27;📊&#x27; },
+    { id: &#x27;evolucion&#x27;, label: &#x27;Evolución&#x27;, icono: &#x27;📈&#x27; },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabsCargados"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>tabsCargados</b></span>
+                        <a href="#tabsCargados"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Set&lt;TabActivo&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hayKpis"></a>
+                        <span class="name"><b>hayKpis</b><a href="#hayKpis"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>hayKpis()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="301" class="link-to-prism">src/app/features/Usuario/benchmarking/ranking/ranking.component.ts:301</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import { HatoService, Hato } from &#x27;../../../../core/services/hato/hato.service&#x27;;
+import { KpiService, KpiResultado } from &#x27;../../../../core/services/kpi/kpi.service&#x27;;
+import {
+  RankingService,
+  RankingResumenDTO,
+  RankingCompuestoDTO,
+  RankingPorKpiDTO,
+  EvolucionPosicionDTO,
+} from &#x27;../../../../core/services/benchmarking/ranking.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+import { RankingResumenComponent } from &#x27;./ranking-resumen/ranking-resumen.component&#x27;;
+import { RankingCompuestoComponent } from &#x27;./ranking-compuesto/ranking-compuesto.component&#x27;;
+import { RankingPorKpiComponent } from &#x27;./ranking-por-kpi/ranking-por-kpi.component&#x27;;
+import { GraficaEvolucionPosicionComponent } from &#x27;./grafica-evolucion-posicion/grafica-evolucion-posicion.component&#x27;;
+
+type TabActivo &#x3D; &#x27;resumen&#x27; | &#x27;compuesto&#x27; | &#x27;por-kpi&#x27; | &#x27;evolucion&#x27;;
+
+@Component({
+  selector: &#x27;app-ranking&#x27;,
+  standalone: true,
+  imports: [
+    CommonModule,
+    SpinnerComponent,
+    RankingResumenComponent,
+    RankingCompuestoComponent,
+    RankingPorKpiComponent,
+    GraficaEvolucionPosicionComponent,
+  ],
+  templateUrl: &#x27;./ranking.component.html&#x27;,
+  styleUrl: &#x27;./ranking.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class RankingComponent implements OnInit, OnDestroy {
+  // ── Estado general ────────────────────────────────────────────────────────
+  loading &#x3D; true;
+  error &#x3D; &#x27;&#x27;;
+  hatoActivo: Hato | null &#x3D; null;
+
+  tabActivo: TabActivo &#x3D; &#x27;resumen&#x27;;
+
+  readonly tabs: { id: TabActivo; label: string; icono: string }[] &#x3D; [
+    { id: &#x27;resumen&#x27;, label: &#x27;Resumen&#x27;, icono: &#x27;🏅&#x27; },
+    { id: &#x27;compuesto&#x27;, label: &#x27;Posición General&#x27;, icono: &#x27;🏆&#x27; },
+    { id: &#x27;por-kpi&#x27;, label: &#x27;Por KPI&#x27;, icono: &#x27;📊&#x27; },
+    { id: &#x27;evolucion&#x27;, label: &#x27;Evolución&#x27;, icono: &#x27;📈&#x27; },
+  ];
+
+  // ── Datos por tab ─────────────────────────────────────────────────────────
+  resumen: RankingResumenDTO | null &#x3D; null;
+  compuesto: RankingCompuestoDTO | null &#x3D; null;
+  porKpi: RankingPorKpiDTO | null &#x3D; null;
+  evolucion: EvolucionPosicionDTO | null &#x3D; null;
+  kpis: KpiResultado[] &#x3D; [];
+  readonly opcionesMeses: (3 | 6 | 12)[] &#x3D; [3, 6, 12];
+
+  // ── Estado de carga por tab ───────────────────────────────────────────────
+  cargandoResumen &#x3D; false;
+  cargandoCompuesto &#x3D; false;
+  cargandoPorKpi &#x3D; false;
+  cargandoEvolucion &#x3D; false;
+
+  // ── Filtros ───────────────────────────────────────────────────────────────
+  regionFiltro: string | null &#x3D; null;
+  codigoKpiSeleccionado &#x3D; &#x27;&#x27;;
+  codigoKpiEvolucion &#x3D; &#x27;&#x27;;
+  mesesEvolucion: 3 | 6 | 12 &#x3D; 6;
+
+  private tabsCargados &#x3D; new Set&lt;TabActivo&gt;();
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private hatoState: HatoStateService,
+    private hatoService: HatoService,
+    private kpiService: KpiService,
+    private rankingService: RankingService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato?.idHato) {
+        this.inicializar(hato.idHato);
+      } else {
+        this.loading &#x3D; false;
+        this.cdr.markForCheck();
+      }
+    });
+
+    this.cargarHatoInicial();
+  }
+
+  private cargarHatoInicial(): void {
+    if (this.hatoState.getHatoActivo()) return;
+    this.hatoService.getMisHatos().subscribe({
+      next: (hatos) &#x3D;&gt; {
+        if (hatos.length &gt; 0) this.hatoState.setHatoActivo(hatos[0]);
+        else {
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        }
+      },
+      error: () &#x3D;&gt; {
+        this.loading &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private inicializar(idHato: string): void {
+    this.loading &#x3D; true;
+    this.tabsCargados.clear();
+    this.error &#x3D; &#x27;&#x27;;
+
+    this.kpiService.getKpis(idHato).subscribe({
+      next: (kpis) &#x3D;&gt; {
+        this.kpis &#x3D; kpis;
+        const primero &#x3D; kpis.find((k) &#x3D;&gt; k.valor !&#x3D;&#x3D; null);
+        if (primero) {
+          this.codigoKpiSeleccionado &#x3D; primero.codigo;
+          this.codigoKpiEvolucion &#x3D; primero.codigo;
+        }
+        this.loading &#x3D; false;
+        this.cdr.markForCheck();
+        this.cargarTab(&#x27;resumen&#x27;);
+      },
+      error: () &#x3D;&gt; {
+        this.loading &#x3D; false;
+        this.error &#x3D; &#x27;Error al cargar los KPIs del hato.&#x27;;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  // ── Navegación de tabs ────────────────────────────────────────────────────
+
+  setTab(tab: TabActivo): void {
+    this.tabActivo &#x3D; tab;
+    this.cdr.markForCheck();
+    if (!this.tabsCargados.has(tab)) {
+      this.cargarTab(tab);
+    }
+  }
+
+  private cargarTab(tab: TabActivo): void {
+    const idHato &#x3D; this.hatoActivo?.idHato;
+    if (!idHato) return;
+
+    switch (tab) {
+      case &#x27;resumen&#x27;:
+        this.cargarResumen(idHato);
+        break;
+      case &#x27;compuesto&#x27;:
+        this.cargarCompuesto(idHato);
+        break;
+      case &#x27;por-kpi&#x27;:
+        this.cargarPorKpi(idHato);
+        break;
+      case &#x27;evolucion&#x27;:
+        this.cargarEvolucion(idHato);
+        break;
+    }
+  }
+
+  // ── Loaders por tab ───────────────────────────────────────────────────────
+
+  private cargarResumen(idHato: string): void {
+    this.cargandoResumen &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.rankingService.getResumenRanking(idHato).subscribe({
+      next: (data) &#x3D;&gt; {
+        this.resumen &#x3D; data;
+        this.cargandoResumen &#x3D; false;
+        this.tabsCargados.add(&#x27;resumen&#x27;);
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.cargandoResumen &#x3D; false;
+        this.error &#x3D; &#x27;Error al cargar el resumen de ranking.&#x27;;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private cargarCompuesto(idHato: string): void {
+    this.cargandoCompuesto &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.rankingService.getRankingCompuesto(idHato, this.regionFiltro ?? undefined).subscribe({
+      next: (data) &#x3D;&gt; {
+        this.compuesto &#x3D; data;
+        this.cargandoCompuesto &#x3D; false;
+        this.tabsCargados.add(&#x27;compuesto&#x27;);
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.cargandoCompuesto &#x3D; false;
+        this.error &#x3D; &#x27;Error al cargar el ranking compuesto.&#x27;;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private cargarPorKpi(idHato: string): void {
+    if (!this.codigoKpiSeleccionado) return;
+    this.cargandoPorKpi &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.rankingService
+      .getRankingPorKpi(idHato, this.codigoKpiSeleccionado, this.regionFiltro ?? undefined)
+      .subscribe({
+        next: (data) &#x3D;&gt; {
+          this.porKpi &#x3D; data;
+          this.cargandoPorKpi &#x3D; false;
+          this.tabsCargados.add(&#x27;por-kpi&#x27;);
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.cargandoPorKpi &#x3D; false;
+          this.error &#x3D; &#x27;Error al cargar el ranking por KPI.&#x27;;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  private cargarEvolucion(idHato: string): void {
+    if (!this.codigoKpiEvolucion) return;
+    this.cargandoEvolucion &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.rankingService
+      .getEvolucionPosicion(idHato, this.codigoKpiEvolucion, this.mesesEvolucion)
+      .subscribe({
+        next: (data) &#x3D;&gt; {
+          this.evolucion &#x3D; data;
+          this.cargandoEvolucion &#x3D; false;
+          this.tabsCargados.add(&#x27;evolucion&#x27;);
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.cargandoEvolucion &#x3D; false;
+          this.error &#x3D; &#x27;Error al cargar la evolución de posición.&#x27;;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Eventos desde hijos ───────────────────────────────────────────────────
+
+  onKpiCambiado(codigo: string): void {
+    this.codigoKpiSeleccionado &#x3D; codigo;
+    this.tabsCargados.delete(&#x27;por-kpi&#x27;);
+    this.porKpi &#x3D; null;
+    const idHato &#x3D; this.hatoActivo?.idHato;
+    if (idHato) this.cargarPorKpi(idHato);
+  }
+
+  onKpiEvolucionCambiado(codigo: string): void {
+    this.codigoKpiEvolucion &#x3D; codigo;
+    this.tabsCargados.delete(&#x27;evolucion&#x27;);
+    this.evolucion &#x3D; null;
+    const idHato &#x3D; this.hatoActivo?.idHato;
+    if (idHato) this.cargarEvolucion(idHato);
+  }
+
+  onMesesCambiado(meses: 3 | 6 | 12): void {
+    this.mesesEvolucion &#x3D; meses;
+    this.tabsCargados.delete(&#x27;evolucion&#x27;);
+    this.evolucion &#x3D; null;
+    const idHato &#x3D; this.hatoActivo?.idHato;
+    if (idHato) this.cargarEvolucion(idHato);
+  }
+
+  onRegionCambiada(region: string | null): void {
+    this.regionFiltro &#x3D; region;
+    this.tabsCargados.delete(&#x27;compuesto&#x27;);
+    this.tabsCargados.delete(&#x27;por-kpi&#x27;);
+    this.compuesto &#x3D; null;
+    this.porKpi &#x3D; null;
+    const idHato &#x3D; this.hatoActivo?.idHato;
+    if (!idHato) return;
+    if (this.tabActivo &#x3D;&#x3D;&#x3D; &#x27;compuesto&#x27;) this.cargarCompuesto(idHato);
+    if (this.tabActivo &#x3D;&#x3D;&#x3D; &#x27;por-kpi&#x27;) this.cargarPorKpi(idHato);
+  }
+
+  // ── Helpers ───────────────────────────────────────────────────────────────
+
+  get hayKpis(): boolean {
+    return this.kpis.length &gt; 0;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ranking-page&quot;&gt;
+  &lt;!-- Loading inicial --&gt;
+  @if (loading) {
+    &lt;div class&#x3D;&quot;loading-wrapper&quot;&gt;
+      &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Cargando ranking...&quot;&gt;&lt;/app-spinner&gt;
+    &lt;/div&gt;
+  }
+
+  @if (!loading) {
+    &lt;!-- Header página --&gt;
+    &lt;header class&#x3D;&quot;page-header&quot;&gt;
+      &lt;div class&#x3D;&quot;header-left&quot;&gt;
+        &lt;p class&#x3D;&quot;page-tag&quot;&gt;Benchmarking · Ranking&lt;/p&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Ranking de &lt;span class&#x3D;&quot;brand&quot;&gt;Hatos&lt;/span&gt;&lt;/h1&gt;
+        @if (hatoActivo) {
+          &lt;p class&#x3D;&quot;page-subtitle&quot;&gt;
+            &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          &lt;/p&gt;
+        } @else {
+          &lt;p class&#x3D;&quot;page-subtitle warn&quot;&gt;Selecciona un hato para ver su ranking.&lt;/p&gt;
+        }
+      &lt;/div&gt;
+      @if (hatoActivo) {
+        &lt;div class&#x3D;&quot;header-right&quot;&gt;
+          &lt;div class&#x3D;&quot;header-badge&quot;&gt;🏆&lt;/div&gt;
+        &lt;/div&gt;
+      }
+    &lt;/header&gt;
+
+    &lt;!-- Sin hato --&gt;
+    @if (!hatoActivo) {
+      &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+        &lt;span&gt;🐄&lt;/span&gt;
+        &lt;p&gt;Selecciona un hato para ver su ranking.&lt;/p&gt;
+      &lt;/div&gt;
+    }
+
+    @if (hatoActivo) {
+      &lt;!-- Sin KPIs --&gt;
+      @if (!hayKpis) {
+        &lt;div class&#x3D;&quot;sin-datos-card&quot;&gt;
+          &lt;span class&#x3D;&quot;sin-datos-icono&quot;&gt;📊&lt;/span&gt;
+          &lt;div&gt;
+            &lt;h3&gt;Primero calcula tus KPIs&lt;/h3&gt;
+            &lt;p&gt;
+              Ve a &lt;strong&gt;Mis KPIs&lt;/strong&gt; y calcula los indicadores de tu hato para poder ver tu
+              posición en el ranking.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+
+      @if (hayKpis) {
+        &lt;!-- Error --&gt;
+        @if (error) {
+          &lt;div class&#x3D;&quot;error-box&quot;&gt;{{ error }}&lt;/div&gt;
+        }
+
+        &lt;!-- Filtro de región --&gt;
+        &lt;div class&#x3D;&quot;filtro-region-row&quot;&gt;
+          &lt;span class&#x3D;&quot;filtro-label&quot;&gt;Ámbito de comparación:&lt;/span&gt;
+          &lt;button
+            class&#x3D;&quot;filtro-btn&quot;
+            [class.activo]&#x3D;&quot;regionFiltro &#x3D;&#x3D;&#x3D; null&quot;
+            (click)&#x3D;&quot;onRegionCambiada(null)&quot;
+          &gt;
+            🇨🇴 Nacional
+          &lt;/button&gt;
+          @if (hatoActivo.departamento) {
+            &lt;button
+              class&#x3D;&quot;filtro-btn&quot;
+              [class.activo]&#x3D;&quot;regionFiltro &#x3D;&#x3D;&#x3D; hatoActivo.departamento&quot;
+              (click)&#x3D;&quot;onRegionCambiada(hatoActivo.departamento)&quot;
+            &gt;
+              📍 {{ hatoActivo.departamento }}
+            &lt;/button&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;!-- Tabs --&gt;
+        &lt;div class&#x3D;&quot;tabs-row&quot;&gt;
+          @for (tab of tabs; track tab.id) {
+            &lt;button class&#x3D;&quot;tab-btn&quot; [class.activo]&#x3D;&quot;tabActivo &#x3D;&#x3D;&#x3D; tab.id&quot; (click)&#x3D;&quot;setTab(tab.id)&quot;&gt;
+              &lt;span class&#x3D;&quot;tab-icono&quot;&gt;{{ tab.icono }}&lt;/span&gt;
+              &lt;span class&#x3D;&quot;tab-label&quot;&gt;{{ tab.label }}&lt;/span&gt;
+            &lt;/button&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;!-- Contenido tabs --&gt;
+        &lt;div class&#x3D;&quot;tab-content&quot;&gt;
+          &lt;!-- Tab: Resumen --&gt;
+          @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;resumen&#x27;) {
+            @if (cargandoResumen) {
+              &lt;div class&#x3D;&quot;tab-loading&quot;&gt;
+                &lt;app-spinner size&#x3D;&quot;medium&quot; message&#x3D;&quot;Calculando posición...&quot;&gt;&lt;/app-spinner&gt;
+              &lt;/div&gt;
+            } @else {
+              &lt;app-ranking-resumen [resumen]&#x3D;&quot;resumen&quot; [nombreHato]&#x3D;&quot;hatoActivo.nombreHato&quot; /&gt;
+            }
+          }
+
+          &lt;!-- Tab: Compuesto --&gt;
+          @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;compuesto&#x27;) {
+            @if (cargandoCompuesto) {
+              &lt;div class&#x3D;&quot;tab-loading&quot;&gt;
+                &lt;app-spinner size&#x3D;&quot;medium&quot; message&#x3D;&quot;Construyendo ranking...&quot;&gt;&lt;/app-spinner&gt;
+              &lt;/div&gt;
+            } @else {
+              &lt;app-ranking-compuesto [datos]&#x3D;&quot;compuesto&quot; [region]&#x3D;&quot;regionFiltro&quot; /&gt;
+            }
+          }
+
+          &lt;!-- Tab: Por KPI --&gt;
+          @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;por-kpi&#x27;) {
+            &lt;app-ranking-por-kpi
+              [datos]&#x3D;&quot;porKpi&quot;
+              [kpisDisponibles]&#x3D;&quot;kpis&quot;
+              [codigoSeleccionado]&#x3D;&quot;codigoKpiSeleccionado&quot;
+              [region]&#x3D;&quot;regionFiltro&quot;
+              [cargando]&#x3D;&quot;cargandoPorKpi&quot;
+              (kpiCambiado)&#x3D;&quot;onKpiCambiado($event)&quot;
+              (regionCambiada)&#x3D;&quot;onRegionCambiada($event)&quot;
+            /&gt;
+          }
+
+          &lt;!-- Tab: Evolución --&gt;
+          @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;evolucion&#x27;) {
+            &lt;div class&#x3D;&quot;evolucion-controles&quot;&gt;
+              &lt;!-- Selector KPI evolución --&gt;
+              &lt;div class&#x3D;&quot;control-group&quot;&gt;
+                &lt;label class&#x3D;&quot;control-label&quot;&gt;KPI a analizar&lt;/label&gt;
+                &lt;div class&#x3D;&quot;kpi-evolucion-selector&quot;&gt;
+                  @for (kpi of kpis; track kpi.codigo) {
+                    @if (kpi.valor !&#x3D;&#x3D; null) {
+                      &lt;button
+                        class&#x3D;&quot;kpi-evol-btn&quot;
+                        [class.activo]&#x3D;&quot;codigoKpiEvolucion &#x3D;&#x3D;&#x3D; kpi.codigo&quot;
+                        (click)&#x3D;&quot;onKpiEvolucionCambiado(kpi.codigo)&quot;
+                      &gt;
+                        {{ kpi.nombre }}
+                      &lt;/button&gt;
+                    }
+                  }
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Selector meses --&gt;
+              &lt;div class&#x3D;&quot;control-group&quot;&gt;
+                &lt;label class&#x3D;&quot;control-label&quot;&gt;Período&lt;/label&gt;
+                &lt;div class&#x3D;&quot;meses-selector&quot;&gt;
+                  @for (m of opcionesMeses; track m) {
+                    &lt;button
+                      class&#x3D;&quot;meses-btn&quot;
+                      [class.activo]&#x3D;&quot;mesesEvolucion &#x3D;&#x3D;&#x3D; m&quot;
+                      (click)&#x3D;&quot;onMesesCambiado(m)&quot;
+                    &gt;
+                      {{ m }} meses
+                    &lt;/button&gt;
+                  }
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;app-grafica-evolucion-posicion [datos]&#x3D;&quot;evolucion&quot; [cargando]&#x3D;&quot;cargandoEvolucion&quot; /&gt;
+          }
+        &lt;/div&gt;
+      }
+    }
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="ranking-page">  <!-- Loading inicial -->  @if (loading) {    <div class="loading-wrapper">      <app-spinner size="large" message="Cargando ranking..."></app-spinner>    </div>  }  @if (!loading) {    <!-- Header página -->    <header class="page-header">      <div class="header-left">        <p class="page-tag">Benchmarking · Ranking</p>        <h1 class="page-title">Ranking de <span class="brand">Hatos</span></h1>        @if (hatoActivo) {          <p class="page-subtitle">            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},            {{ hatoActivo.departamento }}          </p>        } @else {          <p class="page-subtitle warn">Selecciona un hato para ver su ranking.</p>        }      </div>      @if (hatoActivo) {        <div class="header-right">          <div class="header-badge">🏆</div>        </div>      }    </header>    <!-- Sin hato -->    @if (!hatoActivo) {      <div class="empty-state">        <span>🐄</span>        <p>Selecciona un hato para ver su ranking.</p>      </div>    }    @if (hatoActivo) {      <!-- Sin KPIs -->      @if (!hayKpis) {        <div class="sin-datos-card">          <span class="sin-datos-icono">📊</span>          <div>            <h3>Primero calcula tus KPIs</h3>            <p>              Ve a <strong>Mis KPIs</strong> y calcula los indicadores de tu hato para poder ver tu              posición en el ranking.            </p>          </div>        </div>      }      @if (hayKpis) {        <!-- Error -->        @if (error) {          <div class="error-box">{{ error }}</div>        }        <!-- Filtro de región -->        <div class="filtro-region-row">          <span class="filtro-label">Ámbito de comparación:</span>          <button            class="filtro-btn"            [class.activo]="regionFiltro === null"            (click)="onRegionCambiada(null)"          >            🇨🇴 Nacional          </button>          @if (hatoActivo.departamento) {            <button              class="filtro-btn"              [class.activo]="regionFiltro === hatoActivo.departamento"              (click)="onRegionCambiada(hatoActivo.departamento)"            >              📍 {{ hatoActivo.departamento }}            </button>          }        </div>        <!-- Tabs -->        <div class="tabs-row">          @for (tab of tabs; track tab.id) {            <button class="tab-btn" [class.activo]="tabActivo === tab.id" (click)="setTab(tab.id)">              <span class="tab-icono">{{ tab.icono }}</span>              <span class="tab-label">{{ tab.label }}</span>            </button>          }        </div>        <!-- Contenido tabs -->        <div class="tab-content">          <!-- Tab: Resumen -->          @if (tabActivo === \'resumen\') {            @if (cargandoResumen) {              <div class="tab-loading">                <app-spinner size="medium" message="Calculando posición..."></app-spinner>              </div>            } @else {              <app-ranking-resumen [resumen]="resumen" [nombreHato]="hatoActivo.nombreHato" />            }          }          <!-- Tab: Compuesto -->          @if (tabActivo === \'compuesto\') {            @if (cargandoCompuesto) {              <div class="tab-loading">                <app-spinner size="medium" message="Construyendo ranking..."></app-spinner>              </div>            } @else {              <app-ranking-compuesto [datos]="compuesto" [region]="regionFiltro" />            }          }          <!-- Tab: Por KPI -->          @if (tabActivo === \'por-kpi\') {            <app-ranking-por-kpi              [datos]="porKpi"              [kpisDisponibles]="kpis"              [codigoSeleccionado]="codigoKpiSeleccionado"              [region]="regionFiltro"              [cargando]="cargandoPorKpi"              (kpiCambiado)="onKpiCambiado($event)"              (regionCambiada)="onRegionCambiada($event)"            />          }          <!-- Tab: Evolución -->          @if (tabActivo === \'evolucion\') {            <div class="evolucion-controles">              <!-- Selector KPI evolución -->              <div class="control-group">                <label class="control-label">KPI a analizar</label>                <div class="kpi-evolucion-selector">                  @for (kpi of kpis; track kpi.codigo) {                    @if (kpi.valor !== null) {                      <button                        class="kpi-evol-btn"                        [class.activo]="codigoKpiEvolucion === kpi.codigo"                        (click)="onKpiEvolucionCambiado(kpi.codigo)"                      >                        {{ kpi.nombre }}                      </button>                    }                  }                </div>              </div>              <!-- Selector meses -->              <div class="control-group">                <label class="control-label">Período</label>                <div class="meses-selector">                  @for (m of opcionesMeses; track m) {                    <button                      class="meses-btn"                      [class.activo]="mesesEvolucion === m"                      (click)="onMesesCambiado(m)"                    >                      {{ m }} meses                    </button>                  }                </div>              </div>            </div>            <app-grafica-evolucion-posicion [datos]="evolucion" [cargando]="cargandoEvolucion" />          }        </div>      }    }  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'RankingComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RankingComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

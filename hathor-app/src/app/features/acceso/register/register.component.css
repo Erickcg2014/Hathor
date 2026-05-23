@@ -1,0 +1,3 @@
+.hathor-green {
+  @apply bg-[#BFF102] hover:bg-[#a8d601] text-black;
+}

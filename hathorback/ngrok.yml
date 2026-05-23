@@ -1,0 +1,10 @@
+version: "3"
+agent:
+  authtoken: TOKEN_NGROK
+
+tunnels:
+  backend:
+    proto: http
+    addr: 8080
+
+# ngrok start --all --config ngrok.yml

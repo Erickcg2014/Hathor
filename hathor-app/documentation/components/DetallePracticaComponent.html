@@ -1,0 +1,3133 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DetallePracticaComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-detalle-practica</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                                <code><a href="../components/AvancePasosComponent.html" target="_self" >AvancePasosComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./detalle-practica.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./detalle-practica.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#avanceEditando" >avanceEditando</a>
+                            </li>
+                            <li>
+                                <a href="#avanzandoEstado" >avanzandoEstado</a>
+                            </li>
+                            <li>
+                                <a href="#cargandoPasos" >cargandoPasos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#detalle" >detalle</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#guardandoAvance" >guardandoAvance</a>
+                            </li>
+                            <li>
+                                <a href="#historicoKpi" >historicoKpi</a>
+                            </li>
+                            <li>
+                                <a href="#idHatoPractica" >idHatoPractica</a>
+                            </li>
+                            <li>
+                                <a href="#kpiActual" >kpiActual</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#loadingDetalle" >loadingDetalle</a>
+                            </li>
+                            <li>
+                                <a href="#loadingHistorico" >loadingHistorico</a>
+                            </li>
+                            <li>
+                                <a href="#mostrarSlider" >mostrarSlider</a>
+                            </li>
+                            <li>
+                                <a href="#overlayAvanceVisible" >overlayAvanceVisible</a>
+                            </li>
+                            <li>
+                                <a href="#pasosTextoActual" >pasosTextoActual</a>
+                            </li>
+                            <li>
+                                <a href="#practica" >practica</a>
+                            </li>
+                            <li>
+                                <a href="#practicaAvanceActual" >practicaAvanceActual</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abrirOverlayAvance" >abrirOverlayAvance</a>
+                            </li>
+                            <li>
+                                <a href="#avanzarEstado" >avanzarEstado</a>
+                            </li>
+                            <li>
+                                <a href="#calcularAlturaBar" >calcularAlturaBar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarDesdeHato" >cargarDesdeHato</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarDetalle" >cargarDetalle</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarHistoricoKpi" >cargarHistoricoKpi</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarKpi" >cargarKpi</a>
+                            </li>
+                            <li>
+                                <a href="#cerrarOverlayAvance" >cerrarOverlayAvance</a>
+                            </li>
+                            <li>
+                                <a href="#claseEstado" >claseEstado</a>
+                            </li>
+                            <li>
+                                <a href="#colorEstadoKpi" >colorEstadoKpi</a>
+                            </li>
+                            <li>
+                                <a href="#estadoLabel" >estadoLabel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getSiguienteEstado" >getSiguienteEstado</a>
+                            </li>
+                            <li>
+                                <a href="#guardarAvance" >guardarAvance</a>
+                            </li>
+                            <li>
+                                <a href="#iconoCategoria" >iconoCategoria</a>
+                            </li>
+                            <li>
+                                <a href="#iconoEstadoKpi" >iconoEstadoKpi</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onAvanceActualizado" >onAvanceActualizado</a>
+                            </li>
+                            <li>
+                                <a href="#toggleSlider" >toggleSlider</a>
+                            </li>
+                            <li>
+                                <a href="#volver" >volver</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#botonEstadoLabel" >botonEstadoLabel</a>
+                                </li>
+                                <li>
+                                    <a href="#puedeAvanzar" >puedeAvanzar</a>
+                                </li>
+                                <li>
+                                    <a href="#tendenciaKpi" >tendenciaKpi</a>
+                                </li>
+                                <li>
+                                    <a href="#iconoTendencia" >iconoTendencia</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, practicasService: <a href="../injectables/PracticasService.html" target="_self">PracticasService</a>, kpiService: <a href="../injectables/KpiService.html" target="_self">KpiService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:60</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>practicasService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PracticasService.html" target="_self" >PracticasService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>kpiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/KpiService.html" target="_self" >KpiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirOverlayAvance"></a>
+                    <span class="name">
+                        <span ><b>abrirOverlayAvance</b></span>
+                        <a href="#abrirOverlayAvance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirOverlayAvance(practica: <a href="../interfaces/HatoPracticaDTO.html" target="_self">HatoPracticaDTO</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="367"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:367</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>practica</td>
+                                            <td>
+                                                            <code><a href="../interfaces/HatoPracticaDTO.html" target="_self" >HatoPracticaDTO</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avanzarEstado"></a>
+                    <span class="name">
+                        <span ><b>avanzarEstado</b></span>
+                        <a href="#avanzarEstado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>avanzarEstado()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="213"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:213</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcularAlturaBar"></a>
+                    <span class="name">
+                        <span ><b>calcularAlturaBar</b></span>
+                        <a href="#calcularAlturaBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calcularAlturaBar(valor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="291"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:291</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarDesdeHato"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarDesdeHato</b></span>
+                        <a href="#cargarDesdeHato"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarDesdeHato()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:99</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarDetalle"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarDetalle</b></span>
+                        <a href="#cargarDetalle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarDetalle(idPractica: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="137"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:137</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idPractica</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarHistoricoKpi"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarHistoricoKpi</b></span>
+                        <a href="#cargarHistoricoKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarHistoricoKpi(codigoKpi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="185"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:185</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>codigoKpi</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarKpi"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarKpi</b></span>
+                        <a href="#cargarKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarKpi(codigoKpi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>codigoKpi</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrarOverlayAvance"></a>
+                    <span class="name">
+                        <span ><b>cerrarOverlayAvance</b></span>
+                        <a href="#cerrarOverlayAvance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrarOverlayAvance()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="388"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:388</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="claseEstado"></a>
+                    <span class="name">
+                        <span ><b>claseEstado</b></span>
+                        <a href="#claseEstado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>claseEstado(estado: <a href="../miscellaneous/typealiases.html#EstadoPractica" target="_self">EstadoPractica</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="320"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:320</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#EstadoPractica" target="_self" >EstadoPractica</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorEstadoKpi"></a>
+                    <span class="name">
+                        <span ><b>colorEstadoKpi</b></span>
+                        <a href="#colorEstadoKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorEstadoKpi(estado: string | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="300"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:300</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                        <code>string | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="estadoLabel"></a>
+                    <span class="name">
+                        <span ><b>estadoLabel</b></span>
+                        <a href="#estadoLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>estadoLabel(estado: <a href="../miscellaneous/typealiases.html#EstadoPractica" target="_self">EstadoPractica</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="329"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:329</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#EstadoPractica" target="_self" >EstadoPractica</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSiguienteEstado"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>getSiguienteEstado</b></span>
+                        <a href="#getSiguienteEstado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getSiguienteEstado(estado: <a href="../miscellaneous/typealiases.html#EstadoPractica" target="_self">EstadoPractica</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="274"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:274</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#EstadoPractica" target="_self" >EstadoPractica</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#EstadoPractica" target="_self" >EstadoPractica | null</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarAvance"></a>
+                    <span class="name">
+                        <span ><b>guardarAvance</b></span>
+                        <a href="#guardarAvance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardarAvance()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="244"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:244</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoCategoria"></a>
+                    <span class="name">
+                        <span ><b>iconoCategoria</b></span>
+                        <a href="#iconoCategoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoCategoria(categoria: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="338"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:338</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>categoria</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoEstadoKpi"></a>
+                    <span class="name">
+                        <span ><b>iconoEstadoKpi</b></span>
+                        <a href="#iconoEstadoKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoEstadoKpi(estado: string | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="310"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:310</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                        <code>string | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="405"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:405</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onAvanceActualizado"></a>
+                    <span class="name">
+                        <span ><b>onAvanceActualizado</b></span>
+                        <a href="#onAvanceActualizado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onAvanceActualizado(response: <a href="../interfaces/HatoPracticaPasoResponseDTO.html" target="_self">HatoPracticaPasoResponseDTO</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="395"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:395</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>response</td>
+                                            <td>
+                                                            <code><a href="../interfaces/HatoPracticaPasoResponseDTO.html" target="_self" >HatoPracticaPasoResponseDTO</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSlider"></a>
+                    <span class="name">
+                        <span ><b>toggleSlider</b></span>
+                        <a href="#toggleSlider"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleSlider()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="238"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:238</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="volver"></a>
+                    <span class="name">
+                        <span ><b>volver</b></span>
+                        <a href="#volver"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>volver()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="268"
+                                    class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:268</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avanceEditando"></a>
+                    <span class="name">
+                        <span ><b>avanceEditando</b></span>
+                        <a href="#avanceEditando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avanzandoEstado"></a>
+                    <span class="name">
+                        <span ><b>avanzandoEstado</b></span>
+                        <a href="#avanzandoEstado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargandoPasos"></a>
+                    <span class="name">
+                        <span ><b>cargandoPasos</b></span>
+                        <a href="#cargandoPasos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="detalle"></a>
+                    <span class="name">
+                        <span ><b>detalle</b></span>
+                        <a href="#detalle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/PracticaDetalleDTO.html" target="_self" >PracticaDetalleDTO | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardandoAvance"></a>
+                    <span class="name">
+                        <span ><b>guardandoAvance</b></span>
+                        <a href="#guardandoAvance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="historicoKpi"></a>
+                    <span class="name">
+                        <span ><b>historicoKpi</b></span>
+                        <a href="#historicoKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/KpiHistorico.html" target="_self" >KpiHistorico[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="idHatoPractica"></a>
+                    <span class="name">
+                        <span ><b>idHatoPractica</b></span>
+                        <a href="#idHatoPractica"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="kpiActual"></a>
+                    <span class="name">
+                        <span ><b>kpiActual</b></span>
+                        <a href="#kpiActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/KpiResultado.html" target="_self" >KpiResultado | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingDetalle"></a>
+                    <span class="name">
+                        <span ><b>loadingDetalle</b></span>
+                        <a href="#loadingDetalle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingHistorico"></a>
+                    <span class="name">
+                        <span ><b>loadingHistorico</b></span>
+                        <a href="#loadingHistorico"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarSlider"></a>
+                    <span class="name">
+                        <span ><b>mostrarSlider</b></span>
+                        <a href="#mostrarSlider"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="overlayAvanceVisible"></a>
+                    <span class="name">
+                        <span ><b>overlayAvanceVisible</b></span>
+                        <a href="#overlayAvanceVisible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pasosTextoActual"></a>
+                    <span class="name">
+                        <span ><b>pasosTextoActual</b></span>
+                        <a href="#pasosTextoActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="practica"></a>
+                    <span class="name">
+                        <span ><b>practica</b></span>
+                        <a href="#practica"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HatoPracticaDTO | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="practicaAvanceActual"></a>
+                    <span class="name">
+                        <span ><b>practicaAvanceActual</b></span>
+                        <a href="#practicaAvanceActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HatoPracticaDTO | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="botonEstadoLabel"></a>
+                        <span class="name"><b>botonEstadoLabel</b><a href="#botonEstadoLabel"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>botonEstadoLabel()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="280" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:280</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="puedeAvanzar"></a>
+                        <span class="name"><b>puedeAvanzar</b><a href="#puedeAvanzar"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>puedeAvanzar()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="287" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:287</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tendenciaKpi"></a>
+                        <span class="name"><b>tendenciaKpi</b><a href="#tendenciaKpi"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>tendenciaKpi()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="348" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:348</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="iconoTendencia"></a>
+                        <span class="name"><b>iconoTendencia</b><a href="#iconoTendencia"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>iconoTendencia()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="357" class="link-to-prism">src/app/features/Usuario/practicas/detalle-practica/detalle-practica.component.ts:357</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import {
+  PracticasService,
+  HatoPracticaDTO,
+  PracticaDetalleDTO,
+  EstadoPractica,
+} from &#x27;../../../../core/services/practicas/practicas.service&#x27;;
+import { KpiService, KpiResultado, KpiHistorico } from &#x27;../../../../core/services/kpi/kpi.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+
+// AVANCE PASOS
+import { AvancePasosComponent } from &#x27;../../../../shared/avance-pasos/avance-pasos.component&#x27;;
+import { HatoPracticaPasoResponseDTO } from &#x27;../../../../core/services/practicas/practicas.service&#x27;;
+@Component({
+  selector: &#x27;app-detalle-practica&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, SpinnerComponent, AvancePasosComponent],
+  templateUrl: &#x27;./detalle-practica.component.html&#x27;,
+  styleUrl: &#x27;./detalle-practica.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DetallePracticaComponent implements OnInit, OnDestroy {
+  // ── Estado ────────────────────────────────────────────────────────────
+  loading &#x3D; true;
+  loadingDetalle &#x3D; false;
+  loadingHistorico &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  guardandoAvance &#x3D; false;
+  avanzandoEstado &#x3D; false;
+
+  // ── Datos ─────────────────────────────────────────────────────────────
+  idHatoPractica: string &#x3D; &#x27;&#x27;;
+  practica: HatoPracticaDTO | null &#x3D; null;
+  detalle: PracticaDetalleDTO | null &#x3D; null;
+  kpiActual: KpiResultado | null &#x3D; null;
+  historicoKpi: KpiHistorico[] &#x3D; [];
+
+  // ── Avance ────────────────────────────────────────────────────────────
+  avanceEditando &#x3D; 0;
+  mostrarSlider &#x3D; false;
+
+  // Propiedades - avance pasos
+  overlayAvanceVisible &#x3D; false;
+  practicaAvanceActual: HatoPracticaDTO | null &#x3D; null;
+  pasosTextoActual: string[] &#x3D; [];
+  cargandoPasos &#x3D; false;
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private hatoState: HatoStateService,
+    private practicasService: PracticasService,
+    private kpiService: KpiService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.idHatoPractica &#x3D; this.route.snapshot.paramMap.get(&#x27;idHatoPractica&#x27;) ?? &#x27;&#x27;;
+
+    if (!this.idHatoPractica) {
+      this.error &#x3D; &#x27;ID de práctica no válido.&#x27;;
+      this.loading &#x3D; false;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    // Intentar recuperar práctica desde el state del router
+    const state &#x3D; history.state as { practica?: HatoPracticaDTO };
+
+    if (state?.practica) {
+      this.practica &#x3D; state.practica;
+      this.avanceEditando &#x3D; this.practica.porcentajeAvance ?? 0;
+      this.loading &#x3D; false;
+      this.cargarDetalle(this.practica.idPractica);
+      this.cargarKpi(this.practica.kpiImpactado);
+      this.cdr.markForCheck();
+    } else {
+      // Fallback — cargar todas las prácticas del hato y filtrar
+      this.cargarDesdeHato();
+    }
+  }
+
+  // ── Carga de datos ────────────────────────────────────────────────────
+
+  private cargarDesdeHato(): void {
+    const hato &#x3D; this.hatoState.getHatoActivo();
+    if (!hato?.idHato) {
+      this.error &#x3D; &#x27;No hay hato activo. Vuelve a la lista de prácticas.&#x27;;
+      this.loading &#x3D; false;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.practicasService
+      .getPracticasByHato(hato.idHato)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (practicas) &#x3D;&gt; {
+          const encontrada &#x3D; practicas.find((p) &#x3D;&gt; p.idHatoPractica &#x3D;&#x3D;&#x3D; this.idHatoPractica);
+
+          if (!encontrada) {
+            this.error &#x3D; &#x27;Práctica no encontrada.&#x27;;
+            this.loading &#x3D; false;
+            this.cdr.markForCheck();
+            return;
+          }
+
+          this.practica &#x3D; encontrada;
+          this.avanceEditando &#x3D; encontrada.porcentajeAvance ?? 0;
+          this.loading &#x3D; false;
+          this.cargarDetalle(encontrada.idPractica);
+          this.cargarKpi(encontrada.kpiImpactado);
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.error &#x3D; &#x27;Error al cargar la práctica.&#x27;;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  private cargarDetalle(idPractica: number): void {
+    this.loadingDetalle &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.practicasService
+      .getDetalle(idPractica)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (detalle) &#x3D;&gt; {
+          this.detalle &#x3D; detalle;
+          this.loadingDetalle &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.loadingDetalle &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  private cargarKpi(codigoKpi: string): void {
+    if (!codigoKpi) return;
+
+    // Intentar desde caché primero
+    const kpiCache &#x3D; this.kpiService.getKpiDesdeCache(codigoKpi);
+    if (kpiCache) {
+      this.kpiActual &#x3D; kpiCache;
+      this.cargarHistoricoKpi(codigoKpi);
+      this.cdr.markForCheck();
+      return;
+    }
+
+    // Si no hay caché cargar KPIs del hato
+    const hato &#x3D; this.hatoState.getHatoActivo();
+    if (!hato?.idHato) return;
+
+    this.kpiService
+      .getKpis(hato.idHato)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () &#x3D;&gt; {
+          this.kpiActual &#x3D; this.kpiService.getKpiDesdeCache(codigoKpi);
+          this.cargarHistoricoKpi(codigoKpi);
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  private cargarHistoricoKpi(codigoKpi: string): void {
+    const hato &#x3D; this.hatoState.getHatoActivo();
+    if (!hato?.idHato) return;
+
+    this.loadingHistorico &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.kpiService
+      .getHistorico(hato.idHato, codigoKpi)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (historico) &#x3D;&gt; {
+          // Últimos 6 registros ordenados por fecha
+          this.historicoKpi &#x3D; historico
+            .sort((a, b) &#x3D;&gt; new Date(a.fechaCalculo).getTime() - new Date(b.fechaCalculo).getTime())
+            .slice(-6);
+          this.loadingHistorico &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.loadingHistorico &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Acciones ──────────────────────────────────────────────────────────
+
+  avanzarEstado(): void {
+    if (!this.practica) return;
+    const siguiente &#x3D; this.getSiguienteEstado(this.practica.estado);
+    if (!siguiente) return;
+
+    this.avanzandoEstado &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.practicasService
+      .actualizarEstado(this.idHatoPractica, siguiente)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (actualizada) &#x3D;&gt; {
+          this.practica &#x3D; actualizada;
+          this.avanzandoEstado &#x3D; false;
+          this.mostrarSlider &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.avanzandoEstado &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  toggleSlider(): void {
+    this.mostrarSlider &#x3D; !this.mostrarSlider;
+    this.avanceEditando &#x3D; this.practica?.porcentajeAvance ?? 0;
+    this.cdr.markForCheck();
+  }
+
+  guardarAvance(): void {
+    if (!this.practica) return;
+    this.guardandoAvance &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.practicasService
+      .actualizarAvance(this.idHatoPractica, this.avanceEditando)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (actualizada) &#x3D;&gt; {
+          this.practica &#x3D; actualizada;
+          this.guardandoAvance &#x3D; false;
+          this.mostrarSlider &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.guardandoAvance &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Navegación ────────────────────────────────────────────────────────
+
+  volver(): void {
+    this.router.navigate([&#x27;/practicas&#x27;]);
+  }
+
+  // ── Helpers ───────────────────────────────────────────────────────────
+
+  private getSiguienteEstado(estado: EstadoPractica): EstadoPractica | null {
+    if (estado &#x3D;&#x3D;&#x3D; &#x27;PENDIENTE&#x27;) return &#x27;EN_CURSO&#x27;;
+    if (estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;) return &#x27;COMPLETADA&#x27;;
+    return null;
+  }
+
+  get botonEstadoLabel(): string {
+    if (!this.practica) return &#x27;&#x27;;
+    if (this.practica.estado &#x3D;&#x3D;&#x3D; &#x27;PENDIENTE&#x27;) return &#x27;▶ Iniciar práctica&#x27;;
+    if (this.practica.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;) return &#x27;✓ Marcar como completada&#x27;;
+    return &#x27;Completada&#x27;;
+  }
+
+  get puedeAvanzar(): boolean {
+    return this.practica?.estado !&#x3D;&#x3D; &#x27;COMPLETADA&#x27;;
+  }
+
+  calcularAlturaBar(valor: number): number {
+    if (!this.historicoKpi.length) return 0;
+    const valores &#x3D; this.historicoKpi.map((h) &#x3D;&gt; h.valor).filter((v) &#x3D;&gt; v !&#x3D; null);
+    const max &#x3D; Math.max(...valores);
+    const min &#x3D; Math.min(...valores);
+    if (max &#x3D;&#x3D;&#x3D; min) return 50;
+    return Math.round(((valor - min) / (max - min)) * 80) + 10;
+  }
+
+  colorEstadoKpi(estado: string | undefined): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      OPTIMO: &#x27;kpi-optimo&#x27;,
+      ACEPTABLE: &#x27;kpi-aceptable&#x27;,
+      CRITICO: &#x27;kpi-critico&#x27;,
+      SIN_DATOS: &#x27;kpi-sin-datos&#x27;,
+    };
+    return map[estado ?? &#x27;&#x27;] ?? &#x27;kpi-sin-datos&#x27;;
+  }
+
+  iconoEstadoKpi(estado: string | undefined): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      OPTIMO: &#x27;✅&#x27;,
+      ACEPTABLE: &#x27;🟡&#x27;,
+      CRITICO: &#x27;🔴&#x27;,
+      SIN_DATOS: &#x27;—&#x27;,
+    };
+    return map[estado ?? &#x27;&#x27;] ?? &#x27;—&#x27;;
+  }
+
+  claseEstado(estado: EstadoPractica): string {
+    const map: Record&lt;EstadoPractica, string&gt; &#x3D; {
+      PENDIENTE: &#x27;estado-pendiente&#x27;,
+      EN_CURSO: &#x27;estado-curso&#x27;,
+      COMPLETADA: &#x27;estado-completada&#x27;,
+    };
+    return map[estado];
+  }
+
+  estadoLabel(estado: EstadoPractica): string {
+    const map: Record&lt;EstadoPractica, string&gt; &#x3D; {
+      PENDIENTE: &#x27;Pendiente&#x27;,
+      EN_CURSO: &#x27;En curso&#x27;,
+      COMPLETADA: &#x27;Completada&#x27;,
+    };
+    return map[estado];
+  }
+
+  iconoCategoria(categoria: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      PRODUCTIVIDAD: &#x27;🥛&#x27;,
+      HATO: &#x27;🐄&#x27;,
+      FINANCIERO: &#x27;💰&#x27;,
+      EFICIENCIA: &#x27;⚙️&#x27;,
+    };
+    return map[categoria] ?? &#x27;🌱&#x27;;
+  }
+
+  get tendenciaKpi(): &#x27;subiendo&#x27; | &#x27;bajando&#x27; | &#x27;estable&#x27; | null {
+    if (this.historicoKpi.length &lt; 2) return null;
+    const ultimo &#x3D; this.historicoKpi[this.historicoKpi.length - 1].valor;
+    const penultimo &#x3D; this.historicoKpi[this.historicoKpi.length - 2].valor;
+    const diferencia &#x3D; ultimo - penultimo;
+    if (Math.abs(diferencia) &lt; 0.01) return &#x27;estable&#x27;;
+    return diferencia &gt; 0 ? &#x27;subiendo&#x27; : &#x27;bajando&#x27;;
+  }
+
+  get iconoTendencia(): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      subiendo: &#x27;↗️&#x27;,
+      bajando: &#x27;↘️&#x27;,
+      estable: &#x27;→&#x27;,
+    };
+    return map[this.tendenciaKpi ?? &#x27;&#x27;] ?? &#x27;&#x27;;
+  }
+
+  // Métodos - avance pasos
+  abrirOverlayAvance(practica: HatoPracticaDTO): void {
+    this.practicaAvanceActual &#x3D; practica;
+    this.cargandoPasos &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.practicasService.getDetalle(practica.idPractica).subscribe({
+      next: (detalle) &#x3D;&gt; {
+        this.pasosTextoActual &#x3D; detalle.pasos ?? [];
+        this.overlayAvanceVisible &#x3D; true;
+        this.cargandoPasos &#x3D; false;
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.pasosTextoActual &#x3D; [];
+        this.overlayAvanceVisible &#x3D; true;
+        this.cargandoPasos &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  cerrarOverlayAvance(): void {
+    this.overlayAvanceVisible &#x3D; false;
+    this.practicaAvanceActual &#x3D; null;
+    this.pasosTextoActual &#x3D; [];
+    this.cdr.markForCheck();
+  }
+
+  onAvanceActualizado(response: HatoPracticaPasoResponseDTO): void {
+    if (!this.practica) return;
+    this.practica &#x3D; {
+      ...this.practica,
+      porcentajeAvance: response.porcentajeAvance,
+      estado: response.estado as any,
+    };
+    this.cdr.markForCheck();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;detalle-practica-page&quot;&gt;
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; LOADING &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (loading) {
+    &lt;div class&#x3D;&quot;loading-wrap&quot;&gt;
+      &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Cargando práctica...&quot;&gt; &lt;/app-spinner&gt;
+    &lt;/div&gt;
+  }
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ERROR &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (!loading &amp;&amp; error) {
+    &lt;div class&#x3D;&quot;error-wrap&quot;&gt;
+      &lt;div class&#x3D;&quot;msg-error&quot;&gt;
+        &lt;span&gt;❌&lt;/span&gt;
+        &lt;div&gt;
+          &lt;p&gt;{{ error }}&lt;/p&gt;
+          &lt;button class&#x3D;&quot;btn-volver-error&quot; (click)&#x3D;&quot;volver()&quot;&gt;← Volver a mis prácticas&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+
+  @if (!loading &amp;&amp; !error &amp;&amp; practica) {
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HEADER &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;header class&#x3D;&quot;page-header&quot;&gt;
+      &lt;div class&#x3D;&quot;header-left&quot;&gt;
+        &lt;button class&#x3D;&quot;btn-volver&quot; (click)&#x3D;&quot;volver()&quot;&gt;← Mis prácticas&lt;/button&gt;
+        &lt;p class&#x3D;&quot;page-tag&quot;&gt;
+          Prácticas ·
+          {{ detalle?.categoria ?? practica.categoria }}
+        &lt;/p&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot;&gt;
+          &lt;span class&#x3D;&quot;header-cat-icono&quot;&gt;
+            {{ iconoCategoria(practica.categoria) }}
+          &lt;/span&gt;
+          {{ practica.nombrePractica }}
+        &lt;/h1&gt;
+        &lt;div class&#x3D;&quot;header-chips&quot;&gt;
+          &lt;span class&#x3D;&quot;estado-chip&quot; [class]&#x3D;&quot;claseEstado(practica.estado)&quot;&gt;
+            {{ estadoLabel(practica.estado) }}
+          &lt;/span&gt;
+          &lt;span class&#x3D;&quot;dif-chip&quot;&gt;
+            {{ practica.dificultad }}
+          &lt;/span&gt;
+          @if (practica.duracionDias) {
+            &lt;span class&#x3D;&quot;duracion-chip&quot;&gt; ⏱️ {{ practica.duracionDias }} días estimados &lt;/span&gt;
+          }
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;header-right&quot;&gt;
+        &lt;div class&#x3D;&quot;header-icon&quot;&gt;
+          {{ iconoCategoria(practica.categoria) }}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; LAYOUT PRINCIPAL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;div class&#x3D;&quot;main-layout&quot;&gt;
+      &lt;!-- ── Columna izquierda ── --&gt;
+      &lt;div class&#x3D;&quot;col-izquierda&quot;&gt;
+        &lt;!-- BARRA DE AVANCE + ACCIONES --&gt;
+        &lt;div class&#x3D;&quot;avance-card&quot;&gt;
+          &lt;div class&#x3D;&quot;avance-card-header&quot;&gt;
+            &lt;h3 class&#x3D;&quot;avance-card-titulo&quot;&gt;📊 Progreso&lt;/h3&gt;
+            &lt;span class&#x3D;&quot;avance-pct-grande&quot;&gt; {{ practica.porcentajeAvance }}% &lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;avance-track-grande&quot;&gt;
+            &lt;div
+              class&#x3D;&quot;avance-fill-grande&quot;
+              [class.fill-completada]&#x3D;&quot;practica.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;&quot;
+              [class.fill-curso]&#x3D;&quot;practica.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;&quot;
+              [style.width.%]&#x3D;&quot;practica.porcentajeAvance&quot;
+            &gt;&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Fechas --&gt;
+          &lt;div class&#x3D;&quot;avance-fechas&quot;&gt;
+            @if (practica.fechaInicio) {
+              &lt;span class&#x3D;&quot;fecha-item&quot;&gt;
+                📅 Inicio: {{ practica.fechaInicio | date: &#x27;dd/MM/yyyy&#x27; }}
+              &lt;/span&gt;
+            }
+            @if (practica.fechaFin) {
+              &lt;span class&#x3D;&quot;fecha-item&quot;&gt; 🏁 Fin: {{ practica.fechaFin | date: &#x27;dd/MM/yyyy&#x27; }} &lt;/span&gt;
+            }
+          &lt;/div&gt;
+
+          &lt;!-- Slider de avance --&gt;
+          @if (practica.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;) {
+            &lt;button
+              class&#x3D;&quot;btn-actualizar-avance&quot;
+              [disabled]&#x3D;&quot;cargandoPasos&quot;
+              (click)&#x3D;&quot;abrirOverlayAvance(practica)&quot;
+            &gt;
+              @if (cargandoPasos) {
+                &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+                Cargando pasos...
+              } @else {
+                📊 Actualizar avance
+              }
+            &lt;/button&gt;
+          }
+
+          &lt;!-- Botón acción principal --&gt;
+          @if (puedeAvanzar) {
+            &lt;button
+              class&#x3D;&quot;btn-accion-principal&quot;
+              [class.btn-iniciar]&#x3D;&quot;practica.estado &#x3D;&#x3D;&#x3D; &#x27;PENDIENTE&#x27;&quot;
+              [class.btn-completar]&#x3D;&quot;practica.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;&quot;
+              [disabled]&#x3D;&quot;avanzandoEstado&quot;
+              (click)&#x3D;&quot;avanzarEstado()&quot;
+            &gt;
+              @if (avanzandoEstado) {
+                &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+                Procesando...
+              } @else {
+                {{ botonEstadoLabel }}
+              }
+            &lt;/button&gt;
+          } @else {
+            &lt;div class&#x3D;&quot;completada-badge&quot;&gt;✅ Práctica completada&lt;/div&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;!-- KPI IMPACTADO --&gt;
+        &lt;div class&#x3D;&quot;kpi-card&quot;&gt;
+          &lt;h3 class&#x3D;&quot;kpi-card-titulo&quot;&gt;📈 KPI impactado&lt;/h3&gt;
+
+          &lt;div class&#x3D;&quot;kpi-codigo&quot;&gt;{{ practica.kpiImpactado }}&lt;/div&gt;
+
+          @if (kpiActual) {
+            &lt;div class&#x3D;&quot;kpi-valor-principal&quot;&gt;
+              &lt;div class&#x3D;&quot;kpi-valor-wrap&quot;&gt;
+                &lt;span class&#x3D;&quot;kpi-valor-num&quot;&gt;
+                  @if (kpiActual.valor !&#x3D; null) {
+                    {{ kpiActual.valor | number: &#x27;1.1-2&#x27; }}
+                    &lt;span class&#x3D;&quot;kpi-unidad&quot;&gt;{{ kpiActual.unidad }}&lt;/span&gt;
+                  } @else {
+                    Sin datos
+                  }
+                &lt;/span&gt;
+                &lt;span class&#x3D;&quot;kpi-estado-chip&quot; [class]&#x3D;&quot;colorEstadoKpi(kpiActual.estado)&quot;&gt;
+                  {{ iconoEstadoKpi(kpiActual.estado) }}
+                  {{ kpiActual.estado }}
+                &lt;/span&gt;
+              &lt;/div&gt;
+
+              @if (tendenciaKpi) {
+                &lt;div class&#x3D;&quot;kpi-tendencia&quot;&gt;
+                  &lt;span class&#x3D;&quot;tendencia-icono&quot;&gt;
+                    {{ iconoTendencia }}
+                  &lt;/span&gt;
+                  &lt;span
+                    class&#x3D;&quot;tendencia-label&quot;
+                    [class.tendencia-subiendo]&#x3D;&quot;tendenciaKpi &#x3D;&#x3D;&#x3D; &#x27;subiendo&#x27;&quot;
+                    [class.tendencia-bajando]&#x3D;&quot;tendenciaKpi &#x3D;&#x3D;&#x3D; &#x27;bajando&#x27;&quot;
+                    [class.tendencia-estable]&#x3D;&quot;tendenciaKpi &#x3D;&#x3D;&#x3D; &#x27;estable&#x27;&quot;
+                  &gt;
+                    Tendencia: {{ tendenciaKpi }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+              }
+            &lt;/div&gt;
+
+            &lt;!-- Comparativa benchmark --&gt;
+            @if (kpiActual.benchmarkPromedio !&#x3D; null) {
+              &lt;div class&#x3D;&quot;kpi-benchmark-wrap&quot;&gt;
+                &lt;div class&#x3D;&quot;benchmark-fila&quot;&gt;
+                  &lt;span class&#x3D;&quot;benchmark-label&quot;&gt;Tu valor&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;benchmark-valor tuyo&quot;&gt;
+                    {{ kpiActual.valor | number: &#x27;1.1-2&#x27; }}
+                    {{ kpiActual.unidad }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;benchmark-fila&quot;&gt;
+                  &lt;span class&#x3D;&quot;benchmark-label&quot;&gt;Promedio sector&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;benchmark-valor promedio&quot;&gt;
+                    {{ kpiActual.benchmarkPromedio | number: &#x27;1.1-2&#x27; }}
+                    {{ kpiActual.unidad }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+                @if (kpiActual.benchmarkTop !&#x3D; null) {
+                  &lt;div class&#x3D;&quot;benchmark-fila&quot;&gt;
+                    &lt;span class&#x3D;&quot;benchmark-label&quot;&gt;Top 25%&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;benchmark-valor top&quot;&gt;
+                      {{ kpiActual.benchmarkTop | number: &#x27;1.1-2&#x27; }}
+                      {{ kpiActual.unidad }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                }
+                @if (kpiActual.diferenciaPct !&#x3D; null) {
+                  &lt;div
+                    class&#x3D;&quot;benchmark-diferencia&quot;
+                    [class.dif-positiva]&#x3D;&quot;kpiActual.diferenciaPct &gt;&#x3D; 0&quot;
+                    [class.dif-negativa]&#x3D;&quot;kpiActual.diferenciaPct &lt; 0&quot;
+                  &gt;
+                    {{ kpiActual.diferenciaPct &gt;&#x3D; 0 ? &#x27;↑&#x27; : &#x27;↓&#x27; }}
+                    {{ kpiActual.diferenciaPct | number: &#x27;1.1-1&#x27; }}% respecto al promedio
+                  &lt;/div&gt;
+                }
+              &lt;/div&gt;
+            }
+
+            &lt;!-- Histórico del KPI --&gt;
+            @if (historicoKpi.length &gt;&#x3D; 2) {
+              &lt;div class&#x3D;&quot;historico-wrap&quot;&gt;
+                &lt;span class&#x3D;&quot;historico-titulo&quot;&gt;Evolución reciente&lt;/span&gt;
+                &lt;div class&#x3D;&quot;historico-bars&quot;&gt;
+                  @for (h of historicoKpi; track h.periodo) {
+                    &lt;div class&#x3D;&quot;historico-bar-wrap&quot;&gt;
+                      &lt;div
+                        class&#x3D;&quot;historico-bar&quot;
+                        [style.height.%]&#x3D;&quot;calcularAlturaBar(h.valor)&quot;
+                        [class.bar-optimo]&#x3D;&quot;h.estado &#x3D;&#x3D;&#x3D; &#x27;OPTIMO&#x27;&quot;
+                        [class.bar-aceptable]&#x3D;&quot;h.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;&quot;
+                        [class.bar-critico]&#x3D;&quot;h.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;&quot;
+                        [title]&#x3D;&quot;h.valor + &#x27; — &#x27; + h.periodo&quot;
+                      &gt;&lt;/div&gt;
+                      &lt;span class&#x3D;&quot;historico-periodo&quot;&gt;
+                        {{ h.periodo | slice: 5 : 7 }}/{{ h.periodo | slice: 2 : 4 }}
+                      &lt;/span&gt;
+                    &lt;/div&gt;
+                  }
+                &lt;/div&gt;
+              &lt;/div&gt;
+            }
+          } @else {
+            &lt;div class&#x3D;&quot;kpi-sin-datos-wrap&quot;&gt;
+              &lt;span&gt;📊&lt;/span&gt;
+              &lt;p&gt;No hay datos calculados para este KPI aún.&lt;/p&gt;
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- ── Columna derecha ── --&gt;
+      &lt;div class&#x3D;&quot;col-derecha&quot;&gt;
+        &lt;!-- DESCRIPCIÓN Y OBJETIVO --&gt;
+        @if (loadingDetalle) {
+          &lt;div class&#x3D;&quot;detalle-loading&quot;&gt;
+            &lt;app-spinner size&#x3D;&quot;medium&quot; message&#x3D;&quot;Cargando detalle...&quot;&gt; &lt;/app-spinner&gt;
+          &lt;/div&gt;
+        } @else if (detalle) {
+          &lt;!-- Descripción --&gt;
+          &lt;div class&#x3D;&quot;info-card&quot;&gt;
+            &lt;h3 class&#x3D;&quot;info-card-titulo&quot;&gt;📋 Descripción&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;info-texto&quot;&gt;{{ detalle.descripcion }}&lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Objetivo e impacto --&gt;
+          &lt;div class&#x3D;&quot;info-card&quot;&gt;
+            &lt;h3 class&#x3D;&quot;info-card-titulo&quot;&gt;🎯 Objetivo e impacto&lt;/h3&gt;
+            &lt;div class&#x3D;&quot;objetivo-grid&quot;&gt;
+              &lt;div class&#x3D;&quot;objetivo-item&quot;&gt;
+                &lt;span class&#x3D;&quot;objetivo-label&quot;&gt;Objetivo&lt;/span&gt;
+                &lt;p class&#x3D;&quot;objetivo-texto&quot;&gt;{{ detalle.objetivo }}&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;objetivo-item&quot;&gt;
+                &lt;span class&#x3D;&quot;objetivo-label&quot;&gt;Impacto esperado&lt;/span&gt;
+                &lt;p class&#x3D;&quot;objetivo-texto&quot;&gt;{{ detalle.impactoEsperado }}&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Meta info --&gt;
+          &lt;div class&#x3D;&quot;meta-card&quot;&gt;
+            &lt;div class&#x3D;&quot;meta-item&quot;&gt;
+              &lt;span class&#x3D;&quot;meta-label&quot;&gt;Escala aplicable&lt;/span&gt;
+              &lt;span class&#x3D;&quot;meta-valor&quot;&gt;{{ detalle.escala }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;meta-item&quot;&gt;
+              &lt;span class&#x3D;&quot;meta-label&quot;&gt;Trópico&lt;/span&gt;
+              &lt;span class&#x3D;&quot;meta-valor&quot;&gt;{{ detalle.tropicaAplicable }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;meta-item&quot;&gt;
+              &lt;span class&#x3D;&quot;meta-label&quot;&gt;Dificultad&lt;/span&gt;
+              &lt;span class&#x3D;&quot;meta-valor&quot;&gt;{{ detalle.dificultad }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;meta-item&quot;&gt;
+              &lt;span class&#x3D;&quot;meta-label&quot;&gt;Duración estimada&lt;/span&gt;
+              &lt;span class&#x3D;&quot;meta-valor&quot;&gt;{{ detalle.duracionDias }} días&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Pasos --&gt;
+          @if (detalle.pasos &amp;&amp; detalle.pasos.length &gt; 0) {
+            &lt;div class&#x3D;&quot;pasos-card&quot;&gt;
+              &lt;h3 class&#x3D;&quot;info-card-titulo&quot;&gt;📝 Pasos de implementación&lt;/h3&gt;
+              &lt;div class&#x3D;&quot;pasos-lista&quot;&gt;
+                @for (paso of detalle.pasos; track $index; let i &#x3D; $index) {
+                  &lt;div class&#x3D;&quot;paso-item&quot;&gt;
+                    &lt;div class&#x3D;&quot;paso-num&quot;&gt;{{ i + 1 }}&lt;/div&gt;
+                    &lt;p class&#x3D;&quot;paso-texto&quot;&gt;{{ paso }}&lt;/p&gt;
+                  &lt;/div&gt;
+                }
+              &lt;/div&gt;
+            &lt;/div&gt;
+          }
+        }
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+&lt;/div&gt;
+
+&lt;app-avance-pasos
+  [visible]&#x3D;&quot;overlayAvanceVisible&quot;
+  [idHatoPractica]&#x3D;&quot;practicaAvanceActual?.idHatoPractica ?? &#x27;&#x27;&quot;
+  [nombrePractica]&#x3D;&quot;practicaAvanceActual?.nombrePractica ?? &#x27;&#x27;&quot;
+  [pasoTextos]&#x3D;&quot;pasosTextoActual&quot;
+  (cerrar)&#x3D;&quot;cerrarOverlayAvance()&quot;
+  (avanceActualizado)&#x3D;&quot;onAvanceActualizado($event)&quot;
+/&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="detalle-practica-page">  <!-- ===== LOADING ===== -->  @if (loading) {    <div class="loading-wrap">      <app-spinner size="large" message="Cargando práctica..."> </app-spinner>    </div>  }  <!-- ===== ERROR ===== -->  @if (!loading && error) {    <div class="error-wrap">      <div class="msg-error">        <span>❌</span>        <div>          <p>{{ error }}</p>          <button class="btn-volver-error" (click)="volver()">← Volver a mis prácticas</button>        </div>      </div>    </div>  }  @if (!loading && !error && practica) {    <!-- ===== HEADER ===== -->    <header class="page-header">      <div class="header-left">        <button class="btn-volver" (click)="volver()">← Mis prácticas</button>        <p class="page-tag">          Prácticas ·          {{ detalle?.categoria ?? practica.categoria }}        </p>        <h1 class="page-title">          <span class="header-cat-icono">            {{ iconoCategoria(practica.categoria) }}          </span>          {{ practica.nombrePractica }}        </h1>        <div class="header-chips">          <span class="estado-chip" [class]="claseEstado(practica.estado)">            {{ estadoLabel(practica.estado) }}          </span>          <span class="dif-chip">            {{ practica.dificultad }}          </span>          @if (practica.duracionDias) {            <span class="duracion-chip"> ⏱️ {{ practica.duracionDias }} días estimados </span>          }        </div>      </div>      <div class="header-right">        <div class="header-icon">          {{ iconoCategoria(practica.categoria) }}        </div>      </div>    </header>    <!-- ===== LAYOUT PRINCIPAL ===== -->    <div class="main-layout">      <!-- ── Columna izquierda ── -->      <div class="col-izquierda">        <!-- BARRA DE AVANCE + ACCIONES -->        <div class="avance-card">          <div class="avance-card-header">            <h3 class="avance-card-titulo">📊 Progreso</h3>            <span class="avance-pct-grande"> {{ practica.porcentajeAvance }}% </span>          </div>          <div class="avance-track-grande">            <div              class="avance-fill-grande"              [class.fill-completada]="practica.estado === \'COMPLETADA\'"              [class.fill-curso]="practica.estado === \'EN_CURSO\'"              [style.width.%]="practica.porcentajeAvance"            ></div>          </div>          <!-- Fechas -->          <div class="avance-fechas">            @if (practica.fechaInicio) {              <span class="fecha-item">                📅 Inicio: {{ practica.fechaInicio | date: \'dd/MM/yyyy\' }}              </span>            }            @if (practica.fechaFin) {              <span class="fecha-item"> 🏁 Fin: {{ practica.fechaFin | date: \'dd/MM/yyyy\' }} </span>            }          </div>          <!-- Slider de avance -->          @if (practica.estado === \'EN_CURSO\') {            <button              class="btn-actualizar-avance"              [disabled]="cargandoPasos"              (click)="abrirOverlayAvance(practica)"            >              @if (cargandoPasos) {                <app-spinner size="small"></app-spinner>                Cargando pasos...              } @else {                📊 Actualizar avance              }            </button>          }          <!-- Botón acción principal -->          @if (puedeAvanzar) {            <button              class="btn-accion-principal"              [class.btn-iniciar]="practica.estado === \'PENDIENTE\'"              [class.btn-completar]="practica.estado === \'EN_CURSO\'"              [disabled]="avanzandoEstado"              (click)="avanzarEstado()"            >              @if (avanzandoEstado) {                <app-spinner size="small"></app-spinner>                Procesando...              } @else {                {{ botonEstadoLabel }}              }            </button>          } @else {            <div class="completada-badge">✅ Práctica completada</div>          }        </div>        <!-- KPI IMPACTADO -->        <div class="kpi-card">          <h3 class="kpi-card-titulo">📈 KPI impactado</h3>          <div class="kpi-codigo">{{ practica.kpiImpactado }}</div>          @if (kpiActual) {            <div class="kpi-valor-principal">              <div class="kpi-valor-wrap">                <span class="kpi-valor-num">                  @if (kpiActual.valor != null) {                    {{ kpiActual.valor | number: \'1.1-2\' }}                    <span class="kpi-unidad">{{ kpiActual.unidad }}</span>                  } @else {                    Sin datos                  }                </span>                <span class="kpi-estado-chip" [class]="colorEstadoKpi(kpiActual.estado)">                  {{ iconoEstadoKpi(kpiActual.estado) }}                  {{ kpiActual.estado }}                </span>              </div>              @if (tendenciaKpi) {                <div class="kpi-tendencia">                  <span class="tendencia-icono">                    {{ iconoTendencia }}                  </span>                  <span                    class="tendencia-label"                    [class.tendencia-subiendo]="tendenciaKpi === \'subiendo\'"                    [class.tendencia-bajando]="tendenciaKpi === \'bajando\'"                    [class.tendencia-estable]="tendenciaKpi === \'estable\'"                  >                    Tendencia: {{ tendenciaKpi }}                  </span>                </div>              }            </div>            <!-- Comparativa benchmark -->            @if (kpiActual.benchmarkPromedio != null) {              <div class="kpi-benchmark-wrap">                <div class="benchmark-fila">                  <span class="benchmark-label">Tu valor</span>                  <span class="benchmark-valor tuyo">                    {{ kpiActual.valor | number: \'1.1-2\' }}                    {{ kpiActual.unidad }}                  </span>                </div>                <div class="benchmark-fila">                  <span class="benchmark-label">Promedio sector</span>                  <span class="benchmark-valor promedio">                    {{ kpiActual.benchmarkPromedio | number: \'1.1-2\' }}                    {{ kpiActual.unidad }}                  </span>                </div>                @if (kpiActual.benchmarkTop != null) {                  <div class="benchmark-fila">                    <span class="benchmark-label">Top 25%</span>                    <span class="benchmark-valor top">                      {{ kpiActual.benchmarkTop | number: \'1.1-2\' }}                      {{ kpiActual.unidad }}                    </span>                  </div>                }                @if (kpiActual.diferenciaPct != null) {                  <div                    class="benchmark-diferencia"                    [class.dif-positiva]="kpiActual.diferenciaPct >= 0"                    [class.dif-negativa]="kpiActual.diferenciaPct < 0"                  >                    {{ kpiActual.diferenciaPct >= 0 ? \'↑\' : \'↓\' }}                    {{ kpiActual.diferenciaPct | number: \'1.1-1\' }}% respecto al promedio                  </div>                }              </div>            }            <!-- Histórico del KPI -->            @if (historicoKpi.length >= 2) {              <div class="historico-wrap">                <span class="historico-titulo">Evolución reciente</span>                <div class="historico-bars">                  @for (h of historicoKpi; track h.periodo) {                    <div class="historico-bar-wrap">                      <div                        class="historico-bar"                        [style.height.%]="calcularAlturaBar(h.valor)"                        [class.bar-optimo]="h.estado === \'OPTIMO\'"                        [class.bar-aceptable]="h.estado === \'ACEPTABLE\'"                        [class.bar-critico]="h.estado === \'CRITICO\'"                        [title]="h.valor + \' — \' + h.periodo"                      ></div>                      <span class="historico-periodo">                        {{ h.periodo | slice: 5 : 7 }}/{{ h.periodo | slice: 2 : 4 }}                      </span>                    </div>                  }                </div>              </div>            }          } @else {            <div class="kpi-sin-datos-wrap">              <span>📊</span>              <p>No hay datos calculados para este KPI aún.</p>            </div>          }        </div>      </div>      <!-- ── Columna derecha ── -->      <div class="col-derecha">        <!-- DESCRIPCIÓN Y OBJETIVO -->        @if (loadingDetalle) {          <div class="detalle-loading">            <app-spinner size="medium" message="Cargando detalle..."> </app-spinner>          </div>        } @else if (detalle) {          <!-- Descripción -->          <div class="info-card">            <h3 class="info-card-titulo">📋 Descripción</h3>            <p class="info-texto">{{ detalle.descripcion }}</p>          </div>          <!-- Objetivo e impacto -->          <div class="info-card">            <h3 class="info-card-titulo">🎯 Objetivo e impacto</h3>            <div class="objetivo-grid">              <div class="objetivo-item">                <span class="objetivo-label">Objetivo</span>                <p class="objetivo-texto">{{ detalle.objetivo }}</p>              </div>              <div class="objetivo-item">                <span class="objetivo-label">Impacto esperado</span>                <p class="objetivo-texto">{{ detalle.impactoEsperado }}</p>              </div>            </div>          </div>          <!-- Meta info -->          <div class="meta-card">            <div class="meta-item">              <span class="meta-label">Escala aplicable</span>              <span class="meta-valor">{{ detalle.escala }}</span>            </div>            <div class="meta-item">              <span class="meta-label">Trópico</span>              <span class="meta-valor">{{ detalle.tropicaAplicable }}</span>            </div>            <div class="meta-item">              <span class="meta-label">Dificultad</span>              <span class="meta-valor">{{ detalle.dificultad }}</span>            </div>            <div class="meta-item">              <span class="meta-label">Duración estimada</span>              <span class="meta-valor">{{ detalle.duracionDias }} días</span>            </div>          </div>          <!-- Pasos -->          @if (detalle.pasos && detalle.pasos.length > 0) {            <div class="pasos-card">              <h3 class="info-card-titulo">📝 Pasos de implementación</h3>              <div class="pasos-lista">                @for (paso of detalle.pasos; track $index; let i = $index) {                  <div class="paso-item">                    <div class="paso-num">{{ i + 1 }}</div>                    <p class="paso-texto">{{ paso }}</p>                  </div>                }              </div>            </div>          }        }      </div>    </div>  }</div><app-avance-pasos  [visible]="overlayAvanceVisible"  [idHatoPractica]="practicaAvanceActual?.idHatoPractica ?? \'\'"  [nombrePractica]="practicaAvanceActual?.nombrePractica ?? \'\'"  [pasoTextos]="pasosTextoActual"  (cerrar)="cerrarOverlayAvance()"  (avanceActualizado)="onAvanceActualizado($event)"/></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'DetallePracticaComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DetallePracticaComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

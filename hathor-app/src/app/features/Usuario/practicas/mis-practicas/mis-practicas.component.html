@@ -1,0 +1,386 @@
+<div class="mis-practicas-page">
+  <!-- ===== LOADING ===== -->
+  @if (loading) {
+    <div class="loading-wrap" data-cy="mis-practicas-loading">
+      <app-spinner size="large" message="Cargando tus prácticas..."> </app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- ===== HEADER ===== -->
+    <header class="page-header" data-cy="mis-practicas-header">
+      <div class="header-left">
+        <p class="page-tag">Prácticas · En progreso</p>
+        <h1 class="page-title">Mis <span class="brand">Prácticas</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato para ver tus prácticas.</p>
+        }
+      </div>
+      <div class="header-right">
+        <div class="header-icon">🌱</div>
+      </div>
+    </header>
+
+    @if (error) {
+      <div class="msg-error">
+        <span>❌</span>
+        <p>{{ error }}</p>
+      </div>
+    }
+
+    @if (!hatoActivo) {
+      <div class="empty-state">
+        <span>🐄</span>
+        <p>Selecciona un hato para ver tus prácticas activas.</p>
+      </div>
+    }
+
+    @if (hatoActivo) {
+      <!-- ===== ALERTAS INNECESARIAS ===== -->
+      @if (practicasInnecesarias.length > 0) {
+        <div class="alertas-innecesarias">
+          <div class="alerta-header">
+            <span class="alerta-icono">✨</span>
+            <div>
+              <h3 class="alerta-titulo">¡Tu KPI mejoró! Prácticas que ya no son necesarias</h3>
+              <p class="alerta-desc">
+                El sistema detectó que los siguientes KPIs mejoraron desde que iniciaste estas
+                prácticas. Puedes cerrarlas como completadas o seguir aplicándolas.
+              </p>
+            </div>
+          </div>
+
+          <div class="alertas-lista">
+            @for (p of practicasInnecesarias; track p.idHatoPractica) {
+              <div class="alerta-item">
+                <div class="alerta-item-left">
+                  <span class="alerta-cat-icono">
+                    {{ iconoCategoria(p.categoria) }}
+                  </span>
+                  <div class="alerta-info">
+                    <span class="alerta-nombre">{{ p.nombrePractica }}</span>
+                    @if (getKpiDePractica(p.kpiImpactado); as kpi) {
+                      <span class="alerta-kpi">
+                        {{ p.kpiImpactado }} —
+                        <span [class]="colorEstadoKpi(kpi.estado)">
+                          {{ iconoEstadoKpi(kpi.estado) }}
+                          {{ kpi.estado }}
+                        </span>
+                        @if (kpi.valor != null) {
+                          · {{ kpi.valor | number: '1.1-2' }}
+                          {{ kpi.unidad }}
+                        }
+                      </span>
+                    }
+                  </div>
+                </div>
+                <div class="alerta-acciones">
+                  <button
+                    class="btn-cerrar-innecesaria"
+                    [disabled]="cerrandoPractica === p.idHatoPractica"
+                    (click)="cerrarPracticaInnecesaria(p)"
+                  >
+                    @if (cerrandoPractica === p.idHatoPractica) {
+                      <app-spinner size="small"></app-spinner>
+                    } @else {
+                      ✓ Cerrar práctica
+                    }
+                  </button>
+                  <button class="btn-ignorar-innecesaria" (click)="ignorarInnecesaria(p)">
+                    Seguir aplicando
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- ===== STATS ===== -->
+      <div class="stats-row" data-cy="mis-practicas-stats">
+        <div class="stat-card curso">
+          <span class="stat-icono">🔄</span>
+          <div class="stat-info">
+            <span class="stat-label">En curso</span>
+            <span class="stat-valor">{{ practicasEnCurso.length }}</span>
+          </div>
+        </div>
+        <div class="stat-card completada">
+          <span class="stat-icono">✅</span>
+          <div class="stat-info">
+            <span class="stat-label">Completadas</span>
+            <span class="stat-valor">
+              {{ practicasCompletadas.length }}
+            </span>
+          </div>
+        </div>
+        <div class="stat-card avance">
+          <span class="stat-icono">📈</span>
+          <div class="stat-info">
+            <span class="stat-label">Avance promedio</span>
+            <span class="stat-valor">{{ promedioAvanceEnCurso }}%</span>
+          </div>
+        </div>
+        @if (practicasInnecesarias.length > 0) {
+          <div class="stat-card innecesaria">
+            <span class="stat-icono">✨</span>
+            <div class="stat-info">
+              <span class="stat-label">KPI mejoró</span>
+              <span class="stat-valor">
+                {{ practicasInnecesarias.length }}
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- ===== TABS ===== -->
+      <div class="tabs-wrap">
+        <div class="tabs-row">
+          <button
+            class="tab-btn"
+            [class.activo]="tabActivo === 'en-curso'"
+            (click)="setTab('en-curso')"
+          >
+            🔄 En curso
+            <span class="tab-count">{{ practicasEnCurso.length }}</span>
+          </button>
+          <button
+            class="tab-btn"
+            [class.activo]="tabActivo === 'completadas'"
+            (click)="setTab('completadas')"
+          >
+            ✅ Completadas
+            <span class="tab-count">{{ practicasCompletadas.length }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== TAB: EN CURSO ===== -->
+      @if (tabActivo === 'en-curso') {
+        @if (practicasEnCurso.length === 0) {
+          <div class="empty-state">
+            <span>🌱</span>
+            <p>No tienes prácticas en curso actualmente.</p>
+            <p class="empty-hint">
+              Ve a <strong>Prácticas sugeridas</strong> para iniciar una práctica recomendada por el
+              sistema.
+            </p>
+          </div>
+        } @else {
+          <div class="practicas-grid">
+            @for (p of practicasEnCurso; track p.idHatoPractica) {
+              <div class="practica-card" [class.card-innecesaria]="esInnecesaria(p)">
+                <!-- Badge innecesaria -->
+                @if (esInnecesaria(p)) {
+                  <div class="innecesaria-badge">✨ KPI mejoró — ya no es necesaria</div>
+                }
+
+                <!-- Header -->
+                <div class="card-header">
+                  <div class="card-header-left">
+                    <span class="cat-icono">
+                      {{ iconoCategoria(p.categoria) }}
+                    </span>
+                    <div class="card-badges">
+                      <span class="estado-chip estado-curso"> En curso </span>
+                      <span class="dif-chip" [class]="colorDificultad(p.dificultad)">
+                        {{ p.dificultad }}
+                      </span>
+                    </div>
+                  </div>
+                  @if (p.duracionDias) {
+                    <span class="duracion-chip"> ⏱️ {{ p.duracionDias }} días </span>
+                  }
+                </div>
+
+                <!-- Nombre -->
+                <h3 class="card-nombre">{{ p.nombrePractica }}</h3>
+
+                <!-- KPI impactado -->
+                <div class="kpi-impacto-wrap">
+                  <span class="kpi-impacto-label">KPI impactado:</span>
+                  <div class="kpi-impacto-info">
+                    <span class="kpi-impacto-codigo">
+                      {{ p.kpiImpactado }}
+                    </span>
+                    @if (!loadingKpis) {
+                      @if (getKpiDePractica(p.kpiImpactado); as kpi) {
+                        <div class="kpi-valor-row">
+                          <span class="kpi-estado-chip" [class]="colorEstadoKpi(kpi.estado)">
+                            {{ iconoEstadoKpi(kpi.estado) }}
+                            {{ kpi.estado }}
+                          </span>
+                          @if (kpi.valor != null) {
+                            <span class="kpi-valor-actual">
+                              {{ kpi.valor | number: '1.1-2' }}
+                              {{ kpi.unidad }}
+                            </span>
+                          }
+                        </div>
+                      }
+                    }
+                  </div>
+                </div>
+
+                <!-- Barra de avance -->
+                <div class="avance-wrap">
+                  <div class="avance-header">
+                    <span class="avance-label">Avance</span>
+                    <span class="avance-pct"> {{ p.porcentajeAvance }}% </span>
+                  </div>
+                  <div class="avance-track">
+                    <div class="avance-fill fill-curso" [style.width.%]="p.porcentajeAvance"></div>
+                  </div>
+                </div>
+
+                <!-- Acciones -->
+                <div class="card-acciones">
+                  @if (!modoLectura) {
+                    <button
+                      class="btn-avance"
+                      [disabled]="
+                        cargandoPasos && practicaAvanceActual?.idHatoPractica === p.idHatoPractica
+                      "
+                      (click)="abrirOverlayAvance(p)"
+                    >
+                      @if (
+                        cargandoPasos && practicaAvanceActual?.idHatoPractica === p.idHatoPractica
+                      ) {
+                        <app-spinner size="small"></app-spinner>
+                      } @else {
+                        📊 Avance
+                      }
+                    </button>
+                  }
+                  <button class="btn-detalle" (click)="verDetalle(p)">🔍 Detalle</button>
+                  @if (!modoLectura) {
+                    <button
+                      class="btn-completar"
+                      [disabled]="avanzandoEstado === p.idHatoPractica"
+                      (click)="completarPractica(p)"
+                    >
+                      @if (avanzandoEstado === p.idHatoPractica) {
+                        <app-spinner size="small"></app-spinner>
+                      } @else {
+                        ✓ Completar
+                      }
+                    </button>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        }
+      }
+
+      <!-- ===== TAB: COMPLETADAS ===== -->
+      @if (tabActivo === 'completadas') {
+        @if (practicasCompletadas.length === 0) {
+          <div class="empty-state">
+            <span>🏆</span>
+            <p>Aún no has completado ninguna práctica.</p>
+            <p class="empty-hint">
+              Las prácticas completadas aparecerán aquí como historial de tu progreso.
+            </p>
+          </div>
+        } @else {
+          <div class="practicas-grid">
+            @for (p of practicasCompletadas; track p.idHatoPractica) {
+              <div class="practica-card card-completada">
+                <!-- Header -->
+                <div class="card-header">
+                  <div class="card-header-left">
+                    <span class="cat-icono">
+                      {{ iconoCategoria(p.categoria) }}
+                    </span>
+                    <div class="card-badges">
+                      <span class="estado-chip estado-completada"> ✅ Completada </span>
+                      <span class="dif-chip" [class]="colorDificultad(p.dificultad)">
+                        {{ p.dificultad }}
+                      </span>
+                    </div>
+                  </div>
+                  @if (p.fechaFin) {
+                    <span class="duracion-chip"> 🏁 {{ p.fechaFin | date: 'dd/MM/yyyy' }} </span>
+                  }
+                </div>
+
+                <!-- Nombre -->
+                <h3 class="card-nombre">{{ p.nombrePractica }}</h3>
+
+                <!-- KPI impactado -->
+                <div class="kpi-impacto-wrap">
+                  <span class="kpi-impacto-label">KPI impactado:</span>
+                  <div class="kpi-impacto-info">
+                    <span class="kpi-impacto-codigo">
+                      {{ p.kpiImpactado }}
+                    </span>
+                    @if (!loadingKpis) {
+                      @if (getKpiDePractica(p.kpiImpactado); as kpi) {
+                        <div class="kpi-valor-row">
+                          <span class="kpi-estado-chip" [class]="colorEstadoKpi(kpi.estado)">
+                            {{ iconoEstadoKpi(kpi.estado) }}
+                            {{ kpi.estado }}
+                          </span>
+                          @if (kpi.valor != null) {
+                            <span class="kpi-valor-actual">
+                              {{ kpi.valor | number: '1.1-2' }}
+                              {{ kpi.unidad }}
+                            </span>
+                          }
+                        </div>
+                      }
+                    }
+                  </div>
+                </div>
+
+                <!-- Barra 100% -->
+                <div class="avance-wrap">
+                  <div class="avance-header">
+                    <span class="avance-label">Completada</span>
+                    <span class="avance-pct">100%</span>
+                  </div>
+                  <div class="avance-track">
+                    <div class="avance-fill fill-completada" style="width: 100%"></div>
+                  </div>
+                </div>
+
+                <!-- Fechas -->
+                <div class="fechas-row">
+                  @if (p.fechaInicio) {
+                    <span class="fecha-chip">
+                      📅 Inicio: {{ p.fechaInicio | date: 'dd/MM/yyyy' }}
+                    </span>
+                  }
+                  @if (p.fechaFin) {
+                    <span class="fecha-chip"> 🏁 Fin: {{ p.fechaFin | date: 'dd/MM/yyyy' }} </span>
+                  }
+                </div>
+
+                <!-- Acciones -->
+                <div class="card-acciones">
+                  <button class="btn-detalle" (click)="verDetalle(p)">🔍 Ver detalle</button>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      }
+    }
+  }
+</div>
+
+<app-avance-pasos
+  [visible]="overlayAvanceVisible"
+  [idHatoPractica]="practicaAvanceActual?.idHatoPractica ?? ''"
+  [nombrePractica]="practicaAvanceActual?.nombrePractica ?? ''"
+  [pasoTextos]="pasosTextoActual"
+  (cerrar)="cerrarOverlayAvance()"
+  (avanceActualizado)="onAvanceActualizado($event)"
+/>

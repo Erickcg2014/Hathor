@@ -1,0 +1,65 @@
+<section id="excel-import" class="bg-green-50 py-16 sm:py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs sm:text-sm tracking-[0.14em] font-semibold text-green-600 uppercase">Importación de datos</p>
+      <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 leading-tight">
+        No empieces de cero. <span class="text-lime-500">Trae tu Excel.</span>
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-emerald-800/80 leading-relaxed">
+        Si ya tienes datos históricos en hojas de cálculo, los puedes importar directamente.
+      </p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <div>
+        <div class="space-y-4">
+          <div class="step-item">
+            <span class="step-number">1</span>
+            <div>
+              <h3 class="step-title">Descarga la plantilla</h3>
+              <p class="step-text">Usa la plantilla Excel prediseñada de Hathor con las columnas exactas del sector.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">2</span>
+            <div>
+              <h3 class="step-title">Llena con tus datos</h3>
+              <p class="step-text">Ingresa tus ingresos, gastos, producción y costos en el formato que ya conoces.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">3</span>
+            <div>
+              <h3 class="step-title">Importa con un clic</h3>
+              <p class="step-text">Sube el archivo y Hathor valida, procesa y genera tus KPIs automáticamente.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="mt-6 px-6 py-3 rounded-xl bg-hathor-green text-emerald-950 font-bold hover:brightness-95 transition-all">
+          Descargar plantilla Excel →
+        </button>
+      </div>
+
+      <div class="rounded-2xl border border-emerald-200 overflow-hidden shadow-sm bg-white">
+        <div class="px-4 py-3 bg-green-800 text-white font-semibold">hathor_plantilla_financiera.xlsx</div>
+        <div class="grid grid-cols-4 text-sm">
+          <div class="cell head">Mes</div>
+          <div class="cell head">Producción</div>
+          <div class="cell head">Ingresos</div>
+          <div class="cell head">Gastos</div>
+
+          <div class="cell">Enero</div><div class="cell">12,400 L</div><div class="cell ok">$18,200,000</div><div class="cell bad">$14,300,000</div>
+          <div class="cell">Febrero</div><div class="cell">11,800 L</div><div class="cell ok">$17,346,000</div><div class="cell bad">$13,900,000</div>
+          <div class="cell">Marzo</div><div class="cell">13,100 L</div><div class="cell ok">$19,257,000</div><div class="cell bad">$14,600,000</div>
+        </div>
+        <div class="px-4 py-3 bg-green-100/60 text-green-800 font-medium flex items-center justify-between">
+          <span>Formato válido — listo para importar</span>
+          <button class="px-4 py-2 rounded-xl bg-hathor-green text-emerald-950 font-bold">Importar →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

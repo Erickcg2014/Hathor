@@ -1,0 +1,283 @@
+<div class="gestion-hatos-page">
+  <!-- ===== HEADER ===== -->
+  <header class="page-header">
+    <div class="header-left">
+      <p class="page-tag">Administración · Hatos</p>
+      <h1 class="page-title">Gestión de <span class="brand">Hatos</span></h1>
+      <p class="page-subtitle">{{ labelContexto }}</p>
+    </div>
+    <div class="header-right">
+      <div class="header-icon">🐄</div>
+    </div>
+  </header>
+
+  <!-- ===== FILTROS ===== -->
+  <div class="filtros-card">
+    <!-- Contexto del navbar admin -->
+    @if (filtrosActuales.departamento) {
+      <div class="contexto-row">
+        <span class="contexto-chip"> 📍 {{ filtrosActuales.departamento }} </span>
+        @if (filtrosActuales.region) {
+          <span class="contexto-arrow">›</span>
+          <span class="contexto-chip"> 🏙️ {{ filtrosActuales.region }} </span>
+        }
+        @if (filtrosActuales.nombreHato) {
+          <span class="contexto-arrow">›</span>
+          <span class="contexto-chip activo"> 🐄 {{ filtrosActuales.nombreHato }} </span>
+        }
+      </div>
+    }
+
+    <!-- Filtros adicionales -->
+    <div class="filtros-row">
+      <!-- Búsqueda -->
+      <div class="filtro-busqueda-wrap">
+        <svg
+          class="busqueda-icono"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+        <input
+          type="text"
+          class="filtro-busqueda"
+          placeholder="Buscar por nombre, departamento, ciudad o correo..."
+          [value]="filtroBusqueda"
+          (input)="onBusquedaChange($any($event.target).value)"
+        />
+      </div>
+
+      <!-- Trópico -->
+      <select
+        class="filtro-select"
+        [value]="filtroTropico"
+        (change)="onTropicoChange($any($event.target).value)"
+      >
+        <option value="">🌿 Todos los trópicos</option>
+        @for (t of tropicosOpciones; track t) {
+          <option [value]="t">{{ t }}</option>
+        }
+      </select>
+
+      <!-- Escala -->
+      <select
+        class="filtro-select"
+        [value]="filtroEscala"
+        (change)="onEscalaChange($any($event.target).value)"
+      >
+        <option value="">📐 Todas las escalas</option>
+        @for (e of escalasOpciones; track e) {
+          <option [value]="e">{{ e }}</option>
+        }
+      </select>
+
+      <!-- Tipo de hato -->
+      <select
+        class="filtro-select"
+        [value]="filtroTipoHato"
+        (change)="onTipoHatoChange($any($event.target).value)"
+      >
+        <option value="">🏡 Todos los tipos</option>
+        <option value="LECHERO">Lechero</option>
+        <option value="DOBLE_PROPOSITO">Doble propósito</option>
+        <option value="CARNE">Carne</option>
+      </select>
+
+      <!-- Limpiar filtros -->
+      @if (hayFiltrosActivos) {
+        <button class="btn-limpiar" (click)="limpiarFiltros()">✕ Limpiar</button>
+      }
+    </div>
+
+    <!-- Resumen resultados -->
+    <div class="resultados-row">
+      <span class="resultados-texto">
+        @if (loading) {
+          Cargando hatos...
+        } @else {
+          <strong>{{ hatosFiltradosLocalmente.length }}</strong>
+          hato(s) encontrado(s)
+          @if (hatos.length !== hatosFiltradosLocalmente.length) {
+            de {{ hatos.length }} total
+          }
+        }
+      </span>
+    </div>
+  </div>
+
+  <!-- ===== ERROR ===== -->
+  @if (error) {
+    <div class="msg-error">
+      <span>❌</span>
+      <p>{{ error }}</p>
+    </div>
+  }
+
+  <!-- ===== LOADING ===== -->
+  @if (loading) {
+    <div class="loading-wrap">
+      <app-spinner size="large" message="Cargando hatos..."></app-spinner>
+    </div>
+  }
+
+  <!-- ===== TABLA ===== -->
+  @if (!loading) {
+    @if (hatosFiltradosLocalmente.length === 0) {
+      <div class="empty-state">
+        <span>🐄</span>
+        <p>No se encontraron hatos con los filtros aplicados.</p>
+        @if (hayFiltrosActivos) {
+          <button class="btn-limpiar-empty" (click)="limpiarFiltros()">Limpiar filtros</button>
+        }
+      </div>
+    } @else {
+      <div class="tabla-card">
+        <div class="tabla-wrap">
+          <table class="tabla-hatos">
+            <thead>
+              <tr>
+                <th>Hato</th>
+                <th>Ubicación</th>
+                <th class="text-center">Escala</th>
+                <th class="text-center">Trópico</th>
+                <th class="text-center">Área</th>
+                <th class="text-center">Completitud</th>
+                <th>Propietario</th>
+                <th class="text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (hato of hatosPaginados; track hato.idHato; let i = $index) {
+                <tr
+                  class="tabla-fila"
+                  [class.fila-alterna]="i % 2 !== 0"
+                  (click)="verDetalle(hato)"
+                >
+                  <!-- Hato -->
+                  <td class="td-hato">
+                    <div class="hato-cell">
+                      <div class="hato-avatar">
+                        {{ hato.nombreHato.charAt(0).toUpperCase() }}
+                      </div>
+                      <div class="hato-info">
+                        <span class="hato-nombre">{{ hato.nombreHato }}</span>
+                        <span class="hato-tipo">
+                          {{ hato.tipoHato ?? '—' }}
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+
+                  <!-- Ubicación -->
+                  <td class="td-ubicacion">
+                    <div class="ubicacion-cell">
+                      <span class="ubicacion-depto">
+                        {{ hato.departamento }}
+                      </span>
+                      <span class="ubicacion-ciudad">
+                        {{ hato.ciudad }}
+                      </span>
+                    </div>
+                  </td>
+
+                  <!-- Escala -->
+                  <td class="text-center">
+                    <span class="escala-chip">
+                      {{ iconoEscala(hato.escala) }}
+                      {{ hato.escala ?? '—' }}
+                    </span>
+                  </td>
+
+                  <!-- Trópico -->
+                  <td class="text-center">
+                    <span class="tropico-chip">
+                      {{ hato.tropico ?? '—' }}
+                    </span>
+                  </td>
+
+                  <!-- Área -->
+                  <td class="text-center td-area">
+                    {{ hato.areaHato != null ? hato.areaHato + ' ha' : '—' }}
+                  </td>
+
+                  <!-- Completitud -->
+                  <td class="td-completitud">
+                    <div class="completitud-cell">
+                      <div class="comp-barra">
+                        <div
+                          class="comp-barra-fill"
+                          [class]="colorCompletitud(hato.porcentajeCompletitud)"
+                          [style.width.%]="hato.porcentajeCompletitud"
+                        ></div>
+                      </div>
+                      <span class="comp-pct" [class]="colorCompletitud(hato.porcentajeCompletitud)">
+                        {{ hato.porcentajeCompletitud }}%
+                      </span>
+                    </div>
+                  </td>
+
+                  <!-- Propietario -->
+                  <td class="td-propietario">
+                    <div class="propietario-cell">
+                      <span class="prop-nombre">
+                        {{ hato.nombreUsuario ?? '—' }}
+                        {{ hato.apellidoUsuario ?? '' }}
+                      </span>
+                      <span class="prop-correo">
+                        {{ hato.correoUsuario ?? '—' }}
+                      </span>
+                    </div>
+                  </td>
+
+                  <!-- Acciones -->
+                  <td class="text-center td-acciones">
+                    <button class="btn-ver" (click)="$event.stopPropagation(); verDetalle(hato)">
+                      Ver detalle →
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Paginación -->
+      @if (totalPaginas > 1) {
+        <div class="paginacion">
+          <button
+            class="pag-btn"
+            [disabled]="paginaActual === 1"
+            (click)="irAPagina(paginaActual - 1)"
+          >
+            ‹ Anterior
+          </button>
+
+          @for (p of paginas; track p) {
+            @if (
+              p === 1 || p === totalPaginas || (p >= paginaActual - 2 && p <= paginaActual + 2)
+            ) {
+              <button class="pag-num" [class.activo]="paginaActual === p" (click)="irAPagina(p)">
+                {{ p }}
+              </button>
+            } @else if (p === paginaActual - 3 || p === paginaActual + 3) {
+              <span class="pag-dots">…</span>
+            }
+          }
+
+          <button
+            class="pag-btn"
+            [disabled]="paginaActual === totalPaginas"
+            (click)="irAPagina(paginaActual + 1)"
+          >
+            Siguiente ›
+          </button>
+        </div>
+      }
+    }
+  }
+</div>

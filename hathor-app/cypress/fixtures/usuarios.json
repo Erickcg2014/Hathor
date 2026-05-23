@@ -1,0 +1,10 @@
+{
+  "usuarioValido": {
+    "email": "loadtest_01@loadtest.com",
+    "password": "LoadTest123!"
+  },
+  "usuarioInvalido": {
+    "email": "noexiste@test.com",
+    "password": "wrongpassword"
+  }
+}

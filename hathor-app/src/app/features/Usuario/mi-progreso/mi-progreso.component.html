@@ -1,0 +1,530 @@
+<div class="mi-progreso-page">
+  <!-- ===== LOADING ===== -->
+  @if (loading) {
+    <div class="loading-wrap">
+      <div class="loading-inner">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Calculando tu progreso...</p>
+      </div>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- ===== HEADER ===== -->
+    <header class="page-header">
+      <div class="header-left">
+        <p class="page-tag">Hathor · Tu evolución</p>
+        <h1 class="page-title">Mi <span class="brand">Progreso</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato para ver tu progreso.</p>
+        }
+      </div>
+      <div class="header-right">
+        <div class="header-icon">📈</div>
+      </div>
+    </header>
+
+    @if (error) {
+      <div class="msg-error">
+        <span>❌</span>
+        <p>{{ error }}</p>
+      </div>
+    }
+
+    @if (!hatoActivo) {
+      <div class="empty-state">
+        <span>🐄</span>
+        <p>Selecciona un hato para ver tu progreso.</p>
+      </div>
+    }
+
+    @if (hatoActivo) {
+      <!-- ===== HERO SCORE ===== -->
+      <div class="hero-score">
+        <!-- Score donut -->
+        <div class="score-donut-wrap">
+          <div class="score-donut-contenedor">
+            @if (loadingRanking) {
+              <div class="loading-spinner-small"></div>
+            } @else {
+              <canvas #chartScore width="140" height="140"></canvas>
+              <div class="score-centro">
+                @if (scoreActual != null) {
+                  <span class="score-num">
+                    {{ scoreActual | number: '1.0-0' }}
+                  </span>
+                  <span class="score-label">Score</span>
+                } @else {
+                  <span class="score-num">—</span>
+                  <span class="score-label">Sin datos</span>
+                }
+              </div>
+            }
+          </div>
+          <p class="score-desc">Score Hathor</p>
+        </div>
+
+        <!-- Stats del hero -->
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-icono ranking">🏆</div>
+            <div class="hero-stat-info">
+              <span class="hero-stat-valor">
+                @if (posicionActual != null) {
+                  #{{ posicionActual }}
+                  @if (totalHatosNacional != null) {
+                    <span class="hero-stat-total"> / {{ totalHatosNacional }} </span>
+                  }
+                } @else {
+                  —
+                }
+              </span>
+              <span class="hero-stat-label">Posición nacional</span>
+            </div>
+          </div>
+
+          <div class="hero-stat">
+            <div class="hero-stat-icono percentil">📊</div>
+            <div class="hero-stat-info">
+              <span class="hero-stat-valor">
+                @if (percentilActual != null) {
+                  {{ percentilActual }}%
+                } @else {
+                  —
+                }
+              </span>
+              <span class="hero-stat-label">Percentil</span>
+            </div>
+          </div>
+
+          <div class="hero-stat">
+            <div class="hero-stat-icono kpis">📈</div>
+            <div class="hero-stat-info">
+              <span class="hero-stat-valor verde">
+                {{ kpisMejorados }}
+              </span>
+              <span class="hero-stat-label">KPIs mejorados</span>
+            </div>
+          </div>
+
+          <div class="hero-stat">
+            <div class="hero-stat-icono practicas">🌱</div>
+            <div class="hero-stat-info">
+              <span class="hero-stat-valor">
+                {{ practicasCompletadas }}
+              </span>
+              <span class="hero-stat-label">Prácticas completadas</span>
+            </div>
+          </div>
+
+          <div class="hero-stat">
+            <div class="hero-stat-icono completitud">📋</div>
+            <div class="hero-stat-info">
+              <span
+                class="hero-stat-valor"
+                [class.verde]="completitudPct === 100"
+                [class.amarillo]="completitudPct >= 50 && completitudPct < 100"
+                [class.rojo]="completitudPct < 50"
+              >
+                {{ completitudPct }}%
+              </span>
+              <span class="hero-stat-label">Completitud perfil</span>
+            </div>
+          </div>
+
+          <div class="hero-stat">
+            <div class="hero-stat-icono criticos">⚠️</div>
+            <div class="hero-stat-info">
+              <span
+                class="hero-stat-valor"
+                [class.rojo]="kpisCriticos > 0"
+                [class.verde]="kpisCriticos === 0"
+              >
+                {{ kpisCriticos }}
+              </span>
+              <span class="hero-stat-label">KPIs críticos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barra completitud perfil -->
+        <div class="completitud-barra-wrap">
+          <div class="completitud-barra-header">
+            <span class="completitud-barra-label"> Completitud del perfil </span>
+            <span class="completitud-barra-pct"> {{ completitudPct }}% </span>
+          </div>
+          <div class="completitud-barra-track">
+            <div
+              class="completitud-barra-fill"
+              [style.width.%]="completitudPct"
+              [class.fill-completo]="completitudPct === 100"
+              [class.fill-medio]="completitudPct >= 50 && completitudPct < 100"
+              [class.fill-bajo]="completitudPct < 50"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TABS ===== -->
+      <div class="tabs-row">
+        <button class="tab-btn" [class.activo]="tabActivo === 'kpis'" (click)="setTab('kpis')">
+          <span class="tab-icono">📈</span>
+          Evolución KPIs
+          @if (kpisMejorados > 0) {
+            <span class="tab-badge verde"> +{{ kpisMejorados }} </span>
+          }
+        </button>
+        <button
+          class="tab-btn"
+          [class.activo]="tabActivo === 'practicas'"
+          (click)="setTab('practicas')"
+        >
+          <span class="tab-icono">🌱</span>
+          Impacto prácticas
+          @if (practicasCompletadas > 0) {
+            <span class="tab-badge"> {{ practicasCompletadas }} ✓ </span>
+          }
+        </button>
+        <button
+          class="tab-btn"
+          [class.activo]="tabActivo === 'ranking'"
+          (click)="setTab('ranking')"
+        >
+          <span class="tab-icono">🏆</span>
+          Mi posición
+        </button>
+      </div>
+
+      <!-- ═══════════════════════════════════
+           TAB: EVOLUCIÓN KPIs
+      ═══════════════════════════════════ -->
+      @if (tabActivo === 'kpis') {
+        @if (kpisEvolucion.length === 0) {
+          <div class="empty-state">
+            <span>📊</span>
+            <p>No hay datos históricos de KPIs aún.</p>
+            <p class="empty-hint">
+              Los KPIs se calculan automáticamente con cada registro que realizas.
+            </p>
+          </div>
+        } @else {
+          <div class="kpis-grid">
+            @for (ev of kpisEvolucion; track ev.kpi.codigo) {
+              <div
+                class="kpi-card"
+                [class.card-mejoro]="ev.mejoro"
+                [class.card-critico]="ev.kpi.estado === 'CRITICO'"
+              >
+                <!-- Header -->
+                <div class="kpi-card-header">
+                  <div class="kpi-card-header-left">
+                    <span class="kpi-cat-icono">
+                      {{ iconoCategoria(ev.kpi.categoria) }}
+                    </span>
+                    <div>
+                      <p class="kpi-nombre">{{ ev.kpi.nombre }}</p>
+                      <p class="kpi-codigo">{{ ev.kpi.codigo }}</p>
+                    </div>
+                  </div>
+                  <span class="kpi-estado-chip" [class]="colorEstadoKpi(ev.kpi.estado)">
+                    {{ iconoEstadoKpi(ev.kpi.estado) }}
+                    {{ ev.kpi.estado }}
+                  </span>
+                </div>
+
+                <!-- Valor actual prominente -->
+                <div class="kpi-valor-wrap">
+                  <span class="kpi-valor-actual">
+                    @if (ev.valorActual != null) {
+                      {{ ev.valorActual | number: '1.1-2' }}
+                      <span class="kpi-unidad">{{ ev.kpi.unidad }}</span>
+                    } @else {
+                      Sin datos
+                    }
+                  </span>
+
+                  <!-- Delta -->
+                  @if (ev.deltaPct != null) {
+                    <div class="kpi-delta" [class]="colorDelta(ev.deltaPct)">
+                      {{ iconoDelta(ev.deltaPct) }}
+                      {{ ev.deltaPct > 0 ? '+' : '' }}{{ ev.deltaPct }}%
+                      <span class="kpi-delta-label"> vs inicio </span>
+                    </div>
+                  }
+                </div>
+
+                <!-- Comparativa inicial vs actual -->
+                @if (ev.valorInicial != null && ev.valorActual != null) {
+                  <div class="kpi-comparativa">
+                    <div class="comp-item">
+                      <span class="comp-label">Inicial</span>
+                      <span class="comp-valor">
+                        {{ ev.valorInicial | number: '1.1-2' }}
+                        {{ ev.kpi.unidad }}
+                      </span>
+                    </div>
+                    <span class="comp-flecha">→</span>
+                    <div class="comp-item">
+                      <span class="comp-label">Actual</span>
+                      <span
+                        class="comp-valor"
+                        [class.valor-mejor]="ev.mejoro"
+                        [class.valor-peor]="!ev.mejoro && ev.deltaPct !== 0"
+                      >
+                        {{ ev.valorActual | number: '1.1-2' }}
+                        {{ ev.kpi.unidad }}
+                      </span>
+                    </div>
+                  </div>
+                }
+
+                <!-- Benchmark -->
+                @if (ev.kpi.benchmarkPromedio != null) {
+                  <div class="kpi-benchmark-row">
+                    <span class="bench-label">Promedio sector:</span>
+                    <span class="bench-valor">
+                      {{ ev.kpi.benchmarkPromedio | number: '1.1-2' }}
+                      {{ ev.kpi.unidad }}
+                    </span>
+                    @if (ev.kpi.diferenciaPct != null) {
+                      <span
+                        class="bench-dif"
+                        [class.dif-pos]="ev.kpi.diferenciaPct >= 0"
+                        [class.dif-neg]="ev.kpi.diferenciaPct < 0"
+                      >
+                        {{ ev.kpi.diferenciaPct >= 0 ? '+' : '' }}
+                        {{ ev.kpi.diferenciaPct | number: '1.0-1' }}%
+                      </span>
+                    }
+                  </div>
+                }
+
+                <!-- Mini gráfica histórico -->
+                @if (ev.historico.length >= 2) {
+                  <div class="mini-grafica">
+                    <div class="mini-bars">
+                      @for (h of ev.historico; track h.periodo) {
+                        <div class="mini-bar-wrap">
+                          <div
+                            class="mini-bar"
+                            [style.height.%]="calcularAlturaBar(h.valor, ev.historico)"
+                            [class.bar-optimo]="h.estado === 'OPTIMO'"
+                            [class.bar-aceptable]="h.estado === 'ACEPTABLE'"
+                            [class.bar-critico]="h.estado === 'CRITICO'"
+                            [title]="h.valor + ' — ' + h.periodo"
+                          ></div>
+                          <span class="mini-bar-per">
+                            {{ h.periodo | slice: 5 : 7 }}
+                          </span>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        }
+      }
+
+      <!-- ═══════════════════════════════════
+           TAB: IMPACTO PRÁCTICAS
+      ═══════════════════════════════════ -->
+      @if (tabActivo === 'practicas') {
+        @if (practicasImpacto.length === 0) {
+          <div class="empty-state">
+            <span>🌱</span>
+            <p>Aún no has iniciado ninguna práctica.</p>
+            <p class="empty-hint">
+              Aplica las prácticas sugeridas por el sistema para ver su impacto aquí.
+            </p>
+            @if (!esAdmin) {
+              <button class="btn-ir" (click)="irAPracticas()">Ver prácticas sugeridas →</button>
+            }
+          </div>
+        } @else {
+          <div class="practicas-impacto-lista">
+            @for (item of practicasImpacto; track item.practica.idHatoPractica) {
+              <div
+                class="impacto-card"
+                [class.impacto-completada]="item.practica.estado === 'COMPLETADA'"
+              >
+                <!-- Header -->
+                <div class="impacto-header">
+                  <div class="impacto-header-left">
+                    <span class="impacto-cat-icono">
+                      {{ iconoCategoria(item.practica.categoria) }}
+                    </span>
+                    <div>
+                      <p class="impacto-nombre">
+                        {{ item.practica.nombrePractica }}
+                      </p>
+                      <div class="impacto-chips">
+                        <span
+                          class="estado-chip"
+                          [class.estado-completada]="item.practica.estado === 'COMPLETADA'"
+                          [class.estado-curso]="item.practica.estado === 'EN_CURSO'"
+                        >
+                          {{
+                            item.practica.estado === 'COMPLETADA' ? '✅ Completada' : '🔄 En curso'
+                          }}
+                        </span>
+                        <span class="cat-chip">
+                          {{ item.practica.categoria }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Delta del KPI -->
+                  @if (item.deltaPct != null) {
+                    <div class="impacto-delta" [class]="colorDelta(item.deltaPct)">
+                      <span class="impacto-delta-icono">
+                        {{ iconoDelta(item.deltaPct) }}
+                      </span>
+                      <span class="impacto-delta-valor">
+                        {{ item.deltaPct > 0 ? '+' : '' }}
+                        {{ item.deltaPct }}%
+                      </span>
+                    </div>
+                  }
+                </div>
+
+                <!-- Avance -->
+                <div class="impacto-avance">
+                  <div class="avance-header">
+                    <span class="avance-label">Avance</span>
+                    <span class="avance-pct"> {{ item.practica.porcentajeAvance }}% </span>
+                  </div>
+                  <div class="avance-track">
+                    <div
+                      class="avance-fill"
+                      [class.fill-completada]="item.practica.estado === 'COMPLETADA'"
+                      [class.fill-curso]="item.practica.estado === 'EN_CURSO'"
+                      [style.width.%]="item.practica.porcentajeAvance"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- KPI impactado -->
+                @if (item.practica.kpiImpactado) {
+                  <div class="impacto-kpi">
+                    <span class="impacto-kpi-label"> KPI impactado: </span>
+                    <span class="impacto-kpi-codigo">
+                      {{ item.practica.kpiImpactado }}
+                    </span>
+                    @if (item.kpiActual) {
+                      <span class="kpi-estado-chip" [class]="colorEstadoKpi(item.kpiActual.estado)">
+                        {{ iconoEstadoKpi(item.kpiActual.estado) }}
+                        {{ item.kpiActual.estado }}
+                      </span>
+                      @if (item.kpiActual.valor != null) {
+                        <span class="impacto-kpi-valor">
+                          {{ item.kpiActual.valor | number: '1.1-2' }}
+                          {{ item.kpiActual.unidad }}
+                        </span>
+                      }
+                    }
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        }
+      }
+
+      <!-- ═══════════════════════════════════
+           TAB: MI POSICIÓN
+      ═══════════════════════════════════ -->
+      @if (tabActivo === 'ranking') {
+        @if (loadingRanking) {
+          <div class="loading-tab">
+            <div class="loading-spinner"></div>
+            <p>Cargando ranking...</p>
+          </div>
+        } @else if (posicionActual == null) {
+          <div class="empty-state">
+            <span>🏆</span>
+            <p>No hay datos de ranking disponibles aún.</p>
+            <p class="empty-hint">Calcula tus KPIs para aparecer en el ranking.</p>
+          </div>
+        } @else {
+          <div class="ranking-layout">
+            <!-- Posición destacada -->
+            <div class="ranking-hero">
+              <div class="ranking-posicion-wrap">
+                <span class="ranking-posicion-num"> #{{ posicionActual }} </span>
+                <span class="ranking-posicion-label"> Posición nacional </span>
+              </div>
+
+              <div class="ranking-divider"></div>
+
+              <div class="ranking-score-wrap">
+                <span class="ranking-score-num">
+                  {{ scoreActual | number: '1.0-0' }}
+                </span>
+                <span class="ranking-score-label"> Score compuesto </span>
+              </div>
+
+              <div class="ranking-divider"></div>
+
+              <div class="ranking-percentil-wrap">
+                <span class="ranking-percentil-num">
+                  @if (percentilActual != null) {
+                    {{ percentilActual }}%
+                  } @else {
+                    —
+                  }
+                </span>
+                <span class="ranking-percentil-label"> Percentil </span>
+              </div>
+            </div>
+
+            <!-- Desglose KPIs del ranking -->
+            <div class="ranking-desglose">
+              <h3 class="ranking-desglose-titulo">Estado de tus indicadores</h3>
+              <div class="ranking-kpis-grid">
+                <div class="ranking-kpi-item optimos">
+                  <span class="ranking-kpi-num">
+                    {{ kpisOptimos }}
+                  </span>
+                  <span class="ranking-kpi-label">✅ Óptimos</span>
+                </div>
+                <div class="ranking-kpi-item aceptables">
+                  <span class="ranking-kpi-num">
+                    {{ kpisAceptables }}
+                  </span>
+                  <span class="ranking-kpi-label">🟡 Aceptables</span>
+                </div>
+                <div class="ranking-kpi-item criticos">
+                  <span class="ranking-kpi-num">
+                    {{ kpisCriticos }}
+                  </span>
+                  <span class="ranking-kpi-label">🔴 Críticos</span>
+                </div>
+                <div class="ranking-kpi-item sin-datos">
+                  <span class="ranking-kpi-num">
+                    {{ kpisSinDatos }}
+                  </span>
+                  <span class="ranking-kpi-label">— Sin datos</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA ranking completo -->
+            @if (!esAdmin) {
+              <button class="btn-ver-ranking" (click)="irARanking()">
+                🏆 Ver ranking completo →
+              </button>
+            }
+          </div>
+        }
+      }
+    }
+  }
+</div>

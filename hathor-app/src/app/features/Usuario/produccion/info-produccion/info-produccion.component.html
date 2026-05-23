@@ -1,0 +1,565 @@
+<div class="loading-wrapper" data-cy="produccion-loading" *ngIf="loading">
+  <app-spinner size="large" message="Cargando datos de producción..."></app-spinner>
+</div>
+
+<section class="produccion-page" data-cy="produccion-page" *ngIf="!loading">
+  <!-- Sin hato -->
+  <div class="panel" *ngIf="!hatoActivo">
+    <p class="panel-tag">Sin hato activo</p>
+    <h2>Primero selecciona o registra un hato</h2>
+    <p class="panel-text">Para mostrar el resumen de producción necesitamos identificar el hato.</p>
+    <a class="btn-primary" routerLink="/hato">Ir a Mis Hatos</a>
+  </div>
+
+  <!-- Error -->
+  <div class="panel error" *ngIf="error">
+    <p class="panel-tag">Error</p>
+    <h2>No fue posible cargar la información</h2>
+    <p class="panel-text">{{ error }}</p>
+  </div>
+
+  <div *ngIf="hatoActivo && !error">
+    <!-- Header -->
+    <div class="page-header" data-cy="produccion-header">
+      <div class="header-left">
+        <span class="page-tag">Producción · Leche</span>
+        <h1 class="page-title">Producción <span class="brand">Lechera</span></h1>
+        <p class="page-subtitle" *ngIf="hatoActivo">
+          <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        </p>
+        <p class="page-subtitle warn" *ngIf="!hatoActivo">
+          ⚠️ Selecciona un hato desde el panel superior.
+        </p>
+      </div>
+      <div class="header-right">
+        <div class="header-badge">🥛</div>
+        @if (!modoLectura && perfil) {
+          <button class="btn-editar-perfil" (click)="abrirEdicionPerfil()">✏️ Editar perfil</button>
+        }
+        @if (!modoLectura) {
+          <button
+            class="btn-nuevo-registro"
+            data-cy="btn-nuevo-registro"
+            (click)="abrirFormRegistro()"
+          >
+            + Nuevo registro
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Sin perfil -->
+    @if (!perfil) {
+      <div class="panel">
+        <p class="panel-tag">Sin perfil productivo</p>
+        <h2>Aún no has guardado el perfil productivo</h2>
+        <p class="panel-text">Completa el formulario de producción para ver análisis completos.</p>
+        <a class="btn-primary" routerLink="/produccion/registro">Registrar producción</a>
+      </div>
+    }
+
+    <ng-container *ngIf="perfil">
+      @if (perfil) {
+        <!-- ===== KPIs PERFIL ===== -->
+        <div class="seccion-titulo">
+          <span class="seccion-icono">📋</span>
+          <h2>Perfil productivo</h2>
+        </div>
+      }
+
+      <div class="kpi-grid" data-cy="produccion-kpi-grid">
+        <article class="kpi-card highlight">
+          <p class="label">Raza predominante</p>
+          <p class="value">{{ perfil.razaPredominante }}</p>
+          <p class="hint">Base genética principal del hato</p>
+        </article>
+
+        <article class="kpi-card" *ngIf="perfil.vacasEnOrdenio">
+          <p class="label">Vacas en ordeño</p>
+          <p class="value">{{ perfil.vacasEnOrdenio }}</p>
+          <p class="hint">Animales actualmente en producción</p>
+        </article>
+
+        <article class="kpi-card" *ngIf="litrosPorVacaPorDia > 0">
+          <p class="label">Productividad por vaca</p>
+          <p class="value">{{ litrosPorVacaPorDia }} L/vaca/día</p>
+          <p class="hint">KPI clave de eficiencia lechera</p>
+        </article>
+
+        <article class="kpi-card">
+          <p class="label">Producción diaria estimada</p>
+          <p class="value">{{ perfil.produccionDiariaLitros | number: '1.0-0' }} L</p>
+          <p class="hint">Según perfil registrado</p>
+        </article>
+
+        <article class="kpi-card">
+          <p class="label">Precio litro promedio</p>
+          <p class="value">
+            {{ perfil.precioLitroPromedio | currency: 'COP' : 'symbol' : '1.0-0' }}
+          </p>
+          <p class="hint">Valor de venta por litro</p>
+        </article>
+
+        <article class="kpi-card income">
+          <p class="label">Ingreso mensual estimado</p>
+          <p class="value">
+            {{ ingresoMensualEstimado | currency: 'COP' : 'symbol' : '1.0-0' }}
+          </p>
+          <p class="hint">Producción mensual × precio promedio</p>
+        </article>
+
+        <article class="kpi-card" *ngIf="perfil.sistemaOrdenio">
+          <p class="label">Sistema de ordeño</p>
+          <p class="value">{{ perfil.sistemaOrdenio }}</p>
+          <p class="hint">
+            {{ perfil.frecuenciaOrdenio ? perfil.frecuenciaOrdenio + ' vez/día' : '' }}
+          </p>
+        </article>
+
+        <article class="kpi-card" *ngIf="perfil.destinoLeche">
+          <p class="label">Destino de la leche</p>
+          <p class="value small">{{ perfil.destinoLeche }}</p>
+          <p class="hint">Canal principal de venta</p>
+        </article>
+      </div>
+
+      @if (registrosProduccion.length > 0) {
+        <div
+          class="banner-estado"
+          data-cy="produccion-banner"
+          [class]="'banner-' + estadoProduccionMes"
+        >
+          <span class="banner-icono">
+            @if (estadoProduccionMes === 'optimo') {
+              ✅
+            }
+            @if (estadoProduccionMes === 'aceptable') {
+              🟡
+            }
+            @if (estadoProduccionMes === 'bajo') {
+              🟠
+            }
+            @if (estadoProduccionMes === 'critico') {
+              🔴
+            }
+            @if (estadoProduccionMes === 'sin-datos') {
+              📋
+            }
+          </span>
+          <div class="banner-contenido">
+            <span class="banner-titulo">
+              @if (estadoProduccionMes === 'optimo') {
+                Producción óptima del mes
+              }
+              @if (estadoProduccionMes === 'aceptable') {
+                Producción aceptable del mes
+              }
+              @if (estadoProduccionMes === 'bajo') {
+                Producción baja del mes
+              }
+              @if (estadoProduccionMes === 'critico') {
+                Producción crítica del mes
+              }
+              @if (estadoProduccionMes === 'sin-datos') {
+                Sin registros este mes
+              }
+            </span>
+            <span class="banner-mensaje">{{ mensajeEstadoProduccion }}</span>
+          </div>
+          <div class="banner-hoy">
+            <span class="hoy-label">Hoy</span>
+            <span class="hoy-valor">{{ produccionHoy > 0 ? produccionHoy + ' L' : '—' }}</span>
+          </div>
+        </div>
+      }
+
+      <!-- ===== PRODUCCIÓN REAL ESTE MES ===== -->
+      <div class="seccion-titulo" *ngIf="registrosProduccion.length > 0">
+        <span class="seccion-icono">🥛</span>
+        <h2>Producción real este mes</h2>
+      </div>
+
+      <div class="kpi-grid" *ngIf="registrosProduccion.length > 0">
+        <article class="kpi-card highlight">
+          <p class="label">Total producido</p>
+          <p class="value">{{ produccionEsteMes | number: '1.1-2' }} L</p>
+          <p class="hint">Litros acumulados este mes</p>
+        </article>
+
+        <article class="kpi-card">
+          <p class="label">Promedio diario real</p>
+          <p class="value">{{ promedioDiarioReal | number: '1.1-2' }} L/día</p>
+          <p class="hint">
+            @if (perfil.produccionDiariaLitros > 0) {
+              vs {{ perfil.produccionDiariaLitros }} L estimados
+            }
+          </p>
+        </article>
+
+        <article class="kpi-card" *ngIf="porcentajeVendido > 0">
+          <p class="label">% vendido este mes</p>
+          <p class="value">{{ porcentajeVendido }}%</p>
+          <p class="hint">De la producción registrada</p>
+        </article>
+      </div>
+
+      <!-- Tabla últimos registros producción -->
+      <div
+        class="tabla-wrapper"
+        data-cy="produccion-tabla"
+        *ngIf="ultimosRegistrosProduccion.length > 0"
+      >
+        <div class="tabla-header-row">
+          <span class="tabla-titulo">Últimos registros de producción</span>
+          <span class="tabla-count">{{ registrosProduccion.length }} registros totales</span>
+        </div>
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Litros producidos</th>
+              <th>Vacas ordeñadas</th>
+              <th>L/vaca</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (r of ultimosRegistrosProduccion; track r.fecha) {
+              <tr>
+                <td>{{ r.fecha | date: 'dd/MM/yyyy' }}</td>
+                <td class="num">{{ r.litrosProducidos | number: '1.1-2' }} L</td>
+                <td class="num">{{ r.vacasOrdenadas ?? '—' }}</td>
+                <td class="num">
+                  @if (r.vacasOrdenadas && r.litrosProducidos) {
+                    {{ r.litrosProducidos / r.vacasOrdenadas | number: '1.1-2' }}
+                  } @else {
+                    —
+                  }
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ===== VENTAS DE LECHE ===== -->
+      <div class="seccion-titulo" *ngIf="ventasLeche.length > 0">
+        <span class="seccion-icono">💰</span>
+        <h2>Ventas de leche este mes</h2>
+      </div>
+
+      <div class="kpi-grid" *ngIf="ventasLeche.length > 0">
+        <article class="kpi-card">
+          <p class="label">Litros vendidos</p>
+          <p class="value">{{ litrosVendidosEsteMes | number: '1.1-2' }} L</p>
+          <p class="hint">Este mes</p>
+        </article>
+
+        <article class="kpi-card income">
+          <p class="label">Ingreso real por leche</p>
+          <p class="value">{{ ingresoRealEsteMes | currency: 'COP' : 'symbol' : '1.0-0' }}</p>
+          <p class="hint">Este mes</p>
+        </article>
+
+        <article class="kpi-card" *ngIf="precioPromedioReal > 0">
+          <p class="label">Precio promedio real</p>
+          <p class="value">{{ precioPromedioReal | currency: 'COP' : 'symbol' : '1.0-0' }}</p>
+          <p class="hint">
+            @if (perfil.precioLitroPromedio > 0) {
+              vs {{ perfil.precioLitroPromedio | currency: 'COP' : 'symbol' : '1.0-0' }} estimado
+            }
+          </p>
+        </article>
+      </div>
+
+      <!-- Tabla últimas ventas -->
+      <div class="tabla-wrapper" *ngIf="ultimasVentas.length > 0">
+        <div class="tabla-header-row">
+          <span class="tabla-titulo">Últimas ventas de leche</span>
+          <span class="tabla-count">{{ ventasLeche.length }} ventas totales</span>
+        </div>
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Litros vendidos</th>
+              <th>Precio/litro</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let v of ultimasVentas">
+              <td>{{ v.fecha | date: 'dd/MM/yyyy' }}</td>
+              <td class="num">{{ v.litrosVendidos | number: '1.1-2' }} L</td>
+              <td class="num">{{ v.precioLitro | currency: 'COP' : 'symbol' : '1.0-0' }}</td>
+              <td class="num ingreso">
+                {{ v.litrosVendidos * v.precioLitro | currency: 'COP' : 'symbol' : '1.0-0' }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- ===== BALANCE PRODUCCIÓN VS VENTAS ===== -->
+      @if (produccionEsteMes > 0 || litrosVendidosEsteMes > 0) {
+        <div class="seccion-titulo">
+          <span class="seccion-icono">⚖️</span>
+          <h2>Balance del mes</h2>
+        </div>
+
+        <div class="balance-wrapper">
+          <div class="balance-fila">
+            <div class="balance-item produccion">
+              <span class="balance-icono">🥛</span>
+              <div class="balance-info">
+                <p class="balance-label">Total producido</p>
+                <p class="balance-valor">{{ produccionEsteMes | number: '1.0-2' }} L</p>
+              </div>
+            </div>
+
+            <div class="balance-separador">vs</div>
+
+            <div class="balance-item ventas">
+              <span class="balance-icono">💰</span>
+              <div class="balance-info">
+                <p class="balance-label">Total vendido</p>
+                <p class="balance-valor">{{ litrosVendidosEsteMes | number: '1.0-2' }} L</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Barra de progreso -->
+          <div class="balance-barra-wrapper">
+            <div class="balance-barra-labels">
+              <span>0 L</span>
+              <span>{{ porcentajeVendido }}% vendido</span>
+              <span>{{ produccionEsteMes | number: '1.0-2' }} L</span>
+            </div>
+            <div class="balance-barra">
+              <div
+                class="balance-barra-fill"
+                [style.width.%]="porcentajeVendido > 100 ? 100 : porcentajeVendido"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Diferencia -->
+          <div class="balance-diferencia">
+            @if (produccionEsteMes > litrosVendidosEsteMes) {
+              <span class="diferencia-tag pendiente">
+                {{ produccionEsteMes - litrosVendidosEsteMes | number: '1.0-2' }} L sin vender este
+                mes
+              </span>
+            } @else if (litrosVendidosEsteMes > produccionEsteMes) {
+              <span class="diferencia-tag exceso">
+                ⚠️ Ventas superan la producción registrada
+              </span>
+            } @else if (produccionEsteMes === litrosVendidosEsteMes && produccionEsteMes > 0) {
+              <span class="diferencia-tag completo"> ✓ Toda la producción fue vendida </span>
+            }
+          </div>
+
+          <!-- Ingreso real vs estimado -->
+          <div class="balance-ingresos">
+            <div class="balance-ingreso-item">
+              <p class="balance-ingreso-label">Ingreso real este mes</p>
+              <p class="balance-ingreso-valor real">
+                {{ ingresoRealEsteMes | currency: 'COP' : 'symbol' : '1.0-0' }}
+              </p>
+            </div>
+            <div class="balance-ingreso-divider">vs</div>
+            <div class="balance-ingreso-item">
+              <p class="balance-ingreso-label">Ingreso estimado (perfil)</p>
+              <p class="balance-ingreso-valor estimado">
+                {{ ingresoMensualEstimado | currency: 'COP' : 'symbol' : '1.0-0' }}
+              </p>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Meta -->
+      <div class="meta">
+        <span *ngIf="perfil.fechaRegistro">
+          Registrado: {{ perfil.fechaRegistro | date: 'mediumDate' }}
+        </span>
+        <span *ngIf="perfil.fechaActualizacion">
+          Actualizado: {{ perfil.fechaActualizacion | date: 'mediumDate' }}
+        </span>
+      </div>
+    </ng-container>
+  </div>
+</section>
+
+<!-- ===== OVERLAY NUEVO REGISTRO ===== -->
+@if (mostrarFormRegistro) {
+  <div class="overlay-fondo" (click)="cerrarFormRegistro()">
+    <div
+      class="overlay-card"
+      data-cy="overlay-nuevo-registro"
+      (click)="$event.stopPropagation()"
+      *ngIf="!modoLectura"
+    >
+      <div class="overlay-header">
+        <div class="overlay-icono">🥛</div>
+        <div>
+          <h3 class="overlay-titulo">Registrar producción para el día de hoy</h3>
+          <p class="overlay-subtitulo">Ingresa los litros producidos hoy</p>
+        </div>
+        <button class="overlay-cerrar" (click)="cerrarFormRegistro()">✕</button>
+      </div>
+
+      <div class="overlay-body">
+        <div class="field">
+          <label>Fecha <span class="required">*</span></label>
+          <input
+            type="date"
+            data-cy="input-fecha-registro"
+            [(ngModel)]="nuevoRegistro.fecha"
+            class="form-input"
+          />
+        </div>
+
+        <div class="field">
+          <label>Litros producidos <span class="required">*</span></label>
+          <div class="input-suffix-row">
+            <input
+              type="number"
+              data-cy="input-litros-producidos"
+              [(ngModel)]="nuevoRegistro.litrosProducidos"
+              placeholder="Ej: 150"
+              min="0"
+              step="0.1"
+              class="form-input"
+            />
+            <span class="input-suffix">L</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Vacas ordeñadas <span class="optional">(opcional)</span></label>
+          <input
+            type="number"
+            [(ngModel)]="nuevoRegistro.vacasOrdenadas"
+            placeholder="Ej: 25"
+            min="0"
+            class="form-input"
+          />
+        </div>
+
+        @if (errorRegistro) {
+          <p class="error-registro">{{ errorRegistro }}</p>
+        }
+      </div>
+
+      <div class="overlay-footer">
+        <button class="btn-cancelar" (click)="cerrarFormRegistro()">Cancelar</button>
+        <button
+          class="btn-guardar-registro"
+          data-cy="btn-guardar-registro"
+          (click)="guardarRegistro()"
+          [disabled]="guardandoRegistro"
+        >
+          @if (guardandoRegistro) {
+            <app-spinner size="small"></app-spinner>
+            Guardando...
+          } @else {
+            Guardar registro
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+
+  @if (mostrarEdicionPerfil) {
+    <div class="overlay-fondo" (click)="cerrarEdicionPerfil()">
+      <div class="overlay-card" (click)="$event.stopPropagation()">
+        <div class="overlay-header">
+          <div class="overlay-icono">📋</div>
+          <div>
+            <h3 class="overlay-titulo">Actualizar perfil productivo</h3>
+            <p class="overlay-subtitulo">Actualiza los datos que han cambiado en tu hato</p>
+          </div>
+          <button class="overlay-cerrar" (click)="cerrarEdicionPerfil()">✕</button>
+        </div>
+
+        <div class="overlay-body">
+          <div class="field">
+            <label>Vacas en ordeño</label>
+            <input
+              type="number"
+              min="0"
+              class="form-input"
+              placeholder="Ej: 25"
+              [(ngModel)]="editPerfil.vacasEnOrdenio"
+            />
+          </div>
+          <div class="field">
+            <label>Producción diaria (L)</label>
+            <div class="input-suffix-row">
+              <input
+                type="number"
+                min="0"
+                step="0.1"
+                class="form-input"
+                placeholder="Ej: 185"
+                [(ngModel)]="editPerfil.produccionDiariaLitros"
+              />
+              <span class="input-suffix">L</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Precio litro promedio (COP)</label>
+            <input
+              type="number"
+              min="0"
+              class="form-input"
+              placeholder="Ej: 1200"
+              [(ngModel)]="editPerfil.precioLitroPromedio"
+            />
+          </div>
+          <div class="field">
+            <label>Período de lactancia promedio (días)</label>
+            <input
+              type="number"
+              min="0"
+              class="form-input"
+              placeholder="Ej: 305"
+              [(ngModel)]="editPerfil.periodoLactanciaPromedio"
+            />
+          </div>
+          <div class="field">
+            <label>Frecuencia de ordeño (veces/día)</label>
+            <input
+              type="number"
+              min="1"
+              max="4"
+              class="form-input"
+              placeholder="Ej: 2"
+              [(ngModel)]="editPerfil.frecuenciaOrdenio"
+            />
+          </div>
+
+          @if (errorPerfil) {
+            <p class="error-registro">{{ errorPerfil }}</p>
+          }
+        </div>
+
+        <div class="overlay-footer">
+          <button class="btn-cancelar" (click)="cerrarEdicionPerfil()">Cancelar</button>
+          <button
+            class="btn-guardar-registro"
+            (click)="guardarEdicionPerfil()"
+            [disabled]="guardandoPerfil"
+          >
+            @if (guardandoPerfil) {
+              <app-spinner size="small"></app-spinner>
+              Guardando...
+            } @else {
+              Guardar cambios
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+}

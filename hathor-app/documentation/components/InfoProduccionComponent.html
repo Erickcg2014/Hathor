@@ -1,0 +1,2832 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  InfoProduccionComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-info-produccion</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/router/RouterLink" target="_blank" >RouterLink</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./info-produccion.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./info-produccion.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#editPerfil" >editPerfil</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#errorPerfil" >errorPerfil</a>
+                            </li>
+                            <li>
+                                <a href="#errorRegistro" >errorRegistro</a>
+                            </li>
+                            <li>
+                                <a href="#guardandoPerfil" >guardandoPerfil</a>
+                            </li>
+                            <li>
+                                <a href="#guardandoRegistro" >guardandoRegistro</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#mostrarEdicionPerfil" >mostrarEdicionPerfil</a>
+                            </li>
+                            <li>
+                                <a href="#mostrarFormRegistro" >mostrarFormRegistro</a>
+                            </li>
+                            <li>
+                                <a href="#nuevoRegistro" >nuevoRegistro</a>
+                            </li>
+                            <li>
+                                <a href="#perfil" >perfil</a>
+                            </li>
+                            <li>
+                                <a href="#registrosProduccion" >registrosProduccion</a>
+                            </li>
+                            <li>
+                                <a href="#ventasLeche" >ventasLeche</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abrirEdicionPerfil" >abrirEdicionPerfil</a>
+                            </li>
+                            <li>
+                                <a href="#abrirFormRegistro" >abrirFormRegistro</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarHatoInicial" >cargarHatoInicial</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#cargarTodo" >cargarTodo</a>
+                            </li>
+                            <li>
+                                <a href="#cerrarEdicionPerfil" >cerrarEdicionPerfil</a>
+                            </li>
+                            <li>
+                                <a href="#cerrarFormRegistro" >cerrarFormRegistro</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#guardarEdicionPerfil" >guardarEdicionPerfil</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#guardarRegistro" >guardarRegistro</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#modoLectura" >modoLectura</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#produccionMensualLitros" >produccionMensualLitros</a>
+                                </li>
+                                <li>
+                                    <a href="#ingresoMensualEstimado" >ingresoMensualEstimado</a>
+                                </li>
+                                <li>
+                                    <a href="#litrosPorVacaPorDia" >litrosPorVacaPorDia</a>
+                                </li>
+                                <li>
+                                    <a href="#produccionEsteMes" >produccionEsteMes</a>
+                                </li>
+                                <li>
+                                    <a href="#promedioDiarioReal" >promedioDiarioReal</a>
+                                </li>
+                                <li>
+                                    <a href="#ultimosRegistrosProduccion" >ultimosRegistrosProduccion</a>
+                                </li>
+                                <li>
+                                    <a href="#ventasEsteMes" >ventasEsteMes</a>
+                                </li>
+                                <li>
+                                    <a href="#litrosVendidosEsteMes" >litrosVendidosEsteMes</a>
+                                </li>
+                                <li>
+                                    <a href="#ingresoRealEsteMes" >ingresoRealEsteMes</a>
+                                </li>
+                                <li>
+                                    <a href="#precioPromedioReal" >precioPromedioReal</a>
+                                </li>
+                                <li>
+                                    <a href="#porcentajeVendido" >porcentajeVendido</a>
+                                </li>
+                                <li>
+                                    <a href="#ultimasVentas" >ultimasVentas</a>
+                                </li>
+                                <li>
+                                    <a href="#estadoProduccionMes" >estadoProduccionMes</a>
+                                </li>
+                                <li>
+                                    <a href="#mensajeEstadoProduccion" >mensajeEstadoProduccion</a>
+                                </li>
+                                <li>
+                                    <a href="#produccionHoy" >produccionHoy</a>
+                                </li>
+                                <li>
+                                    <a href="#mensajeProduccionHoy" >mensajeProduccionHoy</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoService: <a href="../injectables/HatoService.html" target="_self">HatoService</a>, hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, perfilProductivoService: <a href="../injectables/PerfilProductivoService.html" target="_self">PerfilProductivoService</a>, produccionLecheService: <a href="../injectables/ProduccionLecheService.html" target="_self">ProduccionLecheService</a>, kpiService: <a href="../injectables/KpiService.html" target="_self">KpiService</a>, ventaLecheService: <a href="../injectables/VentaLecheService.html" target="_self">VentaLecheService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:57</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoService.html" target="_self" >HatoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>perfilProductivoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PerfilProductivoService.html" target="_self" >PerfilProductivoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>produccionLecheService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProduccionLecheService.html" target="_self" >ProduccionLecheService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>kpiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/KpiService.html" target="_self" >KpiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ventaLecheService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/VentaLecheService.html" target="_self" >VentaLecheService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modoLectura"></a>
+                        <b>modoLectura</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:40</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirEdicionPerfil"></a>
+                    <span class="name">
+                        <span ><b>abrirEdicionPerfil</b></span>
+                        <a href="#abrirEdicionPerfil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirEdicionPerfil()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="244"
+                                    class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:244</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirFormRegistro"></a>
+                    <span class="name">
+                        <span ><b>abrirFormRegistro</b></span>
+                        <a href="#abrirFormRegistro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirFormRegistro()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="285"
+                                    class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:285</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarHatoInicial"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarHatoInicial</b></span>
+                        <a href="#cargarHatoInicial"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarHatoInicial()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarTodo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>cargarTodo</b></span>
+                        <a href="#cargarTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarTodo(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrarEdicionPerfil"></a>
+                    <span class="name">
+                        <span ><b>cerrarEdicionPerfil</b></span>
+                        <a href="#cerrarEdicionPerfil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrarEdicionPerfil()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="257"
+                                    class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:257</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrarFormRegistro"></a>
+                    <span class="name">
+                        <span ><b>cerrarFormRegistro</b></span>
+                        <a href="#cerrarFormRegistro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrarFormRegistro()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="297"
+                                    class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:297</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarEdicionPerfil"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>guardarEdicionPerfil</b></span>
+                        <a href="#guardarEdicionPerfil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>guardarEdicionPerfil()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="262"
+                                    class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:262</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarRegistro"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>guardarRegistro</b></span>
+                        <a href="#guardarRegistro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>guardarRegistro()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="302"
+                                    class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:302</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="329"
+                                    class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:329</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editPerfil"></a>
+                    <span class="name">
+                        <span ><b>editPerfil</b></span>
+                        <a href="#editPerfil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ActualizarPerfilRapidoDTO.html" target="_self" >ActualizarPerfilRapidoDTO</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorPerfil"></a>
+                    <span class="name">
+                        <span ><b>errorPerfil</b></span>
+                        <a href="#errorPerfil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorRegistro"></a>
+                    <span class="name">
+                        <span ><b>errorRegistro</b></span>
+                        <a href="#errorRegistro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardandoPerfil"></a>
+                    <span class="name">
+                        <span ><b>guardandoPerfil</b></span>
+                        <a href="#guardandoPerfil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardandoRegistro"></a>
+                    <span class="name">
+                        <span ><b>guardandoRegistro</b></span>
+                        <a href="#guardandoRegistro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarEdicionPerfil"></a>
+                    <span class="name">
+                        <span ><b>mostrarEdicionPerfil</b></span>
+                        <a href="#mostrarEdicionPerfil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarFormRegistro"></a>
+                    <span class="name">
+                        <span ><b>mostrarFormRegistro</b></span>
+                        <a href="#mostrarFormRegistro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nuevoRegistro"></a>
+                    <span class="name">
+                        <span ><b>nuevoRegistro</b></span>
+                        <a href="#nuevoRegistro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RegistroProduccionLecheDTO.html" target="_self" >RegistroProduccionLecheDTO</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    idHato: &#x27;&#x27;,
+    fecha: new Date().toISOString().split(&#x27;T&#x27;)[0],
+    litrosProducidos: 0,
+    vacasOrdenadas: undefined,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="perfil"></a>
+                    <span class="name">
+                        <span ><b>perfil</b></span>
+                        <a href="#perfil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/PerfilProductivo.html" target="_self" >PerfilProductivo | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registrosProduccion"></a>
+                    <span class="name">
+                        <span ><b>registrosProduccion</b></span>
+                        <a href="#registrosProduccion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ProduccionLeche.html" target="_self" >ProduccionLeche[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ventasLeche"></a>
+                    <span class="name">
+                        <span ><b>ventasLeche</b></span>
+                        <a href="#ventasLeche"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/VentaLeche.html" target="_self" >VentaLeche[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="produccionMensualLitros"></a>
+                        <span class="name"><b>produccionMensualLitros</b><a href="#produccionMensualLitros"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>produccionMensualLitros()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:125</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ingresoMensualEstimado"></a>
+                        <span class="name"><b>ingresoMensualEstimado</b><a href="#ingresoMensualEstimado"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>ingresoMensualEstimado()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:129</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="litrosPorVacaPorDia"></a>
+                        <span class="name"><b>litrosPorVacaPorDia</b><a href="#litrosPorVacaPorDia"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>litrosPorVacaPorDia()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:133</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="produccionEsteMes"></a>
+                        <span class="name"><b>produccionEsteMes</b><a href="#produccionEsteMes"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>produccionEsteMes()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:140</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="promedioDiarioReal"></a>
+                        <span class="name"><b>promedioDiarioReal</b><a href="#promedioDiarioReal"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>promedioDiarioReal()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:150</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ultimosRegistrosProduccion"></a>
+                        <span class="name"><b>ultimosRegistrosProduccion</b><a href="#ultimosRegistrosProduccion"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>ultimosRegistrosProduccion()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:160</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ventasEsteMes"></a>
+                        <span class="name"><b>ventasEsteMes</b><a href="#ventasEsteMes"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>ventasEsteMes()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:166</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="litrosVendidosEsteMes"></a>
+                        <span class="name"><b>litrosVendidosEsteMes</b><a href="#litrosVendidosEsteMes"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>litrosVendidosEsteMes()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:174</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ingresoRealEsteMes"></a>
+                        <span class="name"><b>ingresoRealEsteMes</b><a href="#ingresoRealEsteMes"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>ingresoRealEsteMes()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:178</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="precioPromedioReal"></a>
+                        <span class="name"><b>precioPromedioReal</b><a href="#precioPromedioReal"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>precioPromedioReal()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:185</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="porcentajeVendido"></a>
+                        <span class="name"><b>porcentajeVendido</b><a href="#porcentajeVendido"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>porcentajeVendido()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="193" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:193</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ultimasVentas"></a>
+                        <span class="name"><b>ultimasVentas</b><a href="#ultimasVentas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>ultimasVentas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:198</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="estadoProduccionMes"></a>
+                        <span class="name"><b>estadoProduccionMes</b><a href="#estadoProduccionMes"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>estadoProduccionMes()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:204</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mensajeEstadoProduccion"></a>
+                        <span class="name"><b>mensajeEstadoProduccion</b><a href="#mensajeEstadoProduccion"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>mensajeEstadoProduccion()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:213</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="produccionHoy"></a>
+                        <span class="name"><b>produccionHoy</b><a href="#produccionHoy"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>produccionHoy()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="232" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:232</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mensajeProduccionHoy"></a>
+                        <span class="name"><b>mensajeProduccionHoy</b><a href="#mensajeProduccionHoy"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>mensajeProduccionHoy()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="238" class="link-to-prism">src/app/features/Usuario/produccion/info-produccion/info-produccion.component.ts:238</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, Input } from &#x27;@angular/core&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil, firstValueFrom } from &#x27;rxjs&#x27;;
+import { Hato, HatoService } from &#x27;../../../../core/services/hato/hato.service&#x27;;
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import {
+  PerfilProductivo,
+  PerfilProductivoService,
+} from &#x27;../../../../core/services/produccion/perfil-productivo.service&#x27;;
+import {
+  ProduccionLeche,
+  ProduccionLecheService,
+  RegistroProduccionLecheDTO,
+} from &#x27;../../../../core/services/produccion/produccion-leche.service&#x27;;
+import {
+  VentaLeche,
+  VentaLecheService,
+} from &#x27;../../../../core/services/finanzas/venta-leche.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+import { KpiService } from &#x27;../../../../core/services/kpi/kpi.service&#x27;;
+import { ActualizarPerfilRapidoDTO } from &#x27;../../../../core/services/produccion/perfil-productivo.service&#x27;;
+
+@Component({
+  selector: &#x27;app-info-produccion&#x27;,
+  standalone: true,
+  imports: [CommonModule, RouterLink, SpinnerComponent, FormsModule],
+  templateUrl: &#x27;./info-produccion.component.html&#x27;,
+  styleUrl: &#x27;./info-produccion.component.css&#x27;,
+})
+export class InfoProduccionComponent implements OnInit, OnDestroy {
+  loading &#x3D; true;
+  error &#x3D; &#x27;&#x27;;
+  hatoActivo: Hato | null &#x3D; null;
+  perfil: PerfilProductivo | null &#x3D; null;
+  registrosProduccion: ProduccionLeche[] &#x3D; [];
+  ventasLeche: VentaLeche[] &#x3D; [];
+  @Input() modoLectura &#x3D; false;
+
+  mostrarFormRegistro &#x3D; false;
+  guardandoRegistro &#x3D; false;
+  errorRegistro &#x3D; &#x27;&#x27;;
+  nuevoRegistro: RegistroProduccionLecheDTO &#x3D; {
+    idHato: &#x27;&#x27;,
+    fecha: new Date().toISOString().split(&#x27;T&#x27;)[0],
+    litrosProducidos: 0,
+    vacasOrdenadas: undefined,
+  };
+
+  mostrarEdicionPerfil &#x3D; false;
+  guardandoPerfil &#x3D; false;
+  errorPerfil &#x3D; &#x27;&#x27;;
+  editPerfil: ActualizarPerfilRapidoDTO &#x3D; {};
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private hatoService: HatoService,
+    private hatoState: HatoStateService,
+    private perfilProductivoService: PerfilProductivoService,
+    private produccionLecheService: ProduccionLecheService,
+    private kpiService: KpiService,
+    private ventaLecheService: VentaLecheService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato?.idHato) {
+        this.cargarTodo(hato.idHato);
+        return;
+      }
+      this.perfil &#x3D; null;
+      this.loading &#x3D; false;
+      this.cdr.markForCheck();
+    });
+    this.cargarHatoInicial();
+  }
+
+  private cargarHatoInicial(): void {
+    if (this.hatoState.getHatoActivo()) return;
+    this.hatoService.getMisHatos().subscribe({
+      next: (hatos) &#x3D;&gt; {
+        if (hatos.length &gt; 0) {
+          this.hatoState.setHatoActivo(hatos[0]);
+          return;
+        }
+        this.loading &#x3D; false;
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.loading &#x3D; false;
+        this.error &#x3D; &#x27;No se pudieron cargar tus hatos en este momento.&#x27;;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private async cargarTodo(idHato: string): Promise&lt;void&gt; {
+    this.loading &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    try {
+      const [perfil, produccion, ventas] &#x3D; await Promise.allSettled([
+        firstValueFrom(this.perfilProductivoService.getPerfilByHato(idHato)),
+        firstValueFrom(this.produccionLecheService.getByHato(idHato)),
+        firstValueFrom(this.ventaLecheService.getByHato(idHato)),
+      ]);
+
+      this.perfil &#x3D; perfil.status &#x3D;&#x3D;&#x3D; &#x27;fulfilled&#x27; ? perfil.value : null;
+      this.registrosProduccion &#x3D; produccion.status &#x3D;&#x3D;&#x3D; &#x27;fulfilled&#x27; ? produccion.value : [];
+      this.ventasLeche &#x3D; ventas.status &#x3D;&#x3D;&#x3D; &#x27;fulfilled&#x27; ? ventas.value : [];
+    } catch {
+      this.error &#x3D; &#x27;Error cargando los datos de producción.&#x27;;
+    } finally {
+      this.loading &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GETTERS PERFIL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  get produccionMensualLitros(): number {
+    return this.perfil ? this.perfil.produccionDiariaLitros * 30 : 0;
+  }
+
+  get ingresoMensualEstimado(): number {
+    return this.perfil ? this.produccionMensualLitros * this.perfil.precioLitroPromedio : 0;
+  }
+
+  get litrosPorVacaPorDia(): number {
+    if (!this.perfil?.vacasEnOrdenio || !this.perfil?.produccionDiariaLitros) return 0;
+    return Math.round((this.perfil.produccionDiariaLitros / this.perfil.vacasEnOrdenio) * 10) / 10;
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GETTERS PRODUCCIÓN REAL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  get produccionEsteMes(): number {
+    const ahora &#x3D; new Date();
+    return this.registrosProduccion
+      .filter((r) &#x3D;&gt; {
+        const f &#x3D; new Date(r.fecha);
+        return f.getMonth() &#x3D;&#x3D;&#x3D; ahora.getMonth() &amp;&amp; f.getFullYear() &#x3D;&#x3D;&#x3D; ahora.getFullYear();
+      })
+      .reduce((acc, r) &#x3D;&gt; acc + (r.litrosProducidos ?? 0), 0);
+  }
+
+  get promedioDiarioReal(): number {
+    const ahora &#x3D; new Date();
+    const registrosMes &#x3D; this.registrosProduccion.filter((r) &#x3D;&gt; {
+      const f &#x3D; new Date(r.fecha);
+      return f.getMonth() &#x3D;&#x3D;&#x3D; ahora.getMonth() &amp;&amp; f.getFullYear() &#x3D;&#x3D;&#x3D; ahora.getFullYear();
+    });
+    if (registrosMes.length &#x3D;&#x3D;&#x3D; 0) return 0;
+    return Math.round((this.produccionEsteMes / registrosMes.length) * 10) / 10;
+  }
+
+  get ultimosRegistrosProduccion(): ProduccionLeche[] {
+    return this.registrosProduccion.slice(0, 7);
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GETTERS VENTAS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  get ventasEsteMes(): VentaLeche[] {
+    const ahora &#x3D; new Date();
+    return this.ventasLeche.filter((v) &#x3D;&gt; {
+      const f &#x3D; new Date(v.fecha);
+      return f.getMonth() &#x3D;&#x3D;&#x3D; ahora.getMonth() &amp;&amp; f.getFullYear() &#x3D;&#x3D;&#x3D; ahora.getFullYear();
+    });
+  }
+
+  get litrosVendidosEsteMes(): number {
+    return this.ventasEsteMes.reduce((acc, v) &#x3D;&gt; acc + (v.litrosVendidos ?? 0), 0);
+  }
+
+  get ingresoRealEsteMes(): number {
+    return this.ventasEsteMes.reduce(
+      (acc, v) &#x3D;&gt; acc + (v.litrosVendidos ?? 0) * (v.precioLitro ?? 0),
+      0,
+    );
+  }
+
+  get precioPromedioReal(): number {
+    const ventas &#x3D; this.ventasEsteMes.filter((v) &#x3D;&gt; v.litrosVendidos &amp;&amp; v.precioLitro);
+    if (ventas.length &#x3D;&#x3D;&#x3D; 0) return 0;
+    const totalLitros &#x3D; ventas.reduce((acc, v) &#x3D;&gt; acc + v.litrosVendidos, 0);
+    const totalIngreso &#x3D; ventas.reduce((acc, v) &#x3D;&gt; acc + v.litrosVendidos * v.precioLitro, 0);
+    return Math.round(totalIngreso / totalLitros);
+  }
+
+  get porcentajeVendido(): number {
+    if (!this.produccionEsteMes || !this.litrosVendidosEsteMes) return 0;
+    return Math.round((this.litrosVendidosEsteMes / this.produccionEsteMes) * 100);
+  }
+
+  get ultimasVentas(): VentaLeche[] {
+    return this.ventasLeche.slice(0, 5);
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GETTERS ESTADO PRODUCCIÓN &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  get estadoProduccionMes(): &#x27;sin-datos&#x27; | &#x27;critico&#x27; | &#x27;bajo&#x27; | &#x27;aceptable&#x27; | &#x27;optimo&#x27; {
+    const p &#x3D; this.produccionEsteMes;
+    if (p &#x3D;&#x3D;&#x3D; 0) return &#x27;sin-datos&#x27;;
+    if (p &lt; 2000) return &#x27;critico&#x27;;
+    if (p &lt; 10000) return &#x27;bajo&#x27;;
+    if (p &lt; 11250) return &#x27;aceptable&#x27;;
+    return &#x27;optimo&#x27;;
+  }
+
+  get mensajeEstadoProduccion(): string {
+    const p &#x3D; this.produccionEsteMes;
+    const d &#x3D; this.promedioDiarioReal;
+    switch (this.estadoProduccionMes) {
+      case &#x27;sin-datos&#x27;:
+        return &#x27;📋 Sin registros este mes — ingresa tu primer registro de producción.&#x27;;
+      case &#x27;critico&#x27;:
+        return &#x60;🔴 Producción crítica este mes (${p.toFixed(0)} L) — muy por debajo del mínimo recomendado de 2.000 L.&#x60;;
+      case &#x27;bajo&#x27;:
+        return &#x60;🟠 Producción baja este mes (${p.toFixed(0)} L) — el promedio diario de ${d} L/día está por debajo del objetivo de 375 L/día.&#x60;;
+      case &#x27;aceptable&#x27;:
+        return &#x60;🟡 Producción aceptable este mes (${p.toFixed(0)} L) — cerca del rango óptimo. Promedio diario: ${d} L/día.&#x60;;
+      case &#x27;optimo&#x27;:
+        return &#x60;✅ Producción óptima este mes (${p.toFixed(0)} L) — superando los 11.250 L recomendados. Promedio diario: ${d} L/día.&#x60;;
+      default:
+        return &#x27;&#x27;;
+    }
+  }
+
+  get produccionHoy(): number {
+    const hoy &#x3D; new Date().toISOString().split(&#x27;T&#x27;)[0];
+    const reg &#x3D; this.registrosProduccion.find((r) &#x3D;&gt; r.fecha &#x3D;&#x3D;&#x3D; hoy);
+    return reg?.litrosProducidos ?? 0;
+  }
+
+  get mensajeProduccionHoy(): string {
+    if (this.produccionHoy &#x3D;&#x3D;&#x3D; 0) return &#x27;⚠️ Sin producción registrada hoy&#x27;;
+    if (this.produccionHoy &lt; 100) return &#x60;🔴 Producción muy baja hoy: ${this.produccionHoy} L&#x60;;
+    return &#x60;🥛 Producción registrada hoy: ${this.produccionHoy} L&#x60;;
+  }
+
+  abrirEdicionPerfil(): void {
+    this.editPerfil &#x3D; {
+      vacasEnOrdenio: this.perfil?.vacasEnOrdenio,
+      produccionDiariaLitros: this.perfil?.produccionDiariaLitros,
+      precioLitroPromedio: this.perfil?.precioLitroPromedio,
+      periodoLactanciaPromedio: this.perfil?.periodoLactanciaPromedio,
+      frecuenciaOrdenio: this.perfil?.frecuenciaOrdenio,
+    };
+    this.errorPerfil &#x3D; &#x27;&#x27;;
+    this.mostrarEdicionPerfil &#x3D; true;
+    this.cdr.markForCheck();
+  }
+
+  cerrarEdicionPerfil(): void {
+    this.mostrarEdicionPerfil &#x3D; false;
+    this.cdr.markForCheck();
+  }
+
+  async guardarEdicionPerfil(): Promise&lt;void&gt; {
+    if (!this.hatoActivo?.idHato) return;
+
+    this.guardandoPerfil &#x3D; true;
+    this.errorPerfil &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    try {
+      this.perfil &#x3D; await firstValueFrom(
+        this.perfilProductivoService.actualizarParcial(this.hatoActivo.idHato, this.editPerfil),
+      );
+      this.mostrarEdicionPerfil &#x3D; false;
+      this.kpiService.calcularKpis(this.hatoActivo.idHato).subscribe();
+    } catch {
+      this.errorPerfil &#x3D; &#x27;Error al guardar. Intenta de nuevo.&#x27;;
+    } finally {
+      this.guardandoPerfil &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; FORMULARIO NUEVO REGISTRO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  abrirFormRegistro(): void {
+    this.nuevoRegistro &#x3D; {
+      idHato: this.hatoActivo?.idHato ?? &#x27;&#x27;,
+      fecha: new Date().toISOString().split(&#x27;T&#x27;)[0],
+      litrosProducidos: 0,
+      vacasOrdenadas: undefined,
+    };
+    this.errorRegistro &#x3D; &#x27;&#x27;;
+    this.mostrarFormRegistro &#x3D; true;
+    this.cdr.markForCheck();
+  }
+
+  cerrarFormRegistro(): void {
+    this.mostrarFormRegistro &#x3D; false;
+    this.cdr.markForCheck();
+  }
+
+  async guardarRegistro(): Promise&lt;void&gt; {
+    if (!this.nuevoRegistro.litrosProducidos || this.nuevoRegistro.litrosProducidos &lt;&#x3D; 0) {
+      this.errorRegistro &#x3D; &#x27;Ingresa una cantidad válida de litros producidos.&#x27;;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.guardandoRegistro &#x3D; true;
+    this.errorRegistro &#x3D; &#x27;&#x27;;
+
+    try {
+      await firstValueFrom(this.produccionLecheService.crearRegistro(this.nuevoRegistro));
+      this.mostrarFormRegistro &#x3D; false;
+      await this.cargarTodo(this.hatoActivo!.idHato!);
+
+      // Recalcular KPIs en segundo plano
+      if (this.hatoActivo?.idHato) {
+        this.kpiService.calcularKpis(this.hatoActivo.idHato).subscribe();
+      }
+    } catch {
+      this.errorRegistro &#x3D; &#x27;Error al guardar el registro. Intenta de nuevo.&#x27;;
+    } finally {
+      this.guardandoRegistro &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;loading-wrapper&quot; data-cy&#x3D;&quot;produccion-loading&quot; *ngIf&#x3D;&quot;loading&quot;&gt;
+  &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Cargando datos de producción...&quot;&gt;&lt;/app-spinner&gt;
+&lt;/div&gt;
+
+&lt;section class&#x3D;&quot;produccion-page&quot; data-cy&#x3D;&quot;produccion-page&quot; *ngIf&#x3D;&quot;!loading&quot;&gt;
+  &lt;!-- Sin hato --&gt;
+  &lt;div class&#x3D;&quot;panel&quot; *ngIf&#x3D;&quot;!hatoActivo&quot;&gt;
+    &lt;p class&#x3D;&quot;panel-tag&quot;&gt;Sin hato activo&lt;/p&gt;
+    &lt;h2&gt;Primero selecciona o registra un hato&lt;/h2&gt;
+    &lt;p class&#x3D;&quot;panel-text&quot;&gt;Para mostrar el resumen de producción necesitamos identificar el hato.&lt;/p&gt;
+    &lt;a class&#x3D;&quot;btn-primary&quot; routerLink&#x3D;&quot;/hato&quot;&gt;Ir a Mis Hatos&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Error --&gt;
+  &lt;div class&#x3D;&quot;panel error&quot; *ngIf&#x3D;&quot;error&quot;&gt;
+    &lt;p class&#x3D;&quot;panel-tag&quot;&gt;Error&lt;/p&gt;
+    &lt;h2&gt;No fue posible cargar la información&lt;/h2&gt;
+    &lt;p class&#x3D;&quot;panel-text&quot;&gt;{{ error }}&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;hatoActivo &amp;&amp; !error&quot;&gt;
+    &lt;!-- Header --&gt;
+    &lt;div class&#x3D;&quot;page-header&quot; data-cy&#x3D;&quot;produccion-header&quot;&gt;
+      &lt;div class&#x3D;&quot;header-left&quot;&gt;
+        &lt;span class&#x3D;&quot;page-tag&quot;&gt;Producción · Leche&lt;/span&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Producción &lt;span class&#x3D;&quot;brand&quot;&gt;Lechera&lt;/span&gt;&lt;/h1&gt;
+        &lt;p class&#x3D;&quot;page-subtitle&quot; *ngIf&#x3D;&quot;hatoActivo&quot;&gt;
+          &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        &lt;/p&gt;
+        &lt;p class&#x3D;&quot;page-subtitle warn&quot; *ngIf&#x3D;&quot;!hatoActivo&quot;&gt;
+          ⚠️ Selecciona un hato desde el panel superior.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;header-right&quot;&gt;
+        &lt;div class&#x3D;&quot;header-badge&quot;&gt;🥛&lt;/div&gt;
+        @if (!modoLectura &amp;&amp; perfil) {
+          &lt;button class&#x3D;&quot;btn-editar-perfil&quot; (click)&#x3D;&quot;abrirEdicionPerfil()&quot;&gt;✏️ Editar perfil&lt;/button&gt;
+        }
+        @if (!modoLectura) {
+          &lt;button
+            class&#x3D;&quot;btn-nuevo-registro&quot;
+            data-cy&#x3D;&quot;btn-nuevo-registro&quot;
+            (click)&#x3D;&quot;abrirFormRegistro()&quot;
+          &gt;
+            + Nuevo registro
+          &lt;/button&gt;
+        }
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Sin perfil --&gt;
+    @if (!perfil) {
+      &lt;div class&#x3D;&quot;panel&quot;&gt;
+        &lt;p class&#x3D;&quot;panel-tag&quot;&gt;Sin perfil productivo&lt;/p&gt;
+        &lt;h2&gt;Aún no has guardado el perfil productivo&lt;/h2&gt;
+        &lt;p class&#x3D;&quot;panel-text&quot;&gt;Completa el formulario de producción para ver análisis completos.&lt;/p&gt;
+        &lt;a class&#x3D;&quot;btn-primary&quot; routerLink&#x3D;&quot;/produccion/registro&quot;&gt;Registrar producción&lt;/a&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;ng-container *ngIf&#x3D;&quot;perfil&quot;&gt;
+      @if (perfil) {
+        &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; KPIs PERFIL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+        &lt;div class&#x3D;&quot;seccion-titulo&quot;&gt;
+          &lt;span class&#x3D;&quot;seccion-icono&quot;&gt;📋&lt;/span&gt;
+          &lt;h2&gt;Perfil productivo&lt;/h2&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;div class&#x3D;&quot;kpi-grid&quot; data-cy&#x3D;&quot;produccion-kpi-grid&quot;&gt;
+        &lt;article class&#x3D;&quot;kpi-card highlight&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Raza predominante&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ perfil.razaPredominante }}&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;Base genética principal del hato&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card&quot; *ngIf&#x3D;&quot;perfil.vacasEnOrdenio&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Vacas en ordeño&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ perfil.vacasEnOrdenio }}&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;Animales actualmente en producción&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card&quot; *ngIf&#x3D;&quot;litrosPorVacaPorDia &gt; 0&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Productividad por vaca&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ litrosPorVacaPorDia }} L/vaca/día&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;KPI clave de eficiencia lechera&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Producción diaria estimada&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ perfil.produccionDiariaLitros | number: &#x27;1.0-0&#x27; }} L&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;Según perfil registrado&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Precio litro promedio&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;
+            {{ perfil.precioLitroPromedio | currency: &#x27;COP&#x27; : &#x27;symbol&#x27; : &#x27;1.0-0&#x27; }}
+          &lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;Valor de venta por litro&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card income&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Ingreso mensual estimado&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;
+            {{ ingresoMensualEstimado | currency: &#x27;COP&#x27; : &#x27;symbol&#x27; : &#x27;1.0-0&#x27; }}
+          &lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;Producción mensual × precio promedio&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card&quot; *ngIf&#x3D;&quot;perfil.sistemaOrdenio&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Sistema de ordeño&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ perfil.sistemaOrdenio }}&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;
+            {{ perfil.frecuenciaOrdenio ? perfil.frecuenciaOrdenio + &#x27; vez/día&#x27; : &#x27;&#x27; }}
+          &lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card&quot; *ngIf&#x3D;&quot;perfil.destinoLeche&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Destino de la leche&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value small&quot;&gt;{{ perfil.destinoLeche }}&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;Canal principal de venta&lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+
+      @if (registrosProduccion.length &gt; 0) {
+        &lt;div
+          class&#x3D;&quot;banner-estado&quot;
+          data-cy&#x3D;&quot;produccion-banner&quot;
+          [class]&#x3D;&quot;&#x27;banner-&#x27; + estadoProduccionMes&quot;
+        &gt;
+          &lt;span class&#x3D;&quot;banner-icono&quot;&gt;
+            @if (estadoProduccionMes &#x3D;&#x3D;&#x3D; &#x27;optimo&#x27;) {
+              ✅
+            }
+            @if (estadoProduccionMes &#x3D;&#x3D;&#x3D; &#x27;aceptable&#x27;) {
+              🟡
+            }
+            @if (estadoProduccionMes &#x3D;&#x3D;&#x3D; &#x27;bajo&#x27;) {
+              🟠
+            }
+            @if (estadoProduccionMes &#x3D;&#x3D;&#x3D; &#x27;critico&#x27;) {
+              🔴
+            }
+            @if (estadoProduccionMes &#x3D;&#x3D;&#x3D; &#x27;sin-datos&#x27;) {
+              📋
+            }
+          &lt;/span&gt;
+          &lt;div class&#x3D;&quot;banner-contenido&quot;&gt;
+            &lt;span class&#x3D;&quot;banner-titulo&quot;&gt;
+              @if (estadoProduccionMes &#x3D;&#x3D;&#x3D; &#x27;optimo&#x27;) {
+                Producción óptima del mes
+              }
+              @if (estadoProduccionMes &#x3D;&#x3D;&#x3D; &#x27;aceptable&#x27;) {
+                Producción aceptable del mes
+              }
+              @if (estadoProduccionMes &#x3D;&#x3D;&#x3D; &#x27;bajo&#x27;) {
+                Producción baja del mes
+              }
+              @if (estadoProduccionMes &#x3D;&#x3D;&#x3D; &#x27;critico&#x27;) {
+                Producción crítica del mes
+              }
+              @if (estadoProduccionMes &#x3D;&#x3D;&#x3D; &#x27;sin-datos&#x27;) {
+                Sin registros este mes
+              }
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;banner-mensaje&quot;&gt;{{ mensajeEstadoProduccion }}&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;banner-hoy&quot;&gt;
+            &lt;span class&#x3D;&quot;hoy-label&quot;&gt;Hoy&lt;/span&gt;
+            &lt;span class&#x3D;&quot;hoy-valor&quot;&gt;{{ produccionHoy &gt; 0 ? produccionHoy + &#x27; L&#x27; : &#x27;—&#x27; }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; PRODUCCIÓN REAL ESTE MES &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;seccion-titulo&quot; *ngIf&#x3D;&quot;registrosProduccion.length &gt; 0&quot;&gt;
+        &lt;span class&#x3D;&quot;seccion-icono&quot;&gt;🥛&lt;/span&gt;
+        &lt;h2&gt;Producción real este mes&lt;/h2&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;kpi-grid&quot; *ngIf&#x3D;&quot;registrosProduccion.length &gt; 0&quot;&gt;
+        &lt;article class&#x3D;&quot;kpi-card highlight&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Total producido&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ produccionEsteMes | number: &#x27;1.1-2&#x27; }} L&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;Litros acumulados este mes&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Promedio diario real&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ promedioDiarioReal | number: &#x27;1.1-2&#x27; }} L/día&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;
+            @if (perfil.produccionDiariaLitros &gt; 0) {
+              vs {{ perfil.produccionDiariaLitros }} L estimados
+            }
+          &lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card&quot; *ngIf&#x3D;&quot;porcentajeVendido &gt; 0&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;% vendido este mes&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ porcentajeVendido }}%&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;De la producción registrada&lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Tabla últimos registros producción --&gt;
+      &lt;div
+        class&#x3D;&quot;tabla-wrapper&quot;
+        data-cy&#x3D;&quot;produccion-tabla&quot;
+        *ngIf&#x3D;&quot;ultimosRegistrosProduccion.length &gt; 0&quot;
+      &gt;
+        &lt;div class&#x3D;&quot;tabla-header-row&quot;&gt;
+          &lt;span class&#x3D;&quot;tabla-titulo&quot;&gt;Últimos registros de producción&lt;/span&gt;
+          &lt;span class&#x3D;&quot;tabla-count&quot;&gt;{{ registrosProduccion.length }} registros totales&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;table class&#x3D;&quot;tabla&quot;&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;Fecha&lt;/th&gt;
+              &lt;th&gt;Litros producidos&lt;/th&gt;
+              &lt;th&gt;Vacas ordeñadas&lt;/th&gt;
+              &lt;th&gt;L/vaca&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            @for (r of ultimosRegistrosProduccion; track r.fecha) {
+              &lt;tr&gt;
+                &lt;td&gt;{{ r.fecha | date: &#x27;dd/MM/yyyy&#x27; }}&lt;/td&gt;
+                &lt;td class&#x3D;&quot;num&quot;&gt;{{ r.litrosProducidos | number: &#x27;1.1-2&#x27; }} L&lt;/td&gt;
+                &lt;td class&#x3D;&quot;num&quot;&gt;{{ r.vacasOrdenadas ?? &#x27;—&#x27; }}&lt;/td&gt;
+                &lt;td class&#x3D;&quot;num&quot;&gt;
+                  @if (r.vacasOrdenadas &amp;&amp; r.litrosProducidos) {
+                    {{ r.litrosProducidos / r.vacasOrdenadas | number: &#x27;1.1-2&#x27; }}
+                  } @else {
+                    —
+                  }
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            }
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; VENTAS DE LECHE &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;seccion-titulo&quot; *ngIf&#x3D;&quot;ventasLeche.length &gt; 0&quot;&gt;
+        &lt;span class&#x3D;&quot;seccion-icono&quot;&gt;💰&lt;/span&gt;
+        &lt;h2&gt;Ventas de leche este mes&lt;/h2&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;kpi-grid&quot; *ngIf&#x3D;&quot;ventasLeche.length &gt; 0&quot;&gt;
+        &lt;article class&#x3D;&quot;kpi-card&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Litros vendidos&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ litrosVendidosEsteMes | number: &#x27;1.1-2&#x27; }} L&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;Este mes&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card income&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Ingreso real por leche&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ ingresoRealEsteMes | currency: &#x27;COP&#x27; : &#x27;symbol&#x27; : &#x27;1.0-0&#x27; }}&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;Este mes&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class&#x3D;&quot;kpi-card&quot; *ngIf&#x3D;&quot;precioPromedioReal &gt; 0&quot;&gt;
+          &lt;p class&#x3D;&quot;label&quot;&gt;Precio promedio real&lt;/p&gt;
+          &lt;p class&#x3D;&quot;value&quot;&gt;{{ precioPromedioReal | currency: &#x27;COP&#x27; : &#x27;symbol&#x27; : &#x27;1.0-0&#x27; }}&lt;/p&gt;
+          &lt;p class&#x3D;&quot;hint&quot;&gt;
+            @if (perfil.precioLitroPromedio &gt; 0) {
+              vs {{ perfil.precioLitroPromedio | currency: &#x27;COP&#x27; : &#x27;symbol&#x27; : &#x27;1.0-0&#x27; }} estimado
+            }
+          &lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Tabla últimas ventas --&gt;
+      &lt;div class&#x3D;&quot;tabla-wrapper&quot; *ngIf&#x3D;&quot;ultimasVentas.length &gt; 0&quot;&gt;
+        &lt;div class&#x3D;&quot;tabla-header-row&quot;&gt;
+          &lt;span class&#x3D;&quot;tabla-titulo&quot;&gt;Últimas ventas de leche&lt;/span&gt;
+          &lt;span class&#x3D;&quot;tabla-count&quot;&gt;{{ ventasLeche.length }} ventas totales&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;table class&#x3D;&quot;tabla&quot;&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;Fecha&lt;/th&gt;
+              &lt;th&gt;Litros vendidos&lt;/th&gt;
+              &lt;th&gt;Precio/litro&lt;/th&gt;
+              &lt;th&gt;Total&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr *ngFor&#x3D;&quot;let v of ultimasVentas&quot;&gt;
+              &lt;td&gt;{{ v.fecha | date: &#x27;dd/MM/yyyy&#x27; }}&lt;/td&gt;
+              &lt;td class&#x3D;&quot;num&quot;&gt;{{ v.litrosVendidos | number: &#x27;1.1-2&#x27; }} L&lt;/td&gt;
+              &lt;td class&#x3D;&quot;num&quot;&gt;{{ v.precioLitro | currency: &#x27;COP&#x27; : &#x27;symbol&#x27; : &#x27;1.0-0&#x27; }}&lt;/td&gt;
+              &lt;td class&#x3D;&quot;num ingreso&quot;&gt;
+                {{ v.litrosVendidos * v.precioLitro | currency: &#x27;COP&#x27; : &#x27;symbol&#x27; : &#x27;1.0-0&#x27; }}
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; BALANCE PRODUCCIÓN VS VENTAS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      @if (produccionEsteMes &gt; 0 || litrosVendidosEsteMes &gt; 0) {
+        &lt;div class&#x3D;&quot;seccion-titulo&quot;&gt;
+          &lt;span class&#x3D;&quot;seccion-icono&quot;&gt;⚖️&lt;/span&gt;
+          &lt;h2&gt;Balance del mes&lt;/h2&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;balance-wrapper&quot;&gt;
+          &lt;div class&#x3D;&quot;balance-fila&quot;&gt;
+            &lt;div class&#x3D;&quot;balance-item produccion&quot;&gt;
+              &lt;span class&#x3D;&quot;balance-icono&quot;&gt;🥛&lt;/span&gt;
+              &lt;div class&#x3D;&quot;balance-info&quot;&gt;
+                &lt;p class&#x3D;&quot;balance-label&quot;&gt;Total producido&lt;/p&gt;
+                &lt;p class&#x3D;&quot;balance-valor&quot;&gt;{{ produccionEsteMes | number: &#x27;1.0-2&#x27; }} L&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;balance-separador&quot;&gt;vs&lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;balance-item ventas&quot;&gt;
+              &lt;span class&#x3D;&quot;balance-icono&quot;&gt;💰&lt;/span&gt;
+              &lt;div class&#x3D;&quot;balance-info&quot;&gt;
+                &lt;p class&#x3D;&quot;balance-label&quot;&gt;Total vendido&lt;/p&gt;
+                &lt;p class&#x3D;&quot;balance-valor&quot;&gt;{{ litrosVendidosEsteMes | number: &#x27;1.0-2&#x27; }} L&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Barra de progreso --&gt;
+          &lt;div class&#x3D;&quot;balance-barra-wrapper&quot;&gt;
+            &lt;div class&#x3D;&quot;balance-barra-labels&quot;&gt;
+              &lt;span&gt;0 L&lt;/span&gt;
+              &lt;span&gt;{{ porcentajeVendido }}% vendido&lt;/span&gt;
+              &lt;span&gt;{{ produccionEsteMes | number: &#x27;1.0-2&#x27; }} L&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;balance-barra&quot;&gt;
+              &lt;div
+                class&#x3D;&quot;balance-barra-fill&quot;
+                [style.width.%]&#x3D;&quot;porcentajeVendido &gt; 100 ? 100 : porcentajeVendido&quot;
+              &gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Diferencia --&gt;
+          &lt;div class&#x3D;&quot;balance-diferencia&quot;&gt;
+            @if (produccionEsteMes &gt; litrosVendidosEsteMes) {
+              &lt;span class&#x3D;&quot;diferencia-tag pendiente&quot;&gt;
+                {{ produccionEsteMes - litrosVendidosEsteMes | number: &#x27;1.0-2&#x27; }} L sin vender este
+                mes
+              &lt;/span&gt;
+            } @else if (litrosVendidosEsteMes &gt; produccionEsteMes) {
+              &lt;span class&#x3D;&quot;diferencia-tag exceso&quot;&gt;
+                ⚠️ Ventas superan la producción registrada
+              &lt;/span&gt;
+            } @else if (produccionEsteMes &#x3D;&#x3D;&#x3D; litrosVendidosEsteMes &amp;&amp; produccionEsteMes &gt; 0) {
+              &lt;span class&#x3D;&quot;diferencia-tag completo&quot;&gt; ✓ Toda la producción fue vendida &lt;/span&gt;
+            }
+          &lt;/div&gt;
+
+          &lt;!-- Ingreso real vs estimado --&gt;
+          &lt;div class&#x3D;&quot;balance-ingresos&quot;&gt;
+            &lt;div class&#x3D;&quot;balance-ingreso-item&quot;&gt;
+              &lt;p class&#x3D;&quot;balance-ingreso-label&quot;&gt;Ingreso real este mes&lt;/p&gt;
+              &lt;p class&#x3D;&quot;balance-ingreso-valor real&quot;&gt;
+                {{ ingresoRealEsteMes | currency: &#x27;COP&#x27; : &#x27;symbol&#x27; : &#x27;1.0-0&#x27; }}
+              &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;balance-ingreso-divider&quot;&gt;vs&lt;/div&gt;
+            &lt;div class&#x3D;&quot;balance-ingreso-item&quot;&gt;
+              &lt;p class&#x3D;&quot;balance-ingreso-label&quot;&gt;Ingreso estimado (perfil)&lt;/p&gt;
+              &lt;p class&#x3D;&quot;balance-ingreso-valor estimado&quot;&gt;
+                {{ ingresoMensualEstimado | currency: &#x27;COP&#x27; : &#x27;symbol&#x27; : &#x27;1.0-0&#x27; }}
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- Meta --&gt;
+      &lt;div class&#x3D;&quot;meta&quot;&gt;
+        &lt;span *ngIf&#x3D;&quot;perfil.fechaRegistro&quot;&gt;
+          Registrado: {{ perfil.fechaRegistro | date: &#x27;mediumDate&#x27; }}
+        &lt;/span&gt;
+        &lt;span *ngIf&#x3D;&quot;perfil.fechaActualizacion&quot;&gt;
+          Actualizado: {{ perfil.fechaActualizacion | date: &#x27;mediumDate&#x27; }}
+        &lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/ng-container&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; OVERLAY NUEVO REGISTRO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+@if (mostrarFormRegistro) {
+  &lt;div class&#x3D;&quot;overlay-fondo&quot; (click)&#x3D;&quot;cerrarFormRegistro()&quot;&gt;
+    &lt;div
+      class&#x3D;&quot;overlay-card&quot;
+      data-cy&#x3D;&quot;overlay-nuevo-registro&quot;
+      (click)&#x3D;&quot;$event.stopPropagation()&quot;
+      *ngIf&#x3D;&quot;!modoLectura&quot;
+    &gt;
+      &lt;div class&#x3D;&quot;overlay-header&quot;&gt;
+        &lt;div class&#x3D;&quot;overlay-icono&quot;&gt;🥛&lt;/div&gt;
+        &lt;div&gt;
+          &lt;h3 class&#x3D;&quot;overlay-titulo&quot;&gt;Registrar producción para el día de hoy&lt;/h3&gt;
+          &lt;p class&#x3D;&quot;overlay-subtitulo&quot;&gt;Ingresa los litros producidos hoy&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;button class&#x3D;&quot;overlay-cerrar&quot; (click)&#x3D;&quot;cerrarFormRegistro()&quot;&gt;✕&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;overlay-body&quot;&gt;
+        &lt;div class&#x3D;&quot;field&quot;&gt;
+          &lt;label&gt;Fecha &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+          &lt;input
+            type&#x3D;&quot;date&quot;
+            data-cy&#x3D;&quot;input-fecha-registro&quot;
+            [(ngModel)]&#x3D;&quot;nuevoRegistro.fecha&quot;
+            class&#x3D;&quot;form-input&quot;
+          /&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;field&quot;&gt;
+          &lt;label&gt;Litros producidos &lt;span class&#x3D;&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+          &lt;div class&#x3D;&quot;input-suffix-row&quot;&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              data-cy&#x3D;&quot;input-litros-producidos&quot;
+              [(ngModel)]&#x3D;&quot;nuevoRegistro.litrosProducidos&quot;
+              placeholder&#x3D;&quot;Ej: 150&quot;
+              min&#x3D;&quot;0&quot;
+              step&#x3D;&quot;0.1&quot;
+              class&#x3D;&quot;form-input&quot;
+            /&gt;
+            &lt;span class&#x3D;&quot;input-suffix&quot;&gt;L&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;field&quot;&gt;
+          &lt;label&gt;Vacas ordeñadas &lt;span class&#x3D;&quot;optional&quot;&gt;(opcional)&lt;/span&gt;&lt;/label&gt;
+          &lt;input
+            type&#x3D;&quot;number&quot;
+            [(ngModel)]&#x3D;&quot;nuevoRegistro.vacasOrdenadas&quot;
+            placeholder&#x3D;&quot;Ej: 25&quot;
+            min&#x3D;&quot;0&quot;
+            class&#x3D;&quot;form-input&quot;
+          /&gt;
+        &lt;/div&gt;
+
+        @if (errorRegistro) {
+          &lt;p class&#x3D;&quot;error-registro&quot;&gt;{{ errorRegistro }}&lt;/p&gt;
+        }
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;overlay-footer&quot;&gt;
+        &lt;button class&#x3D;&quot;btn-cancelar&quot; (click)&#x3D;&quot;cerrarFormRegistro()&quot;&gt;Cancelar&lt;/button&gt;
+        &lt;button
+          class&#x3D;&quot;btn-guardar-registro&quot;
+          data-cy&#x3D;&quot;btn-guardar-registro&quot;
+          (click)&#x3D;&quot;guardarRegistro()&quot;
+          [disabled]&#x3D;&quot;guardandoRegistro&quot;
+        &gt;
+          @if (guardandoRegistro) {
+            &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+            Guardando...
+          } @else {
+            Guardar registro
+          }
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  @if (mostrarEdicionPerfil) {
+    &lt;div class&#x3D;&quot;overlay-fondo&quot; (click)&#x3D;&quot;cerrarEdicionPerfil()&quot;&gt;
+      &lt;div class&#x3D;&quot;overlay-card&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
+        &lt;div class&#x3D;&quot;overlay-header&quot;&gt;
+          &lt;div class&#x3D;&quot;overlay-icono&quot;&gt;📋&lt;/div&gt;
+          &lt;div&gt;
+            &lt;h3 class&#x3D;&quot;overlay-titulo&quot;&gt;Actualizar perfil productivo&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;overlay-subtitulo&quot;&gt;Actualiza los datos que han cambiado en tu hato&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;button class&#x3D;&quot;overlay-cerrar&quot; (click)&#x3D;&quot;cerrarEdicionPerfil()&quot;&gt;✕&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;overlay-body&quot;&gt;
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label&gt;Vacas en ordeño&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              min&#x3D;&quot;0&quot;
+              class&#x3D;&quot;form-input&quot;
+              placeholder&#x3D;&quot;Ej: 25&quot;
+              [(ngModel)]&#x3D;&quot;editPerfil.vacasEnOrdenio&quot;
+            /&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label&gt;Producción diaria (L)&lt;/label&gt;
+            &lt;div class&#x3D;&quot;input-suffix-row&quot;&gt;
+              &lt;input
+                type&#x3D;&quot;number&quot;
+                min&#x3D;&quot;0&quot;
+                step&#x3D;&quot;0.1&quot;
+                class&#x3D;&quot;form-input&quot;
+                placeholder&#x3D;&quot;Ej: 185&quot;
+                [(ngModel)]&#x3D;&quot;editPerfil.produccionDiariaLitros&quot;
+              /&gt;
+              &lt;span class&#x3D;&quot;input-suffix&quot;&gt;L&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label&gt;Precio litro promedio (COP)&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              min&#x3D;&quot;0&quot;
+              class&#x3D;&quot;form-input&quot;
+              placeholder&#x3D;&quot;Ej: 1200&quot;
+              [(ngModel)]&#x3D;&quot;editPerfil.precioLitroPromedio&quot;
+            /&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label&gt;Período de lactancia promedio (días)&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              min&#x3D;&quot;0&quot;
+              class&#x3D;&quot;form-input&quot;
+              placeholder&#x3D;&quot;Ej: 305&quot;
+              [(ngModel)]&#x3D;&quot;editPerfil.periodoLactanciaPromedio&quot;
+            /&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;field&quot;&gt;
+            &lt;label&gt;Frecuencia de ordeño (veces/día)&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              min&#x3D;&quot;1&quot;
+              max&#x3D;&quot;4&quot;
+              class&#x3D;&quot;form-input&quot;
+              placeholder&#x3D;&quot;Ej: 2&quot;
+              [(ngModel)]&#x3D;&quot;editPerfil.frecuenciaOrdenio&quot;
+            /&gt;
+          &lt;/div&gt;
+
+          @if (errorPerfil) {
+            &lt;p class&#x3D;&quot;error-registro&quot;&gt;{{ errorPerfil }}&lt;/p&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;overlay-footer&quot;&gt;
+          &lt;button class&#x3D;&quot;btn-cancelar&quot; (click)&#x3D;&quot;cerrarEdicionPerfil()&quot;&gt;Cancelar&lt;/button&gt;
+          &lt;button
+            class&#x3D;&quot;btn-guardar-registro&quot;
+            (click)&#x3D;&quot;guardarEdicionPerfil()&quot;
+            [disabled]&#x3D;&quot;guardandoPerfil&quot;
+          &gt;
+            @if (guardandoPerfil) {
+              &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+              Guardando...
+            } @else {
+              Guardar cambios
+            }
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="loading-wrapper" data-cy="produccion-loading" *ngIf="loading">  <app-spinner size="large" message="Cargando datos de producción..."></app-spinner></div><section class="produccion-page" data-cy="produccion-page" *ngIf="!loading">  <!-- Sin hato -->  <div class="panel" *ngIf="!hatoActivo">    <p class="panel-tag">Sin hato activo</p>    <h2>Primero selecciona o registra un hato</h2>    <p class="panel-text">Para mostrar el resumen de producción necesitamos identificar el hato.</p>    <a class="btn-primary" routerLink="/hato">Ir a Mis Hatos</a>  </div>  <!-- Error -->  <div class="panel error" *ngIf="error">    <p class="panel-tag">Error</p>    <h2>No fue posible cargar la información</h2>    <p class="panel-text">{{ error }}</p>  </div>  <div *ngIf="hatoActivo && !error">    <!-- Header -->    <div class="page-header" data-cy="produccion-header">      <div class="header-left">        <span class="page-tag">Producción · Leche</span>        <h1 class="page-title">Producción <span class="brand">Lechera</span></h1>        <p class="page-subtitle" *ngIf="hatoActivo">          <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},          {{ hatoActivo.departamento }}        </p>        <p class="page-subtitle warn" *ngIf="!hatoActivo">          ⚠️ Selecciona un hato desde el panel superior.        </p>      </div>      <div class="header-right">        <div class="header-badge">🥛</div>        @if (!modoLectura && perfil) {          <button class="btn-editar-perfil" (click)="abrirEdicionPerfil()">✏️ Editar perfil</button>        }        @if (!modoLectura) {          <button            class="btn-nuevo-registro"            data-cy="btn-nuevo-registro"            (click)="abrirFormRegistro()"          >            + Nuevo registro          </button>        }      </div>    </div>    <!-- Sin perfil -->    @if (!perfil) {      <div class="panel">        <p class="panel-tag">Sin perfil productivo</p>        <h2>Aún no has guardado el perfil productivo</h2>        <p class="panel-text">Completa el formulario de producción para ver análisis completos.</p>        <a class="btn-primary" routerLink="/produccion/registro">Registrar producción</a>      </div>    }    <ng-container *ngIf="perfil">      @if (perfil) {        <!-- ===== KPIs PERFIL ===== -->        <div class="seccion-titulo">          <span class="seccion-icono">📋</span>          <h2>Perfil productivo</h2>        </div>      }      <div class="kpi-grid" data-cy="produccion-kpi-grid">        <article class="kpi-card highlight">          <p class="label">Raza predominante</p>          <p class="value">{{ perfil.razaPredominante }}</p>          <p class="hint">Base genética principal del hato</p>        </article>        <article class="kpi-card" *ngIf="perfil.vacasEnOrdenio">          <p class="label">Vacas en ordeño</p>          <p class="value">{{ perfil.vacasEnOrdenio }}</p>          <p class="hint">Animales actualmente en producción</p>        </article>        <article class="kpi-card" *ngIf="litrosPorVacaPorDia > 0">          <p class="label">Productividad por vaca</p>          <p class="value">{{ litrosPorVacaPorDia }} L/vaca/día</p>          <p class="hint">KPI clave de eficiencia lechera</p>        </article>        <article class="kpi-card">          <p class="label">Producción diaria estimada</p>          <p class="value">{{ perfil.produccionDiariaLitros | number: \'1.0-0\' }} L</p>          <p class="hint">Según perfil registrado</p>        </article>        <article class="kpi-card">          <p class="label">Precio litro promedio</p>          <p class="value">            {{ perfil.precioLitroPromedio | currency: \'COP\' : \'symbol\' : \'1.0-0\' }}          </p>          <p class="hint">Valor de venta por litro</p>        </article>        <article class="kpi-card income">          <p class="label">Ingreso mensual estimado</p>          <p class="value">            {{ ingresoMensualEstimado | currency: \'COP\' : \'symbol\' : \'1.0-0\' }}          </p>          <p class="hint">Producción mensual × precio promedio</p>        </article>        <article class="kpi-card" *ngIf="perfil.sistemaOrdenio">          <p class="label">Sistema de ordeño</p>          <p class="value">{{ perfil.sistemaOrdenio }}</p>          <p class="hint">            {{ perfil.frecuenciaOrdenio ? perfil.frecuenciaOrdenio + \' vez/día\' : \'\' }}          </p>        </article>        <article class="kpi-card" *ngIf="perfil.destinoLeche">          <p class="label">Destino de la leche</p>          <p class="value small">{{ perfil.destinoLeche }}</p>          <p class="hint">Canal principal de venta</p>        </article>      </div>      @if (registrosProduccion.length > 0) {        <div          class="banner-estado"          data-cy="produccion-banner"          [class]="\'banner-\' + estadoProduccionMes"        >          <span class="banner-icono">            @if (estadoProduccionMes === \'optimo\') {              ✅            }            @if (estadoProduccionMes === \'aceptable\') {              🟡            }            @if (estadoProduccionMes === \'bajo\') {              🟠            }            @if (estadoProduccionMes === \'critico\') {              🔴            }            @if (estadoProduccionMes === \'sin-datos\') {              📋            }          </span>          <div class="banner-contenido">            <span class="banner-titulo">              @if (estadoProduccionMes === \'optimo\') {                Producción óptima del mes              }              @if (estadoProduccionMes === \'aceptable\') {                Producción aceptable del mes              }              @if (estadoProduccionMes === \'bajo\') {                Producción baja del mes              }              @if (estadoProduccionMes === \'critico\') {                Producción crítica del mes              }              @if (estadoProduccionMes === \'sin-datos\') {                Sin registros este mes              }            </span>            <span class="banner-mensaje">{{ mensajeEstadoProduccion }}</span>          </div>          <div class="banner-hoy">            <span class="hoy-label">Hoy</span>            <span class="hoy-valor">{{ produccionHoy > 0 ? produccionHoy + \' L\' : \'—\' }}</span>          </div>        </div>      }      <!-- ===== PRODUCCIÓN REAL ESTE MES ===== -->      <div class="seccion-titulo" *ngIf="registrosProduccion.length > 0">        <span class="seccion-icono">🥛</span>        <h2>Producción real este mes</h2>      </div>      <div class="kpi-grid" *ngIf="registrosProduccion.length > 0">        <article class="kpi-card highlight">          <p class="label">Total producido</p>          <p class="value">{{ produccionEsteMes | number: \'1.1-2\' }} L</p>          <p class="hint">Litros acumulados este mes</p>        </article>        <article class="kpi-card">          <p class="label">Promedio diario real</p>          <p class="value">{{ promedioDiarioReal | number: \'1.1-2\' }} L/día</p>          <p class="hint">            @if (perfil.produccionDiariaLitros > 0) {              vs {{ perfil.produccionDiariaLitros }} L estimados            }          </p>        </article>        <article class="kpi-card" *ngIf="porcentajeVendido > 0">          <p class="label">% vendido este mes</p>          <p class="value">{{ porcentajeVendido }}%</p>          <p class="hint">De la producción registrada</p>        </article>      </div>      <!-- Tabla últimos registros producción -->      <div        class="tabla-wrapper"        data-cy="produccion-tabla"        *ngIf="ultimosRegistrosProduccion.length > 0"      >        <div class="tabla-header-row">          <span class="tabla-titulo">Últimos registros de producción</span>          <span class="tabla-count">{{ registrosProduccion.length }} registros totales</span>        </div>        <table class="tabla">          <thead>            <tr>              <th>Fecha</th>              <th>Litros producidos</th>              <th>Vacas ordeñadas</th>              <th>L/vaca</th>            </tr>          </thead>          <tbody>            @for (r of ultimosRegistrosProduccion; track r.fecha) {              <tr>                <td>{{ r.fecha | date: \'dd/MM/yyyy\' }}</td>                <td class="num">{{ r.litrosProducidos | number: \'1.1-2\' }} L</td>                <td class="num">{{ r.vacasOrdenadas ?? \'—\' }}</td>                <td class="num">                  @if (r.vacasOrdenadas && r.litrosProducidos) {                    {{ r.litrosProducidos / r.vacasOrdenadas | number: \'1.1-2\' }}                  } @else {                    —                  }                </td>              </tr>            }          </tbody>        </table>      </div>      <!-- ===== VENTAS DE LECHE ===== -->      <div class="seccion-titulo" *ngIf="ventasLeche.length > 0">        <span class="seccion-icono">💰</span>        <h2>Ventas de leche este mes</h2>      </div>      <div class="kpi-grid" *ngIf="ventasLeche.length > 0">        <article class="kpi-card">          <p class="label">Litros vendidos</p>          <p class="value">{{ litrosVendidosEsteMes | number: \'1.1-2\' }} L</p>          <p class="hint">Este mes</p>        </article>        <article class="kpi-card income">          <p class="label">Ingreso real por leche</p>          <p class="value">{{ ingresoRealEsteMes | currency: \'COP\' : \'symbol\' : \'1.0-0\' }}</p>          <p class="hint">Este mes</p>        </article>        <article class="kpi-card" *ngIf="precioPromedioReal > 0">          <p class="label">Precio promedio real</p>          <p class="value">{{ precioPromedioReal | currency: \'COP\' : \'symbol\' : \'1.0-0\' }}</p>          <p class="hint">            @if (perfil.precioLitroPromedio > 0) {              vs {{ perfil.precioLitroPromedio | currency: \'COP\' : \'symbol\' : \'1.0-0\' }} estimado            }          </p>        </article>      </div>      <!-- Tabla últimas ventas -->      <div class="tabla-wrapper" *ngIf="ultimasVentas.length > 0">        <div class="tabla-header-row">          <span class="tabla-titulo">Últimas ventas de leche</span>          <span class="tabla-count">{{ ventasLeche.length }} ventas totales</span>        </div>        <table class="tabla">          <thead>            <tr>              <th>Fecha</th>              <th>Litros vendidos</th>              <th>Precio/litro</th>              <th>Total</th>            </tr>          </thead>          <tbody>            <tr *ngFor="let v of ultimasVentas">              <td>{{ v.fecha | date: \'dd/MM/yyyy\' }}</td>              <td class="num">{{ v.litrosVendidos | number: \'1.1-2\' }} L</td>              <td class="num">{{ v.precioLitro | currency: \'COP\' : \'symbol\' : \'1.0-0\' }}</td>              <td class="num ingreso">                {{ v.litrosVendidos * v.precioLitro | currency: \'COP\' : \'symbol\' : \'1.0-0\' }}              </td>            </tr>          </tbody>        </table>      </div>      <!-- ===== BALANCE PRODUCCIÓN VS VENTAS ===== -->      @if (produccionEsteMes > 0 || litrosVendidosEsteMes > 0) {        <div class="seccion-titulo">          <span class="seccion-icono">⚖️</span>          <h2>Balance del mes</h2>        </div>        <div class="balance-wrapper">          <div class="balance-fila">            <div class="balance-item produccion">              <span class="balance-icono">🥛</span>              <div class="balance-info">                <p class="balance-label">Total producido</p>                <p class="balance-valor">{{ produccionEsteMes | number: \'1.0-2\' }} L</p>              </div>            </div>            <div class="balance-separador">vs</div>            <div class="balance-item ventas">              <span class="balance-icono">💰</span>              <div class="balance-info">                <p class="balance-label">Total vendido</p>                <p class="balance-valor">{{ litrosVendidosEsteMes | number: \'1.0-2\' }} L</p>              </div>            </div>          </div>          <!-- Barra de progreso -->          <div class="balance-barra-wrapper">            <div class="balance-barra-labels">              <span>0 L</span>              <span>{{ porcentajeVendido }}% vendido</span>              <span>{{ produccionEsteMes | number: \'1.0-2\' }} L</span>            </div>            <div class="balance-barra">              <div                class="balance-barra-fill"                [style.width.%]="porcentajeVendido > 100 ? 100 : porcentajeVendido"              ></div>            </div>          </div>          <!-- Diferencia -->          <div class="balance-diferencia">            @if (produccionEsteMes > litrosVendidosEsteMes) {              <span class="diferencia-tag pendiente">                {{ produccionEsteMes - litrosVendidosEsteMes | number: \'1.0-2\' }} L sin vender este                mes              </span>            } @else if (litrosVendidosEsteMes > produccionEsteMes) {              <span class="diferencia-tag exceso">                ⚠️ Ventas superan la producción registrada              </span>            } @else if (produccionEsteMes === litrosVendidosEsteMes && produccionEsteMes > 0) {              <span class="diferencia-tag completo"> ✓ Toda la producción fue vendida </span>            }          </div>          <!-- Ingreso real vs estimado -->          <div class="balance-ingresos">            <div class="balance-ingreso-item">              <p class="balance-ingreso-label">Ingreso real este mes</p>              <p class="balance-ingreso-valor real">                {{ ingresoRealEsteMes | currency: \'COP\' : \'symbol\' : \'1.0-0\' }}              </p>            </div>            <div class="balance-ingreso-divider">vs</div>            <div class="balance-ingreso-item">              <p class="balance-ingreso-label">Ingreso estimado (perfil)</p>              <p class="balance-ingreso-valor estimado">                {{ ingresoMensualEstimado | currency: \'COP\' : \'symbol\' : \'1.0-0\' }}              </p>            </div>          </div>        </div>      }      <!-- Meta -->      <div class="meta">        <span *ngIf="perfil.fechaRegistro">          Registrado: {{ perfil.fechaRegistro | date: \'mediumDate\' }}        </span>        <span *ngIf="perfil.fechaActualizacion">          Actualizado: {{ perfil.fechaActualizacion | date: \'mediumDate\' }}        </span>      </div>    </ng-container>  </div></section><!-- ===== OVERLAY NUEVO REGISTRO ===== -->@if (mostrarFormRegistro) {  <div class="overlay-fondo" (click)="cerrarFormRegistro()">    <div      class="overlay-card"      data-cy="overlay-nuevo-registro"      (click)="$event.stopPropagation()"      *ngIf="!modoLectura"    >      <div class="overlay-header">        <div class="overlay-icono">🥛</div>        <div>          <h3 class="overlay-titulo">Registrar producción para el día de hoy</h3>          <p class="overlay-subtitulo">Ingresa los litros producidos hoy</p>        </div>        <button class="overlay-cerrar" (click)="cerrarFormRegistro()">✕</button>      </div>      <div class="overlay-body">        <div class="field">          <label>Fecha <span class="required">*</span></label>          <input            type="date"            data-cy="input-fecha-registro"            [(ngModel)]="nuevoRegistro.fecha"            class="form-input"          />        </div>        <div class="field">          <label>Litros producidos <span class="required">*</span></label>          <div class="input-suffix-row">            <input              type="number"              data-cy="input-litros-producidos"              [(ngModel)]="nuevoRegistro.litrosProducidos"              placeholder="Ej: 150"              min="0"              step="0.1"              class="form-input"            />            <span class="input-suffix">L</span>          </div>        </div>        <div class="field">          <label>Vacas ordeñadas <span class="optional">(opcional)</span></label>          <input            type="number"            [(ngModel)]="nuevoRegistro.vacasOrdenadas"            placeholder="Ej: 25"            min="0"            class="form-input"          />        </div>        @if (errorRegistro) {          <p class="error-registro">{{ errorRegistro }}</p>        }      </div>      <div class="overlay-footer">        <button class="btn-cancelar" (click)="cerrarFormRegistro()">Cancelar</button>        <button          class="btn-guardar-registro"          data-cy="btn-guardar-registro"          (click)="guardarRegistro()"          [disabled]="guardandoRegistro"        >          @if (guardandoRegistro) {            <app-spinner size="small"></app-spinner>            Guardando...          } @else {            Guardar registro          }        </button>      </div>    </div>  </div>  @if (mostrarEdicionPerfil) {    <div class="overlay-fondo" (click)="cerrarEdicionPerfil()">      <div class="overlay-card" (click)="$event.stopPropagation()">        <div class="overlay-header">          <div class="overlay-icono">📋</div>          <div>            <h3 class="overlay-titulo">Actualizar perfil productivo</h3>            <p class="overlay-subtitulo">Actualiza los datos que han cambiado en tu hato</p>          </div>          <button class="overlay-cerrar" (click)="cerrarEdicionPerfil()">✕</button>        </div>        <div class="overlay-body">          <div class="field">            <label>Vacas en ordeño</label>            <input              type="number"              min="0"              class="form-input"              placeholder="Ej: 25"              [(ngModel)]="editPerfil.vacasEnOrdenio"            />          </div>          <div class="field">            <label>Producción diaria (L)</label>            <div class="input-suffix-row">              <input                type="number"                min="0"                step="0.1"                class="form-input"                placeholder="Ej: 185"                [(ngModel)]="editPerfil.produccionDiariaLitros"              />              <span class="input-suffix">L</span>            </div>          </div>          <div class="field">            <label>Precio litro promedio (COP)</label>            <input              type="number"              min="0"              class="form-input"              placeholder="Ej: 1200"              [(ngModel)]="editPerfil.precioLitroPromedio"            />          </div>          <div class="field">            <label>Período de lactancia promedio (días)</label>            <input              type="number"              min="0"              class="form-input"              placeholder="Ej: 305"              [(ngModel)]="editPerfil.periodoLactanciaPromedio"            />          </div>          <div class="field">            <label>Frecuencia de ordeño (veces/día)</label>            <input              type="number"              min="1"              max="4"              class="form-input"              placeholder="Ej: 2"              [(ngModel)]="editPerfil.frecuenciaOrdenio"            />          </div>          @if (errorPerfil) {            <p class="error-registro">{{ errorPerfil }}</p>          }        </div>        <div class="overlay-footer">          <button class="btn-cancelar" (click)="cerrarEdicionPerfil()">Cancelar</button>          <button            class="btn-guardar-registro"            (click)="guardarEdicionPerfil()"            [disabled]="guardandoPerfil"          >            @if (guardandoPerfil) {              <app-spinner size="small"></app-spinner>              Guardando...            } @else {              Guardar cambios            }          </button>        </div>      </div>    </div>  }}</div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'InfoProduccionComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'InfoProduccionComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

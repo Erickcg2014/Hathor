@@ -1,0 +1,417 @@
+<div class="gestion-rec-page">
+  <!-- ===== HEADER ===== -->
+  <header class="page-header">
+    <div class="header-left">
+      <p class="page-tag">Administración · Recomendaciones</p>
+      <h1 class="page-title">Gestión de <span class="brand">Recomendaciones</span></h1>
+      @if (hatoActivo) {
+        <p class="page-subtitle">
+          🐄 {{ hatoActivo.nombreHato }} · {{ hatoActivo.departamento }}, {{ hatoActivo.ciudad }}
+        </p>
+      } @else {
+        <p class="page-subtitle warn">⚠️ Selecciona un hato desde el selector superior</p>
+      }
+    </div>
+    <div class="header-right">
+      <div class="header-icon">💬</div>
+    </div>
+  </header>
+
+  <!-- ===== MENSAJES ===== -->
+  @if (error) {
+    <div class="msg-error">
+      <span>❌</span>
+      <p>{{ error }}</p>
+    </div>
+  }
+  @if (exito) {
+    <div class="msg-exito">
+      <span>✅</span>
+      <p>{{ exito }}</p>
+    </div>
+  }
+
+  <!-- ===== SIN HATO ===== -->
+  @if (!hatoActivo) {
+    <div class="empty-hato">
+      <span>🐄</span>
+      <p>
+        Selecciona un departamento, región y hato desde el navbar superior para gestionar sus
+        recomendaciones.
+      </p>
+    </div>
+  }
+
+  @if (hatoActivo) {
+    <!-- ═══════════════════════════════════════════════════
+         VISTA: LISTA
+    ═══════════════════════════════════════════════════ -->
+    @if (tabActivo === 'lista') {
+      <!-- Stats -->
+      @if (!loading) {
+        <div class="stats-row">
+          <div class="stat-chip activa" (click)="onFiltroEstadoChange('ACTIVA')">
+            ✅ {{ countActivas }} activas
+          </div>
+          <div class="stat-chip completada" (click)="onFiltroEstadoChange('COMPLETADA')">
+            🏆 {{ countCompletadas }} completadas
+          </div>
+          <div class="stat-chip descartada" (click)="onFiltroEstadoChange('DESCARTADA')">
+            🚫 {{ countDescartadas }} descartadas
+          </div>
+          <div class="stat-chip total" (click)="onFiltroEstadoChange('')">
+            📋 {{ recomendaciones.length }} total
+          </div>
+        </div>
+      }
+
+      <!-- Filtros -->
+      <div class="filtros-card">
+        <div class="filtros-row">
+          <!-- Búsqueda -->
+          <div class="filtro-busqueda-wrap">
+            <svg
+              class="busqueda-icono"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+            <input
+              type="text"
+              class="filtro-busqueda"
+              placeholder="Buscar por mensaje, indicador o tipo..."
+              [value]="filtroBusqueda"
+              (input)="onBusquedaChange($any($event.target).value)"
+            />
+          </div>
+
+          <!-- Estado -->
+          <select
+            class="filtro-select"
+            [value]="filtroEstado"
+            (change)="onFiltroEstadoChange($any($event.target).value)"
+          >
+            <option value="">Todos los estados</option>
+            @for (e of estados; track e.valor) {
+              <option [value]="e.valor">{{ e.label }}</option>
+            }
+          </select>
+
+          <!-- Prioridad -->
+          <select
+            class="filtro-select"
+            [value]="filtroPrioridad"
+            (change)="onFiltroPrioridadChange($any($event.target).value)"
+          >
+            <option value="">Toda prioridad</option>
+            @for (p of prioridades; track p.valor) {
+              <option [value]="p.valor">{{ p.label }}</option>
+            }
+          </select>
+
+          @if (hayFiltrosActivos) {
+            <button class="btn-limpiar" (click)="limpiarFiltros()">✕ Limpiar</button>
+          }
+
+          <button class="btn-crear" (click)="abrirForm()">+ Nueva recomendación</button>
+        </div>
+
+        <div class="resultados-row">
+          <span class="resultados-texto">
+            <strong>{{ recomendacionesFiltradas.length }}</strong>
+            recomendación(es)
+          </span>
+        </div>
+      </div>
+
+      <!-- Loading -->
+      @if (loading) {
+        <div class="loading-wrap">
+          <app-spinner size="large" message="Cargando recomendaciones..."> </app-spinner>
+        </div>
+      }
+
+      <!-- Lista -->
+      @if (!loading) {
+        @if (recomendacionesFiltradas.length === 0) {
+          <div class="empty-state">
+            <span>💬</span>
+            <p>
+              @if (hayFiltrosActivos) {
+                No hay recomendaciones con los filtros aplicados.
+              } @else {
+                Este hato no tiene recomendaciones registradas.
+              }
+            </p>
+            <button class="btn-crear-empty" (click)="abrirForm()">
+              + Crear recomendación manual
+            </button>
+          </div>
+        } @else {
+          <div class="rec-lista">
+            @for (rec of recomendacionesFiltradas; track rec.idRecomendacion) {
+              <div
+                class="rec-card"
+                [class.card-alta]="rec.prioridad === 'ALTA'"
+                [class.card-completada]="rec.tipoEstado === 'COMPLETADA'"
+                [class.card-descartada]="rec.tipoEstado === 'DESCARTADA'"
+              >
+                <!-- Header -->
+                <div class="rec-header">
+                  <div class="rec-header-left">
+                    <span class="rec-prio-icono">
+                      {{ iconoPrioridad(rec.prioridad) }}
+                    </span>
+                    <div>
+                      <span class="rec-prio-label" [class]="clasePrioridad(rec.prioridad)">
+                        {{ rec.prioridad }}
+                      </span>
+                      @if (rec.tipo) {
+                        <span class="rec-tipo">{{ rec.tipo }}</span>
+                      }
+                    </div>
+                  </div>
+                  <div class="rec-header-right">
+                    <span class="rec-estado-chip" [class]="claseEstado(rec.tipoEstado)">
+                      {{ labelEstado(rec.tipoEstado) }}
+                    </span>
+                    @if (rec.leida === false) {
+                      <span class="rec-no-leida">No leída</span>
+                    }
+                  </div>
+                </div>
+
+                <!-- Mensaje -->
+                <p class="rec-mensaje">{{ rec.mensaje }}</p>
+
+                <!-- Info KPI -->
+                @if (rec.indicador || rec.valorActual != null) {
+                  <div class="rec-kpi-row">
+                    @if (rec.indicador) {
+                      <span class="rec-kpi-indicador"> 📈 {{ rec.indicador }} </span>
+                    }
+                    @if (rec.valorActual != null) {
+                      <span class="rec-kpi-valor">
+                        Actual: <strong>{{ rec.valorActual }}</strong>
+                      </span>
+                    }
+                    @if (rec.valorReferencia != null) {
+                      <span class="rec-kpi-ref">
+                        Ref: <strong>{{ rec.valorReferencia }}</strong>
+                      </span>
+                    }
+                  </div>
+                }
+
+                <!-- Regla origen -->
+                @if (rec.idRegla) {
+                  <div class="rec-regla-row">
+                    <span class="rec-regla-icono">⚡</span>
+                    <span class="rec-regla-texto">
+                      Generada por regla —
+                      {{ rec.nombreKpiRegla ?? rec.codigoKpiRegla ?? '—' }}
+                    </span>
+                  </div>
+                }
+
+                <!-- Fecha -->
+                @if (rec.fechaCreacion) {
+                  <span class="rec-fecha"> 📅 {{ rec.fechaCreacion }} </span>
+                }
+
+                <!-- Acciones -->
+                <div class="rec-acciones">
+                  <!-- Cambiar estado -->
+                  @if (rec.tipoEstado !== 'COMPLETADA') {
+                    <button
+                      class="btn-estado completar"
+                      (click)="cambiarEstado(rec, 'COMPLETADA', $event)"
+                    >
+                      🏆 Completar
+                    </button>
+                  }
+                  @if (rec.tipoEstado === 'ACTIVA') {
+                    <button
+                      class="btn-estado descartar"
+                      (click)="cambiarEstado(rec, 'DESCARTADA', $event)"
+                    >
+                      🚫 Descartar
+                    </button>
+                  }
+                  @if (rec.tipoEstado !== 'ACTIVA') {
+                    <button
+                      class="btn-estado reactivar"
+                      (click)="cambiarEstado(rec, 'ACTIVA', $event)"
+                    >
+                      ✅ Reactivar
+                    </button>
+                  }
+
+                  <button class="btn-eliminar" (click)="eliminar(rec, $event)">🗑️ Eliminar</button>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      }
+    }
+
+    <!-- ═══════════════════════════════════════════════════
+         VISTA: FORMULARIO
+    ═══════════════════════════════════════════════════ -->
+    @if (tabActivo === 'form') {
+      <div class="form-layout">
+        <!-- Header -->
+        <div class="form-header-row">
+          <button class="btn-volver" (click)="cancelarForm()">← Volver</button>
+          <h2 class="form-titulo">+ Nueva recomendación manual</h2>
+        </div>
+
+        <div class="form-grid">
+          <!-- Columna izquierda -->
+          <div class="form-col">
+            <!-- Hato destino -->
+            <div class="form-card">
+              <h3 class="form-card-titulo">🐄 Hato destino</h3>
+              <div class="hato-destino-info">
+                <div class="hato-avatar">
+                  {{ hatoActivo.nombreHato.charAt(0).toUpperCase() }}
+                </div>
+                <div>
+                  <span class="hato-dest-nombre">
+                    {{ hatoActivo.nombreHato }}
+                  </span>
+                  <span class="hato-dest-meta">
+                    {{ hatoActivo.departamento }} · {{ hatoActivo.ciudad }} ·
+                    {{ hatoActivo.escala ?? '—' }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Prioridad y tipo -->
+            <div class="form-card">
+              <h3 class="form-card-titulo">⚙️ Configuración</h3>
+
+              <div class="campo-group">
+                <label class="campo-label">Prioridad *</label>
+                <div class="prioridad-btns">
+                  @for (p of prioridades; track p.valor) {
+                    <button
+                      class="prio-btn"
+                      [class]="p.clase"
+                      [class.seleccionada]="form.prioridad === p.valor"
+                      (click)="onFormChangeStr('prioridad', p.valor)"
+                    >
+                      {{ p.label }}
+                    </button>
+                  }
+                </div>
+              </div>
+
+              <div class="campo-group">
+                <label class="campo-label">Tipo</label>
+                <select
+                  class="campo-select"
+                  [value]="form.tipo ?? ''"
+                  (change)="onFormChange('tipo', $any($event.target).value)"
+                >
+                  <option value="">— Sin tipo —</option>
+                  @for (t of tipos; track t) {
+                    <option [value]="t">{{ t }}</option>
+                  }
+                </select>
+              </div>
+
+              <div class="campo-group">
+                <label class="campo-label"> ID de regla relacionada (opcional) </label>
+                <input
+                  type="number"
+                  class="campo-input"
+                  placeholder="Ej: 12"
+                  [value]="form.idRegla ?? ''"
+                  (input)="onFormChange('idRegla', +$any($event.target).value || null)"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna derecha -->
+          <div class="form-col">
+            <!-- Mensaje -->
+            <div class="form-card">
+              <h3 class="form-card-titulo">💬 Mensaje</h3>
+
+              <div class="campo-group">
+                <label class="campo-label">Mensaje *</label>
+                <textarea
+                  class="campo-textarea"
+                  rows="5"
+                  placeholder="Escribe el mensaje de recomendación para el ganadero..."
+                  [value]="form.mensaje"
+                  (input)="onFormChangeStr('mensaje', $any($event.target).value)"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- KPI relacionado -->
+            <div class="form-card">
+              <h3 class="form-card-titulo">📈 KPI relacionado (opcional)</h3>
+
+              <div class="campo-group">
+                <label class="campo-label">Código del indicador</label>
+                <input
+                  type="text"
+                  class="campo-input"
+                  placeholder="Ej: KPI_LITROS_VACA_DIA"
+                  [value]="form.indicador ?? ''"
+                  (input)="onFormChange('indicador', $any($event.target).value)"
+                />
+              </div>
+
+              <div class="campos-row">
+                <div class="campo-group">
+                  <label class="campo-label">Valor actual</label>
+                  <input
+                    type="number"
+                    class="campo-input"
+                    placeholder="Ej: 6.5"
+                    [value]="form.valorActual ?? ''"
+                    (input)="onFormChange('valorActual', +$any($event.target).value || null)"
+                  />
+                </div>
+                <div class="campo-group">
+                  <label class="campo-label">Valor de referencia</label>
+                  <input
+                    type="number"
+                    class="campo-input"
+                    placeholder="Ej: 10.0"
+                    [value]="form.valorReferencia ?? ''"
+                    (input)="onFormChange('valorReferencia', +$any($event.target).value || null)"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="form-footer">
+          <button class="btn-cancelar" (click)="cancelarForm()">Cancelar</button>
+          <button class="btn-guardar" [disabled]="guardando" (click)="guardar()">
+            @if (guardando) {
+              <app-spinner size="small"></app-spinner>
+              Guardando...
+            } @else {
+              + Crear recomendación
+            }
+          </button>
+        </div>
+      </div>
+    }
+  }
+</div>

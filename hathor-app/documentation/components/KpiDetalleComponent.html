@@ -1,0 +1,2055 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  KpiDetalleComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-kpi-detalle</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                                <code><a href="https://angular.io/api/router/RouterLink" target="_blank" >RouterLink</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./kpi-detalle.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./kpi-detalle.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartComparativaRef" >chartComparativaRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartHistoricoRef" >chartHistoricoRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#charts" >charts</a>
+                            </li>
+                            <li>
+                                <a href="#codigo" >codigo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dataReady" >dataReady</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#historico" >historico</a>
+                            </li>
+                            <li>
+                                <a href="#kpi" >kpi</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#viewReady" >viewReady</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#cargarDatos" >cargarDatos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#construirGraficas" >construirGraficas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearGraficaComparativa" >crearGraficaComparativa</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearGraficaHistorico" >crearGraficaHistorico</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destruirGraficas" >destruirGraficas</a>
+                            </li>
+                            <li>
+                                <a href="#formatValor" >formatValor</a>
+                            </li>
+                            <li>
+                                <a href="#getRutaParaKpi" >getRutaParaKpi</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#volver" >volver</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#labelEstado" >labelEstado</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, kpiService: <a href="../injectables/KpiService.html" target="_self">KpiService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>kpiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/KpiService.html" target="_self" >KpiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarDatos"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>cargarDatos</b></span>
+                        <a href="#cargarDatos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarDatos(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="construirGraficas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>construirGraficas</b></span>
+                        <a href="#construirGraficas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>construirGraficas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearGraficaComparativa"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearGraficaComparativa</b></span>
+                        <a href="#crearGraficaComparativa"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearGraficaComparativa()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="156"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:156</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearGraficaHistorico"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearGraficaHistorico</b></span>
+                        <a href="#crearGraficaHistorico"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearGraficaHistorico()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destruirGraficas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destruirGraficas</b></span>
+                        <a href="#destruirGraficas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>destruirGraficas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="217"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:217</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatValor"></a>
+                    <span class="name">
+                        <span ><b>formatValor</b></span>
+                        <a href="#formatValor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatValor(valor: number | null, unidad: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="264"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:264</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>unidad</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRutaParaKpi"></a>
+                    <span class="name">
+                        <span ><b>getRutaParaKpi</b></span>
+                        <a href="#getRutaParaKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getRutaParaKpi(codigo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="221"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:221</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>codigo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="274"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:274</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="volver"></a>
+                    <span class="name">
+                        <span ><b>volver</b></span>
+                        <a href="#volver"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>volver()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="250"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:250</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartComparativaRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartComparativaRef</b></span>
+                        <a href="#chartComparativaRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartComparativa&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartHistoricoRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartHistoricoRef</b></span>
+                        <a href="#chartHistoricoRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartHistorico&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="charts"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>charts</b></span>
+                        <a href="#charts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart&lt;any, any, any&gt;[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="codigo"></a>
+                    <span class="name">
+                        <span ><b>codigo</b></span>
+                        <a href="#codigo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataReady"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dataReady</b></span>
+                        <a href="#dataReady"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="historico"></a>
+                    <span class="name">
+                        <span ><b>historico</b></span>
+                        <a href="#historico"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/KpiHistorico.html" target="_self" >KpiHistorico[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="kpi"></a>
+                    <span class="name">
+                        <span ><b>kpi</b></span>
+                        <a href="#kpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/KpiResultado.html" target="_self" >KpiResultado | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewReady"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>viewReady</b></span>
+                        <a href="#viewReady"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="labelEstado"></a>
+                        <span class="name"><b>labelEstado</b><a href="#labelEstado"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>labelEstado()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="254" class="link-to-prism">src/app/features/Usuario/benchmarking/kpi-detalle/kpi-detalle.component.ts:254</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  AfterViewInit,
+  ChangeDetectorRef,
+  ElementRef,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { ActivatedRoute, Router, RouterLink } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil, firstValueFrom } from &#x27;rxjs&#x27;;
+import { Chart, registerables } from &#x27;chart.js&#x27;;
+
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import { Hato } from &#x27;../../../../core/services/hato/hato.service&#x27;;
+import { KpiService, KpiResultado, KpiHistorico } from &#x27;../../../../core/services/kpi/kpi.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+
+Chart.register(...registerables);
+
+@Component({
+  selector: &#x27;app-kpi-detalle&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent, RouterLink],
+  templateUrl: &#x27;./kpi-detalle.component.html&#x27;,
+  styleUrl: &#x27;./kpi-detalle.component.css&#x27;,
+})
+export class KpiDetalleComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild(&#x27;chartHistorico&#x27;) chartHistoricoRef!: ElementRef;
+  @ViewChild(&#x27;chartComparativa&#x27;) chartComparativaRef!: ElementRef;
+
+  loading &#x3D; true;
+  hatoActivo: Hato | null &#x3D; null;
+  kpi: KpiResultado | null &#x3D; null;
+  historico: KpiHistorico[] &#x3D; [];
+  codigo &#x3D; &#x27;&#x27;;
+
+  private charts: Chart&lt;any, any, any&gt;[] &#x3D; [];
+  private viewReady &#x3D; false;
+  private dataReady &#x3D; false;
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private hatoState: HatoStateService,
+    private kpiService: KpiService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.codigo &#x3D; this.route.snapshot.paramMap.get(&#x27;codigo&#x27;) ?? &#x27;&#x27;;
+
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato?.idHato &amp;&amp; this.codigo) {
+        this.cargarDatos(hato.idHato);
+      }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.viewReady &#x3D; true;
+    if (this.dataReady) this.construirGraficas();
+  }
+
+  private async cargarDatos(idHato: string): Promise&lt;void&gt; {
+    this.loading &#x3D; true;
+    this.destruirGraficas();
+
+    try {
+      // Si hay caché, retorna el caché, sino va al back.
+      const [kpis, historico] &#x3D; await Promise.allSettled([
+        firstValueFrom(this.kpiService.getKpis(idHato)),
+        firstValueFrom(this.kpiService.getHistorico(idHato, this.codigo)),
+      ]);
+
+      if (kpis.status &#x3D;&#x3D;&#x3D; &#x27;fulfilled&#x27;) {
+        this.kpi &#x3D; kpis.value.find((k) &#x3D;&gt; k.codigo &#x3D;&#x3D;&#x3D; this.codigo) ?? null;
+      }
+
+      if (historico.status &#x3D;&#x3D;&#x3D; &#x27;fulfilled&#x27;) {
+        this.historico &#x3D; historico.value.slice(0, 6).reverse();
+      }
+    } finally {
+      this.loading &#x3D; false;
+      this.dataReady &#x3D; true;
+      this.cdr.markForCheck();
+      setTimeout(() &#x3D;&gt; {
+        if (this.viewReady) this.construirGraficas();
+      }, 100);
+    }
+  }
+
+  private construirGraficas(): void {
+    this.destruirGraficas();
+    if (!this.kpi) return;
+
+    if (this.historico.length &gt; 1) this.crearGraficaHistorico();
+    this.crearGraficaComparativa();
+  }
+
+  private crearGraficaHistorico(): void {
+    const ctx &#x3D; this.chartHistoricoRef?.nativeElement;
+    if (!ctx) return;
+
+    const colorLinea &#x3D;
+      this.kpi!.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;
+        ? &#x27;#ef4444&#x27;
+        : this.kpi!.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;
+          ? &#x27;#eab308&#x27;
+          : &#x27;#19e64d&#x27;;
+
+    const chart &#x3D; new Chart(ctx, {
+      type: &#x27;line&#x27;,
+      data: {
+        labels: this.historico.map((h) &#x3D;&gt; h.periodo),
+        datasets: [
+          {
+            label: this.kpi!.nombre,
+            data: this.historico.map((h) &#x3D;&gt; h.valor),
+            borderColor: colorLinea,
+            backgroundColor: colorLinea + &#x27;18&#x27;,
+            borderWidth: 2.5,
+            pointBackgroundColor: colorLinea,
+            pointRadius: 5,
+            fill: true,
+            tension: 0.4,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60;${ctx.parsed.y ?? 0} ${this.kpi!.unidad}&#x60;,
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+            grid: { color: &#x27;#f0fdf4&#x27; },
+          },
+          x: { grid: { display: false } },
+        },
+      },
+    });
+    this.charts.push(chart);
+  }
+
+  private crearGraficaComparativa(): void {
+    const ctx &#x3D; this.chartComparativaRef?.nativeElement;
+    if (!ctx || !this.kpi?.benchmarkPromedio) return;
+
+    const chart &#x3D; new Chart(ctx, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: [&#x27;Tu hato&#x27;, &#x27;Promedio nacional&#x27;, &#x27;Top Colombia&#x27;],
+        datasets: [
+          {
+            data: [
+              this.kpi!.valor ?? 0,
+              this.kpi!.benchmarkPromedio ?? 0,
+              this.kpi!.benchmarkTop ?? 0,
+            ],
+            backgroundColor: [
+              this.kpi!.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;
+                ? &#x27;rgba(239,68,68,0.8)&#x27;
+                : this.kpi!.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;
+                  ? &#x27;rgba(234,179,8,0.8)&#x27;
+                  : &#x27;rgba(25,230,77,0.8)&#x27;,
+              &#x27;rgba(107,114,128,0.6)&#x27;,
+              &#x27;rgba(21,128,61,0.6)&#x27;,
+            ],
+            borderColor: [
+              this.kpi!.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;
+                ? &#x27;#dc2626&#x27;
+                : this.kpi!.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;
+                  ? &#x27;#ca8a04&#x27;
+                  : &#x27;#15c944&#x27;,
+              &#x27;#6b7280&#x27;,
+              &#x27;#15803d&#x27;,
+            ],
+            borderWidth: 2,
+            borderRadius: 8,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60;${ctx.parsed.y ?? 0} ${this.kpi!.unidad}&#x60;,
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: &#x27;#f0fdf4&#x27; },
+          },
+          x: { grid: { display: false } },
+        },
+      },
+    });
+    this.charts.push(chart);
+  }
+
+  private destruirGraficas(): void {
+    this.charts.forEach((c) &#x3D;&gt; c.destroy());
+    this.charts &#x3D; [];
+  }
+  getRutaParaKpi(codigo: string): string {
+    const rutas: Record&lt;string, string&gt; &#x3D; {
+      KPI_LITROS_VACA_DIA: &#x27;/produccion&#x27;,
+      KPI_FRECUENCIA_ORDENIO: &#x27;/produccion&#x27;,
+      KPI_LACTANCIA_VS_ESTANDAR: &#x27;/produccion&#x27;,
+      KPI_PCT_VACAS_ORDENIO: &#x27;/produccion&#x27;,
+      KPI_PRODUCCION_HA_DIA: &#x27;/produccion&#x27;,
+      KPI_LITROS_HA_ANIO: &#x27;/produccion&#x27;,
+      KPI_CAP_ALMAC_UTILIZADA: &#x27;/produccion&#x27;,
+      KPI_LITROS_EMPLEADO: &#x27;/produccion&#x27;,
+      KPI_COSTO_LITRO: &#x27;/produccion/registro&#x27;,
+      KPI_INGRESO_LITRO: &#x27;/finanzas/registro&#x27;,
+      KPI_MARGEN_NETO: &#x27;/finanzas/registro&#x27;,
+      KPI_MARGEN_BRUTO_PCT: &#x27;/finanzas/registro&#x27;,
+      KPI_RATIO_INGRESO_EGRESO: &#x27;/finanzas/registro&#x27;,
+      KPI_BALANCE_NETO: &#x27;/finanzas/registro&#x27;,
+      KPI_INGRESO_VACA: &#x27;/finanzas/registro&#x27;,
+      KPI_ROA: &#x27;/finanzas/registro&#x27;,
+      KPI_ROTACION_ACTIVOS: &#x27;/finanzas/registro&#x27;,
+      KPI_INGRESO_HA_ANIO: &#x27;/finanzas/registro&#x27;,
+      KPI_CARGA_ANIMAL: &#x27;/hato/inventarios&#x27;,
+      KPI_HEMBRAS_RECRIA_VACA: &#x27;/hato/inventarios&#x27;,
+      KPI_IOFC: &#x27;/finanzas/registro&#x27;,
+      KPI_COSTO_LABORAL_PCT: &#x27;/finanzas/registro&#x27;,
+      KPI_BREAKEVEN_LITRO: &#x27;/produccion/registro&#x27;,
+    };
+    return rutas[codigo] ?? &#x27;/home&#x27;;
+  }
+
+  volver(): void {
+    this.router.navigate([&#x27;/benchmarking&#x27;]);
+  }
+
+  get labelEstado(): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      OPTIMO: &#x27;Óptimo&#x27;,
+      ACEPTABLE: &#x27;Aceptable&#x27;,
+      CRITICO: &#x27;Crítico&#x27;,
+      SIN_DATOS: &#x27;Sin datos&#x27;,
+    };
+    return map[this.kpi?.estado ?? &#x27;&#x27;] ?? &#x27;&#x27;;
+  }
+
+  formatValor(valor: number | null, unidad: string): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;—&#x27;;
+    if (unidad.includes(&#x27;COP&#x27;) || unidad &#x3D;&#x3D;&#x3D; &#x27;COP/vaca&#x27; || unidad &#x3D;&#x3D;&#x3D; &#x27;COP/L&#x27;)
+      return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(valor));
+    if (unidad &#x3D;&#x3D;&#x3D; &#x27;%&#x27;) return valor.toFixed(1) + &#x27;%&#x27;;
+    if (unidad &#x3D;&#x3D;&#x3D; &#x27;ratio&#x27; || unidad &#x3D;&#x3D;&#x3D; &#x27;veces&#x27;) return valor.toFixed(2) + &#x27;x&#x27;;
+    if (Number.isInteger(valor)) return valor.toString() + &#x27; &#x27; + unidad;
+    return valor.toFixed(1) + &#x27; &#x27; + unidad;
+  }
+
+  ngOnDestroy(): void {
+    this.destruirGraficas();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;detalle-page&quot;&gt;
+  @if (loading) {
+    &lt;div class&#x3D;&quot;loading-wrapper&quot;&gt;
+      &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Cargando detalle...&quot;&gt;&lt;/app-spinner&gt;
+    &lt;/div&gt;
+  }
+
+  @if (!loading) {
+    &lt;!-- Breadcrumb --&gt;
+    &lt;div class&#x3D;&quot;breadcrumb&quot;&gt;
+      &lt;button class&#x3D;&quot;btn-volver&quot; (click)&#x3D;&quot;volver()&quot;&gt;
+        &lt;svg
+          fill&#x3D;&quot;none&quot;
+          stroke&#x3D;&quot;currentColor&quot;
+          stroke-width&#x3D;&quot;2.5&quot;
+          viewBox&#x3D;&quot;0 0 24 24&quot;
+          width&#x3D;&quot;14&quot;
+          height&#x3D;&quot;14&quot;
+        &gt;
+          &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M15 19l-7-7 7-7&quot; /&gt;
+        &lt;/svg&gt;
+
+        Mis KPIs
+      &lt;/button&gt;
+
+      &lt;span class&#x3D;&quot;breadcrumb-sep&quot;&gt;›&lt;/span&gt;
+      &lt;span class&#x3D;&quot;breadcrumb-actual&quot;&gt;{{ kpi?.nombre }}&lt;/span&gt;
+    &lt;/div&gt;
+
+    @if (!kpi) {
+      &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+        &lt;span&gt;📊&lt;/span&gt;
+        &lt;p&gt;KPI no encontrado. Regresa al dashboard y recalcula.&lt;/p&gt;
+        &lt;button class&#x3D;&quot;btn-volver-primary&quot; (click)&#x3D;&quot;volver()&quot;&gt;← Volver&lt;/button&gt;
+      &lt;/div&gt;
+    }
+
+    @if (kpi) {
+      &lt;!-- Header KPI --&gt;
+      &lt;div
+        class&#x3D;&quot;kpi-header&quot;
+        [class.header-optimo]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;OPTIMO&#x27;&quot;
+        [class.header-aceptable]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;&quot;
+        [class.header-critico]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;&quot;
+        [class.header-sin-datos]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;SIN_DATOS&#x27;&quot;
+      &gt;
+        &lt;div class&#x3D;&quot;kpi-header-left&quot;&gt;
+          &lt;div class&#x3D;&quot;kpi-header-top&quot;&gt;
+            &lt;h1 class&#x3D;&quot;kpi-titulo&quot;&gt;{{ kpi.nombre }}&lt;/h1&gt;
+            &lt;span
+              class&#x3D;&quot;estado-badge-grande&quot;
+              [class.badge-optimo]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;OPTIMO&#x27;&quot;
+              [class.badge-aceptable]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;&quot;
+              [class.badge-critico]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;&quot;
+              [class.badge-sin-datos]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;SIN_DATOS&#x27;&quot;
+            &gt;
+              {{ labelEstado }}
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;p class&#x3D;&quot;kpi-descripcion&quot;&gt;{{ kpi.descripcion }}&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;kpi-header-valor&quot;&gt;
+          &lt;span class&#x3D;&quot;valor-grande&quot;&gt;{{ formatValor(kpi.valor, kpi.unidad) }}&lt;/span&gt;
+          &lt;span class&#x3D;&quot;valor-unidad&quot;&gt;{{ kpi.unidad }}&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Cards benchmark --&gt;
+      &lt;div class&#x3D;&quot;benchmark-cards&quot;&gt;
+        &lt;div class&#x3D;&quot;bench-card&quot;&gt;
+          &lt;p class&#x3D;&quot;bench-label&quot;&gt;Tu hato&lt;/p&gt;
+          &lt;p class&#x3D;&quot;bench-valor mi-valor&quot;&gt;{{ formatValor(kpi.valor, kpi.unidad) }}&lt;/p&gt;
+        &lt;/div&gt;
+        @if (kpi.benchmarkPromedio !&#x3D;&#x3D; null) {
+          &lt;div class&#x3D;&quot;bench-card&quot;&gt;
+            &lt;p class&#x3D;&quot;bench-label&quot;&gt;Promedio nacional&lt;/p&gt;
+            &lt;p class&#x3D;&quot;bench-valor&quot;&gt;{{ kpi.benchmarkPromedio }} {{ kpi.unidad }}&lt;/p&gt;
+          &lt;/div&gt;
+        }
+        @if (kpi.benchmarkTop !&#x3D;&#x3D; null) {
+          &lt;div class&#x3D;&quot;bench-card top&quot;&gt;
+            &lt;p class&#x3D;&quot;bench-label&quot;&gt;Top Colombia&lt;/p&gt;
+            &lt;p class&#x3D;&quot;bench-valor top-valor&quot;&gt;{{ kpi.benchmarkTop }} {{ kpi.unidad }}&lt;/p&gt;
+          &lt;/div&gt;
+        }
+        @if (kpi.diferenciaPct !&#x3D;&#x3D; null) {
+          &lt;div
+            class&#x3D;&quot;bench-card diferencia&quot;
+            [class.diferencia-pos]&#x3D;&quot;kpi.diferenciaPct &gt;&#x3D; 0&quot;
+            [class.diferencia-neg]&#x3D;&quot;kpi.diferenciaPct &lt; 0&quot;
+          &gt;
+            &lt;p class&#x3D;&quot;bench-label&quot;&gt;vs Promedio&lt;/p&gt;
+            &lt;p class&#x3D;&quot;bench-valor&quot;&gt;
+              {{ kpi.diferenciaPct &gt;&#x3D; 0 ? &#x27;+&#x27; : &#x27;&#x27; }}{{ kpi.diferenciaPct!.toFixed(1) }}%
+            &lt;/p&gt;
+          &lt;/div&gt;
+        }
+      &lt;/div&gt;
+
+      &lt;!-- Fórmula --&gt;
+      &lt;div class&#x3D;&quot;formula-card&quot;&gt;
+        &lt;p class&#x3D;&quot;formula-titulo&quot;&gt;📐 Fórmula de cálculo&lt;/p&gt;
+        &lt;code class&#x3D;&quot;formula-codigo&quot;&gt;{{ kpi.formula }}&lt;/code&gt;
+        &lt;p class&#x3D;&quot;formula-hint&quot;&gt;
+          Calculado con base en los datos registrados en tu hato. Última actualización:
+          {{ kpi.fechaCalculo | date: &#x27;dd/MM/yyyy&#x27; }}
+        &lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Proceso de la fórmula --&gt;
+      @if (kpi.detalleCalculo &amp;&amp; kpi.detalleCalculo.length &gt; 0) {
+        &lt;div class&#x3D;&quot;proceso-card&quot;&gt;
+          &lt;div class&#x3D;&quot;proceso-header&quot;&gt;
+            &lt;span class&#x3D;&quot;proceso-icono&quot;&gt;🔢&lt;/span&gt;
+            &lt;div&gt;
+              &lt;h3 class&#x3D;&quot;proceso-titulo&quot;&gt;Detalles del cálculo&lt;/h3&gt;
+              &lt;p class&#x3D;&quot;proceso-sub&quot;&gt;Datos utilizados para calcular este indicador&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;proceso-items&quot;&gt;
+            @for (item of kpi.detalleCalculo; track item.variable) {
+              &lt;div
+                class&#x3D;&quot;proceso-item&quot;
+                [class.item-input]&#x3D;&quot;item.tipo &#x3D;&#x3D;&#x3D; &#x27;INPUT&#x27;&quot;
+                [class.item-intermedio]&#x3D;&quot;item.tipo &#x3D;&#x3D;&#x3D; &#x27;INTERMEDIO&#x27;&quot;
+                [class.item-resultado]&#x3D;&quot;item.tipo &#x3D;&#x3D;&#x3D; &#x27;RESULTADO&#x27;&quot;
+              &gt;
+                &lt;div class&#x3D;&quot;item-left&quot;&gt;
+                  &lt;span
+                    class&#x3D;&quot;item-tipo-dot&quot;
+                    [class.dot-input]&#x3D;&quot;item.tipo &#x3D;&#x3D;&#x3D; &#x27;INPUT&#x27;&quot;
+                    [class.dot-intermedio]&#x3D;&quot;item.tipo &#x3D;&#x3D;&#x3D; &#x27;INTERMEDIO&#x27;&quot;
+                    [class.dot-resultado]&#x3D;&quot;item.tipo &#x3D;&#x3D;&#x3D; &#x27;RESULTADO&#x27;&quot;
+                  &gt;&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;item-variable&quot;&gt;{{ item.variable }}&lt;/span&gt;
+                &lt;/div&gt;
+                @if (item.valor !&#x3D;&#x3D; null &amp;&amp; item.valor !&#x3D;&#x3D; undefined) {
+                  &lt;span class&#x3D;&quot;item-valor&quot; [class.valor-resultado]&#x3D;&quot;item.tipo &#x3D;&#x3D;&#x3D; &#x27;RESULTADO&#x27;&quot;&gt;
+                    {{ formatValor(item.valor, item.unidad ?? &#x27;&#x27;) }}
+                    @if (item.unidad &amp;&amp; !item.unidad.includes(&#x27;COP&#x27;) &amp;&amp; item.unidad !&#x3D;&#x3D; &#x27;%&#x27;) {
+                      &lt;span class&#x3D;&quot;item-unidad&quot;&gt;{{ item.unidad }}&lt;/span&gt;
+                    }
+                  &lt;/span&gt;
+                }
+              &lt;/div&gt;
+            }
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- Gráfica: Evolución histórica --&gt;
+      @if (historico.length &gt; 1) {
+        &lt;div class&#x3D;&quot;grafica-card&quot;&gt;
+          &lt;div class&#x3D;&quot;grafica-header&quot;&gt;
+            &lt;div&gt;
+              &lt;h3 class&#x3D;&quot;grafica-titulo&quot;&gt;Evolución histórica&lt;/h3&gt;
+              &lt;p class&#x3D;&quot;grafica-subtitulo&quot;&gt;
+                Valores de {{ kpi.nombre }} en los últimos períodos calculados
+              &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;grafica-badge&quot;&gt;📈 Tendencia&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;grafica-wrapper&quot;&gt;
+            &lt;canvas #chartHistorico&gt;&lt;/canvas&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- Gráfica: Comparativa --&gt;
+      @if (kpi.benchmarkPromedio !&#x3D;&#x3D; null) {
+        &lt;div class&#x3D;&quot;grafica-card&quot;&gt;
+          &lt;div class&#x3D;&quot;grafica-header&quot;&gt;
+            &lt;div&gt;
+              &lt;h3 class&#x3D;&quot;grafica-titulo&quot;&gt;Comparativa vs benchmarks&lt;/h3&gt;
+              &lt;p class&#x3D;&quot;grafica-subtitulo&quot;&gt;Tu hato vs promedio nacional y top Colombia&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;grafica-badge comparativa&quot;&gt;🏆 Benchmark&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;grafica-wrapper&quot;&gt;
+            &lt;canvas #chartComparativa&gt;&lt;/canvas&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+
+      @if (kpi.codigo &#x3D;&#x3D;&#x3D; &#x27;KPI_BREAKEVEN_LITRO&#x27; &amp;&amp; kpi.valor !&#x3D;&#x3D; null) {
+        &lt;div class&#x3D;&quot;breakeven-card&quot;&gt;
+          &lt;div class&#x3D;&quot;breakeven-header&quot;&gt;
+            &lt;span class&#x3D;&quot;breakeven-icono&quot;&gt;⚖️&lt;/span&gt;
+            &lt;div&gt;
+              &lt;p class&#x3D;&quot;breakeven-titulo&quot;&gt;¿Estás por encima del punto de equilibrio?&lt;/p&gt;
+              &lt;p class&#x3D;&quot;breakeven-sub&quot;&gt;
+                Compara el precio de equilibrio con el precio real que recibes por litro
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;breakeven-comparativa&quot;&gt;
+            &lt;div class&#x3D;&quot;breakeven-item&quot; [class.breakeven-malo]&#x3D;&quot;kpi.valor !&#x3D;&#x3D; null&quot;&gt;
+              &lt;span class&#x3D;&quot;breakeven-label&quot;&gt;Precio de equilibrio&lt;/span&gt;
+              &lt;span class&#x3D;&quot;breakeven-valor rojo&quot;&gt;
+                {{ formatValor(kpi.valor, kpi.unidad) }}
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;breakeven-hint&quot;&gt;Mínimo para no perder&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;breakeven-flecha&quot;&gt;→&lt;/div&gt;
+            &lt;div class&#x3D;&quot;breakeven-item&quot;&gt;
+              &lt;span class&#x3D;&quot;breakeven-label&quot;&gt;Ve a verificar&lt;/span&gt;
+              &lt;span class&#x3D;&quot;breakeven-valor&quot;&gt; KPI Ingreso por Litro &lt;/span&gt;
+              &lt;span class&#x3D;&quot;breakeven-hint&quot;&gt;Tu precio real de venta&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p class&#x3D;&quot;breakeven-conclusion&quot;&gt;
+            Si tu &lt;strong&gt;Ingreso por Litro&lt;/strong&gt; es menor que
+            &lt;strong&gt;{{ formatValor(kpi.valor, kpi.unidad) }}&lt;/strong
+            &gt;, tu hato está operando a pérdida. Revisa tus costos o negocia un mejor precio con el
+            comprador.
+          &lt;/p&gt;
+        &lt;/div&gt;
+      }
+
+      &lt;!-- Interpretación --&gt;
+      @if (kpi.estado !&#x3D;&#x3D; &#x27;SIN_DATOS&#x27;) {
+        &lt;div
+          class&#x3D;&quot;interpretacion-card&quot;
+          [class.interp-optimo]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;OPTIMO&#x27;&quot;
+          [class.interp-aceptable]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;&quot;
+          [class.interp-critico]&#x3D;&quot;kpi.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;&quot;
+        &gt;
+          &lt;div class&#x3D;&quot;interp-icono&quot;&gt;
+            @if (kpi.estado &#x3D;&#x3D;&#x3D; &#x27;OPTIMO&#x27;) {
+              🟢
+            }
+            @if (kpi.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;) {
+              🟡
+            }
+            @if (kpi.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;) {
+              🔴
+            }
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;p class&#x3D;&quot;interp-titulo&quot;&gt;
+              @if (kpi.estado &#x3D;&#x3D;&#x3D; &#x27;OPTIMO&#x27;) {
+                Tu hato está por encima del benchmark
+              }
+              @if (kpi.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;) {
+                Tu hato está cerca del promedio nacional
+              }
+              @if (kpi.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;) {
+                Este indicador requiere atención
+              }
+            &lt;/p&gt;
+            &lt;p class&#x3D;&quot;interp-desc&quot;&gt;
+              @if (kpi.estado &#x3D;&#x3D;&#x3D; &#x27;OPTIMO&#x27;) {
+                Mantén las prácticas actuales. Tu hato está entre los mejores productores de
+                Colombia en este indicador.
+              }
+              @if (kpi.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;) {
+                Estás dentro del rango normal. Con ajustes en manejo puedes alcanzar el nivel
+                óptimo.
+              }
+              @if (kpi.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;) {
+                Este indicador está significativamente por debajo del promedio nacional. Revisa las
+                prácticas recomendadas en el módulo de Prácticas.
+              }
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+
+      @if (kpi.estado &#x3D;&#x3D;&#x3D; &#x27;SIN_DATOS&#x27;) {
+        &lt;div class&#x3D;&quot;interpretacion-card&quot;&gt;
+          &lt;div class&#x3D;&quot;interp-icono&quot;&gt;⚪&lt;/div&gt;
+          &lt;div&gt;
+            &lt;p class&#x3D;&quot;interp-titulo&quot;&gt;No hay suficientes datos para calcular este KPI&lt;/p&gt;
+            @if (kpi.razonSinDatos) {
+              &lt;p class&#x3D;&quot;interp-desc&quot;&gt;{{ kpi.razonSinDatos }}&lt;/p&gt;
+            } @else {
+              &lt;p class&#x3D;&quot;interp-desc&quot;&gt;
+                Completa el registro de datos en los módulos correspondientes.
+              &lt;/p&gt;
+            }
+            &lt;a class&#x3D;&quot;interp-link&quot; [routerLink]&#x3D;&quot;getRutaParaKpi(kpi.codigo)&quot;&gt;
+              Ir a registrar datos →
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      }
+    }
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="detalle-page">  @if (loading) {    <div class="loading-wrapper">      <app-spinner size="large" message="Cargando detalle..."></app-spinner>    </div>  }  @if (!loading) {    <!-- Breadcrumb -->    <div class="breadcrumb">      <button class="btn-volver" (click)="volver()">        <svg          fill="none"          stroke="currentColor"          stroke-width="2.5"          viewBox="0 0 24 24"          width="14"          height="14"        >          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />        </svg>        Mis KPIs      </button>      <span class="breadcrumb-sep">›</span>      <span class="breadcrumb-actual">{{ kpi?.nombre }}</span>    </div>    @if (!kpi) {      <div class="empty-state">        <span>📊</span>        <p>KPI no encontrado. Regresa al dashboard y recalcula.</p>        <button class="btn-volver-primary" (click)="volver()">← Volver</button>      </div>    }    @if (kpi) {      <!-- Header KPI -->      <div        class="kpi-header"        [class.header-optimo]="kpi.estado === \'OPTIMO\'"        [class.header-aceptable]="kpi.estado === \'ACEPTABLE\'"        [class.header-critico]="kpi.estado === \'CRITICO\'"        [class.header-sin-datos]="kpi.estado === \'SIN_DATOS\'"      >        <div class="kpi-header-left">          <div class="kpi-header-top">            <h1 class="kpi-titulo">{{ kpi.nombre }}</h1>            <span              class="estado-badge-grande"              [class.badge-optimo]="kpi.estado === \'OPTIMO\'"              [class.badge-aceptable]="kpi.estado === \'ACEPTABLE\'"              [class.badge-critico]="kpi.estado === \'CRITICO\'"              [class.badge-sin-datos]="kpi.estado === \'SIN_DATOS\'"            >              {{ labelEstado }}            </span>          </div>          <p class="kpi-descripcion">{{ kpi.descripcion }}</p>        </div>        <div class="kpi-header-valor">          <span class="valor-grande">{{ formatValor(kpi.valor, kpi.unidad) }}</span>          <span class="valor-unidad">{{ kpi.unidad }}</span>        </div>      </div>      <!-- Cards benchmark -->      <div class="benchmark-cards">        <div class="bench-card">          <p class="bench-label">Tu hato</p>          <p class="bench-valor mi-valor">{{ formatValor(kpi.valor, kpi.unidad) }}</p>        </div>        @if (kpi.benchmarkPromedio !== null) {          <div class="bench-card">            <p class="bench-label">Promedio nacional</p>            <p class="bench-valor">{{ kpi.benchmarkPromedio }} {{ kpi.unidad }}</p>          </div>        }        @if (kpi.benchmarkTop !== null) {          <div class="bench-card top">            <p class="bench-label">Top Colombia</p>            <p class="bench-valor top-valor">{{ kpi.benchmarkTop }} {{ kpi.unidad }}</p>          </div>        }        @if (kpi.diferenciaPct !== null) {          <div            class="bench-card diferencia"            [class.diferencia-pos]="kpi.diferenciaPct >= 0"            [class.diferencia-neg]="kpi.diferenciaPct < 0"          >            <p class="bench-label">vs Promedio</p>            <p class="bench-valor">              {{ kpi.diferenciaPct >= 0 ? \'+\' : \'\' }}{{ kpi.diferenciaPct!.toFixed(1) }}%            </p>          </div>        }      </div>      <!-- Fórmula -->      <div class="formula-card">        <p class="formula-titulo">📐 Fórmula de cálculo</p>        <code class="formula-codigo">{{ kpi.formula }}</code>        <p class="formula-hint">          Calculado con base en los datos registrados en tu hato. Última actualización:          {{ kpi.fechaCalculo | date: \'dd/MM/yyyy\' }}        </p>      </div>      <!-- Proceso de la fórmula -->      @if (kpi.detalleCalculo && kpi.detalleCalculo.length > 0) {        <div class="proceso-card">          <div class="proceso-header">            <span class="proceso-icono">🔢</span>            <div>              <h3 class="proceso-titulo">Detalles del cálculo</h3>              <p class="proceso-sub">Datos utilizados para calcular este indicador</p>            </div>          </div>          <div class="proceso-items">            @for (item of kpi.detalleCalculo; track item.variable) {              <div                class="proceso-item"                [class.item-input]="item.tipo === \'INPUT\'"                [class.item-intermedio]="item.tipo === \'INTERMEDIO\'"                [class.item-resultado]="item.tipo === \'RESULTADO\'"              >                <div class="item-left">                  <span                    class="item-tipo-dot"                    [class.dot-input]="item.tipo === \'INPUT\'"                    [class.dot-intermedio]="item.tipo === \'INTERMEDIO\'"                    [class.dot-resultado]="item.tipo === \'RESULTADO\'"                  ></span>                  <span class="item-variable">{{ item.variable }}</span>                </div>                @if (item.valor !== null && item.valor !== undefined) {                  <span class="item-valor" [class.valor-resultado]="item.tipo === \'RESULTADO\'">                    {{ formatValor(item.valor, item.unidad ?? \'\') }}                    @if (item.unidad && !item.unidad.includes(\'COP\') && item.unidad !== \'%\') {                      <span class="item-unidad">{{ item.unidad }}</span>                    }                  </span>                }              </div>            }          </div>        </div>      }      <!-- Gráfica: Evolución histórica -->      @if (historico.length > 1) {        <div class="grafica-card">          <div class="grafica-header">            <div>              <h3 class="grafica-titulo">Evolución histórica</h3>              <p class="grafica-subtitulo">                Valores de {{ kpi.nombre }} en los últimos períodos calculados              </p>            </div>            <span class="grafica-badge">📈 Tendencia</span>          </div>          <div class="grafica-wrapper">            <canvas #chartHistorico></canvas>          </div>        </div>      }      <!-- Gráfica: Comparativa -->      @if (kpi.benchmarkPromedio !== null) {        <div class="grafica-card">          <div class="grafica-header">            <div>              <h3 class="grafica-titulo">Comparativa vs benchmarks</h3>              <p class="grafica-subtitulo">Tu hato vs promedio nacional y top Colombia</p>            </div>            <span class="grafica-badge comparativa">🏆 Benchmark</span>          </div>          <div class="grafica-wrapper">            <canvas #chartComparativa></canvas>          </div>        </div>      }      @if (kpi.codigo === \'KPI_BREAKEVEN_LITRO\' && kpi.valor !== null) {        <div class="breakeven-card">          <div class="breakeven-header">            <span class="breakeven-icono">⚖️</span>            <div>              <p class="breakeven-titulo">¿Estás por encima del punto de equilibrio?</p>              <p class="breakeven-sub">                Compara el precio de equilibrio con el precio real que recibes por litro              </p>            </div>          </div>          <div class="breakeven-comparativa">            <div class="breakeven-item" [class.breakeven-malo]="kpi.valor !== null">              <span class="breakeven-label">Precio de equilibrio</span>              <span class="breakeven-valor rojo">                {{ formatValor(kpi.valor, kpi.unidad) }}              </span>              <span class="breakeven-hint">Mínimo para no perder</span>            </div>            <div class="breakeven-flecha">→</div>            <div class="breakeven-item">              <span class="breakeven-label">Ve a verificar</span>              <span class="breakeven-valor"> KPI Ingreso por Litro </span>              <span class="breakeven-hint">Tu precio real de venta</span>            </div>          </div>          <p class="breakeven-conclusion">            Si tu <strong>Ingreso por Litro</strong> es menor que            <strong>{{ formatValor(kpi.valor, kpi.unidad) }}</strong            >, tu hato está operando a pérdida. Revisa tus costos o negocia un mejor precio con el            comprador.          </p>        </div>      }      <!-- Interpretación -->      @if (kpi.estado !== \'SIN_DATOS\') {        <div          class="interpretacion-card"          [class.interp-optimo]="kpi.estado === \'OPTIMO\'"          [class.interp-aceptable]="kpi.estado === \'ACEPTABLE\'"          [class.interp-critico]="kpi.estado === \'CRITICO\'"        >          <div class="interp-icono">            @if (kpi.estado === \'OPTIMO\') {              🟢            }            @if (kpi.estado === \'ACEPTABLE\') {              🟡            }            @if (kpi.estado === \'CRITICO\') {              🔴            }          </div>          <div>            <p class="interp-titulo">              @if (kpi.estado === \'OPTIMO\') {                Tu hato está por encima del benchmark              }              @if (kpi.estado === \'ACEPTABLE\') {                Tu hato está cerca del promedio nacional              }              @if (kpi.estado === \'CRITICO\') {                Este indicador requiere atención              }            </p>            <p class="interp-desc">              @if (kpi.estado === \'OPTIMO\') {                Mantén las prácticas actuales. Tu hato está entre los mejores productores de                Colombia en este indicador.              }              @if (kpi.estado === \'ACEPTABLE\') {                Estás dentro del rango normal. Con ajustes en manejo puedes alcanzar el nivel                óptimo.              }              @if (kpi.estado === \'CRITICO\') {                Este indicador está significativamente por debajo del promedio nacional. Revisa las                prácticas recomendadas en el módulo de Prácticas.              }            </p>          </div>        </div>      }      @if (kpi.estado === \'SIN_DATOS\') {        <div class="interpretacion-card">          <div class="interp-icono">⚪</div>          <div>            <p class="interp-titulo">No hay suficientes datos para calcular este KPI</p>            @if (kpi.razonSinDatos) {              <p class="interp-desc">{{ kpi.razonSinDatos }}</p>            } @else {              <p class="interp-desc">                Completa el registro de datos en los módulos correspondientes.              </p>            }            <a class="interp-link" [routerLink]="getRutaParaKpi(kpi.codigo)">              Ir a registrar datos →            </a>          </div>        </div>      }    }  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'KpiDetalleComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'KpiDetalleComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

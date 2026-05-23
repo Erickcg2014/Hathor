@@ -1,0 +1,50 @@
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+  <nav class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+    <a routerLink="/" fragment="inicio" class="flex items-center gap-3">
+      <span
+        class="h-8 w-8 rounded-xl bg-hathor-green text-gray-900 font-bold flex items-center justify-center"
+        >H</span
+      >
+      <span class="text-2xl font-bold text-emerald-950">Hathor</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-10 text-emerald-900/80 font-medium">
+      <li>
+        <a routerLink="/" fragment="inicio" class="hover:text-emerald-900 transition-colors"
+          >Inicio</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/"
+          fragment="caracteristicas"
+          class="hover:text-emerald-900 transition-colors"
+          >Características</a
+        >
+      </li>
+      <li>
+        <a routerLink="/" fragment="como-funciona" class="hover:text-emerald-900 transition-colors"
+          >Cómo Funciona</a
+        >
+      </li>
+      <li>
+        <a routerLink="/" fragment="beneficios" class="hover:text-emerald-900 transition-colors"
+          >Beneficios</a
+        >
+      </li>
+    </ul>
+
+    <div class="flex items-center gap-3 md:gap-4">
+      <a
+        routerLink="/login"
+        class="px-3 py-2 text-emerald-900 font-medium hover:opacity-80 transition-opacity"
+        >Iniciar Sesión</a
+      >
+      <a
+        routerLink="/register"
+        class="px-5 py-2 rounded-xl bg-hathor-green text-gray-900 font-semibold hover:brightness-95 transition-all"
+        >Registrarse</a
+      >
+    </div>
+  </nav>
+</header>

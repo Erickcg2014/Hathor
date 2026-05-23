@@ -1,0 +1,283 @@
+﻿<div class="info-finanzas-page">
+  @if (loading) {
+    <div class="loading-wrapper">
+      <app-spinner size="large" message="Cargando resumen del inventario general..."> </app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- Header -->
+    <div class="page-header">
+      <div class="header-left">
+        <span class="page-tag">Inventario general</span>
+        <h1 class="page-title">Resumen <span class="brand">del Inventario</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato desde el panel superior.</p>
+        }
+      </div>
+      <div class="header-badge">📦</div>
+    </div>
+
+    @if (!hatoActivo) {
+      <div class="empty-hato">
+        <span class="empty-icon">📦</span>
+        <p>No hay un hato seleccionado.</p>
+      </div>
+    }
+
+    @if (error) {
+      <p class="error-global">{{ error }}</p>
+    }
+
+    @if (hatoActivo && !error) {
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-icon">📋</span>
+          <div class="kpi-info">
+            <span class="kpi-value">{{ totalItems }}</span>
+            <span class="kpi-label">Items registrados</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-icon ingreso-icon">$</span>
+          <div class="kpi-info">
+            <span class="kpi-value ingreso-val">
+              {{ formatCOP(valorTotal) }}
+            </span>
+            <span class="kpi-label">Valor total estimado</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-icon">⚖️</span>
+          <div class="kpi-info">
+            <span class="kpi-value">
+              {{ formatCOP(promedioValorUnitario) }}
+            </span>
+            <span class="kpi-label">Promedio unitario</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-icon">📁</span>
+          <div class="kpi-info">
+            <span class="kpi-value">{{ categoriasResumen.length }}</span>
+            <span class="kpi-label">Categorías activas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de items -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h2 class="section-title">Items registrados</h2>
+            <span class="section-badge">{{ items.length }}</span>
+          </div>
+          <p class="section-meta">
+            Puedes editar nombre, cantidad, valor y descripción de cada item.
+          </p>
+        </div>
+
+        @if (items.length === 0) {
+          <div class="empty-section">
+            <span>📦</span>
+            <p>No hay items registrados en este inventario.</p>
+          </div>
+        }
+
+        @if (items.length > 0) {
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Categoría</th>
+                  <th>Subcategoría</th>
+                  <th>Item</th>
+                  <th>Cantidad</th>
+                  <th>Valor unitario</th>
+                  <th>Valor total</th>
+                  <th>Descripción</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of items; track item.idInventarioGeneral) {
+                  <!-- Fila normal -->
+                  @if (filaEditando !== item.idInventarioGeneral) {
+                    <tr [class.fila-eliminando]="filaEliminando === item.idInventarioGeneral">
+                      <td>
+                        <span class="cat-nombre">
+                          {{ getNombreCategoriaPadre(item) }}
+                        </span>
+                      </td>
+                      <td class="cat-none">
+                        {{ getNombreSubcategoria(item) }}
+                      </td>
+                      <td class="td-item">{{ item.nombreItem }}</td>
+                      <td>{{ item.cantidad }}</td>
+                      <td class="monto-cell">
+                        {{ formatCOP(item.valorUnitario) }}
+                      </td>
+                      <td class="monto-cell ingreso-val">
+                        {{ formatCOP(item.valorTotal) }}
+                      </td>
+                      <td class="desc-text">
+                        {{ item.descripcion || '—' }}
+                      </td>
+                      <td class="acciones-cell">
+                        @if (confirmandoEliminar === item.idInventarioGeneral) {
+                          <div class="confirm-eliminar">
+                            <span class="confirm-texto"> ¿Eliminar? </span>
+                            <button
+                              class="btn-confirmar-eliminar"
+                              (click)="confirmarEliminar(item.idInventarioGeneral)"
+                            >
+                              Sí
+                            </button>
+                            <button class="btn-cancelar-eliminar" (click)="cancelarEliminar()">
+                              No
+                            </button>
+                          </div>
+                        } @else {
+                          <div class="acciones-btns">
+                            <button class="btn-editar" (click)="abrirEdicion(item)" title="Editar">
+                              ✏️
+                            </button>
+                            <button
+                              class="btn-eliminar"
+                              (click)="solicitarConfirmacion(item.idInventarioGeneral)"
+                              title="Eliminar"
+                              [disabled]="filaEliminando === item.idInventarioGeneral"
+                            >
+                              🗑️
+                            </button>
+                          </div>
+                        }
+                      </td>
+                    </tr>
+                  }
+
+                  <!-- Fila edición inline -->
+                  @if (filaEditando === item.idInventarioGeneral) {
+                    <tr class="fila-edicion">
+                      <td>
+                        <span class="cat-nombre">
+                          {{ getNombreCategoriaPadre(item) }}
+                        </span>
+                      </td>
+                      <td class="cat-none">
+                        {{ getNombreSubcategoria(item) }}
+                      </td>
+                      <td>
+                        <input
+                          class="input-edicion input-nombre"
+                          type="text"
+                          [(ngModel)]="datosEdicion.nombreItem"
+                          placeholder="Nombre del item"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          class="input-edicion"
+                          type="number"
+                          [(ngModel)]="datosEdicion.cantidad"
+                          min="1"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          class="input-edicion"
+                          type="number"
+                          [(ngModel)]="datosEdicion.valorUnitario"
+                          min="1"
+                        />
+                      </td>
+                      <td class="monto-cell ingreso-val">
+                        {{ formatCOP(datosEdicion.cantidad * datosEdicion.valorUnitario) }}
+                      </td>
+                      <td>
+                        <input
+                          class="input-edicion input-nombre"
+                          type="text"
+                          [(ngModel)]="datosEdicion.descripcion"
+                          placeholder="Descripción"
+                        />
+                      </td>
+                      <td class="acciones-cell">
+                        <div class="acciones-edicion">
+                          @if (errorEdicion) {
+                            <span class="error-edicion">
+                              {{ errorEdicion }}
+                            </span>
+                          }
+                          <button
+                            class="btn-guardar-edicion"
+                            (click)="guardarEdicion(item)"
+                            [disabled]="guardandoEdicion"
+                          >
+                            @if (guardandoEdicion) {
+                              <app-spinner size="small"> </app-spinner>
+                            } @else {
+                              ✓ Guardar
+                            }
+                          </button>
+                          <button
+                            class="btn-cancelar-edicion"
+                            (click)="cancelarEdicion()"
+                            [disabled]="guardandoEdicion"
+                          >
+                            Cancelar
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  }
+                }
+              </tbody>
+            </table>
+          </div>
+        }
+      </div>
+
+      <!-- Distribución por categoría -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h2 class="section-title">Distribución por categoría</h2>
+            <span class="section-badge">
+              {{ categoriasResumen.length }}
+            </span>
+          </div>
+          <p class="section-meta">Resumen de cantidad y valor acumulado por categoría principal.</p>
+        </div>
+
+        @if (categoriasResumen.length > 0) {
+          <div class="perfil-grid">
+            @for (cat of categoriasResumen; track cat.categoria) {
+              <div class="perfil-card">
+                <div class="perfil-card__header">
+                  <span class="cat-nombre">{{ cat.categoria }}</span>
+                  <span class="cat-cantidad"> {{ cat.cantidad }} uds </span>
+                </div>
+                <div class="perfil-card__valor">
+                  {{ formatCOP(cat.total) }}
+                </div>
+                <p>Valor acumulado en esta categoría</p>
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="empty-section">
+            <span>📁</span>
+            <p>La distribución aparecerá cuando existan registros cargados para el hato.</p>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>

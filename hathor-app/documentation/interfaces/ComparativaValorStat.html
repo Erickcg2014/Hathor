@@ -1,0 +1,1153 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  ComparativaValorStat</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/features/Usuario/hato/inventarios-hato/ganado/estadisticas/inventario-ganado-estadisticas.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#categoria" 
+>
+                                            categoria
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#diferenciaCOP" 
+>
+                                            diferenciaCOP
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#diferenciaPct" 
+>
+                                            diferenciaPct
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#estado" 
+>
+                                            estado
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#raza" 
+>
+                                            raza
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#valorMercado" 
+>
+                                            valorMercado
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#valorUsuario" 
+>
+                                            valorUsuario
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="categoria"></a>
+                                        <span class="name "><b>categoria</b>
+                                            <a href="#categoria">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>categoria:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="diferenciaCOP"></a>
+                                        <span class="name "><b>diferenciaCOP</b>
+                                            <a href="#diferenciaCOP">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>diferenciaCOP:     <code>number | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>number | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="diferenciaPct"></a>
+                                        <span class="name "><b>diferenciaPct</b>
+                                            <a href="#diferenciaPct">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>diferenciaPct:     <code>number | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>number | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="estado"></a>
+                                        <span class="name "><b>estado</b>
+                                            <a href="#estado">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>estado:     <code>&quot;SOBRE_MERCADO&quot; | &quot;EN_MERCADO&quot; | &quot;BAJO_MERCADO&quot; | &quot;SIN_REFERENCIA&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;SOBRE_MERCADO&quot; | &quot;EN_MERCADO&quot; | &quot;BAJO_MERCADO&quot; | &quot;SIN_REFERENCIA&quot;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="raza"></a>
+                                        <span class="name "><b>raza</b>
+                                            <a href="#raza">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>raza:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="valorMercado"></a>
+                                        <span class="name "><b>valorMercado</b>
+                                            <a href="#valorMercado">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>valorMercado:     <code>number | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>number | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="valorUsuario"></a>
+                                        <span class="name "><b>valorUsuario</b>
+                                            <a href="#valorUsuario">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>valorUsuario:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnDestroy,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+  OnChanges,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+import { Chart, registerables } from &#x27;chart.js&#x27;;
+
+import { Hato } from &#x27;../../../../../../core/services/hato/hato.service&#x27;;
+import { HatoStateService } from &#x27;../../../../../../core/services/ui-state/hato-state.service&#x27;;
+import {
+  InventarioGanado,
+  InventarioGanadoService,
+} from &#x27;../../../../../../core/services/inventario/inventario-ganado.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../../../shared/spinner/spinner.component&#x27;;
+
+import {
+  ValorReferenciaGanadoService,
+  ValorReferenciaGanado,
+} from &#x27;../../../../../../core/services/inventario/valor-referencia-ganado.service&#x27;;
+
+Chart.register(...registerables);
+
+interface TipoStat {
+  tipo: string;
+  cantidad: number;
+  pct: number;
+}
+
+interface CategoriaStat {
+  categoria: string;
+  total: number;
+  pct: number;
+}
+
+interface RazaValorStat {
+  raza: string;
+  valor: number;
+  cantidad: number;
+}
+
+interface EdadGrupoStat {
+  label: string;
+  edadActual: number;
+}
+
+interface ComparativaValorStat {
+  raza: string;
+  categoria: string;
+  valorUsuario: number;
+  valorMercado: number | null;
+  diferenciaCOP: number | null;
+  diferenciaPct: number | null;
+  estado: &#x27;SOBRE_MERCADO&#x27; | &#x27;EN_MERCADO&#x27; | &#x27;BAJO_MERCADO&#x27; | &#x27;SIN_REFERENCIA&#x27;;
+}
+
+@Component({
+  selector: &#x27;app-inventario-ganado-estadisticas&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent],
+  templateUrl: &#x27;./inventario-ganado-estadisticas.component.html&#x27;,
+  styleUrl: &#x27;./inventario-ganado-estadisticas.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class InventarioGanadoEstadisticasComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild(&#x27;chartDona&#x27;) chartDonaRef!: ElementRef;
+  @ViewChild(&#x27;chartCategorias&#x27;) chartCategoriasRef!: ElementRef;
+  @ViewChild(&#x27;chartValor&#x27;) chartValorRef!: ElementRef;
+  @ViewChild(&#x27;chartEdad&#x27;) chartEdadRef!: ElementRef;
+
+  readonly Math &#x3D; Math;
+
+  hatoActivo: Hato | null &#x3D; null;
+  loading &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  registros: InventarioGanado[] &#x3D; [];
+  cargandoReferencias &#x3D; true;
+
+  valoresReferencia: ValorReferenciaGanado[] &#x3D; [];
+
+  private chartDona: Chart | null &#x3D; null;
+  private chartCategorias: Chart | null &#x3D; null;
+  private chartValor: Chart | null &#x3D; null;
+  private chartEdad: Chart | null &#x3D; null;
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+  private viewIniciado &#x3D; false;
+
+  private readonly COLORES &#x3D; [
+    &#x27;#19e64d&#x27;,
+    &#x27;#15803d&#x27;,
+    &#x27;#052e0f&#x27;,
+    &#x27;#86efac&#x27;,
+    &#x27;#4ade80&#x27;,
+    &#x27;#bbf7d0&#x27;,
+    &#x27;#166534&#x27;,
+    &#x27;#dcfce7&#x27;,
+    &#x27;#22c55e&#x27;,
+  ];
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private hatoState: HatoStateService,
+    private inventarioService: InventarioGanadoService,
+    private valorReferenciaService: ValorReferenciaGanadoService,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato?.idHato) {
+        this.cargar(hato.idHato);
+      } else {
+        this.registros &#x3D; [];
+        this.destruirGraficas();
+        this.cdr.markForCheck();
+      }
+    });
+    this.valorReferenciaService
+      .getAll()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (valores) &#x3D;&gt; {
+          this.valoresReferencia &#x3D; valores;
+          this.cargandoReferencias &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.cargandoReferencias &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  ngAfterViewInit(): void {
+    this.viewIniciado &#x3D; true;
+    if (this.registros.length &gt; 0) {
+      this.renderizarGraficas();
+    }
+  }
+
+  // ── Getters KPI cards ─────────────────────────────────────
+
+  get valorTotal(): number {
+    return this.registros.reduce((acc, r) &#x3D;&gt; acc + r.valorTotal, 0);
+  }
+
+  get cabezasTotales(): number {
+    return this.registros.reduce((acc, r) &#x3D;&gt; acc + r.cantidad, 0);
+  }
+
+  get edadPromedioPonderada(): number {
+    const totalCabezas &#x3D; this.cabezasTotales;
+    if (!totalCabezas) return 0;
+    const suma &#x3D; this.registros.reduce(
+      (acc, r) &#x3D;&gt; acc + this.calcularEdadActual(r.edadPromedioMeses, r.fechaRegistro) * r.cantidad,
+      0,
+    );
+    return suma / totalCabezas;
+  }
+
+  get tipoLider(): string {
+    return this.topTiposRaza[0]?.tipo ?? &#x27;Sin datos&#x27;;
+  }
+
+  get valorPromedioPorCabeza(): number {
+    if (!this.cabezasTotales) return 0;
+    return this.valorTotal / this.cabezasTotales;
+  }
+
+  // ── Getters para gráficas ─────────────────────────────────
+
+  get topTiposRaza(): TipoStat[] {
+    const map &#x3D; new Map&lt;string, number&gt;();
+    this.registros.forEach((r) &#x3D;&gt;
+      map.set(r.raza.tipoRaza, (map.get(r.raza.tipoRaza) ?? 0) + r.cantidad),
+    );
+    const raw &#x3D; Array.from(map.entries()).map(([tipo, cantidad]) &#x3D;&gt; ({ tipo, cantidad }));
+    const max &#x3D; raw.reduce((acc, r) &#x3D;&gt; Math.max(acc, r.cantidad), 0);
+    return raw
+      .sort((a, b) &#x3D;&gt; b.cantidad - a.cantidad)
+      .map((r) &#x3D;&gt; ({
+        tipo: r.tipo,
+        cantidad: r.cantidad,
+        pct: max ? (r.cantidad / max) * 100 : 0,
+      }));
+  }
+
+  get topCategoriasValor(): CategoriaStat[] {
+    const map &#x3D; new Map&lt;string, number&gt;();
+    this.registros.forEach((r) &#x3D;&gt;
+      map.set(
+        r.categoriaGanado.nombreCategoria,
+        (map.get(r.categoriaGanado.nombreCategoria) ?? 0) + r.valorTotal,
+      ),
+    );
+    const raw &#x3D; Array.from(map.entries()).map(([categoria, total]) &#x3D;&gt; ({ categoria, total }));
+    const max &#x3D; raw.reduce((acc, r) &#x3D;&gt; Math.max(acc, r.total), 0);
+    return raw
+      .sort((a, b) &#x3D;&gt; b.total - a.total)
+      .slice(0, 6)
+      .map((r) &#x3D;&gt; ({
+        categoria: r.categoria,
+        total: r.total,
+        pct: max ? (r.total / max) * 100 : 0,
+      }));
+  }
+
+  get razasValor(): RazaValorStat[] {
+    const map &#x3D; new Map&lt;string, { valor: number; cantidad: number }&gt;();
+    this.registros.forEach((r) &#x3D;&gt; {
+      const actual &#x3D; map.get(r.raza.nombre) ?? { valor: 0, cantidad: 0 };
+      actual.valor +&#x3D; r.valorTotal;
+      actual.cantidad +&#x3D; r.cantidad;
+      map.set(r.raza.nombre, actual);
+    });
+    return Array.from(map.entries())
+      .map(([raza, data]) &#x3D;&gt; ({
+        raza,
+        valor: data.valor,
+        cantidad: data.cantidad,
+      }))
+      .sort((a, b) &#x3D;&gt; b.valor - a.valor)
+      .slice(0, 6);
+  }
+
+  get edadPorGrupo(): EdadGrupoStat[] {
+    return this.registros
+      .map((r) &#x3D;&gt; ({
+        label: &#x60;${r.raza.nombre} (${r.categoriaGanado.nombreCategoria})&#x60;,
+        edadActual: this.calcularEdadActual(r.edadPromedioMeses, r.fechaRegistro),
+      }))
+      .sort((a, b) &#x3D;&gt; b.edadActual - a.edadActual);
+  }
+
+  get comparativaValores(): ComparativaValorStat[] {
+    return this.registros.map((r) &#x3D;&gt; {
+      const referencia &#x3D; this.valoresReferencia.find(
+        (v) &#x3D;&gt;
+          v.raza.idRaza &#x3D;&#x3D;&#x3D; r.raza.idRaza &amp;&amp;
+          v.categoriaGanado.idCategoria &#x3D;&#x3D;&#x3D; r.categoriaGanado.idCategoria,
+      );
+
+      if (!referencia) {
+        return {
+          raza: r.raza.nombre,
+          categoria: r.categoriaGanado.nombreCategoria,
+          valorUsuario: r.valorUnitario,
+          valorMercado: null,
+          diferenciaCOP: null,
+          diferenciaPct: null,
+          estado: &#x27;SIN_REFERENCIA&#x27; as const,
+        };
+      }
+
+      const diferenciaCOP &#x3D; r.valorUnitario - referencia.valorPromedio;
+      const diferenciaPct &#x3D; (diferenciaCOP / referencia.valorPromedio) * 100;
+
+      let estado: ComparativaValorStat[&#x27;estado&#x27;];
+      if (diferenciaPct &gt; 5) estado &#x3D; &#x27;SOBRE_MERCADO&#x27;;
+      else if (diferenciaPct &lt; -5) estado &#x3D; &#x27;BAJO_MERCADO&#x27;;
+      else estado &#x3D; &#x27;EN_MERCADO&#x27;;
+
+      return {
+        raza: r.raza.nombre,
+        categoria: r.categoriaGanado.nombreCategoria,
+        valorUsuario: r.valorUnitario,
+        valorMercado: referencia.valorPromedio,
+        diferenciaCOP,
+        diferenciaPct,
+        estado,
+      };
+    });
+  }
+
+  get totalSobreMercado(): number {
+    return this.comparativaValores.filter((c) &#x3D;&gt; c.estado &#x3D;&#x3D;&#x3D; &#x27;SOBRE_MERCADO&#x27;).length;
+  }
+  get totalEnMercado(): number {
+    return this.comparativaValores.filter((c) &#x3D;&gt; c.estado &#x3D;&#x3D;&#x3D; &#x27;EN_MERCADO&#x27;).length;
+  }
+  get totalBajoMercado(): number {
+    return this.comparativaValores.filter((c) &#x3D;&gt; c.estado &#x3D;&#x3D;&#x3D; &#x27;BAJO_MERCADO&#x27;).length;
+  }
+  // ── Edad dinámica ─────────────────────────────────────────
+
+  calcularEdadActual(edadPromedioMeses: number, fechaRegistro: string): number {
+    if (!fechaRegistro) return edadPromedioMeses;
+    const registro &#x3D; new Date(fechaRegistro);
+    const hoy &#x3D; new Date();
+    const mesesTranscurridos &#x3D;
+      (hoy.getFullYear() - registro.getFullYear()) * 12 + (hoy.getMonth() - registro.getMonth());
+    return edadPromedioMeses + Math.max(0, mesesTranscurridos);
+  }
+
+  // ── Helpers ───────────────────────────────────────────────
+
+  formatCOP(valor: number | null | undefined): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;$ 0&#x27;;
+    return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(valor));
+  }
+
+  colorEdad(meses: number): string {
+    if (meses &lt; 12) return &#x27;#86efac&#x27;;
+    if (meses &lt; 36) return &#x27;#19e64d&#x27;;
+    if (meses &lt; 72) return &#x27;#15803d&#x27;;
+    return &#x27;#052e0f&#x27;;
+  }
+
+  labelEstadoValor(estado: ComparativaValorStat[&#x27;estado&#x27;]): string {
+    const map: Record&lt;ComparativaValorStat[&#x27;estado&#x27;], string&gt; &#x3D; {
+      SOBRE_MERCADO: &#x27;Superior al Mercado&#x27;,
+      EN_MERCADO: &#x27;Igual al mercado&#x27;,
+      BAJO_MERCADO: &#x27;Inferior al mercado&#x27;,
+      SIN_REFERENCIA: &#x27;Sin referencia&#x27;,
+    };
+    return map[estado];
+  }
+
+  claseEstadoValor(estado: ComparativaValorStat[&#x27;estado&#x27;]): string {
+    const map: Record&lt;ComparativaValorStat[&#x27;estado&#x27;], string&gt; &#x3D; {
+      SOBRE_MERCADO: &#x27;estado-sobre&#x27;,
+      EN_MERCADO: &#x27;estado-mercado&#x27;,
+      BAJO_MERCADO: &#x27;estado-bajo&#x27;,
+      SIN_REFERENCIA: &#x27;estado-sin&#x27;,
+    };
+    return map[estado];
+  }
+
+  // ── Carga de datos ────────────────────────────────────────
+
+  private cargar(idHato: string): void {
+    this.loading &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    this.inventarioService
+      .getByHato(idHato)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (registros) &#x3D;&gt; {
+          this.registros &#x3D; registros;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+
+          // Renderizar después del ciclo de detección
+          setTimeout(() &#x3D;&gt; this.renderizarGraficas(), 100);
+        },
+        error: () &#x3D;&gt; {
+          this.error &#x3D; &#x27;No fue posible calcular estadísticas.&#x27;;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Gráficas ──────────────────────────────────────────────
+
+  private renderizarGraficas(): void {
+    if (!this.viewIniciado || !this.registros.length) return;
+    this.destruirGraficas();
+    this.renderDona();
+    this.renderCategorias();
+    this.renderValor();
+    this.renderEdad();
+  }
+
+  private renderDona(): void {
+    if (!this.chartDonaRef?.nativeElement) return;
+    const labels &#x3D; this.topTiposRaza.map((t) &#x3D;&gt; t.tipo);
+    const data &#x3D; this.topTiposRaza.map((t) &#x3D;&gt; t.cantidad);
+
+    this.chartDona &#x3D; new Chart(this.chartDonaRef.nativeElement, {
+      type: &#x27;doughnut&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            data,
+            backgroundColor: this.COLORES.slice(0, labels.length),
+            borderWidth: 2,
+            borderColor: &#x27;#ffffff&#x27;,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: &#x27;bottom&#x27;,
+            labels: {
+              font: { size: 12, weight: &#x27;bold&#x27; },
+              color: &#x27;#374151&#x27;,
+              padding: 16,
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60; ${ctx.label}: ${ctx.parsed} cabezas&#x60;,
+            },
+          },
+        },
+        cutout: &#x27;62%&#x27;,
+      },
+    });
+  }
+
+  private renderCategorias(): void {
+    if (!this.chartCategoriasRef?.nativeElement) return;
+    const stats &#x3D; this.topCategoriasValor;
+    const labels &#x3D; stats.map((s) &#x3D;&gt; s.categoria);
+    const data &#x3D; stats.map((s) &#x3D;&gt; s.total);
+
+    this.chartCategorias &#x3D; new Chart(this.chartCategoriasRef.nativeElement, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: &#x27;Valor total (COP)&#x27;,
+            data,
+            backgroundColor: this.COLORES[0],
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60; $ ${new Intl.NumberFormat(&#x27;es-CO&#x27;).format(ctx.parsed.x ?? 0)}&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: {
+              callback: (v) &#x3D;&gt;
+                &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Number(v) / 1000000) + &#x27;M&#x27;,
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          y: {
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#374151&#x27;,
+              font: { size: 12, weight: &#x27;bold&#x27; },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private renderValor(): void {
+    if (!this.chartValorRef?.nativeElement) return;
+    const stats &#x3D; this.razasValor;
+    const labels &#x3D; stats.map((s) &#x3D;&gt; s.raza);
+
+    this.chartValor &#x3D; new Chart(this.chartValorRef.nativeElement, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: &#x27;Valor total (COP)&#x27;,
+            data: stats.map((s) &#x3D;&gt; s.valor),
+            backgroundColor: this.COLORES[1],
+            borderRadius: 6,
+            borderSkipped: false,
+            yAxisID: &#x27;yValor&#x27;,
+          },
+          {
+            label: &#x27;Cabezas&#x27;,
+            data: stats.map((s) &#x3D;&gt; s.cantidad),
+            backgroundColor: this.COLORES[3],
+            borderRadius: 6,
+            borderSkipped: false,
+            yAxisID: &#x27;yCabezas&#x27;,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: &#x27;top&#x27;,
+            labels: {
+              font: { size: 12 },
+              color: &#x27;#374151&#x27;,
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; {
+                if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 0)
+                  return &#x60; $ ${new Intl.NumberFormat(&#x27;es-CO&#x27;).format(ctx.parsed.y ?? 0)}&#x60;;
+                return &#x60; ${ctx.parsed.y ?? 0} cabezas&#x60;;
+              },
+            },
+          },
+        },
+        scales: {
+          yValor: {
+            type: &#x27;linear&#x27;,
+            position: &#x27;left&#x27;,
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: {
+              callback: (v) &#x3D;&gt;
+                &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Number(v) / 1000000) + &#x27;M&#x27;,
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          yCabezas: {
+            type: &#x27;linear&#x27;,
+            position: &#x27;right&#x27;,
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          x: {
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#374151&#x27;,
+              font: { size: 12 },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private renderEdad(): void {
+    if (!this.chartEdadRef?.nativeElement) return;
+    const stats &#x3D; this.edadPorGrupo;
+    const labels &#x3D; stats.map((s) &#x3D;&gt; s.label);
+    const data &#x3D; stats.map((s) &#x3D;&gt; s.edadActual);
+    const colors &#x3D; data.map((m) &#x3D;&gt; this.colorEdad(m));
+
+    this.chartEdad &#x3D; new Chart(this.chartEdadRef.nativeElement, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: &#x27;Edad actual (meses)&#x27;,
+            data,
+            backgroundColor: colors,
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60; ${ctx.parsed.x} meses&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: {
+              callback: (v) &#x3D;&gt; &#x60;${v} m&#x60;,
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+            },
+          },
+          y: {
+            grid: { display: false },
+            ticks: {
+              color: &#x27;#374151&#x27;,
+              font: { size: 11 },
+              maxRotation: 0,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  private destruirGraficas(): void {
+    this.chartDona?.destroy();
+    this.chartCategorias?.destroy();
+    this.chartValor?.destroy();
+    this.chartEdad?.destroy();
+    this.chartDona &#x3D; null;
+    this.chartCategorias &#x3D; null;
+    this.chartValor &#x3D; null;
+    this.chartEdad &#x3D; null;
+  }
+
+  ngOnDestroy(): void {
+    this.destruirGraficas();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'ComparativaValorStat.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

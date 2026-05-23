@@ -1,0 +1,265 @@
+<div class="estadisticas-page">
+  @if (loading) {
+    <div class="loading-wrapper">
+      <app-spinner size="large" message="Calculando estadísticas..."> </app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- Header -->
+    <div class="page-header">
+      <div class="header-left">
+        <span class="page-tag">Inventario ganado</span>
+        <h1 class="page-title">Estadísticas <span class="brand">Productivas</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato desde el panel superior.</p>
+        }
+      </div>
+      <div class="header-badge">🐂</div>
+    </div>
+
+    <!-- Sin hato -->
+    @if (!hatoActivo && !error) {
+      <div class="empty-state">
+        <h2>Selecciona un hato</h2>
+        <p>Activa un hato para consultar sus estadísticas.</p>
+      </div>
+    }
+
+    @if (error) {
+      <div class="empty-state">
+        <h2>Error al cargar</h2>
+        <p>{{ error }}</p>
+      </div>
+    }
+
+    @if (hatoActivo && !error) {
+      <!-- KPI Cards -->
+      <div class="kpi-row">
+        <div class="kpi-hero">
+          <span class="kpi-label">Valor total del ganado</span>
+          <strong>{{ formatCOP(valorTotal) }}</strong>
+          <p>Valor estimado de todo el inventario pecuario registrado</p>
+        </div>
+        <div class="kpi-secondary-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Cabezas totales</span>
+            <strong>{{ cabezasTotales }}</strong>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Registros</span>
+            <strong>{{ registros.length }}</strong>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Edad promedio actual</span>
+            <strong> {{ edadPromedioPonderada | number: '1.0-1' }} m </strong>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Valor por cabeza</span>
+            <strong>{{ formatCOP(valorPromedioPorCabeza) }}</strong>
+          </div>
+        </div>
+      </div>
+
+      @if (registros.length === 0) {
+        <div class="empty-state">
+          <h2>Sin datos suficientes</h2>
+          <p>Registra animales para habilitar el panel estadístico del inventario ganado.</p>
+        </div>
+      }
+
+      @if (registros.length > 0) {
+        <!-- Fila 1: Dona + Categorías -->
+        <div class="charts-row">
+          <div class="chart-card">
+            <div class="chart-header">
+              <span class="section-badge">Distribución</span>
+              <h2 class="section-title">Cabezas por tipo de raza</h2>
+              <p class="chart-subtitle">Composición del hato según tipo productivo</p>
+            </div>
+            <div class="chart-container chart-dona">
+              <canvas #chartDona></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <span class="section-badge">Valor</span>
+              <h2 class="section-title">Categorías por valor económico</h2>
+              <p class="chart-subtitle">Valor total acumulado por categoría de ganado</p>
+            </div>
+            <div class="chart-container chart-barras">
+              <canvas #chartCategorias></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fila 2: Valor por raza (ancho completo) -->
+        <div class="chart-card chart-full">
+          <div class="chart-header">
+            <span class="section-badge">Comparativa</span>
+            <h2 class="section-title">Valor y cabezas por raza</h2>
+            <p class="chart-subtitle">
+              Comparación de valor económico vs cantidad de animales por raza
+            </p>
+          </div>
+          <div class="chart-container chart-agrupado">
+            <canvas #chartValor></canvas>
+          </div>
+        </div>
+
+        <!-- Fila 3: Edad por grupo (ancho completo) -->
+        <div class="chart-card chart-full">
+          <div class="chart-header">
+            <span class="section-badge">Envejecimiento</span>
+            <h2 class="section-title">Edad actual por grupo</h2>
+            <p class="chart-subtitle">
+              Edad calculada automáticamente desde la fecha de registro — se actualiza cada mes
+            </p>
+          </div>
+
+          <!-- Leyenda de colores de edad -->
+          <div class="leyenda-edad">
+            <div class="leyenda-item">
+              <span class="leyenda-dot" style="background: #86efac"></span>
+              <span>Menos de 12 m</span>
+            </div>
+            <div class="leyenda-item">
+              <span class="leyenda-dot" style="background: #19e64d"></span>
+              <span>12 – 35 m</span>
+            </div>
+            <div class="leyenda-item">
+              <span class="leyenda-dot" style="background: #15803d"></span>
+              <span>36 – 71 m</span>
+            </div>
+            <div class="leyenda-item">
+              <span class="leyenda-dot" style="background: #052e0f"></span>
+              <span>72 m o más</span>
+            </div>
+          </div>
+
+          <div
+            class="chart-container chart-edad"
+            [style.height.px]="Math.max(200, edadPorGrupo.length * 44)"
+          >
+            <canvas #chartEdad></canvas>
+          </div>
+        </div>
+
+        <!-- Comparativa valor mercado -->
+        <div class="chart-card chart-full">
+          <div class="chart-header">
+            <span class="section-badge">Comparativa</span>
+            <h2 class="section-title">Valor unitario vs mercado</h2>
+            <p class="chart-subtitle">
+              Comparación del valor registrado por cabeza contra el valor de referencia del mercado
+              colombiano 2025
+            </p>
+          </div>
+
+          @if (cargandoReferencias) {
+            <div class="comparativa-loading">
+              <app-spinner size="medium" message="Cargando valores de referencia..."> </app-spinner>
+            </div>
+          }
+
+          @if (!cargandoReferencias) {
+            @if (comparativaValores.length === 0) {
+              <div class="empty-comparativa">
+                <p>No hay datos suficientes para la comparativa.</p>
+              </div>
+            }
+
+            @if (comparativaValores.length > 0) {
+              <div class="comparativa-tabla">
+                <table class="tabla-comparativa">
+                  <thead>
+                    <tr>
+                      <th>Raza</th>
+                      <th>Categoría</th>
+                      <th>Tu valor</th>
+                      <th>Valor mercado</th>
+                      <th>Diferencia</th>
+                      <th>Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of comparativaValores; track item.raza) {
+                      <tr>
+                        <td class="td-raza">{{ item.raza }}</td>
+                        <td class="td-categoria">{{ item.categoria }}</td>
+                        <td class="td-valor">
+                          {{ formatCOP(item.valorUsuario) }}
+                        </td>
+                        <td class="td-valor">
+                          @if (item.valorMercado) {
+                            {{ formatCOP(item.valorMercado) }}
+                          } @else {
+                            <span class="sin-ref">—</span>
+                          }
+                        </td>
+                        <td class="td-diferencia">
+                          @if (item.diferenciaCOP !== null) {
+                            <div class="diferencia-wrap">
+                              <span
+                                class="diferencia-cop"
+                                [class.positivo]="item.diferenciaCOP > 0"
+                                [class.negativo]="item.diferenciaCOP < 0"
+                              >
+                                {{ item.diferenciaCOP > 0 ? '+' : '' }}
+                                {{ formatCOP(item.diferenciaCOP) }}
+                              </span>
+                              <span
+                                class="diferencia-pct"
+                                [class.positivo]="(item.diferenciaPct ?? 0) > 0"
+                                [class.negativo]="(item.diferenciaPct ?? 0) < 0"
+                              >
+                                {{ (item.diferenciaPct ?? 0) > 0 ? '+' : '' }}
+                                {{ item.diferenciaPct | number: '1.1-1' }}%
+                              </span>
+                            </div>
+                          } @else {
+                            <span class="sin-ref">—</span>
+                          }
+                        </td>
+                        <td>
+                          <span class="estado-badge" [class]="claseEstadoValor(item.estado)">
+                            {{ labelEstadoValor(item.estado) }}
+                          </span>
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Resumen de estados -->
+              <div class="comparativa-resumen">
+                <div class="resumen-item">
+                  <span class="resumen-dot estado-sobre"></span>
+                  <span class="resumen-label">Sobre mercado</span>
+                  <span class="resumen-count">{{ totalSobreMercado }}</span>
+                </div>
+                <div class="resumen-item">
+                  <span class="resumen-dot estado-mercado"></span>
+                  <span class="resumen-label">En mercado</span>
+                  <span class="resumen-count">{{ totalEnMercado }}</span>
+                </div>
+                <div class="resumen-item">
+                  <span class="resumen-dot estado-bajo"></span>
+                  <span class="resumen-label">Bajo mercado</span>
+                  <span class="resumen-count">{{ totalBajoMercado }}</span>
+                </div>
+              </div>
+            }
+          }
+        </div>
+      }
+    }
+  }
+</div>

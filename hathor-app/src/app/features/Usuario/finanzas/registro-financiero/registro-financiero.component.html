@@ -1,0 +1,626 @@
+<div class="finanzas-page">
+  <!-- Toast -->
+  <div class="toast" [class.visible]="toastVisible">
+    <span class="toast-icon">✓</span>
+    <span>Registros financieros agregados exitosamente</span>
+  </div>
+
+  <!-- Header -->
+  <div class="page-header" data-cy="registro-header">
+    <div class="header-left">
+      <span class="page-tag">Finanzas</span>
+      <h1 class="page-title">Nuevo Registro <span class="brand">Financiero</span></h1>
+      @if (hatoActivo) {
+        <p class="page-subtitle">
+          Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        </p>
+      } @else {
+        <p class="page-subtitle warn">⚠️ Selecciona un hato desde el panel de control.</p>
+      }
+    </div>
+    <div class="header-badge">💰</div>
+  </div>
+
+  @if (!hatoActivo) {
+    <div class="empty-hato">
+      <span class="empty-icon">🐄</span>
+      <p>No hay un hato seleccionado.</p>
+    </div>
+  }
+
+  @if (hatoActivo) {
+    <!-- Toggle modo -->
+    <div class="modo-toggle" data-cy="modo-toggle">
+      <button
+        class="modo-btn"
+        data-cy="btn-modo-manual"
+        [class.activo]="modoRegistro === 'MANUAL'"
+        (click)="seleccionarModo('MANUAL')"
+      >
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5
+               m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828
+               l8.586-8.586z"
+          />
+        </svg>
+        Ingreso manual
+      </button>
+      <button
+        class="modo-btn"
+        data-cy="btn-modo-excel"
+        [class.activo]="modoRegistro === 'EXCEL'"
+        (click)="seleccionarModo('EXCEL')"
+      >
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5
+               a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414
+               a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+          />
+        </svg>
+        Ingreso por Excel
+      </button>
+    </div>
+
+    @if (modoRegistro === 'MANUAL') {
+      <!-- ── Toggle gestión de categorías ── -->
+      <div class="gestion-categorias-wrap">
+        <button class="btn-toggle-categorias" (click)="toggleGestionCategorias()">
+          <svg
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="15"
+            height="15"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+          </svg>
+          {{
+            mostrarGestionCategorias
+              ? 'Ocultar gestión de categorías'
+              : 'Gestionar categorías personalizadas'
+          }}
+          <svg
+            class="chevron-toggle"
+            [class.rotado]="mostrarGestionCategorias"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            height="14"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        @if (mostrarGestionCategorias) {
+          <div class="gestion-categorias-panel">
+            <h4 class="gestion-titulo">Nueva categoría personalizada</h4>
+
+            <!-- Tipo -->
+            <div class="gestion-campo">
+              <label class="form-label"> Tipo <span class="required">*</span> </label>
+              <div class="tipo-selector">
+                @for (tipo of tiposMovimiento; track tipo.value) {
+                  <button
+                    class="tipo-btn"
+                    [class.selected]="nuevaCategoriaTipo === tipo.value"
+                    [class.tipo-ingreso]="
+                      tipo.value === 'INGRESO' && nuevaCategoriaTipo === tipo.value
+                    "
+                    [class.tipo-gasto]="tipo.value === 'GASTO' && nuevaCategoriaTipo === tipo.value"
+                    [class.tipo-inversion]="
+                      tipo.value === 'INVERSION' && nuevaCategoriaTipo === tipo.value
+                    "
+                    (click)="nuevaCategoriaTipo = tipo.value; nuevaCategoriaPadreId = ''"
+                    type="button"
+                  >
+                    <span class="tipo-icon">{{ tipo.icono }}</span>
+                    {{ tipo.label }}
+                  </button>
+                }
+              </div>
+            </div>
+
+            <!-- Categoría padre -->
+            <div class="gestion-campo">
+              <label class="form-label">
+                Categoría padre
+                <span class="optional">(opcional)</span>
+              </label>
+              <div class="select-wrapper">
+                <select class="form-select" [(ngModel)]="nuevaCategoriaPadreId">
+                  @for (cat of getCategoriasPadreParaGestion(); track cat.idCategoriaFinanciera) {
+                    <option [value]="cat.idCategoriaFinanciera">
+                      {{ cat.nombre }}
+                    </option>
+                  }
+                </select>
+                <svg
+                  class="select-chevron"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Nombre -->
+            <div class="gestion-campo">
+              <label class="form-label"> Nombre <span class="required">*</span> </label>
+              <input
+                class="form-input"
+                type="text"
+                placeholder="Ej: Concentrado premium"
+                [(ngModel)]="nuevaCategoriaNombre"
+                maxlength="80"
+              />
+            </div>
+
+            @if (errorCategoria) {
+              <p class="gestion-error">{{ errorCategoria }}</p>
+            }
+            @if (exitoCategoria) {
+              <p class="gestion-exito">✓ {{ exitoCategoria }}</p>
+            }
+
+            <button
+              class="btn-crear-categoria"
+              [disabled]="creandoCategoria || !nuevaCategoriaNombre.trim()"
+              (click)="crearCategoriaPersonalizada()"
+            >
+              @if (creandoCategoria) {
+                <app-spinner size="small"></app-spinner>
+                Creando...
+              } @else {
+                + Crear categoría
+              }
+            </button>
+
+            <!-- Lista de categorías existentes del usuario -->
+            @if (categoriasPersonalizadas.length > 0) {
+              <div class="gestion-lista">
+                <p class="gestion-lista-titulo">Tus categorías personalizadas</p>
+                @for (cat of categorias; track cat.idCategoriaFinanciera) {
+                  @if (!cat.esPredefinida) {
+                    <div class="gestion-lista-item">
+                      <span class="gestion-lista-nombre">
+                        {{ cat.nombre }}
+                      </span>
+                      <span class="gestion-lista-padre">
+                        @if (cat.categoriaPadre) {
+                          bajo {{ cat.categoriaPadre.nombre }}
+                        }
+                      </span>
+                      <span
+                        class="gestion-lista-tipo"
+                        [class.tipo-ingreso-badge]="cat.tipo === 'INGRESO'"
+                        [class.tipo-gasto-badge]="cat.tipo === 'GASTO'"
+                        [class.tipo-inversion-badge]="cat.tipo === 'INVERSION'"
+                      >
+                        {{ cat.tipo }}
+                      </span>
+                    </div>
+                  }
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Lista de registros -->
+      <div class="registros-list">
+        @for (registro of registros; track $index; let i = $index) {
+          <div
+            class="registro-card"
+            data-cy="registro-card"
+            [class.error-card]="submitted && tieneErrores(i)"
+          >
+            <!-- Card Header -->
+            <div class="card-header">
+              <div class="card-num">
+                <span class="num-label">Registro</span>
+                <span class="num-value">#{{ i + 1 }}</span>
+              </div>
+              @if (registros.length > 1) {
+                <button class="btn-remove" (click)="eliminarRegistro(i)" title="Eliminar registro">
+                  <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              }
+            </div>
+
+            <!-- Título + Tipo -->
+            <div class="form-row">
+              <div class="form-group flex-2">
+                <label class="form-label"> Título <span class="required">*</span> </label>
+                <input
+                  class="form-input"
+                  [class.input-error]="submitted && !registro.titulo"
+                  type="text"
+                  data-cy="input-titulo"
+                  placeholder="Ej: Venta de leche enero"
+                  [(ngModel)]="registro.titulo"
+                  maxlength="120"
+                />
+                @if (submitted && !registro.titulo) {
+                  <span class="error-msg">El título es requerido</span>
+                }
+              </div>
+
+              <div class="form-group flex-1">
+                <label class="form-label"> Tipo <span class="required">*</span> </label>
+                <div class="tipo-selector">
+                  @for (tipo of tiposMovimiento; track tipo.value) {
+                    <button
+                      class="tipo-btn"
+                      [attr.data-cy]="'btn-tipo-' + tipo.value.toLowerCase()"
+                      [class.selected]="registro.tipo_movimiento === tipo.value"
+                      [class.tipo-ingreso]="
+                        tipo.value === 'INGRESO' && registro.tipo_movimiento === tipo.value
+                      "
+                      [class.tipo-gasto]="
+                        tipo.value === 'GASTO' && registro.tipo_movimiento === tipo.value
+                      "
+                      [class.tipo-inversion]="
+                        tipo.value === 'INVERSION' && registro.tipo_movimiento === tipo.value
+                      "
+                      (click)="seleccionarTipo(i, tipo.value)"
+                    >
+                      <span class="tipo-icon">{{ tipo.icono }}</span>
+                      {{ tipo.label }}
+                    </button>
+                  }
+                </div>
+                @if (submitted && !registro.tipo_movimiento) {
+                  <span class="error-msg">Selecciona un tipo</span>
+                }
+              </div>
+            </div>
+
+            <!-- Selector en cascada de categoría -->
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label class="form-label"> Categoría <span class="required">*</span> </label>
+
+                @if (!registro.tipo_movimiento) {
+                  <p class="select-hint">Selecciona primero el tipo de movimiento</p>
+                }
+
+                @if (registro.tipo_movimiento) {
+                  <div class="categorias-cascada">
+                    @if (!registro._usandoPersonalizada) {
+                      <!-- Selector predefinidas -->
+                      <div
+                        class="select-wrapper"
+                        [class.input-error]="submitted && !registro.id_categoria"
+                      >
+                        <select
+                          class="form-select"
+                          [(ngModel)]="registro.id_categoria"
+                          (ngModelChange)="onCategoriaChange(i)"
+                        >
+                          <option value="" disabled selected>Selecciona una categoría</option>
+                          @for (
+                            cat of getCategoriasPredefinidas(registro.tipo_movimiento!);
+                            track cat.idCategoriaFinanciera
+                          ) {
+                            <option [value]="cat.idCategoriaFinanciera">
+                              {{ cat.nombre }}
+                            </option>
+                          }
+                        </select>
+                        <svg
+                          class="select-chevron"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          viewBox="0 0 24 24"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    }
+
+                    @if (registro._usandoPersonalizada) {
+                      <!-- Selector personalizadas -->
+                      <div
+                        class="select-wrapper"
+                        [class.input-error]="submitted && !registro.id_categoria"
+                      >
+                        <select
+                          class="form-select"
+                          [(ngModel)]="registro.id_categoria"
+                          (ngModelChange)="onCategoriaChange(i)"
+                        >
+                          <option value="" disabled selected>Selecciona tu categoría</option>
+                          @for (
+                            cat of getCategoriasPersonalizadasPorTipo(registro.tipo_movimiento!);
+                            track cat.idCategoriaFinanciera
+                          ) {
+                            <option [value]="cat.idCategoriaFinanciera">
+                              {{ cat.nombre }}
+                            </option>
+                          }
+                        </select>
+                        <svg
+                          class="select-chevron"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          viewBox="0 0 24 24"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    }
+
+                    <!-- Botón toggle personalizada -->
+                    @if (getCategoriasPersonalizadasPorTipo(registro.tipo_movimiento!).length > 0) {
+                      <button
+                        class="btn-toggle-personalizada"
+                        type="button"
+                        (click)="togglePersonalizada(i)"
+                      >
+                        @if (!registro._usandoPersonalizada) {
+                          <svg
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            viewBox="0 0 24 24"
+                            width="13"
+                            height="13"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M5 12h14M12 5l7 7-7 7"
+                            />
+                          </svg>
+                          Mis categorías personalizadas
+                        } @else {
+                          <svg
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            viewBox="0 0 24 24"
+                            width="13"
+                            height="13"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M19 12H5M12 19l-7-7 7-7"
+                            />
+                          </svg>
+                          Volver a categorías estándar
+                        }
+                      </button>
+                    }
+                  </div>
+                }
+              </div>
+
+              <div class="form-group flex-1">
+                <label class="form-label"> Fecha <span class="required">*</span> </label>
+                <input
+                  class="form-input"
+                  [class.input-error]="submitted && !registro.fecha"
+                  type="date"
+                  data-cy="input-fecha"
+                  [(ngModel)]="registro.fecha"
+                />
+                @if (submitted && !registro.fecha) {
+                  <span class="error-msg">La fecha es requerida</span>
+                }
+              </div>
+            </div>
+
+            <!-- Monto + Descripción -->
+            @if (!esVentaLeche(i)) {
+              <div class="form-row">
+                <div class="form-group flex-1">
+                  <label class="form-label"> Monto (COP) <span class="required">*</span> </label>
+                  <div
+                    class="input-prefix-wrapper"
+                    [class.input-error]="submitted && !registro.monto"
+                  >
+                    <span class="input-prefix">$</span>
+                    <input
+                      class="form-input prefix-input"
+                      type="number"
+                      data-cy="input-monto"
+                      min="0"
+                      step="1"
+                      placeholder="0"
+                      [(ngModel)]="registro.monto"
+                    />
+                  </div>
+                  @if (submitted && (!registro.monto || registro.monto <= 0)) {
+                    <span class="error-msg"> Ingresa un monto válido </span>
+                  }
+                </div>
+                <div class="form-group flex-2">
+                  <label class="form-label">
+                    Descripción
+                    <span class="optional">(opcional)</span>
+                  </label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    placeholder="Notas adicionales..."
+                    [(ngModel)]="registro.descripcion"
+                    maxlength="255"
+                  />
+                </div>
+              </div>
+            }
+
+            <!-- Venta de leche -->
+            @if (esVentaLeche(i)) {
+              <div class="leche-section">
+                <div class="leche-badge">
+                  <span>🥛</span>
+                  Venta de Leche — precio × litros = monto
+                </div>
+                <div class="form-row">
+                  <div class="form-group flex-1">
+                    <label class="form-label">
+                      Litros vendidos <span class="required">*</span>
+                    </label>
+                    <div
+                      class="input-suffix-wrapper"
+                      [class.input-error]="
+                        submitted && esVentaLeche(i) && !registro.litros_vendidos_leche
+                      "
+                    >
+                      <input
+                        class="form-input suffix-input"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        placeholder="0.00"
+                        [(ngModel)]="registro.litros_vendidos_leche"
+                        (ngModelChange)="calcularMontoLeche(i)"
+                      />
+                      <span class="input-suffix">L</span>
+                    </div>
+                    @if (submitted && esVentaLeche(i) && !registro.litros_vendidos_leche) {
+                      <span class="error-msg">Campo requerido</span>
+                    }
+                  </div>
+                  <div class="form-group flex-1">
+                    <label class="form-label">
+                      Precio por litro
+                      <span class="required">*</span>
+                    </label>
+                    <div
+                      class="input-prefix-wrapper"
+                      [class.input-error]="
+                        submitted && esVentaLeche(i) && !registro.precio_litro_leche
+                      "
+                    >
+                      <span class="input-prefix">$</span>
+                      <input
+                        class="form-input prefix-input"
+                        type="number"
+                        min="0"
+                        step="1"
+                        placeholder="0"
+                        [(ngModel)]="registro.precio_litro_leche"
+                        (ngModelChange)="calcularMontoLeche(i)"
+                      />
+                    </div>
+                    @if (submitted && esVentaLeche(i) && !registro.precio_litro_leche) {
+                      <span class="error-msg">Campo requerido</span>
+                    }
+                  </div>
+                  <div class="form-group flex-1">
+                    <label class="form-label">Monto calculado</label>
+                    <div class="monto-calculado">
+                      <span class="monto-valor">
+                        {{ formatCOP(registro.monto) }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Acciones -->
+      <div class="actions-row">
+        <button class="btn-add" (click)="agregarRegistro()">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+          </svg>
+          Añadir otro registro
+        </button>
+        <div class="actions-right">
+          <span class="registros-count">
+            {{ registros.length }}
+            registro{{ registros.length !== 1 ? 's' : '' }}
+          </span>
+          <button
+            class="btn-guardar"
+            data-cy="btn-guardar"
+            (click)="guardar()"
+            [disabled]="guardando"
+          >
+            <app-spinner *ngIf="guardando" size="small"></app-spinner>
+            <svg
+              *ngIf="!guardando"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            {{ guardando ? 'Guardando...' : 'Guardar registros' }}
+          </button>
+        </div>
+      </div>
+    }
+
+    @if (modoRegistro === 'EXCEL') {
+      <app-finanzas-excel
+        [hatoActual]="hatoActivo"
+        [mostrarAnual]="false"
+        (cargaExitosa)="onCargaExcelExitosa()"
+      ></app-finanzas-excel>
+    }
+  }
+
+  <!-- Modal alerta producción -->
+  @if (alertaProduccion) {
+    <div class="alerta-overlay" (click)="rechazarProduccionSugerida()">
+      <div class="alerta-modal" (click)="$event.stopPropagation()">
+        <div class="alerta-modal-header">
+          <span class="alerta-modal-icono">⚠️</span>
+          <h3 class="alerta-modal-titulo">Producción no registrada</h3>
+        </div>
+        <p class="alerta-modal-mensaje">{{ mensajeAlerta }}</p>
+        <div class="alerta-litros-box">
+          <span class="alerta-litros-valor"> {{ litrosFaltantes | number: '1.1-1' }} L </span>
+          <span class="alerta-litros-label"> litros sin registrar como producción </span>
+        </div>
+        <div class="alerta-modal-acciones">
+          <button
+            class="btn-alerta-rechazar"
+            [disabled]="agregandoProduccionSugerida"
+            (click)="rechazarProduccionSugerida()"
+          >
+            No, continuar sin registrar
+          </button>
+          <button
+            class="btn-alerta-aceptar"
+            [disabled]="agregandoProduccionSugerida"
+            (click)="aceptarProduccionSugerida()"
+          >
+            @if (agregandoProduccionSugerida) {
+              Guardando...
+            } @else {
+              ✅ Sí, agregar {{ litrosFaltantes | number: '1.1-1' }} L
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

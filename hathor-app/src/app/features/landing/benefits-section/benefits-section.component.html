@@ -1,0 +1,41 @@
+<section id="beneficios" class="bg-green-50 py-16 sm:py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs sm:text-sm tracking-[0.14em] font-semibold text-green-600 uppercase">Beneficios</p>
+      <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 leading-tight">Resultados que se miden</h2>
+      <p class="mt-4 text-base sm:text-lg text-emerald-800/80 leading-relaxed">
+        Hathor no promete magia — promete datos claros que llevan a decisiones mejores.
+      </p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+      <article *ngFor="let benefit of benefits" class="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm">
+        <div class="h-12 w-12 rounded-xl bg-hathor-green text-emerald-950 flex items-center justify-center">
+          <svg *ngIf="benefit.icon === 'clock'" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v6l4 2" />
+          </svg>
+          <svg *ngIf="benefit.icon === 'growth'" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l6-6 4 4 6-6" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 8h4v4" />
+          </svg>
+          <svg *ngIf="benefit.icon === 'target'" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="8" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          <svg *ngIf="benefit.icon === 'leaders'" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2" />
+            <circle cx="9.5" cy="7" r="3" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M22 21v-2a4 4 0 00-3-3.87" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 3.13a3 3 0 010 5.75" />
+          </svg>
+        </div>
+
+        <p class="mt-4 text-5xl font-extrabold tracking-tight text-emerald-950">{{ benefit.metric }}</p>
+        <h3 class="mt-3 text-2xl font-extrabold text-emerald-950">{{ benefit.title }}</h3>
+        <p class="mt-3 text-lg leading-relaxed text-emerald-800/85">{{ benefit.description }}</p>
+      </article>
+    </div>
+  </div>
+</section>

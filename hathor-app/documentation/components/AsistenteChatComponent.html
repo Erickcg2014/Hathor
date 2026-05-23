@@ -1,0 +1,2181 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AsistenteChatComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/asistente-chat/asistente-chat.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewChecked" target="_blank" >AfterViewChecked</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-asistente-chat</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./asistente-chat.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./asistente-chat.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abierto" >abierto</a>
+                            </li>
+                            <li>
+                                <a href="#cargandoHistorial" >cargandoHistorial</a>
+                            </li>
+                            <li>
+                                <a href="#contextoActivo" >contextoActivo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#debeScrollear" >debeScrollear</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#enviando" >enviando</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#fabExpandido" >fabExpandido</a>
+                            </li>
+                            <li>
+                                <a href="#historialLargo" >historialLargo</a>
+                            </li>
+                            <li>
+                                <a href="#idHatoActivo" >idHatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#inputMensaje" >inputMensaje</a>
+                            </li>
+                            <li>
+                                <a href="#mensajes" >mensajes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#mensajesContainer" >mensajesContainer</a>
+                            </li>
+                            <li>
+                                <a href="#minimizado" >minimizado</a>
+                            </li>
+                            <li>
+                                <a href="#nombreHato" >nombreHato</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarHistorialPrevio" >cargarHistorialPrevio</a>
+                            </li>
+                            <li>
+                                <a href="#cerrar" >cerrar</a>
+                            </li>
+                            <li>
+                                <a href="#enviar" >enviar</a>
+                            </li>
+                            <li>
+                                <a href="#formatearHora" >formatearHora</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#inferirContexto" >inferirContexto</a>
+                            </li>
+                            <li>
+                                <a href="#limpiarConversacion" >limpiarConversacion</a>
+                            </li>
+                            <li>
+                                <a href="#minimizar" >minimizar</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewChecked" >ngAfterViewChecked</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onKeydown" >onKeydown</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#parsearMarkdown" >parsearMarkdown</a>
+                            </li>
+                            <li>
+                                <a href="#restaurar" >restaurar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#scrollAlFinal" >scrollAlFinal</a>
+                            </li>
+                            <li>
+                                <a href="#togglePanel" >togglePanel</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, asistenteService: <a href="../injectables/AsistenteService.html" target="_self">AsistenteService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, sanitizer: <a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank">DomSanitizer</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:65</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>asistenteService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AsistenteService.html" target="_self" >AsistenteService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sanitizer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank" >DomSanitizer</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarHistorialPrevio"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarHistorialPrevio</b></span>
+                        <a href="#cargarHistorialPrevio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarHistorialPrevio()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="257"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:257</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrar"></a>
+                    <span class="name">
+                        <span ><b>cerrar</b></span>
+                        <a href="#cerrar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="150"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:150</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="enviar"></a>
+                    <span class="name">
+                        <span ><b>enviar</b></span>
+                        <a href="#enviar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>enviar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatearHora"></a>
+                    <span class="name">
+                        <span ><b>formatearHora</b></span>
+                        <a href="#formatearHora"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatearHora(fecha: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="250"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:250</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>fecha</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inferirContexto"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>inferirContexto</b></span>
+                        <a href="#inferirContexto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>inferirContexto(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="235"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:235</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>url</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="limpiarConversacion"></a>
+                    <span class="name">
+                        <span ><b>limpiarConversacion</b></span>
+                        <a href="#limpiarConversacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>limpiarConversacion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="202"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:202</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="minimizar"></a>
+                    <span class="name">
+                        <span ><b>minimizar</b></span>
+                        <a href="#minimizar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>minimizar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="139"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:139</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewChecked"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewChecked</b></span>
+                        <a href="#ngAfterViewChecked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewChecked()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="117"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:117</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="289"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:289</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onKeydown"></a>
+                    <span class="name">
+                        <span ><b>onKeydown</b></span>
+                        <a href="#onKeydown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onKeydown(event: KeyboardEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="222"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:222</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>KeyboardEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parsearMarkdown"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>parsearMarkdown</b></span>
+                        <a href="#parsearMarkdown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>parsearMarkdown(texto: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="230"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:230</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>texto</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://angular.io/api/platform-browser/SafeHtml" target="_blank" >SafeHtml</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="restaurar"></a>
+                    <span class="name">
+                        <span ><b>restaurar</b></span>
+                        <a href="#restaurar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>restaurar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="144"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:144</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scrollAlFinal"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>scrollAlFinal</b></span>
+                        <a href="#scrollAlFinal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>scrollAlFinal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="243"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:243</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="togglePanel"></a>
+                    <span class="name">
+                        <span ><b>togglePanel</b></span>
+                        <a href="#togglePanel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>togglePanel()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="126"
+                                    class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:126</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abierto"></a>
+                    <span class="name">
+                        <span ><b>abierto</b></span>
+                        <a href="#abierto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargandoHistorial"></a>
+                    <span class="name">
+                        <span ><b>cargandoHistorial</b></span>
+                        <a href="#cargandoHistorial"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="contextoActivo"></a>
+                    <span class="name">
+                        <span ><b>contextoActivo</b></span>
+                        <a href="#contextoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;general&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="debeScrollear"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>debeScrollear</b></span>
+                        <a href="#debeScrollear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="enviando"></a>
+                    <span class="name">
+                        <span ><b>enviando</b></span>
+                        <a href="#enviando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fabExpandido"></a>
+                    <span class="name">
+                        <span ><b>fabExpandido</b></span>
+                        <a href="#fabExpandido"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="historialLargo"></a>
+                    <span class="name">
+                        <span ><b>historialLargo</b></span>
+                        <a href="#historialLargo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="idHatoActivo"></a>
+                    <span class="name">
+                        <span ><b>idHatoActivo</b></span>
+                        <a href="#idHatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inputMensaje"></a>
+                    <span class="name">
+                        <span ><b>inputMensaje</b></span>
+                        <a href="#inputMensaje"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mensajes"></a>
+                    <span class="name">
+                        <span ><b>mensajes</b></span>
+                        <a href="#mensajes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/MensajeChat.html" target="_self" >MensajeChat[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mensajesContainer"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>mensajesContainer</b></span>
+                        <a href="#mensajesContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;mensajesContainer&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="minimizado"></a>
+                    <span class="name">
+                        <span ><b>minimizado</b></span>
+                        <a href="#minimizado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nombreHato"></a>
+                    <span class="name">
+                        <span ><b>nombreHato</b></span>
+                        <a href="#nombreHato"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/shared/asistente-chat/asistente-chat.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewChecked,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Router, NavigationEnd } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil, filter } from &#x27;rxjs&#x27;;
+
+import { HatoStateService } from &#x27;../../core/services/ui-state/hato-state.service&#x27;;
+import {
+  AsistenteService,
+  ChatResponseDTO,
+  ChatHistorialDTO,
+} from &#x27;../../core/services/asistente/asistente.service&#x27;;
+import { SpinnerComponent } from &#x27;../spinner/spinner.component&#x27;;
+import { marked } from &#x27;marked&#x27;;
+import { DomSanitizer, SafeHtml } from &#x27;@angular/platform-browser&#x27;;
+
+export interface MensajeChat {
+  role: &#x27;user&#x27; | &#x27;assistant&#x27;;
+  content: string;
+  contentHtml?: SafeHtml;
+  timestamp: Date;
+}
+
+@Component({
+  selector: &#x27;app-asistente-chat&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, SpinnerComponent],
+  templateUrl: &#x27;./asistente-chat.component.html&#x27;,
+  styleUrl: &#x27;./asistente-chat.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AsistenteChatComponent implements OnInit, OnDestroy, AfterViewChecked {
+  @ViewChild(&#x27;mensajesContainer&#x27;) mensajesContainer!: ElementRef;
+
+  // ── Estado del panel ──────────────────────────────────────────────────
+  abierto &#x3D; false;
+  minimizado &#x3D; false;
+  fabExpandido &#x3D; true;
+
+  // ── Estado del chat ───────────────────────────────────────────────────
+  mensajes: MensajeChat[] &#x3D; [];
+  inputMensaje &#x3D; &#x27;&#x27;;
+  enviando &#x3D; false;
+  historialLargo &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  cargandoHistorial &#x3D; false;
+
+  // ── Contexto activo según ruta ────────────────────────────────────────
+  contextoActivo &#x3D; &#x27;general&#x27;;
+
+  // ── Hato activo ───────────────────────────────────────────────────────
+  idHatoActivo: string | null &#x3D; null;
+  nombreHato &#x3D; &#x27;&#x27;;
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+  private debeScrollear &#x3D; false;
+
+  constructor(
+    private hatoState: HatoStateService,
+    private asistenteService: AsistenteService,
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.asistenteService.iniciarTimerFab();
+
+    const interval &#x3D; setInterval(() &#x3D;&gt; {
+      const nuevo &#x3D; this.asistenteService.getFabExpandido();
+      if (nuevo !&#x3D;&#x3D; this.fabExpandido) {
+        this.fabExpandido &#x3D; nuevo;
+        this.cdr.markForCheck();
+      }
+      if (!nuevo) clearInterval(interval);
+    }, 500);
+    // Escuchar hato activo
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.idHatoActivo &#x3D; (hato?.idHato as string) ?? null;
+      this.nombreHato &#x3D; hato?.nombreHato ?? &#x27;&#x27;;
+      this.cdr.markForCheck();
+    });
+
+    // Detectar contexto según ruta activa
+    this.router.events
+      .pipe(
+        takeUntil(this.destroy$),
+        filter((e) &#x3D;&gt; e instanceof NavigationEnd),
+      )
+      .subscribe((e: any) &#x3D;&gt; {
+        this.contextoActivo &#x3D; this.inferirContexto(e.urlAfterRedirects);
+        this.cdr.markForCheck();
+      });
+
+    // Contexto inicial
+    this.contextoActivo &#x3D; this.inferirContexto(this.router.url);
+
+    this.mensajes.push({
+      role: &#x27;assistant&#x27;,
+      content: &#x27;¡Hola! Soy Hathor AI 🐄...&#x27;,
+      contentHtml: this.parsearMarkdown(
+        &#x27;¡Hola! Soy Hathor AI 🐄 Tu asistente de ganadería lechera. Puedo ayudarte a entender tus KPIs, compararte con otros hatos y generar prácticas de mejora personalizadas. ¿En qué te ayudo?&#x27;,
+      ),
+      timestamp: new Date(),
+    });
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.debeScrollear) {
+      this.scrollAlFinal();
+      this.debeScrollear &#x3D; false;
+    }
+  }
+
+  // ── Acciones del panel ────────────────────────────────────────────────
+
+  togglePanel(): void {
+    this.abierto &#x3D; !this.abierto;
+    if (this.abierto) {
+      this.minimizado &#x3D; false;
+      this.debeScrollear &#x3D; true;
+      // Cargar historial al abrir si hay hato activo
+      if (this.idHatoActivo) {
+        this.cargarHistorialPrevio();
+      }
+    }
+    this.cdr.markForCheck();
+  }
+
+  minimizar(): void {
+    this.minimizado &#x3D; true;
+    this.cdr.markForCheck();
+  }
+
+  restaurar(): void {
+    this.minimizado &#x3D; false;
+    this.debeScrollear &#x3D; true;
+    this.cdr.markForCheck();
+  }
+
+  cerrar(): void {
+    this.abierto &#x3D; false;
+    this.cdr.markForCheck();
+  }
+
+  // ── Envío de mensaje ──────────────────────────────────────────────────
+
+  enviar(): void {
+    const mensaje &#x3D; this.inputMensaje.trim();
+    if (!mensaje || this.enviando || !this.idHatoActivo) return;
+
+    // Agregar mensaje del usuario
+    this.mensajes.push({
+      role: &#x27;user&#x27;,
+      content: mensaje,
+      timestamp: new Date(),
+    });
+
+    this.inputMensaje &#x3D; &#x27;&#x27;;
+    this.enviando &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.debeScrollear &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.asistenteService
+      .chat({
+        idHato: this.idHatoActivo,
+        mensaje,
+        contextoActivo: this.contextoActivo,
+      })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (res: ChatResponseDTO) &#x3D;&gt; {
+          this.mensajes.push({
+            role: &#x27;assistant&#x27;,
+            content: res.respuesta,
+            contentHtml: this.parsearMarkdown(res.respuesta),
+            timestamp: new Date(),
+          });
+          this.historialLargo &#x3D; res.historialLargo;
+          this.enviando &#x3D; false;
+          this.debeScrollear &#x3D; true;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.error &#x3D; &#x27;Error al conectar con el asistente. Intenta de nuevo.&#x27;;
+          this.enviando &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  limpiarConversacion(): void {
+    if (!this.idHatoActivo) return;
+    this.asistenteService
+      .limpiarConversacion(this.idHatoActivo)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () &#x3D;&gt; {
+          this.mensajes &#x3D; [
+            {
+              role: &#x27;assistant&#x27;,
+              content: &#x27;Conversación reiniciada. ¿En qué te puedo ayudar?&#x27;,
+              timestamp: new Date(),
+            },
+          ];
+          this.historialLargo &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  onKeydown(event: KeyboardEvent): void {
+    if (event.key &#x3D;&#x3D;&#x3D; &#x27;Enter&#x27; &amp;&amp; !event.shiftKey) {
+      event.preventDefault();
+      this.enviar();
+    }
+  }
+
+  // ── Helpers ───────────────────────────────────────────────────────────
+  private parsearMarkdown(texto: string): SafeHtml {
+    const html &#x3D; marked.parse(texto) as string;
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+
+  private inferirContexto(url: string): string {
+    if (url.includes(&#x27;/benchmarking&#x27;)) return &#x27;benchmarking&#x27;;
+    if (url.includes(&#x27;/finanzas&#x27;)) return &#x27;finanzas&#x27;;
+    if (url.includes(&#x27;/practicas&#x27;)) return &#x27;practicas&#x27;;
+    if (url.includes(&#x27;/kpis&#x27;) || url.includes(&#x27;/benchmarking/kpis&#x27;)) return &#x27;kpis&#x27;;
+    return &#x27;general&#x27;;
+  }
+
+  private scrollAlFinal(): void {
+    try {
+      const el &#x3D; this.mensajesContainer?.nativeElement;
+      if (el) el.scrollTop &#x3D; el.scrollHeight;
+    } catch {}
+  }
+
+  formatearHora(fecha: Date): string {
+    return fecha.toLocaleTimeString(&#x27;es-CO&#x27;, {
+      hour: &#x27;2-digit&#x27;,
+      minute: &#x27;2-digit&#x27;,
+    });
+  }
+
+  private cargarHistorialPrevio(): void {
+    if (!this.idHatoActivo) return;
+
+    this.cargandoHistorial &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.asistenteService
+      .getHistorial(this.idHatoActivo)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (historial: ChatHistorialDTO) &#x3D;&gt; {
+          if (historial.tieneHistorial &amp;&amp; historial.mensajes.length &gt; 0) {
+            // Reemplaza los mensajes actuales con el historial recuperado
+            this.mensajes &#x3D; historial.mensajes.map((m) &#x3D;&gt; ({
+              role: m.role,
+              content: m.content,
+              contentHtml: m.role &#x3D;&#x3D;&#x3D; &#x27;assistant&#x27; ? this.parsearMarkdown(m.content) : undefined,
+              timestamp: new Date(),
+            }));
+          }
+          // Si no hay historial, los mensajes actuales
+          this.cargandoHistorial &#x3D; false;
+          this.debeScrollear &#x3D; true;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.cargandoHistorial &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- ── Botón flotante ─────────────────────────────────────────────────── --&gt;
+@if (!abierto) {
+  &lt;button
+    class&#x3D;&quot;chat-fab&quot;
+    [class.fab-colapsado]&#x3D;&quot;!fabExpandido&quot;
+    (click)&#x3D;&quot;togglePanel()&quot;
+    title&#x3D;&quot;Hathor AI&quot;
+  &gt;
+    &lt;img src&#x3D;&quot;assets/hathor-ia-logo.png&quot; alt&#x3D;&quot;Hathor AI&quot; class&#x3D;&quot;fab-logo&quot; /&gt;
+    @if (fabExpandido) {
+      &lt;span class&#x3D;&quot;fab-label&quot;&gt;Hathor AI&lt;/span&gt;
+    }
+  &lt;/button&gt;
+}
+
+&lt;!-- ── Panel del chat ─────────────────────────────────────────────────── --&gt;
+@if (abierto) {
+  &lt;div class&#x3D;&quot;chat-panel&quot; [class.minimizado]&#x3D;&quot;minimizado&quot;&gt;
+    &lt;!-- Header --&gt;
+    &lt;div class&#x3D;&quot;chat-header&quot;&gt;
+      &lt;div class&#x3D;&quot;chat-header-left&quot;&gt;
+        &lt;div class&#x3D;&quot;chat-avatar-wrap&quot;&gt;
+          &lt;img src&#x3D;&quot;assets/hathor-ia-logo.png&quot; alt&#x3D;&quot;Hathor AI&quot; class&#x3D;&quot;avatar-logo&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;chat-header-info&quot;&gt;
+          &lt;span class&#x3D;&quot;chat-title&quot;&gt;Hathor AI&lt;/span&gt;
+          @if (nombreHato) {
+            &lt;span class&#x3D;&quot;chat-subtitle&quot;&gt;{{ nombreHato }}&lt;/span&gt;
+          } @else {
+            &lt;span class&#x3D;&quot;chat-status&quot;&gt;
+              &lt;span class&#x3D;&quot;status-dot&quot;&gt;&lt;/span&gt;
+              En línea
+            &lt;/span&gt;
+          }
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;chat-header-actions&quot;&gt;
+        &lt;button class&#x3D;&quot;header-btn&quot; (click)&#x3D;&quot;limpiarConversacion()&quot; title&#x3D;&quot;Nueva conversación&quot;&gt;
+          🗑️
+        &lt;/button&gt;
+        &lt;button
+          class&#x3D;&quot;header-btn&quot;
+          (click)&#x3D;&quot;minimizado ? restaurar() : minimizar()&quot;
+          [title]&#x3D;&quot;minimizado ? &#x27;Restaurar&#x27; : &#x27;Minimizar&#x27;&quot;
+        &gt;
+          {{ minimizado ? &#x27;▲&#x27; : &#x27;▼&#x27; }}
+        &lt;/button&gt;
+        &lt;button class&#x3D;&quot;header-btn&quot; (click)&#x3D;&quot;cerrar()&quot; title&#x3D;&quot;Cerrar&quot;&gt;✕&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    @if (!minimizado) {
+      &lt;!-- Advertencia historial largo --&gt;
+      @if (historialLargo) {
+        &lt;div class&#x3D;&quot;historial-aviso&quot;&gt;
+          ⚠️ La conversación es larga. Puedes reiniciarla para mejor rendimiento.
+        &lt;/div&gt;
+      }
+
+      &lt;!-- Sin hato activo --&gt;
+      @if (!idHatoActivo) {
+        &lt;div class&#x3D;&quot;chat-sin-hato&quot;&gt;
+          &lt;span&gt;🐄&lt;/span&gt;
+          &lt;p&gt;Selecciona un hato para usar el asistente.&lt;/p&gt;
+        &lt;/div&gt;
+      }
+
+      @if (idHatoActivo) {
+        @if (cargandoHistorial) {
+          &lt;div class&#x3D;&quot;chat-cargando-historial&quot;&gt;
+            &lt;app-spinner size&#x3D;&quot;small&quot; message&#x3D;&quot;Cargando conversación...&quot;&gt;&lt;/app-spinner&gt;
+          &lt;/div&gt;
+        }
+        @if (!cargandoHistorial) {
+          &lt;!-- Mensajes --&gt;
+          &lt;div class&#x3D;&quot;chat-mensajes&quot; #mensajesContainer&gt;
+            @for (msg of mensajes; track msg.timestamp) {
+              &lt;div
+                class&#x3D;&quot;mensaje&quot;
+                [class.mensaje-user]&#x3D;&quot;msg.role &#x3D;&#x3D;&#x3D; &#x27;user&#x27;&quot;
+                [class.mensaje-assistant]&#x3D;&quot;msg.role &#x3D;&#x3D;&#x3D; &#x27;assistant&#x27;&quot;
+              &gt;
+                @if (msg.role &#x3D;&#x3D;&#x3D; &#x27;assistant&#x27;) {
+                  &lt;div class&#x3D;&quot;msg-avatar-wrap&quot;&gt;
+                    &lt;img src&#x3D;&quot;assets/hathor-ia-logo.png&quot; alt&#x3D;&quot;AI&quot; class&#x3D;&quot;msg-avatar-logo&quot; /&gt;
+                  &lt;/div&gt;
+                }
+                &lt;div class&#x3D;&quot;msg-burbuja&quot;&gt;
+                  @if (msg.role &#x3D;&#x3D;&#x3D; &#x27;assistant&#x27; &amp;&amp; msg.contentHtml) {
+                    &lt;div class&#x3D;&quot;msg-content markdown-body&quot; [innerHTML]&#x3D;&quot;msg.contentHtml&quot;&gt;&lt;/div&gt;
+                  } @else {
+                    &lt;p class&#x3D;&quot;msg-content&quot;&gt;{{ msg.content }}&lt;/p&gt;
+                  }
+                  &lt;span class&#x3D;&quot;msg-hora&quot;&gt;{{ formatearHora(msg.timestamp) }}&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            }
+
+            &lt;!-- Indicador de escritura --&gt;
+            @if (enviando) {
+              &lt;div class&#x3D;&quot;mensaje mensaje-assistant&quot;&gt;
+                &lt;div class&#x3D;&quot;msg-avatar-wrap&quot;&gt;
+                  &lt;img src&#x3D;&quot;assets/hathor-ia-logo.png&quot; alt&#x3D;&quot;AI&quot; class&#x3D;&quot;msg-avatar-logo&quot; /&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;msg-burbuja typing&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+              &lt;/div&gt;
+            }
+
+            &lt;!-- Error --&gt;
+            @if (error) {
+              &lt;div class&#x3D;&quot;chat-error&quot;&gt;{{ error }}&lt;/div&gt;
+            }
+          &lt;/div&gt;
+        }
+
+        &lt;!-- Input --&gt;
+        &lt;div class&#x3D;&quot;chat-input-area&quot;&gt;
+          &lt;textarea
+            class&#x3D;&quot;chat-input&quot;
+            [(ngModel)]&#x3D;&quot;inputMensaje&quot;
+            (keydown)&#x3D;&quot;onKeydown($event)&quot;
+            placeholder&#x3D;&quot;Escribe tu pregunta...&quot;
+            rows&#x3D;&quot;2&quot;
+            [disabled]&#x3D;&quot;enviando&quot;
+          &gt;&lt;/textarea&gt;
+          &lt;button
+            class&#x3D;&quot;chat-send&quot;
+            (click)&#x3D;&quot;enviar()&quot;
+            [disabled]&#x3D;&quot;!inputMensaje.trim() || enviando&quot;
+          &gt;
+            @if (enviando) {
+              &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+            } @else {
+              ➤
+            }
+          &lt;/button&gt;
+        &lt;/div&gt;
+      }
+    }
+  &lt;/div&gt;
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- ── Botón flotante ─────────────────────────────────────────────────── -->@if (!abierto) {  <button    class="chat-fab"    [class.fab-colapsado]="!fabExpandido"    (click)="togglePanel()"    title="Hathor AI"  >    <img src="assets/hathor-ia-logo.png" alt="Hathor AI" class="fab-logo" />    @if (fabExpandido) {      <span class="fab-label">Hathor AI</span>    }  </button>}<!-- ── Panel del chat ─────────────────────────────────────────────────── -->@if (abierto) {  <div class="chat-panel" [class.minimizado]="minimizado">    <!-- Header -->    <div class="chat-header">      <div class="chat-header-left">        <div class="chat-avatar-wrap">          <img src="assets/hathor-ia-logo.png" alt="Hathor AI" class="avatar-logo" />        </div>        <div class="chat-header-info">          <span class="chat-title">Hathor AI</span>          @if (nombreHato) {            <span class="chat-subtitle">{{ nombreHato }}</span>          } @else {            <span class="chat-status">              <span class="status-dot"></span>              En línea            </span>          }        </div>      </div>      <div class="chat-header-actions">        <button class="header-btn" (click)="limpiarConversacion()" title="Nueva conversación">          🗑️        </button>        <button          class="header-btn"          (click)="minimizado ? restaurar() : minimizar()"          [title]="minimizado ? \'Restaurar\' : \'Minimizar\'"        >          {{ minimizado ? \'▲\' : \'▼\' }}        </button>        <button class="header-btn" (click)="cerrar()" title="Cerrar">✕</button>      </div>    </div>    @if (!minimizado) {      <!-- Advertencia historial largo -->      @if (historialLargo) {        <div class="historial-aviso">          ⚠️ La conversación es larga. Puedes reiniciarla para mejor rendimiento.        </div>      }      <!-- Sin hato activo -->      @if (!idHatoActivo) {        <div class="chat-sin-hato">          <span>🐄</span>          <p>Selecciona un hato para usar el asistente.</p>        </div>      }      @if (idHatoActivo) {        @if (cargandoHistorial) {          <div class="chat-cargando-historial">            <app-spinner size="small" message="Cargando conversación..."></app-spinner>          </div>        }        @if (!cargandoHistorial) {          <!-- Mensajes -->          <div class="chat-mensajes" #mensajesContainer>            @for (msg of mensajes; track msg.timestamp) {              <div                class="mensaje"                [class.mensaje-user]="msg.role === \'user\'"                [class.mensaje-assistant]="msg.role === \'assistant\'"              >                @if (msg.role === \'assistant\') {                  <div class="msg-avatar-wrap">                    <img src="assets/hathor-ia-logo.png" alt="AI" class="msg-avatar-logo" />                  </div>                }                <div class="msg-burbuja">                  @if (msg.role === \'assistant\' && msg.contentHtml) {                    <div class="msg-content markdown-body" [innerHTML]="msg.contentHtml"></div>                  } @else {                    <p class="msg-content">{{ msg.content }}</p>                  }                  <span class="msg-hora">{{ formatearHora(msg.timestamp) }}</span>                </div>              </div>            }            <!-- Indicador de escritura -->            @if (enviando) {              <div class="mensaje mensaje-assistant">                <div class="msg-avatar-wrap">                  <img src="assets/hathor-ia-logo.png" alt="AI" class="msg-avatar-logo" />                </div>                <div class="msg-burbuja typing"><span></span><span></span><span></span></div>              </div>            }            <!-- Error -->            @if (error) {              <div class="chat-error">{{ error }}</div>            }          </div>        }        <!-- Input -->        <div class="chat-input-area">          <textarea            class="chat-input"            [(ngModel)]="inputMensaje"            (keydown)="onKeydown($event)"            placeholder="Escribe tu pregunta..."            rows="2"            [disabled]="enviando"          ></textarea>          <button            class="chat-send"            (click)="enviar()"            [disabled]="!inputMensaje.trim() || enviando"          >            @if (enviando) {              <app-spinner size="small"></app-spinner>            } @else {              ➤            }          </button>        </div>      }    }  </div>}</div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'AsistenteChatComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AsistenteChatComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

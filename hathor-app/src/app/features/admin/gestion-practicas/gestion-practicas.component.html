@@ -1,0 +1,453 @@
+<div class="gestion-practicas-page">
+  <!-- ===== HEADER ===== -->
+  <header class="page-header">
+    <div class="header-left">
+      <p class="page-tag">Administración · Catálogo</p>
+      <h1 class="page-title">Gestión de <span class="brand">Prácticas</span></h1>
+      <p class="page-subtitle">Administra el catálogo de prácticas ganaderas del sistema</p>
+    </div>
+    <div class="header-right">
+      <div class="header-icon">🌱</div>
+    </div>
+  </header>
+
+  <!-- ===== MENSAJES ===== -->
+  @if (error) {
+    <div class="msg-error">
+      <span>❌</span>
+      <p>{{ error }}</p>
+    </div>
+  }
+  @if (exito) {
+    <div class="msg-exito">
+      <span>✅</span>
+      <p>{{ exito }}</p>
+    </div>
+  }
+
+  <!-- ═══════════════════════════════════════════════════
+       VISTA: LISTA
+  ═══════════════════════════════════════════════════ -->
+  @if (tabActivo === 'lista') {
+    <!-- Stats rápidas -->
+    @if (!loading) {
+      <div class="stats-row">
+        <div class="stat-chip verde">✅ {{ practicasActivasCount }} activas</div>
+        <div class="stat-chip gris">⛔ {{ practicasInactivasCount }} inactivas</div>
+        <div class="stat-chip total">📋 {{ practicas.length }} total</div>
+      </div>
+    }
+
+    <!-- Filtros -->
+    <div class="filtros-card">
+      <div class="filtros-row">
+        <!-- Búsqueda -->
+        <div class="filtro-busqueda-wrap">
+          <svg
+            class="busqueda-icono"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input
+            type="text"
+            class="filtro-busqueda"
+            placeholder="Buscar por nombre, descripción o KPI..."
+            [value]="filtroBusqueda"
+            (input)="onBusquedaChange($any($event.target).value)"
+          />
+        </div>
+
+        <!-- Categoría -->
+        <select
+          class="filtro-select"
+          [value]="filtroCategoria"
+          (change)="onFiltroChange('filtroCategoria', $any($event.target).value)"
+        >
+          <option value="">Todas las categorías</option>
+          @for (c of categorias; track c.valor) {
+            <option [value]="c.valor">{{ c.label }}</option>
+          }
+        </select>
+
+        <!-- Dificultad -->
+        <select
+          class="filtro-select"
+          [value]="filtroDificultad"
+          (change)="onFiltroChange('filtroDificultad', $any($event.target).value)"
+        >
+          <option value="">Toda dificultad</option>
+          @for (d of dificultades; track d.valor) {
+            <option [value]="d.valor">{{ d.label }}</option>
+          }
+        </select>
+
+        <!-- Escala -->
+        <select
+          class="filtro-select"
+          [value]="filtroEscala"
+          (change)="onFiltroChange('filtroEscala', $any($event.target).value)"
+        >
+          <option value="">Todas las escalas</option>
+          @for (e of escalas; track e) {
+            <option [value]="e">{{ e }}</option>
+          }
+        </select>
+
+        <!-- Estado -->
+        <select
+          class="filtro-select"
+          [value]="filtroEstado"
+          (change)="onFiltroChange('filtroEstado', $any($event.target).value)"
+        >
+          <option value="">Todos los estados</option>
+          <option value="ACTIVA">✅ Activa</option>
+          <option value="INACTIVA">⛔ Inactiva</option>
+        </select>
+
+        @if (hayFiltrosActivos) {
+          <button class="btn-limpiar" (click)="limpiarFiltros()">✕ Limpiar</button>
+        }
+
+        <button class="btn-crear" (click)="abrirCrear()">+ Nueva práctica</button>
+      </div>
+
+      <div class="resultados-row">
+        <span class="resultados-texto">
+          <strong>{{ practicasFiltradas.length }}</strong> práctica(s)
+        </span>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    @if (loading) {
+      <div class="loading-wrap">
+        <app-spinner size="large" message="Cargando prácticas..."> </app-spinner>
+      </div>
+    }
+
+    <!-- Grid de prácticas -->
+    @if (!loading) {
+      @if (practicasFiltradas.length === 0) {
+        <div class="empty-state">
+          <span>🌱</span>
+          <p>No hay prácticas con los filtros aplicados.</p>
+          <button class="btn-crear-empty" (click)="abrirCrear()">+ Crear primera práctica</button>
+        </div>
+      } @else {
+        <div class="practicas-grid">
+          @for (p of practicasFiltradas; track p.idPractica) {
+            <div class="practica-card" [class.inactiva]="p.estado === 'INACTIVA'">
+              <!-- Header card -->
+              <div class="practica-card-header">
+                <div class="practica-cat-badge">
+                  <span class="cat-icono">
+                    {{ iconoCategoria(p.categoria) }}
+                  </span>
+                  <span class="cat-label">
+                    {{ p.categoria ?? 'Sin categoría' }}
+                  </span>
+                </div>
+                <div class="practica-chips">
+                  <span class="dif-chip" [class]="colorDificultad(p.dificultad)">
+                    {{ p.dificultad }}
+                  </span>
+                  <span class="escala-chip">
+                    {{ p.escala }}
+                  </span>
+                  @if (p.estado === 'INACTIVA') {
+                    <span class="inactiva-chip">⛔ Inactiva</span>
+                  }
+                </div>
+              </div>
+
+              <!-- Nombre -->
+              <h3 class="practica-nombre">{{ p.nombre }}</h3>
+
+              <!-- Descripción -->
+              @if (p.descripcion) {
+                <p class="practica-desc">{{ p.descripcion }}</p>
+              }
+
+              <!-- Meta info -->
+              <div class="practica-meta">
+                @if (p.kpiImpactado) {
+                  <span class="meta-item"> 📈 {{ p.kpiImpactado }} </span>
+                }
+                @if (p.duracionDias) {
+                  <span class="meta-item"> ⏱️ {{ p.duracionDias }} días </span>
+                }
+                @if (p.tropicaAplicable && p.tropicaAplicable !== 'TODOS') {
+                  <span class="meta-item"> 🌿 {{ p.tropicaAplicable }} </span>
+                }
+              </div>
+
+              <!-- Reglas vinculadas -->
+              @if (p.reglasVinculadas.length > 0) {
+                <div class="reglas-count">
+                  <span class="reglas-count-icono">⚡</span>
+                  <span class="reglas-count-texto">
+                    Usada en {{ p.reglasVinculadas.length }} regla(s)
+                  </span>
+                </div>
+              }
+
+              <!-- Impacto -->
+              @if (p.impactoEsperado) {
+                <div class="impacto-wrap">
+                  <span class="impacto-label">Impacto esperado:</span>
+                  <p class="impacto-texto">{{ p.impactoEsperado }}</p>
+                </div>
+              }
+
+              <!-- Acciones -->
+              <div class="practica-acciones">
+                <button class="btn-editar" (click)="abrirEditar(p)">✏️ Editar</button>
+                @if (p.estado === 'ACTIVA') {
+                  <button class="btn-desactivar" (click)="desactivar(p, $event)">
+                    ⛔ Desactivar
+                  </button>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+  }
+
+  <!-- ═══════════════════════════════════════════════════
+       VISTA: FORMULARIO
+  ═══════════════════════════════════════════════════ -->
+  @if (tabActivo === 'form') {
+    <div class="form-layout">
+      <!-- Header del form -->
+      <div class="form-header-row">
+        <button class="btn-volver" (click)="cancelarForm()">← Volver</button>
+        <h2 class="form-titulo">
+          {{ modoForm === 'crear' ? '+ Nueva práctica' : '✏️ Editar práctica' }}
+        </h2>
+      </div>
+
+      <div class="form-grid">
+        <!-- ── Columna izquierda ── -->
+        <div class="form-col">
+          <!-- Info básica -->
+          <div class="form-card">
+            <h3 class="form-card-titulo">📋 Información básica</h3>
+
+            <div class="campo-group">
+              <label class="campo-label">Nombre *</label>
+              <input
+                type="text"
+                class="campo-input"
+                placeholder="Ej: Implementar pastoreo rotacional"
+                [value]="form.nombre"
+                (input)="onFormChangeStr('nombre', $any($event.target).value)"
+              />
+            </div>
+
+            <div class="campos-row">
+              <div class="campo-group">
+                <label class="campo-label">Categoría</label>
+                <select
+                  class="campo-select"
+                  [value]="form.categoria ?? ''"
+                  (change)="onFormChange('categoria', $any($event.target).value)"
+                >
+                  <option value="">— Sin categoría —</option>
+                  @for (c of categorias; track c.valor) {
+                    <option [value]="c.valor">{{ c.label }}</option>
+                  }
+                </select>
+              </div>
+              <div class="campo-group">
+                <label class="campo-label">KPI impactado</label>
+                <input
+                  type="text"
+                  class="campo-input"
+                  placeholder="Ej: KPI_LITROS_VACA_DIA"
+                  [value]="form.kpiImpactado ?? ''"
+                  (input)="onFormChange('kpiImpactado', $any($event.target).value)"
+                />
+              </div>
+            </div>
+
+            <div class="campo-group">
+              <label class="campo-label">Descripción</label>
+              <textarea
+                class="campo-textarea"
+                rows="3"
+                placeholder="Describe brevemente la práctica..."
+                [value]="form.descripcion ?? ''"
+                (input)="onFormChange('descripcion', $any($event.target).value)"
+              ></textarea>
+            </div>
+
+            <div class="campo-group">
+              <label class="campo-label">Objetivo</label>
+              <textarea
+                class="campo-textarea"
+                rows="2"
+                placeholder="¿Qué se busca lograr?"
+                [value]="form.objetivo ?? ''"
+                (input)="onFormChange('objetivo', $any($event.target).value)"
+              ></textarea>
+            </div>
+
+            <div class="campo-group">
+              <label class="campo-label">Impacto esperado</label>
+              <textarea
+                class="campo-textarea"
+                rows="2"
+                placeholder="¿Qué mejora se espera?"
+                [value]="form.impactoEsperado ?? ''"
+                (input)="onFormChange('impactoEsperado', $any($event.target).value)"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Configuración -->
+          <div class="form-card">
+            <h3 class="form-card-titulo">⚙️ Configuración</h3>
+
+            <div class="campos-row">
+              <div class="campo-group">
+                <label class="campo-label">Dificultad *</label>
+                <select
+                  class="campo-select"
+                  [value]="form.dificultad"
+                  (change)="onFormChangeStr('dificultad', $any($event.target).value)"
+                >
+                  @for (d of dificultades; track d.valor) {
+                    <option [value]="d.valor">{{ d.label }}</option>
+                  }
+                </select>
+              </div>
+              <div class="campo-group">
+                <label class="campo-label">Duración estimada (días)</label>
+                <input
+                  type="number"
+                  class="campo-input"
+                  placeholder="Ej: 30"
+                  min="1"
+                  [value]="form.duracionDias ?? ''"
+                  (input)="onFormChange('duracionDias', +$any($event.target).value || null)"
+                />
+              </div>
+            </div>
+
+            <div class="campos-row">
+              <div class="campo-group">
+                <label class="campo-label">Escala aplicable *</label>
+                <select
+                  class="campo-select"
+                  [value]="form.escala"
+                  (change)="onFormChangeStr('escala', $any($event.target).value)"
+                >
+                  @for (e of escalas; track e) {
+                    <option [value]="e">{{ e }}</option>
+                  }
+                </select>
+              </div>
+              <div class="campo-group">
+                <label class="campo-label">Trópico aplicable *</label>
+                <select
+                  class="campo-select"
+                  [value]="form.tropicaAplicable"
+                  (change)="onFormChangeStr('tropicaAplicable', $any($event.target).value)"
+                >
+                  @for (t of tropicos; track t) {
+                    <option [value]="t">{{ t }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+
+            @if (modoForm === 'editar') {
+              <div class="campo-group">
+                <label class="campo-label">Estado</label>
+                <select
+                  class="campo-select"
+                  [value]="form.estado ?? 'ACTIVA'"
+                  (change)="onFormChangeStr('estado', $any($event.target).value)"
+                >
+                  <option value="ACTIVA">✅ Activa</option>
+                  <option value="INACTIVA">⛔ Inactiva</option>
+                </select>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- ── Columna derecha: pasos ── -->
+        <div class="form-col">
+          <div class="form-card form-card-pasos">
+            <div class="pasos-header">
+              <h3 class="form-card-titulo">📝 Pasos de implementación</h3>
+              <button class="btn-agregar-paso" (click)="agregarPaso()">+ Agregar paso</button>
+            </div>
+
+            <p class="pasos-hint">
+              Define los pasos concretos para implementar esta práctica. El orden importa — arrastra
+              para reordenar.
+            </p>
+
+            <div class="pasos-lista">
+              @for (paso of pasosArray; track $index; let i = $index) {
+                <div class="paso-item">
+                  <div class="paso-num">{{ i + 1 }}</div>
+                  <textarea
+                    class="paso-textarea"
+                    rows="2"
+                    [placeholder]="'Paso ' + (i + 1) + ': describe la acción...'"
+                    [value]="paso"
+                    (input)="onPasoChange(i, $any($event.target).value)"
+                  ></textarea>
+                  <button
+                    class="btn-eliminar-paso"
+                    [disabled]="pasosArray.length <= 1"
+                    (click)="eliminarPaso(i)"
+                  >
+                    ✕
+                  </button>
+                </div>
+              }
+            </div>
+
+            <button class="btn-agregar-paso-bottom" (click)="agregarPaso()">
+              + Agregar otro paso
+            </button>
+
+            <!-- Preview JSON -->
+            @if (form.pasos) {
+              <div class="pasos-preview">
+                <span class="pasos-preview-label"> Vista previa JSON: </span>
+                <code class="pasos-preview-code">
+                  {{ form.pasos }}
+                </code>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="form-footer">
+        <button class="btn-cancelar" (click)="cancelarForm()">Cancelar</button>
+        <button class="btn-guardar" [disabled]="guardando" (click)="guardar()">
+          @if (guardando) {
+            <app-spinner size="small"></app-spinner>
+            Guardando...
+          } @else {
+            {{ modoForm === 'crear' ? '+ Crear práctica' : '💾 Guardar cambios' }}
+          }
+        </button>
+      </div>
+    </div>
+  }
+</div>

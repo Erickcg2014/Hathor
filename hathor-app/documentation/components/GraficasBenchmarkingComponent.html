@@ -1,0 +1,3468 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  GraficasBenchmarkingComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-graficas-benchmarking</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="../components/GraficaDetalleModalComponent.html" target="_self" >GraficaDetalleModalComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./graficas-benchmarking.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./graficas-benchmarking.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#categoriasConfig" >categoriasConfig</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartCanvases" >chartCanvases</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartPotencialRef" >chartPotencialRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartRadarCategoriaRef" >chartRadarCategoriaRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#charts" >charts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartSemaforoRef" >chartSemaforoRef</a>
+                            </li>
+                            <li>
+                                <a href="#graficaAbierta" >graficaAbierta</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#graficas" >graficas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#viewReady" >viewReady</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abrirDetalle" >abrirDetalle</a>
+                            </li>
+                            <li>
+                                <a href="#borderPorPercentil" >borderPorPercentil</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildCategoria" >buildCategoria</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildPotencial" >buildPotencial</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildRadarCategoria" >buildRadarCategoria</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildSemaforo" >buildSemaforo</a>
+                            </li>
+                            <li>
+                                <a href="#calcularPotencial" >calcularPotencial</a>
+                            </li>
+                            <li>
+                                <a href="#cerrarDetalle" >cerrarDetalle</a>
+                            </li>
+                            <li>
+                                <a href="#colorPorPercentil" >colorPorPercentil</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#construirGraficas" >construirGraficas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destruirGraficas" >destruirGraficas</a>
+                            </li>
+                            <li>
+                                <a href="#formatValor" >formatValor</a>
+                            </li>
+                            <li>
+                                <a href="#getGraficaBarrasCategoria" >getGraficaBarrasCategoria</a>
+                            </li>
+                            <li>
+                                <a href="#getGraficaCategoria" >getGraficaCategoria</a>
+                            </li>
+                            <li>
+                                <a href="#interpretacionClass" >interpretacionClass</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setAltura" >setAltura</a>
+                            </li>
+                            <li>
+                                <a href="#trackByGrupo" >trackByGrupo</a>
+                            </li>
+                            <li>
+                                <a href="#trackByKpi" >trackByKpi</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#categoriaFiltro" >categoriaFiltro</a>
+                            </li>
+                            <li>
+                                <a href="#modo" >modo</a>
+                            </li>
+                            <li>
+                                <a href="#resultados" >resultados</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#grupos" >grupos</a>
+                                </li>
+                                <li>
+                                    <a href="#gruposVisibles" >gruposVisibles</a>
+                                </li>
+                                <li>
+                                    <a href="#datosPotencial" >datosPotencial</a>
+                                </li>
+                                <li>
+                                    <a href="#datosSemaforo" >datosSemaforo</a>
+                                </li>
+                                <li>
+                                    <a href="#tieneResultados" >tieneResultados</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, ngZone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:131</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ngZone</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="categoriaFiltro"></a>
+                        <b>categoriaFiltro</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:49</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modo"></a>
+                        <b>modo</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;REFERENCIA&quot; | &quot;PLATAFORMA&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;REFERENCIA&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:48</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resultados"></a>
+                        <b>resultados</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BenchmarkHatoResultado[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:47</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirDetalle"></a>
+                    <span class="name">
+                        <span ><b>abrirDetalle</b></span>
+                        <a href="#abrirDetalle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirDetalle(grafica: <a href="../interfaces/GraficaDetalle.html" target="_self">GraficaDetalle</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="730"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:730</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>grafica</td>
+                                            <td>
+                                                            <code><a href="../interfaces/GraficaDetalle.html" target="_self" >GraficaDetalle</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="borderPorPercentil"></a>
+                    <span class="name">
+                        <span ><b>borderPorPercentil</b></span>
+                        <a href="#borderPorPercentil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>borderPorPercentil(p: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="286"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:286</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>p</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildCategoria"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildCategoria</b></span>
+                        <a href="#buildCategoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildCategoria(canvas: HTMLCanvasElement, grupo: <a href="../interfaces/KpiGrupo.html" target="_self">KpiGrupo</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="467"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:467</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>grupo</td>
+                                            <td>
+                                                            <code><a href="../interfaces/KpiGrupo.html" target="_self" >KpiGrupo</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildPotencial"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildPotencial</b></span>
+                        <a href="#buildPotencial"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildPotencial(canvas: HTMLCanvasElement)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="670"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:670</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildRadarCategoria"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildRadarCategoria</b></span>
+                        <a href="#buildRadarCategoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildRadarCategoria(canvas: HTMLCanvasElement, items: BenchmarkHatoResultado[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="552"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:552</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>items</td>
+                                            <td>
+                                                        <code>BenchmarkHatoResultado[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildSemaforo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildSemaforo</b></span>
+                        <a href="#buildSemaforo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildSemaforo(canvas: HTMLCanvasElement)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="624"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:624</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcularPotencial"></a>
+                    <span class="name">
+                        <span ><b>calcularPotencial</b></span>
+                        <a href="#calcularPotencial"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calcularPotencial(r: <a href="../interfaces/BenchmarkHatoResultado.html" target="_self">BenchmarkHatoResultado</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="293"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:293</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>r</td>
+                                            <td>
+                                                            <code><a href="../interfaces/BenchmarkHatoResultado.html" target="_self" >BenchmarkHatoResultado</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrarDetalle"></a>
+                    <span class="name">
+                        <span ><b>cerrarDetalle</b></span>
+                        <a href="#cerrarDetalle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrarDetalle()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="735"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:735</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorPorPercentil"></a>
+                    <span class="name">
+                        <span ><b>colorPorPercentil</b></span>
+                        <a href="#colorPorPercentil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorPorPercentil(p: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="279"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:279</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>p</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="construirGraficas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>construirGraficas</b></span>
+                        <a href="#construirGraficas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>construirGraficas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="337"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:337</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destruirGraficas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destruirGraficas</b></span>
+                        <a href="#destruirGraficas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>destruirGraficas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="327"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:327</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatValor"></a>
+                    <span class="name">
+                        <span ><b>formatValor</b></span>
+                        <a href="#formatValor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatValor(valor: number | null, unidad?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="297"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:297</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>unidad</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getGraficaBarrasCategoria"></a>
+                    <span class="name">
+                        <span ><b>getGraficaBarrasCategoria</b></span>
+                        <a href="#getGraficaBarrasCategoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getGraficaBarrasCategoria(categoria: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="265"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:265</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>categoria</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/GraficaDetalle.html" target="_self" >GraficaDetalle</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getGraficaCategoria"></a>
+                    <span class="name">
+                        <span ><b>getGraficaCategoria</b></span>
+                        <a href="#getGraficaCategoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getGraficaCategoria(categoria: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="253"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:253</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>categoria</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/GraficaDetalle.html" target="_self" >GraficaDetalle</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="interpretacionClass"></a>
+                    <span class="name">
+                        <span ><b>interpretacionClass</b></span>
+                        <a href="#interpretacionClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>interpretacionClass(interp: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="307"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:307</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>interp</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:138</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="172"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:172</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>changes</td>
+                                            <td>
+                                                            <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="740"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:740</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setAltura"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>setAltura</b></span>
+                        <a href="#setAltura"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setAltura(canvas: HTMLCanvasElement, items: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="332"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:332</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>canvas</td>
+                                            <td>
+                                                        <code>HTMLCanvasElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>items</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackByGrupo"></a>
+                    <span class="name">
+                        <span ><b>trackByGrupo</b></span>
+                        <a href="#trackByGrupo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>trackByGrupo(_: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, g: <a href="../interfaces/KpiGrupo.html" target="_self">KpiGrupo</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="317"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:317</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>_</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>g</td>
+                                            <td>
+                                                            <code><a href="../interfaces/KpiGrupo.html" target="_self" >KpiGrupo</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackByKpi"></a>
+                    <span class="name">
+                        <span ><b>trackByKpi</b></span>
+                        <a href="#trackByKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>trackByKpi(_: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, r: <a href="../interfaces/BenchmarkHatoResultado.html" target="_self">BenchmarkHatoResultado</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="321"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:321</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>_</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>r</td>
+                                            <td>
+                                                            <code><a href="../interfaces/BenchmarkHatoResultado.html" target="_self" >BenchmarkHatoResultado</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="categoriasConfig"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>categoriasConfig</b></span>
+                        <a href="#categoriasConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { categoria: &#x27;PRODUCTIVIDAD&#x27;, label: &#x27;Productividad&#x27;, icono: &#x27;🥛&#x27; },
+    { categoria: &#x27;HATO&#x27;, label: &#x27;Hato&#x27;, icono: &#x27;🐄&#x27; },
+    { categoria: &#x27;FINANCIERO&#x27;, label: &#x27;Financiero&#x27;, icono: &#x27;💰&#x27; },
+    { categoria: &#x27;EFICIENCIA&#x27;, label: &#x27;Eficiencia&#x27;, icono: &#x27;⚙️&#x27; },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartCanvases"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartCanvases</b></span>
+                        <a href="#chartCanvases"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChildren(&#x27;chartCanvas&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartPotencialRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartPotencialRef</b></span>
+                        <a href="#chartPotencialRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChildren(&#x27;chartPotencial&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartRadarCategoriaRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartRadarCategoriaRef</b></span>
+                        <a href="#chartRadarCategoriaRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChildren(&#x27;chartRadarCategoria&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="charts"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>charts</b></span>
+                        <a href="#charts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart&lt;any, any, any&gt;[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartSemaforoRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartSemaforoRef</b></span>
+                        <a href="#chartSemaforoRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChildren(&#x27;chartSemaforo&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="graficaAbierta"></a>
+                    <span class="name">
+                        <span ><b>graficaAbierta</b></span>
+                        <a href="#graficaAbierta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>GraficaDetalle | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="graficas"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>graficas</b></span>
+                        <a href="#graficas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    {
+      id: &#x27;percentiles&#x27;,
+      titulo: &#x27;Posición competitiva por KPI&#x27;,
+      subtitulo: &#x27;Percentil 0–100: qué tan bien posicionado está tu hato en cada indicador.&#x27;,
+      descripcion:
+        &#x27;Muestra en qué percentil se encuentra tu hato para cada KPI respecto al sector. Un percentil alto significa que superas a la mayoría de hatos comparables.&#x27;,
+      guiaLectura:
+        &#x27;P0–49: por debajo del promedio del sector · P50: en el promedio · P51–100: por encima del promedio&#x27;,
+    },
+    {
+      id: &#x27;indice&#x27;,
+      titulo: &#x27;Tu hato vs Promedio y Top referencia&#x27;,
+      subtitulo: &#x27;Rendimiento contra el promedio y el nivel top del sector.&#x27;,
+      descripcion:
+        &#x27;Compara el percentil de tu hato contra la línea del promedio del sector (P50). Las barras verdes superan el promedio, las amarillas están cerca y las rojas están por debajo.&#x27;,
+      guiaLectura:
+        &#x27;Línea punteada &#x3D; promedio del sector (P50). Barras más largas que la línea &#x3D; por encima del promedio.&#x27;,
+    },
+    {
+      id: &#x27;radar&#x27;,
+      titulo: &#x27;Perfil de desempeño&#x27;,
+      subtitulo:
+        &#x27;Visión global en todos los KPIs. La línea punteada es el promedio del sector (P50).&#x27;,
+      descripcion:
+        &#x27;Representa de forma visual el perfil completo de tu hato. Cada eje es un KPI y la superficie coloreada muestra qué tan lejos o cerca estás del promedio en cada dimensión.&#x27;,
+      guiaLectura:
+        &#x27;Superficie más grande &#x3D; mejor desempeño general. La línea punteada es el promedio del sector. Los puntos de color indican el nivel: verde (alto), amarillo (medio), rojo (bajo).&#x27;,
+    },
+    {
+      id: &#x27;desviacion&#x27;,
+      titulo: &#x27;Desviación vs promedio de referencia&#x27;,
+      subtitulo: &#x27;Qué tan por encima (+) o por debajo (−) del promedio está tu hato.&#x27;,
+      descripcion:
+        &#x27;Muestra la diferencia porcentual entre tu valor y el promedio del sector para cada KPI. Valores positivos indican que superas el promedio, negativos que estás por debajo.&#x27;,
+      guiaLectura:
+        &#x27;Verde &#x3D; por encima del promedio. Rojo &#x3D; por debajo. El tamaño de la barra indica qué tan grande es la brecha.&#x27;,
+    },
+    {
+      id: &#x27;semaforo&#x27;,
+      titulo: &#x27;Distribución competitiva&#x27;,
+      subtitulo: &#x27;Cuántos KPIs están en nivel alto, medio o bajo.&#x27;,
+      descripcion:
+        &#x27;Resume en cuántos KPIs tu hato está en nivel alto (P≥70), medio (P40–69) o bajo (P&lt;40). Es un diagnóstico rápido del estado general del hato.&#x27;,
+      guiaLectura:
+        &#x27;Alto (verde): percentil ≥ 70 · Medio (amarillo): percentil 40–69 · Bajo (rojo): percentil &lt; 40.&#x27;,
+    },
+    {
+      id: &#x27;potencial&#x27;,
+      titulo: &#x27;Potencial de mejora hacia el Top&#x27;,
+      subtitulo: &#x27;Brecha de percentil restante para alcanzar el nivel óptimo.&#x27;,
+      descripcion:
+        &#x27;Indica cuántos puntos de percentil le faltan a cada KPI para llegar a P100. Los KPIs con mayor barra son los que más impacto tendrían si se mejoran.&#x27;,
+      guiaLectura:
+        &#x27;Brecha pequeña (verde): cerca del top. Brecha grande (rojo): mayor oportunidad de mejora. Prioriza los KPIs con barras más largas.&#x27;,
+    },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewReady"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>viewReady</b></span>
+                        <a href="#viewReady"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="grupos"></a>
+                        <span class="name"><b>grupos</b><a href="#grupos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>grupos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:190</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="gruposVisibles"></a>
+                        <span class="name"><b>gruposVisibles</b><a href="#gruposVisibles"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>gruposVisibles()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:210</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="datosPotencial"></a>
+                        <span class="name"><b>datosPotencial</b><a href="#datosPotencial"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>datosPotencial()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="214" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:214</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="datosSemaforo"></a>
+                        <span class="name"><b>datosSemaforo</b><a href="#datosSemaforo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>datosSemaforo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="236" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:236</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tieneResultados"></a>
+                        <span class="name"><b>tieneResultados</b><a href="#tieneResultados"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>tieneResultados()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="249" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/graficas-benchmarking/graficas-benchmarking.component.ts:249</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  AfterViewInit,
+  SimpleChanges,
+  ViewChildren,
+  QueryList,
+  NgZone,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Chart, registerables, TooltipItem } from &#x27;chart.js&#x27;;
+import { GraficaDetalleModalComponent } from &#x27;../grafica-detalle-modal/grafica-detalle-modal.component&#x27;;
+
+import { BenchmarkHatoResultado } from &#x27;../../../../../core/services/benchmarking/benchmarking.service&#x27;;
+
+Chart.register(...registerables);
+
+interface KpiGrupo {
+  categoria: string;
+  label: string;
+  icono: string;
+  items: BenchmarkHatoResultado[];
+}
+
+interface GraficaDetalle {
+  id: string;
+  titulo: string;
+  subtitulo: string;
+  descripcion: string;
+  guiaLectura: string;
+}
+
+@Component({
+  selector: &#x27;app-graficas-benchmarking&#x27;,
+  standalone: true,
+  imports: [CommonModule, GraficaDetalleModalComponent],
+  templateUrl: &#x27;./graficas-benchmarking.component.html&#x27;,
+  styleUrl: &#x27;./graficas-benchmarking.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class GraficasBenchmarkingComponent implements AfterViewInit, OnChanges, OnDestroy {
+  @Input() resultados: BenchmarkHatoResultado[] &#x3D; [];
+  @Input() modo: &#x27;REFERENCIA&#x27; | &#x27;PLATAFORMA&#x27; &#x3D; &#x27;REFERENCIA&#x27;;
+  @Input() categoriaFiltro: string | null &#x3D; null;
+
+  @ViewChildren(&#x27;chartCanvas&#x27;)
+  chartCanvases!: QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;;
+
+  @ViewChildren(&#x27;chartSemaforo&#x27;)
+  chartSemaforoRef!: QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;;
+
+  @ViewChildren(&#x27;chartRadarCategoria&#x27;)
+  chartRadarCategoriaRef!: QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;;
+
+  @ViewChildren(&#x27;chartPotencial&#x27;)
+  chartPotencialRef!: QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;;
+
+  private charts: Chart&lt;any, any, any&gt;[] &#x3D; [];
+  private viewReady &#x3D; false;
+
+  graficaAbierta: GraficaDetalle | null &#x3D; null;
+
+  readonly categoriasConfig &#x3D; [
+    { categoria: &#x27;PRODUCTIVIDAD&#x27;, label: &#x27;Productividad&#x27;, icono: &#x27;🥛&#x27; },
+    { categoria: &#x27;HATO&#x27;, label: &#x27;Hato&#x27;, icono: &#x27;🐄&#x27; },
+    { categoria: &#x27;FINANCIERO&#x27;, label: &#x27;Financiero&#x27;, icono: &#x27;💰&#x27; },
+    { categoria: &#x27;EFICIENCIA&#x27;, label: &#x27;Eficiencia&#x27;, icono: &#x27;⚙️&#x27; },
+  ];
+
+  readonly graficas &#x3D; [
+    {
+      id: &#x27;percentiles&#x27;,
+      titulo: &#x27;Posición competitiva por KPI&#x27;,
+      subtitulo: &#x27;Percentil 0–100: qué tan bien posicionado está tu hato en cada indicador.&#x27;,
+      descripcion:
+        &#x27;Muestra en qué percentil se encuentra tu hato para cada KPI respecto al sector. Un percentil alto significa que superas a la mayoría de hatos comparables.&#x27;,
+      guiaLectura:
+        &#x27;P0–49: por debajo del promedio del sector · P50: en el promedio · P51–100: por encima del promedio&#x27;,
+    },
+    {
+      id: &#x27;indice&#x27;,
+      titulo: &#x27;Tu hato vs Promedio y Top referencia&#x27;,
+      subtitulo: &#x27;Rendimiento contra el promedio y el nivel top del sector.&#x27;,
+      descripcion:
+        &#x27;Compara el percentil de tu hato contra la línea del promedio del sector (P50). Las barras verdes superan el promedio, las amarillas están cerca y las rojas están por debajo.&#x27;,
+      guiaLectura:
+        &#x27;Línea punteada &#x3D; promedio del sector (P50). Barras más largas que la línea &#x3D; por encima del promedio.&#x27;,
+    },
+    {
+      id: &#x27;radar&#x27;,
+      titulo: &#x27;Perfil de desempeño&#x27;,
+      subtitulo:
+        &#x27;Visión global en todos los KPIs. La línea punteada es el promedio del sector (P50).&#x27;,
+      descripcion:
+        &#x27;Representa de forma visual el perfil completo de tu hato. Cada eje es un KPI y la superficie coloreada muestra qué tan lejos o cerca estás del promedio en cada dimensión.&#x27;,
+      guiaLectura:
+        &#x27;Superficie más grande &#x3D; mejor desempeño general. La línea punteada es el promedio del sector. Los puntos de color indican el nivel: verde (alto), amarillo (medio), rojo (bajo).&#x27;,
+    },
+    {
+      id: &#x27;desviacion&#x27;,
+      titulo: &#x27;Desviación vs promedio de referencia&#x27;,
+      subtitulo: &#x27;Qué tan por encima (+) o por debajo (−) del promedio está tu hato.&#x27;,
+      descripcion:
+        &#x27;Muestra la diferencia porcentual entre tu valor y el promedio del sector para cada KPI. Valores positivos indican que superas el promedio, negativos que estás por debajo.&#x27;,
+      guiaLectura:
+        &#x27;Verde &#x3D; por encima del promedio. Rojo &#x3D; por debajo. El tamaño de la barra indica qué tan grande es la brecha.&#x27;,
+    },
+    {
+      id: &#x27;semaforo&#x27;,
+      titulo: &#x27;Distribución competitiva&#x27;,
+      subtitulo: &#x27;Cuántos KPIs están en nivel alto, medio o bajo.&#x27;,
+      descripcion:
+        &#x27;Resume en cuántos KPIs tu hato está en nivel alto (P≥70), medio (P40–69) o bajo (P&lt;40). Es un diagnóstico rápido del estado general del hato.&#x27;,
+      guiaLectura:
+        &#x27;Alto (verde): percentil ≥ 70 · Medio (amarillo): percentil 40–69 · Bajo (rojo): percentil &lt; 40.&#x27;,
+    },
+    {
+      id: &#x27;potencial&#x27;,
+      titulo: &#x27;Potencial de mejora hacia el Top&#x27;,
+      subtitulo: &#x27;Brecha de percentil restante para alcanzar el nivel óptimo.&#x27;,
+      descripcion:
+        &#x27;Indica cuántos puntos de percentil le faltan a cada KPI para llegar a P100. Los KPIs con mayor barra son los que más impacto tendrían si se mejoran.&#x27;,
+      guiaLectura:
+        &#x27;Brecha pequeña (verde): cerca del top. Brecha grande (rojo): mayor oportunidad de mejora. Prioriza los KPIs con barras más largas.&#x27;,
+    },
+  ];
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private ngZone: NgZone,
+  ) {}
+
+  ngAfterViewInit(): void {
+    this.viewReady &#x3D; true;
+
+    this.chartCanvases.changes.subscribe(() &#x3D;&gt; {
+      this.ngZone.runOutsideAngular(() &#x3D;&gt; {
+        setTimeout(() &#x3D;&gt; this.construirGraficas(), 100);
+      });
+    });
+
+    this.chartRadarCategoriaRef.changes.subscribe(() &#x3D;&gt; {
+      this.ngZone.runOutsideAngular(() &#x3D;&gt; {
+        setTimeout(() &#x3D;&gt; this.construirGraficas(), 100);
+      });
+    });
+
+    this.chartSemaforoRef.changes.subscribe(() &#x3D;&gt; {
+      this.ngZone.runOutsideAngular(() &#x3D;&gt; {
+        setTimeout(() &#x3D;&gt; this.construirGraficas(), 100);
+      });
+    });
+
+    this.chartPotencialRef.changes.subscribe(() &#x3D;&gt; {
+      this.ngZone.runOutsideAngular(() &#x3D;&gt; {
+        setTimeout(() &#x3D;&gt; this.construirGraficas(), 100);
+      });
+    });
+
+    if (this.resultados.length &gt; 0) {
+      this.ngZone.runOutsideAngular(() &#x3D;&gt; {
+        setTimeout(() &#x3D;&gt; this.construirGraficas(), 100);
+      });
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes[&#x27;resultados&#x27;] || changes[&#x27;modo&#x27;] || changes[&#x27;categoriaFiltro&#x27;]) {
+      this.cdr.markForCheck();
+      this.cdr.detectChanges();
+
+      this.ngZone.runOutsideAngular(() &#x3D;&gt; {
+        setTimeout(() &#x3D;&gt; {
+          if (this.viewReady &amp;&amp; this.resultados.length &gt; 0) {
+            this.construirGraficas();
+            this.cdr.markForCheck();
+          }
+        }, 150);
+      });
+    }
+  }
+
+  // ── Agrupación de datos ──────────────────────────────────
+
+  get grupos(): KpiGrupo[] {
+    console.log(&#x27;🔍 grupos getter — resultados[0]:&#x27;, JSON.stringify(this.resultados[0], null, 2));
+    console.log(&#x27;🔍 categorías encontradas:&#x27;, [
+      ...new Set(this.resultados.map((r) &#x3D;&gt; r.kpi?.categoria)),
+    ]);
+    return this.categoriasConfig
+
+      .map((c) &#x3D;&gt; ({
+        ...c,
+        items: this.resultados
+          .filter((r) &#x3D;&gt; r.kpi?.categoria &#x3D;&#x3D;&#x3D; c.categoria)
+          .sort((a, b) &#x3D;&gt; (b.percentil ?? 0) - (a.percentil ?? 0)),
+      }))
+      .filter(
+        (g) &#x3D;&gt;
+          g.items.length &gt; 0 &amp;&amp;
+          (this.categoriaFiltro &#x3D;&#x3D;&#x3D; null || g.categoria &#x3D;&#x3D;&#x3D; this.categoriaFiltro),
+      );
+  }
+
+  get gruposVisibles(): KpiGrupo[] {
+    return this.grupos;
+  }
+
+  get datosPotencial(): {
+    nombre: string;
+    potencial: number;
+    codigo: string;
+  }[] {
+    const dedup &#x3D; new Map&lt;string, BenchmarkHatoResultado&gt;();
+
+    for (const r of this.resultados) {
+      if (!r.kpi?.codigo) continue;
+      if (!dedup.has(r.kpi.codigo)) dedup.set(r.kpi.codigo, r);
+    }
+    return Array.from(dedup.values())
+      .map((r) &#x3D;&gt; ({
+        nombre: r.kpi?.nombre ?? &#x27;&#x27;,
+        codigo: r.kpi?.codigo ?? &#x27;&#x27;,
+        potencial: this.calcularPotencial(r),
+      }))
+      .filter((x) &#x3D;&gt; Number.isFinite(x.potencial) &amp;&amp; x.potencial &gt; 0)
+      .sort((a, b) &#x3D;&gt; b.potencial - a.potencial)
+      .slice(0, 12);
+  }
+
+  get datosSemaforo(): { alto: number; medio: number; bajo: number; total: number } {
+    const todos &#x3D; this.resultados;
+    return {
+      alto: todos.filter((r) &#x3D;&gt; (r.percentil ?? 0) &gt;&#x3D; 70).length,
+      medio: todos.filter((r) &#x3D;&gt; {
+        const p &#x3D; r.percentil ?? 0;
+        return p &gt;&#x3D; 40 &amp;&amp; p &lt; 70;
+      }).length,
+      bajo: todos.filter((r) &#x3D;&gt; (r.percentil ?? 0) &lt; 40).length,
+      total: todos.length,
+    };
+  }
+
+  get tieneResultados(): boolean {
+    return this.resultados.length &gt; 0;
+  }
+
+  getGraficaCategoria(categoria: string): GraficaDetalle {
+    const config &#x3D; this.categoriasConfig.find((c) &#x3D;&gt; c.categoria &#x3D;&#x3D;&#x3D; categoria);
+    return {
+      id: &#x60;radar_${categoria.toLowerCase()}&#x60;,
+      titulo: &#x60;${config?.icono ?? &#x27;&#x27;} ${config?.label ?? categoria}&#x60;,
+      subtitulo: &#x60;Perfil de desempeño · ${config?.label?.toLowerCase() ?? categoria}&#x60;,
+      descripcion: &#x60;Muestra el percentil de cada KPI de ${config?.label?.toLowerCase() ?? categoria} respecto al sector.&#x60;,
+      guiaLectura:
+        &#x27;P0–49: por debajo del promedio · P50: promedio del sector · P51–100: por encima del promedio&#x27;,
+    };
+  }
+
+  getGraficaBarrasCategoria(categoria: string): GraficaDetalle {
+    const config &#x3D; this.categoriasConfig.find((c) &#x3D;&gt; c.categoria &#x3D;&#x3D;&#x3D; categoria);
+    return {
+      id: &#x60;barras_${categoria.toLowerCase()}&#x60;,
+      titulo: &#x60;${config?.icono ?? &#x27;&#x27;} ${config?.label ?? categoria}&#x60;,
+      subtitulo: &#x60;Posición competitiva · ${config?.label?.toLowerCase() ?? categoria}&#x60;,
+      descripcion: &#x60;Muestra el percentil de cada KPI de ${config?.label?.toLowerCase() ?? categoria} respecto al sector. Las barras verdes superan el promedio, amarillas están cerca y rojas están por debajo.&#x60;,
+      guiaLectura:
+        &#x27;P0–49: por debajo del promedio · P50: promedio del sector · P51–100: por encima del promedio&#x27;,
+    };
+  }
+
+  // ── Helpers ───────────────────────────────────────────────
+
+  colorPorPercentil(p: number | null): string {
+    const n &#x3D; Number(p ?? 0);
+    if (n &gt;&#x3D; 70) return &#x27;rgba(25,230,77,0.82)&#x27;;
+    if (n &gt;&#x3D; 40) return &#x27;rgba(245,182,66,0.85)&#x27;;
+    return &#x27;rgba(239,68,68,0.78)&#x27;;
+  }
+
+  borderPorPercentil(p: number | null): string {
+    const n &#x3D; Number(p ?? 0);
+    if (n &gt;&#x3D; 70) return &#x27;#15c944&#x27;;
+    if (n &gt;&#x3D; 40) return &#x27;#f59e0b&#x27;;
+    return &#x27;#dc2626&#x27;;
+  }
+
+  calcularPotencial(r: BenchmarkHatoResultado): number {
+    return Math.max(0, 100 - Number(r.percentil ?? 0));
+  }
+
+  formatValor(valor: number | null, unidad?: string): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;—&#x27;;
+    if (!unidad) return Number(valor).toFixed(2);
+    if (unidad.includes(&#x27;COP&#x27;) || unidad &#x3D;&#x3D;&#x3D; &#x27;COP/vaca&#x27; || unidad &#x3D;&#x3D;&#x3D; &#x27;COP/L&#x27;)
+      return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(Number(valor)));
+    if (unidad &#x3D;&#x3D;&#x3D; &#x27;%&#x27;) return Number(valor).toFixed(1) + &#x27;%&#x27;;
+    if (unidad &#x3D;&#x3D;&#x3D; &#x27;ratio&#x27; || unidad &#x3D;&#x3D;&#x3D; &#x27;veces&#x27;) return Number(valor).toFixed(2) + &#x27;x&#x27;;
+    return &#x60;${Number(valor).toFixed(2)} ${unidad}&#x60;;
+  }
+
+  interpretacionClass(interp: string | null): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      OPTIMO: &#x27;badge-optimo&#x27;,
+      BUENO: &#x27;badge-bueno&#x27;,
+      ACEPTABLE: &#x27;badge-aceptable&#x27;,
+      CRITICO: &#x27;badge-critico&#x27;,
+    };
+    return map[interp ?? &#x27;&#x27;] ?? &#x27;badge-default&#x27;;
+  }
+
+  trackByGrupo(_: number, g: KpiGrupo): string {
+    return g.categoria;
+  }
+
+  trackByKpi(_: number, r: BenchmarkHatoResultado): number {
+    return r.idBenchmarkHato;
+  }
+
+  // ── Construcción de gráficas ──────────────────────────────
+
+  private destruirGraficas(): void {
+    this.charts.forEach((c) &#x3D;&gt; c.destroy());
+    this.charts &#x3D; [];
+  }
+
+  private setAltura(canvas: HTMLCanvasElement, items: number): void {
+    const h &#x3D; Math.max(220, items * 42);
+    canvas.parentElement!.style.height &#x3D; h + &#x27;px&#x27;;
+  }
+
+  private construirGraficas(): void {
+    console.log(&#x27;🔧 construirGraficas() llamado&#x27;);
+    console.log(&#x27;🔧 viewReady:&#x27;, this.viewReady);
+    console.log(&#x27;🔧 resultados.length:&#x27;, this.resultados.length);
+
+    const canvases &#x3D; this.chartCanvases.toArray();
+    const semaforos &#x3D; this.chartSemaforoRef.toArray();
+    const potenciales &#x3D; this.chartPotencialRef.toArray();
+    const radarCats &#x3D; this.chartRadarCategoriaRef.toArray();
+
+    console.log(
+      &#x27;📊 canvases (barras):&#x27;,
+      canvases.length,
+      canvases.map((c) &#x3D;&gt; ({
+        el: c.nativeElement,
+        enDOM: document.contains(c.nativeElement),
+        w: c.nativeElement.offsetWidth,
+        h: c.nativeElement.offsetHeight,
+      })),
+    );
+
+    console.log(
+      &#x27;📊 semaforos:&#x27;,
+      semaforos.length,
+      semaforos.map((c) &#x3D;&gt; ({
+        enDOM: document.contains(c.nativeElement),
+        w: c.nativeElement.offsetWidth,
+      })),
+    );
+
+    console.log(
+      &#x27;📊 radarCategorias:&#x27;,
+      radarCats.length,
+      radarCats.map((c) &#x3D;&gt; ({
+        enDOM: document.contains(c.nativeElement),
+        w: c.nativeElement.offsetWidth,
+      })),
+    );
+
+    console.log(
+      &#x27;📊 potenciales:&#x27;,
+      potenciales.length,
+      potenciales.map((c) &#x3D;&gt; ({
+        enDOM: document.contains(c.nativeElement),
+        w: c.nativeElement.offsetWidth,
+      })),
+    );
+
+    console.log(
+      &#x27;📊 grupos:&#x27;,
+      this.grupos.length,
+      this.grupos.map((g) &#x3D;&gt; g.categoria),
+    );
+
+    console.log(&#x27;gruposVisibles:&#x27;, this.gruposVisibles.length);
+    console.log(&#x27;tieneResultados:&#x27;, this.tieneResultados);
+
+    this.destruirGraficas();
+
+    // Semáforo
+    if (semaforos[0]?.nativeElement) {
+      console.log(&#x27;Construyendo semáforo...&#x27;);
+      try {
+        this.buildSemaforo(semaforos[0].nativeElement);
+        console.log(&#x27;Semáforo construido&#x27;);
+      } catch (e) {
+        console.error(&#x27;Error semáforo:&#x27;, e);
+      }
+    } else {
+      console.warn(&#x27;Canvas semáforo no disponible&#x27;);
+    }
+
+    // Radares por categoría
+    this.grupos.forEach((grupo, idx) &#x3D;&gt; {
+      const canvas &#x3D; radarCats[idx]?.nativeElement;
+      console.log(
+        &#x60;📡 Radar ${grupo.categoria} — canvas[${idx}]:&#x60;,
+        canvas ? &#x27;disponible&#x27; : &#x27;NO disponible&#x27;,
+        canvas ? &#x60;${canvas.offsetWidth}x${canvas.offsetHeight}&#x60; : &#x27;&#x27;,
+      );
+      if (canvas) {
+        try {
+          this.buildRadarCategoria(canvas, grupo.items);
+          console.log(&#x60;✅ Radar ${grupo.categoria} construido&#x60;);
+        } catch (e) {
+          console.error(&#x60;❌ Error radar ${grupo.categoria}:&#x60;, e);
+        }
+      }
+    });
+
+    // Barras por categoría
+    this.grupos.forEach((grupo, idx) &#x3D;&gt; {
+      const canvas &#x3D; canvases[idx]?.nativeElement;
+      console.log(
+        &#x60;📊 Barras ${grupo.categoria} — canvas[${idx}]:&#x60;,
+        canvas ? &#x27;disponible&#x27; : &#x27;NO disponible&#x27;,
+        canvas ? &#x60;${canvas.offsetWidth}x${canvas.offsetHeight}&#x60; : &#x27;&#x27;,
+      );
+      if (canvas) {
+        try {
+          this.buildCategoria(canvas, grupo);
+          console.log(&#x60;✅ Barras ${grupo.categoria} construida&#x60;);
+        } catch (e) {
+          console.error(&#x60;❌ Error barras ${grupo.categoria}:&#x60;, e);
+        }
+      }
+    });
+
+    // Potencial
+    if (potenciales[0]?.nativeElement &amp;&amp; this.datosPotencial.length &gt; 0) {
+      console.log(&#x27;✅ Construyendo potencial...&#x27;);
+      try {
+        this.buildPotencial(potenciales[0].nativeElement);
+        console.log(&#x27;✅ Potencial construido&#x27;);
+      } catch (e) {
+        console.error(&#x27;❌ Error potencial:&#x27;, e);
+      }
+    } else {
+      console.warn(
+        &#x27;⚠️ Canvas potencial no disponible o sin datos.&#x27;,
+        &#x27;potenciales.length:&#x27;,
+        potenciales.length,
+        &#x27;datosPotencial.length:&#x27;,
+        this.datosPotencial.length,
+      );
+    }
+
+    console.log(&#x27;🏁 construirGraficas() finalizado — charts activos:&#x27;, this.charts.length);
+  }
+
+  private buildCategoria(canvas: HTMLCanvasElement, grupo: KpiGrupo): void {
+    if (!grupo.items.length) return;
+    this.setAltura(canvas, grupo.items.length);
+
+    const labels &#x3D; grupo.items.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;);
+    const data &#x3D; grupo.items.map((r) &#x3D;&gt; Number(r.percentil ?? 0));
+    const colors &#x3D; data.map((v) &#x3D;&gt; this.colorPorPercentil(v));
+    const borders &#x3D; data.map((v) &#x3D;&gt; this.borderPorPercentil(v));
+
+    this.charts.push(
+      new Chart(canvas, {
+        type: &#x27;bar&#x27;,
+        data: {
+          labels,
+          datasets: [
+            {
+              label: &#x27;Tu hato (percentil)&#x27;,
+              data,
+              backgroundColor: colors,
+              borderColor: borders,
+              borderWidth: 1.5,
+              borderRadius: 6,
+              borderSkipped: false,
+            },
+            {
+              label: &#x27;Promedio sector&#x27;,
+              data: data.map(() &#x3D;&gt; 50),
+              backgroundColor: &#x27;rgba(0,0,0,0)&#x27;,
+              borderColor: &#x27;rgba(99,102,241,0.6)&#x27;,
+              borderWidth: 1.5,
+              borderDash: [5, 4],
+              type: &#x27;line&#x27; as any,
+              pointRadius: 0,
+              order: 0,
+            },
+          ],
+        },
+        options: {
+          indexAxis: &#x27;y&#x27;,
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: &#x27;bottom&#x27;,
+              labels: { color: &#x27;#374151&#x27;, font: { size: 11 }, boxWidth: 20 },
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx: import(&#x27;chart.js&#x27;).TooltipItem&lt;&#x27;bar&#x27;&gt;) &#x3D;&gt; {
+                  if (ctx.datasetIndex &#x3D;&#x3D;&#x3D; 1) return &#x27;Promedio sector: P50&#x27;;
+                  const r &#x3D; grupo.items[ctx.dataIndex];
+                  const pct &#x3D; Number(ctx.parsed.x ?? 0).toFixed(1);
+                  const val &#x3D; this.formatValor(r.valorHato, r.kpi?.unidad);
+                  return [&#x60;Percentil: ${pct}&#x60;, &#x60;Tu valor: ${val}&#x60;, &#x60;Estado: ${r.interpretacion}&#x60;];
+                },
+              },
+            },
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 100,
+              grid: { color: &#x27;rgba(0,0,0,0.04)&#x27; },
+              ticks: {
+                color: &#x27;#6b7280&#x27;,
+                font: { size: 11 },
+                callback: (v: string | number) &#x3D;&gt; &#x60;P${v}&#x60;,
+              },
+              title: {
+                display: true,
+                text: &#x27;Percentil (0 &#x3D; por debajo del sector · 50 &#x3D; promedio · 100 &#x3D; mejor)&#x27;,
+                color: &#x27;#9ca3af&#x27;,
+                font: { size: 10 },
+              },
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: &#x27;#374151&#x27;, font: { size: 11 } },
+            },
+          },
+        },
+      }),
+    );
+  }
+  private buildRadarCategoria(canvas: HTMLCanvasElement, items: BenchmarkHatoResultado[]): void {
+    if (!items.length) return;
+
+    const values &#x3D; items.map((r) &#x3D;&gt; Number(r.percentil ?? 0));
+
+    this.charts.push(
+      new Chart&lt;&#x27;radar&#x27;, number[], string&gt;(canvas, {
+        type: &#x27;radar&#x27;,
+        data: {
+          labels: items.map((r) &#x3D;&gt; r.kpi?.nombre ?? &#x27;&#x27;),
+          datasets: [
+            {
+              label: &#x27;Tu hato&#x27;,
+              data: values,
+              backgroundColor: &#x27;rgba(21,128,61,0.15)&#x27;,
+              borderColor: &#x27;#15803d&#x27;,
+              borderWidth: 2,
+              pointBackgroundColor: values.map((v) &#x3D;&gt; this.colorPorPercentil(v)),
+              pointBorderColor: &#x27;#fff&#x27;,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+            },
+            {
+              label: &#x27;Promedio (P50)&#x27;,
+              data: values.map(() &#x3D;&gt; 50),
+              backgroundColor: &#x27;rgba(148,163,184,0.06)&#x27;,
+              borderColor: &#x27;rgba(148,163,184,0.5)&#x27;,
+              borderWidth: 1.5,
+              borderDash: [5, 4],
+              pointRadius: 0,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx: TooltipItem&lt;&#x27;radar&#x27;&gt;) &#x3D;&gt; {
+                  const r &#x3D; items[ctx.dataIndex];
+                  const pct &#x3D; Number(ctx.parsed.r ?? 0).toFixed(1);
+                  return [
+                    &#x60;P${pct}&#x60;,
+                    &#x60;${this.formatValor(r.valorHato, r.kpi?.unidad)}&#x60;,
+                    &#x60;${r.interpretacion}&#x60;,
+                  ];
+                },
+              },
+            },
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 100,
+              ticks: {
+                stepSize: 25,
+                backdropColor: &#x27;transparent&#x27;,
+                color: &#x27;#9ca3af&#x27;,
+                font: { size: 9 },
+              },
+              grid: { color: &#x27;rgba(148,163,184,0.2)&#x27; },
+              angleLines: { color: &#x27;rgba(148,163,184,0.2)&#x27; },
+              pointLabels: { font: { size: 10 }, color: &#x27;#374151&#x27; },
+            },
+          },
+        },
+      }),
+    );
+  }
+
+  private buildSemaforo(canvas: HTMLCanvasElement): void {
+    const { alto, medio, bajo, total } &#x3D; this.datosSemaforo;
+
+    this.charts.push(
+      new Chart&lt;&#x27;doughnut&#x27;, number[], string&gt;(canvas, {
+        type: &#x27;doughnut&#x27;,
+        data: {
+          labels: [&#x27;Alto (≥70)&#x27;, &#x27;Medio (40–69)&#x27;, &#x27;Bajo (&lt;40)&#x27;],
+          datasets: [
+            {
+              data: [alto, medio, bajo],
+              backgroundColor: [
+                &#x27;rgba(25,230,77,0.85)&#x27;,
+                &#x27;rgba(245,182,66,0.85)&#x27;,
+                &#x27;rgba(239,68,68,0.82)&#x27;,
+              ],
+              borderColor: [&#x27;#15c944&#x27;, &#x27;#f59e0b&#x27;, &#x27;#dc2626&#x27;],
+              borderWidth: 2,
+              hoverOffset: 8,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: &#x27;62%&#x27;,
+          plugins: {
+            legend: {
+              position: &#x27;bottom&#x27;,
+              labels: { color: &#x27;#374151&#x27;, font: { size: 11 }, padding: 16 },
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx: TooltipItem&lt;&#x27;doughnut&#x27;&gt;) &#x3D;&gt; {
+                  const v &#x3D; Number(ctx.parsed ?? 0);
+                  const pct &#x3D; total &gt; 0 ? ((v / total) * 100).toFixed(1) : &#x27;0&#x27;;
+                  return &#x60;${v} KPI(s) — ${pct}% del total&#x60;;
+                },
+              },
+            },
+          },
+        },
+      }),
+    );
+  }
+
+  private buildPotencial(canvas: HTMLCanvasElement): void {
+    const items &#x3D; this.datosPotencial;
+    if (!items.length) return;
+    this.setAltura(canvas, items.length);
+
+    this.charts.push(
+      new Chart(canvas, {
+        type: &#x27;bar&#x27;,
+        data: {
+          labels: items.map((x) &#x3D;&gt; x.nombre),
+          datasets: [
+            {
+              label: &#x27;Brecha hacia el top (%)&#x27;,
+              data: items.map((x) &#x3D;&gt; x.potencial),
+              backgroundColor: items.map((x) &#x3D;&gt;
+                x.potencial &lt;&#x3D; 15
+                  ? &#x27;rgba(34,197,94,0.78)&#x27;
+                  : x.potencial &lt;&#x3D; 50
+                    ? &#x27;rgba(245,182,66,0.85)&#x27;
+                    : &#x27;rgba(239,68,68,0.78)&#x27;,
+              ),
+              borderRadius: 6,
+              borderSkipped: false,
+            },
+          ],
+        },
+        options: {
+          indexAxis: &#x27;y&#x27;,
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) &#x3D;&gt; &#x60;${Number(ctx.parsed.x ?? 0).toFixed(1)}% para alcanzar el top&#x60;,
+              },
+            },
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              grid: { color: &#x27;rgba(0,0,0,0.04)&#x27; },
+              ticks: { color: &#x27;#6b7280&#x27;, font: { size: 11 }, callback: (v) &#x3D;&gt; &#x60;${v}%&#x60; },
+              title: {
+                display: true,
+                text: &#x27;Brecha restante hacia el top (%)&#x27;,
+                color: &#x27;#9ca3af&#x27;,
+                font: { size: 10 },
+              },
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: &#x27;#374151&#x27;, font: { size: 11 } },
+            },
+          },
+        },
+      }),
+    );
+  }
+
+  abrirDetalle(grafica: GraficaDetalle): void {
+    this.graficaAbierta &#x3D; grafica;
+    this.cdr.markForCheck();
+  }
+
+  cerrarDetalle(): void {
+    this.graficaAbierta &#x3D; null;
+    this.cdr.markForCheck();
+  }
+
+  ngOnDestroy(): void {
+    this.destruirGraficas();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;graficas-wrap&quot;&gt;
+  @if (!tieneResultados) {
+    &lt;p class&#x3D;&quot;sin-datos&quot;&gt;No hay datos para mostrar con los filtros seleccionados.&lt;/p&gt;
+  }
+
+  @if (tieneResultados) {
+    &lt;!-- FILA RESUMEN: solo semáforo --&gt;
+    &lt;div class&#x3D;&quot;resumen-grid resumen-grid--solo&quot;&gt;
+      &lt;article class&#x3D;&quot;chart-card&quot;&gt;
+        &lt;div class&#x3D;&quot;chart-header&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-header-text&quot;&gt;
+            &lt;h3&gt;{{ graficas[4].titulo }}&lt;/h3&gt;
+            &lt;p&gt;{{ graficas[4].subtitulo }}&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;button class&#x3D;&quot;btn-detalle&quot; (click)&#x3D;&quot;abrirDetalle(graficas[4])&quot;&gt;
+            &lt;span class&#x3D;&quot;btn-detalle-icono&quot;&gt;
+              &lt;svg
+                width&#x3D;&quot;14&quot;
+                height&#x3D;&quot;14&quot;
+                viewBox&#x3D;&quot;0 0 24 24&quot;
+                fill&#x3D;&quot;none&quot;
+                stroke&#x3D;&quot;currentColor&quot;
+                stroke-width&#x3D;&quot;2.5&quot;
+                stroke-linecap&#x3D;&quot;round&quot;
+                stroke-linejoin&#x3D;&quot;round&quot;
+              &gt;
+                &lt;path d&#x3D;&quot;M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7&quot; /&gt;
+              &lt;/svg&gt;
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;btn-detalle-texto&quot;&gt;Ver detalle&lt;/span&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;chart-wrap chart-wrap--sm&quot;&gt;
+          &lt;canvas #chartSemaforo&gt;&lt;/canvas&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;semaforo-stats&quot;&gt;
+          &lt;span class&#x3D;&quot;stat alto&quot;&gt;{{ datosSemaforo.alto }} alto&lt;/span&gt;
+          &lt;span class&#x3D;&quot;stat medio&quot;&gt;{{ datosSemaforo.medio }} medio&lt;/span&gt;
+          &lt;span class&#x3D;&quot;stat bajo&quot;&gt;{{ datosSemaforo.bajo }} bajo&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+
+    &lt;!-- RADARES POR CATEGORÍA --&gt;
+    &lt;div class&#x3D;&quot;radares-grid&quot;&gt;
+      @for (grupo of gruposVisibles; track trackByGrupo($index, grupo)) {
+        &lt;article class&#x3D;&quot;chart-card&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-header&quot;&gt;
+            &lt;div class&#x3D;&quot;chart-header-text&quot;&gt;
+              &lt;h3&gt;{{ grupo.icono }} {{ grupo.label }}&lt;/h3&gt;
+              &lt;p&gt;Perfil de desempeño · {{ grupo.items.length }} KPIs&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;button
+              class&#x3D;&quot;btn-detalle&quot;
+              (click)&#x3D;&quot;abrirDetalle(getGraficaCategoria(grupo.categoria))&quot;
+            &gt;
+              &lt;span class&#x3D;&quot;btn-detalle-icono&quot;&gt;
+                &lt;svg
+                  width&#x3D;&quot;14&quot;
+                  height&#x3D;&quot;14&quot;
+                  viewBox&#x3D;&quot;0 0 24 24&quot;
+                  fill&#x3D;&quot;none&quot;
+                  stroke&#x3D;&quot;currentColor&quot;
+                  stroke-width&#x3D;&quot;2.5&quot;
+                  stroke-linecap&#x3D;&quot;round&quot;
+                  stroke-linejoin&#x3D;&quot;round&quot;
+                &gt;
+                  &lt;path d&#x3D;&quot;M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7&quot; /&gt;
+                &lt;/svg&gt;
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;btn-detalle-texto&quot;&gt;Ver detalle&lt;/span&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;chart-wrap chart-wrap--radar-sm&quot;&gt;
+            &lt;canvas #chartRadarCategoria&gt;&lt;/canvas&gt;
+          &lt;/div&gt;
+        &lt;/article&gt;
+      }
+    &lt;/div&gt;
+
+    &lt;!-- SECCIONES POR CATEGORÍA --&gt;
+    @for (grupo of gruposVisibles; track trackByGrupo($index, grupo)) {
+      &lt;section class&#x3D;&quot;categoria-seccion&quot;&gt;
+        &lt;div class&#x3D;&quot;categoria-header&quot;&gt;
+          &lt;span class&#x3D;&quot;categoria-icono&quot;&gt;{{ grupo.icono }}&lt;/span&gt;
+          &lt;div&gt;
+            &lt;h3&gt;{{ grupo.label }}&lt;/h3&gt;
+            &lt;p&gt;{{ grupo.items.length }} indicadores · percentil comparado contra el sector&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Gráfica de barras de percentil --&gt;
+        &lt;article class&#x3D;&quot;chart-card&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-header&quot;&gt;
+            &lt;div class&#x3D;&quot;chart-header-text&quot;&gt;
+              &lt;h3&gt;Posición competitiva — {{ grupo.label }}&lt;/h3&gt;
+              &lt;p&gt;Percentil de cada KPI respecto al sector. Línea punteada &#x3D; promedio (P50).&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;button
+              class&#x3D;&quot;btn-detalle&quot;
+              (click)&#x3D;&quot;abrirDetalle(getGraficaBarrasCategoria(grupo.categoria))&quot;
+            &gt;
+              &lt;span class&#x3D;&quot;btn-detalle-icono&quot;&gt;
+                &lt;svg
+                  width&#x3D;&quot;14&quot;
+                  height&#x3D;&quot;14&quot;
+                  viewBox&#x3D;&quot;0 0 24 24&quot;
+                  fill&#x3D;&quot;none&quot;
+                  stroke&#x3D;&quot;currentColor&quot;
+                  stroke-width&#x3D;&quot;2.5&quot;
+                  stroke-linecap&#x3D;&quot;round&quot;
+                  stroke-linejoin&#x3D;&quot;round&quot;
+                &gt;
+                  &lt;path d&#x3D;&quot;M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7&quot; /&gt;
+                &lt;/svg&gt;
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;btn-detalle-texto&quot;&gt;Ver detalle&lt;/span&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;chart-wrap&quot;&gt;
+            &lt;canvas #chartCanvas&gt;&lt;/canvas&gt;
+          &lt;/div&gt;
+        &lt;/article&gt;
+
+        &lt;!-- Tabla compacta --&gt;
+        &lt;div class&#x3D;&quot;tabla-compacta&quot;&gt;
+          &lt;table&gt;
+            &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th&gt;KPI&lt;/th&gt;
+                &lt;th&gt;Tu valor&lt;/th&gt;
+                &lt;th&gt;Percentil&lt;/th&gt;
+                &lt;th&gt;Promedio sector&lt;/th&gt;
+                &lt;th&gt;Top sector&lt;/th&gt;
+                &lt;th&gt;Estado&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+              @for (r of grupo.items; track trackByKpi($index, r)) {
+                &lt;tr&gt;
+                  &lt;td class&#x3D;&quot;td-nombre&quot;&gt;{{ r.kpi.nombre }}&lt;/td&gt;
+                  &lt;td&gt;{{ formatValor(r.valorHato, r.kpi.unidad) }}&lt;/td&gt;
+                  &lt;td&gt;
+                    &lt;div class&#x3D;&quot;percentil-cell&quot;&gt;
+                      &lt;div
+                        class&#x3D;&quot;percentil-bar&quot;
+                        [style.width.%]&#x3D;&quot;r.percentil ?? 0&quot;
+                        [style.background]&#x3D;&quot;colorPorPercentil(r.percentil)&quot;
+                      &gt;&lt;/div&gt;
+                      &lt;span&gt;{{ (+(r.percentil ?? 0)).toFixed(1) }}&lt;/span&gt;
+                    &lt;/div&gt;
+                  &lt;/td&gt;
+                  &lt;td&gt;
+                    {{ formatValor(r.benchReferencia?.valorPromedio ?? null, r.kpi.unidad) }}
+                  &lt;/td&gt;
+                  &lt;td&gt;{{ formatValor(r.benchReferencia?.valorTop ?? null, r.kpi.unidad) }}&lt;/td&gt;
+                  &lt;td&gt;
+                    &lt;span [class]&#x3D;&quot;&#x27;badge &#x27; + interpretacionClass(r.interpretacion)&quot;&gt;
+                      {{ r.interpretacion ?? &#x27;—&#x27; }}
+                    &lt;/span&gt;
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              }
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    }
+
+    &lt;!-- POTENCIAL DE MEJORA --&gt;
+    @if (datosPotencial.length &gt; 0) {
+      &lt;article class&#x3D;&quot;chart-card&quot;&gt;
+        &lt;div class&#x3D;&quot;chart-header&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-header-text&quot;&gt;
+            &lt;h3&gt;{{ graficas[5].titulo }}&lt;/h3&gt;
+            &lt;p&gt;{{ graficas[5].subtitulo }}&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;button class&#x3D;&quot;btn-detalle&quot; (click)&#x3D;&quot;abrirDetalle(graficas[5])&quot;&gt;
+            &lt;span class&#x3D;&quot;btn-detalle-icono&quot;&gt;
+              &lt;svg
+                width&#x3D;&quot;14&quot;
+                height&#x3D;&quot;14&quot;
+                viewBox&#x3D;&quot;0 0 24 24&quot;
+                fill&#x3D;&quot;none&quot;
+                stroke&#x3D;&quot;currentColor&quot;
+                stroke-width&#x3D;&quot;2.5&quot;
+                stroke-linecap&#x3D;&quot;round&quot;
+                stroke-linejoin&#x3D;&quot;round&quot;
+              &gt;
+                &lt;path d&#x3D;&quot;M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7&quot; /&gt;
+              &lt;/svg&gt;
+            &lt;/span&gt;
+
+            &lt;span class&#x3D;&quot;btn-detalle-texto&quot;&gt;Ver detalle&lt;/span&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;chart-wrap&quot;&gt;
+          &lt;canvas #chartPotencial&gt;&lt;/canvas&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    }
+
+    &lt;!-- MODAL DE DETALLE --&gt;
+    @if (graficaAbierta) {
+      &lt;app-grafica-detalle-modal
+        [grafica]&#x3D;&quot;graficaAbierta&quot;
+        [resultados]&#x3D;&quot;resultados&quot;
+        [grupos]&#x3D;&quot;gruposVisibles&quot;
+        (cerrar)&#x3D;&quot;cerrarDetalle()&quot;
+      &gt;
+      &lt;/app-grafica-detalle-modal&gt;
+    }
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="graficas-wrap">  @if (!tieneResultados) {    <p class="sin-datos">No hay datos para mostrar con los filtros seleccionados.</p>  }  @if (tieneResultados) {    <!-- FILA RESUMEN: solo semáforo -->    <div class="resumen-grid resumen-grid--solo">      <article class="chart-card">        <div class="chart-header">          <div class="chart-header-text">            <h3>{{ graficas[4].titulo }}</h3>            <p>{{ graficas[4].subtitulo }}</p>          </div>          <button class="btn-detalle" (click)="abrirDetalle(graficas[4])">            <span class="btn-detalle-icono">              <svg                width="14"                height="14"                viewBox="0 0 24 24"                fill="none"                stroke="currentColor"                stroke-width="2.5"                stroke-linecap="round"                stroke-linejoin="round"              >                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />              </svg>            </span>            <span class="btn-detalle-texto">Ver detalle</span>          </button>        </div>        <div class="chart-wrap chart-wrap--sm">          <canvas #chartSemaforo></canvas>        </div>        <div class="semaforo-stats">          <span class="stat alto">{{ datosSemaforo.alto }} alto</span>          <span class="stat medio">{{ datosSemaforo.medio }} medio</span>          <span class="stat bajo">{{ datosSemaforo.bajo }} bajo</span>        </div>      </article>    </div>    <!-- RADARES POR CATEGORÍA -->    <div class="radares-grid">      @for (grupo of gruposVisibles; track trackByGrupo($index, grupo)) {        <article class="chart-card">          <div class="chart-header">            <div class="chart-header-text">              <h3>{{ grupo.icono }} {{ grupo.label }}</h3>              <p>Perfil de desempeño · {{ grupo.items.length }} KPIs</p>            </div>            <button              class="btn-detalle"              (click)="abrirDetalle(getGraficaCategoria(grupo.categoria))"            >              <span class="btn-detalle-icono">                <svg                  width="14"                  height="14"                  viewBox="0 0 24 24"                  fill="none"                  stroke="currentColor"                  stroke-width="2.5"                  stroke-linecap="round"                  stroke-linejoin="round"                >                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />                </svg>              </span>              <span class="btn-detalle-texto">Ver detalle</span>            </button>          </div>          <div class="chart-wrap chart-wrap--radar-sm">            <canvas #chartRadarCategoria></canvas>          </div>        </article>      }    </div>    <!-- SECCIONES POR CATEGORÍA -->    @for (grupo of gruposVisibles; track trackByGrupo($index, grupo)) {      <section class="categoria-seccion">        <div class="categoria-header">          <span class="categoria-icono">{{ grupo.icono }}</span>          <div>            <h3>{{ grupo.label }}</h3>            <p>{{ grupo.items.length }} indicadores · percentil comparado contra el sector</p>          </div>        </div>        <!-- Gráfica de barras de percentil -->        <article class="chart-card">          <div class="chart-header">            <div class="chart-header-text">              <h3>Posición competitiva — {{ grupo.label }}</h3>              <p>Percentil de cada KPI respecto al sector. Línea punteada = promedio (P50).</p>            </div>            <button              class="btn-detalle"              (click)="abrirDetalle(getGraficaBarrasCategoria(grupo.categoria))"            >              <span class="btn-detalle-icono">                <svg                  width="14"                  height="14"                  viewBox="0 0 24 24"                  fill="none"                  stroke="currentColor"                  stroke-width="2.5"                  stroke-linecap="round"                  stroke-linejoin="round"                >                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />                </svg>              </span>              <span class="btn-detalle-texto">Ver detalle</span>            </button>          </div>          <div class="chart-wrap">            <canvas #chartCanvas></canvas>          </div>        </article>        <!-- Tabla compacta -->        <div class="tabla-compacta">          <table>            <thead>              <tr>                <th>KPI</th>                <th>Tu valor</th>                <th>Percentil</th>                <th>Promedio sector</th>                <th>Top sector</th>                <th>Estado</th>              </tr>            </thead>            <tbody>              @for (r of grupo.items; track trackByKpi($index, r)) {                <tr>                  <td class="td-nombre">{{ r.kpi.nombre }}</td>                  <td>{{ formatValor(r.valorHato, r.kpi.unidad) }}</td>                  <td>                    <div class="percentil-cell">                      <div                        class="percentil-bar"                        [style.width.%]="r.percentil ?? 0"                        [style.background]="colorPorPercentil(r.percentil)"                      ></div>                      <span>{{ (+(r.percentil ?? 0)).toFixed(1) }}</span>                    </div>                  </td>                  <td>                    {{ formatValor(r.benchReferencia?.valorPromedio ?? null, r.kpi.unidad) }}                  </td>                  <td>{{ formatValor(r.benchReferencia?.valorTop ?? null, r.kpi.unidad) }}</td>                  <td>                    <span [class]="\'badge \' + interpretacionClass(r.interpretacion)">                      {{ r.interpretacion ?? \'—\' }}                    </span>                  </td>                </tr>              }            </tbody>          </table>        </div>      </section>    }    <!-- POTENCIAL DE MEJORA -->    @if (datosPotencial.length > 0) {      <article class="chart-card">        <div class="chart-header">          <div class="chart-header-text">            <h3>{{ graficas[5].titulo }}</h3>            <p>{{ graficas[5].subtitulo }}</p>          </div>          <button class="btn-detalle" (click)="abrirDetalle(graficas[5])">            <span class="btn-detalle-icono">              <svg                width="14"                height="14"                viewBox="0 0 24 24"                fill="none"                stroke="currentColor"                stroke-width="2.5"                stroke-linecap="round"                stroke-linejoin="round"              >                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />              </svg>            </span>            <span class="btn-detalle-texto">Ver detalle</span>          </button>        </div>        <div class="chart-wrap">          <canvas #chartPotencial></canvas>        </div>      </article>    }    <!-- MODAL DE DETALLE -->    @if (graficaAbierta) {      <app-grafica-detalle-modal        [grafica]="graficaAbierta"        [resultados]="resultados"        [grupos]="gruposVisibles"        (cerrar)="cerrarDetalle()"      >      </app-grafica-detalle-modal>    }  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'GraficasBenchmarkingComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GraficasBenchmarkingComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

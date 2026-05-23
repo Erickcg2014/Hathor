@@ -1,0 +1,202 @@
+<!-- ═══════════════════════════════════════════════════════════
+     RANKING CHIPS — fila de indicadores rápidos
+════════════════════════════════════════════════════════════ -->
+<div class="ranking-chips-row" data-cy="ranking-chips">
+  @if (loadingKpis) {
+    <div class="ranking-loading">
+      <app-spinner size="small" message="Calculando posición..."></app-spinner>
+    </div>
+  } @else if (rankingResumen) {
+    <div
+      class="ranking-chip"
+      data-cy="chip-posicion-nacional"
+      (click)="onNavegar('/benchmarking/ranking')"
+    >
+      <span class="ranking-chip-icono">{{ iconoRanking }}</span>
+      <div class="ranking-chip-info">
+        <span class="ranking-chip-label">Posición nacional</span>
+        <span class="ranking-chip-valor">
+          #{{ rankingResumen.posicionNacional }}
+          <span class="ranking-chip-de">de {{ rankingResumen.totalHatosNacional }}</span>
+        </span>
+      </div>
+    </div>
+
+    <div
+      class="ranking-chip"
+      data-cy="chip-score-compuesto"
+      (click)="onNavegar('/benchmarking/ranking')"
+    >
+      <span class="ranking-chip-icono">📊</span>
+      <div class="ranking-chip-info">
+        <span class="ranking-chip-label">Score compuesto</span>
+        <span class="ranking-chip-valor">
+          {{ rankingResumen.scoreCompuesto?.toFixed(1) ?? '—' }}
+          <span class="ranking-chip-de">/ 100</span>
+        </span>
+      </div>
+    </div>
+
+    <div
+      class="ranking-chip"
+      data-cy="chip-kpis-criticos"
+      [class.chip-alerta]="rankingResumen.kpisCriticos > 0"
+      (click)="onNavegar('/practicas/recomendaciones')"
+    >
+      <span class="ranking-chip-icono">
+        {{ rankingResumen.kpisCriticos > 0 ? '🔴' : '✅' }}
+      </span>
+      <div class="ranking-chip-info">
+        <span class="ranking-chip-label">KPIs críticos</span>
+        <span class="ranking-chip-valor">
+          {{ rankingResumen.kpisCriticos }}
+          <span class="ranking-chip-de">de {{ kpis.length }}</span>
+        </span>
+      </div>
+    </div>
+
+    <div
+      class="ranking-chip"
+      data-cy="chip-posicion-regional"
+      (click)="onNavegar('/benchmarking/ranking')"
+    >
+      <span class="ranking-chip-icono">📍</span>
+      <div class="ranking-chip-info">
+        <span class="ranking-chip-label">Posición regional</span>
+        <span class="ranking-chip-valor">
+          #{{ rankingResumen.posicionRegional }}
+          <span class="ranking-chip-de">de {{ rankingResumen.totalHatosRegional }}</span>
+        </span>
+      </div>
+    </div>
+  }
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     GRID DE MÓDULOS
+════════════════════════════════════════════════════════════ -->
+<div class="modulos-grid">
+  <!-- HATO -->
+  <div class="modulo-card modulo-hato" data-cy="modulo-hato" (click)="onNavegar('/hato')">
+    <div class="modulo-header">
+      <div class="modulo-header-left">
+        <div class="modulo-icono" aria-hidden="true">🏡</div>
+        <div>
+          <h3 class="modulo-titulo">Mi Hato</h3>
+          <p class="modulo-subtitulo">Información general</p>
+        </div>
+      </div>
+      <button class="modulo-btn" (click)="$event.stopPropagation(); onNavegar('/hato')">
+        Ver más →
+      </button>
+    </div>
+    <div class="modulo-stats-grid">
+      <div class="modulo-stat-grid-item">
+        <span class="stat-label">Departamento</span>
+        <span class="stat-valor-sm">{{ hatoActivo?.departamento ?? '—' }}</span>
+      </div>
+      <div class="modulo-stat-grid-item">
+        <span class="stat-label">Área total</span>
+        <span class="stat-valor-sm">{{ hatoActivo?.areaHato ?? '—' }} ha</span>
+      </div>
+      <div class="modulo-stat-grid-item">
+        <span class="stat-label">Tipo de hato</span>
+        <span class="stat-valor-sm">{{ hatoActivo?.tipoHato ?? '—' }}</span>
+      </div>
+      <div class="modulo-stat-grid-item">
+        <span class="stat-label">Altitud</span>
+        <span class="stat-valor-sm">{{ hatoActivo?.altitud ?? '—' }} m.s.n.m</span>
+      </div>
+      <div class="modulo-stat-grid-item">
+        <span class="stat-label">Escala</span>
+        <span class="stat-valor-sm">{{ hatoActivo?.escala ?? '—' }}</span>
+      </div>
+      <div class="modulo-stat-grid-item">
+        <span class="stat-label">Trópico</span>
+        <span class="stat-valor-sm">{{ hatoActivo?.tropico ?? '—' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCCIÓN -->
+  <app-mod-produccion
+    data-cy="modulo-produccion"
+    [perfilProductivo]="perfilProductivo"
+    [produccionUltimos30]="produccionUltimos30"
+    [loading]="loadingProduccion"
+    (click)="onNavegar('/produccion')"
+  />
+
+  <!-- FINANZAS -->
+  <app-mod-finanzas
+    data-cy="modulo-finanzas"
+    [totalIngresos]="totalIngresos"
+    [totalEgresos]="totalEgresos"
+    [balanceNeto]="balanceNeto"
+    [finanzasPorMes]="finanzasPorMes"
+    [loading]="loadingFinanzas"
+    (click)="onNavegar('/finanzas')"
+  />
+
+  <!-- INVENTARIO GANADO -->
+  <app-mod-ganado
+    data-cy="modulo-ganado"
+    [totalAnimales]="totalAnimales"
+    [distribucionGanado]="distribucionGanado"
+    [loading]="loadingInventario"
+    (click)="onNavegar('/inventarios/ganado/resumen')"
+  />
+
+  <!-- KPIs RADAR -->
+  <app-mod-kpis
+    data-cy="modulo-kpis"
+    [kpis]="kpis"
+    [benchmarks]="benchmarks"
+    [rankingResumen]="rankingResumen"
+    [loading]="loadingKpis"
+    (click)="onNavegar('/benchmarking')"
+  />
+
+  <!-- PRÁCTICAS -->
+  <div class="modulo-card" data-cy="modulo-practicas" (click)="onNavegar('/practicas')">
+    <div class="modulo-header">
+      <div class="modulo-header-left">
+        <div class="modulo-icono" aria-hidden="true">🌱</div>
+        <div>
+          <h3 class="modulo-titulo">Prácticas</h3>
+          <p class="modulo-subtitulo">Mejoras recomendadas</p>
+        </div>
+      </div>
+      <button class="modulo-btn" (click)="$event.stopPropagation(); onNavegar('/practicas')">
+        Ver más →
+      </button>
+    </div>
+
+    @if (loadingKpis || rankingResumen === null) {
+      <div class="card-loading-mini">
+        <app-spinner size="small"></app-spinner>
+      </div>
+    } @else if (rankingResumen.kpisCriticos > 0) {
+      <div class="practicas-alerta">
+        <span class="practicas-alerta-icono">⚠️</span>
+        <div>
+          <p class="practicas-alerta-titulo">
+            {{ rankingResumen.kpisCriticos }} KPI(s) requieren atención
+          </p>
+          <p class="practicas-alerta-sub">Revisa las recomendaciones para mejorar tu desempeño</p>
+        </div>
+        <button
+          class="btn-ver-recomendaciones"
+          (click)="$event.stopPropagation(); onNavegar('/practicas/recomendaciones')"
+        >
+          Ver →
+        </button>
+      </div>
+    } @else {
+      <div class="practicas-ok">
+        <span>✅</span>
+        <p>Sin KPIs críticos por el momento.</p>
+      </div>
+    }
+  </div>
+</div>

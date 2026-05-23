@@ -1,0 +1,1764 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ComparativaHatosComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-comparativa-hatos</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./comparativa-hatos.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./comparativa-hatos.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#chart" >chart</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartLineasRef" >chartLineasRef</a>
+                            </li>
+                            <li>
+                                <a href="#datos" >datos</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#kpiSeleccionado" >kpiSeleccionado</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#opcionesTop" >opcionesTop</a>
+                            </li>
+                            <li>
+                                <a href="#topSeleccionado" >topSeleccionado</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarComparativa" >cargarComparativa</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#construirChart" >construirChart</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destruirChart" >destruirChart</a>
+                            </li>
+                            <li>
+                                <a href="#formatValor" >formatValor</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#setKpi" >setKpi</a>
+                            </li>
+                            <li>
+                                <a href="#setTop" >setTop</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#idHato" >idHato</a>
+                            </li>
+                            <li>
+                                <a href="#kpisDisponibles" >kpisDisponibles</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#kpisUnicos" >kpisUnicos</a>
+                                </li>
+                                <li>
+                                    <a href="#tieneDatos" >tieneDatos</a>
+                                </li>
+                                <li>
+                                    <a href="#sinComparables" >sinComparables</a>
+                                </li>
+                                <li>
+                                    <a href="#posicionHato" >posicionHato</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(benchmarkingService: <a href="../injectables/BenchmarkingService.html" target="_self">BenchmarkingService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:72</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>benchmarkingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BenchmarkingService.html" target="_self" >BenchmarkingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="idHato"></a>
+                        <b>idHato</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:31</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="kpisDisponibles"></a>
+                        <b>kpisDisponibles</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BenchmarkHatoResultado[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarComparativa"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarComparativa</b></span>
+                        <a href="#cargarComparativa"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarComparativa()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:107</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="construirChart"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>construirChart</b></span>
+                        <a href="#construirChart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>construirChart()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:138</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destruirChart"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destruirChart</b></span>
+                        <a href="#destruirChart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>destruirChart()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatValor"></a>
+                    <span class="name">
+                        <span ><b>formatValor</b></span>
+                        <a href="#formatValor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatValor(valor: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="231"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:231</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>changes</td>
+                                            <td>
+                                                            <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="241"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:241</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="79"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setKpi"></a>
+                    <span class="name">
+                        <span ><b>setKpi</b></span>
+                        <a href="#setKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setKpi(codigo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>codigo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setTop"></a>
+                    <span class="name">
+                        <span ><b>setTop</b></span>
+                        <a href="#setTop"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setTop(top: "5" | "10" | "15")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>top</td>
+                                            <td>
+                                                        <code>&quot;5&quot; | &quot;10&quot; | &quot;15&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chart"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>chart</b></span>
+                        <a href="#chart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart&lt;any | any | any&gt; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartLineasRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartLineasRef</b></span>
+                        <a href="#chartLineasRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLCanvasElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartLineas&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datos"></a>
+                    <span class="name">
+                        <span ><b>datos</b></span>
+                        <a href="#datos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ComparativaHatosDTO | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="kpiSeleccionado"></a>
+                    <span class="name">
+                        <span ><b>kpiSeleccionado</b></span>
+                        <a href="#kpiSeleccionado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="opcionesTop"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>opcionesTop</b></span>
+                        <a href="#opcionesTop"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { valor: 5, label: &#x27;Top 5&#x27; },
+    { valor: 10, label: &#x27;Top 10&#x27; },
+    { valor: 15, label: &#x27;Top 15&#x27; },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="topSeleccionado"></a>
+                    <span class="name">
+                        <span ><b>topSeleccionado</b></span>
+                        <a href="#topSeleccionado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;5&quot; | &quot;10&quot; | &quot;15&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>10</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="kpisUnicos"></a>
+                        <span class="name"><b>kpisUnicos</b><a href="#kpisUnicos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>kpisUnicos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:50</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tieneDatos"></a>
+                        <span class="name"><b>tieneDatos</b><a href="#tieneDatos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>tieneDatos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:60</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sinComparables"></a>
+                        <span class="name"><b>sinComparables</b><a href="#sinComparables"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>sinComparables()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:64</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="posicionHato"></a>
+                        <span class="name"><b>posicionHato</b><a href="#posicionHato"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>posicionHato()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/comparativa-hatos/comparativa-hatos.component.ts:68</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Chart, registerables } from &#x27;chart.js&#x27;;
+import {
+  BenchmarkHatoResultado,
+  BenchmarkingService,
+  ComparativaHatosDTO,
+} from &#x27;../../../../../core/services/benchmarking/benchmarking.service&#x27;;
+
+Chart.register(...registerables);
+
+@Component({
+  selector: &#x27;app-comparativa-hatos&#x27;,
+  standalone: true,
+  templateUrl: &#x27;./comparativa-hatos.component.html&#x27;,
+  styleUrl: &#x27;./comparativa-hatos.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ComparativaHatosComponent implements OnInit, OnChanges, OnDestroy {
+  @Input() idHato: string &#x3D; &#x27;&#x27;;
+  @Input() kpisDisponibles: BenchmarkHatoResultado[] &#x3D; [];
+
+  @ViewChild(&#x27;chartLineas&#x27;) chartLineasRef!: ElementRef&lt;HTMLCanvasElement&gt;;
+
+  kpiSeleccionado: string &#x3D; &#x27;&#x27;;
+  topSeleccionado: 5 | 10 | 15 &#x3D; 10;
+  datos: ComparativaHatosDTO | null &#x3D; null;
+  loading &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+
+  private chart: Chart&lt;any, any, any&gt; | null &#x3D; null;
+
+  readonly opcionesTop: { valor: 5 | 10 | 15; label: string }[] &#x3D; [
+    { valor: 5, label: &#x27;Top 5&#x27; },
+    { valor: 10, label: &#x27;Top 10&#x27; },
+    { valor: 15, label: &#x27;Top 15&#x27; },
+  ];
+
+  get kpisUnicos(): { codigo: string; nombre: string }[] {
+    const seen &#x3D; new Map&lt;string, string&gt;();
+    for (const r of this.kpisDisponibles) {
+      if (r.kpi?.codigo &amp;&amp; !seen.has(r.kpi.codigo)) {
+        seen.set(r.kpi.codigo, r.kpi.nombre);
+      }
+    }
+    return Array.from(seen.entries()).map(([codigo, nombre]) &#x3D;&gt; ({ codigo, nombre }));
+  }
+
+  get tieneDatos(): boolean {
+    return this.datos !&#x3D;&#x3D; null &amp;&amp; (this.datos.comparables?.length ?? 0) &gt; 0;
+  }
+
+  get sinComparables(): boolean {
+    return this.datos !&#x3D;&#x3D; null &amp;&amp; (this.datos.comparables?.length ?? 0) &#x3D;&#x3D;&#x3D; 0;
+  }
+
+  get posicionHato(): number {
+    if (!this.datos) return 0;
+    const idx &#x3D; this.datos.comparables.findIndex((c) &#x3D;&gt; c.valor &lt;&#x3D; this.datos!.valorHatoActual);
+    return idx &gt;&#x3D; 0 ? idx + 1 : this.datos.comparables.length + 1;
+  }
+
+  constructor(
+    private benchmarkingService: BenchmarkingService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    if (this.kpisUnicos.length &gt; 0) {
+      this.kpiSeleccionado &#x3D; this.kpisUnicos[0].codigo;
+      this.cargarComparativa();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes[&#x27;kpisDisponibles&#x27;] &amp;&amp; !changes[&#x27;kpisDisponibles&#x27;].firstChange) {
+      if (this.kpisUnicos.length &gt; 0 &amp;&amp; !this.kpiSeleccionado) {
+        this.kpiSeleccionado &#x3D; this.kpisUnicos[0].codigo;
+      }
+      if (this.kpiSeleccionado) this.cargarComparativa();
+    }
+  }
+
+  setKpi(codigo: string): void {
+    if (this.kpiSeleccionado &#x3D;&#x3D;&#x3D; codigo) return;
+    this.kpiSeleccionado &#x3D; codigo;
+    this.cargarComparativa();
+  }
+
+  setTop(top: 5 | 10 | 15): void {
+    if (this.topSeleccionado &#x3D;&#x3D;&#x3D; top) return;
+    this.topSeleccionado &#x3D; top;
+    this.cargarComparativa();
+  }
+
+  private cargarComparativa(): void {
+    if (!this.idHato || !this.kpiSeleccionado) return;
+
+    this.loading &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.datos &#x3D; null;
+    this.destruirChart();
+    this.cdr.markForCheck();
+
+    this.benchmarkingService
+      .getComparativaHatos(this.idHato, this.kpiSeleccionado, this.topSeleccionado)
+      .subscribe({
+        next: (resultado) &#x3D;&gt; {
+          this.datos &#x3D; resultado;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+          setTimeout(() &#x3D;&gt; this.construirChart(), 0);
+        },
+        error: () &#x3D;&gt; {
+          this.loading &#x3D; false;
+          this.error &#x3D; &#x27;No se pudo cargar la comparativa con otros hatos.&#x27;;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  private destruirChart(): void {
+    this.chart?.destroy();
+    this.chart &#x3D; null;
+  }
+
+  private construirChart(): void {
+    if (!this.chartLineasRef?.nativeElement || !this.datos) return;
+
+    this.destruirChart();
+
+    const comparables &#x3D; this.datos.comparables ?? [];
+    const miValor &#x3D; this.datos.valorHatoActual;
+    const miNombre &#x3D; this.datos.nombreHatoActual;
+
+    const labels &#x3D; [...comparables.map((c) &#x3D;&gt; c.etiqueta), miNombre];
+
+    const valores &#x3D; [...comparables.map((c) &#x3D;&gt; c.valor), miValor];
+
+    const colores &#x3D; [...comparables.map(() &#x3D;&gt; &#x27;rgba(148,163,184,0.7)&#x27;), &#x27;rgba(21,128,61,0.9)&#x27;];
+
+    const bordeColores &#x3D; [...comparables.map(() &#x3D;&gt; &#x27;rgba(148,163,184,1)&#x27;), &#x27;#15803d&#x27;];
+
+    const radios &#x3D; [...comparables.map(() &#x3D;&gt; 5), 9];
+
+    this.chart &#x3D; new Chart(this.chartLineasRef.nativeElement, {
+      type: &#x27;line&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: this.datos.nombreKpi,
+            data: valores,
+            backgroundColor: colores,
+            borderColor: &#x27;#15803d&#x27;,
+            borderWidth: 2,
+            pointBackgroundColor: colores,
+            pointBorderColor: bordeColores,
+            pointBorderWidth: 2,
+            pointRadius: radios,
+            pointHoverRadius: radios.map((r) &#x3D;&gt; r + 2),
+            tension: 0.35,
+            fill: {
+              target: &#x27;origin&#x27;,
+              above: &#x27;rgba(21,128,61,0.05)&#x27;,
+            },
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; {
+                const idx &#x3D; ctx.dataIndex;
+                const total &#x3D; labels.length - 1;
+                const label &#x3D; idx &#x3D;&#x3D;&#x3D; total ? &#x60;${miNombre} (Tu hato)&#x60; : labels[idx];
+                const val &#x3D; this.formatValor(ctx.parsed.y);
+                return &#x60;${label}: ${val}&#x60;;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: {
+              color: (ctx) &#x3D;&gt; {
+                return ctx.index &#x3D;&#x3D;&#x3D; labels.length - 1 ? &#x27;#15803d&#x27; : &#x27;#6b7280&#x27;;
+              },
+              font: (ctx) &#x3D;&gt; ({
+                size: 11,
+                weight: ctx.index &#x3D;&#x3D;&#x3D; labels.length - 1 ? &#x27;bold&#x27; : &#x27;normal&#x27;,
+              }),
+            },
+          },
+          y: {
+            beginAtZero: false,
+            grid: { color: &#x27;rgba(0,0,0,0.04)&#x27; },
+            ticks: {
+              color: &#x27;#6b7280&#x27;,
+              font: { size: 11 },
+              callback: (v) &#x3D;&gt; this.formatValor(Number(v)),
+            },
+            title: {
+              display: true,
+              text: this.datos.unidadKpi ?? &#x27;&#x27;,
+              color: &#x27;#9ca3af&#x27;,
+              font: { size: 11 },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  formatValor(valor: number | null): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;—&#x27;;
+    const unidad &#x3D; this.datos?.unidadKpi ?? &#x27;&#x27;;
+    if (unidad.includes(&#x27;COP&#x27;) || unidad &#x3D;&#x3D;&#x3D; &#x27;COP/vaca&#x27; || unidad &#x3D;&#x3D;&#x3D; &#x27;COP/L&#x27;)
+      return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(valor));
+    if (unidad &#x3D;&#x3D;&#x3D; &#x27;%&#x27;) return valor.toFixed(1) + &#x27;%&#x27;;
+    if (unidad &#x3D;&#x3D;&#x3D; &#x27;ratio&#x27; || unidad &#x3D;&#x3D;&#x3D; &#x27;veces&#x27;) return valor.toFixed(2) + &#x27;x&#x27;;
+    return &#x60;${valor.toFixed(2)} ${unidad ?? &#x27;&#x27;}&#x60;.trim();
+  }
+
+  ngOnDestroy(): void {
+    this.destruirChart();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;comparativa-hatos&quot;&gt;
+  &lt;div class&#x3D;&quot;section-header&quot;&gt;
+    &lt;div class&#x3D;&quot;header-text&quot;&gt;
+      &lt;h2&gt;Comparativa con otros hatos&lt;/h2&gt;
+      &lt;p&gt;Tu posición frente a los mejores hatos del sistema con trópico y región similares.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Controles --&gt;
+  &lt;div class&#x3D;&quot;controles&quot;&gt;
+    &lt;!-- Selector de KPI --&gt;
+    &lt;div class&#x3D;&quot;control-grupo&quot;&gt;
+      &lt;label class&#x3D;&quot;control-label&quot;&gt;Indicador&lt;/label&gt;
+      &lt;div class&#x3D;&quot;selector-scroll&quot;&gt;
+        @for (k of kpisUnicos; track k.codigo) {
+          &lt;button
+            class&#x3D;&quot;chip&quot;
+            [class.activo]&#x3D;&quot;kpiSeleccionado &#x3D;&#x3D;&#x3D; k.codigo&quot;
+            (click)&#x3D;&quot;setKpi(k.codigo)&quot;
+          &gt;
+            {{ k.nombre }}
+          &lt;/button&gt;
+        }
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Selector de top --&gt;
+    &lt;div class&#x3D;&quot;control-grupo control-top&quot;&gt;
+      &lt;label class&#x3D;&quot;control-label&quot;&gt;Comparar contra&lt;/label&gt;
+      &lt;div class&#x3D;&quot;top-btns&quot;&gt;
+        @for (op of opcionesTop; track op.valor) {
+          &lt;button
+            class&#x3D;&quot;top-btn&quot;
+            [class.activo]&#x3D;&quot;topSeleccionado &#x3D;&#x3D;&#x3D; op.valor&quot;
+            (click)&#x3D;&quot;setTop(op.valor)&quot;
+          &gt;
+            {{ op.label }}
+          &lt;/button&gt;
+        }
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Estado: cargando --&gt;
+  @if (loading) {
+    &lt;div class&#x3D;&quot;estado-centro&quot;&gt;
+      &lt;div class&#x3D;&quot;spinner&quot;&gt;&lt;/div&gt;
+      &lt;span&gt;Cargando comparativa...&lt;/span&gt;
+    &lt;/div&gt;
+  }
+
+  &lt;!-- Estado: error --&gt;
+  @if (!loading &amp;&amp; error) {
+    &lt;div class&#x3D;&quot;estado-error&quot;&gt;{{ error }}&lt;/div&gt;
+  }
+
+  &lt;!-- Estado: sin comparables --&gt;
+  @if (!loading &amp;&amp; sinComparables) {
+    &lt;div class&#x3D;&quot;estado-vacio&quot;&gt;
+      &lt;span class&#x3D;&quot;vacio-icono&quot;&gt;🐄&lt;/span&gt;
+      &lt;p&gt;
+        Aún no hay suficientes hatos en el sistema con trópico y región similares para comparar este
+        indicador.
+      &lt;/p&gt;
+    &lt;/div&gt;
+  }
+
+  &lt;!-- Gráfico de líneas --&gt;
+  @if (!loading &amp;&amp; tieneDatos) {
+    &lt;div class&#x3D;&quot;grafico-card&quot;&gt;
+      &lt;!-- Leyenda superior --&gt;
+      &lt;div class&#x3D;&quot;leyenda&quot;&gt;
+        &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+          &lt;span class&#x3D;&quot;dot dot-gris&quot;&gt;&lt;/span&gt;
+          Hatos comparables (anónimos)
+        &lt;/span&gt;
+        &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+          &lt;span class&#x3D;&quot;dot dot-verde&quot;&gt;&lt;/span&gt;
+          Tu hato — {{ datos!.nombreHatoActual }}
+        &lt;/span&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Canvas --&gt;
+      &lt;div class&#x3D;&quot;chart-wrap&quot;&gt;
+        &lt;canvas #chartLineas&gt;&lt;/canvas&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Posición del hato --&gt;
+      &lt;div class&#x3D;&quot;posicion-banner&quot;&gt;
+        @if (datos!.comparables.length &gt; 0) {
+          @if (datos!.valorHatoActual &gt;&#x3D; datos!.comparables[0].valor) {
+            &lt;span class&#x3D;&quot;posicion top&quot;&gt;🏆 Tu hato lidera entre los comparados&lt;/span&gt;
+          } @else {
+            @if (datos!.valorHatoActual &gt;&#x3D; datos!.comparables[0].valor) {
+              &lt;span class&#x3D;&quot;posicion top&quot;&gt;🏆 Tu hato lidera entre los comparados&lt;/span&gt;
+            } @else {
+              &lt;span class&#x3D;&quot;posicion media&quot;&gt;
+                Posición aprox. #{{ posicionHato }} de {{ datos!.comparables.length + 1 }} hatos
+                comparados
+              &lt;/span&gt;
+            }
+          }
+        }
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+&lt;/section&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="comparativa-hatos">  <div class="section-header">    <div class="header-text">      <h2>Comparativa con otros hatos</h2>      <p>Tu posición frente a los mejores hatos del sistema con trópico y región similares.</p>    </div>  </div>  <!-- Controles -->  <div class="controles">    <!-- Selector de KPI -->    <div class="control-grupo">      <label class="control-label">Indicador</label>      <div class="selector-scroll">        @for (k of kpisUnicos; track k.codigo) {          <button            class="chip"            [class.activo]="kpiSeleccionado === k.codigo"            (click)="setKpi(k.codigo)"          >            {{ k.nombre }}          </button>        }      </div>    </div>    <!-- Selector de top -->    <div class="control-grupo control-top">      <label class="control-label">Comparar contra</label>      <div class="top-btns">        @for (op of opcionesTop; track op.valor) {          <button            class="top-btn"            [class.activo]="topSeleccionado === op.valor"            (click)="setTop(op.valor)"          >            {{ op.label }}          </button>        }      </div>    </div>  </div>  <!-- Estado: cargando -->  @if (loading) {    <div class="estado-centro">      <div class="spinner"></div>      <span>Cargando comparativa...</span>    </div>  }  <!-- Estado: error -->  @if (!loading && error) {    <div class="estado-error">{{ error }}</div>  }  <!-- Estado: sin comparables -->  @if (!loading && sinComparables) {    <div class="estado-vacio">      <span class="vacio-icono">🐄</span>      <p>        Aún no hay suficientes hatos en el sistema con trópico y región similares para comparar este        indicador.      </p>    </div>  }  <!-- Gráfico de líneas -->  @if (!loading && tieneDatos) {    <div class="grafico-card">      <!-- Leyenda superior -->      <div class="leyenda">        <span class="leyenda-item">          <span class="dot dot-gris"></span>          Hatos comparables (anónimos)        </span>        <span class="leyenda-item">          <span class="dot dot-verde"></span>          Tu hato — {{ datos!.nombreHatoActual }}        </span>      </div>      <!-- Canvas -->      <div class="chart-wrap">        <canvas #chartLineas></canvas>      </div>      <!-- Posición del hato -->      <div class="posicion-banner">        @if (datos!.comparables.length > 0) {          @if (datos!.valorHatoActual >= datos!.comparables[0].valor) {            <span class="posicion top">🏆 Tu hato lidera entre los comparados</span>          } @else {            @if (datos!.valorHatoActual >= datos!.comparables[0].valor) {              <span class="posicion top">🏆 Tu hato lidera entre los comparados</span>            } @else {              <span class="posicion media">                Posición aprox. #{{ posicionHato }} de {{ datos!.comparables.length + 1 }} hatos                comparados              </span>            }          }        }      </div>    </div>  }</section></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'ComparativaHatosComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ComparativaHatosComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

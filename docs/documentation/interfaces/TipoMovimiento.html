@@ -1,0 +1,853 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  TipoMovimiento</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/features/Usuario/finanzas/registro-financiero/registro-financiero.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#icono" 
+>
+                                            icono
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#label" 
+>
+                                            label
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#value" 
+>
+                                            value
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="icono"></a>
+                                        <span class="name "><b>icono</b>
+                                            <a href="#icono">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>icono:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="label"></a>
+                                        <span class="name "><b>label</b>
+                                            <a href="#label">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>label:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="value"></a>
+                                        <span class="name "><b>value</b>
+                                            <a href="#value">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>value:     <code>&quot;INGRESO&quot; | &quot;GASTO&quot; | &quot;INVERSION&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;INGRESO&quot; | &quot;GASTO&quot; | &quot;INVERSION&quot;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule, KeyValuePipe } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import { Hato } from &#x27;../../../../core/services/hato/hato.service&#x27;;
+import {
+  CategoriaFinancieraService,
+  CategoriaFinanciera,
+} from &#x27;../../../../core/services/finanzas/categoria-financiera.service&#x27;;
+import {
+  RegistroFinancieroService,
+  RegistroFinancieroDTO,
+} from &#x27;../../../../core/services/finanzas/registro-financiero.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+import {
+  VentaLecheService,
+  RespuestaVentaLeche,
+} from &#x27;../../../../core/services/finanzas/venta-leche.service&#x27;;
+import { ProduccionLecheService } from &#x27;../../../../core/services/produccion/produccion-leche.service&#x27;;
+import { KpiService } from &#x27;../../../../core/services/kpi/kpi.service&#x27;;
+import { FinanzasExcelComponent } from &#x27;./../../hato/nuevo-hato/secciones/seccion-financiero/finanzas-excel/finanzas-excel.component&#x27;;
+
+interface RegistroForm extends Partial&lt;RegistroFinancieroDTO&gt; {
+  _esVentaLeche?: boolean;
+  _categoriaPadreId?: string;
+  _usandoPersonalizada?: boolean;
+}
+
+interface TipoMovimiento {
+  value: &#x27;INGRESO&#x27; | &#x27;GASTO&#x27; | &#x27;INVERSION&#x27;;
+  label: string;
+  icono: string;
+}
+
+@Component({
+  selector: &#x27;app-registro-financiero&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, SpinnerComponent, KeyValuePipe, FinanzasExcelComponent],
+  templateUrl: &#x27;./registro-financiero.component.html&#x27;,
+  styleUrl: &#x27;./registro-financiero.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class RegistroFinancieroComponent implements OnInit, OnDestroy {
+  hatoActivo: Hato | null &#x3D; null;
+  categorias: CategoriaFinanciera[] &#x3D; [];
+
+  registros: RegistroForm[] &#x3D; [];
+  submitted &#x3D; false;
+  guardando &#x3D; false;
+  toastVisible &#x3D; false;
+
+  // ── Alerta producción ─────────────────────────────────────
+  alertaProduccion &#x3D; false;
+  litrosFaltantes &#x3D; 0;
+  mensajeAlerta &#x3D; &#x27;&#x27;;
+  agregandoProduccionSugerida &#x3D; false;
+  ventaLecheAlertaFecha &#x3D; &#x27;&#x27;;
+  ventaLecheAlertaLitros &#x3D; 0;
+
+  // ── Gestión de categorías ─────────────────────────────────
+  mostrarGestionCategorias &#x3D; false;
+  creandoCategoria &#x3D; false;
+  nuevaCategoriaNombre &#x3D; &#x27;&#x27;;
+  nuevaCategoriaTipo: &#x27;INGRESO&#x27; | &#x27;GASTO&#x27; | &#x27;INVERSION&#x27; &#x3D; &#x27;INGRESO&#x27;;
+  nuevaCategoriaPadreId &#x3D; &#x27;&#x27;;
+  errorCategoria &#x3D; &#x27;&#x27;;
+  exitoCategoria &#x3D; &#x27;&#x27;;
+
+  readonly tiposMovimiento: TipoMovimiento[] &#x3D; [
+    { value: &#x27;INGRESO&#x27;, label: &#x27;Ingreso&#x27;, icono: &#x27;↑&#x27; },
+    { value: &#x27;GASTO&#x27;, label: &#x27;Gasto&#x27;, icono: &#x27;↓&#x27; },
+    { value: &#x27;INVERSION&#x27;, label: &#x27;Inversión&#x27;, icono: &#x27;◈&#x27; },
+  ];
+
+  modoRegistro: &#x27;MANUAL&#x27; | &#x27;EXCEL&#x27; &#x3D; &#x27;MANUAL&#x27;;
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private hatoState: HatoStateService,
+    private categoriaService: CategoriaFinancieraService,
+    private registroService: RegistroFinancieroService,
+    private kpiService: KpiService,
+    private ventaLecheService: VentaLecheService,
+    private produccionService: ProduccionLecheService,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato) {
+        this.cargarCategorias();
+        this.registros &#x3D; [this.nuevoRegistroVacio()];
+        this.submitted &#x3D; false;
+      }
+    });
+  }
+
+  // ── Carga de categorías ───────────────────────────────────
+
+  private cargarCategorias(): void {
+    this.categoriaService
+      .getCategoriasMe()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (cats) &#x3D;&gt; {
+          this.categorias &#x3D; cats;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Getters para selector en cascada ─────────────────────
+
+  getCategoriasPadre(tipo: string): CategoriaFinanciera[] {
+    if (!tipo) return [];
+    const nivelesRaiz &#x3D; [
+      &#x27;GENERAL&#x27;,
+      &#x27;INGRESOS&#x27;,
+      &#x27;GASTOS DE PRODUCCIÓN&#x27;,
+      &#x27;GASTOS OPERATIVOS&#x27;,
+      &#x27;INVERSIONES&#x27;,
+    ];
+    return this.categorias.filter((c) &#x3D;&gt; {
+      if (c.tipo !&#x3D;&#x3D; tipo) return false;
+      const nombrePadre &#x3D; c.categoriaPadre?.nombre?.toUpperCase() ?? &#x27;&#x27;;
+      return nivelesRaiz.includes(nombrePadre);
+    });
+  }
+
+  getCategoriasPredefinidas(tipo: string): CategoriaFinanciera[] {
+    if (!tipo) return [];
+    const nivelesRaiz &#x3D; [
+      &#x27;GENERAL&#x27;,
+      &#x27;INGRESOS&#x27;,
+      &#x27;GASTOS DE PRODUCCIÓN&#x27;,
+      &#x27;GASTOS OPERATIVOS&#x27;,
+      &#x27;INVERSIONES&#x27;,
+    ];
+    return this.categorias.filter((c) &#x3D;&gt; {
+      if (c.tipo !&#x3D;&#x3D; tipo || !c.esPredefinida) return false;
+      const nombrePadre &#x3D; c.categoriaPadre?.nombre?.toUpperCase() ?? &#x27;&#x27;;
+      return nivelesRaiz.includes(nombrePadre);
+    });
+  }
+
+  getCategoriasPersonalizadasPorTipo(tipo: string): CategoriaFinanciera[] {
+    if (!tipo) return [];
+    return this.categorias.filter((c) &#x3D;&gt; c.tipo &#x3D;&#x3D;&#x3D; tipo &amp;&amp; !c.esPredefinida);
+  }
+
+  getSubcategorias(tipo: string, idPadre: string): CategoriaFinanciera[] {
+    if (!tipo || !idPadre) return [];
+    return this.categorias.filter(
+      (c) &#x3D;&gt; c.tipo &#x3D;&#x3D;&#x3D; tipo &amp;&amp; c.categoriaPadre?.idCategoriaFinanciera &#x3D;&#x3D;&#x3D; idPadre,
+    );
+  }
+
+  tieneSubcategorias(tipo: string, idPadre: string): boolean {
+    return this.getSubcategorias(tipo, idPadre).length &gt; 0;
+  }
+
+  // ── Acciones del selector en cascada ─────────────────────
+
+  seleccionarPadre(index: number, idPadre: string): void {
+    this.registros[index]._categoriaPadreId &#x3D; idPadre;
+    this.registros[index].id_categoria &#x3D; &#x27;&#x27;;
+    this.registros[index]._esVentaLeche &#x3D; false;
+
+    // Si no tiene subcategorías, seleccionar el padre directamente
+    const tipo &#x3D; this.registros[index].tipo_movimiento ?? &#x27;&#x27;;
+    if (!this.tieneSubcategorias(tipo, idPadre)) {
+      this.registros[index].id_categoria &#x3D; idPadre;
+      this.onCategoriaChange(index);
+    }
+    this.cdr.markForCheck();
+  }
+
+  seleccionarSubcategoria(index: number, idCategoria: string): void {
+    this.registros[index].id_categoria &#x3D; idCategoria;
+    this.onCategoriaChange(index);
+    this.cdr.markForCheck();
+  }
+
+  // ── Gestión de categorías personalizadas ─────────────────
+
+  toggleGestionCategorias(): void {
+    this.mostrarGestionCategorias &#x3D; !this.mostrarGestionCategorias;
+    this.errorCategoria &#x3D; &#x27;&#x27;;
+    this.exitoCategoria &#x3D; &#x27;&#x27;;
+    this.nuevaCategoriaNombre &#x3D; &#x27;&#x27;;
+    this.nuevaCategoriaPadreId &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+  }
+
+  getCategoriasPadreParaGestion(): CategoriaFinanciera[] {
+    const nivelesRaiz &#x3D; [
+      &#x27;GENERAL&#x27;,
+      &#x27;INGRESOS&#x27;,
+      &#x27;GASTOS DE PRODUCCIÓN&#x27;,
+      &#x27;GASTOS OPERATIVOS&#x27;,
+      &#x27;INVERSIONES&#x27;,
+    ];
+    return this.categorias.filter((c) &#x3D;&gt; {
+      if (c.tipo !&#x3D;&#x3D; this.nuevaCategoriaTipo) return false;
+      const nombrePadre &#x3D; c.categoriaPadre?.nombre?.toUpperCase() ?? &#x27;&#x27;;
+      return nivelesRaiz.includes(nombrePadre);
+    });
+  }
+
+  get categoriasPersonalizadas(): CategoriaFinanciera[] {
+    return this.categorias.filter((c) &#x3D;&gt; !c.esPredefinida);
+  }
+
+  crearCategoriaPersonalizada(): void {
+    if (!this.nuevaCategoriaNombre.trim()) {
+      this.errorCategoria &#x3D; &#x27;El nombre es requerido.&#x27;;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.creandoCategoria &#x3D; true;
+    this.errorCategoria &#x3D; &#x27;&#x27;;
+    this.exitoCategoria &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    this.categoriaService
+      .crearCategoriaPersonalizada({
+        nombre: this.nuevaCategoriaNombre.trim(),
+        tipo: this.nuevaCategoriaTipo,
+        idCategoriaPadre: this.nuevaCategoriaPadreId || undefined,
+      })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () &#x3D;&gt; {
+          this.exitoCategoria &#x3D; &#x27;Categoría creada correctamente.&#x27;;
+          this.nuevaCategoriaNombre &#x3D; &#x27;&#x27;;
+          this.nuevaCategoriaPadreId &#x3D; &#x27;&#x27;;
+          this.creandoCategoria &#x3D; false;
+          this.cargarCategorias();
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.errorCategoria &#x3D; &#x27;Error al crear la categoría.&#x27;;
+          this.creandoCategoria &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  // ── Resto de métodos existentes ───────────────────────────
+
+  seleccionarModo(modo: &#x27;MANUAL&#x27; | &#x27;EXCEL&#x27;): void {
+    this.modoRegistro &#x3D; modo;
+    this.cdr.markForCheck();
+  }
+
+  onCargaExcelExitosa(): void {
+    if (this.hatoActivo?.idHato) {
+      this.kpiService.calcularKpis(this.hatoActivo.idHato).subscribe();
+    }
+    this.cdr.markForCheck();
+  }
+
+  seleccionarTipo(index: number, tipo: string): void {
+    this.registros[index].tipo_movimiento &#x3D; tipo as RegistroFinancieroDTO[&#x27;tipo_movimiento&#x27;];
+    this.registros[index].id_categoria &#x3D; &#x27;&#x27;;
+    this.registros[index]._categoriaPadreId &#x3D; &#x27;&#x27;;
+    this.registros[index]._esVentaLeche &#x3D; false;
+    this.registros[index].litros_vendidos_leche &#x3D; null;
+    this.registros[index].precio_litro_leche &#x3D; null;
+    this.cdr.markForCheck();
+  }
+
+  onCategoriaChange(index: number): void {
+    const registro &#x3D; this.registros[index];
+    const cat &#x3D; this.categorias.find((c) &#x3D;&gt; c.idCategoriaFinanciera &#x3D;&#x3D;&#x3D; registro.id_categoria);
+    const esVenta &#x3D; cat?.nombre?.toLowerCase().includes(&#x27;venta de leche&#x27;) ?? false;
+    registro._esVentaLeche &#x3D; esVenta;
+    if (!esVenta) {
+      registro.litros_vendidos_leche &#x3D; null;
+      registro.precio_litro_leche &#x3D; null;
+    } else {
+      registro.monto &#x3D; 0;
+    }
+  }
+
+  esVentaLeche(index: number): boolean {
+    return !!this.registros[index]._esVentaLeche;
+  }
+
+  calcularMontoLeche(index: number): void {
+    const r &#x3D; this.registros[index];
+    const litros &#x3D; r.litros_vendidos_leche ?? 0;
+    const precio &#x3D; r.precio_litro_leche ?? 0;
+    r.monto &#x3D; litros * precio;
+  }
+
+  formatCOP(valor: number | undefined): string {
+    if (!valor &amp;&amp; valor !&#x3D;&#x3D; 0) return &#x27;$ 0&#x27;;
+    return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(valor);
+  }
+
+  tieneErrores(index: number): boolean {
+    const r &#x3D; this.registros[index];
+    if (!r.titulo || !r.tipo_movimiento || !r.id_categoria || !r.fecha) return true;
+    if (this.esVentaLeche(index)) {
+      return !r.litros_vendidos_leche || !r.precio_litro_leche;
+    }
+    return !r.monto || r.monto &lt;&#x3D; 0;
+  }
+
+  private validarTodo(): boolean {
+    return this.registros.every((_, i) &#x3D;&gt; !this.tieneErrores(i));
+  }
+
+  private nuevoRegistroVacio(): RegistroForm {
+    return {
+      titulo: &#x27;&#x27;,
+      tipo_movimiento: undefined,
+      id_categoria: &#x27;&#x27;,
+      _categoriaPadreId: &#x27;&#x27;,
+      fecha: new Date().toISOString().split(&#x27;T&#x27;)[0],
+      descripcion: &#x27;&#x27;,
+      monto: 0,
+      litros_vendidos_leche: null,
+      precio_litro_leche: null,
+      _esVentaLeche: false,
+      _usandoPersonalizada: false,
+    };
+  }
+
+  agregarRegistro(): void {
+    this.registros.push(this.nuevoRegistroVacio());
+  }
+
+  eliminarRegistro(index: number): void {
+    this.registros.splice(index, 1);
+  }
+
+  togglePersonalizada(index: number): void {
+    this.registros[index]._usandoPersonalizada &#x3D; !this.registros[index]._usandoPersonalizada;
+    this.registros[index].id_categoria &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+  }
+  guardar(): void {
+    this.submitted &#x3D; true;
+    if (!this.hatoActivo || !this.validarTodo()) return;
+
+    this.guardando &#x3D; true;
+    const idHato: string &#x3D; this.hatoActivo.idHato as string;
+
+    const payload: RegistroFinancieroDTO[] &#x3D; this.registros.map((r) &#x3D;&gt; ({
+      id_hato: idHato,
+      id_categoria: r.id_categoria!,
+      titulo: r.titulo!,
+      tipo_movimiento: r.tipo_movimiento!,
+      fecha: r.fecha!,
+      descripcion: r.descripcion || undefined,
+      monto: r.monto!,
+      litros_vendidos_leche: r._esVentaLeche ? r.litros_vendidos_leche : null,
+      precio_litro_leche: r._esVentaLeche ? r.precio_litro_leche : null,
+    }));
+
+    const ventasLeche &#x3D; this.registros.filter(
+      (r) &#x3D;&gt; r._esVentaLeche &amp;&amp; r.litros_vendidos_leche &amp;&amp; r.precio_litro_leche &amp;&amp; r.fecha,
+    );
+
+    this.registroService.crearRegistros(payload).subscribe({
+      next: () &#x3D;&gt; {
+        this.guardando &#x3D; false;
+        this.submitted &#x3D; false;
+
+        if (ventasLeche.length &gt; 0) {
+          const primeraVenta &#x3D; ventasLeche[0];
+          this.ventaLecheService
+            .crearVenta({
+              idHato,
+              fecha: primeraVenta.fecha!,
+              litrosVendidos: primeraVenta.litros_vendidos_leche!,
+              precioLitro: primeraVenta.precio_litro_leche!,
+            })
+            .pipe(takeUntil(this.destroy$))
+            .subscribe({
+              next: (respuesta: RespuestaVentaLeche) &#x3D;&gt; {
+                if (respuesta.alerta &amp;&amp; respuesta.litrosFaltantes &gt; 0) {
+                  this.alertaProduccion &#x3D; true;
+                  this.litrosFaltantes &#x3D; respuesta.litrosFaltantes;
+                  this.mensajeAlerta &#x3D; respuesta.mensaje ?? &#x27;&#x27;;
+                  this.ventaLecheAlertaFecha &#x3D; primeraVenta.fecha!;
+                  this.ventaLecheAlertaLitros &#x3D; respuesta.litrosFaltantes;
+                  this.cdr.markForCheck();
+                } else {
+                  this.mostrarToast();
+                }
+              },
+              error: () &#x3D;&gt; this.mostrarToast(),
+            });
+        } else {
+          this.mostrarToast();
+        }
+
+        this.registros &#x3D; [this.nuevoRegistroVacio()];
+        this.cdr.markForCheck();
+
+        if (this.hatoActivo?.idHato) {
+          this.kpiService.calcularKpis(this.hatoActivo.idHato).subscribe();
+        }
+      },
+      error: (err) &#x3D;&gt; {
+        this.guardando &#x3D; false;
+        console.error(&#x27;Error al guardar registros:&#x27;, err);
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private mostrarToast(): void {
+    this.cdr.markForCheck();
+    this.toastVisible &#x3D; true;
+    setTimeout(() &#x3D;&gt; (this.toastVisible &#x3D; false), 3500);
+  }
+
+  aceptarProduccionSugerida(): void {
+    if (!this.hatoActivo?.idHato) return;
+    this.agregandoProduccionSugerida &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.produccionService
+      .crearRegistro({
+        idHato: this.hatoActivo.idHato as any,
+        fecha: this.ventaLecheAlertaFecha as any,
+        litrosProducidos: this.litrosFaltantes,
+        vacasOrdenadas: undefined,
+      })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () &#x3D;&gt; {
+          this.kpiService.calcularKpis(this.hatoActivo!.idHato as string).subscribe();
+          this.cerrarAlerta();
+          this.mostrarToast();
+        },
+        error: () &#x3D;&gt; {
+          this.cerrarAlerta();
+          this.mostrarToast();
+        },
+      });
+  }
+
+  rechazarProduccionSugerida(): void {
+    this.cerrarAlerta();
+    this.mostrarToast();
+  }
+
+  private cerrarAlerta(): void {
+    this.alertaProduccion &#x3D; false;
+    this.litrosFaltantes &#x3D; 0;
+    this.mensajeAlerta &#x3D; &#x27;&#x27;;
+    this.ventaLecheAlertaFecha &#x3D; &#x27;&#x27;;
+    this.ventaLecheAlertaLitros &#x3D; 0;
+    this.agregandoProduccionSugerida &#x3D; false;
+    this.cdr.markForCheck();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'TipoMovimiento.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

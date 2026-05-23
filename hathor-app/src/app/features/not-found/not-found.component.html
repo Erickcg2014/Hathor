@@ -1,0 +1,51 @@
+<div class="page">
+  <div class="bg-blob bg-blob-1"></div>
+  <div class="bg-blob bg-blob-2"></div>
+
+  <div class="card">
+    <div class="image-side">
+      <div class="image-frame">
+        <img src="assets/not-found.jpg" alt="Página no encontrada" class="illustration" />
+      </div>
+      <div class="image-badge">¿Dónde estoy? 🤔</div>
+    </div>
+
+    <div class="content-side">
+      <div class="logo-row">
+        <img src="assets/hathor-logo.png" alt="Hathor" class="logo" />
+      </div>
+
+      <div class="error-number">404</div>
+
+      <h1 class="title">¡Ups! Esta página<br />se perdió en el potrero</h1>
+
+      <p class="description">
+        Parece que la ruta que buscas no existe o fue movida. No te preocupes — hasta las mejores
+        vacas se pierden a veces.
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="actions">
+        <button class="btn-primary" (click)="irInicio()">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            />
+          </svg>
+          Volver al inicio
+        </button>
+        <button class="btn-secondary" (click)="irLogin()">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14" />
+          </svg>
+          Ir al Login
+        </button>
+      </div>
+
+      <p class="hint">Si crees que esto es un error, contacta al administrador del sistema.</p>
+    </div>
+  </div>
+</div>

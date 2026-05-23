@@ -1,0 +1,69 @@
+<div class="home-page" data-cy="home-page">
+  <!-- ── Carga inicial ── -->
+  @if (loading) {
+    <div class="loading-wrapper">
+      <app-spinner size="large" data-cy="home-loading" message="Cargando tu panel..."></app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- 1. HEADER — saludo, frase, datos del hato y ranking -->
+    <app-home-header
+      [usuario]="usuario"
+      [hatoActivo]="hatoActivo"
+      [tipoSaludo]="tipoSaludo"
+      [saludoTexto]="saludoTexto"
+      [frase]="frase"
+      [rankingResumen]="rankingResumen"
+      [loadingRanking]="loadingRanking"
+    />
+
+    <!-- 2. CLIMA — solo para ganaderos con coordenadas, nunca para admin -->
+    @if (!esAdmin) {
+      <app-home-clima
+        [climaData]="climaData"
+        [recomendacionesClima]="recomendacionesClima"
+        [loadingClima]="loadingClima"
+        [hatoActivo]="hatoActivo"
+        (navegarA)="irA($event)"
+      />
+    }
+
+    <!-- 3. ESTADO — selector admin / banner completitud / sin hato -->
+    <app-home-estado
+      [hatoActivo]="hatoActivo"
+      [esAdmin]="esAdmin"
+      [completitud]="completitud"
+      (continuarFormulario)="continuarFormulario()"
+      (registrarHato)="irA('/hato/nuevo')"
+    />
+
+    <!-- 4 y 5. Secciones que solo existen con hato activo -->
+    @if (hatoActivo) {
+      <!-- 4. MAPA — distribución geográfica de hatos en la plataforma -->
+      <app-home-mapa [hatosPlataforma]="hatosPlataforma" [loadingMapa]="loadingMapa" />
+
+      <!-- 5. MÓDULOS — ranking chips + grid de tarjetas con gráficas -->
+      <app-home-modulos
+        data-cy="home-modulos"
+        [hatoActivo]="hatoActivo"
+        [perfilProductivo]="perfilProductivo"
+        [produccionUltimos30]="produccionUltimos30"
+        [loadingProduccion]="loadingProduccion"
+        [totalIngresos]="totalIngresos"
+        [totalEgresos]="totalEgresos"
+        [balanceNeto]="balanceNeto"
+        [finanzasPorMes]="finanzasPorMes"
+        [loadingFinanzas]="loadingFinanzas"
+        [totalAnimales]="totalAnimales"
+        [distribucionGanado]="distribucionGanado"
+        [loadingInventario]="loadingInventario"
+        [kpis]="kpis"
+        [benchmarks]="benchmarks"
+        [rankingResumen]="rankingResumen"
+        [loadingKpis]="loadingKpis"
+        (navegarA)="irA($event)"
+      />
+    }
+  }
+</div>

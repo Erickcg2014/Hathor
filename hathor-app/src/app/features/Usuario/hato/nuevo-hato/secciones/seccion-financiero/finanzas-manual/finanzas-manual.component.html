@@ -1,0 +1,646 @@
+<div class="manual-wrapper">
+  <!-- ===== LOADING ===== -->
+  @if (loadingCategorias) {
+    <div class="loading-categorias">
+      <app-spinner size="small" message="Cargando categorías..."></app-spinner>
+    </div>
+  }
+
+  @if (!loadingCategorias) {
+    <!-- ===== PASO 1: SELECCIÓN DE CATEGORÍAS ===== -->
+    @if (pasoActual === 1) {
+      <div class="manual-intro">
+        <p class="manual-intro-texto">
+          Selecciona las categorías de ingresos y gastos que aplican a tu operación. Solo verás los
+          campos que elijas.
+        </p>
+      </div>
+
+      <!-- INGRESOS -->
+      <div class="categoria-seccion">
+        <div class="categoria-seccion-header ingreso" (click)="toggleSeccionIngresos()">
+          <span class="categoria-seccion-icono">💰</span>
+          <span class="categoria-seccion-titulo">Ingresos</span>
+          <span class="categoria-seccion-count">
+            {{ ingresosSeleccionados.length }}/{{ categoriasIngresos.length }}
+          </span>
+          <button
+            class="btn-seleccionar-todos"
+            (click)="$event.stopPropagation(); seleccionarTodasIngresos()"
+          >
+            {{ todosIngresosSeleccionados() ? 'Deseleccionar todos' : 'Seleccionar todos' }}
+          </button>
+          <svg
+            class="chevron-seccion"
+            [class.rotado]="seccionIngresosAbierta"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+
+        @if (seccionIngresosAbierta) {
+          <div class="categoria-lista">
+            @for (cat of categoriasIngresos; track trackById($index, cat)) {
+              <label class="categoria-item" [class.seleccionada]="cat.seleccionada">
+                <input
+                  type="checkbox"
+                  [checked]="cat.seleccionada"
+                  (change)="toggleCategoria(cat)"
+                  class="categoria-checkbox"
+                />
+                <span class="categoria-nombre">{{ cat.nombre }}</span>
+                <span class="categoria-tipo-badge ingreso-badge">INGRESO</span>
+              </label>
+            }
+            <!-- Botón agregar otro ingreso -->
+            <div class="btn-agregar-otro-wrapper">
+              <button class="btn-agregar-otro ingreso-agregar" (click)="agregarOtroIngreso()">
+                <span>＋</span> Agregar otro ingreso
+              </button>
+            </div>
+
+            <!-- Filas de otros ingresos pendientes -->
+            @for (otro of otrosIngresos; track trackByTempId($index, otro)) {
+              <div class="otro-item-fila" [class.confirmado]="otro.confirmada">
+                @if (!otro.confirmada && !otro.creando) {
+                  <input
+                    type="text"
+                    class="input-otro-nombre"
+                    placeholder="Ej: Venta de abono orgánico..."
+                    [value]="otro.nombre"
+                    (input)="setNombreOtro(otro, $any($event.target).value)"
+                    maxlength="80"
+                  />
+                  <button
+                    class="btn-confirmar-otro ingreso-confirmar"
+                    [disabled]="!otro.nombre.trim()"
+                    (click)="confirmarOtro(otro)"
+                  >
+                    ✓ Confirmar
+                  </button>
+                  <button
+                    class="btn-eliminar-otro"
+                    (click)="eliminarOtro(otrosIngresos, otro.tempId)"
+                  >
+                    ✕
+                  </button>
+                }
+                @if (otro.creando) {
+                  <app-spinner size="small" message="Creando categoría..."></app-spinner>
+                }
+                @if (otro.confirmada) {
+                  <span class="otro-confirmado-nombre ingreso-color">✓ {{ otro.nombre }}</span>
+                  <span class="otro-confirmado-badge ingreso-badge">INGRESO PERSONALIZADO</span>
+                  <button class="btn-editar-otro" (click)="editarOtro(otro)">Editar</button>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- GASTOS -->
+      <div class="categoria-seccion">
+        <div class="categoria-seccion-header egreso" (click)="toggleSeccionGastos()">
+          <span class="categoria-seccion-icono">💸</span>
+          <span class="categoria-seccion-titulo">Egresos</span>
+          <span class="categoria-seccion-count egreso-count">
+            {{ gastosSeleccionados.length }}/{{ categoriasGastos.length }}
+          </span>
+          <button
+            class="btn-seleccionar-todos egreso-btn"
+            (click)="$event.stopPropagation(); seleccionarTodasGastos()"
+          >
+            {{ todosGastosSeleccionados() ? 'Deseleccionar todos' : 'Seleccionar todos' }}
+          </button>
+          <svg
+            class="chevron-seccion"
+            [class.rotado]="seccionGastosAbierta"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+
+        @if (seccionGastosAbierta) {
+          <div class="categoria-lista">
+            @for (cat of categoriasGastos; track trackById($index, cat)) {
+              <label class="categoria-item" [class.seleccionada]="cat.seleccionada">
+                <input
+                  type="checkbox"
+                  [checked]="cat.seleccionada"
+                  (change)="toggleCategoria(cat)"
+                  class="categoria-checkbox"
+                />
+                <span class="categoria-nombre">{{ cat.nombre }}</span>
+                <span class="categoria-tipo-badge egreso-badge">GASTO</span>
+              </label>
+            }
+            <!-- Botón agregar otro gasto -->
+            <div class="btn-agregar-otro-wrapper">
+              <button class="btn-agregar-otro gasto-agregar" (click)="agregarOtroGasto()">
+                <span>＋</span> Agregar otro gasto
+              </button>
+            </div>
+
+            @for (otro of otrosGastos; track trackByTempId($index, otro)) {
+              <div class="otro-item-fila" [class.confirmado]="otro.confirmada">
+                @if (!otro.confirmada && !otro.creando) {
+                  <input
+                    type="text"
+                    class="input-otro-nombre"
+                    placeholder="Ej: Arrendamiento de potreros..."
+                    [value]="otro.nombre"
+                    (input)="setNombreOtro(otro, $any($event.target).value)"
+                    maxlength="80"
+                  />
+                  <button
+                    class="btn-confirmar-otro gasto-confirmar"
+                    [disabled]="!otro.nombre.trim()"
+                    (click)="confirmarOtro(otro)"
+                  >
+                    ✓ Confirmar
+                  </button>
+                  <button
+                    class="btn-eliminar-otro"
+                    (click)="eliminarOtro(otrosGastos, otro.tempId)"
+                  >
+                    ✕
+                  </button>
+                }
+                @if (otro.creando) {
+                  <app-spinner size="small" message="Creando categoría..."></app-spinner>
+                }
+                @if (otro.confirmada) {
+                  <span class="otro-confirmado-nombre egreso-color">✓ {{ otro.nombre }}</span>
+                  <span class="otro-confirmado-badge egreso-badge">GASTO PERSONALIZADO</span>
+                  <button class="btn-editar-otro" (click)="editarOtro(otro)">Editar</button>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Resumen selección -->
+      @if (haySeleccion) {
+        <div class="seleccion-resumen">
+          @if (ingresosSeleccionados.length > 0 || otrosIngresosConfirmados.length > 0) {
+            <div class="seleccion-grupo">
+              <div class="seleccion-grupo-header">
+                <span class="seleccion-chip ingreso-chip">
+                  {{ ingresosSeleccionados.length + otrosIngresosConfirmados.length }}
+                  ingreso{{
+                    ingresosSeleccionados.length + otrosIngresosConfirmados.length > 1 ? 's' : ''
+                  }}
+                </span>
+              </div>
+              <div class="seleccion-lista">
+                @for (cat of ingresosSeleccionados; track cat.idCategoria) {
+                  <div class="seleccion-item ingreso-item">
+                    <span class="seleccion-dot ingreso-dot"></span>
+                    <span class="seleccion-item-nombre">{{ cat.nombre }}</span>
+                  </div>
+                }
+                @for (otro of otrosIngresosConfirmados; track otro.tempId) {
+                  <div class="seleccion-item ingreso-item">
+                    <span class="seleccion-dot ingreso-dot"></span>
+                    <span class="seleccion-item-nombre">{{ otro.nombre }}</span>
+                    <span class="seleccion-personalizado-badge">Personalizado</span>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+
+          @if (gastosSeleccionados.length > 0 || otrosGastosConfirmados.length > 0) {
+            <div class="seleccion-grupo">
+              <div class="seleccion-grupo-header">
+                <span class="seleccion-chip egreso-chip">
+                  {{ gastosSeleccionados.length + otrosGastosConfirmados.length }}
+                  egreso{{
+                    gastosSeleccionados.length + otrosGastosConfirmados.length > 1 ? 's' : ''
+                  }}
+                </span>
+              </div>
+              <div class="seleccion-lista seleccion-lista-egreso">
+                @for (cat of gastosSeleccionados; track cat.idCategoria) {
+                  <div class="seleccion-item egreso-item">
+                    <span class="seleccion-dot egreso-dot"></span>
+                    <span class="seleccion-item-nombre">{{ cat.nombre }}</span>
+                  </div>
+                }
+                @for (otro of otrosGastosConfirmados; track otro.tempId) {
+                  <div class="seleccion-item egreso-item">
+                    <span class="seleccion-dot egreso-dot"></span>
+                    <span class="seleccion-item-nombre">{{ otro.nombre }}</span>
+                    <span class="seleccion-personalizado-badge egreso-personalizado"
+                      >Personalizado</span
+                    >
+                  </div>
+                }
+              </div>
+            </div>
+          }
+
+          <span class="seleccion-hint">seleccionados</span>
+        </div>
+      }
+
+      <div class="paso1-actions">
+        @if (mensajeSeleccion) {
+          <p class="seleccion-aviso">⚠️ {{ mensajeSeleccion }}</p>
+        }
+        <button class="btn-continuar" [disabled]="!haySeleccion" (click)="avanzarAPaso2()">
+          Continuar →
+        </button>
+      </div>
+    }
+
+    <!-- ===== PASO 2: MODO Y DATOS ===== -->
+    @if (pasoActual === 2) {
+      <!-- Header paso 2 -->
+      <div class="paso2-header">
+        <button class="btn-volver" (click)="volverAPaso1()">← Cambiar categorías</button>
+        <div class="seleccion-resumen">
+          @if (ingresosSeleccionados.length > 0) {
+            <span class="seleccion-chip ingreso-chip">
+              {{ ingresosSeleccionados.length }} ingreso{{
+                ingresosSeleccionados.length > 1 ? 's' : ''
+              }}
+            </span>
+          }
+          @if (gastosSeleccionados.length > 0) {
+            <span class="seleccion-chip egreso-chip">
+              {{ gastosSeleccionados.length }} egreso{{ gastosSeleccionados.length > 1 ? 's' : '' }}
+            </span>
+          }
+        </div>
+      </div>
+
+      <!-- SELECTOR DE MODO -->
+      <div class="modo-selector">
+        <h4 class="modo-titulo">¿Cómo quieres ingresar los datos?</h4>
+        <div class="modo-opciones">
+          <div
+            class="modo-opcion"
+            [class.activo]="modoSeleccionado === 'PROMEDIO'"
+            (click)="seleccionarModo('PROMEDIO')"
+          >
+            <span class="modo-icono">📊</span>
+            <span class="modo-label">Promedio mensual</span>
+            <p class="modo-desc">Un valor promedio por categoría</p>
+            <div class="modo-radio" [class.activo]="modoSeleccionado === 'PROMEDIO'"></div>
+          </div>
+
+          <div
+            class="modo-opcion"
+            [class.activo]="modoSeleccionado === 'MENSUAL'"
+            (click)="seleccionarModo('MENSUAL')"
+          >
+            <span class="modo-icono">📅</span>
+            <span class="modo-label">Por mes</span>
+            <p class="modo-desc">Valores mes a mes (máx. 12 meses atrás)</p>
+            <div class="modo-radio" [class.activo]="modoSeleccionado === 'MENSUAL'"></div>
+          </div>
+
+          <div
+            class="modo-opcion"
+            [class.activo]="modoSeleccionado === 'ANUAL'"
+            (click)="seleccionarModo('ANUAL')"
+          >
+            <span class="modo-icono">📆</span>
+            <span class="modo-label">Por año</span>
+            <p class="modo-desc">Totales anuales (máx. 3 años atrás)</p>
+            <div class="modo-radio" [class.activo]="modoSeleccionado === 'ANUAL'"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONFIG MENSUAL -->
+      @if (modoSeleccionado === 'MENSUAL') {
+        <div class="periodo-config">
+          <label class="config-label">¿Desde qué mes quieres ingresar datos?</label>
+          <div class="config-row">
+            <input type="month" [(ngModel)]="mesInicio" class="config-input" />
+            <button class="btn-generar" [disabled]="!mesInicio" (click)="generarPeriodosMensual()">
+              Generar períodos
+            </button>
+          </div>
+          <span class="config-hint">Máximo 12 meses hacia atrás desde hoy</span>
+        </div>
+      }
+
+      <!-- CONFIG ANUAL -->
+      @if (modoSeleccionado === 'ANUAL') {
+        <div class="periodo-config">
+          <label class="config-label">¿Desde qué año quieres ingresar datos?</label>
+          <div class="config-row">
+            <input
+              type="number"
+              [(ngModel)]="anioInicio"
+              class="config-input"
+              placeholder="Ej: 2022"
+              [min]="anioActual - 3"
+              [max]="anioActual"
+            />
+            <button class="btn-generar" [disabled]="!anioInicio" (click)="generarPeriodosAnual()">
+              Generar períodos
+            </button>
+          </div>
+          <span class="config-hint">Máximo 3 años hacia atrás desde hoy</span>
+        </div>
+      }
+
+      <!-- TABLA DE DATOS -->
+      @if (periodosListos) {
+        <!-- INGRESOS -->
+        @if (ingresosSeleccionados.length > 0 || otrosIngresosConfirmados.length > 0) {
+          <div class="manual-seccion">
+            <div class="manual-seccion-header ingreso">
+              <span class="manual-seccion-icono">💰</span>
+              <div>
+                <h4 class="manual-seccion-titulo">Ingresos</h4>
+                <p class="manual-seccion-subtitulo">
+                  {{
+                    modoSeleccionado === 'PROMEDIO'
+                      ? 'Promedio mensual por categoría'
+                      : 'Valores por período'
+                  }}
+                </p>
+              </div>
+              @if (totalIngresos > 0) {
+                <span class="manual-seccion-total">{{ formatearPesos(totalIngresos) }}</span>
+              }
+            </div>
+
+            <div class="tabla-datos">
+              @if (modoSeleccionado !== 'PROMEDIO') {
+                <div class="tabla-header">
+                  <div class="tabla-col-cat">Categoría</div>
+                  @for (p of periodosGenerados; track trackByPeriodo($index, p)) {
+                    <div class="tabla-col-periodo">{{ p.etiqueta }}</div>
+                  }
+                  <div class="tabla-col-total">Total</div>
+                </div>
+              }
+
+              @for (cat of ingresosSeleccionados; track trackById($index, cat)) {
+                <div class="tabla-fila">
+                  <div class="tabla-col-cat">
+                    <span class="tabla-cat-nombre">{{ cat.nombre }}</span>
+                    <span class="categoria-tipo-badge ingreso-badge">{{ cat.tipo }}</span>
+                  </div>
+                  @for (p of periodosGenerados; track trackByPeriodo($index, p)) {
+                    <div class="tabla-col-periodo">
+                      <div class="input-monto-wrapper">
+                        <span class="input-prefix-small">$</span>
+                        <input
+                          type="text"
+                          inputmode="numeric"
+                          [value]="getValor(datosIngreso, cat.idCategoria, p.clave)"
+                          (input)="
+                            setValor(
+                              datosIngreso,
+                              cat.idCategoria,
+                              p.clave,
+                              $any($event.target).value
+                            )
+                          "
+                          (keydown)="soloNumeros($event)"
+                          placeholder="0"
+                          class="input-monto-tabla"
+                        />
+                      </div>
+                    </div>
+                  }
+                  <div class="tabla-col-total ingreso-color">
+                    {{ formatearPesos(getTotalCategoria(datosIngreso, cat.idCategoria)) }}
+                  </div>
+                </div>
+              }
+
+              @for (otro of otrosIngresosConfirmados; track otro.tempId) {
+                <div class="tabla-fila">
+                  <div class="tabla-col-cat">
+                    <span class="tabla-cat-nombre">{{ otro.nombre }}</span>
+                    <span class="categoria-tipo-badge ingreso-badge">PERSONALIZADO</span>
+                  </div>
+                  @for (p of periodosGenerados; track trackByPeriodo($index, p)) {
+                    <div class="tabla-col-periodo">
+                      <div class="input-monto-wrapper">
+                        <span class="input-prefix-small">$</span>
+                        <input
+                          type="text"
+                          inputmode="numeric"
+                          [value]="getValor(datosIngreso, otro.idReal!, p.clave)"
+                          (input)="
+                            setValor(datosIngreso, otro.idReal!, p.clave, $any($event.target).value)
+                          "
+                          (keydown)="soloNumeros($event)"
+                          placeholder="0"
+                          class="input-monto-tabla"
+                        />
+                      </div>
+                    </div>
+                  }
+                  <div class="tabla-col-total ingreso-color">
+                    {{ formatearPesos(getTotalCategoria(datosIngreso, otro.idReal!)) }}
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- GASTOS -->
+        @if (gastosSeleccionados.length > 0 || otrosGastosConfirmados.length > 0) {
+          <div class="manual-seccion">
+            <div class="manual-seccion-header egreso">
+              <span class="manual-seccion-icono">💸</span>
+              <div>
+                <h4 class="manual-seccion-titulo">Egresos</h4>
+                <p class="manual-seccion-subtitulo">
+                  {{
+                    modoSeleccionado === 'PROMEDIO'
+                      ? 'Promedio mensual por categoría'
+                      : 'Valores por período'
+                  }}
+                </p>
+              </div>
+              @if (totalGastos > 0) {
+                <span class="manual-seccion-total egreso-total">{{
+                  formatearPesos(totalGastos)
+                }}</span>
+              }
+            </div>
+
+            <div class="tabla-datos">
+              @if (modoSeleccionado !== 'PROMEDIO') {
+                <div class="tabla-header">
+                  <div class="tabla-col-cat">Categoría</div>
+                  @for (p of periodosGenerados; track trackByPeriodo($index, p)) {
+                    <div class="tabla-col-periodo">{{ p.etiqueta }}</div>
+                  }
+                  <div class="tabla-col-total">Total</div>
+                </div>
+              }
+
+              @for (cat of gastosSeleccionados; track trackById($index, cat)) {
+                <div class="tabla-fila">
+                  <div class="tabla-col-cat">
+                    <span class="tabla-cat-nombre">{{ cat.nombre }}</span>
+                    <span class="categoria-tipo-badge egreso-badge">{{ cat.tipo }}</span>
+                  </div>
+                  @for (p of periodosGenerados; track trackByPeriodo($index, p)) {
+                    <div class="tabla-col-periodo">
+                      <div class="input-monto-wrapper">
+                        <span class="input-prefix-small">$</span>
+                        <input
+                          type="text"
+                          inputmode="numeric"
+                          [value]="getValor(datosGasto, cat.idCategoria, p.clave)"
+                          (input)="
+                            setValor(
+                              datosGasto,
+                              cat.idCategoria,
+                              p.clave,
+                              $any($event.target).value
+                            )
+                          "
+                          (keydown)="soloNumeros($event)"
+                          placeholder="0"
+                          class="input-monto-tabla"
+                        />
+                      </div>
+                    </div>
+                  }
+                  <div class="tabla-col-total egreso-color">
+                    {{ formatearPesos(getTotalCategoria(datosGasto, cat.idCategoria)) }}
+                  </div>
+                </div>
+              }
+
+              @for (otro of otrosGastosConfirmados; track otro.tempId) {
+                <div class="tabla-fila">
+                  <div class="tabla-col-cat">
+                    <span class="tabla-cat-nombre">{{ otro.nombre }}</span>
+                    <span class="categoria-tipo-badge egreso-badge">PERSONALIZADO</span>
+                  </div>
+                  @for (p of periodosGenerados; track trackByPeriodo($index, p)) {
+                    <div class="tabla-col-periodo">
+                      <div class="input-monto-wrapper">
+                        <span class="input-prefix-small">$</span>
+                        <input
+                          type="text"
+                          inputmode="numeric"
+                          [value]="getValor(datosGasto, otro.idReal!, p.clave)"
+                          (input)="
+                            setValor(datosGasto, otro.idReal!, p.clave, $any($event.target).value)
+                          "
+                          (keydown)="soloNumeros($event)"
+                          placeholder="0"
+                          class="input-monto-tabla"
+                        />
+                      </div>
+                    </div>
+                  }
+                  <div class="tabla-col-total egreso-color">
+                    {{ formatearPesos(getTotalCategoria(datosGasto, otro.idReal!)) }}
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Advertencia categorías sin datos -->
+        @if (periodosListos && !todasCategoriasConDatos && hayDatos) {
+          <div class="advertencia-datos">
+            <span class="advertencia-icono">⚠️</span>
+            <div>
+              <p class="advertencia-titulo">Faltan datos en algunas categorías</p>
+              <p class="advertencia-desc">
+                Debes ingresar al menos un valor en cada categoría seleccionada para poder guardar:
+              </p>
+              <ul class="advertencia-lista">
+                @for (nombre of categoriaSinDatos; track nombre) {
+                  <li>{{ nombre }}</li>
+                }
+              </ul>
+            </div>
+          </div>
+        }
+
+        <!-- BALANCE -->
+        @if (hayDatos) {
+          <div class="balance-resumen">
+            <div class="balance-item">
+              <span class="balance-label">Total ingresos históricos</span>
+              <span class="balance-valor ingreso-color">{{ formatearPesos(totalIngresos) }}</span>
+            </div>
+            <div class="balance-divider">—</div>
+            <div class="balance-item">
+              <span class="balance-label">Total gastos históricos</span>
+              <span class="balance-valor egreso-color">{{ formatearPesos(totalGastos) }}</span>
+            </div>
+            <div class="balance-divider">=</div>
+            <div class="balance-item">
+              <span class="balance-label">Balance histórico</span>
+              <span
+                class="balance-valor"
+                [class.ingreso-color]="balance >= 0"
+                [class.egreso-color]="balance < 0"
+              >
+                {{ formatearPesos(balance) }}
+              </span>
+            </div>
+          </div>
+        }
+
+        <!-- EMPTY -->
+        @if (!hayDatos) {
+          <div class="items-empty">
+            <span>💰</span>
+            <p>Ingresa al menos un valor para continuar.</p>
+          </div>
+        }
+      }
+    }
+
+    <!-- ===== OVERLAY LÍMITE EXCEDIDO ===== -->
+    @if (mostrarOverlayLimite) {
+      <div class="overlay-limite">
+        <div class="overlay-limite-card">
+          <span class="overlay-limite-icono">⚠️</span>
+          <h4 class="overlay-limite-titulo">Período fuera del límite</h4>
+          <p class="overlay-limite-desc">
+            El registro manual está limitado a
+            {{ modoSeleccionado === 'MENSUAL' ? '12 meses' : '3 años' }} hacia atrás. Para registrar
+            datos más antiguos te recomendamos usar la opción <strong>Cargar Excel</strong>.
+          </p>
+          <div class="overlay-limite-actions">
+            <button class="btn-overlay-secundario" (click)="cerrarOverlay()">Cambiar fecha</button>
+            <button class="btn-overlay-primario" (click)="cerrarOverlay()">
+              Ir a cargar Excel →
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- ERROR -->
+    @if (error) {
+      <div class="error-box">
+        <p>{{ error }}</p>
+      </div>
+    }
+  }
+</div>

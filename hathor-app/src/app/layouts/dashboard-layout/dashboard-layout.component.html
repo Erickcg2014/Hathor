@@ -1,0 +1,19 @@
+<div class="layout" [class.sidebar-collapsed]="sidebarCollapsed">
+  <app-sidebar></app-sidebar>
+  <div class="main">
+    <!-- Navbar según rol -->
+    @if (esAdmin) {
+      <app-navbar-admin></app-navbar-admin>
+    } @else {
+      <app-navbar></app-navbar>
+    }
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+@if (!esAdmin) {
+  <app-bitacora-ordenio></app-bitacora-ordenio>
+  <app-asistente-chat></app-asistente-chat>
+}

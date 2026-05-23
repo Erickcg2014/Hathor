@@ -1,0 +1,287 @@
+<div class="progreso-page">
+  <!-- ===== LOADING ===== -->
+  @if (loading) {
+    <div class="loading-wrap">
+      <app-spinner size="large" message="Cargando timeline..."> </app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- ===== HEADER ===== -->
+    <header class="page-header">
+      <div class="header-left">
+        <p class="page-tag">Prácticas · Timeline</p>
+        <h1 class="page-title">Mi <span class="brand">Progreso</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato para ver tu progreso.</p>
+        }
+      </div>
+      <div class="header-right">
+        <div class="header-icon">📈</div>
+      </div>
+    </header>
+
+    @if (error) {
+      <div class="msg-error">
+        <span>❌</span>
+        <p>{{ error }}</p>
+      </div>
+    }
+
+    @if (!hatoActivo) {
+      <div class="empty-state">
+        <span>🐄</span>
+        <p>Selecciona un hato para ver tu progreso.</p>
+      </div>
+    }
+
+    @if (hatoActivo) {
+      <!-- ===== STATS GLOBALES ===== -->
+      <div class="stats-grid">
+        <div class="stat-card completada">
+          <span class="stat-icono">✅</span>
+          <div class="stat-info">
+            <span class="stat-label">Completadas</span>
+            <span class="stat-valor">{{ totalCompletadas }}</span>
+          </div>
+        </div>
+        <div class="stat-card curso">
+          <span class="stat-icono">🔄</span>
+          <div class="stat-info">
+            <span class="stat-label">En curso</span>
+            <span class="stat-valor">{{ totalEnCurso }}</span>
+          </div>
+        </div>
+        <div class="stat-card avance">
+          <span class="stat-icono">📊</span>
+          <div class="stat-info">
+            <span class="stat-label">Avance promedio</span>
+            <span class="stat-valor">{{ promedioAvance }}%</span>
+          </div>
+        </div>
+        <div class="stat-card mejora">
+          <span class="stat-icono">✨</span>
+          <div class="stat-info">
+            <span class="stat-label">KPIs mejorados</span>
+            <span class="stat-valor">{{ practicasConMejora }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== FILTROS ===== -->
+      <div class="filtros-row">
+        <button class="filtro-btn" [class.activo]="filtro === 'TODAS'" (click)="setFiltro('TODAS')">
+          Todas
+          <span class="filtro-count">{{ timeline.length }}</span>
+        </button>
+        <button
+          class="filtro-btn"
+          [class.activo]="filtro === 'EN_CURSO'"
+          (click)="setFiltro('EN_CURSO')"
+        >
+          🔄 En curso
+          <span class="filtro-count">{{ totalEnCurso }}</span>
+        </button>
+        <button
+          class="filtro-btn"
+          [class.activo]="filtro === 'COMPLETADA'"
+          (click)="setFiltro('COMPLETADA')"
+        >
+          ✅ Completadas
+          <span class="filtro-count">{{ totalCompletadas }}</span>
+        </button>
+      </div>
+
+      <!-- ===== TIMELINE VACÍO ===== -->
+      @if (timelineFiltrado.length === 0) {
+        <div class="empty-state">
+          <span>🌱</span>
+          @if (practicas.length === 0) {
+            <p>Aún no has iniciado ninguna práctica.</p>
+            <p class="empty-hint">
+              Ve a <strong>Prácticas sugeridas</strong> para comenzar a aplicar mejoras en tu hato.
+            </p>
+          } @else {
+            <p>No hay prácticas con el filtro seleccionado.</p>
+          }
+        </div>
+      }
+
+      <!-- ===== TIMELINE ===== -->
+      @if (timelineFiltrado.length > 0) {
+        <div class="timeline-wrap">
+          @for (
+            ev of timelineFiltrado;
+            track ev.practica.idHatoPractica;
+            let i = $index;
+            let last = $last
+          ) {
+            <div class="timeline-item">
+              <!-- Línea vertical + punto -->
+              <div class="timeline-eje">
+                <div
+                  class="timeline-punto"
+                  [class.punto-completada]="ev.practica.estado === 'COMPLETADA'"
+                  [class.punto-curso]="ev.practica.estado === 'EN_CURSO'"
+                >
+                  {{ iconoCategoria(ev.practica.categoria) }}
+                </div>
+                @if (!last) {
+                  <div class="timeline-linea"></div>
+                }
+              </div>
+
+              <!-- Contenido del evento -->
+              <div class="timeline-contenido">
+                <!-- Header del evento -->
+                <div class="evento-header">
+                  <div class="evento-header-left">
+                    <div class="evento-meta">
+                      <span class="evento-fecha">
+                        @if (ev.practica.fechaInicio) {
+                          📅 {{ ev.practica.fechaInicio | date: 'dd MMM yyyy' }}
+                        } @else {
+                          📅 Sin fecha registrada
+                        }
+                      </span>
+                      <span class="estado-chip" [class]="claseEstado(ev.practica.estado)">
+                        {{ ev.practica.estado === 'EN_CURSO' ? '🔄 En curso' : '✅ Completada' }}
+                      </span>
+                    </div>
+                    <h3 class="evento-nombre">
+                      {{ ev.practica.nombrePractica }}
+                    </h3>
+                    <div class="evento-tags">
+                      <span class="tag-cat">
+                        {{ ev.practica.categoria }}
+                      </span>
+                      <span class="tag-dif">
+                        {{ ev.practica.dificultad }}
+                      </span>
+                      @if (ev.practica.duracionDias) {
+                        <span class="tag-dur"> ⏱️ {{ ev.practica.duracionDias }} días </span>
+                      }
+                    </div>
+                  </div>
+
+                  <!-- Delta KPI si hay mejora -->
+                  @if (ev.deltaPct !== null) {
+                    <div class="delta-badge" [class]="colorDelta(ev.deltaPct)">
+                      <span class="delta-icono">
+                        {{ iconoDelta(ev.deltaPct) }}
+                      </span>
+                      <div class="delta-info">
+                        <span class="delta-pct">
+                          {{ ev.deltaPct > 0 ? '+' : '' }}{{ ev.deltaPct }}%
+                        </span>
+                        <span class="delta-label">en el KPI</span>
+                      </div>
+                    </div>
+                  }
+                </div>
+
+                <!-- Barra de avance -->
+                <div class="evento-avance">
+                  <div class="avance-header">
+                    <span class="avance-label">Avance</span>
+                    <span class="avance-pct"> {{ ev.practica.porcentajeAvance }}% </span>
+                  </div>
+                  <div class="avance-track">
+                    <div
+                      class="avance-fill"
+                      [class.fill-completada]="ev.practica.estado === 'COMPLETADA'"
+                      [class.fill-curso]="ev.practica.estado === 'EN_CURSO'"
+                      [style.width.%]="ev.practica.porcentajeAvance"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- KPI impactado -->
+                @if (ev.practica.kpiImpactado) {
+                  <div class="evento-kpi">
+                    <div class="evento-kpi-header">
+                      <span class="evento-kpi-label"> 📈 KPI impactado: </span>
+                      <span class="evento-kpi-codigo">
+                        {{ ev.practica.kpiImpactado }}
+                      </span>
+                      @if (ev.kpiActual) {
+                        <span class="kpi-estado-chip" [class]="colorEstadoKpi(ev.kpiActual.estado)">
+                          {{ ev.kpiActual.estado }}
+                        </span>
+                        @if (ev.kpiActual.valor != null) {
+                          <span class="evento-kpi-valor">
+                            {{ ev.kpiActual.valor | number: '1.1-2' }}
+                            {{ ev.kpiActual.unidad }}
+                          </span>
+                        }
+                      }
+                    </div>
+
+                    <!-- Mini gráfica de barras histórico -->
+                    @if (ev.historico.length >= 2) {
+                      <div class="mini-grafica">
+                        <span class="mini-grafica-label">
+                          Evolución últimos {{ ev.historico.length }} períodos:
+                        </span>
+                        <div class="mini-bars">
+                          @for (h of ev.historico; track h.periodo) {
+                            <div class="mini-bar-wrap">
+                              <div
+                                class="mini-bar"
+                                [style.height.%]="calcularAlturaBar(h.valor, ev.historico)"
+                                [class.bar-optimo]="h.estado === 'OPTIMO'"
+                                [class.bar-aceptable]="h.estado === 'ACEPTABLE'"
+                                [class.bar-critico]="h.estado === 'CRITICO'"
+                                [title]="h.valor + ' — ' + h.periodo"
+                              ></div>
+                              <span class="mini-bar-periodo">
+                                {{ h.periodo | slice: 5 : 7 }}
+                              </span>
+                            </div>
+                          }
+                        </div>
+                        @if (ev.deltaValor !== null) {
+                          <span class="mini-delta" [class]="colorDelta(ev.deltaValor)">
+                            {{ iconoDelta(ev.deltaValor) }}
+                            {{ ev.deltaValor > 0 ? '+' : '' }}
+                            {{ ev.deltaValor | number: '1.1-2' }}
+                            {{ ev.kpiActual?.unidad }}
+                            desde que iniciaste
+                          </span>
+                        }
+                      </div>
+                    }
+                  </div>
+                }
+
+                <!-- Fechas y acción -->
+                <div class="evento-footer">
+                  <div class="fechas-row">
+                    @if (ev.practica.fechaInicio) {
+                      <span class="fecha-chip">
+                        Inicio: {{ ev.practica.fechaInicio | date: 'dd/MM/yyyy' }}
+                      </span>
+                    }
+                    @if (ev.practica.fechaFin) {
+                      <span class="fecha-chip completada">
+                        Fin: {{ ev.practica.fechaFin | date: 'dd/MM/yyyy' }}
+                      </span>
+                    }
+                  </div>
+                  <button class="btn-ver-detalle" (click)="verDetalle(ev.practica)">
+                    🔍 Ver detalle
+                  </button>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+  }
+</div>

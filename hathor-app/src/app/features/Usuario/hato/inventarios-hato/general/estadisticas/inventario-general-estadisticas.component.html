@@ -1,0 +1,151 @@
+<div class="estadisticas-page">
+  @if (loading) {
+    <div class="loading-wrapper">
+      <app-spinner size="large" message="Calculando estadísticas..."> </app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- Header -->
+    <div class="page-header">
+      <div class="header-left">
+        <span class="page-tag">Inventario general</span>
+        <h1 class="page-title">Estadísticas <span class="brand">de Activos</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato desde el panel superior.</p>
+        }
+      </div>
+      <div class="header-badge">📊</div>
+    </div>
+
+    @if (!hatoActivo && !error) {
+      <div class="empty-state">
+        <h2>Selecciona un hato</h2>
+        <p>Activa un hato para consultar sus estadísticas.</p>
+      </div>
+    }
+
+    @if (error) {
+      <div class="empty-state">
+        <h2>Error al cargar</h2>
+        <p>{{ error }}</p>
+      </div>
+    }
+
+    @if (hatoActivo && !error) {
+      <!-- KPI Cards -->
+      <div class="kpi-row">
+        <div class="kpi-hero">
+          <span class="kpi-label">Valor total del inventario</span>
+          <strong>{{ formatCOP(valorTotal) }}</strong>
+          <p>Capital estimado consolidado en activos del hato</p>
+        </div>
+        <div class="kpi-secondary-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Items registrados</span>
+            <strong>{{ items.length }}</strong>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Unidades totales</span>
+            <strong>{{ cantidadTotalUnidades }}</strong>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Promedio unitario</span>
+            <strong>{{ formatCOP(promedioValorUnitario) }}</strong>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Categoría líder</span>
+            <strong class="kpi-lider">{{ categoriaLider }}</strong>
+          </div>
+        </div>
+      </div>
+
+      @if (items.length === 0) {
+        <div class="empty-state">
+          <h2>Sin datos suficientes</h2>
+          <p>Registra items para habilitar el panel estadístico del inventario general.</p>
+        </div>
+      }
+
+      @if (items.length > 0) {
+        <!-- Fila 1: Dona + Barras agrupadas -->
+        <div class="charts-row">
+          <div class="chart-card">
+            <div class="chart-header">
+              <span class="section-badge">Distribución</span>
+              <h2 class="section-title">Valor por categoría</h2>
+              <p class="chart-subtitle">
+                Participación de cada categoría en el valor total del inventario
+              </p>
+            </div>
+            <div class="chart-container chart-dona">
+              <canvas #chartDona></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <span class="section-badge">Comparativa</span>
+              <h2 class="section-title">Valor y unidades por categoría</h2>
+              <p class="chart-subtitle">
+                Relación entre el valor económico y la cantidad de unidades por categoría
+              </p>
+            </div>
+            <div class="chart-container chart-barras">
+              <canvas #chartBarras></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fila 2: Items de mayor valor -->
+        <div class="chart-card chart-full">
+          <div class="chart-header">
+            <span class="section-badge">Top items</span>
+            <h2 class="section-title">Items con mayor valor económico</h2>
+            <p class="chart-subtitle">
+              Los {{ topItems.length }} items de mayor valor registrados en el inventario
+            </p>
+          </div>
+          <div
+            class="chart-container chart-items"
+            [style.height.px]="Math.max(200, topItems.length * 44)"
+          >
+            <canvas #chartItems></canvas>
+          </div>
+        </div>
+
+        <!-- Fila 3: Highlights top items -->
+        <div class="chart-card chart-full">
+          <div class="chart-header">
+            <span class="section-badge">Detalle</span>
+            <h2 class="section-title">Activos más valiosos</h2>
+            <p class="chart-subtitle">
+              Vista detallada de los items con mayor impacto en el inventario
+            </p>
+          </div>
+          <div class="highlights-grid">
+            @for (item of topItems; track item.idInventarioGeneral) {
+              <div class="highlight-card">
+                <div class="highlight-info">
+                  <h3>{{ item.nombreItem }}</h3>
+                  <p>{{ getNombreCategoria(item) }} · {{ item.cantidad }} unidades</p>
+                </div>
+                <div class="highlight-valores">
+                  <span class="highlight-total">
+                    {{ formatCOP(item.valorTotal) }}
+                  </span>
+                  <span class="highlight-unitario"> {{ formatCOP(item.valorUnitario) }} / ud </span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    }
+  }
+</div>

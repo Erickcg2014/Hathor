@@ -1,0 +1,203 @@
+<div class="benchmarking-page">
+  <!-- Loading -->
+  @if (loading) {
+    <div class="loading-wrapper">
+      <app-spinner size="large" message="Cargando KPIs..."></app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- Header -->
+    <div class="page-header">
+      <div class="header-left">
+        <span class="page-tag">Benchmarking · KPIs</span>
+        <h1 class="page-title">Mis <span class="brand">Indicadores</span></h1>
+        @if (hatoActivo) {
+          <p class="page-subtitle">
+            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          </p>
+        } @else {
+          <p class="page-subtitle warn">⚠️ Selecciona un hato.</p>
+        }
+      </div>
+      <div class="header-right">
+        <div class="header-badge">📊</div>
+        @if (hatoActivo) {
+          <button class="btn-recalcular" (click)="recalcular()" [disabled]="calculando">
+            @if (calculando) {
+              <app-spinner size="small"></app-spinner>
+              Calculando... (puede tardar hasta 2 min)
+            } @else {
+              🔄 Recalcular KPIs
+            }
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Sin hato -->
+    @if (!hatoActivo) {
+      <div class="empty-state">
+        <span class="empty-icon">🐄</span>
+        <p>Selecciona un hato para ver sus KPIs.</p>
+      </div>
+    }
+
+    @if (hatoActivo) {
+      <!-- Sin KPIs calculados -->
+      @if (!hayKpis && !calculando) {
+        <div class="sin-kpis-card">
+          <span class="sin-kpis-icon">📊</span>
+          <div>
+            <h3>Aún no tienes KPIs calculados</h3>
+            <p>
+              Presiona el botón para calcular los indicadores de tu hato con base en los datos
+              registrados.
+            </p>
+          </div>
+          <button class="btn-calcular-primary" (click)="recalcular()">Calcular mis KPIs →</button>
+        </div>
+      }
+
+      @if (hayKpis) {
+        <!-- Fecha último cálculo + error -->
+        @if (fechaUltimoCalculo) {
+          <p class="ultimo-calculo">
+            Último cálculo: {{ fechaUltimoCalculo | date: 'dd/MM/yyyy' }}
+          </p>
+        }
+        @if (error) {
+          <div class="error-box">
+            <p>{{ error }}</p>
+          </div>
+        }
+
+        <!-- Resumen semáforo -->
+        <div class="resumen-semaforo">
+          <div class="semaforo-item optimo">
+            <span class="semaforo-numero">{{ resumenEstados['OPTIMO'] }}</span>
+            <span class="semaforo-label">Óptimos</span>
+          </div>
+          <div class="semaforo-item aceptable">
+            <span class="semaforo-numero">{{ resumenEstados['ACEPTABLE'] }}</span>
+            <span class="semaforo-label">Aceptables</span>
+          </div>
+          <div class="semaforo-item critico">
+            <span class="semaforo-numero">{{ resumenEstados['CRITICO'] }}</span>
+            <span class="semaforo-label">Críticos</span>
+          </div>
+          <div class="semaforo-item sin-datos">
+            <span class="semaforo-numero">{{ resumenEstados['SIN_DATOS'] }}</span>
+            <span class="semaforo-label">Sin datos</span>
+          </div>
+        </div>
+
+        <!-- Filtros por categoría -->
+        <div class="filtros-row">
+          @for (cat of categorias; track cat.valor) {
+            <button
+              class="filtro-btn"
+              [class.activo]="filtroCategoria === cat.valor"
+              (click)="setFiltro(cat.valor)"
+            >
+              {{ cat.label }}
+            </button>
+          }
+        </div>
+
+        <!-- KPIs agrupados por categoría -->
+        @for (cat of categoriasConDatos; track cat) {
+          <div class="categoria-seccion">
+            <div class="categoria-titulo">
+              <span class="categoria-icono">{{ iconoCategoria(cat) }}</span>
+              <h2>{{ cat | titlecase }}</h2>
+              <span class="categoria-count"> {{ kpisPorCategoria[cat].length }} indicadores </span>
+            </div>
+
+            <div class="kpis-grid">
+              @for (kpi of kpisPorCategoria[cat]; track kpi.codigo) {
+                <div
+                  class="kpi-card"
+                  [class.estado-optimo]="kpi.estado === 'OPTIMO'"
+                  [class.estado-aceptable]="kpi.estado === 'ACEPTABLE'"
+                  [class.estado-critico]="kpi.estado === 'CRITICO'"
+                  [class.estado-sin-datos]="kpi.estado === 'SIN_DATOS'"
+                  (click)="verDetalle(kpi.codigo)"
+                >
+                  <!-- Indicador estado -->
+                  <div class="kpi-card-header">
+                    <span class="kpi-nombre">{{ kpi.nombre }}</span>
+                    <span
+                      class="estado-dot"
+                      [class.dot-optimo]="kpi.estado === 'OPTIMO'"
+                      [class.dot-aceptable]="kpi.estado === 'ACEPTABLE'"
+                      [class.dot-critico]="kpi.estado === 'CRITICO'"
+                      [class.dot-sin-datos]="kpi.estado === 'SIN_DATOS'"
+                    ></span>
+                  </div>
+
+                  <!-- Valor principal -->
+                  <div class="kpi-valor-wrapper">
+                    <span class="kpi-valor">{{ formatValor(kpi) }}</span>
+                    <span
+                      class="estado-badge"
+                      [class.badge-optimo]="kpi.estado === 'OPTIMO'"
+                      [class.badge-aceptable]="kpi.estado === 'ACEPTABLE'"
+                      [class.badge-critico]="kpi.estado === 'CRITICO'"
+                      [class.badge-sin-datos]="kpi.estado === 'SIN_DATOS'"
+                    >
+                      {{ labelEstado(kpi.estado) }}
+                    </span>
+                  </div>
+
+                  <!-- Benchmark -->
+                  @if (kpi.benchmarkPromedio !== null && kpi.valor !== null) {
+                    <div class="kpi-benchmark">
+                      <div class="benchmark-fila">
+                        <span class="benchmark-label">Promedio nacional</span>
+                        <span class="benchmark-valor">
+                          {{ kpi.benchmarkPromedio }} {{ kpi.unidad }}
+                        </span>
+                      </div>
+                      @if (kpi.benchmarkTop !== null) {
+                        <div class="benchmark-fila">
+                          <span class="benchmark-label">Top Colombia</span>
+                          <span class="benchmark-valor top">
+                            {{ kpi.benchmarkTop }} {{ kpi.unidad }}
+                          </span>
+                        </div>
+                      }
+                      @if (kpi.diferenciaPct !== null) {
+                        <div
+                          class="diferencia-chip"
+                          [class.chip-positivo]="kpi.diferenciaPct >= 0"
+                          [class.chip-negativo]="kpi.diferenciaPct < 0"
+                        >
+                          {{ formatDiferencia(kpi.diferenciaPct) }}
+                        </div>
+                      }
+                    </div>
+                  } @else {
+                    <p class="benchmark-na">Sin benchmark disponible</p>
+                  }
+                  @if (kpi.estado === 'SIN_DATOS' && kpi.razonSinDatos) {
+                    <div class="razon-sin-datos">
+                      <span class="razon-icono">ℹ️</span>
+                      <span class="razon-texto">{{ kpi.razonSinDatos }}</span>
+                    </div>
+                  }
+
+                  <!-- Ver detalle -->
+                  <div class="kpi-card-footer">
+                    <span class="ver-detalle-link">Ver detalle →</span>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      }
+    }
+  }
+</div>

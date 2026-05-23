@@ -1,0 +1,107 @@
+<section class="comparativa-hatos">
+  <div class="section-header">
+    <div class="header-text">
+      <h2>Comparativa con otros hatos</h2>
+      <p>Tu posición frente a los mejores hatos del sistema con trópico y región similares.</p>
+    </div>
+  </div>
+
+  <!-- Controles -->
+  <div class="controles">
+    <!-- Selector de KPI -->
+    <div class="control-grupo">
+      <label class="control-label">Indicador</label>
+      <div class="selector-scroll">
+        @for (k of kpisUnicos; track k.codigo) {
+          <button
+            class="chip"
+            [class.activo]="kpiSeleccionado === k.codigo"
+            (click)="setKpi(k.codigo)"
+          >
+            {{ k.nombre }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Selector de top -->
+    <div class="control-grupo control-top">
+      <label class="control-label">Comparar contra</label>
+      <div class="top-btns">
+        @for (op of opcionesTop; track op.valor) {
+          <button
+            class="top-btn"
+            [class.activo]="topSeleccionado === op.valor"
+            (click)="setTop(op.valor)"
+          >
+            {{ op.label }}
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Estado: cargando -->
+  @if (loading) {
+    <div class="estado-centro">
+      <div class="spinner"></div>
+      <span>Cargando comparativa...</span>
+    </div>
+  }
+
+  <!-- Estado: error -->
+  @if (!loading && error) {
+    <div class="estado-error">{{ error }}</div>
+  }
+
+  <!-- Estado: sin comparables -->
+  @if (!loading && sinComparables) {
+    <div class="estado-vacio">
+      <span class="vacio-icono">🐄</span>
+      <p>
+        Aún no hay suficientes hatos en el sistema con trópico y región similares para comparar este
+        indicador.
+      </p>
+    </div>
+  }
+
+  <!-- Gráfico de líneas -->
+  @if (!loading && tieneDatos) {
+    <div class="grafico-card">
+      <!-- Leyenda superior -->
+      <div class="leyenda">
+        <span class="leyenda-item">
+          <span class="dot dot-gris"></span>
+          Hatos comparables (anónimos)
+        </span>
+        <span class="leyenda-item">
+          <span class="dot dot-verde"></span>
+          Tu hato — {{ datos!.nombreHatoActual }}
+        </span>
+      </div>
+
+      <!-- Canvas -->
+      <div class="chart-wrap">
+        <canvas #chartLineas></canvas>
+      </div>
+
+      <!-- Posición del hato -->
+      <div class="posicion-banner">
+        @if (datos!.comparables.length > 0) {
+          @if (datos!.valorHatoActual >= datos!.comparables[0].valor) {
+            <span class="posicion top">🏆 Tu hato lidera entre los comparados</span>
+          } @else {
+            @if (datos!.valorHatoActual >= datos!.comparables[0].valor) {
+              <span class="posicion top">🏆 Tu hato lidera entre los comparados</span>
+            } @else {
+              <span class="posicion media">
+                Posición aprox. #{{ posicionHato }} de {{ datos!.comparables.length + 1 }} hatos
+                comparados
+              </span>
+            }
+          }
+        }
+      </div>
+    </div>
+  }
+</section>

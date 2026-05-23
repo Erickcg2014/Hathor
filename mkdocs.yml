@@ -1,0 +1,15 @@
+site_name: Hathor Docs
+site_description: Documentación técnica del sistema Hathor
+site_author: Equipo Hathor
+
+theme:
+  name: material
+
+nav:
+  - Inicio: index.md
+  - Arquitectura: arquitectura.md
+  - API Gateway: apigateway.md
+  - SQL: sql.md
+  - Carga de Datos: pruebas_carga.md
+  - Backend - JavaDoc: apidocs/index.html
+  - Frontend - Compodoc: documentation/index.html

@@ -1,0 +1,21 @@
+package com.hathor.hathorback.Servicios.Admin.GestionPracticas.DTO;
+
+import lombok.*;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class CrearPracticaDTO {
+    private String  nombre;
+    private String  descripcion;
+    private String  objetivo;
+    private String  categoria;
+    private String  impactoEsperado;
+    private String  pasos;
+    private String  kpiImpactado;
+    private String  dificultad;
+    private Integer duracionDias;
+    private String  escala;
+    private String  tropicaAplicable;
+}

@@ -1,0 +1,1387 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MapaHatosComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-mapa-hatos</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./mapa-hatos.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./mapa-hatos.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cluster" >cluster</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#hatosPendientes" >hatosPendientes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#L" >L</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#map" >map</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#mapaListo" >mapaListo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#mapId" >mapId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#actualizarMarcadores" >actualizarMarcadores</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearIconoHatoAnonimo" >crearIconoHatoAnonimo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearIconoMiHato" >crearIconoMiHato</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#inicializarMapa" >inicializarMapa</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#hatos" >hatos</a>
+                            </li>
+                            <li>
+                                <a href="#modoGeneral" >modoGeneral</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(platformId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>platformId</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hatos"></a>
+                        <b>hatos</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HatoAnonimizadoDTO[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:27</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modoGeneral"></a>
+                        <b>modoGeneral</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:26</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actualizarMarcadores"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>actualizarMarcadores</b></span>
+                        <a href="#actualizarMarcadores"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>actualizarMarcadores()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearIconoHatoAnonimo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearIconoHatoAnonimo</b></span>
+                        <a href="#crearIconoHatoAnonimo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearIconoHatoAnonimo(interpretacion: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="231"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:231</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>interpretacion</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearIconoMiHato"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearIconoMiHato</b></span>
+                        <a href="#crearIconoMiHato"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearIconoMiHato()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="221"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:221</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inicializarMapa"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>inicializarMapa</b></span>
+                        <a href="#inicializarMapa"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>inicializarMapa()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>changes</td>
+                                            <td>
+                                                            <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="262"
+                                    class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:262</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cluster"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cluster</b></span>
+                        <a href="#cluster"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatosPendientes"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>hatosPendientes</b></span>
+                        <a href="#hatosPendientes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HatoAnonimizadoDTO[] | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="L"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>L</b></span>
+                        <a href="#L"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="map"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>map</b></span>
+                        <a href="#map"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mapaListo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>mapaListo</b></span>
+                        <a href="#mapaListo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mapId"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>mapId</b></span>
+                        <a href="#mapId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;mapa-hatos-${Math.random().toString(36).slice(2)}&#x60;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/Usuario/benchmarking/comparativa-kpis/benchmark-global/mapa-hatos/mapa-hatos.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  PLATFORM_ID,
+  SimpleChanges,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule, isPlatformBrowser } from &#x27;@angular/common&#x27;;
+
+import { HatoAnonimizadoDTO } from &#x27;../../../../../../core/services/benchmarking/benchmarking.service&#x27;;
+
+@Component({
+  selector: &#x27;app-mapa-hatos&#x27;,
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: &#x27;./mapa-hatos.component.html&#x27;,
+  styleUrl: &#x27;./mapa-hatos.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MapaHatosComponent implements AfterViewInit, OnChanges, OnDestroy {
+  @Input() modoGeneral &#x3D; false;
+  @Input() hatos: HatoAnonimizadoDTO[] &#x3D; [];
+
+  private map: any &#x3D; null;
+  private cluster: any &#x3D; null;
+  private L: any &#x3D; null;
+
+  private mapaListo &#x3D; false;
+  private hatosPendientes: HatoAnonimizadoDTO[] | null &#x3D; null;
+
+  readonly mapId &#x3D; &#x60;mapa-hatos-${Math.random().toString(36).slice(2)}&#x60;;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() &#x3D;&gt; this.inicializarMapa(), 100);
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes[&#x27;hatos&#x27;] &amp;&amp; !changes[&#x27;hatos&#x27;].firstChange) {
+      if (this.mapaListo) {
+        this.actualizarMarcadores();
+      } else {
+        this.hatosPendientes &#x3D; this.hatos;
+      }
+    }
+  }
+
+  private async inicializarMapa(): Promise&lt;void&gt; {
+    const contenedor &#x3D; document.getElementById(this.mapId);
+    if (!contenedor) return;
+
+    const L &#x3D; await import(&#x27;leaflet&#x27;);
+    this.L &#x3D; L;
+
+    (window as any).L &#x3D; L;
+
+    await import(&#x27;leaflet.markercluster&#x27;);
+
+    const LG &#x3D; (window as any).L;
+
+    const iconDefault &#x3D; L.icon({
+      iconUrl: &#x27;leaflet/marker-icon.png&#x27;,
+      iconRetinaUrl: &#x27;leaflet/marker-icon-2x.png&#x27;,
+      shadowUrl: &#x27;leaflet/marker-shadow.png&#x27;,
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
+    L.Marker.prototype.options.icon &#x3D; iconDefault;
+
+    this.map &#x3D; L.map(this.mapId, {
+      center: [4.5709, -74.2973] as L.LatLngTuple,
+      zoom: 6,
+      zoomControl: true,
+      scrollWheelZoom: true,
+    });
+
+    L.tileLayer(&#x27;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#x27;, {
+      attribution: &#x27;© OpenStreetMap contributors&#x27;,
+      maxZoom: 18,
+    }).addTo(this.map);
+
+    this.L &#x3D; LG;
+
+    this.mapaListo &#x3D; true;
+
+    if (this.hatosPendientes) {
+      this.hatos &#x3D; this.hatosPendientes;
+      this.hatosPendientes &#x3D; null;
+    }
+
+    this.actualizarMarcadores();
+  }
+
+  private actualizarMarcadores(): void {
+    if (!this.map || !this.L) return;
+
+    this.map.eachLayer((layer: any) &#x3D;&gt; {
+      if (layer instanceof this.L.Marker || layer instanceof this.L.LayerGroup) {
+        if (!layer._url) this.map.removeLayer(layer);
+      }
+    });
+
+    if (this.cluster) {
+      try {
+        this.map.removeLayer(this.cluster);
+      } catch (e) {
+        console.warn(&#x27;Error eliminando cluster anterior:&#x27;, e);
+      }
+      this.cluster &#x3D; null;
+    }
+
+    const hatosAnonimos &#x3D; this.hatos.filter((h) &#x3D;&gt; !h.esMiHato);
+    const miHato &#x3D; this.hatos.find((h) &#x3D;&gt; h.esMiHato);
+    const usarCluster &#x3D; this.modoGeneral ? hatosAnonimos.length &gt; 10 : hatosAnonimos.length &gt; 3;
+
+    if (usarCluster) {
+      this.cluster &#x3D; this.L.markerClusterGroup({
+        showCoverageOnHover: false,
+        maxClusterRadius: 60,
+        disableClusteringAtZoom: 12,
+        spiderfyOnMaxZoom: true,
+        iconCreateFunction: (c: any) &#x3D;&gt; {
+          const count &#x3D; c.getChildCount();
+          return this.L.divIcon({
+            html: &#x60;&lt;div class&#x3D;&quot;cluster-icon&quot;&gt;${count}&lt;/div&gt;&#x60;,
+            className: &#x27;cluster-wrapper&#x27;,
+            iconSize: [36, 36],
+          });
+        },
+      });
+    }
+
+    const bounds: any[] &#x3D; [];
+    let marcadoresCargados &#x3D; 0;
+
+    // ── Hatos anónimos ─────────────────────────────────────
+    for (const hato of hatosAnonimos) {
+      const lat &#x3D; hato.latitudDifuminada;
+      const lng &#x3D; hato.longitudDifuminada;
+
+      if (lat &#x3D;&#x3D; null || lng &#x3D;&#x3D; null) {
+        console.warn(&#x27;Hato sin coordenadas — omitido:&#x27;, hato.alias);
+        continue;
+      }
+
+      const icono &#x3D; this.crearIconoHatoAnonimo(this.modoGeneral ? null : hato.interpretacion);
+      const marker &#x3D; this.L.marker([lat, lng], { icon: icono });
+
+      marker.bindPopup(
+        &#x60;&lt;div class&#x3D;&quot;popup-anonimo&quot;&gt;
+          &lt;strong&gt;${hato.alias}&lt;/strong&gt;&lt;br/&gt;
+          ${
+            !this.modoGeneral
+              ? &#x60;Trópico: ${hato.tropico ?? &#x27;—&#x27;}&lt;br/&gt;
+          Escala: ${hato.escala ?? &#x27;—&#x27;}&lt;br/&gt;&#x60;
+              : &#x27;&#x27;
+          }
+          Región: ${hato.departamento ?? &#x27;—&#x27;}
+        &lt;/div&gt;&#x60;,
+        { maxWidth: 200, className: &#x27;hathor-popup&#x27; },
+      );
+
+      if (usarCluster) {
+        this.cluster.addLayer(marker);
+      } else {
+        marker.addTo(this.map);
+      }
+
+      bounds.push([lat, lng]);
+      marcadoresCargados++;
+    }
+
+    if (usarCluster) {
+      this.map.addLayer(this.cluster);
+    }
+
+    // ── Mi hato ────────────────────────────────────────────
+    if (miHato?.latitudDifuminada !&#x3D; null &amp;&amp; miHato?.longitudDifuminada !&#x3D; null) {
+      const lat &#x3D; miHato.latitudDifuminada;
+      const lng &#x3D; miHato.longitudDifuminada;
+
+      const marcador &#x3D; this.L.marker([lat, lng], {
+        icon: this.crearIconoMiHato(),
+        zIndexOffset: 1000,
+      });
+
+      marcador.bindPopup(
+        &#x60;&lt;div class&#x3D;&quot;popup-mihato&quot;&gt;
+        &lt;strong&gt;📍 Tu hato&lt;/strong&gt;&lt;br/&gt;
+        ${miHato.tropico ?? &#x27;—&#x27;} · ${miHato.escala ?? &#x27;—&#x27;}&lt;br/&gt;
+        ${miHato.departamento ?? &#x27;—&#x27;}
+      &lt;/div&gt;&#x60;,
+        { maxWidth: 200, className: &#x27;hathor-popup&#x27; },
+      );
+
+      marcador.addTo(this.map);
+      bounds.push([lat, lng]);
+      marcadoresCargados++;
+    } else {
+      console.warn(&#x27;Mi hato sin coordenadas o no encontrado — no se agrega al mapa&#x27;);
+    }
+
+    // ── Ajustar vista ──────────────────────────────────────
+    if (bounds.length &gt; 0) {
+      this.map.fitBounds(this.L.latLngBounds(bounds), { padding: [50, 50] });
+    } else {
+      console.warn(&#x27;No hay bounds — vista no ajustada&#x27;);
+    }
+  }
+
+  private crearIconoMiHato(): any {
+    return this.L.divIcon({
+      html: &#x60;&lt;div class&#x3D;&quot;marcador-mihato&quot;&gt;🏠&lt;/div&gt;&#x60;,
+      className: &#x27;&#x27;,
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+      popupAnchor: [0, -42],
+    });
+  }
+
+  private crearIconoHatoAnonimo(interpretacion: string | null): any {
+    if (this.modoGeneral) {
+      return this.L.icon({
+        iconUrl: &#x27;assets/leaflet/marker-icon.png&#x27;,
+        iconRetinaUrl: &#x27;assets/leaflet/marker-icon-2x.png&#x27;,
+        shadowUrl: &#x27;assets/leaflet/marker-shadow.png&#x27;,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+      });
+    }
+
+    const colorMap: Record&lt;string, string&gt; &#x3D; {
+      OPTIMO: &#x27;#15c944&#x27;,
+      BUENO: &#x27;#3b82f6&#x27;,
+      ACEPTABLE: &#x27;#f59e0b&#x27;,
+      CRITICO: &#x27;#ef4444&#x27;,
+    };
+    const color &#x3D; colorMap[interpretacion ?? &#x27;&#x27;] ?? &#x27;#9ca3af&#x27;;
+
+    return this.L.divIcon({
+      html: &#x60;&lt;div class&#x3D;&quot;marcador-anonimo&quot; style&#x3D;&quot;background:${color}&quot;&gt;
+             &lt;div class&#x3D;&quot;marcador-anonimo-inner&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;&#x60;,
+      className: &#x27;&#x27;,
+      iconSize: [16, 16],
+      iconAnchor: [8, 8],
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.mapaListo &#x3D; false;
+    this.hatosPendientes &#x3D; null;
+    if (this.map) {
+      this.map.remove();
+      this.map &#x3D; null;
+    }
+    this.L &#x3D; null;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;mapa-contenedor&quot;&gt;
+  &lt;div [id]&#x3D;&quot;mapId&quot; class&#x3D;&quot;mapa&quot;&gt;&lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;mapa-leyenda&quot;&gt;
+    &lt;span class&#x3D;&quot;leyenda-titulo&quot;&gt;Leyenda&lt;/span&gt;
+    &lt;div class&#x3D;&quot;leyenda-items&quot;&gt;
+      &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+        &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #15c944&quot;&gt;&lt;/span&gt;
+        Óptimo
+      &lt;/span&gt;
+      &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+        &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #3b82f6&quot;&gt;&lt;/span&gt;
+        Bueno
+      &lt;/span&gt;
+      &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+        &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #f59e0b&quot;&gt;&lt;/span&gt;
+        Aceptable
+      &lt;/span&gt;
+      &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+        &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #ef4444&quot;&gt;&lt;/span&gt;
+        Crítico
+      &lt;/span&gt;
+      &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+        &lt;span class&#x3D;&quot;leyenda-icono&quot;&gt;🏠&lt;/span&gt;
+        Tu hato
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class&#x3D;&quot;leyenda-nota&quot;&gt;Posiciones aproximadas — datos anonimizados por privacidad&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="mapa-contenedor">  <div [id]="mapId" class="mapa"></div>  <div class="mapa-leyenda">    <span class="leyenda-titulo">Leyenda</span>    <div class="leyenda-items">      <span class="leyenda-item">        <span class="leyenda-dot" style="background: #15c944"></span>        Óptimo      </span>      <span class="leyenda-item">        <span class="leyenda-dot" style="background: #3b82f6"></span>        Bueno      </span>      <span class="leyenda-item">        <span class="leyenda-dot" style="background: #f59e0b"></span>        Aceptable      </span>      <span class="leyenda-item">        <span class="leyenda-dot" style="background: #ef4444"></span>        Crítico      </span>      <span class="leyenda-item">        <span class="leyenda-icono">🏠</span>        Tu hato      </span>    </div>    <p class="leyenda-nota">Posiciones aproximadas — datos anonimizados por privacidad</p>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'MapaHatosComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MapaHatosComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

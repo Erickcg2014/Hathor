@@ -1,0 +1,1056 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  FilaResultado</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/features/Usuario/hato/nuevo-hato/secciones/seccion-financiero/finanzas-excel/finanzas-excel.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#estado" 
+>
+                                            estado
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#fila" 
+>
+                                            fila
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#mensaje" 
+>
+                                            mensaje
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#titulo" 
+>
+                                            titulo
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="estado"></a>
+                                        <span class="name "><b>estado</b>
+                                            <a href="#estado">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>estado:     <code>&quot;OK&quot; | &quot;ERROR&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;OK&quot; | &quot;ERROR&quot;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="fila"></a>
+                                        <span class="name "><b>fila</b>
+                                            <a href="#fila">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>fila:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="mensaje"></a>
+                                        <span class="name "><b>mensaje</b>
+                                            <a href="#mensaje">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>mensaje:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="titulo"></a>
+                                        <span class="name "><b>titulo</b>
+                                            <a href="#titulo">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>titulo:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import * as XLSX from &#x27;xlsx&#x27;;
+import { firstValueFrom } from &#x27;rxjs&#x27;;
+import { Hato } from &#x27;../../../../../../../core/services/hato/hato.service&#x27;;
+import {
+  CategoriaFinancieraService,
+  CategoriaAgrupada,
+  CategoriasAgrupadas,
+} from &#x27;../../../../../../../core/services/finanzas/categoria-financiera.service&#x27;;
+import { RegistroFinancieroService } from &#x27;../../../../../../../core/services/finanzas/registro-financiero.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../../../../shared/spinner/spinner.component&#x27;;
+
+interface FilaResultado {
+  fila: number;
+  estado: &#x27;OK&#x27; | &#x27;ERROR&#x27;;
+  titulo?: string;
+  mensaje?: string;
+}
+interface CategoriaPersonalizadaExcel {
+  tempId: string;
+  nombre: string;
+  tipo: &#x27;INGRESO&#x27; | &#x27;GASTO&#x27;;
+}
+
+const MESES_ES &#x3D; [
+  &#x27;ENERO&#x27;,
+  &#x27;FEBRERO&#x27;,
+  &#x27;MARZO&#x27;,
+  &#x27;ABRIL&#x27;,
+  &#x27;MAYO&#x27;,
+  &#x27;JUNIO&#x27;,
+  &#x27;JULIO&#x27;,
+  &#x27;AGOSTO&#x27;,
+  &#x27;SEPTIEMBRE&#x27;,
+  &#x27;OCTUBRE&#x27;,
+  &#x27;NOVIEMBRE&#x27;,
+  &#x27;DICIEMBRE&#x27;,
+];
+
+@Component({
+  selector: &#x27;app-finanzas-excel&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, SpinnerComponent],
+  templateUrl: &#x27;./finanzas-excel.component.html&#x27;,
+  styleUrl: &#x27;./finanzas-excel.component.css&#x27;,
+})
+export class FinanzasExcelComponent implements OnInit {
+  @Input() hatoActual: Hato | null &#x3D; null;
+  @Input() mostrarAnual &#x3D; true;
+  @Output() cargaExitosa &#x3D; new EventEmitter&lt;void&gt;();
+
+  loadingCategorias &#x3D; false;
+  categoriasIngresos: CategoriaAgrupada[] &#x3D; [];
+  categoriasGastos: CategoriaAgrupada[] &#x3D; [];
+
+  seccionIngresosAbierta &#x3D; true;
+  seccionGastosAbierta &#x3D; true;
+
+  tipoPlantilla: &#x27;DETALLADO&#x27; | &#x27;MENSUAL&#x27; | &#x27;ANUAL&#x27; | null &#x3D; null;
+  fechaInicioDetallado &#x3D; &#x27;&#x27;;
+  mesInicio &#x3D; &#x27;&#x27;;
+  anioInicio: number | null &#x3D; null;
+  anioActual &#x3D; new Date().getFullYear();
+
+  archivoExcel: File | null &#x3D; null;
+  nombreArchivo &#x3D; &#x27;&#x27;;
+  isDragOver &#x3D; false;
+  loadingCarga &#x3D; false;
+  resultadosCarga: FilaResultado[] &#x3D; [];
+  cargaCompletada &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  errorIngreso &#x3D; &#x27;&#x27;;
+  errorGasto &#x3D; &#x27;&#x27;;
+
+  pasoActual: 1 | 2 &#x3D; 1;
+  plantillaDescargada &#x3D; false;
+
+  otrosIngresos: CategoriaPersonalizadaExcel[] &#x3D; [];
+  otrosGastos: CategoriaPersonalizadaExcel[] &#x3D; [];
+  nuevaCatIngreso &#x3D; &#x27;&#x27;;
+  nuevaCatGasto &#x3D; &#x27;&#x27;;
+
+  constructor(
+    private categoriaService: CategoriaFinancieraService,
+    private registroFinancieroService: RegistroFinancieroService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.cargarCategorias();
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; CATEGORÍAS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  private async cargarCategorias(): Promise&lt;void&gt; {
+    this.loadingCategorias &#x3D; true;
+    try {
+      const agrupadas: CategoriasAgrupadas &#x3D; await firstValueFrom(
+        this.categoriaService.getCategoriasAgrupadas(),
+      );
+      this.categoriasIngresos &#x3D; agrupadas.ingresos
+        .filter((c) &#x3D;&gt; c.nombre !&#x3D;&#x3D; &#x27;OTROS INGRESOS&#x27;)
+        .map((c) &#x3D;&gt; ({ ...c, seleccionada: false }));
+      this.categoriasGastos &#x3D; agrupadas.gastos
+        .filter((c) &#x3D;&gt; c.nombre !&#x3D;&#x3D; &#x27;OTROS GASTOS&#x27;)
+        .map((c) &#x3D;&gt; ({ ...c, seleccionada: false }));
+    } catch {
+      this.error &#x3D; &#x27;Error al cargar las categorías. Intenta de nuevo.&#x27;;
+    } finally {
+      this.loadingCategorias &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D; INCLUIR UN GASTO O UNA CATEGORÍA &#x3D;&#x3D;&#x3D;&#x3D;
+  private existeCategoriaSimilar(nombre: string, tipo: &#x27;INGRESO&#x27; | &#x27;GASTO&#x27;): string | null {
+    const IGNORAR &#x3D; [&#x27;de&#x27;, &#x27;del&#x27;, &#x27;la&#x27;, &#x27;el&#x27;, &#x27;los&#x27;, &#x27;las&#x27;, &#x27;y&#x27;, &#x27;o&#x27;, &#x27;en&#x27;, &#x27;a&#x27;, &#x27;por&#x27;];
+
+    const palabrasNueva &#x3D; nombre
+      .toUpperCase()
+      .split(/\s+/)
+      .filter((p) &#x3D;&gt; p.length &gt; 2 &amp;&amp; !IGNORAR.includes(p.toLowerCase()));
+
+    const categoriasPredefinidas &#x3D;
+      tipo &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27; ? this.categoriasIngresos : this.categoriasGastos;
+
+    for (const cat of categoriasPredefinidas) {
+      const palabrasCat &#x3D; cat.nombre
+        .toUpperCase()
+        .split(/\s+/)
+        .filter((p) &#x3D;&gt; p.length &gt; 2 &amp;&amp; !IGNORAR.includes(p.toLowerCase()));
+
+      const coincide &#x3D; palabrasNueva.some((p) &#x3D;&gt; palabrasCat.includes(p));
+      if (coincide) return cat.nombre;
+    }
+
+    const yaCreadas &#x3D; tipo &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27; ? this.otrosIngresos : this.otrosGastos;
+    for (const otro of yaCreadas) {
+      const palabrasOtro &#x3D; otro.nombre
+        .toUpperCase()
+        .split(/\s+/)
+        .filter((p) &#x3D;&gt; p.length &gt; 2 &amp;&amp; !IGNORAR.includes(p.toLowerCase()));
+
+      const coincide &#x3D; palabrasNueva.some((p) &#x3D;&gt; palabrasOtro.includes(p));
+      if (coincide) return otro.nombre;
+    }
+
+    return null;
+  }
+
+  agregarOtroIngreso(): void {
+    const nombre &#x3D; this.nuevaCatIngreso.trim().toUpperCase();
+    if (!nombre) return;
+    const existe &#x3D; this.otrosIngresos.some((o) &#x3D;&gt; o.nombre &#x3D;&#x3D;&#x3D; nombre);
+    if (existe) return;
+    this.otrosIngresos.push({ tempId: crypto.randomUUID(), nombre, tipo: &#x27;INGRESO&#x27; });
+    this.nuevaCatIngreso &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+  }
+
+  agregarOtroGasto(): void {
+    const nombre &#x3D; this.nuevaCatGasto.trim().toUpperCase();
+    if (!nombre) return;
+    const existe &#x3D; this.otrosGastos.some((o) &#x3D;&gt; o.nombre &#x3D;&#x3D;&#x3D; nombre);
+    if (existe) return;
+    this.otrosGastos.push({ tempId: crypto.randomUUID(), nombre, tipo: &#x27;GASTO&#x27; });
+    this.nuevaCatGasto &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+  }
+
+  eliminarOtroIngreso(tempId: string): void {
+    this.otrosIngresos &#x3D; this.otrosIngresos.filter((o) &#x3D;&gt; o.tempId !&#x3D;&#x3D; tempId);
+    this.cdr.markForCheck();
+  }
+
+  eliminarOtroGasto(tempId: string): void {
+    this.otrosGastos &#x3D; this.otrosGastos.filter((o) &#x3D;&gt; o.tempId !&#x3D;&#x3D; tempId);
+    this.cdr.markForCheck();
+  }
+
+  toggleCategoria(categoria: CategoriaAgrupada): void {
+    categoria.seleccionada &#x3D; !categoria.seleccionada;
+    this.cdr.markForCheck();
+  }
+
+  toggleSeccionIngresos(): void {
+    this.seccionIngresosAbierta &#x3D; !this.seccionIngresosAbierta;
+    this.cdr.markForCheck();
+  }
+
+  toggleSeccionGastos(): void {
+    this.seccionGastosAbierta &#x3D; !this.seccionGastosAbierta;
+    this.cdr.markForCheck();
+  }
+
+  seleccionarTodasIngresos(): void {
+    const todasSeleccionadas &#x3D; this.categoriasIngresos.every((c) &#x3D;&gt; c.seleccionada);
+    this.categoriasIngresos.forEach((c) &#x3D;&gt; (c.seleccionada &#x3D; !todasSeleccionadas));
+    this.cdr.markForCheck();
+  }
+
+  seleccionarTodasGastos(): void {
+    const todasSeleccionadas &#x3D; this.categoriasGastos.every((c) &#x3D;&gt; c.seleccionada);
+    this.categoriasGastos.forEach((c) &#x3D;&gt; (c.seleccionada &#x3D; !todasSeleccionadas));
+    this.cdr.markForCheck();
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GETTERS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  get ingresosSeleccionados(): CategoriaAgrupada[] {
+    return this.categoriasIngresos.filter((c) &#x3D;&gt; c.seleccionada);
+  }
+
+  get gastosSeleccionados(): CategoriaAgrupada[] {
+    return this.categoriasGastos.filter((c) &#x3D;&gt; c.seleccionada);
+  }
+
+  get haySeleccion(): boolean {
+    const totalIngresos &#x3D; this.ingresosSeleccionados.length + this.otrosIngresos.length;
+    const totalGastos &#x3D; this.gastosSeleccionados.length + this.otrosGastos.length;
+    return totalIngresos &gt; 0 &amp;&amp; totalGastos &gt; 0;
+  }
+  get totalIngresosSeleccionados(): number {
+    return this.ingresosSeleccionados.length + this.otrosIngresos.length;
+  }
+
+  get totalGastosSeleccionados(): number {
+    return this.gastosSeleccionados.length + this.otrosGastos.length;
+  }
+  get mensajeSeleccion(): string {
+    const i &#x3D; this.totalIngresosSeleccionados;
+    const g &#x3D; this.totalGastosSeleccionados;
+    if (i &#x3D;&#x3D;&#x3D; 0 &amp;&amp; g &#x3D;&#x3D;&#x3D; 0) return &#x27;Selecciona al menos un ingreso y un gasto.&#x27;;
+    if (i &#x3D;&#x3D;&#x3D; 0) return &#x27;Debes seleccionar al menos un ingreso.&#x27;;
+    if (g &#x3D;&#x3D;&#x3D; 0) return &#x27;Debes seleccionar al menos un gasto.&#x27;;
+    return &#x27;&#x27;;
+  }
+  get puedeDescargarPlantilla(): boolean {
+    if (!this.tipoPlantilla) return false;
+    if (this.tipoPlantilla &#x3D;&#x3D;&#x3D; &#x27;DETALLADO&#x27;) return !!this.fechaInicioDetallado;
+    if (this.tipoPlantilla &#x3D;&#x3D;&#x3D; &#x27;MENSUAL&#x27;) return !!this.mesInicio;
+    if (this.tipoPlantilla &#x3D;&#x3D;&#x3D; &#x27;ANUAL&#x27;) return !!this.anioInicio;
+    return false;
+  }
+
+  get registrosExitosos(): number {
+    return this.resultadosCarga.filter((r) &#x3D;&gt; r.estado &#x3D;&#x3D;&#x3D; &#x27;OK&#x27;).length;
+  }
+
+  get registrosConError(): number {
+    return this.resultadosCarga.filter((r) &#x3D;&gt; r.estado &#x3D;&#x3D;&#x3D; &#x27;ERROR&#x27;).length;
+  }
+
+  get excelValido(): boolean {
+    return this.cargaCompletada &amp;&amp; this.registrosExitosos &gt; 0;
+  }
+
+  //* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; PASO 2 :&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  avanzarAPaso2(): void {
+    if (!this.haySeleccion) return;
+    this.pasoActual &#x3D; 2;
+    this.tipoPlantilla &#x3D; null;
+    this.fechaInicioDetallado &#x3D; &#x27;&#x27;;
+    this.mesInicio &#x3D; &#x27;&#x27;;
+    this.anioInicio &#x3D; null;
+    this.archivoExcel &#x3D; null;
+    this.nombreArchivo &#x3D; &#x27;&#x27;;
+    this.resultadosCarga &#x3D; [];
+    this.cargaCompletada &#x3D; false;
+    this.cdr.markForCheck();
+  }
+
+  volverAPaso1(): void {
+    this.pasoActual &#x3D; 1;
+    this.cdr.markForCheck();
+  }
+
+  marcarPlantillaDescargada(): void {
+    this.plantillaDescargada &#x3D; true;
+    this.generarYDescargarPlantilla();
+    this.cdr.markForCheck();
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; SELECTOR DE TIPO DE PLANTILLA &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  seleccionarTipoPlantilla(tipo: &#x27;DETALLADO&#x27; | &#x27;MENSUAL&#x27; | &#x27;ANUAL&#x27;): void {
+    this.tipoPlantilla &#x3D; tipo;
+    this.fechaInicioDetallado &#x3D; &#x27;&#x27;;
+    this.mesInicio &#x3D; &#x27;&#x27;;
+    this.anioInicio &#x3D; null;
+    this.cdr.markForCheck();
+  }
+
+  onDragOver(event: DragEvent): void {
+    event.preventDefault();
+    this.isDragOver &#x3D; true;
+    this.cdr.markForCheck();
+  }
+
+  onDragLeave(): void {
+    this.isDragOver &#x3D; false;
+    this.cdr.markForCheck();
+  }
+
+  onDrop(event: DragEvent): void {
+    event.preventDefault();
+    this.isDragOver &#x3D; false;
+    const file &#x3D; event.dataTransfer?.files[0];
+    if (file) this.procesarArchivoSeleccionado(file);
+  }
+
+  onFileSelected(event: Event): void {
+    const input &#x3D; event.target as HTMLInputElement;
+    const file &#x3D; input.files?.[0];
+    if (file) this.procesarArchivoSeleccionado(file);
+  }
+
+  private procesarArchivoSeleccionado(file: File): void {
+    const extensionValida &#x3D; file.name.endsWith(&#x27;.xlsx&#x27;) || file.name.endsWith(&#x27;.xls&#x27;);
+    if (!extensionValida) {
+      this.error &#x3D; &#x27;Solo se aceptan archivos Excel (.xlsx o .xls)&#x27;;
+      this.cdr.markForCheck();
+      return;
+    }
+    this.archivoExcel &#x3D; file;
+    this.nombreArchivo &#x3D; file.name;
+    this.resultadosCarga &#x3D; [];
+    this.cargaCompletada &#x3D; false;
+    this.error &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; PROCESAR EXCEL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  async procesarExcel(): Promise&lt;void&gt; {
+    if (!this.archivoExcel || !this.hatoActual?.idHato) return;
+
+    this.loadingCarga &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+
+    try {
+      const resultado &#x3D; await firstValueFrom(
+        this.registroFinancieroService.cargaMasiva(this.hatoActual.idHato, this.archivoExcel),
+      );
+      this.resultadosCarga &#x3D; resultado.detalle;
+      this.cargaCompletada &#x3D; true;
+
+      if (this.excelValido) {
+        this.cargaExitosa.emit();
+      }
+
+      this.cdr.markForCheck();
+    } catch {
+      this.error &#x3D; &#x27;Error al procesar el archivo. Verifica el formato e intenta de nuevo.&#x27;;
+      this.cdr.markForCheck();
+    } finally {
+      this.loadingCarga &#x3D; false;
+      this.cdr.markForCheck();
+    }
+  }
+
+  private generarPlantillaDetallada(): void {
+    if (!this.fechaInicioDetallado) return;
+
+    const wb &#x3D; XLSX.utils.book_new();
+
+    const [anioIni, mesIni, diaIni] &#x3D; this.fechaInicioDetallado.split(&#x27;-&#x27;).map(Number);
+    const fechaInicio &#x3D; new Date(anioIni, mesIni - 1, diaIni);
+    const excelEpoch &#x3D; new Date(1899, 11, 30);
+    const fechaSerialInicio &#x3D; Math.floor(
+      (fechaInicio.getTime() - excelEpoch.getTime()) / (1000 * 60 * 60 * 24),
+    );
+
+    const headers &#x3D; [&#x27;FECHA&#x27;, &#x27;TIPO&#x27;, &#x27;CATEGORIA&#x27;, &#x27;TITULO&#x27;, &#x27;DESCRIPCION&#x27;, &#x27;MONTO&#x27;];
+    const primeraFila &#x3D; [fechaSerialInicio, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;];
+    const filasVacias &#x3D; Array.from({ length: 20 }, () &#x3D;&gt; [&#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;]);
+
+    const wsData &#x3D; XLSX.utils.aoa_to_sheet([headers, primeraFila, ...filasVacias]);
+
+    wsData[&#x27;!cols&#x27;] &#x3D; [
+      { wch: 14 },
+      { wch: 12 },
+      { wch: 28 },
+      { wch: 24 },
+      { wch: 30 },
+      { wch: 16 },
+    ];
+
+    const cellRef &#x3D; XLSX.utils.encode_cell({ r: 1, c: 0 });
+    if (wsData[cellRef]) {
+      wsData[cellRef].t &#x3D; &#x27;n&#x27;;
+      wsData[cellRef].z &#x3D; &#x27;yyyy-mm-dd&#x27;;
+    }
+
+    // Instrucciones
+    const instrucciones: any[][] &#x3D; [
+      [&#x27;PLANTILLA HATHOR — REGISTRO DETALLADO&#x27;],
+      [&#x27;&#x27;],
+      [&#x27;INSTRUCCIONES:&#x27;],
+      [&#x27;— Columna FECHA: ingresa en formato YYYY-MM-DD (ej: 2024-01-15)&#x27;],
+      [&#x27;— TIPO debe ser: INGRESO, GASTO, COSTO o INVERSION (en mayúsculas)&#x27;],
+      [&#x27;— CATEGORIA debe coincidir con las categorías de Hathor&#x27;],
+      [&#x27;— MONTO debe ser un valor numérico sin puntos ni comas&#x27;],
+      [&#x27;— Puedes agregar más filas siguiendo el mismo formato&#x27;],
+      [&#x27;&#x27;],
+      [&#x27;CATEGORÍAS VÁLIDAS DE INGRESO:&#x27;],
+      [
+        &#x27;VENTA DE LECHE&#x27;,
+        &#x27;VENTA DE ANIMALES&#x27;,
+        &#x27;VENTA DE DERIVADOS LÁCTEOS&#x27;,
+        &#x27;VENTA DE GENÉTICA&#x27;,
+        &#x27;BONIFICACIONES Y PREMIOS&#x27;,
+        &#x27;INCENTIVOS GUBERNAMENTALES&#x27;,
+        &#x27;ALQUILER DE MAQUINARIA Y EQUIPOS&#x27;,
+        &#x27;VENTA DE SUBPRODUCTOS&#x27;,
+        &#x27;OTROS INGRESOS&#x27;,
+      ],
+      [&#x27;&#x27;],
+      [&#x27;CATEGORÍAS VÁLIDAS DE GASTO:&#x27;],
+      [
+        &#x27;ALIMENTACIÓN&#x27;,
+        &#x27;SANIDAD ANIMAL&#x27;,
+        &#x27;MEDICAMENTOS&#x27;,
+        &#x27;VACUNAS&#x27;,
+        &#x27;SERVICIOS VETERINARIOS&#x27;,
+        &#x27;REPRODUCCIÓN&#x27;,
+        &#x27;MANO DE OBRA&#x27;,
+        &#x27;SALARIOS&#x27;,
+        &#x27;SERVICIOS PÚBLICOS&#x27;,
+        &#x27;TRANSPORTE&#x27;,
+        &#x27;ARRIENDOS&#x27;,
+        &#x27;MANTENIMIENTO&#x27;,
+      ],
+    ];
+
+    const wsInstrucciones &#x3D; XLSX.utils.aoa_to_sheet(instrucciones);
+    wsInstrucciones[&#x27;!cols&#x27;] &#x3D; [{ wch: 35 }, { wch: 35 }, { wch: 35 }];
+
+    XLSX.utils.book_append_sheet(wb, wsData, &#x27;Registros&#x27;);
+    XLSX.utils.book_append_sheet(wb, wsInstrucciones, &#x27;Instrucciones&#x27;);
+    XLSX.writeFile(wb, &#x27;hathor_registro_detallado.xlsx&#x27;);
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GENERACIÓN DE PLANTILLAS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  generarYDescargarPlantilla(): void {
+    switch (this.tipoPlantilla) {
+      case &#x27;DETALLADO&#x27;:
+        this.generarPlantillaDetallada();
+        break;
+      case &#x27;MENSUAL&#x27;:
+        this.generarPlantillaMensual();
+        break;
+      case &#x27;ANUAL&#x27;:
+        this.generarPlantillaAnual();
+        break;
+    }
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; UTILIDADES DE FECHA &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  private generarFilasFecha(tipo: &#x27;MENSUAL&#x27; | &#x27;ANUAL&#x27;): string[] {
+    const filas: string[] &#x3D; [];
+
+    if (tipo &#x3D;&#x3D;&#x3D; &#x27;MENSUAL&#x27;) {
+      const [anioIni, mesIni] &#x3D; this.mesInicio.split(&#x27;-&#x27;).map(Number);
+      const ahora &#x3D; new Date();
+      let anio &#x3D; anioIni;
+      let mes &#x3D; mesIni;
+
+      while (
+        anio &lt; ahora.getFullYear() ||
+        (anio &#x3D;&#x3D;&#x3D; ahora.getFullYear() &amp;&amp; mes &lt;&#x3D; ahora.getMonth() + 1)
+      ) {
+        filas.push(&#x60;${MESES_ES[mes - 1]} ${anio}&#x60;);
+        mes++;
+        if (mes &gt; 12) {
+          mes &#x3D; 1;
+          anio++;
+        }
+      }
+    }
+
+    if (tipo &#x3D;&#x3D;&#x3D; &#x27;ANUAL&#x27;) {
+      for (let a &#x3D; this.anioInicio!; a &lt;&#x3D; this.anioActual; a++) {
+        filas.push(String(a));
+      }
+    }
+
+    return filas;
+  }
+
+  // Convierte &quot;ENERO 2024&quot; → &quot;2024-01&quot;, &quot;2024&quot; → &quot;2024-01-01&quot;
+  static parsearFechaLegible(texto: string): string {
+    const partesMes &#x3D; texto.trim().split(&#x27; &#x27;);
+    if (partesMes.length &#x3D;&#x3D;&#x3D; 2) {
+      const mesIdx &#x3D; MESES_ES.indexOf(partesMes[0].toUpperCase());
+      if (mesIdx !&#x3D;&#x3D; -1) {
+        const mesStr &#x3D; (mesIdx + 1).toString().padStart(2, &#x27;0&#x27;);
+        return &#x60;${partesMes[1]}-${mesStr}&#x60;;
+      }
+    }
+    if (/^\d{4}$/.test(texto.trim())) {
+      return &#x60;${texto.trim()}-01-01&#x60;;
+    }
+    return texto;
+  }
+
+  private generarHojaInstrucciones(): any[][] {
+    const instrucciones: any[][] &#x3D; [
+      [&#x60;PLANTILLA HATHOR — REGISTRO ${this.tipoPlantilla}&#x60;],
+      [&#x27;&#x27;],
+      [&#x27;HOJA &quot;Ingresos&quot;: registra los montos de cada categoría de ingreso por período.&#x27;],
+      [&#x27;HOJA &quot;Egresos&quot;: registra los montos de cada categoría de gasto por período.&#x27;],
+      [&#x27;&#x27;],
+      [&#x27;REGLAS IMPORTANTES:&#x27;],
+      [&#x27;— Solo ingresa valores numéricos. No uses texto, puntos ni comas en los montos.&#x27;],
+      [&#x27;— Deja la celda vacía si no hubo movimiento en ese período.&#x27;],
+      [&#x27;— No modifiques los encabezados ni el orden de las columnas.&#x27;],
+      [&#x27;— La columna de fecha ya está generada, no la modifiques.&#x27;],
+      [&#x27;&#x27;],
+      [&#x27;CATEGORÍAS DE INGRESOS INCLUIDAS:&#x27;],
+      ...this.ingresosSeleccionados.map((c) &#x3D;&gt; [c.nombre, c.descripcion ?? &#x27;&#x27;]),
+      [&#x27;&#x27;],
+      [&#x27;CATEGORÍAS DE EGRESOS INCLUIDAS:&#x27;],
+      ...this.gastosSeleccionados.map((c) &#x3D;&gt; [c.nombre, c.descripcion ?? &#x27;&#x27;]),
+    ];
+    return instrucciones;
+  }
+
+  private generarPlantillaMensual(): void {
+    if (!this.mesInicio || !this.haySeleccion) return;
+
+    const wb &#x3D; XLSX.utils.book_new();
+    const filasFecha &#x3D; this.generarFilasFecha(&#x27;MENSUAL&#x27;);
+
+    // Hoja Ingresos
+    const colsIngresos &#x3D; [
+      ...this.ingresosSeleccionados.map((c) &#x3D;&gt; c.nombre),
+      ...this.otrosIngresos.map((o) &#x3D;&gt; o.nombre),
+    ];
+    const headerIngresos &#x3D; [&#x27;PERÍODO&#x27;, ...colsIngresos];
+    const filasIngresos &#x3D; [
+      [&#x27;TIPO_PLANTILLA&#x27;, &#x27;MENSUAL&#x27;],
+      [],
+      headerIngresos,
+      ...filasFecha.map((f) &#x3D;&gt; [f, ...Array(colsIngresos.length).fill(null)]),
+    ];
+    const wsIngresos &#x3D; XLSX.utils.aoa_to_sheet(filasIngresos);
+    wsIngresos[&#x27;!cols&#x27;] &#x3D; [{ wch: 18 }, ...colsIngresos.map(() &#x3D;&gt; ({ wch: 20 }))];
+
+    // Hoja Egresos
+    const colsGastos &#x3D; [
+      ...this.gastosSeleccionados.map((c) &#x3D;&gt; c.nombre),
+      ...this.otrosGastos.map((o) &#x3D;&gt; o.nombre),
+    ];
+    const headerGastos &#x3D; [&#x27;PERÍODO&#x27;, ...colsGastos];
+    const filasGastos &#x3D; [
+      [&#x27;TIPO_PLANTILLA&#x27;, &#x27;MENSUAL&#x27;],
+      [],
+      headerGastos,
+      ...filasFecha.map((f) &#x3D;&gt; [f, ...Array(colsGastos.length).fill(null)]),
+    ];
+    const wsGastos &#x3D; XLSX.utils.aoa_to_sheet(filasGastos);
+    wsGastos[&#x27;!cols&#x27;] &#x3D; [{ wch: 18 }, ...colsGastos.map(() &#x3D;&gt; ({ wch: 20 }))];
+
+    // Hoja Instrucciones
+    const wsInstrucciones &#x3D; XLSX.utils.aoa_to_sheet(this.generarHojaInstrucciones());
+    wsInstrucciones[&#x27;!cols&#x27;] &#x3D; [{ wch: 45 }, { wch: 50 }];
+
+    XLSX.utils.book_append_sheet(wb, wsIngresos, &#x27;Ingresos&#x27;);
+    XLSX.utils.book_append_sheet(wb, wsGastos, &#x27;Egresos&#x27;);
+    XLSX.utils.book_append_sheet(wb, wsInstrucciones, &#x27;Instrucciones&#x27;);
+    XLSX.writeFile(wb, &#x27;hathor_registro_mensual.xlsx&#x27;);
+  }
+
+  private generarPlantillaAnual(): void {
+    if (!this.anioInicio || !this.haySeleccion) return;
+
+    const wb &#x3D; XLSX.utils.book_new();
+    const filasFecha &#x3D; this.generarFilasFecha(&#x27;ANUAL&#x27;);
+
+    // Hoja Ingresos
+    const colsIngresos &#x3D; [
+      ...this.ingresosSeleccionados.map((c) &#x3D;&gt; c.nombre),
+      ...this.otrosIngresos.map((o) &#x3D;&gt; o.nombre),
+    ];
+    const filasIngresos &#x3D; [
+      [&#x27;TIPO_PLANTILLA&#x27;, &#x27;ANUAL&#x27;],
+      [],
+      [&#x27;AÑO&#x27;, ...colsIngresos],
+      ...filasFecha.map((f) &#x3D;&gt; [f, ...Array(colsIngresos.length).fill(null)]),
+    ];
+    const wsIngresos &#x3D; XLSX.utils.aoa_to_sheet(filasIngresos);
+    wsIngresos[&#x27;!cols&#x27;] &#x3D; [{ wch: 10 }, ...colsIngresos.map(() &#x3D;&gt; ({ wch: 20 }))];
+
+    // Hoja Egresos
+    const colsGastos &#x3D; [
+      ...this.gastosSeleccionados.map((c) &#x3D;&gt; c.nombre),
+      ...this.otrosGastos.map((o) &#x3D;&gt; o.nombre),
+    ];
+    const filasGastos &#x3D; [
+      [&#x27;TIPO_PLANTILLA&#x27;, &#x27;ANUAL&#x27;],
+      [],
+      [&#x27;AÑO&#x27;, ...colsGastos],
+      ...filasFecha.map((f) &#x3D;&gt; [f, ...Array(colsGastos.length).fill(null)]),
+    ];
+    const wsGastos &#x3D; XLSX.utils.aoa_to_sheet(filasGastos);
+    wsGastos[&#x27;!cols&#x27;] &#x3D; [{ wch: 10 }, ...colsGastos.map(() &#x3D;&gt; ({ wch: 20 }))];
+
+    // Hoja Instrucciones
+    const wsInstrucciones &#x3D; XLSX.utils.aoa_to_sheet(this.generarHojaInstrucciones());
+    wsInstrucciones[&#x27;!cols&#x27;] &#x3D; [{ wch: 45 }, { wch: 50 }];
+
+    XLSX.utils.book_append_sheet(wb, wsIngresos, &#x27;Ingresos&#x27;);
+    XLSX.utils.book_append_sheet(wb, wsGastos, &#x27;Egresos&#x27;);
+    XLSX.utils.book_append_sheet(wb, wsInstrucciones, &#x27;Instrucciones&#x27;);
+    XLSX.writeFile(wb, &#x27;hathor_registro_anual.xlsx&#x27;);
+  }
+
+  todosGastosSeleccionados(): boolean {
+    return this.categoriasGastos?.every((c) &#x3D;&gt; c.seleccionada);
+  }
+
+  todosIngresosSeleccionados(): boolean {
+    return this.categoriasIngresos?.every((c) &#x3D;&gt; c.seleccionada);
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'FilaResultado.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

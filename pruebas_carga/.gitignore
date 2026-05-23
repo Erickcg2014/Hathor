@@ -1,0 +1,10 @@
+.env
+
+*.txt
+delete.txt
+
+*.json
+*.csv
+
+__pycache__/
+*.pyc

@@ -1,0 +1,380 @@
+@import './shared/_mod-shared.css';
+
+.ranking-chips-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.ranking-loading {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ranking-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  background: #ffffff;
+  border: 1px solid #e9f5eb;
+  border-radius: 14px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ranking-chip:hover {
+  border-color: #86efac;
+  background: #f0fdf4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(21, 128, 61, 0.08);
+}
+
+.ranking-chip.chip-alerta {
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+.ranking-chip.chip-alerta:hover {
+  border-color: #ef4444;
+}
+
+.ranking-chip-icono {
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ranking-chip-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ranking-chip-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.ranking-chip-valor {
+  font-size: 20px;
+  font-weight: 800;
+  color: #111827;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.ranking-chip-de {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* ══════════════════════════════════════════════════════════
+   GRID DE MÓDULOS
+══════════════════════════════════════════════════════════ */
+
+.modulos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.modulo-card {
+  cursor: pointer;
+}
+
+.modulo-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.modulo-stat-grid-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-valor-sm {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Tarjeta Prácticas ── */
+.practicas-alerta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  flex-wrap: wrap;
+}
+
+.practicas-alerta-icono {
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.practicas-alerta-titulo {
+  font-size: 13px;
+  font-weight: 700;
+  color: #92400e;
+  margin: 0 0 2px;
+}
+
+.practicas-alerta-sub {
+  font-size: 11px;
+  color: #b45309;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.btn-ver-recomendaciones {
+  margin-left: auto;
+  padding: 6px 14px;
+  background: #f59e0b;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+  flex-shrink: 0;
+}
+
+.btn-ver-recomendaciones:hover {
+  background: #d97706;
+}
+
+.practicas-ok {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #f0fdf4;
+  border: 1px solid #d1fae5;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #15803d;
+  font-weight: 600;
+}
+
+.practicas-ok span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET ANCHA (≤ 1024px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .ranking-chips-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 768px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Chips: 2 columnas en tablet */
+  .ranking-chips-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .ranking-chip {
+    padding: 14px 14px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+
+  .ranking-chip-icono {
+    font-size: 24px;
+  }
+
+  .ranking-chip-valor {
+    font-size: 18px;
+  }
+
+  .ranking-chip-label {
+    font-size: 10px;
+  }
+
+  /* Grid: 1 columna en tablet */
+  .modulos-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Hato: grid de 3 columnas se mantiene */
+  .modulo-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .practicas-alerta {
+    padding: 12px 14px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL GRANDE (≤ 480px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  /* Chips: 2 columnas compactas */
+  .ranking-chips-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .ranking-chip {
+    padding: 12px 12px;
+    gap: 8px;
+    border-radius: 10px;
+    /* Sin hover transform en móvil */
+    transform: none !important;
+  }
+
+  .ranking-chip-icono {
+    font-size: 22px;
+  }
+
+  .ranking-chip-valor {
+    font-size: 16px;
+  }
+
+  .ranking-chip-label {
+    font-size: 9px;
+  }
+
+  .ranking-chip-de {
+    font-size: 9px;
+  }
+
+  /* Grid: 1 columna */
+  .modulos-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* Hato: 2 columnas en móvil para no apretar demasiado */
+  .modulo-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .modulo-stat-grid-item {
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  .stat-valor-sm {
+    font-size: 12px;
+  }
+
+  /* Prácticas */
+  .practicas-alerta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .btn-ver-recomendaciones {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 8px 14px;
+  }
+
+  .practicas-ok {
+    padding: 12px;
+    font-size: 12px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL PEQUEÑO (≤ 360px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 360px) {
+  /* Chips: ocultar label, solo icono + valor */
+  .ranking-chip-label {
+    display: none;
+  }
+
+  .ranking-chip {
+    padding: 10px;
+    gap: 6px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ranking-chip-valor {
+    font-size: 15px;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Hato: 2 columnas apretadas */
+  .modulo-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+
+  .modulo-stat-grid-item {
+    padding: 6px 8px;
+  }
+
+  .stat-valor-sm {
+    font-size: 11px;
+  }
+
+  .practicas-alerta-titulo {
+    font-size: 12px;
+  }
+
+  .practicas-alerta-sub {
+    font-size: 10px;
+  }
+}

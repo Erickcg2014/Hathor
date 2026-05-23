@@ -1,0 +1,79 @@
+<div class="modal-overlay" (click)="onOverlayClick($event)">
+  <div class="modal-panel">
+    <!-- Header -->
+    <div class="modal-header">
+      <div class="modal-header-text">
+        <p class="modal-tag">Detalle · {{ grafica.titulo }}</p>
+        <h2>{{ grafica.titulo }}</h2>
+        <p class="modal-subtitulo">{{ grafica.subtitulo }}</p>
+      </div>
+      <button class="btn-cerrar" (click)="cerrar.emit()">✕</button>
+    </div>
+
+    <!-- Descripción -->
+    <div class="modal-descripcion">
+      <span class="desc-icono">📊</span>
+      <p>{{ grafica.descripcion }}</p>
+    </div>
+
+    @if (grafica.id === 'radar' || grafica.id.startsWith('radar_')) {
+      <div class="zoom-controles">
+        <span class="zoom-label">Zoom del eje:</span>
+        <div class="zoom-btns">
+          <button [class.activo]="rangoRadar === 100" (click)="setRangoRadar(100)">P0–100</button>
+          <button [class.activo]="rangoRadar === 75" (click)="setRangoRadar(75)">P0–75</button>
+          <button [class.activo]="rangoRadar === 50" (click)="setRangoRadar(50)">P0–50</button>
+          <button [class.activo]="rangoRadar === 25" (click)="setRangoRadar(25)">P0–25</button>
+        </div>
+      </div>
+    }
+
+    <!-- Gráfica ampliada -->
+    <div class="modal-chart-wrap">
+      <canvas #chartDetalle></canvas>
+    </div>
+
+    <!-- Guía de lectura -->
+    <div class="modal-guia">
+      <h4>Guía de lectura</h4>
+      <div class="guia-items">
+        @for (item of guiaItems; track item.rango) {
+          <div class="guia-item">
+            <span class="guia-dot" [style.background]="item.color"></span>
+            <span class="guia-rango">{{ item.rango }}</span>
+            <span class="guia-desc">{{ item.descripcion }}</span>
+          </div>
+        }
+      </div>
+      <p class="guia-extra">{{ grafica.guiaLectura }}</p>
+    </div>
+
+    <!-- Highlights -->
+    <div class="modal-highlights">
+      <div class="highlight-col">
+        <h4>🏆 Tus mejores KPIs</h4>
+        @for (r of top3Mejores; track r.idBenchmarkHato) {
+          <div class="highlight-item">
+            <span class="highlight-nombre">{{ r.kpi.nombre }}</span>
+            <span [class]="'badge ' + interpretacionClass(r.interpretacion)">
+              {{ r.interpretacion }}
+            </span>
+            <span class="highlight-percentil">P{{ (+(r.percentil ?? 0)).toFixed(0) }}</span>
+          </div>
+        }
+      </div>
+      <div class="highlight-col">
+        <h4>⚠️ KPIs a mejorar</h4>
+        @for (r of top3AMejorar; track r.idBenchmarkHato) {
+          <div class="highlight-item">
+            <span class="highlight-nombre">{{ r.kpi.nombre }}</span>
+            <span [class]="'badge ' + interpretacionClass(r.interpretacion)">
+              {{ r.interpretacion }}
+            </span>
+            <span class="highlight-percentil">P{{ (+(r.percentil ?? 0)).toFixed(0) }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

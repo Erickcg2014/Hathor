@@ -1,0 +1,117 @@
+<div class="resumen-wrapper">
+  <!-- Header -->
+  <div class="resumen-header">
+    <div class="resumen-header-left">
+      <span class="page-tag">Benchmarking · Ranking</span>
+      <h2 class="resumen-titulo">Tu posición <span class="brand">en el sistema</span></h2>
+      @if (nombreHato) {
+        <p class="resumen-subtitulo">{{ nombreHato }}</p>
+      }
+    </div>
+    <div class="resumen-badge">🏆</div>
+  </div>
+
+  @if (!resumen) {
+    <div class="resumen-empty">
+      <span>📊</span>
+      <p>No hay datos de ranking disponibles aún.</p>
+    </div>
+  }
+
+  @if (resumen) {
+    <!-- Score compuesto -->
+    <div class="score-card" [class]="scoreColor">
+      <div class="score-card-left">
+        <span class="score-label">Score compuesto</span>
+        <div class="score-valor-row">
+          <span class="score-valor">{{ formatScore(resumen.scoreCompuesto) }}</span>
+          <span class="score-de-100">/ 100</span>
+          <!-- Tooltip -->
+          <div class="score-tooltip-wrap">
+            <span class="score-info-icon">ℹ️</span>
+            <div class="score-tooltip">
+              Promedio de todos tus percentiles de benchmarking nacional.
+              <strong>100</strong> = mejor posible, <strong>50</strong> = promedio del sector,
+              <strong>0</strong> = por debajo del sector.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="score-card-right">
+        <div class="score-gauge">
+          <div class="score-gauge-fill" [style.width.%]="resumen.scoreCompuesto ?? 0"></div>
+        </div>
+        <span class="score-desc"> Promedio de tus percentiles en todos los KPIs </span>
+      </div>
+    </div>
+
+    <!-- Cards de posición -->
+    <div class="posicion-grid">
+      <div class="posicion-card">
+        <span class="posicion-icono">{{ medallaIcon }}</span>
+        <div class="posicion-info">
+          <span class="posicion-label">Posición nacional</span>
+          <span class="posicion-valor">
+            {{ formatPosicion(resumen.posicionNacional, resumen.totalHatosNacional) }}
+          </span>
+        </div>
+      </div>
+
+      <div class="posicion-card">
+        <span class="posicion-icono">📍</span>
+        <div class="posicion-info">
+          <span class="posicion-label">Posición regional</span>
+          <span class="posicion-valor">
+            {{ formatPosicion(resumen.posicionRegional, resumen.totalHatosRegional) }}
+          </span>
+        </div>
+      </div>
+
+      <div class="posicion-card">
+        <span class="posicion-icono">🐄</span>
+        <div class="posicion-info">
+          <span class="posicion-label">Hatos en el sistema</span>
+          <span class="posicion-valor">{{ resumen.totalHatosNacional }}</span>
+        </div>
+      </div>
+
+      @if (resumen.fechaUltimoCalculo) {
+        <div class="posicion-card">
+          <span class="posicion-icono">🗓️</span>
+          <div class="posicion-info">
+            <span class="posicion-label">Último cálculo</span>
+            <span class="posicion-valor">
+              {{ resumen.fechaUltimoCalculo | date: 'dd/MM/yyyy' }}
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Semáforo KPIs -->
+    <div class="semaforo-section">
+      <h3 class="semaforo-titulo">Estado de tus KPIs</h3>
+      <div class="semaforo-grid">
+        <div class="semaforo-card optimo">
+          <span class="semaforo-numero">{{ resumen.kpisOptimos }}</span>
+          <span class="semaforo-label">Óptimos</span>
+        </div>
+
+        <div class="semaforo-card bueno">
+          <span class="semaforo-numero">{{ resumen.kpisBuenos }}</span>
+          <span class="semaforo-label">Buenos</span>
+        </div>
+
+        <div class="semaforo-card aceptable">
+          <span class="semaforo-numero">{{ resumen.kpisAceptables }}</span>
+          <span class="semaforo-label">Aceptables</span>
+        </div>
+
+        <div class="semaforo-card critico">
+          <span class="semaforo-numero">{{ resumen.kpisCriticos }}</span>
+          <span class="semaforo-label">Críticos</span>
+        </div>
+      </div>
+    </div>
+  }
+</div>

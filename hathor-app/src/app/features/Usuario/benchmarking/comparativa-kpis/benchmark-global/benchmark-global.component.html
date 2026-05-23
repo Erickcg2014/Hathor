@@ -1,0 +1,242 @@
+<div class="benchmark-global">
+  <!-- HEADER CON FILTROS -->
+  <!-- SUBHEADER — filtros del benchmark global -->
+  <div class="bg-subheader">
+    <!-- Fila 1 — info + indicador -->
+    <div class="bg-subheader-top">
+      <div class="bg-subheader-info">
+        <p class="bg-tag">Benchmark Global · En el Sistema</p>
+        <p class="bg-subtitulo">
+          Compara tu hato contra otros hatos reales del sistema. Activa los filtros para afinar la
+          comparativa.
+        </p>
+      </div>
+      @if (datos && !loading) {
+        <div class="bg-indicador">
+          <span class="bg-indicador-num">{{ datos.totalHatosEncontrados }}</span>
+          <span class="bg-indicador-label">hatos encontrados</span>
+        </div>
+      }
+    </div>
+
+    <!-- Fila 2 — controles -->
+    <div class="bg-controles">
+      <div class="bg-controles-group">
+        <span class="bg-controles-label">Filtrar por</span>
+        <div class="bg-toggles">
+          <button class="toggle-btn" [class.activo]="filtroTropico" (click)="toggleTropico()">
+            <span class="toggle-icono">🌡️</span>Trópico
+          </button>
+          <button class="toggle-btn" [class.activo]="filtroEscala" (click)="toggleEscala()">
+            <span class="toggle-icono">📏</span>Escala
+          </button>
+          <button class="toggle-btn" [class.activo]="filtroRegion" (click)="toggleRegion()">
+            <span class="toggle-icono">📍</span>Región
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-controles-sep"></div>
+
+      <div class="bg-controles-group">
+        <span class="bg-controles-label">Top</span>
+        <div class="bg-cantidad-btns">
+          @for (op of opcionesCantidad; track op.valor) {
+            <button [class.activo]="cantidad === op.valor" (click)="setCantidad(op.valor)">
+              {{ op.label }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila 3 — filtros activos -->
+    @if (filtrosActivosTexto.length > 0) {
+      <div class="bg-filtros-activos">
+        <span class="bg-controles-label">Aplicados</span>
+        @for (f of filtrosActivosTexto; track f) {
+          <span class="bg-filtro-tag">● {{ f }}</span>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- LOADING -->
+  @if (loading) {
+    <div class="bg-loading">
+      <div class="bg-spinner"></div>
+      <span>Cargando benchmark global...</span>
+    </div>
+  }
+
+  <!-- ERROR -->
+  @if (!loading && error) {
+    <div class="bg-error">{{ error }}</div>
+  }
+
+  <!-- SIN DATOS SUFICIENTES -->
+  @if (!loading && !error && datos?.datosInsuficientes) {
+    <div class="bg-vacio">
+      <span class="bg-vacio-icono">🐄</span>
+      <h3>Pocos hatos disponibles</h3>
+      <p>{{ datos!.mensajeFaltante }}</p>
+      <p class="bg-vacio-hint">Prueba desactivando algún filtro para ampliar la comparativa.</p>
+    </div>
+  }
+
+  @if (!loading && datos?.mensajeFaltante && !datos?.datosInsuficientes) {
+    <div class="bg-alerta">
+      <span>⚠️</span>
+      <p>{{ datos!.mensajeFaltante }}</p>
+    </div>
+  }
+
+  @if (!loading && tieneResultados) {
+    <!-- RESUMEN DE ESTADOS -->
+    <div class="bg-resumen-grid">
+      <article class="bg-resumen-card">
+        <span class="bg-resumen-num optimo">{{ resumenEstados.optimo }}</span>
+        <span class="bg-resumen-label">Óptimo</span>
+      </article>
+      <article class="bg-resumen-card">
+        <span class="bg-resumen-num bueno">{{ resumenEstados.bueno }}</span>
+        <span class="bg-resumen-label">Bueno</span>
+      </article>
+      <article class="bg-resumen-card">
+        <span class="bg-resumen-num aceptable">{{ resumenEstados.aceptable }}</span>
+        <span class="bg-resumen-label">Aceptable</span>
+      </article>
+      <article class="bg-resumen-card">
+        <span class="bg-resumen-num critico">{{ resumenEstados.critico }}</span>
+        <span class="bg-resumen-label">Crítico</span>
+      </article>
+      <article class="bg-resumen-card">
+        <span class="bg-resumen-num total">{{ datos!.kpisResumen.length }}</span>
+        <span class="bg-resumen-label">KPIs comparados</span>
+      </article>
+    </div>
+
+    <!-- MAPA -->
+    @if (tieneMapa) {
+      <article class="bg-card">
+        <div class="bg-card-header">
+          <h3>📍 Ubicación de hatos comparables</h3>
+          <p>Posiciones aproximadas — datos anonimizados por privacidad.</p>
+        </div>
+        <app-mapa-hatos [hatos]="datos!.hatosEnMapa"> </app-mapa-hatos>
+      </article>
+    }
+
+    <!-- GRÁFICA DE BARRAS — todos los KPIs -->
+    <article class="bg-card">
+      <div class="bg-card-header">
+        <h3>📊 Tu hato vs promedio del grupo</h3>
+        <p>
+          Comparativa de todos los KPIs contra el promedio de los
+          {{ datos!.totalHatosEncontrados }} hatos del grupo.
+        </p>
+      </div>
+      <app-grafica-barras-global [kpisResumen]="datos!.kpisResumen"> </app-grafica-barras-global>
+    </article>
+
+    <!-- GRÁFICA DE POSICIÓN — un KPI a la vez -->
+    <article class="bg-card">
+      <div class="bg-card-header">
+        <h3>📈 Tu posición en el ranking</h3>
+        <p>Selecciona un KPI para ver tu posición dentro del grupo.</p>
+      </div>
+
+      <!-- Selector de KPI -->
+      <div class="bg-kpi-selector">
+        @for (grupo of kpisPorCategoria; track grupo.config.categoria) {
+          <div class="bg-kpi-grupo">
+            <span class="bg-kpi-grupo-label">
+              {{ grupo.config.icono }} {{ grupo.config.label }}
+            </span>
+            <div class="bg-kpi-chips">
+              @for (kpi of grupo.kpis; track kpi.codigoKpi) {
+                <button
+                  class="bg-kpi-chip"
+                  [class.activo]="kpiSeleccionado?.codigoKpi === kpi.codigoKpi"
+                  (click)="seleccionarKpi(kpi)"
+                >
+                  {{ kpi.nombreKpi }}
+                  <span
+                    class="bg-kpi-chip-dot"
+                    [style.background]="colorPorInterpretacion(kpi.interpretacion)"
+                  >
+                  </span>
+                </button>
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+      @if (kpiSeleccionado) {
+        <app-grafica-posicion [kpi]="kpiSeleccionado"> </app-grafica-posicion>
+      }
+    </article>
+
+    <!-- TABLAS POR CATEGORÍA -->
+    @for (grupo of kpisPorCategoria; track grupo.config.categoria) {
+      <section class="bg-categoria-seccion">
+        <div class="bg-categoria-header">
+          <span class="bg-categoria-icono">{{ grupo.config.icono }}</span>
+          <div>
+            <h3>{{ grupo.config.label }}</h3>
+            <p>{{ grupo.kpis.length }} indicadores comparados</p>
+          </div>
+        </div>
+
+        <div class="bg-tabla-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>KPI</th>
+                <th>Tu valor</th>
+                <th>Promedio grupo</th>
+                <th>Top grupo</th>
+                <th>Percentil grupo</th>
+                <th>Hatos</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (kpi of grupo.kpis; track trackByKpi($index, kpi)) {
+                <tr
+                  [class.fila-seleccionada]="kpiSeleccionado?.codigoKpi === kpi.codigoKpi"
+                  (click)="seleccionarKpi(kpi)"
+                  style="cursor: pointer"
+                >
+                  <td class="td-nombre">{{ kpi.nombreKpi }}</td>
+                  <td class="td-destacado">
+                    {{ formatValor(kpi.valorHatoActual, kpi.unidadKpi) }}
+                  </td>
+                  <td>{{ formatValor(kpi.promedioGrupo, kpi.unidadKpi) }}</td>
+                  <td>{{ formatValor(kpi.topGrupo, kpi.unidadKpi) }}</td>
+                  <td>
+                    <div class="percentil-cell">
+                      <div
+                        class="percentil-bar"
+                        [style.width.%]="kpi.percentilEnGrupo ?? 0"
+                        [style.background]="colorPorInterpretacion(kpi.interpretacion)"
+                      ></div>
+                      <span>{{ (+(kpi.percentilEnGrupo ?? 0)).toFixed(1) }}</span>
+                    </div>
+                  </td>
+                  <td>{{ kpi.totalHatosGrupo }}</td>
+                  <td>
+                    <span [class]="'badge ' + interpretacionClass(kpi.interpretacion)">
+                      {{ kpi.interpretacion ?? '—' }}
+                    </span>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    }
+  }
+</div>

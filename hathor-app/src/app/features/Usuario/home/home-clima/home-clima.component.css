@@ -1,0 +1,476 @@
+/* ═══════════════════════════════════════════════════════════
+   HOME CLIMA COMPONENT
+   Breakpoints: móvil 360-480px · tablet 768px · desktop 1024px+
+═══════════════════════════════════════════════════════════ */
+
+/* ── Tarjeta principal ── */
+.clima-card {
+  background: #ffffff;
+  border: 1px solid #e9f5eb;
+  border-radius: 16px;
+  padding: 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-left: 4px solid #19e64d;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.clima-card.clima-severo {
+  border-left-color: #f59e0b;
+  background: #fffdf5;
+}
+
+/* ══════════════════════════════════════════════════════════
+   CONDICIÓN ACTUAL — fila principal
+══════════════════════════════════════════════════════════ */
+
+.clima-actual {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Ícono grande del clima */
+.clima-icono-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #f0fdf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  flex-shrink: 0;
+}
+
+.clima-card.clima-severo .clima-icono-wrap {
+  background: #fffbeb;
+}
+
+/* Datos de temperatura */
+.clima-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.clima-condicion {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6b7280;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.clima-temp {
+  font-size: 26px;
+  font-weight: 900;
+  color: #111827;
+  margin: 0;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.clima-sensacion {
+  font-size: 12px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.clima-detalles {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.clima-detalle {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════════════════════════
+   PRONÓSTICO — 3 días
+══════════════════════════════════════════════════════════ */
+
+.clima-pronostico {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.clima-dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 1px solid #e9f5eb;
+  min-width: 64px;
+}
+
+.clima-dia-fecha {
+  font-size: 10px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.clima-dia-icono {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.clima-dia-temp {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.clima-dia-min {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* ══════════════════════════════════════════════════════════
+   AVISOS CONTEXTUALES
+══════════════════════════════════════════════════════════ */
+
+.clima-avisos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid #fde68a;
+}
+
+/* Aviso severo (amarillo) — por defecto */
+.clima-aviso-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #ffffff;
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  border-left: 4px solid #f59e0b;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.clima-aviso-item:hover {
+  background: #fffbeb;
+  border-color: #fcd34d;
+}
+
+.clima-aviso-icono {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fffbeb;
+  border-radius: 10px;
+  border: 1px solid #fde68a;
+}
+
+.clima-aviso-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.clima-aviso-titulo {
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+}
+
+.clima-aviso-mensaje {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.clima-aviso-btn {
+  flex-shrink: 0;
+  align-self: center;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #fde68a;
+  background: #fffbeb;
+  font-size: 11px;
+  font-weight: 700;
+  color: #d97706;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+  white-space: nowrap;
+}
+
+.clima-aviso-btn:hover {
+  background: #fef3c7;
+  border-color: #fcd34d;
+}
+
+/* ── Sobrescrituras para clima NO severo (verde) ── */
+.clima-card:not(.clima-severo) .clima-avisos {
+  border-top-color: #d1fae5;
+}
+
+.clima-card:not(.clima-severo) .clima-aviso-item {
+  border-color: #d1fae5;
+  border-left-color: #19e64d;
+}
+
+.clima-card:not(.clima-severo) .clima-aviso-item:hover {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.clima-card:not(.clima-severo) .clima-aviso-icono {
+  background: #f0fdf4;
+  border-color: #d1fae5;
+}
+
+.clima-card:not(.clima-severo) .clima-aviso-btn {
+  background: #f0fdf4;
+  border-color: #d1fae5;
+  color: #15803d;
+}
+
+.clima-card:not(.clima-severo) .clima-aviso-btn:hover {
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+/* ── Clima neutral (sin avisos) ── */
+.clima-neutral {
+  padding: 10px 14px;
+  background: #f0fdf4;
+  border: 1px solid #d1fae5;
+  border-radius: 10px;
+}
+
+.clima-neutral p {
+  font-size: 13px;
+  font-weight: 600;
+  color: #15803d;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 768px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .clima-card {
+    padding: 16px 18px;
+    border-radius: 14px;
+    gap: 12px;
+  }
+
+  .clima-actual {
+    gap: 14px;
+  }
+
+  /* Pronóstico baja debajo de la info en tablet */
+  .clima-pronostico {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .clima-dia {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 10px;
+  }
+
+  .clima-dia-fecha {
+    font-size: 9px;
+  }
+
+  .clima-temp {
+    font-size: 22px;
+  }
+
+  .clima-aviso-item {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .clima-aviso-titulo {
+    font-size: 14px;
+  }
+
+  .clima-aviso-mensaje {
+    font-size: 12px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL GRANDE (≤ 480px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .clima-card {
+    padding: 14px 16px;
+    border-radius: 12px;
+    border-left-width: 3px;
+    gap: 10px;
+  }
+
+  /* Fila principal: ícono + info en fila, pronóstico abajo */
+  .clima-actual {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* Ícono + info lado a lado dentro de la fila */
+  .clima-icono-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 26px;
+    float: left;
+    margin-right: 12px;
+  }
+
+  /* Combinamos ícono e info en una fila con float */
+  .clima-info {
+    overflow: hidden; /* clearfix del float */
+  }
+
+  .clima-temp {
+    font-size: 20px;
+  }
+
+  .clima-sensacion {
+    font-size: 11px;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .clima-detalles {
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .clima-detalle {
+    font-size: 11px;
+  }
+
+  /* Pronóstico: fila completa, días más compactos */
+  .clima-pronostico {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .clima-dia {
+    flex: 1;
+    padding: 8px 6px;
+    min-width: 0;
+    border-radius: 8px;
+  }
+
+  .clima-dia-icono {
+    font-size: 18px;
+  }
+
+  .clima-dia-temp {
+    font-size: 12px;
+  }
+
+  /* Avisos: apilados en columna */
+  .clima-aviso-item {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .clima-aviso-icono {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+
+  .clima-aviso-btn {
+    align-self: flex-start;
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .clima-aviso-titulo {
+    font-size: 13px;
+  }
+
+  .clima-aviso-mensaje {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL PEQUEÑO (≤ 360px)
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 360px) {
+  .clima-card {
+    padding: 12px 14px;
+  }
+
+  .clima-temp {
+    font-size: 18px;
+  }
+
+  /* Pronóstico: solo 3 días apretados, ocultar fecha */
+  .clima-dia-fecha {
+    display: none;
+  }
+
+  .clima-dia {
+    padding: 6px 4px;
+  }
+
+  .clima-dia-icono {
+    font-size: 16px;
+  }
+
+  .clima-dia-temp {
+    font-size: 11px;
+  }
+
+  .clima-aviso-titulo {
+    font-size: 12px;
+  }
+
+  .clima-aviso-mensaje {
+    font-size: 11px;
+  }
+}

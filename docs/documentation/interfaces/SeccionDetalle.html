@@ -1,0 +1,589 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  SeccionDetalle</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/features/admin/detalle-hato-admin/detalle-hato-admin.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#activa" 
+>
+                                            activa
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#icono" 
+>
+                                            icono
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#id" 
+>
+                                            id
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#label" 
+>
+                                            label
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="activa"></a>
+                                        <span class="name "><b>activa</b>
+                                            <a href="#activa">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>activa:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="icono"></a>
+                                        <span class="name "><b>icono</b>
+                                            <a href="#icono">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>icono:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="id"></a>
+                                        <span class="name "><b>id</b>
+                                            <a href="#id">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="label"></a>
+                                        <span class="name "><b>label</b>
+                                            <a href="#label">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>label:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+import { HatoStateService } from &#x27;../../../core/services/ui-state/hato-state.service&#x27;;
+import { AdminService } from &#x27;../../../core/services/admin/admin.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../shared/spinner/spinner.component&#x27;;
+
+// Componentes reutilizados
+import { InfoHatoComponent } from &#x27;../../Usuario/hato/info-hato/info-hato.component&#x27;;
+import { InfoBenchmarkingComponent } from &#x27;../../Usuario/benchmarking/info-benchmarking/info-benchmarking.component&#x27;;
+import { ComparativaKpisComponent } from &#x27;../../Usuario/benchmarking/comparativa-kpis/comparativa-kpis.component&#x27;;
+import { InfoFinanzasComponent } from &#x27;../../Usuario/finanzas/info-finanzas/info-finanzas.component&#x27;;
+import { InfoProduccionComponent } from &#x27;../../Usuario/produccion/info-produccion/info-produccion.component&#x27;;
+import { InventarioGeneralResumenComponent } from &#x27;../../Usuario/hato/inventarios-hato/general/resumen/inventario-general-resumen.component&#x27;;
+import { InventarioGanadoResumenComponent } from &#x27;../../Usuario/hato/inventarios-hato/ganado/resumen/inventario-ganado-resumen.component&#x27;;
+import { MisPracticasComponent } from &#x27;../../Usuario/practicas/mis-practicas/mis-practicas.component&#x27;;
+
+// ── Secciones disponibles ─────────────────────────────────────────────────
+export interface SeccionDetalle {
+  id: string;
+  label: string;
+  icono: string;
+  activa: boolean;
+}
+
+@Component({
+  selector: &#x27;app-detalle-hato-admin&#x27;,
+  standalone: true,
+  imports: [
+    CommonModule,
+    SpinnerComponent,
+    InfoHatoComponent,
+    InfoBenchmarkingComponent,
+    ComparativaKpisComponent,
+    InfoFinanzasComponent,
+    InfoProduccionComponent,
+    InventarioGeneralResumenComponent,
+    InventarioGanadoResumenComponent,
+    MisPracticasComponent,
+  ],
+  templateUrl: &#x27;./detalle-hato-admin.component.html&#x27;,
+  styleUrl: &#x27;./detalle-hato-admin.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DetalleHatoAdminComponent implements OnInit, OnDestroy {
+  // ── Estado ────────────────────────────────────────────────────────────
+  loading &#x3D; true;
+  error &#x3D; &#x27;&#x27;;
+  nombreHato &#x3D; &#x27;&#x27;;
+  idHato &#x3D; &#x27;&#x27;;
+
+  // ── Secciones ───────────────────────────────────────────
+  secciones: SeccionDetalle[] &#x3D; [
+    { id: &#x27;info&#x27;, label: &#x27;Información del hato&#x27;, icono: &#x27;🏡&#x27;, activa: true },
+    { id: &#x27;kpis&#x27;, label: &#x27;KPIs&#x27;, icono: &#x27;📈&#x27;, activa: true },
+    { id: &#x27;benchmarking&#x27;, label: &#x27;Benchmarking&#x27;, icono: &#x27;🔍&#x27;, activa: false },
+    { id: &#x27;finanzas&#x27;, label: &#x27;Finanzas&#x27;, icono: &#x27;💰&#x27;, activa: true },
+    { id: &#x27;produccion&#x27;, label: &#x27;Producción&#x27;, icono: &#x27;🥛&#x27;, activa: true },
+    { id: &#x27;inv-general&#x27;, label: &#x27;Inventario general&#x27;, icono: &#x27;📦&#x27;, activa: false },
+    { id: &#x27;inv-ganado&#x27;, label: &#x27;Inventario ganado&#x27;, icono: &#x27;🐄&#x27;, activa: false },
+    { id: &#x27;practicas&#x27;, label: &#x27;Prácticas&#x27;, icono: &#x27;🌱&#x27;, activa: false },
+  ];
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private hatoState: HatoStateService,
+    private adminService: AdminService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.idHato &#x3D; this.route.snapshot.paramMap.get(&#x27;idHato&#x27;) ?? &#x27;&#x27;;
+
+    if (!this.idHato) {
+      this.error &#x3D; &#x27;ID de hato no válido.&#x27;;
+      this.loading &#x3D; false;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.cargarHato();
+  }
+
+  private cargarHato(): void {
+    this.loading &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.adminService.getDetalleHato(this.idHato).subscribe({
+      next: (detalle) &#x3D;&gt; {
+        this.nombreHato &#x3D; detalle.nombreHato;
+
+        this.hatoState.setHatoActivo({
+          idHato: detalle.idHato,
+          nombreHato: detalle.nombreHato,
+          departamento: detalle.departamento,
+          ciudad: detalle.ciudad ?? &#x27;&#x27;,
+          altitud: detalle.altitud ?? 0,
+          tropico: detalle.tropico ?? &#x27;&#x27;,
+          areaHato: detalle.areaHato ?? 0,
+          areaPastoreo: detalle.areaPastoreo ?? 0,
+          cantCorrales: detalle.cantCorrales ?? 0,
+          cantSalasOrdenio: detalle.cantSalasOrdenio ?? 0,
+          capacidadAlmacenarLeche: detalle.capacidadAlmacenarLeche ?? 0,
+          cantEmpleadosPermanentes: detalle.cantEmpleadosPermanentes ?? 0,
+          cantEmpleadosTemporales: detalle.cantEmpleadosTemporales ?? 0,
+          tipoHato: detalle.tipoHato ?? &#x27;&#x27;,
+          porcentajeCompletitud: detalle.porcentajeCompletitud,
+          gastoMensualNomina: detalle.gastoMensualNomina ?? 0,
+          gastoMensualAlimentacion: detalle.gastoMensualAlimentacion ?? 0,
+          escala:
+            (detalle.escala as &#x27;PEQUEÑA&#x27; | &#x27;MEDIANA&#x27; | &#x27;GRANDE&#x27; | &#x27;EMPRESARIAL&#x27; | undefined) ??
+            undefined,
+          latitud: detalle.latitud ?? undefined,
+          longitud: detalle.longitud ?? undefined,
+        });
+
+        this.loading &#x3D; false;
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.error &#x3D; &#x27;Error al cargar el hato. Verifica que existe.&#x27;;
+        this.loading &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  // ── Gestión de secciones ──────────────────────────────────────────────
+
+  toggleSeccion(id: string): void {
+    const seccion &#x3D; this.secciones.find((s) &#x3D;&gt; s.id &#x3D;&#x3D;&#x3D; id);
+    if (seccion) {
+      seccion.activa &#x3D; !seccion.activa;
+      this.cdr.markForCheck();
+    }
+  }
+
+  activarTodo(): void {
+    this.secciones.forEach((s) &#x3D;&gt; (s.activa &#x3D; true));
+    this.cdr.markForCheck();
+  }
+
+  desactivarTodo(): void {
+    this.secciones.forEach((s) &#x3D;&gt; (s.activa &#x3D; false));
+    this.cdr.markForCheck();
+  }
+
+  isActiva(id: string): boolean {
+    return this.secciones.find((s) &#x3D;&gt; s.id &#x3D;&#x3D;&#x3D; id)?.activa ?? false;
+  }
+
+  get seccionesActivasCount(): number {
+    return this.secciones.filter((s) &#x3D;&gt; s.activa).length;
+  }
+
+  volver(): void {
+    this.router.navigate([&#x27;/admin/hatos&#x27;]);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'SeccionDetalle.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

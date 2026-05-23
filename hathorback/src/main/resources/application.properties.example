@@ -1,0 +1,78 @@
+# ==================================================
+# = HATHOR BACKEND - CONFIGURATION EXAMPLE
+# ==================================================
+
+spring.application.name=hathorback
+
+# ==================================================
+# = SERVER
+# ==================================================
+
+server.port=8080
+
+# ==================================================
+# = DATABASE (SUPABASE - POSTGRESQL)
+# ==================================================
+# Usa la URL JDBC proporcionada por Supabase (Transaction Pooler)
+# Ejemplo:
+# jdbc:postgresql://<host>.pooler.supabase.com:6543/postgres
+
+spring.datasource.url=jdbc:postgresql://<HOST>.pooler.supabase.com:6543/postgres
+spring.datasource.username=<POSTGRES_USER>
+spring.datasource.password=<POSTGRES_PASSWORD>
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# ==================================================
+# = JPA / HIBERNATE
+# ==================================================
+
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+
+# ==================================================
+# = HIKARI (CONNECTION POOL)
+# ==================================================
+
+spring.datasource.hikari.maximum-pool-size=5
+spring.datasource.hikari.minimum-idle=2
+spring.datasource.hikari.idle-timeout=30000
+spring.datasource.hikari.connection-timeout=20000
+
+# ==================================================
+# = ANTHROPIC (CLAUDE API)
+# ==================================================
+# Obtén tu API Key en: https://console.anthropic.com/
+
+anthropic.api.key=<CLAUDE_API_KEY>
+anthropic.api.url=https://api.anthropic.com/v1/messages
+anthropic.api.model=claude-sonnet-4-5-20250929
+anthropic.api.max-tokens=1500
+
+# ==================================================
+# = REDIS (UPSTASH)
+# ==================================================
+# Datos proporcionados por Upstash
+
+upstash.redis.host=<REDIS_HOST>
+upstash.redis.port=6379
+upstash.redis.password=<REDIS_PASSWORD>
+
+# ==================================================
+# = SECURITY (JWT - SUPABASE)
+# ==================================================
+# Reemplaza <PROJECT_ID> con el ID de tu proyecto en Supabase
+
+spring.security.oauth2.resourceserver.jwt.issuer-uri=https://<PROJECT_ID>.supabase.co/auth/v1
+
+# Nivel de logs de seguridad (usar DEBUG o INFO en producción)
+logging.level.org.springframework.security=TRACE
+
+# ==================================================
+# = SUPABASE CONFIG
+# ==================================================
+
+supabase.url=https://<PROJECT_ID>.supabase.co
+supabase.service-role-key=<SUPABASE_SERVICE_ROLE_KEY>

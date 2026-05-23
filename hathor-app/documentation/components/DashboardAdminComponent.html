@@ -1,0 +1,3557 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DashboardAdminComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/admin/dashboard-admin/dashboard-admin.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-dashboard-admin</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dashboard-admin.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./dashboard-admin.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartCompletitudRef" >chartCompletitudRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartDepartamentoRef" >chartDepartamentoRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartEscalaRef" >chartEscalaRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#charts" >charts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#chartTropicoRef" >chartTropicoRef</a>
+                            </li>
+                            <li>
+                                <a href="#departamentos" >departamentos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#escalas" >escalas</a>
+                            </li>
+                            <li>
+                                <a href="#globales" >globales</a>
+                            </li>
+                            <li>
+                                <a href="#hatosConCoordenadas" >hatosConCoordenadas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#L" >L</a>
+                            </li>
+                            <li>
+                                <a href="#loadingDepartamentos" >loadingDepartamentos</a>
+                            </li>
+                            <li>
+                                <a href="#loadingEscalas" >loadingEscalas</a>
+                            </li>
+                            <li>
+                                <a href="#loadingGlobales" >loadingGlobales</a>
+                            </li>
+                            <li>
+                                <a href="#loadingMapa" >loadingMapa</a>
+                            </li>
+                            <li>
+                                <a href="#loadingTropicos" >loadingTropicos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#map" >map</a>
+                            </li>
+                            <li>
+                                <a href="#mapaListo" >mapaListo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#mapId" >mapId</a>
+                            </li>
+                            <li>
+                                <a href="#tabActivo" >tabActivo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tabs" >tabs</a>
+                            </li>
+                            <li>
+                                <a href="#tropicos" >tropicos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#viewReady" >viewReady</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildGraficaCompletitud" >buildGraficaCompletitud</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildGraficaDepartamento" >buildGraficaDepartamento</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildGraficaEscala" >buildGraficaEscala</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildGraficaTropico" >buildGraficaTropico</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarDepartamentos" >cargarDepartamentos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarEscalas" >cargarEscalas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarGlobales" >cargarGlobales</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarMapa" >cargarMapa</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarTodo" >cargarTodo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarTropicos" >cargarTropicos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destruirGrafica" >destruirGrafica</a>
+                            </li>
+                            <li>
+                                <a href="#formatDecimal" >formatDecimal</a>
+                            </li>
+                            <li>
+                                <a href="#formatNum" >formatNum</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#inicializarMapa" >inicializarMapa</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#intentarGrafica" >intentarGrafica</a>
+                            </li>
+                            <li>
+                                <a href="#irAHatos" >irAHatos</a>
+                            </li>
+                            <li>
+                                <a href="#irAReglas" >irAReglas</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderizarMarcadores" >renderizarMarcadores</a>
+                            </li>
+                            <li>
+                                <a href="#setTab" >setTab</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#promedioCompletitudTexto" >promedioCompletitudTexto</a>
+                                </li>
+                                <li>
+                                    <a href="#porcentajeHatosConKpis" >porcentajeHatosConKpis</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(estadisticasService: <a href="../injectables/AdminEstadisticasService.html" target="_self">AdminEstadisticasService</a>, adminService: <a href="../injectables/AdminService.html" target="_self">AdminService</a>, adminState: <a href="../injectables/AdminStateService.html" target="_self">AdminStateService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:89</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>estadisticasService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AdminEstadisticasService.html" target="_self" >AdminEstadisticasService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>adminService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AdminService.html" target="_self" >AdminService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>adminState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AdminStateService.html" target="_self" >AdminStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildGraficaCompletitud"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildGraficaCompletitud</b></span>
+                        <a href="#buildGraficaCompletitud"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildGraficaCompletitud()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="432"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:432</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildGraficaDepartamento"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildGraficaDepartamento</b></span>
+                        <a href="#buildGraficaDepartamento"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildGraficaDepartamento()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="369"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:369</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildGraficaEscala"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildGraficaEscala</b></span>
+                        <a href="#buildGraficaEscala"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildGraficaEscala()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="253"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:253</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildGraficaTropico"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildGraficaTropico</b></span>
+                        <a href="#buildGraficaTropico"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildGraficaTropico()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="308"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:308</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarDepartamentos"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarDepartamentos</b></span>
+                        <a href="#cargarDepartamentos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarDepartamentos()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarEscalas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarEscalas</b></span>
+                        <a href="#cargarEscalas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarEscalas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarGlobales"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarGlobales</b></span>
+                        <a href="#cargarGlobales"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarGlobales()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="117"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:117</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarMapa"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarMapa</b></span>
+                        <a href="#cargarMapa"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarMapa()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="184"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:184</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarTodo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarTodo</b></span>
+                        <a href="#cargarTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarTodo()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarTropicos"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarTropicos</b></span>
+                        <a href="#cargarTropicos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarTropicos()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:168</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destruirGrafica"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destruirGrafica</b></span>
+                        <a href="#destruirGrafica"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>destruirGrafica(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="245"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:245</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatDecimal"></a>
+                    <span class="name">
+                        <span ><b>formatDecimal</b></span>
+                        <a href="#formatDecimal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatDecimal(n: number | null | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="610"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:610</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>n</td>
+                                            <td>
+                                                        <code>number | null | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatNum"></a>
+                    <span class="name">
+                        <span ><b>formatNum</b></span>
+                        <a href="#formatNum"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatNum(n: number | null | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="605"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:605</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>n</td>
+                                            <td>
+                                                        <code>number | null | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inicializarMapa"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>inicializarMapa</b></span>
+                        <a href="#inicializarMapa"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>inicializarMapa()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="472"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:472</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="intentarGrafica"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>intentarGrafica</b></span>
+                        <a href="#intentarGrafica"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>intentarGrafica(tipo: "escala" | "tropico" | "departamento" | "completitud")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="222"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:222</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tipo</td>
+                                            <td>
+                                                        <code>&quot;escala&quot; | &quot;tropico&quot; | &quot;departamento&quot; | &quot;completitud&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irAHatos"></a>
+                    <span class="name">
+                        <span ><b>irAHatos</b></span>
+                        <a href="#irAHatos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irAHatos()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="585"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:585</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irAReglas"></a>
+                    <span class="name">
+                        <span ><b>irAReglas</b></span>
+                        <a href="#irAReglas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irAReglas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="589"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:589</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:103</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="615"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:615</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:99</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderizarMarcadores"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderizarMarcadores</b></span>
+                        <a href="#renderizarMarcadores"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderizarMarcadores()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="511"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:511</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setTab"></a>
+                    <span class="name">
+                        <span ><b>setTab</b></span>
+                        <a href="#setTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setTab(tab: unknown)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="201"
+                                    class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:201</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tab</td>
+                                            <td>
+                                                        <code>unknown</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartCompletitudRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartCompletitudRef</b></span>
+                        <a href="#chartCompletitudRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChildren(&#x27;chartCompletitud&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartDepartamentoRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartDepartamentoRef</b></span>
+                        <a href="#chartDepartamentoRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChildren(&#x27;chartDepartamento&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartEscalaRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartEscalaRef</b></span>
+                        <a href="#chartEscalaRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChildren(&#x27;chartEscala&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="charts"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>charts</b></span>
+                        <a href="#charts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart&lt;any, any, any&gt;[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartTropicoRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>chartTropicoRef</b></span>
+                        <a href="#chartTropicoRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChildren(&#x27;chartTropico&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="departamentos"></a>
+                    <span class="name">
+                        <span ><b>departamentos</b></span>
+                        <a href="#departamentos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/EstadisticasDepartamentoDTO.html" target="_self" >EstadisticasDepartamentoDTO[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:87</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="escalas"></a>
+                    <span class="name">
+                        <span ><b>escalas</b></span>
+                        <a href="#escalas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/EstadisticasEscalaDTO.html" target="_self" >EstadisticasEscalaDTO[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="globales"></a>
+                    <span class="name">
+                        <span ><b>globales</b></span>
+                        <a href="#globales"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/EstadisticasGlobalesDTO.html" target="_self" >EstadisticasGlobalesDTO | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatosConCoordenadas"></a>
+                    <span class="name">
+                        <span ><b>hatosConCoordenadas</b></span>
+                        <a href="#hatosConCoordenadas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HatoAdminDTO[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="L"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>L</b></span>
+                        <a href="#L"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingDepartamentos"></a>
+                    <span class="name">
+                        <span ><b>loadingDepartamentos</b></span>
+                        <a href="#loadingDepartamentos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingEscalas"></a>
+                    <span class="name">
+                        <span ><b>loadingEscalas</b></span>
+                        <a href="#loadingEscalas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingGlobales"></a>
+                    <span class="name">
+                        <span ><b>loadingGlobales</b></span>
+                        <a href="#loadingGlobales"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingMapa"></a>
+                    <span class="name">
+                        <span ><b>loadingMapa</b></span>
+                        <a href="#loadingMapa"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingTropicos"></a>
+                    <span class="name">
+                        <span ><b>loadingTropicos</b></span>
+                        <a href="#loadingTropicos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="map"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>map</b></span>
+                        <a href="#map"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mapaListo"></a>
+                    <span class="name">
+                        <span ><b>mapaListo</b></span>
+                        <a href="#mapaListo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mapId"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>mapId</b></span>
+                        <a href="#mapId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;mapa-admin-${Math.random().toString(36).slice(2)}&#x60;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabActivo"></a>
+                    <span class="name">
+                        <span ><b>tabActivo</b></span>
+                        <a href="#tabActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;resumen&quot; | &quot;departamentos&quot; | &quot;escalas&quot; | &quot;tropicos&quot; | &quot;mapa&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;resumen&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabs"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tabs</b></span>
+                        <a href="#tabs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { id: &#x27;resumen&#x27;, label: &#x27;Resumen&#x27;, icono: &#x27;📊&#x27; },
+    { id: &#x27;departamentos&#x27;, label: &#x27;Departamentos&#x27;, icono: &#x27;📍&#x27; },
+    { id: &#x27;escalas&#x27;, label: &#x27;Por escala&#x27;, icono: &#x27;📐&#x27; },
+    { id: &#x27;tropicos&#x27;, label: &#x27;Por trópico&#x27;, icono: &#x27;🌿&#x27; },
+    { id: &#x27;mapa&#x27;, label: &#x27;Mapa nacional&#x27;, icono: &#x27;🗺️&#x27; },
+  ] as const</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tropicos"></a>
+                    <span class="name">
+                        <span ><b>tropicos</b></span>
+                        <a href="#tropicos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/EstadisticasTropicoDTO.html" target="_self" >EstadisticasTropicoDTO[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewReady"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>viewReady</b></span>
+                        <a href="#viewReady"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="promedioCompletitudTexto"></a>
+                        <span class="name"><b>promedioCompletitudTexto</b><a href="#promedioCompletitudTexto"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>promedioCompletitudTexto()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="595" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:595</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="porcentajeHatosConKpis"></a>
+                        <span class="name"><b>porcentajeHatosConKpis</b><a href="#porcentajeHatosConKpis"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>porcentajeHatosConKpis()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="600" class="link-to-prism">src/app/features/admin/dashboard-admin/dashboard-admin.component.ts:600</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  AfterViewInit,
+  ViewChildren,
+  QueryList,
+  ElementRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+import { Chart, registerables, TooltipItem } from &#x27;chart.js&#x27;;
+
+import {
+  AdminEstadisticasService,
+  EstadisticasGlobalesDTO,
+  EstadisticasDepartamentoDTO,
+  EstadisticasEscalaDTO,
+  EstadisticasTropicoDTO,
+} from &#x27;../../../core/services/admin/admin-estadisticas.service&#x27;;
+
+import { AdminService, HatoAdminDTO } from &#x27;../../../core/services/admin/admin.service&#x27;;
+import { AdminStateService } from &#x27;../../../core/services/ui-state/admin-state.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../shared/spinner/spinner.component&#x27;;
+
+Chart.register(...registerables);
+
+@Component({
+  selector: &#x27;app-dashboard-admin&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent],
+  templateUrl: &#x27;./dashboard-admin.component.html&#x27;,
+  styleUrl: &#x27;./dashboard-admin.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DashboardAdminComponent implements OnInit, AfterViewInit, OnDestroy {
+  // ── Estado general ────────────────────────────────────────────────────
+  loadingGlobales &#x3D; true;
+  loadingDepartamentos &#x3D; true;
+  loadingEscalas &#x3D; true;
+  loadingTropicos &#x3D; true;
+  loadingMapa &#x3D; true;
+  error &#x3D; &#x27;&#x27;;
+
+  // ── Datos ─────────────────────────────────────────────────────────────
+  globales: EstadisticasGlobalesDTO | null &#x3D; null;
+  departamentos: EstadisticasDepartamentoDTO[] &#x3D; [];
+  escalas: EstadisticasEscalaDTO[] &#x3D; [];
+  tropicos: EstadisticasTropicoDTO[] &#x3D; [];
+  hatosConCoordenadas: HatoAdminDTO[] &#x3D; [];
+
+  // ── Mapa ──────────────────────────────────────────────────────────────
+  mapaListo &#x3D; false;
+  private map: any &#x3D; null;
+  private L: any &#x3D; null;
+
+  // ── Gráficas ──────────────────────────────────────────────────────────
+  @ViewChildren(&#x27;chartEscala&#x27;)
+  chartEscalaRef!: QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;;
+
+  @ViewChildren(&#x27;chartTropico&#x27;)
+  chartTropicoRef!: QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;;
+
+  @ViewChildren(&#x27;chartDepartamento&#x27;)
+  chartDepartamentoRef!: QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;;
+
+  @ViewChildren(&#x27;chartCompletitud&#x27;)
+  chartCompletitudRef!: QueryList&lt;ElementRef&lt;HTMLCanvasElement&gt;&gt;;
+
+  private charts: Chart&lt;any, any, any&gt;[] &#x3D; [];
+  private viewReady &#x3D; false;
+
+  // ── Tab activo ────────────────────────────────────────────────────────
+  tabActivo: &#x27;resumen&#x27; | &#x27;departamentos&#x27; | &#x27;escalas&#x27; | &#x27;tropicos&#x27; | &#x27;mapa&#x27; &#x3D; &#x27;resumen&#x27;;
+
+  readonly tabs &#x3D; [
+    { id: &#x27;resumen&#x27;, label: &#x27;Resumen&#x27;, icono: &#x27;📊&#x27; },
+    { id: &#x27;departamentos&#x27;, label: &#x27;Departamentos&#x27;, icono: &#x27;📍&#x27; },
+    { id: &#x27;escalas&#x27;, label: &#x27;Por escala&#x27;, icono: &#x27;📐&#x27; },
+    { id: &#x27;tropicos&#x27;, label: &#x27;Por trópico&#x27;, icono: &#x27;🌿&#x27; },
+    { id: &#x27;mapa&#x27;, label: &#x27;Mapa nacional&#x27;, icono: &#x27;🗺️&#x27; },
+  ] as const;
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  readonly mapId &#x3D; &#x60;mapa-admin-${Math.random().toString(36).slice(2)}&#x60;;
+
+  constructor(
+    private estadisticasService: AdminEstadisticasService,
+    private adminService: AdminService,
+    private adminState: AdminStateService,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.cargarTodo();
+  }
+
+  ngAfterViewInit(): void {
+    this.viewReady &#x3D; true;
+  }
+
+  // ── Carga de datos ────────────────────────────────────────────────────
+
+  private cargarTodo(): void {
+    this.cargarGlobales();
+    this.cargarDepartamentos();
+    this.cargarEscalas();
+    this.cargarTropicos();
+    this.cargarMapa();
+  }
+
+  private cargarGlobales(): void {
+    this.loadingGlobales &#x3D; true;
+    this.estadisticasService.getGlobales().subscribe({
+      next: (data) &#x3D;&gt; {
+        this.globales &#x3D; data;
+        this.loadingGlobales &#x3D; false;
+        this.cdr.markForCheck();
+        this.intentarGrafica(&#x27;completitud&#x27;);
+        this.intentarGrafica(&#x27;escala&#x27;);
+        this.intentarGrafica(&#x27;tropico&#x27;);
+      },
+      error: () &#x3D;&gt; {
+        this.loadingGlobales &#x3D; false;
+        this.error &#x3D; &#x27;Error al cargar estadísticas globales.&#x27;;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private cargarDepartamentos(): void {
+    this.loadingDepartamentos &#x3D; true;
+    this.estadisticasService.getPorDepartamento().subscribe({
+      next: (data) &#x3D;&gt; {
+        this.departamentos &#x3D; data;
+        this.loadingDepartamentos &#x3D; false;
+        this.cdr.markForCheck();
+        this.intentarGrafica(&#x27;departamento&#x27;);
+      },
+      error: () &#x3D;&gt; {
+        this.loadingDepartamentos &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private cargarEscalas(): void {
+    this.loadingEscalas &#x3D; true;
+    this.estadisticasService.getPorEscala().subscribe({
+      next: (data) &#x3D;&gt; {
+        this.escalas &#x3D; data;
+        this.loadingEscalas &#x3D; false;
+        this.cdr.markForCheck();
+        this.intentarGrafica(&#x27;escala&#x27;);
+      },
+      error: () &#x3D;&gt; {
+        this.loadingEscalas &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private cargarTropicos(): void {
+    this.loadingTropicos &#x3D; true;
+    this.estadisticasService.getPorTropico().subscribe({
+      next: (data) &#x3D;&gt; {
+        this.tropicos &#x3D; data;
+        this.loadingTropicos &#x3D; false;
+        this.cdr.markForCheck();
+        this.intentarGrafica(&#x27;tropico&#x27;);
+      },
+      error: () &#x3D;&gt; {
+        this.loadingTropicos &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private cargarMapa(): void {
+    this.loadingMapa &#x3D; true;
+    this.adminService.getHatosFiltrados().subscribe({
+      next: (hatos) &#x3D;&gt; {
+        this.hatosConCoordenadas &#x3D; hatos.filter((h) &#x3D;&gt; h.latitud !&#x3D; null &amp;&amp; h.longitud !&#x3D; null);
+        this.loadingMapa &#x3D; false;
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.loadingMapa &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  // ── Tabs ──────────────────────────────────────────────────────────────
+
+  setTab(tab: typeof this.tabActivo): void {
+    this.tabActivo &#x3D; tab;
+    this.cdr.markForCheck();
+
+    if (tab &#x3D;&#x3D;&#x3D; &#x27;mapa&#x27; &amp;&amp; !this.mapaListo) {
+      setTimeout(() &#x3D;&gt; this.inicializarMapa(), 100);
+    }
+    if (tab &#x3D;&#x3D;&#x3D; &#x27;resumen&#x27;) {
+      setTimeout(() &#x3D;&gt; {
+        this.intentarGrafica(&#x27;escala&#x27;);
+        this.intentarGrafica(&#x27;tropico&#x27;);
+        this.intentarGrafica(&#x27;completitud&#x27;);
+      }, 50);
+    }
+    if (tab &#x3D;&#x3D;&#x3D; &#x27;departamentos&#x27;) {
+      setTimeout(() &#x3D;&gt; this.intentarGrafica(&#x27;departamento&#x27;), 50);
+    }
+  }
+
+  // ── Gráficas ──────────────────────────────────────────────────────────
+
+  private intentarGrafica(tipo: &#x27;escala&#x27; | &#x27;tropico&#x27; | &#x27;departamento&#x27; | &#x27;completitud&#x27;): void {
+    if (!this.viewReady) {
+      setTimeout(() &#x3D;&gt; this.intentarGrafica(tipo), 100);
+      return;
+    }
+    setTimeout(() &#x3D;&gt; {
+      switch (tipo) {
+        case &#x27;escala&#x27;:
+          this.buildGraficaEscala();
+          break;
+        case &#x27;tropico&#x27;:
+          this.buildGraficaTropico();
+          break;
+        case &#x27;departamento&#x27;:
+          this.buildGraficaDepartamento();
+          break;
+        case &#x27;completitud&#x27;:
+          this.buildGraficaCompletitud();
+          break;
+      }
+    }, 0);
+  }
+
+  private destruirGrafica(id: string): void {
+    const idx &#x3D; this.charts.findIndex((c) &#x3D;&gt; (c as any)._adminId &#x3D;&#x3D;&#x3D; id);
+    if (idx !&#x3D;&#x3D; -1) {
+      this.charts[idx].destroy();
+      this.charts.splice(idx, 1);
+    }
+  }
+
+  private buildGraficaEscala(): void {
+    const canvas &#x3D; this.chartEscalaRef?.first?.nativeElement;
+    if (!canvas || !this.escalas.length) return;
+    this.destruirGrafica(&#x27;escala&#x27;);
+
+    const colores &#x3D; [
+      &#x27;rgba(25,230,77,0.82)&#x27;,
+      &#x27;rgba(21,128,61,0.82)&#x27;,
+      &#x27;rgba(59,130,246,0.82)&#x27;,
+      &#x27;rgba(245,158,11,0.82)&#x27;,
+    ];
+
+    const chart &#x3D; new Chart&lt;&#x27;doughnut&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;doughnut&#x27;,
+      data: {
+        labels: this.escalas.map((e) &#x3D;&gt; e.escala),
+        datasets: [
+          {
+            data: this.escalas.map((e) &#x3D;&gt; e.totalHatos),
+            backgroundColor: colores.slice(0, this.escalas.length),
+            borderWidth: 2,
+            borderColor: &#x27;#ffffff&#x27;,
+            hoverOffset: 6,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: &#x27;60%&#x27;,
+        plugins: {
+          legend: {
+            position: &#x27;bottom&#x27;,
+            labels: {
+              color: &#x27;#374151&#x27;,
+              font: { size: 11 },
+              boxWidth: 12,
+              padding: 12,
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;doughnut&#x27;&gt;) &#x3D;&gt;
+                &#x60; ${ctx.label}: ${ctx.parsed} hatos (${this.escalas[
+                  ctx.dataIndex
+                ]?.porcentajeDelTotal?.toFixed(1)}%)&#x60;,
+            },
+          },
+        },
+      },
+    });
+    (chart as any)._adminId &#x3D; &#x27;escala&#x27;;
+    this.charts.push(chart);
+  }
+
+  private buildGraficaTropico(): void {
+    const canvas &#x3D; this.chartTropicoRef?.first?.nativeElement;
+    if (!canvas || !this.tropicos.length) return;
+    this.destruirGrafica(&#x27;tropico&#x27;);
+
+    const colores &#x3D; [
+      &#x27;rgba(25,230,77,0.82)&#x27;,
+      &#x27;rgba(245,158,11,0.82)&#x27;,
+      &#x27;rgba(239,68,68,0.82)&#x27;,
+      &#x27;rgba(59,130,246,0.82)&#x27;,
+    ];
+
+    const chart &#x3D; new Chart&lt;&#x27;bar&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: this.tropicos.map((t) &#x3D;&gt; t.tropico),
+        datasets: [
+          {
+            label: &#x27;Hatos&#x27;,
+            data: this.tropicos.map((t) &#x3D;&gt; t.totalHatos),
+            backgroundColor: colores.slice(0, this.tropicos.length),
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;bar&#x27;&gt;) &#x3D;&gt;
+                &#x60; ${ctx.parsed.y} hatos (${this.tropicos[
+                  ctx.dataIndex
+                ]?.porcentajeDelTotal?.toFixed(1)}%)&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: &#x27;#374151&#x27;, font: { size: 11 } },
+          },
+          y: {
+            beginAtZero: true,
+            grid: { color: &#x27;rgba(0,0,0,0.04)&#x27; },
+            ticks: {
+              color: &#x27;#9ca3af&#x27;,
+              font: { size: 10 },
+              stepSize: 1,
+            },
+          },
+        },
+      },
+    });
+    (chart as any)._adminId &#x3D; &#x27;tropico&#x27;;
+    this.charts.push(chart);
+  }
+
+  private buildGraficaDepartamento(): void {
+    const canvas &#x3D; this.chartDepartamentoRef?.first?.nativeElement;
+    if (!canvas || !this.departamentos.length) return;
+    this.destruirGrafica(&#x27;departamento&#x27;);
+
+    const top10 &#x3D; [...this.departamentos].sort((a, b) &#x3D;&gt; b.totalHatos - a.totalHatos).slice(0, 10);
+
+    const chart &#x3D; new Chart&lt;&#x27;bar&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: top10.map((d) &#x3D;&gt; d.departamento),
+        datasets: [
+          {
+            label: &#x27;Total hatos&#x27;,
+            data: top10.map((d) &#x3D;&gt; d.totalHatos),
+            backgroundColor: &#x27;rgba(25,230,77,0.82)&#x27;,
+            borderColor: &#x27;#15c944&#x27;,
+            borderWidth: 1,
+            borderRadius: 6,
+          },
+          {
+            label: &#x27;Con KPIs calculados&#x27;,
+            data: top10.map((d) &#x3D;&gt; d.hatosConKpis),
+            backgroundColor: &#x27;rgba(21,128,61,0.82)&#x27;,
+            borderColor: &#x27;#15803d&#x27;,
+            borderWidth: 1,
+            borderRadius: 6,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: &#x27;bottom&#x27;,
+            labels: {
+              color: &#x27;#374151&#x27;,
+              font: { size: 11 },
+              boxWidth: 14,
+            },
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: { color: &#x27;rgba(0,0,0,0.04)&#x27; },
+            ticks: { color: &#x27;#9ca3af&#x27;, font: { size: 10 } },
+          },
+          y: {
+            grid: { display: false },
+            ticks: { color: &#x27;#374151&#x27;, font: { size: 11 } },
+          },
+        },
+      },
+    });
+    (chart as any)._adminId &#x3D; &#x27;departamento&#x27;;
+    this.charts.push(chart);
+    canvas.parentElement!.style.height &#x3D; Math.max(280, top10.length * 38) + &#x27;px&#x27;;
+  }
+
+  private buildGraficaCompletitud(): void {
+    const canvas &#x3D; this.chartCompletitudRef?.first?.nativeElement;
+    if (!canvas || !this.globales) return;
+    this.destruirGrafica(&#x27;completitud&#x27;);
+
+    const prom &#x3D; this.globales.promedioCompletitud;
+
+    const chart &#x3D; new Chart&lt;&#x27;doughnut&#x27;, number[], string&gt;(canvas, {
+      type: &#x27;doughnut&#x27;,
+      data: {
+        labels: [&#x27;Completado&#x27;, &#x27;Pendiente&#x27;],
+        datasets: [
+          {
+            data: [prom, 100 - prom],
+            backgroundColor: [&#x27;rgba(25,230,77,0.9)&#x27;, &#x27;rgba(233,245,235,0.9)&#x27;],
+            borderWidth: 0,
+            hoverOffset: 4,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: &#x27;72%&#x27;,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx: TooltipItem&lt;&#x27;doughnut&#x27;&gt;) &#x3D;&gt; &#x60; ${Number(ctx.parsed).toFixed(1)}%&#x60;,
+            },
+          },
+        },
+      },
+    });
+    (chart as any)._adminId &#x3D; &#x27;completitud&#x27;;
+    this.charts.push(chart);
+  }
+
+  // ── Mapa Leaflet ──────────────────────────────────────────────────────
+
+  private async inicializarMapa(): Promise&lt;void&gt; {
+    const contenedor &#x3D; document.getElementById(this.mapId);
+    if (!contenedor || this.mapaListo) return;
+
+    const L &#x3D; await import(&#x27;leaflet&#x27;);
+    this.L &#x3D; L;
+    (window as any).L &#x3D; L;
+    await import(&#x27;leaflet.markercluster&#x27;);
+    const LG &#x3D; (window as any).L;
+
+    const iconDefault &#x3D; L.icon({
+      iconUrl: &#x27;assets/leaflet/marker-icon.png&#x27;,
+      iconRetinaUrl: &#x27;assets/leaflet/marker-icon-2x.png&#x27;,
+      shadowUrl: &#x27;assets/leaflet/marker-shadow.png&#x27;,
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
+    L.Marker.prototype.options.icon &#x3D; iconDefault;
+
+    this.map &#x3D; L.map(this.mapId, {
+      center: [4.5709, -74.2973] as L.LatLngTuple,
+      zoom: 6,
+      zoomControl: true,
+      scrollWheelZoom: true,
+    });
+
+    L.tileLayer(&#x27;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#x27;, {
+      attribution: &#x27;© OpenStreetMap contributors&#x27;,
+      maxZoom: 18,
+    }).addTo(this.map);
+
+    this.L &#x3D; LG;
+    this.mapaListo &#x3D; true;
+
+    this.renderizarMarcadores();
+  }
+
+  private renderizarMarcadores(): void {
+    if (!this.map || !this.L) return;
+
+    const cluster &#x3D; this.L.markerClusterGroup({
+      showCoverageOnHover: false,
+      maxClusterRadius: 60,
+      disableClusteringAtZoom: 12,
+      iconCreateFunction: (c: any) &#x3D;&gt; {
+        const count &#x3D; c.getChildCount();
+        return this.L.divIcon({
+          html: &#x60;&lt;div class&#x3D;&quot;cluster-icon&quot;&gt;${count}&lt;/div&gt;&#x60;,
+          className: &#x27;cluster-wrapper&#x27;,
+          iconSize: [36, 36],
+        });
+      },
+    });
+
+    const bounds: any[] &#x3D; [];
+
+    for (const hato of this.hatosConCoordenadas) {
+      if (hato.latitud &#x3D;&#x3D; null || hato.longitud &#x3D;&#x3D; null) continue;
+
+      // Color por completitud
+      const color &#x3D;
+        hato.porcentajeCompletitud &gt;&#x3D; 100
+          ? &#x27;#19e64d&#x27;
+          : hato.porcentajeCompletitud &gt;&#x3D; 75
+            ? &#x27;#3b82f6&#x27;
+            : hato.porcentajeCompletitud &gt;&#x3D; 50
+              ? &#x27;#f59e0b&#x27;
+              : &#x27;#ef4444&#x27;;
+
+      const icono &#x3D; this.L.divIcon({
+        html: &#x60;&lt;div style&#x3D;&quot;
+          width:14px;height:14px;
+          background:${color};
+          border-radius:50%;
+          border:2px solid #fff;
+          box-shadow:0 2px 6px rgba(0,0,0,0.2)&quot;&gt;
+        &lt;/div&gt;&#x60;,
+        className: &#x27;&#x27;,
+        iconSize: [14, 14],
+        iconAnchor: [7, 7],
+      });
+
+      const marker &#x3D; this.L.marker([hato.latitud, hato.longitud], { icon: icono });
+
+      marker.bindPopup(
+        &#x60;
+        &lt;div style&#x3D;&quot;font-size:12px;color:#163f2a;line-height:1.6&quot;&gt;
+          &lt;strong&gt;${hato.nombreHato}&lt;/strong&gt;&lt;br/&gt;
+          ${hato.departamento} · ${hato.ciudad}&lt;br/&gt;
+          Escala: ${hato.escala ?? &#x27;—&#x27;} · Trópico: ${hato.tropico ?? &#x27;—&#x27;}&lt;br/&gt;
+          Completitud: &lt;strong&gt;${hato.porcentajeCompletitud}%&lt;/strong&gt;&lt;br/&gt;
+          &lt;span style&#x3D;&quot;color:#6b7280;font-size:11px&quot;&gt;
+            ${hato.correoUsuario ?? &#x27;—&#x27;}
+          &lt;/span&gt;
+        &lt;/div&gt;&#x60;,
+        { maxWidth: 220, className: &#x27;hathor-popup&#x27; },
+      );
+
+      cluster.addLayer(marker);
+      bounds.push([hato.latitud, hato.longitud]);
+    }
+
+    this.map.addLayer(cluster);
+
+    if (bounds.length &gt; 0) {
+      this.map.fitBounds(this.L.latLngBounds(bounds), { padding: [40, 40] });
+    }
+  }
+
+  // ── Navegación ────────────────────────────────────────────────────────
+
+  irAHatos(): void {
+    this.router.navigate([&#x27;/admin/hatos&#x27;]);
+  }
+
+  irAReglas(): void {
+    this.router.navigate([&#x27;/admin/practicas&#x27;]);
+  }
+
+  // ── Helpers ───────────────────────────────────────────────────────────
+
+  get promedioCompletitudTexto(): string {
+    if (!this.globales) return &#x27;—&#x27;;
+    return this.globales.promedioCompletitud.toFixed(1) + &#x27;%&#x27;;
+  }
+
+  get porcentajeHatosConKpis(): string {
+    if (!this.globales || this.globales.totalHatos &#x3D;&#x3D;&#x3D; 0) return &#x27;—&#x27;;
+    return ((this.globales.hatosConKpis / this.globales.totalHatos) * 100).toFixed(1) + &#x27;%&#x27;;
+  }
+
+  formatNum(n: number | null | undefined): string {
+    if (n &#x3D;&#x3D; null) return &#x27;—&#x27;;
+    return new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(n));
+  }
+
+  formatDecimal(n: number | null | undefined): string {
+    if (n &#x3D;&#x3D; null) return &#x27;—&#x27;;
+    return n.toFixed(1);
+  }
+
+  ngOnDestroy(): void {
+    this.charts.forEach((c) &#x3D;&gt; c.destroy());
+    this.charts &#x3D; [];
+    if (this.map) {
+      this.map.remove();
+      this.map &#x3D; null;
+    }
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;dashboard-admin-page&quot;&gt;
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HEADER &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  &lt;header class&#x3D;&quot;page-header&quot;&gt;
+    &lt;div class&#x3D;&quot;header-left&quot;&gt;
+      &lt;p class&#x3D;&quot;page-tag&quot;&gt;Hathor · Administración&lt;/p&gt;
+      &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Dashboard &lt;span class&#x3D;&quot;brand&quot;&gt;Nacional&lt;/span&gt;&lt;/h1&gt;
+      &lt;p class&#x3D;&quot;page-subtitle&quot;&gt;Estadísticas globales de la plataforma Hathor Colombia&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;header-right&quot;&gt;
+      &lt;div class&#x3D;&quot;header-icon&quot;&gt;⚙️&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ERROR &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (error) {
+    &lt;div class&#x3D;&quot;msg-error&quot;&gt;
+      &lt;span&gt;❌&lt;/span&gt;
+      &lt;p&gt;{{ error }}&lt;/p&gt;
+    &lt;/div&gt;
+  }
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; CARDS GLOBALES &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (loadingGlobales) {
+    &lt;div class&#x3D;&quot;cards-loading&quot;&gt;
+      &lt;app-spinner size&#x3D;&quot;medium&quot; message&#x3D;&quot;Cargando estadísticas...&quot;&gt;&lt;/app-spinner&gt;
+    &lt;/div&gt;
+  } @else if (globales) {
+    &lt;div class&#x3D;&quot;stats-grid&quot;&gt;
+      &lt;div class&#x3D;&quot;stat-card&quot; (click)&#x3D;&quot;irAHatos()&quot;&gt;
+        &lt;div class&#x3D;&quot;stat-card-icono&quot;&gt;🐄&lt;/div&gt;
+        &lt;div class&#x3D;&quot;stat-card-info&quot;&gt;
+          &lt;span class&#x3D;&quot;stat-card-label&quot;&gt;Total hatos&lt;/span&gt;
+          &lt;span class&#x3D;&quot;stat-card-valor&quot;&gt;{{ formatNum(globales.totalHatos) }}&lt;/span&gt;
+          &lt;span class&#x3D;&quot;stat-card-sub&quot;&gt;registrados en la plataforma&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;stat-card&quot;&gt;
+        &lt;div class&#x3D;&quot;stat-card-icono&quot;&gt;📊&lt;/div&gt;
+        &lt;div class&#x3D;&quot;stat-card-info&quot;&gt;
+          &lt;span class&#x3D;&quot;stat-card-label&quot;&gt;Hatos con KPIs&lt;/span&gt;
+          &lt;span class&#x3D;&quot;stat-card-valor verde&quot;&gt;
+            {{ formatNum(globales.hatosConKpis) }}
+          &lt;/span&gt;
+          &lt;span class&#x3D;&quot;stat-card-sub&quot;&gt;{{ porcentajeHatosConKpis }} del total&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;stat-card&quot;&gt;
+        &lt;div class&#x3D;&quot;stat-card-icono&quot;&gt;📍&lt;/div&gt;
+        &lt;div class&#x3D;&quot;stat-card-info&quot;&gt;
+          &lt;span class&#x3D;&quot;stat-card-label&quot;&gt;Departamentos&lt;/span&gt;
+          &lt;span class&#x3D;&quot;stat-card-valor&quot;&gt;
+            {{ formatNum(globales.totalDepartamentos) }}
+          &lt;/span&gt;
+          &lt;span class&#x3D;&quot;stat-card-sub&quot;&gt;con presencia activa&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;stat-card&quot;&gt;
+        &lt;div class&#x3D;&quot;stat-card-icono&quot;&gt;📋&lt;/div&gt;
+        &lt;div class&#x3D;&quot;stat-card-info&quot;&gt;
+          &lt;span class&#x3D;&quot;stat-card-label&quot;&gt;Completitud prom.&lt;/span&gt;
+          &lt;span
+            class&#x3D;&quot;stat-card-valor&quot;
+            [class.verde]&#x3D;&quot;globales.promedioCompletitud &gt;&#x3D; 75&quot;
+            [class.amarillo]&#x3D;&quot;
+              globales.promedioCompletitud &gt;&#x3D; 50 &amp;&amp; globales.promedioCompletitud &lt; 75
+            &quot;
+            [class.rojo]&#x3D;&quot;globales.promedioCompletitud &lt; 50&quot;
+          &gt;
+            {{ promedioCompletitudTexto }}
+          &lt;/span&gt;
+          &lt;span class&#x3D;&quot;stat-card-sub&quot;&gt;promedio de registros&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; TABS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  &lt;div class&#x3D;&quot;tabs-row&quot;&gt;
+    @for (tab of tabs; track tab.id) {
+      &lt;button class&#x3D;&quot;tab-btn&quot; [class.activo]&#x3D;&quot;tabActivo &#x3D;&#x3D;&#x3D; tab.id&quot; (click)&#x3D;&quot;setTab(tab.id)&quot;&gt;
+        &lt;span class&#x3D;&quot;tab-icono&quot;&gt;{{ tab.icono }}&lt;/span&gt;
+        &lt;span class&#x3D;&quot;tab-label&quot;&gt;{{ tab.label }}&lt;/span&gt;
+      &lt;/button&gt;
+    }
+  &lt;/div&gt;
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; CONTENIDO TABS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  &lt;div class&#x3D;&quot;tab-content&quot;&gt;
+    &lt;!-- TAB: Resumen --&gt;
+    @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;resumen&#x27;) {
+      &lt;div class&#x3D;&quot;resumen-grid&quot;&gt;
+        &lt;!-- Card escala --&gt;
+        &lt;div class&#x3D;&quot;chart-card&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-card-header&quot;&gt;
+            &lt;h3 class&#x3D;&quot;chart-card-titulo&quot;&gt;📐 Distribución por escala&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;chart-card-subtitulo&quot;&gt;Proporción de hatos según su tamaño&lt;/p&gt;
+          &lt;/div&gt;
+          @if (loadingEscalas) {
+            &lt;div class&#x3D;&quot;chart-loading&quot;&gt;
+              &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+            &lt;/div&gt;
+          } @else {
+            &lt;div class&#x3D;&quot;chart-wrap-donut&quot;&gt;
+              &lt;canvas #chartEscala&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- Tabla resumen --&gt;
+            &lt;div class&#x3D;&quot;resumen-tabla&quot;&gt;
+              @for (e of escalas; track e.escala) {
+                &lt;div class&#x3D;&quot;resumen-tabla-fila&quot;&gt;
+                  &lt;span class&#x3D;&quot;resumen-tabla-label&quot;&gt;{{ e.escala }}&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;resumen-tabla-valor&quot;&gt;{{ e.totalHatos }}&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;resumen-tabla-pct&quot;&gt;
+                    {{ e.porcentajeDelTotal | number: &#x27;1.1-1&#x27; }}%
+                  &lt;/span&gt;
+                &lt;/div&gt;
+              }
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;!-- Card trópico --&gt;
+        &lt;div class&#x3D;&quot;chart-card&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-card-header&quot;&gt;
+            &lt;h3 class&#x3D;&quot;chart-card-titulo&quot;&gt;🌿 Distribución por trópico&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;chart-card-subtitulo&quot;&gt;Hatos por tipo de zona climática&lt;/p&gt;
+          &lt;/div&gt;
+          @if (loadingTropicos) {
+            &lt;div class&#x3D;&quot;chart-loading&quot;&gt;
+              &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+            &lt;/div&gt;
+          } @else {
+            &lt;div class&#x3D;&quot;chart-wrap-bar&quot;&gt;
+              &lt;canvas #chartTropico&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- KPIs por trópico --&gt;
+            &lt;div class&#x3D;&quot;resumen-tabla&quot;&gt;
+              @for (t of tropicos; track t.tropico) {
+                &lt;div class&#x3D;&quot;resumen-tabla-fila&quot;&gt;
+                  &lt;span class&#x3D;&quot;resumen-tabla-label&quot;&gt;{{ t.tropico }}&lt;/span&gt;
+                  &lt;div class&#x3D;&quot;resumen-tabla-kpis&quot;&gt;
+                    @if (t.promedioLitrosVacaDia) {
+                      &lt;span class&#x3D;&quot;kpi-chip&quot;&gt;
+                        🥛 {{ formatDecimal(t.promedioLitrosVacaDia) }} L/v/d
+                      &lt;/span&gt;
+                    }
+                    @if (t.promedioCargarAnimal) {
+                      &lt;span class&#x3D;&quot;kpi-chip&quot;&gt;
+                        🐄 {{ formatDecimal(t.promedioCargarAnimal) }} UA/ha
+                      &lt;/span&gt;
+                    }
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              }
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;!-- Card completitud --&gt;
+        &lt;div class&#x3D;&quot;chart-card chart-card-completitud&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-card-header&quot;&gt;
+            &lt;h3 class&#x3D;&quot;chart-card-titulo&quot;&gt;📋 Completitud promedio&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;chart-card-subtitulo&quot;&gt;Nivel de registro de información&lt;/p&gt;
+          &lt;/div&gt;
+          @if (loadingGlobales) {
+            &lt;div class&#x3D;&quot;chart-loading&quot;&gt;
+              &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+            &lt;/div&gt;
+          } @else if (globales) {
+            &lt;div class&#x3D;&quot;completitud-wrap&quot;&gt;
+              &lt;div class&#x3D;&quot;completitud-donut-wrap&quot;&gt;
+                &lt;canvas #chartCompletitud&gt;&lt;/canvas&gt;
+                &lt;div class&#x3D;&quot;completitud-centro&quot;&gt;
+                  &lt;span class&#x3D;&quot;completitud-pct&quot;&gt;
+                    {{ promedioCompletitudTexto }}
+                  &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;completitud-label&quot;&gt;promedio&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- Desglose por escala --&gt;
+            &lt;div class&#x3D;&quot;resumen-tabla&quot;&gt;
+              @for (e of escalas; track e.escala) {
+                &lt;div class&#x3D;&quot;resumen-tabla-fila&quot;&gt;
+                  &lt;span class&#x3D;&quot;resumen-tabla-label&quot;&gt;{{ e.escala }}&lt;/span&gt;
+                  &lt;div class&#x3D;&quot;resumen-tabla-kpis&quot;&gt;
+                    @if (e.promedioLitrosVacaDia) {
+                      &lt;span class&#x3D;&quot;kpi-chip verde&quot;&gt;
+                        🥛 {{ formatDecimal(e.promedioLitrosVacaDia) }} L/v/d
+                      &lt;/span&gt;
+                    }
+                    @if (e.promedioMargenNeto) {
+                      &lt;span
+                        class&#x3D;&quot;kpi-chip&quot;
+                        [class.verde]&#x3D;&quot;e.promedioMargenNeto &gt;&#x3D; 0&quot;
+                        [class.rojo]&#x3D;&quot;e.promedioMargenNeto &lt; 0&quot;
+                      &gt;
+                        💰 {{ formatDecimal(e.promedioMargenNeto) }}%
+                      &lt;/span&gt;
+                    }
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              }
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;!-- TAB: Departamentos --&gt;
+    @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;departamentos&#x27;) {
+      &lt;div class&#x3D;&quot;depto-layout&quot;&gt;
+        &lt;!-- Gráfica barras horizontales --&gt;
+        &lt;div class&#x3D;&quot;chart-card chart-card-full&quot;&gt;
+          &lt;div class&#x3D;&quot;chart-card-header&quot;&gt;
+            &lt;h3 class&#x3D;&quot;chart-card-titulo&quot;&gt;📍 Hatos por departamento — Top 10&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;chart-card-subtitulo&quot;&gt;Total de hatos vs hatos con KPIs calculados&lt;/p&gt;
+          &lt;/div&gt;
+          @if (loadingDepartamentos) {
+            &lt;div class&#x3D;&quot;chart-loading&quot;&gt;
+              &lt;app-spinner size&#x3D;&quot;medium&quot;&gt;&lt;/app-spinner&gt;
+            &lt;/div&gt;
+          } @else {
+            &lt;div class&#x3D;&quot;chart-wrap-horizontal&quot;&gt;
+              &lt;canvas #chartDepartamento&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+
+        &lt;!-- Tabla completa departamentos --&gt;
+        @if (!loadingDepartamentos &amp;&amp; departamentos.length &gt; 0) {
+          &lt;div class&#x3D;&quot;tabla-card&quot;&gt;
+            &lt;div class&#x3D;&quot;tabla-header-row&quot;&gt;
+              &lt;h3 class&#x3D;&quot;chart-card-titulo&quot;&gt;Detalle por departamento&lt;/h3&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;tabla-wrap&quot;&gt;
+              &lt;table class&#x3D;&quot;tabla-admin&quot;&gt;
+                &lt;thead&gt;
+                  &lt;tr&gt;
+                    &lt;th&gt;Departamento&lt;/th&gt;
+                    &lt;th class&#x3D;&quot;text-center&quot;&gt;Total hatos&lt;/th&gt;
+                    &lt;th class&#x3D;&quot;text-center&quot;&gt;Con KPIs&lt;/th&gt;
+                    &lt;th class&#x3D;&quot;text-center&quot;&gt;KPI destacado&lt;/th&gt;
+                    &lt;th class&#x3D;&quot;text-center&quot;&gt;Prom. litros/vaca/día&lt;/th&gt;
+                  &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                  @for (d of departamentos; track d.departamento; let i &#x3D; $index) {
+                    &lt;tr [class.fila-alterna]&#x3D;&quot;i % 2 !&#x3D;&#x3D; 0&quot;&gt;
+                      &lt;td class&#x3D;&quot;td-nombre&quot;&gt;{{ d.departamento }}&lt;/td&gt;
+                      &lt;td class&#x3D;&quot;text-center td-num&quot;&gt;{{ d.totalHatos }}&lt;/td&gt;
+                      &lt;td class&#x3D;&quot;text-center&quot;&gt;
+                        &lt;span
+                          class&#x3D;&quot;badge&quot;
+                          [class.badge-verde]&#x3D;&quot;d.hatosConKpis &#x3D;&#x3D;&#x3D; d.totalHatos&quot;
+                          [class.badge-amarillo]&#x3D;&quot;
+                            d.hatosConKpis &gt; 0 &amp;&amp; d.hatosConKpis &lt; d.totalHatos
+                          &quot;
+                          [class.badge-gris]&#x3D;&quot;d.hatosConKpis &#x3D;&#x3D;&#x3D; 0&quot;
+                        &gt;
+                          {{ d.hatosConKpis }}
+                        &lt;/span&gt;
+                      &lt;/td&gt;
+                      &lt;td class&#x3D;&quot;text-center td-kpi&quot;&gt;
+                        {{ d.kpiDestacado ?? &#x27;—&#x27; }}
+                      &lt;/td&gt;
+                      &lt;td class&#x3D;&quot;text-center td-num&quot;&gt;
+                        {{
+                          d.promedioKpiDestacado !&#x3D; null
+                            ? formatDecimal(d.promedioKpiDestacado) + &#x27; L&#x27;
+                            : &#x27;—&#x27;
+                        }}
+                      &lt;/td&gt;
+                    &lt;/tr&gt;
+                  }
+                &lt;/tbody&gt;
+              &lt;/table&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        }
+      &lt;/div&gt;
+    }
+
+    &lt;!-- TAB: Escalas --&gt;
+    @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;escalas&#x27;) {
+      @if (loadingEscalas) {
+        &lt;div class&#x3D;&quot;tab-loading&quot;&gt;
+          &lt;app-spinner size&#x3D;&quot;medium&quot; message&#x3D;&quot;Cargando...&quot;&gt;&lt;/app-spinner&gt;
+        &lt;/div&gt;
+      } @else {
+        &lt;div class&#x3D;&quot;escalas-grid&quot;&gt;
+          @for (e of escalas; track e.escala) {
+            &lt;div class&#x3D;&quot;escala-card&quot;&gt;
+              &lt;div class&#x3D;&quot;escala-card-header&quot;&gt;
+                &lt;span class&#x3D;&quot;escala-icono&quot;&gt;📐&lt;/span&gt;
+                &lt;div&gt;
+                  &lt;h3 class&#x3D;&quot;escala-titulo&quot;&gt;{{ e.escala }}&lt;/h3&gt;
+                  &lt;p class&#x3D;&quot;escala-subtitulo&quot;&gt;
+                    {{ formatDecimal(e.porcentajeDelTotal) }}% del total
+                  &lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;escala-barra-wrap&quot;&gt;
+                &lt;div class&#x3D;&quot;escala-barra&quot;&gt;
+                  &lt;div class&#x3D;&quot;escala-barra-fill&quot; [style.width.%]&#x3D;&quot;e.porcentajeDelTotal&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;span class&#x3D;&quot;escala-barra-label&quot;&gt; {{ e.totalHatos }} hatos &lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;escala-kpis&quot;&gt;
+                &lt;div class&#x3D;&quot;escala-kpi-item&quot;&gt;
+                  &lt;span class&#x3D;&quot;escala-kpi-label&quot;&gt;Litros/vaca/día&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;escala-kpi-valor&quot;&gt;
+                    {{
+                      e.promedioLitrosVacaDia !&#x3D; null
+                        ? formatDecimal(e.promedioLitrosVacaDia) + &#x27; L&#x27;
+                        : &#x27;—&#x27;
+                    }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;escala-kpi-item&quot;&gt;
+                  &lt;span class&#x3D;&quot;escala-kpi-label&quot;&gt;Margen neto prom.&lt;/span&gt;
+                  &lt;span
+                    class&#x3D;&quot;escala-kpi-valor&quot;
+                    [class.verde]&#x3D;&quot;(e.promedioMargenNeto ?? 0) &gt;&#x3D; 0&quot;
+                    [class.rojo]&#x3D;&quot;(e.promedioMargenNeto ?? 0) &lt; 0&quot;
+                  &gt;
+                    {{
+                      e.promedioMargenNeto !&#x3D; null ? formatDecimal(e.promedioMargenNeto) + &#x27;%&#x27; : &#x27;—&#x27;
+                    }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+      }
+    }
+
+    &lt;!-- TAB: Trópicos --&gt;
+    @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;tropicos&#x27;) {
+      @if (loadingTropicos) {
+        &lt;div class&#x3D;&quot;tab-loading&quot;&gt;
+          &lt;app-spinner size&#x3D;&quot;medium&quot; message&#x3D;&quot;Cargando...&quot;&gt;&lt;/app-spinner&gt;
+        &lt;/div&gt;
+      } @else {
+        &lt;div class&#x3D;&quot;tropicos-grid&quot;&gt;
+          @for (t of tropicos; track t.tropico) {
+            &lt;div class&#x3D;&quot;tropico-card&quot;&gt;
+              &lt;div class&#x3D;&quot;tropico-header&quot;&gt;
+                &lt;span class&#x3D;&quot;tropico-icono&quot;&gt;🌿&lt;/span&gt;
+                &lt;div&gt;
+                  &lt;h3 class&#x3D;&quot;tropico-titulo&quot;&gt;Trópico {{ t.tropico }}&lt;/h3&gt;
+                  &lt;p class&#x3D;&quot;tropico-subtitulo&quot;&gt;
+                    {{ t.totalHatos }} hatos · {{ formatDecimal(t.porcentajeDelTotal) }}%
+                  &lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;tropico-barra-wrap&quot;&gt;
+                &lt;div class&#x3D;&quot;tropico-barra&quot;&gt;
+                  &lt;div class&#x3D;&quot;tropico-barra-fill&quot; [style.width.%]&#x3D;&quot;t.porcentajeDelTotal&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;tropico-kpis&quot;&gt;
+                &lt;div class&#x3D;&quot;tropico-kpi&quot;&gt;
+                  &lt;span class&#x3D;&quot;tropico-kpi-icono&quot;&gt;🥛&lt;/span&gt;
+                  &lt;div&gt;
+                    &lt;span class&#x3D;&quot;tropico-kpi-label&quot;&gt;Litros/vaca/día&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;tropico-kpi-valor&quot;&gt;
+                      {{
+                        t.promedioLitrosVacaDia !&#x3D; null
+                          ? formatDecimal(t.promedioLitrosVacaDia) + &#x27; L&#x27;
+                          : &#x27;—&#x27;
+                      }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;tropico-kpi&quot;&gt;
+                  &lt;span class&#x3D;&quot;tropico-kpi-icono&quot;&gt;🐄&lt;/span&gt;
+                  &lt;div&gt;
+                    &lt;span class&#x3D;&quot;tropico-kpi-label&quot;&gt;Carga animal prom.&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;tropico-kpi-valor&quot;&gt;
+                      {{
+                        t.promedioCargarAnimal !&#x3D; null
+                          ? formatDecimal(t.promedioCargarAnimal) + &#x27; UA/ha&#x27;
+                          : &#x27;—&#x27;
+                      }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+      }
+    }
+
+    &lt;!-- TAB: Mapa --&gt;
+    @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;mapa&#x27;) {
+      &lt;div class&#x3D;&quot;mapa-card&quot;&gt;
+        &lt;div class&#x3D;&quot;mapa-card-header&quot;&gt;
+          &lt;div&gt;
+            &lt;h3 class&#x3D;&quot;chart-card-titulo&quot;&gt;🗺️ Mapa nacional de hatos&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;chart-card-subtitulo&quot;&gt;
+              {{ hatosConCoordenadas.length }} hatos con coordenadas registradas
+            &lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;mapa-leyenda&quot;&gt;
+            &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+              &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #19e64d&quot;&gt;&lt;/span&gt;
+              100% completado
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+              &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #3b82f6&quot;&gt;&lt;/span&gt;
+              75–99%
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+              &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #f59e0b&quot;&gt;&lt;/span&gt;
+              50–74%
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;leyenda-item&quot;&gt;
+              &lt;span class&#x3D;&quot;leyenda-dot&quot; style&#x3D;&quot;background: #ef4444&quot;&gt;&lt;/span&gt;
+              &amp;lt;50%
+            &lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        @if (loadingMapa) {
+          &lt;div class&#x3D;&quot;mapa-loading&quot;&gt;
+            &lt;app-spinner size&#x3D;&quot;medium&quot; message&#x3D;&quot;Cargando mapa...&quot;&gt;&lt;/app-spinner&gt;
+          &lt;/div&gt;
+        } @else {
+          &lt;div class&#x3D;&quot;mapa-contenedor&quot; [id]&#x3D;&quot;mapId&quot;&gt;&lt;/div&gt;
+        }
+      &lt;/div&gt;
+    }
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="dashboard-admin-page">  <!-- ===== HEADER ===== -->  <header class="page-header">    <div class="header-left">      <p class="page-tag">Hathor · Administración</p>      <h1 class="page-title">Dashboard <span class="brand">Nacional</span></h1>      <p class="page-subtitle">Estadísticas globales de la plataforma Hathor Colombia</p>    </div>    <div class="header-right">      <div class="header-icon">⚙️</div>    </div>  </header>  <!-- ===== ERROR ===== -->  @if (error) {    <div class="msg-error">      <span>❌</span>      <p>{{ error }}</p>    </div>  }  <!-- ===== CARDS GLOBALES ===== -->  @if (loadingGlobales) {    <div class="cards-loading">      <app-spinner size="medium" message="Cargando estadísticas..."></app-spinner>    </div>  } @else if (globales) {    <div class="stats-grid">      <div class="stat-card" (click)="irAHatos()">        <div class="stat-card-icono">🐄</div>        <div class="stat-card-info">          <span class="stat-card-label">Total hatos</span>          <span class="stat-card-valor">{{ formatNum(globales.totalHatos) }}</span>          <span class="stat-card-sub">registrados en la plataforma</span>        </div>      </div>      <div class="stat-card">        <div class="stat-card-icono">📊</div>        <div class="stat-card-info">          <span class="stat-card-label">Hatos con KPIs</span>          <span class="stat-card-valor verde">            {{ formatNum(globales.hatosConKpis) }}          </span>          <span class="stat-card-sub">{{ porcentajeHatosConKpis }} del total</span>        </div>      </div>      <div class="stat-card">        <div class="stat-card-icono">📍</div>        <div class="stat-card-info">          <span class="stat-card-label">Departamentos</span>          <span class="stat-card-valor">            {{ formatNum(globales.totalDepartamentos) }}          </span>          <span class="stat-card-sub">con presencia activa</span>        </div>      </div>      <div class="stat-card">        <div class="stat-card-icono">📋</div>        <div class="stat-card-info">          <span class="stat-card-label">Completitud prom.</span>          <span            class="stat-card-valor"            [class.verde]="globales.promedioCompletitud >= 75"            [class.amarillo]="              globales.promedioCompletitud >= 50 && globales.promedioCompletitud < 75            "            [class.rojo]="globales.promedioCompletitud < 50"          >            {{ promedioCompletitudTexto }}          </span>          <span class="stat-card-sub">promedio de registros</span>        </div>      </div>    </div>  }  <!-- ===== TABS ===== -->  <div class="tabs-row">    @for (tab of tabs; track tab.id) {      <button class="tab-btn" [class.activo]="tabActivo === tab.id" (click)="setTab(tab.id)">        <span class="tab-icono">{{ tab.icono }}</span>        <span class="tab-label">{{ tab.label }}</span>      </button>    }  </div>  <!-- ===== CONTENIDO TABS ===== -->  <div class="tab-content">    <!-- TAB: Resumen -->    @if (tabActivo === \'resumen\') {      <div class="resumen-grid">        <!-- Card escala -->        <div class="chart-card">          <div class="chart-card-header">            <h3 class="chart-card-titulo">📐 Distribución por escala</h3>            <p class="chart-card-subtitulo">Proporción de hatos según su tamaño</p>          </div>          @if (loadingEscalas) {            <div class="chart-loading">              <app-spinner size="small"></app-spinner>            </div>          } @else {            <div class="chart-wrap-donut">              <canvas #chartEscala></canvas>            </div>            <!-- Tabla resumen -->            <div class="resumen-tabla">              @for (e of escalas; track e.escala) {                <div class="resumen-tabla-fila">                  <span class="resumen-tabla-label">{{ e.escala }}</span>                  <span class="resumen-tabla-valor">{{ e.totalHatos }}</span>                  <span class="resumen-tabla-pct">                    {{ e.porcentajeDelTotal | number: \'1.1-1\' }}%                  </span>                </div>              }            </div>          }        </div>        <!-- Card trópico -->        <div class="chart-card">          <div class="chart-card-header">            <h3 class="chart-card-titulo">🌿 Distribución por trópico</h3>            <p class="chart-card-subtitulo">Hatos por tipo de zona climática</p>          </div>          @if (loadingTropicos) {            <div class="chart-loading">              <app-spinner size="small"></app-spinner>            </div>          } @else {            <div class="chart-wrap-bar">              <canvas #chartTropico></canvas>            </div>            <!-- KPIs por trópico -->            <div class="resumen-tabla">              @for (t of tropicos; track t.tropico) {                <div class="resumen-tabla-fila">                  <span class="resumen-tabla-label">{{ t.tropico }}</span>                  <div class="resumen-tabla-kpis">                    @if (t.promedioLitrosVacaDia) {                      <span class="kpi-chip">                        🥛 {{ formatDecimal(t.promedioLitrosVacaDia) }} L/v/d                      </span>                    }                    @if (t.promedioCargarAnimal) {                      <span class="kpi-chip">                        🐄 {{ formatDecimal(t.promedioCargarAnimal) }} UA/ha                      </span>                    }                  </div>                </div>              }            </div>          }        </div>        <!-- Card completitud -->        <div class="chart-card chart-card-completitud">          <div class="chart-card-header">            <h3 class="chart-card-titulo">📋 Completitud promedio</h3>            <p class="chart-card-subtitulo">Nivel de registro de información</p>          </div>          @if (loadingGlobales) {            <div class="chart-loading">              <app-spinner size="small"></app-spinner>            </div>          } @else if (globales) {            <div class="completitud-wrap">              <div class="completitud-donut-wrap">                <canvas #chartCompletitud></canvas>                <div class="completitud-centro">                  <span class="completitud-pct">                    {{ promedioCompletitudTexto }}                  </span>                  <span class="completitud-label">promedio</span>                </div>              </div>            </div>            <!-- Desglose por escala -->            <div class="resumen-tabla">              @for (e of escalas; track e.escala) {                <div class="resumen-tabla-fila">                  <span class="resumen-tabla-label">{{ e.escala }}</span>                  <div class="resumen-tabla-kpis">                    @if (e.promedioLitrosVacaDia) {                      <span class="kpi-chip verde">                        🥛 {{ formatDecimal(e.promedioLitrosVacaDia) }} L/v/d                      </span>                    }                    @if (e.promedioMargenNeto) {                      <span                        class="kpi-chip"                        [class.verde]="e.promedioMargenNeto >= 0"                        [class.rojo]="e.promedioMargenNeto < 0"                      >                        💰 {{ formatDecimal(e.promedioMargenNeto) }}%                      </span>                    }                  </div>                </div>              }            </div>          }        </div>      </div>    }    <!-- TAB: Departamentos -->    @if (tabActivo === \'departamentos\') {      <div class="depto-layout">        <!-- Gráfica barras horizontales -->        <div class="chart-card chart-card-full">          <div class="chart-card-header">            <h3 class="chart-card-titulo">📍 Hatos por departamento — Top 10</h3>            <p class="chart-card-subtitulo">Total de hatos vs hatos con KPIs calculados</p>          </div>          @if (loadingDepartamentos) {            <div class="chart-loading">              <app-spinner size="medium"></app-spinner>            </div>          } @else {            <div class="chart-wrap-horizontal">              <canvas #chartDepartamento></canvas>            </div>          }        </div>        <!-- Tabla completa departamentos -->        @if (!loadingDepartamentos && departamentos.length > 0) {          <div class="tabla-card">            <div class="tabla-header-row">              <h3 class="chart-card-titulo">Detalle por departamento</h3>            </div>            <div class="tabla-wrap">              <table class="tabla-admin">                <thead>                  <tr>                    <th>Departamento</th>                    <th class="text-center">Total hatos</th>                    <th class="text-center">Con KPIs</th>                    <th class="text-center">KPI destacado</th>                    <th class="text-center">Prom. litros/vaca/día</th>                  </tr>                </thead>                <tbody>                  @for (d of departamentos; track d.departamento; let i = $index) {                    <tr [class.fila-alterna]="i % 2 !== 0">                      <td class="td-nombre">{{ d.departamento }}</td>                      <td class="text-center td-num">{{ d.totalHatos }}</td>                      <td class="text-center">                        <span                          class="badge"                          [class.badge-verde]="d.hatosConKpis === d.totalHatos"                          [class.badge-amarillo]="                            d.hatosConKpis > 0 && d.hatosConKpis < d.totalHatos                          "                          [class.badge-gris]="d.hatosConKpis === 0"                        >                          {{ d.hatosConKpis }}                        </span>                      </td>                      <td class="text-center td-kpi">                        {{ d.kpiDestacado ?? \'—\' }}                      </td>                      <td class="text-center td-num">                        {{                          d.promedioKpiDestacado != null                            ? formatDecimal(d.promedioKpiDestacado) + \' L\'                            : \'—\'                        }}                      </td>                    </tr>                  }                </tbody>              </table>            </div>          </div>        }      </div>    }    <!-- TAB: Escalas -->    @if (tabActivo === \'escalas\') {      @if (loadingEscalas) {        <div class="tab-loading">          <app-spinner size="medium" message="Cargando..."></app-spinner>        </div>      } @else {        <div class="escalas-grid">          @for (e of escalas; track e.escala) {            <div class="escala-card">              <div class="escala-card-header">                <span class="escala-icono">📐</span>                <div>                  <h3 class="escala-titulo">{{ e.escala }}</h3>                  <p class="escala-subtitulo">                    {{ formatDecimal(e.porcentajeDelTotal) }}% del total                  </p>                </div>              </div>              <div class="escala-barra-wrap">                <div class="escala-barra">                  <div class="escala-barra-fill" [style.width.%]="e.porcentajeDelTotal"></div>                </div>                <span class="escala-barra-label"> {{ e.totalHatos }} hatos </span>              </div>              <div class="escala-kpis">                <div class="escala-kpi-item">                  <span class="escala-kpi-label">Litros/vaca/día</span>                  <span class="escala-kpi-valor">                    {{                      e.promedioLitrosVacaDia != null                        ? formatDecimal(e.promedioLitrosVacaDia) + \' L\'                        : \'—\'                    }}                  </span>                </div>                <div class="escala-kpi-item">                  <span class="escala-kpi-label">Margen neto prom.</span>                  <span                    class="escala-kpi-valor"                    [class.verde]="(e.promedioMargenNeto ?? 0) >= 0"                    [class.rojo]="(e.promedioMargenNeto ?? 0) < 0"                  >                    {{                      e.promedioMargenNeto != null ? formatDecimal(e.promedioMargenNeto) + \'%\' : \'—\'                    }}                  </span>                </div>              </div>            </div>          }        </div>      }    }    <!-- TAB: Trópicos -->    @if (tabActivo === \'tropicos\') {      @if (loadingTropicos) {        <div class="tab-loading">          <app-spinner size="medium" message="Cargando..."></app-spinner>        </div>      } @else {        <div class="tropicos-grid">          @for (t of tropicos; track t.tropico) {            <div class="tropico-card">              <div class="tropico-header">                <span class="tropico-icono">🌿</span>                <div>                  <h3 class="tropico-titulo">Trópico {{ t.tropico }}</h3>                  <p class="tropico-subtitulo">                    {{ t.totalHatos }} hatos · {{ formatDecimal(t.porcentajeDelTotal) }}%                  </p>                </div>              </div>              <div class="tropico-barra-wrap">                <div class="tropico-barra">                  <div class="tropico-barra-fill" [style.width.%]="t.porcentajeDelTotal"></div>                </div>              </div>              <div class="tropico-kpis">                <div class="tropico-kpi">                  <span class="tropico-kpi-icono">🥛</span>                  <div>                    <span class="tropico-kpi-label">Litros/vaca/día</span>                    <span class="tropico-kpi-valor">                      {{                        t.promedioLitrosVacaDia != null                          ? formatDecimal(t.promedioLitrosVacaDia) + \' L\'                          : \'—\'                      }}                    </span>                  </div>                </div>                <div class="tropico-kpi">                  <span class="tropico-kpi-icono">🐄</span>                  <div>                    <span class="tropico-kpi-label">Carga animal prom.</span>                    <span class="tropico-kpi-valor">                      {{                        t.promedioCargarAnimal != null                          ? formatDecimal(t.promedioCargarAnimal) + \' UA/ha\'                          : \'—\'                      }}                    </span>                  </div>                </div>              </div>            </div>          }        </div>      }    }    <!-- TAB: Mapa -->    @if (tabActivo === \'mapa\') {      <div class="mapa-card">        <div class="mapa-card-header">          <div>            <h3 class="chart-card-titulo">🗺️ Mapa nacional de hatos</h3>            <p class="chart-card-subtitulo">              {{ hatosConCoordenadas.length }} hatos con coordenadas registradas            </p>          </div>          <div class="mapa-leyenda">            <span class="leyenda-item">              <span class="leyenda-dot" style="background: #19e64d"></span>              100% completado            </span>            <span class="leyenda-item">              <span class="leyenda-dot" style="background: #3b82f6"></span>              75–99%            </span>            <span class="leyenda-item">              <span class="leyenda-dot" style="background: #f59e0b"></span>              50–74%            </span>            <span class="leyenda-item">              <span class="leyenda-dot" style="background: #ef4444"></span>              &lt;50%            </span>          </div>        </div>        @if (loadingMapa) {          <div class="mapa-loading">            <app-spinner size="medium" message="Cargando mapa..."></app-spinner>          </div>        } @else {          <div class="mapa-contenedor" [id]="mapId"></div>        }      </div>    }  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'DashboardAdminComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DashboardAdminComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,370 @@
+<div class="min-h-screen bg-white flex items-center justify-center p-6">
+  <div
+    class="bg-white rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden flex"
+    style="height: 90vh; max-height: 820px"
+  >
+    <!-- ===== IZQUIERDA: Formulario ===== -->
+    <div class="flex-1 flex flex-col overflow-y-auto px-12 py-12">
+      <div class="flex items-center mb-10">
+        <img src="assets/hathor-logo.png" alt="Hathor" class="h-10 w-auto" />
+      </div>
+
+      <!-- Titulos -->
+      <div class="mb-8">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">
+          Bienvenido de vuelta
+        </p>
+        <h1 class="text-5xl font-black text-gray-900 leading-tight tracking-tight">
+          Inicia tu<br />Sesión
+        </h1>
+      </div>
+
+      <div
+        *ngIf="confirmationMessage"
+        class="bg-green-50 border-l-4 border-green-400 p-4 rounded-xl mb-6"
+      >
+        <div class="flex gap-3">
+          <svg
+            class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <div>
+            <h3 class="text-sm font-semibold text-green-800">¡Registro exitoso!</h3>
+            <p class="mt-1 text-sm text-green-700 whitespace-pre-line">{{ confirmationMessage }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-5">
+        <!-- Email -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+            Usuario
+          </label>
+          <div class="relative">
+            <svg
+              class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <input
+              type="email"
+              formControlName="email"
+              data-cy="input-email"
+              placeholder="correo@ejemplo.com"
+              class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 transition-all duration-200 focus:outline-none focus:bg-white focus:border-[#BFF102] focus:ring-2 focus:ring-[#BFF102] focus:ring-opacity-30"
+              [class.border-red-400]="email?.invalid && email?.touched"
+              [class.bg-red-50]="email?.invalid && email?.touched"
+            />
+          </div>
+          <p *ngIf="email?.invalid && email?.touched" class="text-red-500 text-xs mt-1.5 ml-1">
+            Email válido requerido
+          </p>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+            Contraseña
+          </label>
+          <div class="relative">
+            <svg
+              class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="password"
+              data-cy="input-password"
+              placeholder="••••••••••••"
+              class="w-full pl-10 pr-12 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 transition-all duration-200 focus:outline-none focus:bg-white focus:border-[#BFF102] focus:ring-2 focus:ring-[#BFF102] focus:ring-opacity-30"
+              [class.border-red-400]="password?.invalid && password?.touched"
+              [class.bg-red-50]="password?.invalid && password?.touched"
+            />
+            <button
+              type="button"
+              (click)="togglePassword()"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <span *ngIf="!showPassword">👁️</span>
+              <span *ngIf="showPassword">👁️‍🗨️</span>
+            </button>
+          </div>
+          <p
+            *ngIf="password?.invalid && password?.touched"
+            class="text-red-500 text-xs mt-1.5 ml-1"
+          >
+            Mínimo 6 caracteres
+          </p>
+        </div>
+
+        <!-- Error message -->
+        <div
+          *ngIf="error"
+          data-cy="error-message"
+          class="bg-red-50 border border-red-200 rounded-xl p-3.5"
+        >
+          <p class="text-red-600 text-sm">{{ error }}</p>
+        </div>
+
+        <!-- Banner correo no confirmado -->
+        <div
+          *ngIf="correoNoConfirmado"
+          class="bg-yellow-50 border border-yellow-300 rounded-xl p-4 space-y-3"
+        >
+          <div class="flex gap-3">
+            <span class="text-yellow-500 text-xl flex-shrink-0">✉️</span>
+            <div>
+              <p class="text-yellow-800 text-sm font-semibold">Correo no confirmado</p>
+              <p class="text-yellow-700 text-xs mt-1">
+                Tu cuenta <strong>{{ userEmail }}</strong> aún no ha sido verificada. Revisa tu
+                bandeja de entrada o solicita un nuevo correo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Reenvío exitoso -->
+          <div *ngIf="reenvioExitoso" class="bg-green-50 border border-green-200 rounded-lg p-3">
+            <p class="text-green-700 text-xs font-medium">
+              ✓ Correo reenviado a <strong>{{ userEmail }}</strong
+              >. Revisa tu bandeja de entrada.
+            </p>
+          </div>
+
+          <!-- Botón reenviar -->
+          <button
+            type="button"
+            (click)="reenviarConfirmacion()"
+            [disabled]="reenvioLoading || reenvioExitoso"
+            class="w-full bg-yellow-400 hover:bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed text-yellow-900 font-semibold py-2.5 px-4 rounded-lg transition-all duration-200 text-sm"
+          >
+            <span *ngIf="!reenvioLoading && !reenvioExitoso">Reenviar correo de confirmación</span>
+            <span *ngIf="reenvioLoading" class="flex items-center justify-center gap-2">
+              <svg class="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                />
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z"
+                />
+              </svg>
+              Enviando...
+            </span>
+            <span *ngIf="reenvioExitoso">✓ Correo enviado</span>
+          </button>
+        </div>
+
+        <!-- Remember & Recovery -->
+        <div class="flex justify-between items-center">
+          <label class="flex items-center gap-2 cursor-pointer group">
+            <input type="checkbox" class="w-4 h-4 rounded accent-[#BFF102] cursor-pointer" />
+            <span class="text-sm text-gray-500 group-hover:text-gray-700 transition-colors"
+              >Recuérdame</span
+            >
+          </label>
+          <button
+            type="button"
+            (click)="abrirForgotOverlay()"
+            class="text-sm text-gray-500 hover:text-gray-900 font-medium transition-colors underline underline-offset-2"
+          >
+            ¿Olvidé mi contraseña?
+          </button>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          data-cy="btn-login"
+          [disabled]="loading || form.invalid"
+          class="w-full bg-[#BFF102] hover:bg-[#a8d601] disabled:opacity-50 disabled:cursor-not-allowed text-black font-bold py-3.5 px-4 rounded-xl transition-all duration-200 text-sm tracking-wide shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+        >
+          <span *ngIf="!loading">Iniciar Sesión →</span>
+          <span *ngIf="loading" class="flex items-center justify-center gap-2">
+            <svg class="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z"
+              />
+            </svg>
+            Cargando...
+          </span>
+        </button>
+      </form>
+
+      <!-- Register Link -->
+      <p class="text-center mt-8 text-sm text-gray-500">
+        ¿No tienes cuenta?
+        <a
+          routerLink="/register"
+          data-cy="link-register"
+          class="text-gray-900 font-bold hover:text-[#7fa300] transition-colors ml-1"
+        >
+          Regístrate
+        </a>
+      </p>
+    </div>
+
+    <!-- ===== DERECHA: Imagen full height ===== -->
+    <div class="hidden lg:block relative w-2/5 flex-shrink-0">
+      <img
+        src="assets/ganado-colombia.jpg"
+        alt="Hathor"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+      ></div>
+      <!-- Caption inferior -->
+      <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+        <p class="text-lg font-bold leading-snug">Gestión ganadera inteligente</p>
+        <p class="text-sm text-white/70 mt-1">Tu campo, bajo control.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OVERLAY OLVIDÉ MI CONTRASEÑA ===== -->
+<div
+  *ngIf="showForgotOverlay"
+  class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-6"
+>
+  <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-8 flex flex-col gap-5">
+    <!-- Header -->
+    <div class="flex items-center justify-between">
+      <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-2xl">
+        🔐
+      </div>
+      <button
+        type="button"
+        (click)="cerrarForgotOverlay()"
+        class="text-gray-400 hover:text-gray-600 transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Sin enviar: formulario -->
+    <ng-container *ngIf="!forgotExitoso">
+      <div>
+        <h3 class="text-xl font-black text-gray-900">Restablecer contraseña</h3>
+        <p class="text-gray-500 text-sm mt-1">
+          Ingresa tu correo y te enviaremos un enlace para crear una nueva contraseña.
+        </p>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2"
+          >Correo electrónico</label
+        >
+        <div class="relative">
+          <svg
+            class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"
+            />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          <input
+            type="email"
+            [(ngModel)]="forgotEmail"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="correo@ejemplo.com"
+            class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 transition-all duration-200 focus:outline-none focus:bg-white focus:border-[#BFF102] focus:ring-2 focus:ring-[#BFF102] focus:ring-opacity-30"
+          />
+        </div>
+        <p *ngIf="forgotError" class="text-red-500 text-xs mt-1.5 ml-1">{{ forgotError }}</p>
+      </div>
+
+      <button
+        type="button"
+        (click)="enviarResetPassword()"
+        [disabled]="forgotLoading"
+        class="w-full bg-[#BFF102] hover:bg-[#a8d601] disabled:opacity-50 disabled:cursor-not-allowed text-black font-bold py-3 px-4 rounded-xl transition-all duration-200 text-sm"
+      >
+        <span *ngIf="!forgotLoading">Enviar enlace →</span>
+        <span *ngIf="forgotLoading" class="flex items-center justify-center gap-2">
+          <app-spinner size="small"></app-spinner>
+          Enviando...
+        </span>
+      </button>
+    </ng-container>
+
+    <!-- Enviado: confirmación -->
+    <ng-container *ngIf="forgotExitoso">
+      <div class="text-center flex flex-col items-center gap-4">
+        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+          <svg
+            class="w-8 h-8 text-green-500"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-xl font-black text-gray-900">¡Correo enviado!</h3>
+          <p class="text-gray-500 text-sm mt-2">
+            Enviamos el enlace de recuperación a<br />
+            <strong class="text-gray-800">{{ forgotEmail }}</strong>
+          </p>
+          <p class="text-gray-400 text-xs mt-3">
+            Revisa tu bandeja de entrada y sigue las instrucciones. El enlace expira en 1 hora.
+          </p>
+        </div>
+        <button
+          type="button"
+          (click)="cerrarForgotOverlay()"
+          class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-xl transition-all duration-200 text-sm"
+        >
+          Cerrar
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>

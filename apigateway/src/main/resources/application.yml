@@ -1,0 +1,180 @@
+server:
+  port: 8081
+
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.reactive.ReactiveSecurityAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.reactive.ReactiveUserDetailsServiceAutoConfiguration
+
+  data:
+    redis:
+      url: ${REDIS_URL}
+      ssl:
+        enabled: true
+
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+        max-retries-on-same-service-instance: 1
+        max-retries-on-next-service-instance: 1
+        retry-on-all-operations: true
+        retryable-status-codes: 500, 502, 503, 504
+
+    gateway:
+      httpclient:
+        connect-timeout: 10000
+        response-timeout: 180s
+        pool:
+          type: elastic
+          max-idle-time: 180s
+
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          "[/**]":
+            allowed-origin-patterns:
+              - "http://localhost:4200"
+              - "https://*.vercel.app"
+              - "https://*.ngrok-free.app"
+              - "https://*.ngrok-free.dev"
+              - "https://*.ngrok.io"
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+              - PATCH
+            allowed-headers: "*"
+            allow-credentials: true
+            max-age: 3600
+
+      routes:
+        - id: service
+          uri: lb://hathor-backend
+          predicates:
+            - Path=/api/**
+          filters:
+            - StripPrefix=1
+            - name: Retry
+              args:
+                retries: 2
+                statuses: BAD_GATEWAY, SERVICE_UNAVAILABLE, GATEWAY_TIMEOUT
+                methods: GET, POST, PUT, PATCH, DELETE
+                backoff:
+                  firstBackoff: 100ms
+                  maxBackoff: 500ms
+                  factor: 2
+                  basedOnPreviousValue: false
+
+        - id: kpis-calcular
+          uri: lb://hathor-backend
+          predicates:
+            - Path=/api/KPIs/calcular/**
+          filters:
+            - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 20
+                redis-rate-limiter.burstCapacity: 20
+                redis-rate-limiter.requestedTokens: 1
+                key-resolver: "#{@userKeyResolver}"
+            - name: CircuitBreaker
+              args:
+                name: kpis-calcular
+                fallbackUri: forward:/fallback/intensivo
+            - name: Retry
+              args:
+                retries: 1
+                statuses: BAD_GATEWAY, SERVICE_UNAVAILABLE, GATEWAY_TIMEOUT
+                methods: GET, POST
+                backoff:
+                  firstBackoff: 200ms
+                  maxBackoff: 1000ms
+                  factor: 2
+                  basedOnPreviousValue: false
+
+        - id: benchmarking-calcular
+          uri: lb://hathor-backend
+          predicates:
+            - Path=/api/Benchmarking/calcularBenchmarking/**
+          filters:
+            - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 20
+                redis-rate-limiter.burstCapacity: 20
+                redis-rate-limiter.requestedTokens: 1
+                key-resolver: "#{@userKeyResolver}"
+            - name: CircuitBreaker
+              args:
+                name: benchmarking-calcular
+                fallbackUri: forward:/fallback/intensivo
+            - name: Retry
+              args:
+                retries: 1
+                statuses: BAD_GATEWAY, SERVICE_UNAVAILABLE, GATEWAY_TIMEOUT
+                methods: GET, POST
+                backoff:
+                  firstBackoff: 200ms
+                  maxBackoff: 1000ms
+                  factor: 2
+                  basedOnPreviousValue: false
+
+        - id: asistente-chat
+          uri: lb://hathor-backend
+          predicates:
+            - Path=/api/asistente/**
+          filters:
+            - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 15
+                redis-rate-limiter.requestedTokens: 1
+                key-resolver: "#{@userKeyResolver}"
+            - name: CircuitBreaker
+              args:
+                name: asistente
+                fallbackUri: forward:/fallback/intensivo
+
+        - id: seed
+          uri: lb://hathor-backend
+          predicates:
+            - Path=/api/seed/**
+          filters:
+            - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: seed
+                fallbackUri: forward:/fallback/general
+
+resilience4j:
+  timelimiter:
+    instances:
+      benchmarking-calcular:
+        timeout-duration: 150s
+      kpis-calcular:
+        timeout-duration: 150s
+      asistente:
+        timeout-duration: 60s
+      seed:
+        timeout-duration: 3600s
+      default:
+        timeout-duration: 60s
+  circuitbreaker:
+    instances:
+      benchmarking-calcular:
+        sliding-window-size: 5
+        failure-rate-threshold: 80
+        wait-duration-in-open-state: 30s
+      kpis-calcular:
+        sliding-window-size: 5
+        failure-rate-threshold: 80
+        wait-duration-in-open-state: 30s
+      default:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 15s

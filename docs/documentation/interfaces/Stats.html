@@ -1,0 +1,1350 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  Stats</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/features/Usuario/finanzas/estadisticas-finanzas/estadisticas-finanzas.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#balanceNeto" 
+>
+                                            balanceNeto
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#categoriaLider" 
+>
+                                            categoriaLider
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#evolucionMensual" 
+>
+                                            evolucionMensual
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#mejorMes" 
+>
+                                            mejorMes
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#mesesConActividad" 
+>
+                                            mesesConActividad
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#mesMayorGasto" 
+>
+                                            mesMayorGasto
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#porTipo" 
+>
+                                            porTipo
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#promedioMensual" 
+>
+                                            promedioMensual
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#ratioRentabilidad" 
+>
+                                            ratioRentabilidad
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#topCategoriaGastos" 
+>
+                                            topCategoriaGastos
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#topCategorias" 
+>
+                                            topCategorias
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#totalEgresos" 
+>
+                                            totalEgresos
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#totalIngresos" 
+>
+                                            totalIngresos
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#totalRegistros" 
+>
+                                            totalRegistros
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="balanceNeto"></a>
+                                        <span class="name "><b>balanceNeto</b>
+                                            <a href="#balanceNeto">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>balanceNeto:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="categoriaLider"></a>
+                                        <span class="name "><b>categoriaLider</b>
+                                            <a href="#categoriaLider">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>categoriaLider:     <code>CategoriaStat | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>CategoriaStat | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="evolucionMensual"></a>
+                                        <span class="name "><b>evolucionMensual</b>
+                                            <a href="#evolucionMensual">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>evolucionMensual:         <code><a href="../interfaces/MesStat.html" target="_self" >MesStat[]</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/MesStat.html" target="_self" >MesStat[]</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="mejorMes"></a>
+                                        <span class="name "><b>mejorMes</b>
+                                            <a href="#mejorMes">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>mejorMes:         <code><a href="../interfaces/MesStat.html" target="_self" >MesStat | null</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/MesStat.html" target="_self" >MesStat | null</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="mesesConActividad"></a>
+                                        <span class="name "><b>mesesConActividad</b>
+                                            <a href="#mesesConActividad">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>mesesConActividad:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="mesMayorGasto"></a>
+                                        <span class="name "><b>mesMayorGasto</b>
+                                            <a href="#mesMayorGasto">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>mesMayorGasto:         <code><a href="../interfaces/MesStat.html" target="_self" >MesStat | null</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/MesStat.html" target="_self" >MesStat | null</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="porTipo"></a>
+                                        <span class="name "><b>porTipo</b>
+                                            <a href="#porTipo">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>porTipo:     <code>TipoStat[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>TipoStat[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="promedioMensual"></a>
+                                        <span class="name "><b>promedioMensual</b>
+                                            <a href="#promedioMensual">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>promedioMensual:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="ratioRentabilidad"></a>
+                                        <span class="name "><b>ratioRentabilidad</b>
+                                            <a href="#ratioRentabilidad">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>ratioRentabilidad:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="topCategoriaGastos"></a>
+                                        <span class="name "><b>topCategoriaGastos</b>
+                                            <a href="#topCategoriaGastos">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>topCategoriaGastos:     <code>CategoriaStat[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>CategoriaStat[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="topCategorias"></a>
+                                        <span class="name "><b>topCategorias</b>
+                                            <a href="#topCategorias">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>topCategorias:     <code>CategoriaStat[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>CategoriaStat[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="totalEgresos"></a>
+                                        <span class="name "><b>totalEgresos</b>
+                                            <a href="#totalEgresos">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>totalEgresos:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="totalIngresos"></a>
+                                        <span class="name "><b>totalIngresos</b>
+                                            <a href="#totalIngresos">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>totalIngresos:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="totalRegistros"></a>
+                                        <span class="name "><b>totalRegistros</b>
+                                            <a href="#totalRegistros">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>totalRegistros:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  AfterViewInit,
+  ChangeDetectorRef,
+  ElementRef,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+import { Chart, registerables } from &#x27;chart.js&#x27;;
+
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import { Hato } from &#x27;../../../../core/services/hato/hato.service&#x27;;
+import {
+  RegistroFinancieroService,
+  RegistroFinanciero,
+} from &#x27;../../../../core/services/finanzas/registro-financiero.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+
+Chart.register(...registerables);
+
+interface TipoStat {
+  tipo: string;
+  total: number;
+  cantidad: number;
+  pct: number;
+}
+
+interface CategoriaStat {
+  nombre: string;
+  tipo: string;
+  total: number;
+  pct: number;
+}
+
+interface MesStat {
+  mes: string;
+  mesKey: string;
+  ingresos: number;
+  egresos: number;
+  balance: number;
+  pctIngreso: number;
+  pctEgreso: number;
+}
+
+interface Stats {
+  totalRegistros: number;
+  totalIngresos: number;
+  totalEgresos: number;
+  balanceNeto: number;
+  ratioRentabilidad: number;
+  mesesConActividad: number;
+  promedioMensual: number;
+  porTipo: TipoStat[];
+  topCategorias: CategoriaStat[];
+  topCategoriaGastos: CategoriaStat[];
+  evolucionMensual: MesStat[];
+  mejorMes: MesStat | null;
+  mesMayorGasto: MesStat | null;
+  categoriaLider: CategoriaStat | null;
+}
+
+@Component({
+  selector: &#x27;app-estadisticas-finanzas&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent],
+  templateUrl: &#x27;./estadisticas-finanzas.component.html&#x27;,
+  styleUrl: &#x27;./estadisticas-finanzas.component.css&#x27;,
+})
+export class EstadisticasFinanzasComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild(&#x27;chartEvolucion&#x27;) chartEvolucionRef!: ElementRef;
+  @ViewChild(&#x27;chartDona&#x27;) chartDonaRef!: ElementRef;
+  @ViewChild(&#x27;chartTopIngresos&#x27;) chartTopIngresosRef!: ElementRef;
+  @ViewChild(&#x27;chartTopGastos&#x27;) chartTopGastosRef!: ElementRef;
+
+  hatoActivo: Hato | null &#x3D; null;
+  loading &#x3D; false;
+  stats: Stats &#x3D; this.statsVacias();
+
+  private charts: Chart&lt;any, any, any&gt;[] &#x3D; [];
+  private viewReady &#x3D; false;
+  private dataReady &#x3D; false;
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private hatoState: HatoStateService,
+    private registroService: RegistroFinancieroService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato) {
+        this.cargarYCalcular(hato.idHato as string);
+      } else {
+        this.stats &#x3D; this.statsVacias();
+        this.destruirGraficas();
+      }
+      this.cdr.markForCheck();
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.viewReady &#x3D; true;
+    if (this.dataReady) this.construirGraficas();
+  }
+
+  private cargarYCalcular(idHato: string): void {
+    this.loading &#x3D; true;
+    this.destruirGraficas();
+    this.cdr.markForCheck();
+
+    this.registroService
+      .getRegistrosByHato(idHato)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (registros) &#x3D;&gt; {
+          this.stats &#x3D; this.calcularStats(registros);
+          this.loading &#x3D; false;
+          this.dataReady &#x3D; true;
+          this.cdr.markForCheck();
+          setTimeout(() &#x3D;&gt; {
+            if (this.viewReady) this.construirGraficas();
+          }, 150);
+        },
+        error: () &#x3D;&gt; {
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  //  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; MOTOR DE CÁLCULO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  private calcularStats(registros: RegistroFinanciero[]): Stats {
+    if (!registros.length) return this.statsVacias();
+
+    const TIPOS_EGRESO &#x3D; [&#x27;GASTO&#x27;, &#x27;COSTO&#x27;, &#x27;INVERSION&#x27;];
+
+    const totalIngresos &#x3D; this.sumar(registros, &#x27;INGRESO&#x27;);
+    const totalEgresos &#x3D; TIPOS_EGRESO.reduce((s, t) &#x3D;&gt; s + this.sumar(registros, t), 0);
+    const balanceNeto &#x3D; totalIngresos - totalEgresos;
+    const ratioRentabilidad &#x3D;
+      totalEgresos &gt; 0 ? totalIngresos / totalEgresos : totalIngresos &gt; 0 ? Infinity : 0;
+
+    const TODOS_TIPOS &#x3D; [&#x27;INGRESO&#x27;, &#x27;GASTO&#x27;, &#x27;COSTO&#x27;, &#x27;INVERSION&#x27;];
+    const maxTipoTotal &#x3D; Math.max(...TODOS_TIPOS.map((t) &#x3D;&gt; this.sumar(registros, t)));
+
+    const porTipo: TipoStat[] &#x3D; TODOS_TIPOS.map((tipo) &#x3D;&gt; {
+      const grupo &#x3D; registros.filter((r) &#x3D;&gt; r.tipoMovimiento &#x3D;&#x3D;&#x3D; tipo);
+      const total &#x3D; grupo.reduce((s, r) &#x3D;&gt; s + r.monto, 0);
+      return {
+        tipo,
+        total,
+        cantidad: grupo.length,
+        pct: maxTipoTotal &gt; 0 ? (total / maxTipoTotal) * 100 : 0,
+      };
+    })
+      .filter((t) &#x3D;&gt; t.cantidad &gt; 0)
+      .sort((a, b) &#x3D;&gt; b.total - a.total);
+
+    // Top categorías ingresos
+    const catIngMap &#x3D; new Map&lt;string, { nombre: string; tipo: string; total: number }&gt;();
+    for (const r of registros.filter((r) &#x3D;&gt; r.tipoMovimiento &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27;)) {
+      const nombre &#x3D; r.categoriaFinanciera?.nombre ?? &#x27;Sin categoría&#x27;;
+      const prev &#x3D; catIngMap.get(nombre);
+      catIngMap.set(nombre, {
+        nombre,
+        tipo: r.tipoMovimiento,
+        total: (prev?.total ?? 0) + r.monto,
+      });
+    }
+    const catIngArr &#x3D; Array.from(catIngMap.values()).sort((a, b) &#x3D;&gt; b.total - a.total);
+    const maxCatIng &#x3D; catIngArr[0]?.total ?? 0;
+    const topCategorias: CategoriaStat[] &#x3D; catIngArr.slice(0, 5).map((c) &#x3D;&gt; ({
+      ...c,
+      pct: maxCatIng &gt; 0 ? (c.total / maxCatIng) * 100 : 0,
+    }));
+
+    // Top categorías gastos
+    const catGasMap &#x3D; new Map&lt;string, { nombre: string; tipo: string; total: number }&gt;();
+    for (const r of registros.filter((r) &#x3D;&gt; TIPOS_EGRESO.includes(r.tipoMovimiento))) {
+      const nombre &#x3D; r.categoriaFinanciera?.nombre ?? &#x27;Sin categoría&#x27;;
+      const prev &#x3D; catGasMap.get(nombre);
+      catGasMap.set(nombre, {
+        nombre,
+        tipo: r.tipoMovimiento,
+        total: (prev?.total ?? 0) + r.monto,
+      });
+    }
+    const catGasArr &#x3D; Array.from(catGasMap.values()).sort((a, b) &#x3D;&gt; b.total - a.total);
+    const maxCatGas &#x3D; catGasArr[0]?.total ?? 0;
+    const topCategoriaGastos: CategoriaStat[] &#x3D; catGasArr.slice(0, 5).map((c) &#x3D;&gt; ({
+      ...c,
+      pct: maxCatGas &gt; 0 ? (c.total / maxCatGas) * 100 : 0,
+    }));
+
+    // Evolución mensual
+    const mesMap &#x3D; new Map&lt;string, { ingresos: number; egresos: number }&gt;();
+    for (const r of registros) {
+      const key &#x3D; r.fecha.substring(0, 7);
+      const prev &#x3D; mesMap.get(key) ?? { ingresos: 0, egresos: 0 };
+      if (r.tipoMovimiento &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27;) {
+        mesMap.set(key, { ...prev, ingresos: prev.ingresos + r.monto });
+      } else {
+        mesMap.set(key, { ...prev, egresos: prev.egresos + r.monto });
+      }
+    }
+
+    const mesEntries &#x3D; Array.from(mesMap.entries())
+      .sort(([a], [b]) &#x3D;&gt; a.localeCompare(b))
+      .slice(-12);
+
+    const maxVal &#x3D; Math.max(...mesEntries.flatMap(([, v]) &#x3D;&gt; [v.ingresos, v.egresos]), 1);
+
+    const evolucionMensual: MesStat[] &#x3D; mesEntries.map(([key, v]) &#x3D;&gt; ({
+      mes: this.formatMesLabel(key),
+      mesKey: key,
+      ingresos: v.ingresos,
+      egresos: v.egresos,
+      balance: v.ingresos - v.egresos,
+      pctIngreso: (v.ingresos / maxVal) * 100,
+      pctEgreso: (v.egresos / maxVal) * 100,
+    }));
+
+    const mejorMes &#x3D; evolucionMensual.length
+      ? [...evolucionMensual].sort((a, b) &#x3D;&gt; b.ingresos - a.ingresos)[0]
+      : null;
+    const mesMayorGasto &#x3D; evolucionMensual.length
+      ? [...evolucionMensual].sort((a, b) &#x3D;&gt; b.egresos - a.egresos)[0]
+      : null;
+    const categoriaLider &#x3D; topCategorias[0] ?? null;
+    const mesesConActividad &#x3D; mesMap.size;
+    const promedioMensual &#x3D; mesesConActividad &gt; 0 ? balanceNeto / mesesConActividad : 0;
+
+    return {
+      totalRegistros: registros.length,
+      totalIngresos,
+      totalEgresos,
+      balanceNeto,
+      ratioRentabilidad,
+      mesesConActividad,
+      promedioMensual,
+      porTipo,
+      topCategorias,
+      topCategoriaGastos,
+      evolucionMensual,
+      mejorMes,
+      mesMayorGasto,
+      categoriaLider,
+    };
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GRÁFICAS CHART.JS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  private construirGraficas(): void {
+    this.destruirGraficas();
+    if (!this.stats.totalRegistros) return;
+
+    this.crearGraficaEvolucion();
+    this.crearGraficaDona();
+    this.crearGraficaTopIngresos();
+    this.crearGraficaTopGastos();
+  }
+
+  private crearGraficaEvolucion(): void {
+    const ctx &#x3D; this.chartEvolucionRef?.nativeElement;
+    if (!ctx) return;
+
+    const labels &#x3D; this.stats.evolucionMensual.map((m) &#x3D;&gt; m.mes);
+    const chart &#x3D; new Chart(ctx, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels,
+        datasets: [
+          {
+            label: &#x27;Ingresos&#x27;,
+            data: this.stats.evolucionMensual.map((m) &#x3D;&gt; m.ingresos),
+            backgroundColor: &#x27;rgba(25, 230, 77, 0.75)&#x27;,
+            borderColor: &#x27;#15c944&#x27;,
+            borderWidth: 2,
+            borderRadius: 6,
+            order: 2,
+          },
+          {
+            label: &#x27;Egresos&#x27;,
+            data: this.stats.evolucionMensual.map((m) &#x3D;&gt; m.egresos),
+            backgroundColor: &#x27;rgba(239, 68, 68, 0.75)&#x27;,
+            borderColor: &#x27;#dc2626&#x27;,
+            borderWidth: 2,
+            borderRadius: 6,
+            order: 2,
+          },
+          {
+            label: &#x27;Balance neto&#x27;,
+            data: this.stats.evolucionMensual.map((m) &#x3D;&gt; m.balance),
+            type: &#x27;line&#x27;,
+            borderColor: &#x27;#f59e0b&#x27;,
+            backgroundColor: &#x27;rgba(245, 158, 11, 0.08)&#x27;,
+            borderWidth: 2.5,
+            pointBackgroundColor: &#x27;#f59e0b&#x27;,
+            pointRadius: 4,
+            fill: false,
+            tension: 0.4,
+            order: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: &#x27;index&#x27;, intersect: false },
+        plugins: {
+          legend: {
+            display: true,
+            position: &#x27;top&#x27;,
+            labels: { font: { size: 12 }, padding: 16, usePointStyle: true },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60;${ctx.dataset.label}: ${this.formatCOP(ctx.parsed.y ?? 0)}&#x60;,
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: { callback: (val) &#x3D;&gt; &#x60;$${Number(val).toLocaleString(&#x27;es-CO&#x27;)}&#x60; },
+          },
+          x: { grid: { display: false } },
+        },
+      },
+    });
+    this.charts.push(chart);
+  }
+
+  private crearGraficaDona(): void {
+    const ctx &#x3D; this.chartDonaRef?.nativeElement;
+    if (!ctx) return;
+
+    const chart &#x3D; new Chart(ctx, {
+      type: &#x27;doughnut&#x27;,
+      data: {
+        labels: this.stats.porTipo.map((t) &#x3D;&gt; this.labelTipo(t.tipo)),
+        datasets: [
+          {
+            data: this.stats.porTipo.map((t) &#x3D;&gt; t.total),
+            backgroundColor: [
+              &#x27;rgba(25, 230, 77, 0.8)&#x27;,
+              &#x27;rgba(239, 68, 68, 0.8)&#x27;,
+              &#x27;rgba(251, 191, 36, 0.8)&#x27;,
+              &#x27;rgba(167, 139, 250, 0.8)&#x27;,
+            ],
+            borderColor: [&#x27;#15c944&#x27;, &#x27;#dc2626&#x27;, &#x27;#b45309&#x27;, &#x27;#7c3aed&#x27;],
+            borderWidth: 2,
+            hoverOffset: 8,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: &#x27;65%&#x27;,
+        plugins: {
+          legend: {
+            position: &#x27;bottom&#x27;,
+            labels: { font: { size: 12 }, padding: 16, usePointStyle: true },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; {
+                const total &#x3D; (ctx.dataset.data as number[]).reduce((a, b) &#x3D;&gt; a + b, 0);
+                const val &#x3D; (ctx.parsed ?? 0) as number;
+                const pct &#x3D; total &gt; 0 ? ((val / total) * 100).toFixed(1) : &#x27;0&#x27;;
+                return &#x60;${ctx.label}: ${this.formatCOP(val)} (${pct}%)&#x60;;
+              },
+            },
+          },
+        },
+      },
+    });
+    this.charts.push(chart);
+  }
+
+  private crearGraficaTopIngresos(): void {
+    const ctx &#x3D; this.chartTopIngresosRef?.nativeElement;
+    if (!ctx || !this.stats.topCategorias.length) return;
+
+    const chart &#x3D; new Chart(ctx, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: this.stats.topCategorias.map((c) &#x3D;&gt; c.nombre),
+        datasets: [
+          {
+            label: &#x27;Total ingresos&#x27;,
+            data: this.stats.topCategorias.map((c) &#x3D;&gt; c.total),
+            backgroundColor: &#x27;rgba(25, 230, 77, 0.75)&#x27;,
+            borderColor: &#x27;#15c944&#x27;,
+            borderWidth: 2,
+            borderRadius: 8,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60;${this.formatCOP(ctx.parsed.x ?? 0)}&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: { color: &#x27;#f0fdf4&#x27; },
+            ticks: { callback: (val) &#x3D;&gt; &#x60;$${Number(val).toLocaleString(&#x27;es-CO&#x27;)}&#x60; },
+          },
+          y: { grid: { display: false } },
+        },
+      },
+    });
+    this.charts.push(chart);
+  }
+
+  private crearGraficaTopGastos(): void {
+    const ctx &#x3D; this.chartTopGastosRef?.nativeElement;
+    if (!ctx || !this.stats.topCategoriaGastos.length) return;
+
+    const chart &#x3D; new Chart(ctx, {
+      type: &#x27;bar&#x27;,
+      data: {
+        labels: this.stats.topCategoriaGastos.map((c) &#x3D;&gt; c.nombre),
+        datasets: [
+          {
+            label: &#x27;Total gastos&#x27;,
+            data: this.stats.topCategoriaGastos.map((c) &#x3D;&gt; c.total),
+            backgroundColor: &#x27;rgba(239, 68, 68, 0.75)&#x27;,
+            borderColor: &#x27;#dc2626&#x27;,
+            borderWidth: 2,
+            borderRadius: 8,
+          },
+        ],
+      },
+      options: {
+        indexAxis: &#x27;y&#x27;,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) &#x3D;&gt; &#x60;${this.formatCOP(ctx.parsed.x ?? 0)}&#x60;,
+            },
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: { color: &#x27;#fef2f2&#x27; },
+            ticks: { callback: (val) &#x3D;&gt; &#x60;$${Number(val).toLocaleString(&#x27;es-CO&#x27;)}&#x60; },
+          },
+          y: { grid: { display: false } },
+        },
+      },
+    });
+    this.charts.push(chart);
+  }
+
+  private destruirGraficas(): void {
+    this.charts.forEach((c: Chart&lt;any, any, any&gt;) &#x3D;&gt; c.destroy());
+    this.charts &#x3D; [];
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HELPERS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+  private sumar(registros: RegistroFinanciero[], tipo: string): number {
+    return registros.filter((r) &#x3D;&gt; r.tipoMovimiento &#x3D;&#x3D;&#x3D; tipo).reduce((s, r) &#x3D;&gt; s + r.monto, 0);
+  }
+
+  private formatMesLabel(key: string): string {
+    const [year, month] &#x3D; key.split(&#x27;-&#x27;);
+    const meses &#x3D; [
+      &#x27;Ene&#x27;,
+      &#x27;Feb&#x27;,
+      &#x27;Mar&#x27;,
+      &#x27;Abr&#x27;,
+      &#x27;May&#x27;,
+      &#x27;Jun&#x27;,
+      &#x27;Jul&#x27;,
+      &#x27;Ago&#x27;,
+      &#x27;Sep&#x27;,
+      &#x27;Oct&#x27;,
+      &#x27;Nov&#x27;,
+      &#x27;Dic&#x27;,
+    ];
+    return &#x60;${meses[parseInt(month) - 1]} ${year.slice(2)}&#x60;;
+  }
+
+  private statsVacias(): Stats {
+    return {
+      totalRegistros: 0,
+      totalIngresos: 0,
+      totalEgresos: 0,
+      balanceNeto: 0,
+      ratioRentabilidad: 0,
+      mesesConActividad: 0,
+      promedioMensual: 0,
+      porTipo: [],
+      topCategorias: [],
+      topCategoriaGastos: [],
+      evolucionMensual: [],
+      mejorMes: null,
+      mesMayorGasto: null,
+      categoriaLider: null,
+    };
+  }
+
+  formatCOP(valor: number | null | undefined): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;$ 0&#x27;;
+    const abs &#x3D; Math.abs(valor);
+    return (valor &lt; 0 ? &#x27;-$ &#x27; : &#x27;$ &#x27;) + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(abs);
+  }
+
+  labelTipo(tipo: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      INGRESO: &#x27;Ingreso&#x27;,
+      GASTO: &#x27;Gasto&#x27;,
+      COSTO: &#x27;Costo&#x27;,
+      INVERSION: &#x27;Inversión&#x27;,
+    };
+    return map[tipo] ?? tipo;
+  }
+
+  ngOnDestroy(): void {
+    this.destruirGraficas();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'Stats.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,3598 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MiProgresoComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/mi-progreso/mi-progreso.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-mi-progreso</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./mi-progreso.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./mi-progreso.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#chartScore" >chartScore</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#chartScoreRef" >chartScoreRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#esAdmin" >esAdmin</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#graficaConstruida" >graficaConstruida</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#kpis" >kpis</a>
+                            </li>
+                            <li>
+                                <a href="#kpisEvolucion" >kpisEvolucion</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#loadingKpis" >loadingKpis</a>
+                            </li>
+                            <li>
+                                <a href="#loadingRanking" >loadingRanking</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#MAX_KPIS_MOSTRAR" >MAX_KPIS_MOSTRAR</a>
+                            </li>
+                            <li>
+                                <a href="#percentilActual" >percentilActual</a>
+                            </li>
+                            <li>
+                                <a href="#posicionActual" >posicionActual</a>
+                            </li>
+                            <li>
+                                <a href="#practicas" >practicas</a>
+                            </li>
+                            <li>
+                                <a href="#practicasImpacto" >practicasImpacto</a>
+                            </li>
+                            <li>
+                                <a href="#scoreActual" >scoreActual</a>
+                            </li>
+                            <li>
+                                <a href="#tabActivo" >tabActivo</a>
+                            </li>
+                            <li>
+                                <a href="#totalHatosNacional" >totalHatosNacional</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#viewReady" >viewReady</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildGraficaScore" >buildGraficaScore</a>
+                            </li>
+                            <li>
+                                <a href="#calcularAlturaBar" >calcularAlturaBar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarTodo" >cargarTodo</a>
+                            </li>
+                            <li>
+                                <a href="#colorDelta" >colorDelta</a>
+                            </li>
+                            <li>
+                                <a href="#colorEstadoKpi" >colorEstadoKpi</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#construirEvolucionKpis" >construirEvolucionKpis</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#construirImpactoPracticas" >construirImpactoPracticas</a>
+                            </li>
+                            <li>
+                                <a href="#formatNum" >formatNum</a>
+                            </li>
+                            <li>
+                                <a href="#iconoCategoria" >iconoCategoria</a>
+                            </li>
+                            <li>
+                                <a href="#iconoDelta" >iconoDelta</a>
+                            </li>
+                            <li>
+                                <a href="#iconoEstadoKpi" >iconoEstadoKpi</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#intentarGraficaScore" >intentarGraficaScore</a>
+                            </li>
+                            <li>
+                                <a href="#irAPracticas" >irAPracticas</a>
+                            </li>
+                            <li>
+                                <a href="#irARanking" >irARanking</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewChecked" >ngAfterViewChecked</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#setTab" >setTab</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#kpisMejorados" >kpisMejorados</a>
+                                </li>
+                                <li>
+                                    <a href="#kpisCriticos" >kpisCriticos</a>
+                                </li>
+                                <li>
+                                    <a href="#kpisOptimos" >kpisOptimos</a>
+                                </li>
+                                <li>
+                                    <a href="#kpisAceptables" >kpisAceptables</a>
+                                </li>
+                                <li>
+                                    <a href="#kpisSinDatos" >kpisSinDatos</a>
+                                </li>
+                                <li>
+                                    <a href="#practicasCompletadas" >practicasCompletadas</a>
+                                </li>
+                                <li>
+                                    <a href="#practicasEnCurso" >practicasEnCurso</a>
+                                </li>
+                                <li>
+                                    <a href="#completitudPct" >completitudPct</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, hatoService: <a href="../injectables/HatoService.html" target="_self">HatoService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, kpiService: <a href="../injectables/KpiService.html" target="_self">KpiService</a>, practicasService: <a href="../injectables/PracticasService.html" target="_self">PracticasService</a>, rankingService: <a href="../injectables/RankingService.html" target="_self">RankingService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:88</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoService.html" target="_self" >HatoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>kpiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/KpiService.html" target="_self" >KpiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>practicasService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PracticasService.html" target="_self" >PracticasService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>rankingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RankingService.html" target="_self" >RankingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildGraficaScore"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildGraficaScore</b></span>
+                        <a href="#buildGraficaScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildGraficaScore()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="311"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:311</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcularAlturaBar"></a>
+                    <span class="name">
+                        <span ><b>calcularAlturaBar</b></span>
+                        <a href="#calcularAlturaBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calcularAlturaBar(valor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, historico: <a href="../interfaces/KpiHistorico.html" target="_self">KpiHistorico[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="459"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:459</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>historico</td>
+                                            <td>
+                                                            <code><a href="../interfaces/KpiHistorico.html" target="_self" >KpiHistorico[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarTodo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarTodo</b></span>
+                        <a href="#cargarTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarTodo(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorDelta"></a>
+                    <span class="name">
+                        <span ><b>colorDelta</b></span>
+                        <a href="#colorDelta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorDelta(delta: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="445"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:445</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>delta</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorEstadoKpi"></a>
+                    <span class="name">
+                        <span ><b>colorEstadoKpi</b></span>
+                        <a href="#colorEstadoKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorEstadoKpi(estado: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="425"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:425</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="construirEvolucionKpis"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>construirEvolucionKpis</b></span>
+                        <a href="#construirEvolucionKpis"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>construirEvolucionKpis(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, kpis: <a href="../interfaces/KpiResultado.html" target="_self">KpiResultado[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="218"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:218</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>kpis</td>
+                                            <td>
+                                                            <code><a href="../interfaces/KpiResultado.html" target="_self" >KpiResultado[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="construirImpactoPracticas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>construirImpactoPracticas</b></span>
+                        <a href="#construirImpactoPracticas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>construirImpactoPracticas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="289"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:289</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatNum"></a>
+                    <span class="name">
+                        <span ><b>formatNum</b></span>
+                        <a href="#formatNum"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatNum(n: number | null | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="478"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:478</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>n</td>
+                                            <td>
+                                                        <code>number | null | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoCategoria"></a>
+                    <span class="name">
+                        <span ><b>iconoCategoria</b></span>
+                        <a href="#iconoCategoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoCategoria(categoria: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="468"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:468</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>categoria</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoDelta"></a>
+                    <span class="name">
+                        <span ><b>iconoDelta</b></span>
+                        <a href="#iconoDelta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoDelta(delta: number | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="452"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:452</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>delta</td>
+                                            <td>
+                                                        <code>number | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoEstadoKpi"></a>
+                    <span class="name">
+                        <span ><b>iconoEstadoKpi</b></span>
+                        <a href="#iconoEstadoKpi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoEstadoKpi(estado: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="435"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:435</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>estado</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="intentarGraficaScore"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>intentarGraficaScore</b></span>
+                        <a href="#intentarGraficaScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>intentarGraficaScore()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="306"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:306</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irAPracticas"></a>
+                    <span class="name">
+                        <span ><b>irAPracticas</b></span>
+                        <a href="#irAPracticas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irAPracticas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="487"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:487</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irARanking"></a>
+                    <span class="name">
+                        <span ><b>irARanking</b></span>
+                        <a href="#irARanking"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irARanking()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="483"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:483</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewChecked"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewChecked</b></span>
+                        <a href="#ngAfterViewChecked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewChecked()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="143"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:143</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:151</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="491"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:491</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setTab"></a>
+                    <span class="name">
+                        <span ><b>setTab</b></span>
+                        <a href="#setTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setTab(tab: unknown)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="381"
+                                    class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:381</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tab</td>
+                                            <td>
+                                                        <code>unknown</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartScore"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>chartScore</b></span>
+                        <a href="#chartScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Chart&lt;any&gt; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartScoreRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>chartScoreRef</b></span>
+                        <a href="#chartScoreRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLCanvasElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chartScore&#x27;, {static: false})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="esAdmin"></a>
+                    <span class="name">
+                        <span ><b>esAdmin</b></span>
+                        <a href="#esAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="graficaConstruida"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>graficaConstruida</b></span>
+                        <a href="#graficaConstruida"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="kpis"></a>
+                    <span class="name">
+                        <span ><b>kpis</b></span>
+                        <a href="#kpis"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/KpiResultado.html" target="_self" >KpiResultado[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="kpisEvolucion"></a>
+                    <span class="name">
+                        <span ><b>kpisEvolucion</b></span>
+                        <a href="#kpisEvolucion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/KpiEvolucion.html" target="_self" >KpiEvolucion[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingKpis"></a>
+                    <span class="name">
+                        <span ><b>loadingKpis</b></span>
+                        <a href="#loadingKpis"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingRanking"></a>
+                    <span class="name">
+                        <span ><b>loadingRanking</b></span>
+                        <a href="#loadingRanking"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MAX_KPIS_MOSTRAR"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>MAX_KPIS_MOSTRAR</b></span>
+                        <a href="#MAX_KPIS_MOSTRAR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>6</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="percentilActual"></a>
+                    <span class="name">
+                        <span ><b>percentilActual</b></span>
+                        <a href="#percentilActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="posicionActual"></a>
+                    <span class="name">
+                        <span ><b>posicionActual</b></span>
+                        <a href="#posicionActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="practicas"></a>
+                    <span class="name">
+                        <span ><b>practicas</b></span>
+                        <a href="#practicas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HatoPracticaDTO[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="practicasImpacto"></a>
+                    <span class="name">
+                        <span ><b>practicasImpacto</b></span>
+                        <a href="#practicasImpacto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ResumenPractica.html" target="_self" >ResumenPractica[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scoreActual"></a>
+                    <span class="name">
+                        <span ><b>scoreActual</b></span>
+                        <a href="#scoreActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabActivo"></a>
+                    <span class="name">
+                        <span ><b>tabActivo</b></span>
+                        <a href="#tabActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;kpis&quot; | &quot;practicas&quot; | &quot;ranking&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;kpis&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="totalHatosNacional"></a>
+                    <span class="name">
+                        <span ><b>totalHatosNacional</b></span>
+                        <a href="#totalHatosNacional"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewReady"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>viewReady</b></span>
+                        <a href="#viewReady"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="kpisMejorados"></a>
+                        <span class="name"><b>kpisMejorados</b><a href="#kpisMejorados"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>kpisMejorados()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="391" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:391</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="kpisCriticos"></a>
+                        <span class="name"><b>kpisCriticos</b><a href="#kpisCriticos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>kpisCriticos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="395" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:395</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="kpisOptimos"></a>
+                        <span class="name"><b>kpisOptimos</b><a href="#kpisOptimos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>kpisOptimos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="399" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:399</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="kpisAceptables"></a>
+                        <span class="name"><b>kpisAceptables</b><a href="#kpisAceptables"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>kpisAceptables()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="403" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:403</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="kpisSinDatos"></a>
+                        <span class="name"><b>kpisSinDatos</b><a href="#kpisSinDatos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>kpisSinDatos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="407" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:407</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="practicasCompletadas"></a>
+                        <span class="name"><b>practicasCompletadas</b><a href="#practicasCompletadas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>practicasCompletadas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="411" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:411</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="practicasEnCurso"></a>
+                        <span class="name"><b>practicasEnCurso</b><a href="#practicasEnCurso"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>practicasEnCurso()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="415" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:415</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="completitudPct"></a>
+                        <span class="name"><b>completitudPct</b><a href="#completitudPct"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>completitudPct()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="419" class="link-to-prism">src/app/features/Usuario/mi-progreso/mi-progreso.component.ts:419</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  AfterViewChecked,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil, distinctUntilChanged } from &#x27;rxjs&#x27;;
+import { Chart, registerables, TooltipItem } from &#x27;chart.js&#x27;;
+
+import { HatoStateService } from &#x27;../../../core/services/ui-state/hato-state.service&#x27;;
+import { HatoService, Hato } from &#x27;../../../core/services/hato/hato.service&#x27;;
+import { UserService } from &#x27;../../../core/services/usuario/user.service&#x27;;
+import { KpiService, KpiResultado, KpiHistorico } from &#x27;../../../core/services/kpi/kpi.service&#x27;;
+import {
+  PracticasService,
+  HatoPracticaDTO,
+} from &#x27;../../../core/services/practicas/practicas.service&#x27;;
+import { RankingService } from &#x27;../../../core/services/benchmarking/ranking.service&#x27;;
+
+Chart.register(...registerables);
+
+// ── Interfaces ────────────────────────────────────────────────────────────
+
+interface KpiEvolucion {
+  kpi: KpiResultado;
+  historico: KpiHistorico[];
+  valorInicial: number | null;
+  valorActual: number | null;
+  deltaPct: number | null;
+  mejoro: boolean;
+}
+
+interface ResumenPractica {
+  practica: HatoPracticaDTO;
+  kpiActual: KpiResultado | null;
+  deltaPct: number | null;
+}
+
+@Component({
+  selector: &#x27;app-mi-progreso&#x27;,
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: &#x27;./mi-progreso.component.html&#x27;,
+  styleUrl: &#x27;./mi-progreso.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MiProgresoComponent implements OnInit, AfterViewInit, OnDestroy {
+  // ── Estado ────────────────────────────────────────────────────────────
+  loading &#x3D; true;
+  loadingKpis &#x3D; false;
+  loadingRanking &#x3D; false;
+  error &#x3D; &#x27;&#x27;;
+  esAdmin &#x3D; false;
+
+  // ── Datos ─────────────────────────────────────────────────────────────
+  hatoActivo: Hato | null &#x3D; null;
+  kpis: KpiResultado[] &#x3D; [];
+  practicas: HatoPracticaDTO[] &#x3D; [];
+  kpisEvolucion: KpiEvolucion[] &#x3D; [];
+  practicasImpacto: ResumenPractica[] &#x3D; [];
+
+  // ── Ranking ───────────────────────────────────────────────────────────
+  posicionActual: number | null &#x3D; null;
+  scoreActual: number | null &#x3D; null;
+  percentilActual: number | null &#x3D; null;
+  totalHatosNacional: number | null &#x3D; null;
+
+  // ── Chart ─────────────────────────────────────────────────────────────
+  @ViewChild(&#x27;chartScore&#x27;, { static: false }) chartScoreRef?: ElementRef&lt;HTMLCanvasElement&gt;;
+  private chartScore: Chart&lt;any&gt; | null &#x3D; null;
+  private viewReady &#x3D; false;
+  private graficaConstruida &#x3D; false;
+
+  // ── KPIs destacados ───────────────────────────────────────────────────
+  // Máximo 6 KPIs con datos para mostrar evolución
+  readonly MAX_KPIS_MOSTRAR &#x3D; 6;
+
+  // ── Tab activo ────────────────────────────────────────────────────────
+  tabActivo: &#x27;kpis&#x27; | &#x27;practicas&#x27; | &#x27;ranking&#x27; &#x3D; &#x27;kpis&#x27;;
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private hatoState: HatoStateService,
+    private hatoService: HatoService,
+    private userService: UserService,
+    private kpiService: KpiService,
+    private practicasService: PracticasService,
+    private rankingService: RankingService,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    // Detectar rol
+    this.userService
+      .getUsuarioLogueado()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((usuario) &#x3D;&gt; {
+        this.esAdmin &#x3D; usuario?.rol &#x3D;&#x3D;&#x3D; &#x27;ADMIN&#x27;;
+        this.cdr.markForCheck();
+      });
+
+    // Suscribirse al hato activo — funciona para USER y ADMIN
+    this.hatoState.hatoActivo$
+      .pipe(
+        takeUntil(this.destroy$),
+        distinctUntilChanged((a, b) &#x3D;&gt; a?.idHato &#x3D;&#x3D;&#x3D; b?.idHato),
+      )
+      .subscribe((hato) &#x3D;&gt; {
+        this.hatoActivo &#x3D; hato;
+        if (hato?.idHato) {
+          this.cargarTodo(hato.idHato as string);
+        } else {
+          this.loading &#x3D; false;
+        }
+        this.cdr.markForCheck();
+      });
+
+    // Cargar hato inicial solo si es usuario normal
+    if (!this.hatoState.getHatoActivo() &amp;&amp; !this.esAdmin) {
+      this.hatoService.getMisHatos().subscribe({
+        next: (hatos) &#x3D;&gt; {
+          if (hatos.length &gt; 0) this.hatoState.setHatoActivo(hatos[0]);
+          else this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+    }
+  }
+
+  ngAfterViewChecked(): void {
+    if (!this.graficaConstruida &amp;&amp; this.chartScoreRef?.nativeElement &amp;&amp; this.scoreActual !&#x3D; null) {
+      console.log(&#x27;✅ AfterViewChecked — canvas disponible, construyendo gráfica&#x27;);
+      this.graficaConstruida &#x3D; true;
+      this.buildGraficaScore();
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.viewReady &#x3D; true;
+  }
+
+  // ── Carga de datos ────────────────────────────────────────────────────
+
+  private cargarTodo(idHato: string): void {
+    this.graficaConstruida &#x3D; false;
+    this.loading &#x3D; true;
+    this.loadingKpis &#x3D; true;
+    this.loadingRanking &#x3D; true;
+    this.error &#x3D; &#x27;&#x27;;
+    this.kpisEvolucion &#x3D; [];
+    this.practicasImpacto &#x3D; [];
+    this.cdr.markForCheck();
+
+    // Cargar KPIs
+    this.kpiService.getKpis(idHato).subscribe({
+      next: (kpis) &#x3D;&gt; {
+        this.kpis &#x3D; kpis;
+        this.loadingKpis &#x3D; false;
+        this.loading &#x3D; false;
+        this.construirEvolucionKpis(idHato, kpis);
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.loadingKpis &#x3D; false;
+        this.loading &#x3D; false;
+        this.error &#x3D; &#x27;Error al cargar los KPIs.&#x27;;
+        this.cdr.markForCheck();
+      },
+    });
+
+    // Cargar prácticas
+    this.practicasService.getPracticasByHato(idHato).subscribe({
+      next: (practicas) &#x3D;&gt; {
+        this.practicas &#x3D; practicas.filter(
+          (p) &#x3D;&gt; p.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27; || p.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;,
+        );
+        this.construirImpactoPracticas();
+        this.cdr.markForCheck();
+      },
+    });
+
+    // Cargar ranking
+    this.rankingService.getResumenRanking(idHato).subscribe({
+      next: (resumen) &#x3D;&gt; {
+        this.posicionActual &#x3D; resumen.posicionNacional;
+        this.scoreActual &#x3D; resumen.scoreCompuesto;
+        this.totalHatosNacional &#x3D; resumen.totalHatosNacional;
+        this.percentilActual &#x3D;
+          resumen.totalHatosNacional &gt; 0 &amp;&amp; resumen.posicionNacional !&#x3D; null
+            ? Math.round((1 - resumen.posicionNacional / resumen.totalHatosNacional) * 100)
+            : null;
+        this.loadingRanking &#x3D; false;
+        this.intentarGraficaScore();
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.loadingRanking &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  // ── Evolución de KPIs ─────────────────────────────────────────────────
+
+  private construirEvolucionKpis(idHato: string, kpis: KpiResultado[]): void {
+    // Filtrar KPIs con datos y ordenar por los más críticos primero
+    const kpisConDatos &#x3D; kpis
+      .filter((k) &#x3D;&gt; k.valor !&#x3D; null)
+      .sort((a, b) &#x3D;&gt; {
+        const orden: Record&lt;string, number&gt; &#x3D; {
+          CRITICO: 0,
+          ACEPTABLE: 1,
+          OPTIMO: 2,
+          SIN_DATOS: 3,
+        };
+        return (orden[a.estado] ?? 3) - (orden[b.estado] ?? 3);
+      })
+      .slice(0, this.MAX_KPIS_MOSTRAR);
+
+    const evoluciones: KpiEvolucion[] &#x3D; [];
+
+    let pendientes &#x3D; kpisConDatos.length;
+    if (pendientes &#x3D;&#x3D;&#x3D; 0) return;
+
+    for (const kpi of kpisConDatos) {
+      this.kpiService.getHistorico(idHato, kpi.codigo).subscribe({
+        next: (historico) &#x3D;&gt; {
+          const ordenado &#x3D; historico.sort(
+            (a, b) &#x3D;&gt; new Date(a.fechaCalculo).getTime() - new Date(b.fechaCalculo).getTime(),
+          );
+
+          const valorInicial &#x3D; ordenado.length &gt; 0 ? ordenado[0].valor : null;
+          const valorActual &#x3D; kpi.valor;
+
+          let deltaPct: number | null &#x3D; null;
+          let mejoro &#x3D; false;
+
+          if (valorInicial !&#x3D; null &amp;&amp; valorActual !&#x3D; null &amp;&amp; valorInicial !&#x3D;&#x3D; 0) {
+            deltaPct &#x3D; Math.round(((valorActual - valorInicial) / Math.abs(valorInicial)) * 100);
+            mejoro &#x3D; deltaPct &gt; 0;
+          }
+
+          evoluciones.push({
+            kpi,
+            historico: ordenado.slice(-6),
+            valorInicial,
+            valorActual,
+            deltaPct,
+            mejoro,
+          });
+
+          pendientes--;
+          if (pendientes &#x3D;&#x3D;&#x3D; 0) {
+            // Ordenar: mejorados primero, luego críticos
+            this.kpisEvolucion &#x3D; evoluciones.sort((a, b) &#x3D;&gt; {
+              if (a.mejoro &amp;&amp; !b.mejoro) return -1;
+              if (!a.mejoro &amp;&amp; b.mejoro) return 1;
+              return 0;
+            });
+            this.cdr.markForCheck();
+          }
+        },
+        error: () &#x3D;&gt; {
+          pendientes--;
+          if (pendientes &#x3D;&#x3D;&#x3D; 0) {
+            this.kpisEvolucion &#x3D; evoluciones;
+            this.cdr.markForCheck();
+          }
+        },
+      });
+    }
+  }
+
+  // ── Impacto de prácticas ──────────────────────────────────────────────
+
+  private construirImpactoPracticas(): void {
+    this.practicasImpacto &#x3D; this.practicas.map((p) &#x3D;&gt; {
+      const kpiActual &#x3D; p.kpiImpactado ? this.kpiService.getKpiDesdeCache(p.kpiImpactado) : null;
+
+      // Buscar delta del KPI en evoluciones
+      const evolucion &#x3D; this.kpisEvolucion.find((ev) &#x3D;&gt; ev.kpi.codigo &#x3D;&#x3D;&#x3D; p.kpiImpactado);
+
+      return {
+        practica: p,
+        kpiActual,
+        deltaPct: evolucion?.deltaPct ?? null,
+      };
+    });
+  }
+
+  // ── Gráfica score ─────────────────────────────────────────────────────
+
+  private intentarGraficaScore(): void {
+    this.graficaConstruida &#x3D; false;
+    this.cdr.markForCheck();
+  }
+
+  private buildGraficaScore(): void {
+    console.log(&#x27;🔍 buildGraficaScore() llamado&#x27;);
+    console.log(&#x27;🔍 chartScoreRef:&#x27;, this.chartScoreRef);
+    console.log(&#x27;🔍 scoreActual:&#x27;, this.scoreActual);
+
+    const canvas &#x3D; this.chartScoreRef?.nativeElement;
+    if (!canvas) {
+      console.error(&#x27;❌ Canvas no encontrado&#x27;);
+      return;
+    }
+    if (this.scoreActual &#x3D;&#x3D; null) {
+      console.error(&#x27;❌ scoreActual es null&#x27;);
+      return;
+    }
+
+    console.log(&#x27;🔍 Canvas dimensiones:&#x27;, canvas.width, &#x27;x&#x27;, canvas.height);
+    console.log(&#x27;🔍 Canvas en DOM:&#x27;, document.contains(canvas));
+
+    if (this.chartScore) {
+      console.log(&#x27;🔄 Destruyendo chart anterior&#x27;);
+      this.chartScore.destroy();
+      this.chartScore &#x3D; null;
+    }
+
+    const score &#x3D; Math.min(100, Math.max(0, this.scoreActual));
+    const restante &#x3D; Math.max(0, 100 - score);
+
+    console.log(&#x60;📊 Creando donut — score: ${score}, restante: ${restante}&#x60;);
+    console.log(&#x60;🎨 Color arco principal: #19e64d&#x60;);
+    console.log(&#x60;🎨 Color arco restante: #e9f5eb&#x60;);
+
+    try {
+      this.chartScore &#x3D; new Chart&lt;&#x27;doughnut&#x27;&gt;(canvas, {
+        type: &#x27;doughnut&#x27;,
+        data: {
+          datasets: [
+            {
+              data: [score, restante],
+              backgroundColor: [&#x27;#19e64d&#x27;, &#x27;#e9f5eb&#x27;],
+              borderWidth: 0,
+              hoverOffset: 0,
+            },
+          ],
+        },
+        options: {
+          responsive: false,
+          maintainAspectRatio: false,
+          cutout: &#x27;78%&#x27;,
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: false },
+          },
+          animation: {
+            duration: 800,
+            onComplete: () &#x3D;&gt; {
+              console.log(&#x27;✅ Animación completada — arco renderizado correctamente&#x27;);
+            },
+          },
+        },
+      });
+      console.log(&#x27;✅ Chart creado:&#x27;, this.chartScore);
+    } catch (e) {
+      console.error(&#x27;❌ Error creando chart:&#x27;, e);
+    }
+
+    this.cdr.markForCheck();
+  }
+
+  // ── Tab ───────────────────────────────────────────────────────────────
+
+  setTab(tab: typeof this.tabActivo): void {
+    this.tabActivo &#x3D; tab;
+    if (tab &#x3D;&#x3D;&#x3D; &#x27;practicas&#x27;) {
+      this.construirImpactoPracticas();
+    }
+    this.cdr.markForCheck();
+  }
+
+  // ── Getters stats ─────────────────────────────────────────────────────
+
+  get kpisMejorados(): number {
+    return this.kpisEvolucion.filter((ev) &#x3D;&gt; ev.mejoro).length;
+  }
+
+  get kpisCriticos(): number {
+    return this.kpis.filter((k) &#x3D;&gt; k.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;).length;
+  }
+
+  get kpisOptimos(): number {
+    return this.kpis.filter((k) &#x3D;&gt; k.estado &#x3D;&#x3D;&#x3D; &#x27;OPTIMO&#x27;).length;
+  }
+
+  get kpisAceptables(): number {
+    return this.kpis.filter((k) &#x3D;&gt; k.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;).length;
+  }
+
+  get kpisSinDatos(): number {
+    return this.kpis.filter((k) &#x3D;&gt; k.estado &#x3D;&#x3D;&#x3D; &#x27;SIN_DATOS&#x27;).length;
+  }
+
+  get practicasCompletadas(): number {
+    return this.practicas.filter((p) &#x3D;&gt; p.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;).length;
+  }
+
+  get practicasEnCurso(): number {
+    return this.practicas.filter((p) &#x3D;&gt; p.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;).length;
+  }
+
+  get completitudPct(): number {
+    return this.hatoActivo?.porcentajeCompletitud ?? 0;
+  }
+
+  // ── Helpers visuales ─────────────────────────────────────────────────
+
+  colorEstadoKpi(estado: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      OPTIMO: &#x27;kpi-optimo&#x27;,
+      ACEPTABLE: &#x27;kpi-aceptable&#x27;,
+      CRITICO: &#x27;kpi-critico&#x27;,
+      SIN_DATOS: &#x27;kpi-sin-datos&#x27;,
+    };
+    return map[estado] ?? &#x27;kpi-sin-datos&#x27;;
+  }
+
+  iconoEstadoKpi(estado: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      OPTIMO: &#x27;✅&#x27;,
+      ACEPTABLE: &#x27;🟡&#x27;,
+      CRITICO: &#x27;🔴&#x27;,
+      SIN_DATOS: &#x27;—&#x27;,
+    };
+    return map[estado] ?? &#x27;—&#x27;;
+  }
+
+  colorDelta(delta: number | null): string {
+    if (delta &#x3D;&#x3D; null) return &#x27;delta-neutro&#x27;;
+    if (delta &gt; 0) return &#x27;delta-positivo&#x27;;
+    if (delta &lt; 0) return &#x27;delta-negativo&#x27;;
+    return &#x27;delta-neutro&#x27;;
+  }
+
+  iconoDelta(delta: number | null): string {
+    if (delta &#x3D;&#x3D; null) return &#x27;—&#x27;;
+    if (delta &gt; 0) return &#x27;↗️&#x27;;
+    if (delta &lt; 0) return &#x27;↘️&#x27;;
+    return &#x27;→&#x27;;
+  }
+
+  calcularAlturaBar(valor: number, historico: KpiHistorico[]): number {
+    if (!historico.length) return 0;
+    const valores &#x3D; historico.map((h) &#x3D;&gt; h.valor);
+    const max &#x3D; Math.max(...valores);
+    const min &#x3D; Math.min(...valores);
+    if (max &#x3D;&#x3D;&#x3D; min) return 50;
+    return Math.round(((valor - min) / (max - min)) * 80) + 10;
+  }
+
+  iconoCategoria(categoria: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      PRODUCTIVIDAD: &#x27;🥛&#x27;,
+      HATO: &#x27;🐄&#x27;,
+      FINANCIERO: &#x27;💰&#x27;,
+      EFICIENCIA: &#x27;⚙️&#x27;,
+    };
+    return map[categoria] ?? &#x27;📊&#x27;;
+  }
+
+  formatNum(n: number | null | undefined): string {
+    if (n &#x3D;&#x3D; null) return &#x27;—&#x27;;
+    return new Intl.NumberFormat(&#x27;es-CO&#x27;).format(Math.round(n));
+  }
+
+  irARanking(): void {
+    this.router.navigate([&#x27;/benchmarking/ranking&#x27;]);
+  }
+
+  irAPracticas(): void {
+    this.router.navigate([&#x27;/practicas&#x27;]);
+  }
+
+  ngOnDestroy(): void {
+    this.chartScore?.destroy();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;mi-progreso-page&quot;&gt;
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; LOADING &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (loading) {
+    &lt;div class&#x3D;&quot;loading-wrap&quot;&gt;
+      &lt;div class&#x3D;&quot;loading-inner&quot;&gt;
+        &lt;div class&#x3D;&quot;loading-spinner&quot;&gt;&lt;/div&gt;
+        &lt;p class&#x3D;&quot;loading-text&quot;&gt;Calculando tu progreso...&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+
+  @if (!loading) {
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HEADER &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;header class&#x3D;&quot;page-header&quot;&gt;
+      &lt;div class&#x3D;&quot;header-left&quot;&gt;
+        &lt;p class&#x3D;&quot;page-tag&quot;&gt;Hathor · Tu evolución&lt;/p&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Mi &lt;span class&#x3D;&quot;brand&quot;&gt;Progreso&lt;/span&gt;&lt;/h1&gt;
+        @if (hatoActivo) {
+          &lt;p class&#x3D;&quot;page-subtitle&quot;&gt;
+            &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }},
+            {{ hatoActivo.departamento }}
+          &lt;/p&gt;
+        } @else {
+          &lt;p class&#x3D;&quot;page-subtitle warn&quot;&gt;⚠️ Selecciona un hato para ver tu progreso.&lt;/p&gt;
+        }
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;header-right&quot;&gt;
+        &lt;div class&#x3D;&quot;header-icon&quot;&gt;📈&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    @if (error) {
+      &lt;div class&#x3D;&quot;msg-error&quot;&gt;
+        &lt;span&gt;❌&lt;/span&gt;
+        &lt;p&gt;{{ error }}&lt;/p&gt;
+      &lt;/div&gt;
+    }
+
+    @if (!hatoActivo) {
+      &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+        &lt;span&gt;🐄&lt;/span&gt;
+        &lt;p&gt;Selecciona un hato para ver tu progreso.&lt;/p&gt;
+      &lt;/div&gt;
+    }
+
+    @if (hatoActivo) {
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HERO SCORE &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;hero-score&quot;&gt;
+        &lt;!-- Score donut --&gt;
+        &lt;div class&#x3D;&quot;score-donut-wrap&quot;&gt;
+          &lt;div class&#x3D;&quot;score-donut-contenedor&quot;&gt;
+            &lt;canvas #chartScore width&#x3D;&quot;140&quot; height&#x3D;&quot;140&quot;&gt;&lt;/canvas&gt;
+            &lt;div class&#x3D;&quot;score-centro&quot;&gt;
+              @if (scoreActual !&#x3D; null) {
+                &lt;span class&#x3D;&quot;score-num&quot;&gt;
+                  {{ scoreActual | number: &#x27;1.0-0&#x27; }}
+                &lt;/span&gt;
+                &lt;span class&#x3D;&quot;score-label&quot;&gt;Score&lt;/span&gt;
+              } @else {
+                &lt;span class&#x3D;&quot;score-num&quot;&gt;—&lt;/span&gt;
+                &lt;span class&#x3D;&quot;score-label&quot;&gt;Sin datos&lt;/span&gt;
+              }
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p class&#x3D;&quot;score-desc&quot;&gt;Score Hathor&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Stats del hero --&gt;
+        &lt;div class&#x3D;&quot;hero-stats&quot;&gt;
+          &lt;div class&#x3D;&quot;hero-stat&quot;&gt;
+            &lt;div class&#x3D;&quot;hero-stat-icono ranking&quot;&gt;🏆&lt;/div&gt;
+            &lt;div class&#x3D;&quot;hero-stat-info&quot;&gt;
+              &lt;span class&#x3D;&quot;hero-stat-valor&quot;&gt;
+                @if (posicionActual !&#x3D; null) {
+                  #{{ posicionActual }}
+                  @if (totalHatosNacional !&#x3D; null) {
+                    &lt;span class&#x3D;&quot;hero-stat-total&quot;&gt; / {{ totalHatosNacional }} &lt;/span&gt;
+                  }
+                } @else {
+                  —
+                }
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;hero-stat-label&quot;&gt;Posición nacional&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;hero-stat&quot;&gt;
+            &lt;div class&#x3D;&quot;hero-stat-icono percentil&quot;&gt;📊&lt;/div&gt;
+            &lt;div class&#x3D;&quot;hero-stat-info&quot;&gt;
+              &lt;span class&#x3D;&quot;hero-stat-valor&quot;&gt;
+                @if (percentilActual !&#x3D; null) {
+                  {{ percentilActual }}%
+                } @else {
+                  —
+                }
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;hero-stat-label&quot;&gt;Percentil&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;hero-stat&quot;&gt;
+            &lt;div class&#x3D;&quot;hero-stat-icono kpis&quot;&gt;📈&lt;/div&gt;
+            &lt;div class&#x3D;&quot;hero-stat-info&quot;&gt;
+              &lt;span class&#x3D;&quot;hero-stat-valor verde&quot;&gt;
+                {{ kpisMejorados }}
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;hero-stat-label&quot;&gt;KPIs mejorados&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;hero-stat&quot;&gt;
+            &lt;div class&#x3D;&quot;hero-stat-icono practicas&quot;&gt;🌱&lt;/div&gt;
+            &lt;div class&#x3D;&quot;hero-stat-info&quot;&gt;
+              &lt;span class&#x3D;&quot;hero-stat-valor&quot;&gt;
+                {{ practicasCompletadas }}
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;hero-stat-label&quot;&gt;Prácticas completadas&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;hero-stat&quot;&gt;
+            &lt;div class&#x3D;&quot;hero-stat-icono completitud&quot;&gt;📋&lt;/div&gt;
+            &lt;div class&#x3D;&quot;hero-stat-info&quot;&gt;
+              &lt;span
+                class&#x3D;&quot;hero-stat-valor&quot;
+                [class.verde]&#x3D;&quot;completitudPct &#x3D;&#x3D;&#x3D; 100&quot;
+                [class.amarillo]&#x3D;&quot;completitudPct &gt;&#x3D; 50 &amp;&amp; completitudPct &lt; 100&quot;
+                [class.rojo]&#x3D;&quot;completitudPct &lt; 50&quot;
+              &gt;
+                {{ completitudPct }}%
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;hero-stat-label&quot;&gt;Completitud perfil&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;hero-stat&quot;&gt;
+            &lt;div class&#x3D;&quot;hero-stat-icono criticos&quot;&gt;⚠️&lt;/div&gt;
+            &lt;div class&#x3D;&quot;hero-stat-info&quot;&gt;
+              &lt;span
+                class&#x3D;&quot;hero-stat-valor&quot;
+                [class.rojo]&#x3D;&quot;kpisCriticos &gt; 0&quot;
+                [class.verde]&#x3D;&quot;kpisCriticos &#x3D;&#x3D;&#x3D; 0&quot;
+              &gt;
+                {{ kpisCriticos }}
+              &lt;/span&gt;
+              &lt;span class&#x3D;&quot;hero-stat-label&quot;&gt;KPIs críticos&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Barra completitud perfil --&gt;
+        &lt;div class&#x3D;&quot;completitud-barra-wrap&quot;&gt;
+          &lt;div class&#x3D;&quot;completitud-barra-header&quot;&gt;
+            &lt;span class&#x3D;&quot;completitud-barra-label&quot;&gt; Completitud del perfil &lt;/span&gt;
+            &lt;span class&#x3D;&quot;completitud-barra-pct&quot;&gt; {{ completitudPct }}% &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;completitud-barra-track&quot;&gt;
+            &lt;div
+              class&#x3D;&quot;completitud-barra-fill&quot;
+              [style.width.%]&#x3D;&quot;completitudPct&quot;
+              [class.fill-completo]&#x3D;&quot;completitudPct &#x3D;&#x3D;&#x3D; 100&quot;
+              [class.fill-medio]&#x3D;&quot;completitudPct &gt;&#x3D; 50 &amp;&amp; completitudPct &lt; 100&quot;
+              [class.fill-bajo]&#x3D;&quot;completitudPct &lt; 50&quot;
+            &gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; TABS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;tabs-row&quot;&gt;
+        &lt;button class&#x3D;&quot;tab-btn&quot; [class.activo]&#x3D;&quot;tabActivo &#x3D;&#x3D;&#x3D; &#x27;kpis&#x27;&quot; (click)&#x3D;&quot;setTab(&#x27;kpis&#x27;)&quot;&gt;
+          &lt;span class&#x3D;&quot;tab-icono&quot;&gt;📈&lt;/span&gt;
+          Evolución KPIs
+          @if (kpisMejorados &gt; 0) {
+            &lt;span class&#x3D;&quot;tab-badge verde&quot;&gt; +{{ kpisMejorados }} &lt;/span&gt;
+          }
+        &lt;/button&gt;
+        &lt;button
+          class&#x3D;&quot;tab-btn&quot;
+          [class.activo]&#x3D;&quot;tabActivo &#x3D;&#x3D;&#x3D; &#x27;practicas&#x27;&quot;
+          (click)&#x3D;&quot;setTab(&#x27;practicas&#x27;)&quot;
+        &gt;
+          &lt;span class&#x3D;&quot;tab-icono&quot;&gt;🌱&lt;/span&gt;
+          Impacto prácticas
+          @if (practicasCompletadas &gt; 0) {
+            &lt;span class&#x3D;&quot;tab-badge&quot;&gt; {{ practicasCompletadas }} ✓ &lt;/span&gt;
+          }
+        &lt;/button&gt;
+        &lt;button
+          class&#x3D;&quot;tab-btn&quot;
+          [class.activo]&#x3D;&quot;tabActivo &#x3D;&#x3D;&#x3D; &#x27;ranking&#x27;&quot;
+          (click)&#x3D;&quot;setTab(&#x27;ranking&#x27;)&quot;
+        &gt;
+          &lt;span class&#x3D;&quot;tab-icono&quot;&gt;🏆&lt;/span&gt;
+          Mi posición
+        &lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;!-- ═══════════════════════════════════
+           TAB: EVOLUCIÓN KPIs
+      ═══════════════════════════════════ --&gt;
+      @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;kpis&#x27;) {
+        @if (kpisEvolucion.length &#x3D;&#x3D;&#x3D; 0) {
+          &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+            &lt;span&gt;📊&lt;/span&gt;
+            &lt;p&gt;No hay datos históricos de KPIs aún.&lt;/p&gt;
+            &lt;p class&#x3D;&quot;empty-hint&quot;&gt;
+              Los KPIs se calculan automáticamente con cada registro que realizas.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        } @else {
+          &lt;div class&#x3D;&quot;kpis-grid&quot;&gt;
+            @for (ev of kpisEvolucion; track ev.kpi.codigo) {
+              &lt;div
+                class&#x3D;&quot;kpi-card&quot;
+                [class.card-mejoro]&#x3D;&quot;ev.mejoro&quot;
+                [class.card-critico]&#x3D;&quot;ev.kpi.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;&quot;
+              &gt;
+                &lt;!-- Header --&gt;
+                &lt;div class&#x3D;&quot;kpi-card-header&quot;&gt;
+                  &lt;div class&#x3D;&quot;kpi-card-header-left&quot;&gt;
+                    &lt;span class&#x3D;&quot;kpi-cat-icono&quot;&gt;
+                      {{ iconoCategoria(ev.kpi.categoria) }}
+                    &lt;/span&gt;
+                    &lt;div&gt;
+                      &lt;p class&#x3D;&quot;kpi-nombre&quot;&gt;{{ ev.kpi.nombre }}&lt;/p&gt;
+                      &lt;p class&#x3D;&quot;kpi-codigo&quot;&gt;{{ ev.kpi.codigo }}&lt;/p&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;span class&#x3D;&quot;kpi-estado-chip&quot; [class]&#x3D;&quot;colorEstadoKpi(ev.kpi.estado)&quot;&gt;
+                    {{ iconoEstadoKpi(ev.kpi.estado) }}
+                    {{ ev.kpi.estado }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Valor actual prominente --&gt;
+                &lt;div class&#x3D;&quot;kpi-valor-wrap&quot;&gt;
+                  &lt;span class&#x3D;&quot;kpi-valor-actual&quot;&gt;
+                    @if (ev.valorActual !&#x3D; null) {
+                      {{ ev.valorActual | number: &#x27;1.1-2&#x27; }}
+                      &lt;span class&#x3D;&quot;kpi-unidad&quot;&gt;{{ ev.kpi.unidad }}&lt;/span&gt;
+                    } @else {
+                      Sin datos
+                    }
+                  &lt;/span&gt;
+
+                  &lt;!-- Delta --&gt;
+                  @if (ev.deltaPct !&#x3D; null) {
+                    &lt;div class&#x3D;&quot;kpi-delta&quot; [class]&#x3D;&quot;colorDelta(ev.deltaPct)&quot;&gt;
+                      {{ iconoDelta(ev.deltaPct) }}
+                      {{ ev.deltaPct &gt; 0 ? &#x27;+&#x27; : &#x27;&#x27; }}{{ ev.deltaPct }}%
+                      &lt;span class&#x3D;&quot;kpi-delta-label&quot;&gt; vs inicio &lt;/span&gt;
+                    &lt;/div&gt;
+                  }
+                &lt;/div&gt;
+
+                &lt;!-- Comparativa inicial vs actual --&gt;
+                @if (ev.valorInicial !&#x3D; null &amp;&amp; ev.valorActual !&#x3D; null) {
+                  &lt;div class&#x3D;&quot;kpi-comparativa&quot;&gt;
+                    &lt;div class&#x3D;&quot;comp-item&quot;&gt;
+                      &lt;span class&#x3D;&quot;comp-label&quot;&gt;Inicial&lt;/span&gt;
+                      &lt;span class&#x3D;&quot;comp-valor&quot;&gt;
+                        {{ ev.valorInicial | number: &#x27;1.1-2&#x27; }}
+                        {{ ev.kpi.unidad }}
+                      &lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;span class&#x3D;&quot;comp-flecha&quot;&gt;→&lt;/span&gt;
+                    &lt;div class&#x3D;&quot;comp-item&quot;&gt;
+                      &lt;span class&#x3D;&quot;comp-label&quot;&gt;Actual&lt;/span&gt;
+                      &lt;span
+                        class&#x3D;&quot;comp-valor&quot;
+                        [class.valor-mejor]&#x3D;&quot;ev.mejoro&quot;
+                        [class.valor-peor]&#x3D;&quot;!ev.mejoro &amp;&amp; ev.deltaPct !&#x3D;&#x3D; 0&quot;
+                      &gt;
+                        {{ ev.valorActual | number: &#x27;1.1-2&#x27; }}
+                        {{ ev.kpi.unidad }}
+                      &lt;/span&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                }
+
+                &lt;!-- Benchmark --&gt;
+                @if (ev.kpi.benchmarkPromedio !&#x3D; null) {
+                  &lt;div class&#x3D;&quot;kpi-benchmark-row&quot;&gt;
+                    &lt;span class&#x3D;&quot;bench-label&quot;&gt;Promedio sector:&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;bench-valor&quot;&gt;
+                      {{ ev.kpi.benchmarkPromedio | number: &#x27;1.1-2&#x27; }}
+                      {{ ev.kpi.unidad }}
+                    &lt;/span&gt;
+                    @if (ev.kpi.diferenciaPct !&#x3D; null) {
+                      &lt;span
+                        class&#x3D;&quot;bench-dif&quot;
+                        [class.dif-pos]&#x3D;&quot;ev.kpi.diferenciaPct &gt;&#x3D; 0&quot;
+                        [class.dif-neg]&#x3D;&quot;ev.kpi.diferenciaPct &lt; 0&quot;
+                      &gt;
+                        {{ ev.kpi.diferenciaPct &gt;&#x3D; 0 ? &#x27;+&#x27; : &#x27;&#x27; }}
+                        {{ ev.kpi.diferenciaPct | number: &#x27;1.0-1&#x27; }}%
+                      &lt;/span&gt;
+                    }
+                  &lt;/div&gt;
+                }
+
+                &lt;!-- Mini gráfica histórico --&gt;
+                @if (ev.historico.length &gt;&#x3D; 2) {
+                  &lt;div class&#x3D;&quot;mini-grafica&quot;&gt;
+                    &lt;div class&#x3D;&quot;mini-bars&quot;&gt;
+                      @for (h of ev.historico; track h.periodo) {
+                        &lt;div class&#x3D;&quot;mini-bar-wrap&quot;&gt;
+                          &lt;div
+                            class&#x3D;&quot;mini-bar&quot;
+                            [style.height.%]&#x3D;&quot;calcularAlturaBar(h.valor, ev.historico)&quot;
+                            [class.bar-optimo]&#x3D;&quot;h.estado &#x3D;&#x3D;&#x3D; &#x27;OPTIMO&#x27;&quot;
+                            [class.bar-aceptable]&#x3D;&quot;h.estado &#x3D;&#x3D;&#x3D; &#x27;ACEPTABLE&#x27;&quot;
+                            [class.bar-critico]&#x3D;&quot;h.estado &#x3D;&#x3D;&#x3D; &#x27;CRITICO&#x27;&quot;
+                            [title]&#x3D;&quot;h.valor + &#x27; — &#x27; + h.periodo&quot;
+                          &gt;&lt;/div&gt;
+                          &lt;span class&#x3D;&quot;mini-bar-per&quot;&gt;
+                            {{ h.periodo | slice: 5 : 7 }}
+                          &lt;/span&gt;
+                        &lt;/div&gt;
+                      }
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                }
+              &lt;/div&gt;
+            }
+          &lt;/div&gt;
+        }
+      }
+
+      &lt;!-- ═══════════════════════════════════
+           TAB: IMPACTO PRÁCTICAS
+      ═══════════════════════════════════ --&gt;
+      @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;practicas&#x27;) {
+        @if (practicasImpacto.length &#x3D;&#x3D;&#x3D; 0) {
+          &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+            &lt;span&gt;🌱&lt;/span&gt;
+            &lt;p&gt;Aún no has iniciado ninguna práctica.&lt;/p&gt;
+            &lt;p class&#x3D;&quot;empty-hint&quot;&gt;
+              Aplica las prácticas sugeridas por el sistema para ver su impacto aquí.
+            &lt;/p&gt;
+            @if (!esAdmin) {
+              &lt;button class&#x3D;&quot;btn-ir&quot; (click)&#x3D;&quot;irAPracticas()&quot;&gt;Ver prácticas sugeridas →&lt;/button&gt;
+            }
+          &lt;/div&gt;
+        } @else {
+          &lt;div class&#x3D;&quot;practicas-impacto-lista&quot;&gt;
+            @for (item of practicasImpacto; track item.practica.idHatoPractica) {
+              &lt;div
+                class&#x3D;&quot;impacto-card&quot;
+                [class.impacto-completada]&#x3D;&quot;item.practica.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;&quot;
+              &gt;
+                &lt;!-- Header --&gt;
+                &lt;div class&#x3D;&quot;impacto-header&quot;&gt;
+                  &lt;div class&#x3D;&quot;impacto-header-left&quot;&gt;
+                    &lt;span class&#x3D;&quot;impacto-cat-icono&quot;&gt;
+                      {{ iconoCategoria(item.practica.categoria) }}
+                    &lt;/span&gt;
+                    &lt;div&gt;
+                      &lt;p class&#x3D;&quot;impacto-nombre&quot;&gt;
+                        {{ item.practica.nombrePractica }}
+                      &lt;/p&gt;
+                      &lt;div class&#x3D;&quot;impacto-chips&quot;&gt;
+                        &lt;span
+                          class&#x3D;&quot;estado-chip&quot;
+                          [class.estado-completada]&#x3D;&quot;item.practica.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;&quot;
+                          [class.estado-curso]&#x3D;&quot;item.practica.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;&quot;
+                        &gt;
+                          {{
+                            item.practica.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27; ? &#x27;✅ Completada&#x27; : &#x27;🔄 En curso&#x27;
+                          }}
+                        &lt;/span&gt;
+                        &lt;span class&#x3D;&quot;cat-chip&quot;&gt;
+                          {{ item.practica.categoria }}
+                        &lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Delta del KPI --&gt;
+                  @if (item.deltaPct !&#x3D; null) {
+                    &lt;div class&#x3D;&quot;impacto-delta&quot; [class]&#x3D;&quot;colorDelta(item.deltaPct)&quot;&gt;
+                      &lt;span class&#x3D;&quot;impacto-delta-icono&quot;&gt;
+                        {{ iconoDelta(item.deltaPct) }}
+                      &lt;/span&gt;
+                      &lt;span class&#x3D;&quot;impacto-delta-valor&quot;&gt;
+                        {{ item.deltaPct &gt; 0 ? &#x27;+&#x27; : &#x27;&#x27; }}
+                        {{ item.deltaPct }}%
+                      &lt;/span&gt;
+                    &lt;/div&gt;
+                  }
+                &lt;/div&gt;
+
+                &lt;!-- Avance --&gt;
+                &lt;div class&#x3D;&quot;impacto-avance&quot;&gt;
+                  &lt;div class&#x3D;&quot;avance-header&quot;&gt;
+                    &lt;span class&#x3D;&quot;avance-label&quot;&gt;Avance&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;avance-pct&quot;&gt; {{ item.practica.porcentajeAvance }}% &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;avance-track&quot;&gt;
+                    &lt;div
+                      class&#x3D;&quot;avance-fill&quot;
+                      [class.fill-completada]&#x3D;&quot;item.practica.estado &#x3D;&#x3D;&#x3D; &#x27;COMPLETADA&#x27;&quot;
+                      [class.fill-curso]&#x3D;&quot;item.practica.estado &#x3D;&#x3D;&#x3D; &#x27;EN_CURSO&#x27;&quot;
+                      [style.width.%]&#x3D;&quot;item.practica.porcentajeAvance&quot;
+                    &gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- KPI impactado --&gt;
+                @if (item.practica.kpiImpactado) {
+                  &lt;div class&#x3D;&quot;impacto-kpi&quot;&gt;
+                    &lt;span class&#x3D;&quot;impacto-kpi-label&quot;&gt; KPI impactado: &lt;/span&gt;
+                    &lt;span class&#x3D;&quot;impacto-kpi-codigo&quot;&gt;
+                      {{ item.practica.kpiImpactado }}
+                    &lt;/span&gt;
+                    @if (item.kpiActual) {
+                      &lt;span class&#x3D;&quot;kpi-estado-chip&quot; [class]&#x3D;&quot;colorEstadoKpi(item.kpiActual.estado)&quot;&gt;
+                        {{ iconoEstadoKpi(item.kpiActual.estado) }}
+                        {{ item.kpiActual.estado }}
+                      &lt;/span&gt;
+                      @if (item.kpiActual.valor !&#x3D; null) {
+                        &lt;span class&#x3D;&quot;impacto-kpi-valor&quot;&gt;
+                          {{ item.kpiActual.valor | number: &#x27;1.1-2&#x27; }}
+                          {{ item.kpiActual.unidad }}
+                        &lt;/span&gt;
+                      }
+                    }
+                  &lt;/div&gt;
+                }
+              &lt;/div&gt;
+            }
+          &lt;/div&gt;
+        }
+      }
+
+      &lt;!-- ═══════════════════════════════════
+           TAB: MI POSICIÓN
+      ═══════════════════════════════════ --&gt;
+      @if (tabActivo &#x3D;&#x3D;&#x3D; &#x27;ranking&#x27;) {
+        @if (loadingRanking) {
+          &lt;div class&#x3D;&quot;loading-tab&quot;&gt;
+            &lt;div class&#x3D;&quot;loading-spinner&quot;&gt;&lt;/div&gt;
+            &lt;p&gt;Cargando ranking...&lt;/p&gt;
+          &lt;/div&gt;
+        } @else if (posicionActual &#x3D;&#x3D; null) {
+          &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+            &lt;span&gt;🏆&lt;/span&gt;
+            &lt;p&gt;No hay datos de ranking disponibles aún.&lt;/p&gt;
+            &lt;p class&#x3D;&quot;empty-hint&quot;&gt;Calcula tus KPIs para aparecer en el ranking.&lt;/p&gt;
+          &lt;/div&gt;
+        } @else {
+          &lt;div class&#x3D;&quot;ranking-layout&quot;&gt;
+            &lt;!-- Posición destacada --&gt;
+            &lt;div class&#x3D;&quot;ranking-hero&quot;&gt;
+              &lt;div class&#x3D;&quot;ranking-posicion-wrap&quot;&gt;
+                &lt;span class&#x3D;&quot;ranking-posicion-num&quot;&gt; #{{ posicionActual }} &lt;/span&gt;
+                &lt;span class&#x3D;&quot;ranking-posicion-label&quot;&gt; Posición nacional &lt;/span&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;ranking-divider&quot;&gt;&lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;ranking-score-wrap&quot;&gt;
+                &lt;span class&#x3D;&quot;ranking-score-num&quot;&gt;
+                  {{ scoreActual | number: &#x27;1.0-0&#x27; }}
+                &lt;/span&gt;
+                &lt;span class&#x3D;&quot;ranking-score-label&quot;&gt; Score compuesto &lt;/span&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;ranking-divider&quot;&gt;&lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;ranking-percentil-wrap&quot;&gt;
+                &lt;span class&#x3D;&quot;ranking-percentil-num&quot;&gt;
+                  @if (percentilActual !&#x3D; null) {
+                    {{ percentilActual }}%
+                  } @else {
+                    —
+                  }
+                &lt;/span&gt;
+                &lt;span class&#x3D;&quot;ranking-percentil-label&quot;&gt; Percentil &lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Desglose KPIs del ranking --&gt;
+            &lt;div class&#x3D;&quot;ranking-desglose&quot;&gt;
+              &lt;h3 class&#x3D;&quot;ranking-desglose-titulo&quot;&gt;Estado de tus indicadores&lt;/h3&gt;
+              &lt;div class&#x3D;&quot;ranking-kpis-grid&quot;&gt;
+                &lt;div class&#x3D;&quot;ranking-kpi-item optimos&quot;&gt;
+                  &lt;span class&#x3D;&quot;ranking-kpi-num&quot;&gt;
+                    {{ kpisOptimos }}
+                  &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;ranking-kpi-label&quot;&gt;✅ Óptimos&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;ranking-kpi-item aceptables&quot;&gt;
+                  &lt;span class&#x3D;&quot;ranking-kpi-num&quot;&gt;
+                    {{ kpisAceptables }}
+                  &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;ranking-kpi-label&quot;&gt;🟡 Aceptables&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;ranking-kpi-item criticos&quot;&gt;
+                  &lt;span class&#x3D;&quot;ranking-kpi-num&quot;&gt;
+                    {{ kpisCriticos }}
+                  &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;ranking-kpi-label&quot;&gt;🔴 Críticos&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;ranking-kpi-item sin-datos&quot;&gt;
+                  &lt;span class&#x3D;&quot;ranking-kpi-num&quot;&gt;
+                    {{ kpisSinDatos }}
+                  &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;ranking-kpi-label&quot;&gt;— Sin datos&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- CTA ranking completo --&gt;
+            @if (!esAdmin) {
+              &lt;button class&#x3D;&quot;btn-ver-ranking&quot; (click)&#x3D;&quot;irARanking()&quot;&gt;
+                🏆 Ver ranking completo →
+              &lt;/button&gt;
+            }
+          &lt;/div&gt;
+        }
+      }
+    }
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="mi-progreso-page">  <!-- ===== LOADING ===== -->  @if (loading) {    <div class="loading-wrap">      <div class="loading-inner">        <div class="loading-spinner"></div>        <p class="loading-text">Calculando tu progreso...</p>      </div>    </div>  }  @if (!loading) {    <!-- ===== HEADER ===== -->    <header class="page-header">      <div class="header-left">        <p class="page-tag">Hathor · Tu evolución</p>        <h1 class="page-title">Mi <span class="brand">Progreso</span></h1>        @if (hatoActivo) {          <p class="page-subtitle">            <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},            {{ hatoActivo.departamento }}          </p>        } @else {          <p class="page-subtitle warn">⚠️ Selecciona un hato para ver tu progreso.</p>        }      </div>      <div class="header-right">        <div class="header-icon">📈</div>      </div>    </header>    @if (error) {      <div class="msg-error">        <span>❌</span>        <p>{{ error }}</p>      </div>    }    @if (!hatoActivo) {      <div class="empty-state">        <span>🐄</span>        <p>Selecciona un hato para ver tu progreso.</p>      </div>    }    @if (hatoActivo) {      <!-- ===== HERO SCORE ===== -->      <div class="hero-score">        <!-- Score donut -->        <div class="score-donut-wrap">          <div class="score-donut-contenedor">            <canvas #chartScore width="140" height="140"></canvas>            <div class="score-centro">              @if (scoreActual != null) {                <span class="score-num">                  {{ scoreActual | number: \'1.0-0\' }}                </span>                <span class="score-label">Score</span>              } @else {                <span class="score-num">—</span>                <span class="score-label">Sin datos</span>              }            </div>          </div>          <p class="score-desc">Score Hathor</p>        </div>        <!-- Stats del hero -->        <div class="hero-stats">          <div class="hero-stat">            <div class="hero-stat-icono ranking">🏆</div>            <div class="hero-stat-info">              <span class="hero-stat-valor">                @if (posicionActual != null) {                  #{{ posicionActual }}                  @if (totalHatosNacional != null) {                    <span class="hero-stat-total"> / {{ totalHatosNacional }} </span>                  }                } @else {                  —                }              </span>              <span class="hero-stat-label">Posición nacional</span>            </div>          </div>          <div class="hero-stat">            <div class="hero-stat-icono percentil">📊</div>            <div class="hero-stat-info">              <span class="hero-stat-valor">                @if (percentilActual != null) {                  {{ percentilActual }}%                } @else {                  —                }              </span>              <span class="hero-stat-label">Percentil</span>            </div>          </div>          <div class="hero-stat">            <div class="hero-stat-icono kpis">📈</div>            <div class="hero-stat-info">              <span class="hero-stat-valor verde">                {{ kpisMejorados }}              </span>              <span class="hero-stat-label">KPIs mejorados</span>            </div>          </div>          <div class="hero-stat">            <div class="hero-stat-icono practicas">🌱</div>            <div class="hero-stat-info">              <span class="hero-stat-valor">                {{ practicasCompletadas }}              </span>              <span class="hero-stat-label">Prácticas completadas</span>            </div>          </div>          <div class="hero-stat">            <div class="hero-stat-icono completitud">📋</div>            <div class="hero-stat-info">              <span                class="hero-stat-valor"                [class.verde]="completitudPct === 100"                [class.amarillo]="completitudPct >= 50 && completitudPct < 100"                [class.rojo]="completitudPct < 50"              >                {{ completitudPct }}%              </span>              <span class="hero-stat-label">Completitud perfil</span>            </div>          </div>          <div class="hero-stat">            <div class="hero-stat-icono criticos">⚠️</div>            <div class="hero-stat-info">              <span                class="hero-stat-valor"                [class.rojo]="kpisCriticos > 0"                [class.verde]="kpisCriticos === 0"              >                {{ kpisCriticos }}              </span>              <span class="hero-stat-label">KPIs críticos</span>            </div>          </div>        </div>        <!-- Barra completitud perfil -->        <div class="completitud-barra-wrap">          <div class="completitud-barra-header">            <span class="completitud-barra-label"> Completitud del perfil </span>            <span class="completitud-barra-pct"> {{ completitudPct }}% </span>          </div>          <div class="completitud-barra-track">            <div              class="completitud-barra-fill"              [style.width.%]="completitudPct"              [class.fill-completo]="completitudPct === 100"              [class.fill-medio]="completitudPct >= 50 && completitudPct < 100"              [class.fill-bajo]="completitudPct < 50"            ></div>          </div>        </div>      </div>      <!-- ===== TABS ===== -->      <div class="tabs-row">        <button class="tab-btn" [class.activo]="tabActivo === \'kpis\'" (click)="setTab(\'kpis\')">          <span class="tab-icono">📈</span>          Evolución KPIs          @if (kpisMejorados > 0) {            <span class="tab-badge verde"> +{{ kpisMejorados }} </span>          }        </button>        <button          class="tab-btn"          [class.activo]="tabActivo === \'practicas\'"          (click)="setTab(\'practicas\')"        >          <span class="tab-icono">🌱</span>          Impacto prácticas          @if (practicasCompletadas > 0) {            <span class="tab-badge"> {{ practicasCompletadas }} ✓ </span>          }        </button>        <button          class="tab-btn"          [class.activo]="tabActivo === \'ranking\'"          (click)="setTab(\'ranking\')"        >          <span class="tab-icono">🏆</span>          Mi posición        </button>      </div>      <!-- ═══════════════════════════════════           TAB: EVOLUCIÓN KPIs      ═══════════════════════════════════ -->      @if (tabActivo === \'kpis\') {        @if (kpisEvolucion.length === 0) {          <div class="empty-state">            <span>📊</span>            <p>No hay datos históricos de KPIs aún.</p>            <p class="empty-hint">              Los KPIs se calculan automáticamente con cada registro que realizas.            </p>          </div>        } @else {          <div class="kpis-grid">            @for (ev of kpisEvolucion; track ev.kpi.codigo) {              <div                class="kpi-card"                [class.card-mejoro]="ev.mejoro"                [class.card-critico]="ev.kpi.estado === \'CRITICO\'"              >                <!-- Header -->                <div class="kpi-card-header">                  <div class="kpi-card-header-left">                    <span class="kpi-cat-icono">                      {{ iconoCategoria(ev.kpi.categoria) }}                    </span>                    <div>                      <p class="kpi-nombre">{{ ev.kpi.nombre }}</p>                      <p class="kpi-codigo">{{ ev.kpi.codigo }}</p>                    </div>                  </div>                  <span class="kpi-estado-chip" [class]="colorEstadoKpi(ev.kpi.estado)">                    {{ iconoEstadoKpi(ev.kpi.estado) }}                    {{ ev.kpi.estado }}                  </span>                </div>                <!-- Valor actual prominente -->                <div class="kpi-valor-wrap">                  <span class="kpi-valor-actual">                    @if (ev.valorActual != null) {                      {{ ev.valorActual | number: \'1.1-2\' }}                      <span class="kpi-unidad">{{ ev.kpi.unidad }}</span>                    } @else {                      Sin datos                    }                  </span>                  <!-- Delta -->                  @if (ev.deltaPct != null) {                    <div class="kpi-delta" [class]="colorDelta(ev.deltaPct)">                      {{ iconoDelta(ev.deltaPct) }}                      {{ ev.deltaPct > 0 ? \'+\' : \'\' }}{{ ev.deltaPct }}%                      <span class="kpi-delta-label"> vs inicio </span>                    </div>                  }                </div>                <!-- Comparativa inicial vs actual -->                @if (ev.valorInicial != null && ev.valorActual != null) {                  <div class="kpi-comparativa">                    <div class="comp-item">                      <span class="comp-label">Inicial</span>                      <span class="comp-valor">                        {{ ev.valorInicial | number: \'1.1-2\' }}                        {{ ev.kpi.unidad }}                      </span>                    </div>                    <span class="comp-flecha">→</span>                    <div class="comp-item">                      <span class="comp-label">Actual</span>                      <span                        class="comp-valor"                        [class.valor-mejor]="ev.mejoro"                        [class.valor-peor]="!ev.mejoro && ev.deltaPct !== 0"                      >                        {{ ev.valorActual | number: \'1.1-2\' }}                        {{ ev.kpi.unidad }}                      </span>                    </div>                  </div>                }                <!-- Benchmark -->                @if (ev.kpi.benchmarkPromedio != null) {                  <div class="kpi-benchmark-row">                    <span class="bench-label">Promedio sector:</span>                    <span class="bench-valor">                      {{ ev.kpi.benchmarkPromedio | number: \'1.1-2\' }}                      {{ ev.kpi.unidad }}                    </span>                    @if (ev.kpi.diferenciaPct != null) {                      <span                        class="bench-dif"                        [class.dif-pos]="ev.kpi.diferenciaPct >= 0"                        [class.dif-neg]="ev.kpi.diferenciaPct < 0"                      >                        {{ ev.kpi.diferenciaPct >= 0 ? \'+\' : \'\' }}                        {{ ev.kpi.diferenciaPct | number: \'1.0-1\' }}%                      </span>                    }                  </div>                }                <!-- Mini gráfica histórico -->                @if (ev.historico.length >= 2) {                  <div class="mini-grafica">                    <div class="mini-bars">                      @for (h of ev.historico; track h.periodo) {                        <div class="mini-bar-wrap">                          <div                            class="mini-bar"                            [style.height.%]="calcularAlturaBar(h.valor, ev.historico)"                            [class.bar-optimo]="h.estado === \'OPTIMO\'"                            [class.bar-aceptable]="h.estado === \'ACEPTABLE\'"                            [class.bar-critico]="h.estado === \'CRITICO\'"                            [title]="h.valor + \' — \' + h.periodo"                          ></div>                          <span class="mini-bar-per">                            {{ h.periodo | slice: 5 : 7 }}                          </span>                        </div>                      }                    </div>                  </div>                }              </div>            }          </div>        }      }      <!-- ═══════════════════════════════════           TAB: IMPACTO PRÁCTICAS      ═══════════════════════════════════ -->      @if (tabActivo === \'practicas\') {        @if (practicasImpacto.length === 0) {          <div class="empty-state">            <span>🌱</span>            <p>Aún no has iniciado ninguna práctica.</p>            <p class="empty-hint">              Aplica las prácticas sugeridas por el sistema para ver su impacto aquí.            </p>            @if (!esAdmin) {              <button class="btn-ir" (click)="irAPracticas()">Ver prácticas sugeridas →</button>            }          </div>        } @else {          <div class="practicas-impacto-lista">            @for (item of practicasImpacto; track item.practica.idHatoPractica) {              <div                class="impacto-card"                [class.impacto-completada]="item.practica.estado === \'COMPLETADA\'"              >                <!-- Header -->                <div class="impacto-header">                  <div class="impacto-header-left">                    <span class="impacto-cat-icono">                      {{ iconoCategoria(item.practica.categoria) }}                    </span>                    <div>                      <p class="impacto-nombre">                        {{ item.practica.nombrePractica }}                      </p>                      <div class="impacto-chips">                        <span                          class="estado-chip"                          [class.estado-completada]="item.practica.estado === \'COMPLETADA\'"                          [class.estado-curso]="item.practica.estado === \'EN_CURSO\'"                        >                          {{                            item.practica.estado === \'COMPLETADA\' ? \'✅ Completada\' : \'🔄 En curso\'                          }}                        </span>                        <span class="cat-chip">                          {{ item.practica.categoria }}                        </span>                      </div>                    </div>                  </div>                  <!-- Delta del KPI -->                  @if (item.deltaPct != null) {                    <div class="impacto-delta" [class]="colorDelta(item.deltaPct)">                      <span class="impacto-delta-icono">                        {{ iconoDelta(item.deltaPct) }}                      </span>                      <span class="impacto-delta-valor">                        {{ item.deltaPct > 0 ? \'+\' : \'\' }}                        {{ item.deltaPct }}%                      </span>                    </div>                  }                </div>                <!-- Avance -->                <div class="impacto-avance">                  <div class="avance-header">                    <span class="avance-label">Avance</span>                    <span class="avance-pct"> {{ item.practica.porcentajeAvance }}% </span>                  </div>                  <div class="avance-track">                    <div                      class="avance-fill"                      [class.fill-completada]="item.practica.estado === \'COMPLETADA\'"                      [class.fill-curso]="item.practica.estado === \'EN_CURSO\'"                      [style.width.%]="item.practica.porcentajeAvance"                    ></div>                  </div>                </div>                <!-- KPI impactado -->                @if (item.practica.kpiImpactado) {                  <div class="impacto-kpi">                    <span class="impacto-kpi-label"> KPI impactado: </span>                    <span class="impacto-kpi-codigo">                      {{ item.practica.kpiImpactado }}                    </span>                    @if (item.kpiActual) {                      <span class="kpi-estado-chip" [class]="colorEstadoKpi(item.kpiActual.estado)">                        {{ iconoEstadoKpi(item.kpiActual.estado) }}                        {{ item.kpiActual.estado }}                      </span>                      @if (item.kpiActual.valor != null) {                        <span class="impacto-kpi-valor">                          {{ item.kpiActual.valor | number: \'1.1-2\' }}                          {{ item.kpiActual.unidad }}                        </span>                      }                    }                  </div>                }              </div>            }          </div>        }      }      <!-- ═══════════════════════════════════           TAB: MI POSICIÓN      ═══════════════════════════════════ -->      @if (tabActivo === \'ranking\') {        @if (loadingRanking) {          <div class="loading-tab">            <div class="loading-spinner"></div>            <p>Cargando ranking...</p>          </div>        } @else if (posicionActual == null) {          <div class="empty-state">            <span>🏆</span>            <p>No hay datos de ranking disponibles aún.</p>            <p class="empty-hint">Calcula tus KPIs para aparecer en el ranking.</p>          </div>        } @else {          <div class="ranking-layout">            <!-- Posición destacada -->            <div class="ranking-hero">              <div class="ranking-posicion-wrap">                <span class="ranking-posicion-num"> #{{ posicionActual }} </span>                <span class="ranking-posicion-label"> Posición nacional </span>              </div>              <div class="ranking-divider"></div>              <div class="ranking-score-wrap">                <span class="ranking-score-num">                  {{ scoreActual | number: \'1.0-0\' }}                </span>                <span class="ranking-score-label"> Score compuesto </span>              </div>              <div class="ranking-divider"></div>              <div class="ranking-percentil-wrap">                <span class="ranking-percentil-num">                  @if (percentilActual != null) {                    {{ percentilActual }}%                  } @else {                    —                  }                </span>                <span class="ranking-percentil-label"> Percentil </span>              </div>            </div>            <!-- Desglose KPIs del ranking -->            <div class="ranking-desglose">              <h3 class="ranking-desglose-titulo">Estado de tus indicadores</h3>              <div class="ranking-kpis-grid">                <div class="ranking-kpi-item optimos">                  <span class="ranking-kpi-num">                    {{ kpisOptimos }}                  </span>                  <span class="ranking-kpi-label">✅ Óptimos</span>                </div>                <div class="ranking-kpi-item aceptables">                  <span class="ranking-kpi-num">                    {{ kpisAceptables }}                  </span>                  <span class="ranking-kpi-label">🟡 Aceptables</span>                </div>                <div class="ranking-kpi-item criticos">                  <span class="ranking-kpi-num">                    {{ kpisCriticos }}                  </span>                  <span class="ranking-kpi-label">🔴 Críticos</span>                </div>                <div class="ranking-kpi-item sin-datos">                  <span class="ranking-kpi-num">                    {{ kpisSinDatos }}                  </span>                  <span class="ranking-kpi-label">— Sin datos</span>                </div>              </div>            </div>            <!-- CTA ranking completo -->            @if (!esAdmin) {              <button class="btn-ver-ranking" (click)="irARanking()">                🏆 Ver ranking completo →              </button>            }          </div>        }      }    }  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'MiProgresoComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MiProgresoComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

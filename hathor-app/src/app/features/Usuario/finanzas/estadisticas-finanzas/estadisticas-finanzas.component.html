@@ -1,0 +1,217 @@
+<div class="estadisticas-page">
+  <div class="loading-wrapper" *ngIf="loading">
+    <app-spinner size="large" message="Calculando estadísticas..."></app-spinner>
+  </div>
+
+  <ng-container *ngIf="!loading">
+    <!-- Header -->
+    <div class="page-header">
+      <div class="header-left">
+        <span class="page-tag">Finanzas · Estadísticas</span>
+        <h1 class="page-title">Panel <span class="brand">Estadístico</span></h1>
+        <p class="page-subtitle" *ngIf="hatoActivo">
+          Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        </p>
+        <p class="page-subtitle warn" *ngIf="!hatoActivo">
+          ⚠️ Selecciona un hato desde el panel superior.
+        </p>
+      </div>
+      <div class="header-badge">📈</div>
+    </div>
+
+    <!-- Sin hato -->
+    <div class="empty-state" *ngIf="!hatoActivo">
+      <span class="empty-icon">🐄</span>
+      <p>No hay un hato seleccionado.</p>
+    </div>
+
+    <!-- Sin datos -->
+    <div class="empty-state" *ngIf="hatoActivo && stats.totalRegistros === 0">
+      <span class="empty-icon">📭</span>
+      <p>No hay registros financieros para este hato todavía.</p>
+    </div>
+
+    <ng-container *ngIf="hatoActivo && stats.totalRegistros > 0">
+      <!-- ===== KPIs principales ===== -->
+      <div class="kpi-row">
+        <div
+          class="kpi-hero"
+          [class.positivo]="stats.balanceNeto >= 0"
+          [class.negativo]="stats.balanceNeto < 0"
+        >
+          <div class="kpi-hero-top">
+            <span class="kpi-hero-label">Balance Neto</span>
+            <span
+              class="kpi-hero-trend"
+              [class.trend-up]="stats.balanceNeto >= 0"
+              [class.trend-down]="stats.balanceNeto < 0"
+            >
+              {{ stats.balanceNeto >= 0 ? '↑ Superávit' : '↓ Déficit' }}
+            </span>
+          </div>
+          <span class="kpi-hero-value">{{ formatCOP(stats.balanceNeto) }}</span>
+          <div class="kpi-hero-sub">
+            <span
+              >Ingresos: <strong>{{ formatCOP(stats.totalIngresos) }}</strong></span
+            >
+            <span
+              >Egresos: <strong>{{ formatCOP(stats.totalEgresos) }}</strong></span
+            >
+          </div>
+        </div>
+
+        <div class="kpi-secondary-grid">
+          <div class="kpi-card">
+            <span class="kpi-icon">📋</span>
+            <div>
+              <span class="kpi-val">{{ stats.totalRegistros }}</span>
+              <span class="kpi-lbl">Registros totales</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-icon">📅</span>
+            <div>
+              <span class="kpi-val">{{ stats.mesesConActividad }}</span>
+              <span class="kpi-lbl">Meses con actividad</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-icon ratio-icon" [class.ratio-bueno]="stats.ratioRentabilidad >= 1">
+              {{ stats.ratioRentabilidad >= 1 ? '✓' : '!' }}
+            </span>
+            <div>
+              <span
+                class="kpi-val"
+                [class.ratio-bueno]="stats.ratioRentabilidad >= 1"
+                [class.ratio-malo]="stats.ratioRentabilidad < 1"
+              >
+                {{ stats.ratioRentabilidad | number: '1.2-2' }}x
+              </span>
+              <span class="kpi-lbl">Ratio ingreso/egreso</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-icon">💡</span>
+            <div>
+              <span class="kpi-val">{{ formatCOP(stats.promedioMensual) }}</span>
+              <span class="kpi-lbl">Promedio mensual neto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== GRÁFICA 1: Evolución mensual ===== -->
+      <div class="grafica-card">
+        <div class="grafica-header">
+          <div>
+            <h3 class="grafica-titulo">Evolución mensual</h3>
+            <p class="grafica-subtitulo">Ingresos vs egresos por mes con línea de balance neto</p>
+          </div>
+          <span class="grafica-badge evolucion">📊 Últimos 12 meses</span>
+        </div>
+        <div class="grafica-wrapper grande">
+          <canvas #chartEvolucion></canvas>
+        </div>
+      </div>
+
+      <!-- ===== FILA: Dona + KPIs secundarios ===== -->
+      <div class="mid-row">
+        <!-- Dona distribución -->
+        <div class="grafica-card">
+          <div class="grafica-header">
+            <div>
+              <h3 class="grafica-titulo">Distribución por tipo</h3>
+              <p class="grafica-subtitulo">Proporción de cada tipo de movimiento</p>
+            </div>
+            <span class="grafica-badge distribucion">🍩 Distribución</span>
+          </div>
+          <div class="grafica-wrapper">
+            <canvas #chartDona></canvas>
+          </div>
+          <!-- Resumen tipo -->
+          <div class="tipo-resumen">
+            <div class="tipo-resumen-item" *ngFor="let t of stats.porTipo">
+              <span class="tipo-badge" [ngClass]="'tipo-' + t.tipo.toLowerCase()">
+                {{ labelTipo(t.tipo) }}
+              </span>
+              <span class="tipo-resumen-val">{{ formatCOP(t.total) }}</span>
+              <span class="tipo-resumen-count">{{ t.cantidad }} reg.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highlights -->
+        <div class="highlights-col">
+          <div class="highlight-card" *ngIf="stats.mejorMes">
+            <span class="hl-icon">🏆</span>
+            <div>
+              <span class="hl-label">Mejor mes</span>
+              <span class="hl-value">{{ stats.mejorMes.mes }}</span>
+              <span class="hl-sub">{{ formatCOP(stats.mejorMes.ingresos) }} en ingresos</span>
+            </div>
+          </div>
+          <div class="highlight-card" *ngIf="stats.mesMayorGasto">
+            <span class="hl-icon">⚠️</span>
+            <div>
+              <span class="hl-label">Mayor gasto mensual</span>
+              <span class="hl-value">{{ stats.mesMayorGasto.mes }}</span>
+              <span class="hl-sub">{{ formatCOP(stats.mesMayorGasto.egresos) }} en egresos</span>
+            </div>
+          </div>
+          <div class="highlight-card" *ngIf="stats.categoriaLider">
+            <span class="hl-icon">📌</span>
+            <div>
+              <span class="hl-label">Categoría líder</span>
+              <span class="hl-value">{{ stats.categoriaLider.nombre }}</span>
+              <span class="hl-sub">{{ formatCOP(stats.categoriaLider.total) }} acumulado</span>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <span class="hl-icon">📈</span>
+            <div>
+              <span class="hl-label">Promedio neto mensual</span>
+              <span
+                class="hl-value"
+                [class.positivo-text]="stats.promedioMensual >= 0"
+                [class.negativo-text]="stats.promedioMensual < 0"
+              >
+                {{ formatCOP(stats.promedioMensual) }}
+              </span>
+              <span class="hl-sub">en {{ stats.mesesConActividad }} meses</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== FILA: Top ingresos + Top gastos ===== -->
+      <div class="mid-row">
+        <div class="grafica-card">
+          <div class="grafica-header">
+            <div>
+              <h3 class="grafica-titulo">Top categorías de ingreso</h3>
+              <p class="grafica-subtitulo">Las 5 categorías con mayor ingreso acumulado</p>
+            </div>
+            <span class="grafica-badge top-ing">💰 Ingresos</span>
+          </div>
+          <div class="grafica-wrapper">
+            <canvas #chartTopIngresos></canvas>
+          </div>
+        </div>
+
+        <div class="grafica-card">
+          <div class="grafica-header">
+            <div>
+              <h3 class="grafica-titulo">Top categorías de gasto</h3>
+              <p class="grafica-subtitulo">Las 5 categorías con mayor gasto acumulado</p>
+            </div>
+            <span class="grafica-badge top-gas">💸 Gastos</span>
+          </div>
+          <div class="grafica-wrapper">
+            <canvas #chartTopGastos></canvas>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

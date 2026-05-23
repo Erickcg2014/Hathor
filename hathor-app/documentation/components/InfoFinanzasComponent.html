@@ -1,0 +1,3490 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  InfoFinanzasComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-info-finanzas</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./info-finanzas.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./info-finanzas.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#eliminando" >eliminando</a>
+                            </li>
+                            <li>
+                                <a href="#filtroTipo" >filtroTipo</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#historicos" >historicos</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#loadingPeriodo" >loadingPeriodo</a>
+                            </li>
+                            <li>
+                                <a href="#mesesDisponibles" >mesesDisponibles</a>
+                            </li>
+                            <li>
+                                <a href="#paginaActual" >paginaActual</a>
+                            </li>
+                            <li>
+                                <a href="#perfiles" >perfiles</a>
+                            </li>
+                            <li>
+                                <a href="#perfilExpandido" >perfilExpandido</a>
+                            </li>
+                            <li>
+                                <a href="#periodoDesde" >periodoDesde</a>
+                            </li>
+                            <li>
+                                <a href="#periodoHasta" >periodoHasta</a>
+                            </li>
+                            <li>
+                                <a href="#registroAEliminar" >registroAEliminar</a>
+                            </li>
+                            <li>
+                                <a href="#registros" >registros</a>
+                            </li>
+                            <li>
+                                <a href="#registrosPeriodo" >registrosPeriodo</a>
+                            </li>
+                            <li>
+                                <a href="#registrosPorPagina" >registrosPorPagina</a>
+                            </li>
+                            <li>
+                                <a href="#searchQuery" >searchQuery</a>
+                            </li>
+                            <li>
+                                <a href="#sortColumna" >sortColumna</a>
+                            </li>
+                            <li>
+                                <a href="#sortDireccion" >sortDireccion</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cancelarEliminacion" >cancelarEliminacion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarDatos" >cargarDatos</a>
+                            </li>
+                            <li>
+                                <a href="#cargarPorPeriodo" >cargarPorPeriodo</a>
+                            </li>
+                            <li>
+                                <a href="#confirmarEliminacion" >confirmarEliminacion</a>
+                            </li>
+                            <li>
+                                <a href="#formatCOP" >formatCOP</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#generarMesesDisponibles" >generarMesesDisponibles</a>
+                            </li>
+                            <li>
+                                <a href="#getSortIcon" >getSortIcon</a>
+                            </li>
+                            <li>
+                                <a href="#irAPagina" >irAPagina</a>
+                            </li>
+                            <li>
+                                <a href="#labelMetodo" >labelMetodo</a>
+                            </li>
+                            <li>
+                                <a href="#labelTipo" >labelTipo</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onPeriodoChange" >onPeriodoChange</a>
+                            </li>
+                            <li>
+                                <a href="#onSearchChange" >onSearchChange</a>
+                            </li>
+                            <li>
+                                <a href="#ordenarPor" >ordenarPor</a>
+                            </li>
+                            <li>
+                                <a href="#setFiltroTipo" >setFiltroTipo</a>
+                            </li>
+                            <li>
+                                <a href="#solicitarEliminacion" >solicitarEliminacion</a>
+                            </li>
+                            <li>
+                                <a href="#togglePerfil" >togglePerfil</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#modoLectura" >modoLectura</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#totalIngresosPeriodo" >totalIngresosPeriodo</a>
+                                </li>
+                                <li>
+                                    <a href="#totalEgresosPeriodo" >totalEgresosPeriodo</a>
+                                </li>
+                                <li>
+                                    <a href="#balanceNetoPeriodo" >balanceNetoPeriodo</a>
+                                </li>
+                                <li>
+                                    <a href="#fuentePeriodo" >fuentePeriodo</a>
+                                </li>
+                                <li>
+                                    <a href="#labelFuentePeriodo" >labelFuentePeriodo</a>
+                                </li>
+                                <li>
+                                    <a href="#claseFuentePeriodo" >claseFuentePeriodo</a>
+                                </li>
+                                <li>
+                                    <a href="#registrosFiltrados" >registrosFiltrados</a>
+                                </li>
+                                <li>
+                                    <a href="#registrosOrdenados" >registrosOrdenados</a>
+                                </li>
+                                <li>
+                                    <a href="#historicosPorMes" >historicosPorMes</a>
+                                </li>
+                                <li>
+                                    <a href="#registrosPaginados" >registrosPaginados</a>
+                                </li>
+                                <li>
+                                    <a href="#totalPaginas" >totalPaginas</a>
+                                </li>
+                                <li>
+                                    <a href="#paginas" >paginas</a>
+                                </li>
+                                <li>
+                                    <a href="#totalIngresos" >totalIngresos</a>
+                                </li>
+                                <li>
+                                    <a href="#totalEgresos" >totalEgresos</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, registroService: <a href="../injectables/RegistroFinancieroService.html" target="_self">RegistroFinancieroService</a>, perfilService: <a href="../injectables/PerfilFinancieroService.html" target="_self">PerfilFinancieroService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:53</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>registroService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RegistroFinancieroService.html" target="_self" >RegistroFinancieroService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>perfilService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PerfilFinancieroService.html" target="_self" >PerfilFinancieroService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modoLectura"></a>
+                        <b>modoLectura</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelarEliminacion"></a>
+                    <span class="name">
+                        <span ><b>cancelarEliminacion</b></span>
+                        <a href="#cancelarEliminacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelarEliminacion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="355"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:355</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarDatos"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarDatos</b></span>
+                        <a href="#cargarDatos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarDatos(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="125"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:125</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarPorPeriodo"></a>
+                    <span class="name">
+                        <span ><b>cargarPorPeriodo</b></span>
+                        <a href="#cargarPorPeriodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarPorPeriodo(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmarEliminacion"></a>
+                    <span class="name">
+                        <span ><b>confirmarEliminacion</b></span>
+                        <a href="#confirmarEliminacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirmarEliminacion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="360"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:360</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatCOP"></a>
+                    <span class="name">
+                        <span ><b>formatCOP</b></span>
+                        <a href="#formatCOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatCOP(valor: number | null | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="387"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:387</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                        <code>number | null | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generarMesesDisponibles"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>generarMesesDisponibles</b></span>
+                        <a href="#generarMesesDisponibles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generarMesesDisponibles()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSortIcon"></a>
+                    <span class="name">
+                        <span ><b>getSortIcon</b></span>
+                        <a href="#getSortIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSortIcon(columna: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="322"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:322</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>columna</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irAPagina"></a>
+                    <span class="name">
+                        <span ><b>irAPagina</b></span>
+                        <a href="#irAPagina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irAPagina(pagina: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="316"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:316</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>pagina</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelMetodo"></a>
+                    <span class="name">
+                        <span ><b>labelMetodo</b></span>
+                        <a href="#labelMetodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>labelMetodo(metodo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="401"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:401</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>metodo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelTipo"></a>
+                    <span class="name">
+                        <span ><b>labelTipo</b></span>
+                        <a href="#labelTipo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>labelTipo(tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="392"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:392</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tipo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="410"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:410</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPeriodoChange"></a>
+                    <span class="name">
+                        <span ><b>onPeriodoChange</b></span>
+                        <a href="#onPeriodoChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPeriodoChange()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSearchChange"></a>
+                    <span class="name">
+                        <span ><b>onSearchChange</b></span>
+                        <a href="#onSearchChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSearchChange()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="333"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:333</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ordenarPor"></a>
+                    <span class="name">
+                        <span ><b>ordenarPor</b></span>
+                        <a href="#ordenarPor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ordenarPor(columna: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="305"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:305</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>columna</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFiltroTipo"></a>
+                    <span class="name">
+                        <span ><b>setFiltroTipo</b></span>
+                        <a href="#setFiltroTipo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setFiltroTipo(tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="327"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:327</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tipo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="solicitarEliminacion"></a>
+                    <span class="name">
+                        <span ><b>solicitarEliminacion</b></span>
+                        <a href="#solicitarEliminacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>solicitarEliminacion(registro: <a href="../interfaces/RegistroFinanciero.html" target="_self">RegistroFinanciero</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="351"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:351</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>registro</td>
+                                            <td>
+                                                            <code><a href="../interfaces/RegistroFinanciero.html" target="_self" >RegistroFinanciero</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="togglePerfil"></a>
+                    <span class="name">
+                        <span ><b>togglePerfil</b></span>
+                        <a href="#togglePerfil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>togglePerfil(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="382"
+                                    class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:382</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminando"></a>
+                    <span class="name">
+                        <span ><b>eliminando</b></span>
+                        <a href="#eliminando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroTipo"></a>
+                    <span class="name">
+                        <span ><b>filtroTipo</b></span>
+                        <a href="#filtroTipo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;TODOS&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="historicos"></a>
+                    <span class="name">
+                        <span ><b>historicos</b></span>
+                        <a href="#historicos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RegistroFinanciero.html" target="_self" >RegistroFinanciero[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingPeriodo"></a>
+                    <span class="name">
+                        <span ><b>loadingPeriodo</b></span>
+                        <a href="#loadingPeriodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mesesDisponibles"></a>
+                    <span class="name">
+                        <span ><b>mesesDisponibles</b></span>
+                        <a href="#mesesDisponibles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginaActual"></a>
+                    <span class="name">
+                        <span ><b>paginaActual</b></span>
+                        <a href="#paginaActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="perfiles"></a>
+                    <span class="name">
+                        <span ><b>perfiles</b></span>
+                        <a href="#perfiles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/PerfilFinanciero.html" target="_self" >PerfilFinanciero[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="perfilExpandido"></a>
+                    <span class="name">
+                        <span ><b>perfilExpandido</b></span>
+                        <a href="#perfilExpandido"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="periodoDesde"></a>
+                    <span class="name">
+                        <span ><b>periodoDesde</b></span>
+                        <a href="#periodoDesde"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="periodoHasta"></a>
+                    <span class="name">
+                        <span ><b>periodoHasta</b></span>
+                        <a href="#periodoHasta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registroAEliminar"></a>
+                    <span class="name">
+                        <span ><b>registroAEliminar</b></span>
+                        <a href="#registroAEliminar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RegistroFinanciero.html" target="_self" >RegistroFinanciero | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registros"></a>
+                    <span class="name">
+                        <span ><b>registros</b></span>
+                        <a href="#registros"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RegistroFinanciero.html" target="_self" >RegistroFinanciero[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registrosPeriodo"></a>
+                    <span class="name">
+                        <span ><b>registrosPeriodo</b></span>
+                        <a href="#registrosPeriodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RegistroFinanciero.html" target="_self" >RegistroFinanciero[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registrosPorPagina"></a>
+                    <span class="name">
+                        <span ><b>registrosPorPagina</b></span>
+                        <a href="#registrosPorPagina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>20</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchQuery"></a>
+                    <span class="name">
+                        <span ><b>searchQuery</b></span>
+                        <a href="#searchQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortColumna"></a>
+                    <span class="name">
+                        <span ><b>sortColumna</b></span>
+                        <a href="#sortColumna"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;fecha&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortDireccion"></a>
+                    <span class="name">
+                        <span ><b>sortDireccion</b></span>
+                        <a href="#sortDireccion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;asc&quot; | &quot;desc&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;desc&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalIngresosPeriodo"></a>
+                        <span class="name"><b>totalIngresosPeriodo</b><a href="#totalIngresosPeriodo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalIngresosPeriodo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:159</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalEgresosPeriodo"></a>
+                        <span class="name"><b>totalEgresosPeriodo</b><a href="#totalEgresosPeriodo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalEgresosPeriodo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:165</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="balanceNetoPeriodo"></a>
+                        <span class="name"><b>balanceNetoPeriodo</b><a href="#balanceNetoPeriodo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>balanceNetoPeriodo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:171</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fuentePeriodo"></a>
+                        <span class="name"><b>fuentePeriodo</b><a href="#fuentePeriodo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>fuentePeriodo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:176</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="labelFuentePeriodo"></a>
+                        <span class="name"><b>labelFuentePeriodo</b><a href="#labelFuentePeriodo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>labelFuentePeriodo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:185</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="claseFuentePeriodo"></a>
+                        <span class="name"><b>claseFuentePeriodo</b><a href="#claseFuentePeriodo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>claseFuentePeriodo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:195</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registrosFiltrados"></a>
+                        <span class="name"><b>registrosFiltrados</b><a href="#registrosFiltrados"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>registrosFiltrados()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="205" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:205</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registrosOrdenados"></a>
+                        <span class="name"><b>registrosOrdenados</b><a href="#registrosOrdenados"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>registrosOrdenados()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:224</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="historicosPorMes"></a>
+                        <span class="name"><b>historicosPorMes</b><a href="#historicosPorMes"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>historicosPorMes()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="254" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:254</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registrosPaginados"></a>
+                        <span class="name"><b>registrosPaginados</b><a href="#registrosPaginados"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>registrosPaginados()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="278" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:278</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalPaginas"></a>
+                        <span class="name"><b>totalPaginas</b><a href="#totalPaginas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalPaginas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="283" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:283</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="paginas"></a>
+                        <span class="name"><b>paginas</b><a href="#paginas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>paginas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="287" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:287</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalIngresos"></a>
+                        <span class="name"><b>totalIngresos</b><a href="#totalIngresos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalIngresos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="339" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:339</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalEgresos"></a>
+                        <span class="name"><b>totalEgresos</b><a href="#totalEgresos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalEgresos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="345" class="link-to-prism">src/app/features/Usuario/finanzas/info-finanzas/info-finanzas.component.ts:345</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, OnDestroy, ChangeDetectorRef, Input } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Subject, takeUntil, combineLatest } from &#x27;rxjs&#x27;;
+
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import { Hato } from &#x27;../../../../core/services/hato/hato.service&#x27;;
+import {
+  RegistroFinancieroService,
+  RegistroFinanciero,
+} from &#x27;../../../../core/services/finanzas/registro-financiero.service&#x27;;
+import {
+  PerfilFinancieroService,
+  PerfilFinanciero,
+} from &#x27;../../../../core/services/finanzas/perfil-financiero.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+
+@Component({
+  selector: &#x27;app-info-finanzas&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, SpinnerComponent],
+  templateUrl: &#x27;./info-finanzas.component.html&#x27;,
+  styleUrl: &#x27;./info-finanzas.component.css&#x27;,
+})
+export class InfoFinanzasComponent implements OnInit, OnDestroy {
+  hatoActivo: Hato | null &#x3D; null;
+  registros: RegistroFinanciero[] &#x3D; [];
+  historicos: RegistroFinanciero[] &#x3D; [];
+  perfiles: PerfilFinanciero[] &#x3D; [];
+  loading &#x3D; false;
+
+  @Input() modoLectura &#x3D; false;
+
+  filtroTipo: string &#x3D; &#x27;TODOS&#x27;;
+  searchQuery: string &#x3D; &#x27;&#x27;;
+  perfilExpandido: string | null &#x3D; null;
+
+  sortColumna: string &#x3D; &#x27;fecha&#x27;;
+  sortDireccion: &#x27;asc&#x27; | &#x27;desc&#x27; &#x3D; &#x27;desc&#x27;;
+
+  paginaActual: number &#x3D; 1;
+  registrosPorPagina: number &#x3D; 20;
+
+  registroAEliminar: RegistroFinanciero | null &#x3D; null;
+  eliminando &#x3D; false;
+
+  periodoDesde: string &#x3D; &#x27;&#x27;;
+  periodoHasta: string &#x3D; &#x27;&#x27;;
+  registrosPeriodo: RegistroFinanciero[] &#x3D; [];
+  loadingPeriodo &#x3D; false;
+  mesesDisponibles: { valor: string; label: string }[] &#x3D; [];
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private hatoState: HatoStateService,
+    private registroService: RegistroFinancieroService,
+    private perfilService: PerfilFinancieroService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato) {
+        this.cargarDatos(hato.idHato as string);
+      } else {
+        this.registros &#x3D; [];
+        this.perfiles &#x3D; [];
+      }
+      this.cdr.markForCheck();
+    });
+  }
+
+  // ------------------- PERIODO -----------------
+
+  private generarMesesDisponibles(): void {
+    const meses: { valor: string; label: string }[] &#x3D; [];
+    const inicio &#x3D; new Date(2025, 9, 1);
+    const fin &#x3D; new Date();
+    fin.setMonth(fin.getMonth() + 1);
+
+    const fmt &#x3D; new Intl.DateTimeFormat(&#x27;es-CO&#x27;, {
+      month: &#x27;short&#x27;,
+      year: &#x27;numeric&#x27;,
+    });
+
+    let cursor &#x3D; new Date(inicio);
+    while (cursor &lt;&#x3D; fin) {
+      const valor &#x3D; &#x60;${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, &#x27;0&#x27;)}&#x60;;
+      meses.push({
+        valor,
+        label: fmt.format(cursor).replace(/^(.)/, (c) &#x3D;&gt; c.toUpperCase()),
+      });
+      cursor.setMonth(cursor.getMonth() + 1);
+    }
+    this.mesesDisponibles &#x3D; meses;
+
+    this.periodoDesde &#x3D; meses[0].valor;
+    this.periodoHasta &#x3D; meses[meses.length - 2].valor;
+  }
+
+  // Cargar por período:
+  cargarPorPeriodo(idHato: string): void {
+    if (!this.periodoDesde || !this.periodoHasta) return;
+    this.loadingPeriodo &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.registroService
+      .getRegistrosPorPeriodo(idHato, this.periodoDesde, this.periodoHasta)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (registros) &#x3D;&gt; {
+          this.registrosPeriodo &#x3D; registros;
+          this.loadingPeriodo &#x3D; false;
+          this.cdr.markForCheck();
+        },
+        error: () &#x3D;&gt; {
+          this.loadingPeriodo &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  private cargarDatos(idHato: string): void {
+    this.loading &#x3D; true;
+    this.generarMesesDisponibles();
+    this.cdr.markForCheck();
+
+    combineLatest([
+      this.registroService.getRegistrosReales(idHato),
+      this.registroService.getRegistrosHistoricos(idHato),
+      this.perfilService.getPerfilesByHato(idHato),
+    ])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: ([reales, historicos, perfiles]) &#x3D;&gt; {
+          this.registros &#x3D; reales;
+          this.historicos &#x3D; historicos;
+          this.perfiles &#x3D; perfiles;
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+          this.cargarPorPeriodo(idHato);
+        },
+        error: () &#x3D;&gt; {
+          this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+  }
+
+  onPeriodoChange(): void {
+    if (this.hatoActivo?.idHato) {
+      this.cargarPorPeriodo(this.hatoActivo.idHato as string);
+    }
+  }
+
+  // ------------ GETTER PERIODO -----------
+  get totalIngresosPeriodo(): number {
+    return this.registrosPeriodo
+      .filter((r) &#x3D;&gt; r.tipoMovimiento &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27;)
+      .reduce((sum, r) &#x3D;&gt; sum + r.monto, 0);
+  }
+
+  get totalEgresosPeriodo(): number {
+    return this.registrosPeriodo
+      .filter((r) &#x3D;&gt; r.tipoMovimiento !&#x3D;&#x3D; &#x27;INGRESO&#x27;)
+      .reduce((sum, r) &#x3D;&gt; sum + r.monto, 0);
+  }
+
+  get balanceNetoPeriodo(): number {
+    return this.totalIngresosPeriodo - this.totalEgresosPeriodo;
+  }
+
+  // Indicador de fuente del período:
+  get fuentePeriodo(): &#x27;REAL&#x27; | &#x27;HISTORICO&#x27; | &#x27;MIXTO&#x27; | &#x27;VACIO&#x27; {
+    if (this.registrosPeriodo.length &#x3D;&#x3D;&#x3D; 0) return &#x27;VACIO&#x27;;
+    const tieneReales &#x3D; this.registrosPeriodo.some((r) &#x3D;&gt; !r.esHistorico);
+    const tieneHistoricos &#x3D; this.registrosPeriodo.some((r) &#x3D;&gt; r.esHistorico);
+    if (tieneReales &amp;&amp; tieneHistoricos) return &#x27;MIXTO&#x27;;
+    if (tieneReales) return &#x27;REAL&#x27;;
+    return &#x27;HISTORICO&#x27;;
+  }
+
+  get labelFuentePeriodo(): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      REAL: &#x27;✅ Datos reales&#x27;,
+      HISTORICO: &#x27;🗂️ Datos históricos&#x27;,
+      MIXTO: &#x27;⚡ Datos mixtos (reales + históricos)&#x27;,
+      VACIO: &#x27;— Sin datos&#x27;,
+    };
+    return map[this.fuentePeriodo] ?? &#x27;—&#x27;;
+  }
+
+  get claseFuentePeriodo(): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      REAL: &#x27;fuente-real&#x27;,
+      HISTORICO: &#x27;fuente-historico&#x27;,
+      MIXTO: &#x27;fuente-mixto&#x27;,
+      VACIO: &#x27;fuente-vacio&#x27;,
+    };
+    return map[this.fuentePeriodo] ?? &#x27;&#x27;;
+  }
+
+  get registrosFiltrados(): RegistroFinanciero[] {
+    let lista &#x3D; this.registrosPeriodo.filter((r) &#x3D;&gt; !r.esHistorico); // ← solo reales
+
+    if (this.filtroTipo !&#x3D;&#x3D; &#x27;TODOS&#x27;) {
+      lista &#x3D; lista.filter((r) &#x3D;&gt; r.tipoMovimiento &#x3D;&#x3D;&#x3D; this.filtroTipo);
+    }
+
+    const q &#x3D; this.searchQuery.trim().toLowerCase();
+    if (q) {
+      lista &#x3D; lista.filter((r) &#x3D;&gt; {
+        const enTitulo &#x3D; r.titulo?.toLowerCase().includes(q);
+        const enCategoria &#x3D; r.categoriaFinanciera?.nombre?.toLowerCase().includes(q);
+        return enTitulo || enCategoria;
+      });
+    }
+
+    return lista;
+  }
+
+  get registrosOrdenados(): RegistroFinanciero[] {
+    const lista &#x3D; [...this.registrosFiltrados];
+    const dir &#x3D; this.sortDireccion &#x3D;&#x3D;&#x3D; &#x27;asc&#x27; ? 1 : -1;
+
+    lista.sort((a, b) &#x3D;&gt; {
+      switch (this.sortColumna) {
+        case &#x27;fecha&#x27;:
+          return dir * (new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
+        case &#x27;titulo&#x27;:
+          return dir * (a.titulo ?? &#x27;&#x27;).localeCompare(b.titulo ?? &#x27;&#x27;, &#x27;es&#x27;);
+        case &#x27;categoria&#x27;:
+          return (
+            dir *
+            (a.categoriaFinanciera?.nombre ?? &#x27;&#x27;).localeCompare(
+              b.categoriaFinanciera?.nombre ?? &#x27;&#x27;,
+              &#x27;es&#x27;,
+            )
+          );
+        case &#x27;tipo&#x27;:
+          return dir * (a.tipoMovimiento ?? &#x27;&#x27;).localeCompare(b.tipoMovimiento ?? &#x27;&#x27;);
+        case &#x27;monto&#x27;:
+          return dir * (a.monto - b.monto);
+        default:
+          return 0;
+      }
+    });
+
+    return lista;
+  }
+
+  get historicosPorMes(): { mes: string; label: string; registros: RegistroFinanciero[] }[] {
+    const grupos &#x3D; new Map&lt;string, RegistroFinanciero[]&gt;();
+
+    for (const r of this.historicos) {
+      const mes &#x3D; r.fecha.substring(0, 7);
+      if (!grupos.has(mes)) grupos.set(mes, []);
+      grupos.get(mes)!.push(r);
+    }
+
+    return Array.from(grupos.entries())
+      .sort(([a], [b]) &#x3D;&gt; a.localeCompare(b))
+      .map(([mes, registros]) &#x3D;&gt; ({
+        mes,
+        label: new Intl.DateTimeFormat(&#x27;es-CO&#x27;, {
+          month: &#x27;long&#x27;,
+          year: &#x27;numeric&#x27;,
+        })
+          .format(new Date(mes + &#x27;-01T12:00:00&#x27;))
+          .replace(/^(.)/, (c) &#x3D;&gt; c.toUpperCase()),
+        registros,
+      }));
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; PAGINACIÓN &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  get registrosPaginados(): RegistroFinanciero[] {
+    const inicio &#x3D; (this.paginaActual - 1) * this.registrosPorPagina;
+    return this.registrosOrdenados.slice(inicio, inicio + this.registrosPorPagina);
+  }
+
+  get totalPaginas(): number {
+    return Math.ceil(this.registrosOrdenados.length / this.registrosPorPagina);
+  }
+
+  get paginas(): number[] {
+    const total &#x3D; this.totalPaginas;
+    if (total &lt;&#x3D; 7) return Array.from({ length: total }, (_, i) &#x3D;&gt; i + 1);
+
+    const paginas: number[] &#x3D; [1];
+    if (this.paginaActual &gt; 3) paginas.push(-1);
+    for (
+      let i &#x3D; Math.max(2, this.paginaActual - 1);
+      i &lt;&#x3D; Math.min(total - 1, this.paginaActual + 1);
+      i++
+    ) {
+      paginas.push(i);
+    }
+    if (this.paginaActual &lt; total - 2) paginas.push(-1);
+    paginas.push(total);
+    return paginas;
+  }
+
+  ordenarPor(columna: string): void {
+    if (this.sortColumna &#x3D;&#x3D;&#x3D; columna) {
+      this.sortDireccion &#x3D; this.sortDireccion &#x3D;&#x3D;&#x3D; &#x27;asc&#x27; ? &#x27;desc&#x27; : &#x27;asc&#x27;;
+    } else {
+      this.sortColumna &#x3D; columna;
+      this.sortDireccion &#x3D; &#x27;asc&#x27;;
+    }
+    this.paginaActual &#x3D; 1;
+    this.cdr.markForCheck();
+  }
+
+  irAPagina(pagina: number): void {
+    if (pagina &lt; 1 || pagina &gt; this.totalPaginas) return;
+    this.paginaActual &#x3D; pagina;
+    this.cdr.markForCheck();
+  }
+
+  getSortIcon(columna: string): string {
+    if (this.sortColumna !&#x3D;&#x3D; columna) return &#x27;↕&#x27;;
+    return this.sortDireccion &#x3D;&#x3D;&#x3D; &#x27;asc&#x27; ? &#x27;↑&#x27; : &#x27;↓&#x27;;
+  }
+
+  setFiltroTipo(tipo: string): void {
+    this.filtroTipo &#x3D; tipo;
+    this.paginaActual &#x3D; 1;
+    this.cdr.markForCheck();
+  }
+
+  onSearchChange(): void {
+    this.paginaActual &#x3D; 1;
+    this.cdr.markForCheck();
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; KPIs &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  get totalIngresos(): number {
+    return this.registros
+      .filter((r) &#x3D;&gt; r.tipoMovimiento &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27;)
+      .reduce((sum, r) &#x3D;&gt; sum + r.monto, 0);
+  }
+
+  get totalEgresos(): number {
+    return this.registros
+      .filter((r) &#x3D;&gt; r.tipoMovimiento !&#x3D;&#x3D; &#x27;INGRESO&#x27;)
+      .reduce((sum, r) &#x3D;&gt; sum + r.monto, 0);
+  }
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ELIMINAR &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  solicitarEliminacion(registro: RegistroFinanciero): void {
+    this.registroAEliminar &#x3D; registro;
+  }
+
+  cancelarEliminacion(): void {
+    if (this.eliminando) return;
+    this.registroAEliminar &#x3D; null;
+  }
+
+  confirmarEliminacion(): void {
+    if (!this.registroAEliminar || this.eliminando) return;
+
+    const id &#x3D; this.registroAEliminar.idRegistro;
+    this.eliminando &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.registroService.eliminarRegistro(id).subscribe({
+      next: () &#x3D;&gt; {
+        this.registros &#x3D; this.registros.filter((r) &#x3D;&gt; r.idRegistro !&#x3D;&#x3D; id);
+        this.eliminando &#x3D; false;
+        this.registroAEliminar &#x3D; null;
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.eliminando &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; PERFILES &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  togglePerfil(id: string): void {
+    this.perfilExpandido &#x3D; this.perfilExpandido &#x3D;&#x3D;&#x3D; id ? null : id;
+  }
+
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HELPERS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  formatCOP(valor: number | null | undefined): string {
+    if (valor &#x3D;&#x3D;&#x3D; null || valor &#x3D;&#x3D;&#x3D; undefined) return &#x27;$ 0&#x27;;
+    return &#x27;$ &#x27; + new Intl.NumberFormat(&#x27;es-CO&#x27;).format(valor);
+  }
+
+  labelTipo(tipo: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      INGRESO: &#x27;Ingreso&#x27;,
+      GASTO: &#x27;Gasto&#x27;,
+      INVERSION: &#x27;Inversión&#x27;,
+    };
+    return map[tipo] ?? tipo;
+  }
+
+  labelMetodo(metodo: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      EXCEL: &#x27;📊 Excel&#x27;,
+      MANUAL: &#x27;✏️ Manual&#x27;,
+      OMITIDO: &#x27;— Omitido&#x27;,
+    };
+    return map[metodo] ?? metodo;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;info-finanzas-page&quot;&gt;
+  &lt;!-- Loading --&gt;
+  &lt;div class&#x3D;&quot;loading-wrapper&quot; data-cy&#x3D;&quot;finanzas-loading&quot; *ngIf&#x3D;&quot;loading&quot;&gt;
+    &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Cargando información financiera...&quot;&gt;&lt;/app-spinner&gt;
+  &lt;/div&gt;
+
+  &lt;ng-container *ngIf&#x3D;&quot;!loading&quot;&gt;
+    &lt;!-- Header --&gt;
+    &lt;div class&#x3D;&quot;page-header&quot; data-cy&#x3D;&quot;finanzas-header&quot;&gt;
+      &lt;div class&#x3D;&quot;header-left&quot;&gt;
+        &lt;span class&#x3D;&quot;page-tag&quot;&gt;Finanzas&lt;/span&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Información &lt;span class&#x3D;&quot;brand&quot;&gt;Financiera&lt;/span&gt;&lt;/h1&gt;
+        &lt;p class&#x3D;&quot;page-subtitle&quot; *ngIf&#x3D;&quot;hatoActivo&quot;&gt;
+          Hato: &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        &lt;/p&gt;
+        &lt;p class&#x3D;&quot;page-subtitle warn&quot; *ngIf&#x3D;&quot;!hatoActivo&quot;&gt;
+          ⚠️ Selecciona un hato desde el panel superior para ver su información.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;header-badge&quot;&gt;📊&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Sin hato --&gt;
+    &lt;div class&#x3D;&quot;empty-state&quot; *ngIf&#x3D;&quot;!hatoActivo&quot;&gt;
+      &lt;span class&#x3D;&quot;empty-icon&quot;&gt;🐄&lt;/span&gt;
+      &lt;p&gt;No hay un hato seleccionado. Por favor selecciona uno desde el menú superior.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;ng-container *ngIf&#x3D;&quot;hatoActivo&quot;&gt;
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; SELECTOR DE PERÍODO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;periodo-selector&quot;&gt;
+        &lt;div class&#x3D;&quot;periodo-selector-left&quot;&gt;
+          &lt;span class&#x3D;&quot;periodo-label&quot;&gt;📅 Período:&lt;/span&gt;
+          &lt;select class&#x3D;&quot;periodo-select&quot; [(ngModel)]&#x3D;&quot;periodoDesde&quot; (change)&#x3D;&quot;onPeriodoChange()&quot;&gt;
+            @for (mes of mesesDisponibles; track mes.valor) {
+              &lt;option [value]&#x3D;&quot;mes.valor&quot;&gt;{{ mes.label }}&lt;/option&gt;
+            }
+          &lt;/select&gt;
+          &lt;span class&#x3D;&quot;periodo-sep&quot;&gt;→&lt;/span&gt;
+          &lt;select class&#x3D;&quot;periodo-select&quot; [(ngModel)]&#x3D;&quot;periodoHasta&quot; (change)&#x3D;&quot;onPeriodoChange()&quot;&gt;
+            @for (mes of mesesDisponibles; track mes.valor) {
+              &lt;option [value]&#x3D;&quot;mes.valor&quot;&gt;{{ mes.label }}&lt;/option&gt;
+            }
+          &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;periodo-selector-right&quot;&gt;
+          @if (loadingPeriodo) {
+            &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+          } @else {
+            &lt;span class&#x3D;&quot;fuente-badge&quot; [class]&#x3D;&quot;claseFuentePeriodo&quot;&gt;
+              {{ labelFuentePeriodo }}
+            &lt;/span&gt;
+          }
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; KPI GRID &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;kpi-grid&quot; data-cy&#x3D;&quot;finanzas-kpi-grid&quot;&gt;
+        &lt;div class&#x3D;&quot;kpi-card&quot; data-cy&#x3D;&quot;kpi-registros-actuales&quot;&gt;
+          &lt;span class&#x3D;&quot;kpi-icon&quot;&gt;📋&lt;/span&gt;
+          &lt;div class&#x3D;&quot;kpi-info&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-value&quot;&gt;{{ registros.length }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Registros actuales&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;kpi-card&quot; data-cy&#x3D;&quot;kpi-registros-historicos&quot;&gt;
+          &lt;span class&#x3D;&quot;kpi-icon&quot;&gt;📁&lt;/span&gt;
+          &lt;div class&#x3D;&quot;kpi-info&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-value&quot;&gt;{{ historicos.length }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Registros históricos&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;kpi-card&quot; data-cy&#x3D;&quot;kpi-total-ingresos&quot;&gt;
+          &lt;span class&#x3D;&quot;kpi-icon ingreso-icon&quot;&gt;↑&lt;/span&gt;
+          &lt;div class&#x3D;&quot;kpi-info&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-value ingreso-val&quot;&gt;
+              {{ formatCOP(totalIngresosPeriodo) }}
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Total ingresos&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;kpi-card&quot; data-cy&#x3D;&quot;kpi-total-egresos&quot;&gt;
+          &lt;span class&#x3D;&quot;kpi-icon gasto-icon&quot;&gt;↓&lt;/span&gt;
+          &lt;div class&#x3D;&quot;kpi-info&quot;&gt;
+            &lt;span class&#x3D;&quot;kpi-value gasto-val&quot;&gt;
+              {{ formatCOP(totalEgresosPeriodo) }}
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;kpi-label&quot;&gt;Total egresos&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; REGISTROS FINANCIEROS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;section&quot;&gt;
+        &lt;div class&#x3D;&quot;section-header&quot;&gt;
+          &lt;div class&#x3D;&quot;section-title-group&quot;&gt;
+            &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Registros Financieros&lt;/h2&gt;
+            &lt;span class&#x3D;&quot;section-badge&quot;&gt;{{ registrosFiltrados.length }}&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;section-controls&quot;&gt;
+            &lt;!-- Barra de búsqueda --&gt;
+            &lt;div class&#x3D;&quot;search-bar-wrapper&quot;&gt;
+              &lt;svg
+                class&#x3D;&quot;search-icon&quot;
+                fill&#x3D;&quot;none&quot;
+                stroke&#x3D;&quot;currentColor&quot;
+                stroke-width&#x3D;&quot;2&quot;
+                viewBox&#x3D;&quot;0 0 24 24&quot;
+              &gt;
+                &lt;circle cx&#x3D;&quot;11&quot; cy&#x3D;&quot;11&quot; r&#x3D;&quot;8&quot; /&gt;
+                &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M21 21l-4.35-4.35&quot; /&gt;
+              &lt;/svg&gt;
+              &lt;input
+                class&#x3D;&quot;search-input&quot;
+                type&#x3D;&quot;text&quot;
+                placeholder&#x3D;&quot;Buscar por nombre o categoría...&quot;
+                [(ngModel)]&#x3D;&quot;searchQuery&quot;
+              /&gt;
+              &lt;button class&#x3D;&quot;search-clear&quot; *ngIf&#x3D;&quot;searchQuery&quot; (click)&#x3D;&quot;searchQuery &#x3D; &#x27;&#x27;&quot;&gt;
+                &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2.5&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+                  &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M6 18L18 6M6 6l12 12&quot; /&gt;
+                &lt;/svg&gt;
+              &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Filtro tipo --&gt;
+            &lt;div class&#x3D;&quot;filter-chips&quot;&gt;
+              &lt;button
+                class&#x3D;&quot;chip&quot;
+                [class.chip-active]&#x3D;&quot;filtroTipo &#x3D;&#x3D;&#x3D; &#x27;TODOS&#x27;&quot;
+                (click)&#x3D;&quot;setFiltroTipo(&#x27;TODOS&#x27;)&quot;
+              &gt;
+                Todos
+              &lt;/button&gt;
+              &lt;button
+                class&#x3D;&quot;chip chip-ingreso&quot;
+                [class.chip-active]&#x3D;&quot;filtroTipo &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27;&quot;
+                (click)&#x3D;&quot;setFiltroTipo(&#x27;INGRESO&#x27;)&quot;
+              &gt;
+                Ingresos
+              &lt;/button&gt;
+              &lt;button
+                class&#x3D;&quot;chip chip-gasto&quot;
+                [class.chip-active]&#x3D;&quot;filtroTipo &#x3D;&#x3D;&#x3D; &#x27;GASTO&#x27;&quot;
+                (click)&#x3D;&quot;setFiltroTipo(&#x27;GASTO&#x27;)&quot;
+              &gt;
+                Gastos
+              &lt;/button&gt;
+              &lt;button
+                class&#x3D;&quot;chip chip-inversion&quot;
+                [class.chip-active]&#x3D;&quot;filtroTipo &#x3D;&#x3D;&#x3D; &#x27;INVERSION&#x27;&quot;
+                (click)&#x3D;&quot;setFiltroTipo(&#x27;INVERSION&#x27;)&quot;
+              &gt;
+                Inversiones
+              &lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Tabla registros --&gt;
+        &lt;div
+          class&#x3D;&quot;table-wrapper&quot;
+          data-cy&#x3D;&quot;finanzas-tabla&quot;
+          *ngIf&#x3D;&quot;registrosFiltrados.length &gt; 0; else emptyRegistros&quot;
+        &gt;
+          &lt;table class&#x3D;&quot;data-table&quot;&gt;
+            &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th class&#x3D;&quot;th-sortable&quot; (click)&#x3D;&quot;ordenarPor(&#x27;fecha&#x27;)&quot;&gt;
+                  Fecha
+                  &lt;span class&#x3D;&quot;sort-icon&quot; [class.activo]&#x3D;&quot;sortColumna &#x3D;&#x3D;&#x3D; &#x27;fecha&#x27;&quot;&gt;
+                    {{ getSortIcon(&#x27;fecha&#x27;) }}
+                  &lt;/span&gt;
+                &lt;/th&gt;
+                &lt;th class&#x3D;&quot;th-sortable&quot; (click)&#x3D;&quot;ordenarPor(&#x27;titulo&#x27;)&quot;&gt;
+                  Título
+                  &lt;span class&#x3D;&quot;sort-icon&quot; [class.activo]&#x3D;&quot;sortColumna &#x3D;&#x3D;&#x3D; &#x27;titulo&#x27;&quot;&gt;
+                    {{ getSortIcon(&#x27;titulo&#x27;) }}
+                  &lt;/span&gt;
+                &lt;/th&gt;
+                &lt;th class&#x3D;&quot;th-sortable&quot; (click)&#x3D;&quot;ordenarPor(&#x27;categoria&#x27;)&quot;&gt;
+                  Categoría
+                  &lt;span class&#x3D;&quot;sort-icon&quot; [class.activo]&#x3D;&quot;sortColumna &#x3D;&#x3D;&#x3D; &#x27;categoria&#x27;&quot;&gt;
+                    {{ getSortIcon(&#x27;categoria&#x27;) }}
+                  &lt;/span&gt;
+                &lt;/th&gt;
+                &lt;th class&#x3D;&quot;th-sortable&quot; (click)&#x3D;&quot;ordenarPor(&#x27;tipo&#x27;)&quot;&gt;
+                  Tipo
+                  &lt;span class&#x3D;&quot;sort-icon&quot; [class.activo]&#x3D;&quot;sortColumna &#x3D;&#x3D;&#x3D; &#x27;tipo&#x27;&quot;&gt;
+                    {{ getSortIcon(&#x27;tipo&#x27;) }}
+                  &lt;/span&gt;
+                &lt;/th&gt;
+                &lt;th class&#x3D;&quot;th-sortable text-right&quot; (click)&#x3D;&quot;ordenarPor(&#x27;monto&#x27;)&quot;&gt;
+                  Monto
+                  &lt;span class&#x3D;&quot;sort-icon&quot; [class.activo]&#x3D;&quot;sortColumna &#x3D;&#x3D;&#x3D; &#x27;monto&#x27;&quot;&gt;
+                    {{ getSortIcon(&#x27;monto&#x27;) }}
+                  &lt;/span&gt;
+                &lt;/th&gt;
+                &lt;th class&#x3D;&quot;text-center&quot;&gt;Acciones&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+              &lt;tr *ngFor&#x3D;&quot;let r of registrosPaginados&quot;&gt;
+                &lt;td class&#x3D;&quot;fecha-cell&quot;&gt;{{ r.fecha | date: &#x27;dd/MM/yyyy&#x27; }}&lt;/td&gt;
+                &lt;td class&#x3D;&quot;titulo-cell&quot;&gt;
+                  &lt;span class&#x3D;&quot;titulo-text&quot;&gt;{{ r.titulo }}&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;desc-text&quot; *ngIf&#x3D;&quot;r.descripcion&quot;&gt;{{ r.descripcion }}&lt;/span&gt;
+                &lt;/td&gt;
+                &lt;td class&#x3D;&quot;cat-cell&quot;&gt;
+                  &lt;span class&#x3D;&quot;cat-nombre&quot; *ngIf&#x3D;&quot;r.categoriaFinanciera&quot;&gt;
+                    {{ r.categoriaFinanciera.nombre }}
+                  &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;cat-none&quot; *ngIf&#x3D;&quot;!r.categoriaFinanciera&quot;&gt;—&lt;/span&gt;
+                &lt;/td&gt;
+                &lt;td&gt;
+                  &lt;span class&#x3D;&quot;tipo-badge&quot; [ngClass]&#x3D;&quot;&#x27;tipo-&#x27; + r.tipoMovimiento.toLowerCase()&quot;&gt;
+                    {{ labelTipo(r.tipoMovimiento) }}
+                  &lt;/span&gt;
+                &lt;/td&gt;
+                &lt;td class&#x3D;&quot;monto-cell text-right&quot;&gt;
+                  &lt;span
+                    [ngClass]&#x3D;&quot;r.tipoMovimiento &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27; ? &#x27;monto-ingreso&#x27; : &#x27;monto-egreso&#x27;&quot;
+                  &gt;
+                    {{ formatCOP(r.monto) }}
+                  &lt;/span&gt;
+                &lt;/td&gt;
+                &lt;td class&#x3D;&quot;text-center&quot;&gt;
+                  &lt;button
+                    *ngIf&#x3D;&quot;!modoLectura&quot;
+                    class&#x3D;&quot;btn-delete&quot;
+                    (click)&#x3D;&quot;solicitarEliminacion(r)&quot;
+                    title&#x3D;&quot;Eliminar registro&quot;
+                  &gt;
+                    &lt;svg fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-width&#x3D;&quot;2&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+                      &lt;path
+                        stroke-linecap&#x3D;&quot;round&quot;
+                        stroke-linejoin&#x3D;&quot;round&quot;
+                        d&#x3D;&quot;M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16&quot;
+                      /&gt;
+                    &lt;/svg&gt;
+                  &lt;/button&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+
+          &lt;!-- Paginación --&gt;
+          &lt;div class&#x3D;&quot;paginacion&quot; *ngIf&#x3D;&quot;totalPaginas &gt; 1&quot;&gt;
+            &lt;div class&#x3D;&quot;paginacion-info&quot;&gt;
+              Mostrando {{ (paginaActual - 1) * registrosPorPagina + 1 }}–{{
+                paginaActual * registrosPorPagina &gt; registrosOrdenados.length
+                  ? registrosOrdenados.length
+                  : paginaActual * registrosPorPagina
+              }}
+              de {{ registrosOrdenados.length }} registros
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;paginacion-controles&quot;&gt;
+              &lt;button
+                class&#x3D;&quot;pag-btn&quot;
+                [disabled]&#x3D;&quot;paginaActual &#x3D;&#x3D;&#x3D; 1&quot;
+                (click)&#x3D;&quot;irAPagina(paginaActual - 1)&quot;
+              &gt;
+                ←
+              &lt;/button&gt;
+
+              @for (p of paginas; track p) {
+                @if (p &#x3D;&#x3D;&#x3D; -1) {
+                  &lt;span class&#x3D;&quot;pag-ellipsis&quot;&gt;…&lt;/span&gt;
+                } @else {
+                  &lt;button
+                    class&#x3D;&quot;pag-btn&quot;
+                    [class.activa]&#x3D;&quot;p &#x3D;&#x3D;&#x3D; paginaActual&quot;
+                    (click)&#x3D;&quot;irAPagina(p)&quot;
+                  &gt;
+                    {{ p }}
+                  &lt;/button&gt;
+                }
+              }
+
+              &lt;button
+                class&#x3D;&quot;pag-btn&quot;
+                [disabled]&#x3D;&quot;paginaActual &#x3D;&#x3D;&#x3D; totalPaginas&quot;
+                (click)&#x3D;&quot;irAPagina(paginaActual + 1)&quot;
+              &gt;
+                →
+              &lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;ng-template #emptyRegistros&gt;
+          &lt;div class&#x3D;&quot;empty-section&quot;&gt;
+            &lt;span&gt;📭&lt;/span&gt;
+            &lt;p *ngIf&#x3D;&quot;searchQuery&quot;&gt;
+              No se encontraron registros para &quot;&lt;strong&gt;{{ searchQuery }}&lt;/strong
+              &gt;&quot;.
+            &lt;/p&gt;
+            &lt;p *ngIf&#x3D;&quot;!searchQuery&quot;&gt;No hay registros financieros para este filtro.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/ng-template&gt;
+      &lt;/div&gt;
+
+      &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HISTORIAL FINANCIERO &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+      &lt;div class&#x3D;&quot;section&quot;&gt;
+        &lt;div class&#x3D;&quot;section-header&quot;&gt;
+          &lt;div class&#x3D;&quot;section-title-group&quot;&gt;
+            &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Historial Financiero Inicial&lt;/h2&gt;
+            &lt;span class&#x3D;&quot;section-badge&quot;&gt;{{ historicos.length }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        @if (historicos.length &gt; 0) {
+          &lt;div class&#x3D;&quot;perfiles-list&quot;&gt;
+            @for (grupo of historicosPorMes; track grupo.mes) {
+              &lt;div class&#x3D;&quot;perfil-card&quot;&gt;
+                &lt;div class&#x3D;&quot;perfil-header&quot;&gt;
+                  &lt;div class&#x3D;&quot;perfil-left&quot;&gt;
+                    &lt;div class&#x3D;&quot;perfil-periodo&quot;&gt;
+                      &lt;span class&#x3D;&quot;periodo-label&quot;&gt;Período&lt;/span&gt;
+                      &lt;span class&#x3D;&quot;periodo-valor&quot;&gt;
+                        {{ grupo.label }}
+                      &lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;span class&#x3D;&quot;metodo-badge metodo-manual&quot;&gt; 🗂️ Histórico &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;perfil-right&quot;&gt;
+                    &lt;button class&#x3D;&quot;btn-toggle&quot; (click)&#x3D;&quot;togglePerfil(grupo.mes)&quot;&gt;
+                      &lt;svg
+                        fill&#x3D;&quot;none&quot;
+                        stroke&#x3D;&quot;currentColor&quot;
+                        stroke-width&#x3D;&quot;2.5&quot;
+                        viewBox&#x3D;&quot;0 0 24 24&quot;
+                        [class.rotated]&#x3D;&quot;perfilExpandido &#x3D;&#x3D;&#x3D; grupo.mes&quot;
+                      &gt;
+                        &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M19 9l-7 7-7-7&quot; /&gt;
+                      &lt;/svg&gt;
+                      {{
+                        perfilExpandido &#x3D;&#x3D;&#x3D; grupo.mes
+                          ? &#x27;Ocultar&#x27;
+                          : &#x27;Ver detalles (&#x27; + grupo.registros.length + &#x27;)&#x27;
+                      }}
+                    &lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                @if (perfilExpandido &#x3D;&#x3D;&#x3D; grupo.mes) {
+                  &lt;div class&#x3D;&quot;detalles-table-wrapper&quot;&gt;
+                    &lt;table class&#x3D;&quot;data-table detalles-table&quot;&gt;
+                      &lt;thead&gt;
+                        &lt;tr&gt;
+                          &lt;th&gt;Fecha&lt;/th&gt;
+                          &lt;th&gt;Título&lt;/th&gt;
+                          &lt;th&gt;Categoría&lt;/th&gt;
+                          &lt;th&gt;Tipo&lt;/th&gt;
+                          &lt;th&gt;Precisión&lt;/th&gt;
+                          &lt;th class&#x3D;&quot;text-right&quot;&gt;Monto&lt;/th&gt;
+                        &lt;/tr&gt;
+                      &lt;/thead&gt;
+                      &lt;tbody&gt;
+                        @for (h of grupo.registros; track h.idRegistro) {
+                          &lt;tr&gt;
+                            &lt;td class&#x3D;&quot;fecha-cell&quot;&gt;
+                              @if (h.precisionFecha &#x3D;&#x3D;&#x3D; &#x27;ANUAL&#x27;) {
+                                {{ h.fecha | date: &#x27;yyyy&#x27; }}
+                              } @else if (h.precisionFecha &#x3D;&#x3D;&#x3D; &#x27;MENSUAL&#x27;) {
+                                {{ h.fecha | date: &#x27;MM/yyyy&#x27; }}
+                              } @else {
+                                {{ h.fecha | date: &#x27;dd/MM/yyyy&#x27; }}
+                              }
+                            &lt;/td&gt;
+                            &lt;td&gt;{{ h.titulo ?? &#x27;—&#x27; }}&lt;/td&gt;
+                            &lt;td class&#x3D;&quot;cat-cell&quot;&gt;
+                              @if (h.categoriaFinanciera) {
+                                &lt;span class&#x3D;&quot;cat-nombre&quot;&gt;
+                                  {{ h.categoriaFinanciera.nombre }}
+                                &lt;/span&gt;
+                              } @else {
+                                &lt;span class&#x3D;&quot;cat-none&quot;&gt;—&lt;/span&gt;
+                              }
+                            &lt;/td&gt;
+                            &lt;td&gt;
+                              &lt;span
+                                class&#x3D;&quot;tipo-badge&quot;
+                                [ngClass]&#x3D;&quot;&#x27;tipo-&#x27; + h.tipoMovimiento.toLowerCase()&quot;
+                              &gt;
+                                {{ labelTipo(h.tipoMovimiento) }}
+                              &lt;/span&gt;
+                            &lt;/td&gt;
+                            &lt;td&gt;
+                              &lt;span
+                                class&#x3D;&quot;precision-badge precision-{{
+                                  h.precisionFecha.toLowerCase()
+                                }}&quot;
+                              &gt;
+                                {{ h.precisionFecha }}
+                              &lt;/span&gt;
+                            &lt;/td&gt;
+                            &lt;td class&#x3D;&quot;monto-cell text-right&quot;&gt;
+                              &lt;span
+                                [ngClass]&#x3D;&quot;
+                                  h.tipoMovimiento &#x3D;&#x3D;&#x3D; &#x27;INGRESO&#x27; ? &#x27;monto-ingreso&#x27; : &#x27;monto-egreso&#x27;
+                                &quot;
+                              &gt;
+                                {{ formatCOP(h.monto) }}
+                              &lt;/span&gt;
+                            &lt;/td&gt;
+                          &lt;/tr&gt;
+                        }
+                      &lt;/tbody&gt;
+                    &lt;/table&gt;
+                  &lt;/div&gt;
+                }
+              &lt;/div&gt;
+            }
+          &lt;/div&gt;
+        } @else {
+          &lt;div class&#x3D;&quot;empty-section&quot;&gt;
+            &lt;span&gt;📂&lt;/span&gt;
+            &lt;p&gt;No hay historial financiero inicial registrado.&lt;/p&gt;
+          &lt;/div&gt;
+        }
+      &lt;/div&gt;
+    &lt;/ng-container&gt;
+  &lt;/ng-container&gt;
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; MODAL CONFIRMACIÓN ELIMINAR &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  &lt;div
+    class&#x3D;&quot;modal-overlay&quot;
+    *ngIf&#x3D;&quot;registroAEliminar &amp;&amp; !modoLectura&quot;
+    (click)&#x3D;&quot;cancelarEliminacion()&quot;
+  &gt;
+    &lt;div class&#x3D;&quot;modal-card&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-icon&quot;&gt;🗑️&lt;/div&gt;
+      &lt;h3 class&#x3D;&quot;modal-title&quot;&gt;¿Eliminar registro?&lt;/h3&gt;
+      &lt;p class&#x3D;&quot;modal-desc&quot;&gt;
+        Estás a punto de eliminar
+        &lt;strong&gt;{{ registroAEliminar.titulo }}&lt;/strong
+        &gt;. Esta acción no se puede deshacer.
+      &lt;/p&gt;
+      &lt;div class&#x3D;&quot;modal-actions&quot;&gt;
+        &lt;button class&#x3D;&quot;btn-cancel&quot; (click)&#x3D;&quot;cancelarEliminacion()&quot;&gt;Cancelar&lt;/button&gt;
+        &lt;button class&#x3D;&quot;btn-confirm-delete&quot; (click)&#x3D;&quot;confirmarEliminacion()&quot; [disabled]&#x3D;&quot;eliminando&quot;&gt;
+          &lt;span *ngIf&#x3D;&quot;!eliminando&quot;&gt;Eliminar&lt;/span&gt;
+          &lt;span *ngIf&#x3D;&quot;eliminando&quot;&gt;Eliminando...&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="info-finanzas-page">  <!-- Loading -->  <div class="loading-wrapper" data-cy="finanzas-loading" *ngIf="loading">    <app-spinner size="large" message="Cargando información financiera..."></app-spinner>  </div>  <ng-container *ngIf="!loading">    <!-- Header -->    <div class="page-header" data-cy="finanzas-header">      <div class="header-left">        <span class="page-tag">Finanzas</span>        <h1 class="page-title">Información <span class="brand">Financiera</span></h1>        <p class="page-subtitle" *ngIf="hatoActivo">          Hato: <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},          {{ hatoActivo.departamento }}        </p>        <p class="page-subtitle warn" *ngIf="!hatoActivo">          ⚠️ Selecciona un hato desde el panel superior para ver su información.        </p>      </div>      <div class="header-badge">📊</div>    </div>    <!-- Sin hato -->    <div class="empty-state" *ngIf="!hatoActivo">      <span class="empty-icon">🐄</span>      <p>No hay un hato seleccionado. Por favor selecciona uno desde el menú superior.</p>    </div>    <ng-container *ngIf="hatoActivo">      <!-- ===== SELECTOR DE PERÍODO ===== -->      <div class="periodo-selector">        <div class="periodo-selector-left">          <span class="periodo-label">📅 Período:</span>          <select class="periodo-select" [(ngModel)]="periodoDesde" (change)="onPeriodoChange()">            @for (mes of mesesDisponibles; track mes.valor) {              <option [value]="mes.valor">{{ mes.label }}</option>            }          </select>          <span class="periodo-sep">→</span>          <select class="periodo-select" [(ngModel)]="periodoHasta" (change)="onPeriodoChange()">            @for (mes of mesesDisponibles; track mes.valor) {              <option [value]="mes.valor">{{ mes.label }}</option>            }          </select>        </div>        <div class="periodo-selector-right">          @if (loadingPeriodo) {            <app-spinner size="small"></app-spinner>          } @else {            <span class="fuente-badge" [class]="claseFuentePeriodo">              {{ labelFuentePeriodo }}            </span>          }        </div>      </div>      <!-- ===== KPI GRID ===== -->      <div class="kpi-grid" data-cy="finanzas-kpi-grid">        <div class="kpi-card" data-cy="kpi-registros-actuales">          <span class="kpi-icon">📋</span>          <div class="kpi-info">            <span class="kpi-value">{{ registros.length }}</span>            <span class="kpi-label">Registros actuales</span>          </div>        </div>        <div class="kpi-card" data-cy="kpi-registros-historicos">          <span class="kpi-icon">📁</span>          <div class="kpi-info">            <span class="kpi-value">{{ historicos.length }}</span>            <span class="kpi-label">Registros históricos</span>          </div>        </div>        <div class="kpi-card" data-cy="kpi-total-ingresos">          <span class="kpi-icon ingreso-icon">↑</span>          <div class="kpi-info">            <span class="kpi-value ingreso-val">              {{ formatCOP(totalIngresosPeriodo) }}            </span>            <span class="kpi-label">Total ingresos</span>          </div>        </div>        <div class="kpi-card" data-cy="kpi-total-egresos">          <span class="kpi-icon gasto-icon">↓</span>          <div class="kpi-info">            <span class="kpi-value gasto-val">              {{ formatCOP(totalEgresosPeriodo) }}            </span>            <span class="kpi-label">Total egresos</span>          </div>        </div>      </div>      <!-- ===== REGISTROS FINANCIEROS ===== -->      <div class="section">        <div class="section-header">          <div class="section-title-group">            <h2 class="section-title">Registros Financieros</h2>            <span class="section-badge">{{ registrosFiltrados.length }}</span>          </div>          <div class="section-controls">            <!-- Barra de búsqueda -->            <div class="search-bar-wrapper">              <svg                class="search-icon"                fill="none"                stroke="currentColor"                stroke-width="2"                viewBox="0 0 24 24"              >                <circle cx="11" cy="11" r="8" />                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35" />              </svg>              <input                class="search-input"                type="text"                placeholder="Buscar por nombre o categoría..."                [(ngModel)]="searchQuery"              />              <button class="search-clear" *ngIf="searchQuery" (click)="searchQuery = \'\'">                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />                </svg>              </button>            </div>            <!-- Filtro tipo -->            <div class="filter-chips">              <button                class="chip"                [class.chip-active]="filtroTipo === \'TODOS\'"                (click)="setFiltroTipo(\'TODOS\')"              >                Todos              </button>              <button                class="chip chip-ingreso"                [class.chip-active]="filtroTipo === \'INGRESO\'"                (click)="setFiltroTipo(\'INGRESO\')"              >                Ingresos              </button>              <button                class="chip chip-gasto"                [class.chip-active]="filtroTipo === \'GASTO\'"                (click)="setFiltroTipo(\'GASTO\')"              >                Gastos              </button>              <button                class="chip chip-inversion"                [class.chip-active]="filtroTipo === \'INVERSION\'"                (click)="setFiltroTipo(\'INVERSION\')"              >                Inversiones              </button>            </div>          </div>        </div>        <!-- Tabla registros -->        <div          class="table-wrapper"          data-cy="finanzas-tabla"          *ngIf="registrosFiltrados.length > 0; else emptyRegistros"        >          <table class="data-table">            <thead>              <tr>                <th class="th-sortable" (click)="ordenarPor(\'fecha\')">                  Fecha                  <span class="sort-icon" [class.activo]="sortColumna === \'fecha\'">                    {{ getSortIcon(\'fecha\') }}                  </span>                </th>                <th class="th-sortable" (click)="ordenarPor(\'titulo\')">                  Título                  <span class="sort-icon" [class.activo]="sortColumna === \'titulo\'">                    {{ getSortIcon(\'titulo\') }}                  </span>                </th>                <th class="th-sortable" (click)="ordenarPor(\'categoria\')">                  Categoría                  <span class="sort-icon" [class.activo]="sortColumna === \'categoria\'">                    {{ getSortIcon(\'categoria\') }}                  </span>                </th>                <th class="th-sortable" (click)="ordenarPor(\'tipo\')">                  Tipo                  <span class="sort-icon" [class.activo]="sortColumna === \'tipo\'">                    {{ getSortIcon(\'tipo\') }}                  </span>                </th>                <th class="th-sortable text-right" (click)="ordenarPor(\'monto\')">                  Monto                  <span class="sort-icon" [class.activo]="sortColumna === \'monto\'">                    {{ getSortIcon(\'monto\') }}                  </span>                </th>                <th class="text-center">Acciones</th>              </tr>            </thead>            <tbody>              <tr *ngFor="let r of registrosPaginados">                <td class="fecha-cell">{{ r.fecha | date: \'dd/MM/yyyy\' }}</td>                <td class="titulo-cell">                  <span class="titulo-text">{{ r.titulo }}</span>                  <span class="desc-text" *ngIf="r.descripcion">{{ r.descripcion }}</span>                </td>                <td class="cat-cell">                  <span class="cat-nombre" *ngIf="r.categoriaFinanciera">                    {{ r.categoriaFinanciera.nombre }}                  </span>                  <span class="cat-none" *ngIf="!r.categoriaFinanciera">—</span>                </td>                <td>                  <span class="tipo-badge" [ngClass]="\'tipo-\' + r.tipoMovimiento.toLowerCase()">                    {{ labelTipo(r.tipoMovimiento) }}                  </span>                </td>                <td class="monto-cell text-right">                  <span                    [ngClass]="r.tipoMovimiento === \'INGRESO\' ? \'monto-ingreso\' : \'monto-egreso\'"                  >                    {{ formatCOP(r.monto) }}                  </span>                </td>                <td class="text-center">                  <button                    *ngIf="!modoLectura"                    class="btn-delete"                    (click)="solicitarEliminacion(r)"                    title="Eliminar registro"                  >                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">                      <path                        stroke-linecap="round"                        stroke-linejoin="round"                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"                      />                    </svg>                  </button>                </td>              </tr>            </tbody>          </table>          <!-- Paginación -->          <div class="paginacion" *ngIf="totalPaginas > 1">            <div class="paginacion-info">              Mostrando {{ (paginaActual - 1) * registrosPorPagina + 1 }}–{{                paginaActual * registrosPorPagina > registrosOrdenados.length                  ? registrosOrdenados.length                  : paginaActual * registrosPorPagina              }}              de {{ registrosOrdenados.length }} registros            </div>            <div class="paginacion-controles">              <button                class="pag-btn"                [disabled]="paginaActual === 1"                (click)="irAPagina(paginaActual - 1)"              >                ←              </button>              @for (p of paginas; track p) {                @if (p === -1) {                  <span class="pag-ellipsis">…</span>                } @else {                  <button                    class="pag-btn"                    [class.activa]="p === paginaActual"                    (click)="irAPagina(p)"                  >                    {{ p }}                  </button>                }              }              <button                class="pag-btn"                [disabled]="paginaActual === totalPaginas"                (click)="irAPagina(paginaActual + 1)"              >                →              </button>            </div>          </div>        </div>        <ng-template #emptyRegistros>          <div class="empty-section">            <span>📭</span>            <p *ngIf="searchQuery">              No se encontraron registros para "<strong>{{ searchQuery }}</strong              >".            </p>            <p *ngIf="!searchQuery">No hay registros financieros para este filtro.</p>          </div>        </ng-template>      </div>      <!-- ===== HISTORIAL FINANCIERO ===== -->      <div class="section">        <div class="section-header">          <div class="section-title-group">            <h2 class="section-title">Historial Financiero Inicial</h2>            <span class="section-badge">{{ historicos.length }}</span>          </div>        </div>        @if (historicos.length > 0) {          <div class="perfiles-list">            @for (grupo of historicosPorMes; track grupo.mes) {              <div class="perfil-card">                <div class="perfil-header">                  <div class="perfil-left">                    <div class="perfil-periodo">                      <span class="periodo-label">Período</span>                      <span class="periodo-valor">                        {{ grupo.label }}                      </span>                    </div>                    <span class="metodo-badge metodo-manual"> 🗂️ Histórico </span>                  </div>                  <div class="perfil-right">                    <button class="btn-toggle" (click)="togglePerfil(grupo.mes)">                      <svg                        fill="none"                        stroke="currentColor"                        stroke-width="2.5"                        viewBox="0 0 24 24"                        [class.rotated]="perfilExpandido === grupo.mes"                      >                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />                      </svg>                      {{                        perfilExpandido === grupo.mes                          ? \'Ocultar\'                          : \'Ver detalles (\' + grupo.registros.length + \')\'                      }}                    </button>                  </div>                </div>                @if (perfilExpandido === grupo.mes) {                  <div class="detalles-table-wrapper">                    <table class="data-table detalles-table">                      <thead>                        <tr>                          <th>Fecha</th>                          <th>Título</th>                          <th>Categoría</th>                          <th>Tipo</th>                          <th>Precisión</th>                          <th class="text-right">Monto</th>                        </tr>                      </thead>                      <tbody>                        @for (h of grupo.registros; track h.idRegistro) {                          <tr>                            <td class="fecha-cell">                              @if (h.precisionFecha === \'ANUAL\') {                                {{ h.fecha | date: \'yyyy\' }}                              } @else if (h.precisionFecha === \'MENSUAL\') {                                {{ h.fecha | date: \'MM/yyyy\' }}                              } @else {                                {{ h.fecha | date: \'dd/MM/yyyy\' }}                              }                            </td>                            <td>{{ h.titulo ?? \'—\' }}</td>                            <td class="cat-cell">                              @if (h.categoriaFinanciera) {                                <span class="cat-nombre">                                  {{ h.categoriaFinanciera.nombre }}                                </span>                              } @else {                                <span class="cat-none">—</span>                              }                            </td>                            <td>                              <span                                class="tipo-badge"                                [ngClass]="\'tipo-\' + h.tipoMovimiento.toLowerCase()"                              >                                {{ labelTipo(h.tipoMovimiento) }}                              </span>                            </td>                            <td>                              <span                                class="precision-badge precision-{{                                  h.precisionFecha.toLowerCase()                                }}"                              >                                {{ h.precisionFecha }}                              </span>                            </td>                            <td class="monto-cell text-right">                              <span                                [ngClass]="                                  h.tipoMovimiento === \'INGRESO\' ? \'monto-ingreso\' : \'monto-egreso\'                                "                              >                                {{ formatCOP(h.monto) }}                              </span>                            </td>                          </tr>                        }                      </tbody>                    </table>                  </div>                }              </div>            }          </div>        } @else {          <div class="empty-section">            <span>📂</span>            <p>No hay historial financiero inicial registrado.</p>          </div>        }      </div>    </ng-container>  </ng-container>  <!-- ===== MODAL CONFIRMACIÓN ELIMINAR ===== -->  <div    class="modal-overlay"    *ngIf="registroAEliminar && !modoLectura"    (click)="cancelarEliminacion()"  >    <div class="modal-card" (click)="$event.stopPropagation()">      <div class="modal-icon">🗑️</div>      <h3 class="modal-title">¿Eliminar registro?</h3>      <p class="modal-desc">        Estás a punto de eliminar        <strong>{{ registroAEliminar.titulo }}</strong        >. Esta acción no se puede deshacer.      </p>      <div class="modal-actions">        <button class="btn-cancel" (click)="cancelarEliminacion()">Cancelar</button>        <button class="btn-confirm-delete" (click)="confirmarEliminacion()" [disabled]="eliminando">          <span *ngIf="!eliminando">Eliminar</span>          <span *ngIf="eliminando">Eliminando...</span>        </button>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'InfoFinanzasComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'InfoFinanzasComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

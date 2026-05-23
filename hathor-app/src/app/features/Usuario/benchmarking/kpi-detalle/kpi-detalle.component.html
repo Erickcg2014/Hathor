@@ -1,0 +1,291 @@
+<div class="detalle-page">
+  @if (loading) {
+    <div class="loading-wrapper">
+      <app-spinner size="large" message="Cargando detalle..."></app-spinner>
+    </div>
+  }
+
+  @if (!loading) {
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <button class="btn-volver" (click)="volver()">
+        <svg
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          viewBox="0 0 24 24"
+          width="14"
+          height="14"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+
+        Mis KPIs
+      </button>
+
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-actual">{{ kpi?.nombre }}</span>
+    </div>
+
+    @if (!kpi) {
+      <div class="empty-state">
+        <span>📊</span>
+        <p>KPI no encontrado. Regresa al dashboard y recalcula.</p>
+        <button class="btn-volver-primary" (click)="volver()">← Volver</button>
+      </div>
+    }
+
+    @if (kpi) {
+      <!-- Header KPI -->
+      <div
+        class="kpi-header"
+        [class.header-optimo]="kpi.estado === 'OPTIMO'"
+        [class.header-aceptable]="kpi.estado === 'ACEPTABLE'"
+        [class.header-critico]="kpi.estado === 'CRITICO'"
+        [class.header-sin-datos]="kpi.estado === 'SIN_DATOS'"
+      >
+        <div class="kpi-header-left">
+          <div class="kpi-header-top">
+            <h1 class="kpi-titulo">{{ kpi.nombre }}</h1>
+            <span
+              class="estado-badge-grande"
+              [class.badge-optimo]="kpi.estado === 'OPTIMO'"
+              [class.badge-aceptable]="kpi.estado === 'ACEPTABLE'"
+              [class.badge-critico]="kpi.estado === 'CRITICO'"
+              [class.badge-sin-datos]="kpi.estado === 'SIN_DATOS'"
+            >
+              {{ labelEstado }}
+            </span>
+          </div>
+          <p class="kpi-descripcion">{{ kpi.descripcion }}</p>
+        </div>
+
+        <div class="kpi-header-valor">
+          <span class="valor-grande">{{ formatValor(kpi.valor, kpi.unidad) }}</span>
+          <span class="valor-unidad">{{ kpi.unidad }}</span>
+        </div>
+      </div>
+
+      <!-- Cards benchmark -->
+      <div class="benchmark-cards">
+        <div class="bench-card">
+          <p class="bench-label">Tu hato</p>
+          <p class="bench-valor mi-valor">{{ formatValor(kpi.valor, kpi.unidad) }}</p>
+        </div>
+        @if (kpi.benchmarkPromedio !== null) {
+          <div class="bench-card">
+            <p class="bench-label">Promedio nacional</p>
+            <p class="bench-valor">{{ kpi.benchmarkPromedio }} {{ kpi.unidad }}</p>
+          </div>
+        }
+        @if (kpi.benchmarkTop !== null) {
+          <div class="bench-card top">
+            <p class="bench-label">Top Colombia</p>
+            <p class="bench-valor top-valor">{{ kpi.benchmarkTop }} {{ kpi.unidad }}</p>
+          </div>
+        }
+        @if (kpi.diferenciaPct !== null) {
+          <div
+            class="bench-card diferencia"
+            [class.diferencia-pos]="kpi.diferenciaPct >= 0"
+            [class.diferencia-neg]="kpi.diferenciaPct < 0"
+          >
+            <p class="bench-label">vs Promedio</p>
+            <p class="bench-valor">
+              {{ kpi.diferenciaPct >= 0 ? '+' : '' }}{{ kpi.diferenciaPct!.toFixed(1) }}%
+            </p>
+          </div>
+        }
+      </div>
+
+      <!-- Fórmula -->
+      <div class="formula-card">
+        <p class="formula-titulo">📐 Fórmula de cálculo</p>
+        <code class="formula-codigo">{{ kpi.formula }}</code>
+        <p class="formula-hint">
+          Calculado con base en los datos registrados en tu hato. Última actualización:
+          {{ kpi.fechaCalculo | date: 'dd/MM/yyyy' }}
+        </p>
+      </div>
+
+      <!-- Proceso de la fórmula -->
+      @if (kpi.detalleCalculo && kpi.detalleCalculo.length > 0) {
+        <div class="proceso-card">
+          <div class="proceso-header">
+            <span class="proceso-icono">🔢</span>
+            <div>
+              <h3 class="proceso-titulo">Detalles del cálculo</h3>
+              <p class="proceso-sub">Datos utilizados para calcular este indicador</p>
+            </div>
+          </div>
+
+          <div class="proceso-items">
+            @for (item of kpi.detalleCalculo; track item.variable) {
+              <div
+                class="proceso-item"
+                [class.item-input]="item.tipo === 'INPUT'"
+                [class.item-intermedio]="item.tipo === 'INTERMEDIO'"
+                [class.item-resultado]="item.tipo === 'RESULTADO'"
+              >
+                <div class="item-left">
+                  <span
+                    class="item-tipo-dot"
+                    [class.dot-input]="item.tipo === 'INPUT'"
+                    [class.dot-intermedio]="item.tipo === 'INTERMEDIO'"
+                    [class.dot-resultado]="item.tipo === 'RESULTADO'"
+                  ></span>
+                  <span class="item-variable">{{ item.variable }}</span>
+                </div>
+                @if (item.valor !== null && item.valor !== undefined) {
+                  <span class="item-valor" [class.valor-resultado]="item.tipo === 'RESULTADO'">
+                    {{ formatValor(item.valor, item.unidad ?? '') }}
+                    @if (item.unidad && !item.unidad.includes('COP') && item.unidad !== '%') {
+                      <span class="item-unidad">{{ item.unidad }}</span>
+                    }
+                  </span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Gráfica: Evolución histórica -->
+      @if (historico.length > 1) {
+        <div class="grafica-card">
+          <div class="grafica-header">
+            <div>
+              <h3 class="grafica-titulo">Evolución histórica</h3>
+              <p class="grafica-subtitulo">
+                Valores de {{ kpi.nombre }} en los últimos períodos calculados
+              </p>
+            </div>
+            <span class="grafica-badge">📈 Tendencia</span>
+          </div>
+          <div class="grafica-wrapper">
+            <canvas #chartHistorico></canvas>
+          </div>
+        </div>
+      }
+
+      <!-- Gráfica: Comparativa -->
+      @if (kpi.benchmarkPromedio !== null) {
+        <div class="grafica-card">
+          <div class="grafica-header">
+            <div>
+              <h3 class="grafica-titulo">Comparativa vs benchmarks</h3>
+              <p class="grafica-subtitulo">Tu hato vs promedio nacional y top Colombia</p>
+            </div>
+            <span class="grafica-badge comparativa">🏆 Benchmark</span>
+          </div>
+          <div class="grafica-wrapper">
+            <canvas #chartComparativa></canvas>
+          </div>
+        </div>
+      }
+
+      @if (kpi.codigo === 'KPI_BREAKEVEN_LITRO' && kpi.valor !== null) {
+        <div class="breakeven-card">
+          <div class="breakeven-header">
+            <span class="breakeven-icono">⚖️</span>
+            <div>
+              <p class="breakeven-titulo">¿Estás por encima del punto de equilibrio?</p>
+              <p class="breakeven-sub">
+                Compara el precio de equilibrio con el precio real que recibes por litro
+              </p>
+            </div>
+          </div>
+          <div class="breakeven-comparativa">
+            <div class="breakeven-item" [class.breakeven-malo]="kpi.valor !== null">
+              <span class="breakeven-label">Precio de equilibrio</span>
+              <span class="breakeven-valor rojo">
+                {{ formatValor(kpi.valor, kpi.unidad) }}
+              </span>
+              <span class="breakeven-hint">Mínimo para no perder</span>
+            </div>
+            <div class="breakeven-flecha">→</div>
+            <div class="breakeven-item">
+              <span class="breakeven-label">Ve a verificar</span>
+              <span class="breakeven-valor"> KPI Ingreso por Litro </span>
+              <span class="breakeven-hint">Tu precio real de venta</span>
+            </div>
+          </div>
+          <p class="breakeven-conclusion">
+            Si tu <strong>Ingreso por Litro</strong> es menor que
+            <strong>{{ formatValor(kpi.valor, kpi.unidad) }}</strong
+            >, tu hato está operando a pérdida. Revisa tus costos o negocia un mejor precio con el
+            comprador.
+          </p>
+        </div>
+      }
+
+      <!-- Interpretación -->
+      @if (kpi.estado !== 'SIN_DATOS') {
+        <div
+          class="interpretacion-card"
+          [class.interp-optimo]="kpi.estado === 'OPTIMO'"
+          [class.interp-aceptable]="kpi.estado === 'ACEPTABLE'"
+          [class.interp-critico]="kpi.estado === 'CRITICO'"
+        >
+          <div class="interp-icono">
+            @if (kpi.estado === 'OPTIMO') {
+              🟢
+            }
+            @if (kpi.estado === 'ACEPTABLE') {
+              🟡
+            }
+            @if (kpi.estado === 'CRITICO') {
+              🔴
+            }
+          </div>
+          <div>
+            <p class="interp-titulo">
+              @if (kpi.estado === 'OPTIMO') {
+                Tu hato está por encima del benchmark
+              }
+              @if (kpi.estado === 'ACEPTABLE') {
+                Tu hato está cerca del promedio nacional
+              }
+              @if (kpi.estado === 'CRITICO') {
+                Este indicador requiere atención
+              }
+            </p>
+            <p class="interp-desc">
+              @if (kpi.estado === 'OPTIMO') {
+                Mantén las prácticas actuales. Tu hato está entre los mejores productores de
+                Colombia en este indicador.
+              }
+              @if (kpi.estado === 'ACEPTABLE') {
+                Estás dentro del rango normal. Con ajustes en manejo puedes alcanzar el nivel
+                óptimo.
+              }
+              @if (kpi.estado === 'CRITICO') {
+                Este indicador está significativamente por debajo del promedio nacional. Revisa las
+                prácticas recomendadas en el módulo de Prácticas.
+              }
+            </p>
+          </div>
+        </div>
+      }
+
+      @if (kpi.estado === 'SIN_DATOS') {
+        <div class="interpretacion-card">
+          <div class="interp-icono">⚪</div>
+          <div>
+            <p class="interp-titulo">No hay suficientes datos para calcular este KPI</p>
+            @if (kpi.razonSinDatos) {
+              <p class="interp-desc">{{ kpi.razonSinDatos }}</p>
+            } @else {
+              <p class="interp-desc">
+                Completa el registro de datos en los módulos correspondientes.
+              </p>
+            }
+            <a class="interp-link" [routerLink]="getRutaParaKpi(kpi.codigo)">
+              Ir a registrar datos →
+            </a>
+          </div>
+        </div>
+      }
+    }
+  }
+</div>

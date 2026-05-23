@@ -1,0 +1,2051 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>hathor-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">hathor-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HistorialReportesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-historial-reportes</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./historial-reportes.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./historial-reportes.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#exito" >exito</a>
+                            </li>
+                            <li>
+                                <a href="#filtroTipo" >filtroTipo</a>
+                            </li>
+                            <li>
+                                <a href="#hatoActivo" >hatoActivo</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#regenerando" >regenerando</a>
+                            </li>
+                            <li>
+                                <a href="#reportes" >reportes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tipos" >tipos</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarHistorial" >cargarHistorial</a>
+                            </li>
+                            <li>
+                                <a href="#claseTipo" >claseTipo</a>
+                            </li>
+                            <li>
+                                <a href="#contarSecciones" >contarSecciones</a>
+                            </li>
+                            <li>
+                                <a href="#formatearFecha" >formatearFecha</a>
+                            </li>
+                            <li>
+                                <a href="#formatearPeriodo" >formatearPeriodo</a>
+                            </li>
+                            <li>
+                                <a href="#iconoTipo" >iconoTipo</a>
+                            </li>
+                            <li>
+                                <a href="#irAGenerarReporte" >irAGenerarReporte</a>
+                            </li>
+                            <li>
+                                <a href="#labelTipo" >labelTipo</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#regenerar" >regenerar</a>
+                            </li>
+                            <li>
+                                <a href="#setFiltro" >setFiltro</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#reportesFiltrados" >reportesFiltrados</a>
+                                </li>
+                                <li>
+                                    <a href="#countPorTipo" >countPorTipo</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(hatoState: <a href="../injectables/HatoStateService.html" target="_self">HatoStateService</a>, hatoService: <a href="../injectables/HatoService.html" target="_self">HatoService</a>, reporteService: <a href="../injectables/ReporteService.html" target="_self">ReporteService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:50</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>hatoState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoStateService.html" target="_self" >HatoStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hatoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HatoService.html" target="_self" >HatoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>reporteService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ReporteService.html" target="_self" >ReporteService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarHistorial"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarHistorial</b></span>
+                        <a href="#cargarHistorial"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarHistorial(idHato: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idHato</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="claseTipo"></a>
+                    <span class="name">
+                        <span ><b>claseTipo</b></span>
+                        <a href="#claseTipo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>claseTipo(tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:166</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tipo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="contarSecciones"></a>
+                    <span class="name">
+                        <span ><b>contarSecciones</b></span>
+                        <a href="#contarSecciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>contarSecciones(config: <a href="../interfaces/ReporteConfigDTO.html" target="_self">ReporteConfigDTO</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="205"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:205</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>config</td>
+                                            <td>
+                                                            <code><a href="../interfaces/ReporteConfigDTO.html" target="_self" >ReporteConfigDTO</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatearFecha"></a>
+                    <span class="name">
+                        <span ><b>formatearFecha</b></span>
+                        <a href="#formatearFecha"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatearFecha(fecha: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="175"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:175</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>fecha</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatearPeriodo"></a>
+                    <span class="name">
+                        <span ><b>formatearPeriodo</b></span>
+                        <a href="#formatearPeriodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatearPeriodo(desde: string | null, hasta: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="189"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:189</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>desde</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>hasta</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconoTipo"></a>
+                    <span class="name">
+                        <span ><b>iconoTipo</b></span>
+                        <a href="#iconoTipo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iconoTipo(tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="148"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:148</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tipo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="irAGenerarReporte"></a>
+                    <span class="name">
+                        <span ><b>irAGenerarReporte</b></span>
+                        <a href="#irAGenerarReporte"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>irAGenerarReporte()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="142"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:142</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelTipo"></a>
+                    <span class="name">
+                        <span ><b>labelTipo</b></span>
+                        <a href="#labelTipo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>labelTipo(tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tipo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="217"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:217</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="regenerar"></a>
+                    <span class="name">
+                        <span ><b>regenerar</b></span>
+                        <a href="#regenerar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>regenerar(reporte: <a href="../interfaces/ReporteHistorialDTO.html" target="_self">ReporteHistorialDTO</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reporte</td>
+                                            <td>
+                                                            <code><a href="../interfaces/ReporteHistorialDTO.html" target="_self" >ReporteHistorialDTO</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFiltro"></a>
+                    <span class="name">
+                        <span ><b>setFiltro</b></span>
+                        <a href="#setFiltro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setFiltro(tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tipo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exito"></a>
+                    <span class="name">
+                        <span ><b>exito</b></span>
+                        <a href="#exito"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroTipo"></a>
+                    <span class="name">
+                        <span ><b>filtroTipo</b></span>
+                        <a href="#filtroTipo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;TODOS&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hatoActivo"></a>
+                    <span class="name">
+                        <span ><b>hatoActivo</b></span>
+                        <a href="#hatoActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Hato.html" target="_self" >Hato | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="regenerando"></a>
+                    <span class="name">
+                        <span ><b>regenerando</b></span>
+                        <a href="#regenerando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reportes"></a>
+                    <span class="name">
+                        <span ><b>reportes</b></span>
+                        <a href="#reportes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ReporteHistorialDTO.html" target="_self" >ReporteHistorialDTO[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tipos"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tipos</b></span>
+                        <a href="#tipos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { valor: &#x27;TODOS&#x27;, label: &#x27;Todos&#x27; },
+    { valor: &#x27;MANUAL&#x27;, label: &#x27;🔵 Manuales&#x27; },
+    { valor: &#x27;MENSUAL&#x27;, label: &#x27;🟢 Mensuales&#x27; },
+    { valor: &#x27;TRIMESTRAL&#x27;, label: &#x27;🟡 Trimestrales&#x27; },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="reportesFiltrados"></a>
+                        <span class="name"><b>reportesFiltrados</b><a href="#reportesFiltrados"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>reportesFiltrados()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:104</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="countPorTipo"></a>
+                        <span class="name"><b>countPorTipo</b><a href="#countPorTipo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>countPorTipo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">src/app/features/Usuario/reportes/historial-reportes/historial-reportes.component.ts:196</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+import { HatoStateService } from &#x27;../../../../core/services/ui-state/hato-state.service&#x27;;
+import { HatoService, Hato } from &#x27;../../../../core/services/hato/hato.service&#x27;;
+import {
+  ReporteService,
+  ReporteHistorialDTO,
+  ReporteConfigDTO,
+} from &#x27;../../../../core/services/reportes/reporte.service&#x27;;
+import { SpinnerComponent } from &#x27;../../../../shared/spinner/spinner.component&#x27;;
+
+@Component({
+  selector: &#x27;app-historial-reportes&#x27;,
+  standalone: true,
+  imports: [CommonModule, SpinnerComponent],
+  templateUrl: &#x27;./historial-reportes.component.html&#x27;,
+  styleUrl: &#x27;./historial-reportes.component.css&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HistorialReportesComponent implements OnInit, OnDestroy {
+  // ── Estado ────────────────────────────────────────────────────────────
+  loading &#x3D; true;
+  regenerando: number | null &#x3D; null;
+  error &#x3D; &#x27;&#x27;;
+  exito &#x3D; &#x27;&#x27;;
+  hatoActivo: Hato | null &#x3D; null;
+
+  // ── Datos ─────────────────────────────────────────────────────────────
+  reportes: ReporteHistorialDTO[] &#x3D; [];
+
+  // ── Filtro ────────────────────────────────────────────────────────────
+  filtroTipo: string &#x3D; &#x27;TODOS&#x27;;
+
+  readonly tipos &#x3D; [
+    { valor: &#x27;TODOS&#x27;, label: &#x27;Todos&#x27; },
+    { valor: &#x27;MANUAL&#x27;, label: &#x27;🔵 Manuales&#x27; },
+    { valor: &#x27;MENSUAL&#x27;, label: &#x27;🟢 Mensuales&#x27; },
+    { valor: &#x27;TRIMESTRAL&#x27;, label: &#x27;🟡 Trimestrales&#x27; },
+  ];
+
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  constructor(
+    private hatoState: HatoStateService,
+    private hatoService: HatoService,
+    private reporteService: ReporteService,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.hatoState.hatoActivo$.pipe(takeUntil(this.destroy$)).subscribe((hato) &#x3D;&gt; {
+      this.hatoActivo &#x3D; hato;
+      if (hato?.idHato) {
+        this.cargarHistorial(hato.idHato);
+      } else {
+        this.loading &#x3D; false;
+      }
+      this.cdr.markForCheck();
+    });
+
+    if (!this.hatoState.getHatoActivo()) {
+      this.hatoService.getMisHatos().subscribe({
+        next: (hatos) &#x3D;&gt; {
+          if (hatos.length &gt; 0) this.hatoState.setHatoActivo(hatos[0]);
+          else this.loading &#x3D; false;
+          this.cdr.markForCheck();
+        },
+      });
+    }
+  }
+
+  // ── Carga ─────────────────────────────────────────────────────────────
+
+  private cargarHistorial(idHato: string): void {
+    this.loading &#x3D; true;
+    this.cdr.markForCheck();
+
+    this.reporteService.getHistorial(idHato).subscribe({
+      next: (reportes) &#x3D;&gt; {
+        this.reportes &#x3D; reportes;
+        this.loading &#x3D; false;
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.error &#x3D; &#x27;Error al cargar el historial de reportes.&#x27;;
+        this.loading &#x3D; false;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  // ── Filtro ────────────────────────────────────────────────────────────
+
+  get reportesFiltrados(): ReporteHistorialDTO[] {
+    if (this.filtroTipo &#x3D;&#x3D;&#x3D; &#x27;TODOS&#x27;) return this.reportes;
+    return this.reportes.filter((r) &#x3D;&gt; r.tipo &#x3D;&#x3D;&#x3D; this.filtroTipo);
+  }
+
+  setFiltro(tipo: string): void {
+    this.filtroTipo &#x3D; tipo;
+    this.cdr.markForCheck();
+  }
+
+  // ── Regenerar ─────────────────────────────────────────────────────────
+
+  regenerar(reporte: ReporteHistorialDTO): void {
+    this.regenerando &#x3D; reporte.idReporte;
+    this.error &#x3D; &#x27;&#x27;;
+    this.exito &#x3D; &#x27;&#x27;;
+    this.cdr.markForCheck();
+
+    this.reporteService.regenerarReporte(reporte.idReporte).subscribe({
+      next: (blob) &#x3D;&gt; {
+        this.reporteService.descargarPdf(blob, this.hatoActivo?.nombreHato ?? &#x27;hato&#x27;);
+        this.exito &#x3D; &#x27;✅ Reporte regenerado y descargado correctamente.&#x27;;
+        this.regenerando &#x3D; null;
+        if (this.hatoActivo?.idHato) {
+          this.cargarHistorial(this.hatoActivo.idHato);
+        }
+        this.cdr.markForCheck();
+      },
+      error: () &#x3D;&gt; {
+        this.error &#x3D; &#x27;Error al regenerar el reporte.&#x27;;
+        this.regenerando &#x3D; null;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  // ── Navegación ────────────────────────────────────────────────────────
+
+  irAGenerarReporte(): void {
+    this.router.navigate([&#x27;/reportes&#x27;]);
+  }
+
+  // ── Helpers visuales ─────────────────────────────────────────────────
+
+  iconoTipo(tipo: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      MANUAL: &#x27;🔵&#x27;,
+      MENSUAL: &#x27;🟢&#x27;,
+      TRIMESTRAL: &#x27;🟡&#x27;,
+    };
+    return map[tipo] ?? &#x27;📄&#x27;;
+  }
+
+  labelTipo(tipo: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      MANUAL: &#x27;Manual&#x27;,
+      MENSUAL: &#x27;Mensual&#x27;,
+      TRIMESTRAL: &#x27;Trimestral&#x27;,
+    };
+    return map[tipo] ?? tipo;
+  }
+
+  claseTipo(tipo: string): string {
+    const map: Record&lt;string, string&gt; &#x3D; {
+      MANUAL: &#x27;tipo-manual&#x27;,
+      MENSUAL: &#x27;tipo-mensual&#x27;,
+      TRIMESTRAL: &#x27;tipo-trimestral&#x27;,
+    };
+    return map[tipo] ?? &#x27;&#x27;;
+  }
+
+  formatearFecha(fecha: string | null): string {
+    if (!fecha) return &#x27;—&#x27;;
+    try {
+      const d &#x3D; new Date(fecha);
+      return d.toLocaleDateString(&#x27;es-CO&#x27;, {
+        day: &#x27;2-digit&#x27;,
+        month: &#x27;long&#x27;,
+        year: &#x27;numeric&#x27;,
+      });
+    } catch {
+      return fecha;
+    }
+  }
+
+  formatearPeriodo(desde: string | null, hasta: string | null): string {
+    if (!desde &amp;&amp; !hasta) return &#x27;Histórico completo&#x27;;
+    if (!desde) return &#x60;Hasta ${hasta}&#x60;;
+    if (!hasta) return &#x60;Desde ${desde}&#x60;;
+    return &#x60;${desde} → ${hasta}&#x60;;
+  }
+
+  get countPorTipo(): Record&lt;string, number&gt; {
+    return {
+      TODOS: this.reportes.length,
+      MANUAL: this.reportes.filter((r) &#x3D;&gt; r.tipo &#x3D;&#x3D;&#x3D; &#x27;MANUAL&#x27;).length,
+      MENSUAL: this.reportes.filter((r) &#x3D;&gt; r.tipo &#x3D;&#x3D;&#x3D; &#x27;MENSUAL&#x27;).length,
+      TRIMESTRAL: this.reportes.filter((r) &#x3D;&gt; r.tipo &#x3D;&#x3D;&#x3D; &#x27;TRIMESTRAL&#x27;).length,
+    };
+  }
+
+  contarSecciones(config: ReporteConfigDTO): number {
+    return [
+      config.incluirResumenEjecutivo,
+      config.incluirKpis,
+      config.incluirBenchmarking,
+      config.incluirRanking,
+      config.incluirFinanzas,
+      config.incluirProduccion,
+      config.incluirPracticas,
+    ].filter(Boolean).length;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;historial-page&quot;&gt;
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; HEADER &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  &lt;header class&#x3D;&quot;page-header&quot;&gt;
+    &lt;div class&#x3D;&quot;header-left&quot;&gt;
+      &lt;p class&#x3D;&quot;page-tag&quot;&gt;Reportes · Historial&lt;/p&gt;
+      &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Mis &lt;span class&#x3D;&quot;brand&quot;&gt;Reportes&lt;/span&gt;&lt;/h1&gt;
+      @if (hatoActivo) {
+        &lt;p class&#x3D;&quot;page-subtitle&quot;&gt;
+          &lt;strong&gt;{{ hatoActivo.nombreHato }}&lt;/strong&gt; — {{ hatoActivo.ciudad }},
+          {{ hatoActivo.departamento }}
+        &lt;/p&gt;
+      } @else {
+        &lt;p class&#x3D;&quot;page-subtitle warn&quot;&gt;⚠️ Selecciona un hato para ver tus reportes.&lt;/p&gt;
+      }
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;header-right&quot;&gt;
+      &lt;div class&#x3D;&quot;header-icon&quot;&gt;📄&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; MENSAJES &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+  @if (error) {
+    &lt;div class&#x3D;&quot;msg-error&quot;&gt;
+      &lt;span&gt;❌&lt;/span&gt;
+      &lt;p&gt;{{ error }}&lt;/p&gt;
+    &lt;/div&gt;
+  }
+  @if (exito) {
+    &lt;div class&#x3D;&quot;msg-exito&quot;&gt;
+      &lt;span&gt;✅&lt;/span&gt;
+      &lt;p&gt;{{ exito }}&lt;/p&gt;
+    &lt;/div&gt;
+  }
+
+  @if (!hatoActivo) {
+    &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+      &lt;span&gt;🐄&lt;/span&gt;
+      &lt;p&gt;Selecciona un hato para ver tu historial de reportes.&lt;/p&gt;
+    &lt;/div&gt;
+  }
+
+  @if (hatoActivo) {
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; FILTROS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;div class&#x3D;&quot;filtros-card&quot;&gt;
+      &lt;div class&#x3D;&quot;filtros-row&quot;&gt;
+        @for (tipo of tipos; track tipo.valor) {
+          &lt;button
+            class&#x3D;&quot;filtro-btn&quot;
+            [class.activo]&#x3D;&quot;filtroTipo &#x3D;&#x3D;&#x3D; tipo.valor&quot;
+            (click)&#x3D;&quot;setFiltro(tipo.valor)&quot;
+          &gt;
+            {{ tipo.label }}
+            &lt;span class&#x3D;&quot;filtro-count&quot;&gt;
+              {{ countPorTipo[tipo.valor] }}
+            &lt;/span&gt;
+          &lt;/button&gt;
+        }
+        &lt;button class&#x3D;&quot;btn-nuevo-reporte&quot; (click)&#x3D;&quot;irAGenerarReporte()&quot;&gt;
+          + Generar nuevo reporte
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; LOADING &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    @if (loading) {
+      &lt;div class&#x3D;&quot;loading-wrap&quot;&gt;
+        &lt;app-spinner size&#x3D;&quot;large&quot; message&#x3D;&quot;Cargando historial...&quot;&gt; &lt;/app-spinner&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; LISTA &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    @if (!loading) {
+      @if (reportesFiltrados.length &#x3D;&#x3D;&#x3D; 0) {
+        &lt;div class&#x3D;&quot;empty-state&quot;&gt;
+          &lt;span&gt;📄&lt;/span&gt;
+          @if (reportes.length &#x3D;&#x3D;&#x3D; 0) {
+            &lt;p&gt;No tienes reportes guardados actualmente.&lt;/p&gt;
+            &lt;p class&#x3D;&quot;empty-hint&quot;&gt;
+              Genera tu primer reporte para que quede guardado en tu historial.
+            &lt;/p&gt;
+          } @else {
+            &lt;p&gt;No hay reportes del tipo seleccionado.&lt;/p&gt;
+          }
+          &lt;button class&#x3D;&quot;btn-nuevo-reporte-empty&quot; (click)&#x3D;&quot;irAGenerarReporte()&quot;&gt;
+            + Generar primer reporte
+          &lt;/button&gt;
+        &lt;/div&gt;
+      } @else {
+        &lt;div class&#x3D;&quot;reportes-lista&quot;&gt;
+          @for (reporte of reportesFiltrados; track reporte.idReporte) {
+            &lt;div class&#x3D;&quot;reporte-card&quot;&gt;
+              &lt;!-- Header --&gt;
+              &lt;div class&#x3D;&quot;reporte-header&quot;&gt;
+                &lt;div class&#x3D;&quot;reporte-header-left&quot;&gt;
+                  &lt;span class&#x3D;&quot;reporte-icono&quot;&gt;
+                    {{ iconoTipo(reporte.tipo) }}
+                  &lt;/span&gt;
+                  &lt;div class&#x3D;&quot;reporte-info&quot;&gt;
+                    &lt;h3 class&#x3D;&quot;reporte-nombre&quot;&gt;
+                      {{ reporte.nombre }}
+                    &lt;/h3&gt;
+                    &lt;p class&#x3D;&quot;reporte-fecha&quot;&gt;
+                      Generado el
+                      {{ formatearFecha(reporte.fechaGeneracion) }}
+                    &lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;reporte-header-right&quot;&gt;
+                  &lt;span class&#x3D;&quot;tipo-chip&quot; [class]&#x3D;&quot;claseTipo(reporte.tipo)&quot;&gt;
+                    {{ iconoTipo(reporte.tipo) }}
+                    {{ labelTipo(reporte.tipo) }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Detalles --&gt;
+              &lt;div class&#x3D;&quot;reporte-detalles&quot;&gt;
+                &lt;div class&#x3D;&quot;detalle-item&quot;&gt;
+                  &lt;span class&#x3D;&quot;detalle-label&quot;&gt;Período&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;detalle-valor&quot;&gt;
+                    {{ formatearPeriodo(reporte.periodoDesde, reporte.periodoHasta) }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+                @if (reporte.tamanioFormateado) {
+                  &lt;div class&#x3D;&quot;detalle-item&quot;&gt;
+                    &lt;span class&#x3D;&quot;detalle-label&quot;&gt;Tamaño&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;detalle-valor&quot;&gt;
+                      {{ reporte.tamanioFormateado }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                }
+                @if (reporte.configuracion) {
+                  &lt;div class&#x3D;&quot;detalle-item&quot;&gt;
+                    &lt;span class&#x3D;&quot;detalle-label&quot;&gt;Secciones&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;detalle-valor&quot;&gt;
+                      {{ contarSecciones(reporte.configuracion) }}
+                      secciones
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                }
+              &lt;/div&gt;
+
+              &lt;!-- Secciones chips --&gt;
+              @if (reporte.configuracion) {
+                &lt;div class&#x3D;&quot;secciones-chips&quot;&gt;
+                  @if (reporte.configuracion.incluirResumenEjecutivo) {
+                    &lt;span class&#x3D;&quot;seccion-chip&quot;&gt;📋 Resumen&lt;/span&gt;
+                  }
+                  @if (reporte.configuracion.incluirKpis) {
+                    &lt;span class&#x3D;&quot;seccion-chip&quot;&gt;📈 KPIs&lt;/span&gt;
+                  }
+                  @if (reporte.configuracion.incluirBenchmarking) {
+                    &lt;span class&#x3D;&quot;seccion-chip&quot;&gt;🔍 Benchmarking&lt;/span&gt;
+                  }
+                  @if (reporte.configuracion.incluirRanking) {
+                    &lt;span class&#x3D;&quot;seccion-chip&quot;&gt;🏆 Ranking&lt;/span&gt;
+                  }
+                  @if (reporte.configuracion.incluirFinanzas) {
+                    &lt;span class&#x3D;&quot;seccion-chip&quot;&gt;💰 Finanzas&lt;/span&gt;
+                  }
+                  @if (reporte.configuracion.incluirProduccion) {
+                    &lt;span class&#x3D;&quot;seccion-chip&quot;&gt;🥛 Producción&lt;/span&gt;
+                  }
+                  @if (reporte.configuracion.incluirPracticas) {
+                    &lt;span class&#x3D;&quot;seccion-chip&quot;&gt;🌱 Prácticas&lt;/span&gt;
+                  }
+                &lt;/div&gt;
+              }
+
+              &lt;!-- Acciones --&gt;
+              &lt;div class&#x3D;&quot;reporte-acciones&quot;&gt;
+                &lt;button
+                  class&#x3D;&quot;btn-regenerar&quot;
+                  [disabled]&#x3D;&quot;regenerando &#x3D;&#x3D;&#x3D; reporte.idReporte&quot;
+                  (click)&#x3D;&quot;regenerar(reporte)&quot;
+                &gt;
+                  @if (regenerando &#x3D;&#x3D;&#x3D; reporte.idReporte) {
+                    &lt;app-spinner size&#x3D;&quot;small&quot;&gt;&lt;/app-spinner&gt;
+                    Generando...
+                  } @else {
+                    🔄 Regenerar y descargar
+                  }
+                &lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+      }
+    }
+  }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="historial-page">  <!-- ===== HEADER ===== -->  <header class="page-header">    <div class="header-left">      <p class="page-tag">Reportes · Historial</p>      <h1 class="page-title">Mis <span class="brand">Reportes</span></h1>      @if (hatoActivo) {        <p class="page-subtitle">          <strong>{{ hatoActivo.nombreHato }}</strong> — {{ hatoActivo.ciudad }},          {{ hatoActivo.departamento }}        </p>      } @else {        <p class="page-subtitle warn">⚠️ Selecciona un hato para ver tus reportes.</p>      }    </div>    <div class="header-right">      <div class="header-icon">📄</div>    </div>  </header>  <!-- ===== MENSAJES ===== -->  @if (error) {    <div class="msg-error">      <span>❌</span>      <p>{{ error }}</p>    </div>  }  @if (exito) {    <div class="msg-exito">      <span>✅</span>      <p>{{ exito }}</p>    </div>  }  @if (!hatoActivo) {    <div class="empty-state">      <span>🐄</span>      <p>Selecciona un hato para ver tu historial de reportes.</p>    </div>  }  @if (hatoActivo) {    <!-- ===== FILTROS ===== -->    <div class="filtros-card">      <div class="filtros-row">        @for (tipo of tipos; track tipo.valor) {          <button            class="filtro-btn"            [class.activo]="filtroTipo === tipo.valor"            (click)="setFiltro(tipo.valor)"          >            {{ tipo.label }}            <span class="filtro-count">              {{ countPorTipo[tipo.valor] }}            </span>          </button>        }        <button class="btn-nuevo-reporte" (click)="irAGenerarReporte()">          + Generar nuevo reporte        </button>      </div>    </div>    <!-- ===== LOADING ===== -->    @if (loading) {      <div class="loading-wrap">        <app-spinner size="large" message="Cargando historial..."> </app-spinner>      </div>    }    <!-- ===== LISTA ===== -->    @if (!loading) {      @if (reportesFiltrados.length === 0) {        <div class="empty-state">          <span>📄</span>          @if (reportes.length === 0) {            <p>No tienes reportes guardados actualmente.</p>            <p class="empty-hint">              Genera tu primer reporte para que quede guardado en tu historial.            </p>          } @else {            <p>No hay reportes del tipo seleccionado.</p>          }          <button class="btn-nuevo-reporte-empty" (click)="irAGenerarReporte()">            + Generar primer reporte          </button>        </div>      } @else {        <div class="reportes-lista">          @for (reporte of reportesFiltrados; track reporte.idReporte) {            <div class="reporte-card">              <!-- Header -->              <div class="reporte-header">                <div class="reporte-header-left">                  <span class="reporte-icono">                    {{ iconoTipo(reporte.tipo) }}                  </span>                  <div class="reporte-info">                    <h3 class="reporte-nombre">                      {{ reporte.nombre }}                    </h3>                    <p class="reporte-fecha">                      Generado el                      {{ formatearFecha(reporte.fechaGeneracion) }}                    </p>                  </div>                </div>                <div class="reporte-header-right">                  <span class="tipo-chip" [class]="claseTipo(reporte.tipo)">                    {{ iconoTipo(reporte.tipo) }}                    {{ labelTipo(reporte.tipo) }}                  </span>                </div>              </div>              <!-- Detalles -->              <div class="reporte-detalles">                <div class="detalle-item">                  <span class="detalle-label">Período</span>                  <span class="detalle-valor">                    {{ formatearPeriodo(reporte.periodoDesde, reporte.periodoHasta) }}                  </span>                </div>                @if (reporte.tamanioFormateado) {                  <div class="detalle-item">                    <span class="detalle-label">Tamaño</span>                    <span class="detalle-valor">                      {{ reporte.tamanioFormateado }}                    </span>                  </div>                }                @if (reporte.configuracion) {                  <div class="detalle-item">                    <span class="detalle-label">Secciones</span>                    <span class="detalle-valor">                      {{ contarSecciones(reporte.configuracion) }}                      secciones                    </span>                  </div>                }              </div>              <!-- Secciones chips -->              @if (reporte.configuracion) {                <div class="secciones-chips">                  @if (reporte.configuracion.incluirResumenEjecutivo) {                    <span class="seccion-chip">📋 Resumen</span>                  }                  @if (reporte.configuracion.incluirKpis) {                    <span class="seccion-chip">📈 KPIs</span>                  }                  @if (reporte.configuracion.incluirBenchmarking) {                    <span class="seccion-chip">🔍 Benchmarking</span>                  }                  @if (reporte.configuracion.incluirRanking) {                    <span class="seccion-chip">🏆 Ranking</span>                  }                  @if (reporte.configuracion.incluirFinanzas) {                    <span class="seccion-chip">💰 Finanzas</span>                  }                  @if (reporte.configuracion.incluirProduccion) {                    <span class="seccion-chip">🥛 Producción</span>                  }                  @if (reporte.configuracion.incluirPracticas) {                    <span class="seccion-chip">🌱 Prácticas</span>                  }                </div>              }              <!-- Acciones -->              <div class="reporte-acciones">                <button                  class="btn-regenerar"                  [disabled]="regenerando === reporte.idReporte"                  (click)="regenerar(reporte)"                >                  @if (regenerando === reporte.idReporte) {                    <app-spinner size="small"></app-spinner>                    Generando...                  } @else {                    🔄 Regenerar y descargar                  }                </button>              </div>            </div>          }        </div>      }    }  }</div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertasComponent', 'selector': 'app-alertas'},{'name': 'App', 'selector': 'app-root'},{'name': 'AsistenteChatComponent', 'selector': 'app-asistente-chat'},{'name': 'AvancePasosComponent', 'selector': 'app-avance-pasos'},{'name': 'BenchmarkGlobalComponent', 'selector': 'app-benchmark-global'},{'name': 'BenchmarkingComponent', 'selector': 'app-benchmarking'},{'name': 'BenchmarkingSectionComponent', 'selector': 'app-benchmarking-section'},{'name': 'BenefitsSectionComponent', 'selector': 'app-benefits-section'},{'name': 'BitacoraOrdenioComponent', 'selector': 'app-bitacora-ordenio'},{'name': 'ComparativaHatosComponent', 'selector': 'app-comparativa-hatos'},{'name': 'ComparativaKpisComponent', 'selector': 'app-comparativa-kpis'},{'name': 'CrearReporteComponent', 'selector': 'app-crear-reporte'},{'name': 'CtaSectionComponent', 'selector': 'app-cta-section'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'DetalleHatoAdminComponent', 'selector': 'app-detalle-hato-admin'},{'name': 'DetallePracticaComponent', 'selector': 'app-detalle-practica'},{'name': 'EstadisticasFinanzasComponent', 'selector': 'app-estadisticas-finanzas'},{'name': 'EstadisticasProduccionComponent', 'selector': 'app-estadisticas-produccion'},{'name': 'ExcelImportSectionComponent', 'selector': 'app-excel-import-section'},{'name': 'FeaturesSectionComponent', 'selector': 'app-features-section'},{'name': 'FinanzasComponent', 'selector': 'app-finanzas'},{'name': 'FinanzasExcelComponent', 'selector': 'app-finanzas-excel'},{'name': 'FinanzasManualComponent', 'selector': 'app-finanzas-manual'},{'name': 'FooterComponent', 'selector': 'app-landing-footer'},{'name': 'GestionHatosComponent', 'selector': 'app-gestion-hatos'},{'name': 'GestionPracticasComponent', 'selector': 'app-gestion-practicas'},{'name': 'GestionRecomendacionesComponent', 'selector': 'app-gestion-recomendaciones'},{'name': 'GestionReglasComponent', 'selector': 'app-gestion-reglas'},{'name': 'GraficaBarrasGlobalComponent', 'selector': 'app-grafica-barras-global'},{'name': 'GraficaDetalleModalComponent', 'selector': 'app-grafica-detalle-modal'},{'name': 'GraficaEvolucionPosicionComponent', 'selector': 'app-grafica-evolucion-posicion'},{'name': 'GraficaPosicionComponent', 'selector': 'app-grafica-posicion'},{'name': 'GraficasBenchmarkingComponent', 'selector': 'app-graficas-benchmarking'},{'name': 'HatoComponent', 'selector': 'app-hato'},{'name': 'HeroSectionComponent', 'selector': 'app-hero-section'},{'name': 'HistorialReportesComponent', 'selector': 'app-historial-reportes'},{'name': 'HomeClimaComponent', 'selector': 'app-home-clima'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeEstadoComponent', 'selector': 'app-home-estado'},{'name': 'HomeHeaderComponent', 'selector': 'app-home-header'},{'name': 'HomeMapaComponent', 'selector': 'app-home-mapa'},{'name': 'HomeModulosComponent', 'selector': 'app-home-modulos'},{'name': 'HowItWorksSectionComponent', 'selector': 'app-how-it-works-section'},{'name': 'InfoBenchmarkingComponent', 'selector': 'app-info-benchmarking'},{'name': 'InfoFinanzasComponent', 'selector': 'app-info-finanzas'},{'name': 'InfoHatoComponent', 'selector': 'app-info-hato'},{'name': 'InfoProduccionComponent', 'selector': 'app-info-produccion'},{'name': 'InventarioGanadoComponent', 'selector': 'app-inventario-ganado'},{'name': 'InventarioGanadoEstadisticasComponent', 'selector': 'app-inventario-ganado-estadisticas'},{'name': 'InventarioGanadoRegistroComponent', 'selector': 'app-inventario-ganado-registro'},{'name': 'InventarioGanadoResumenComponent', 'selector': 'app-inventario-ganado-resumen'},{'name': 'InventarioGeneralComponent', 'selector': 'app-inventario-general'},{'name': 'InventarioGeneralEstadisticasComponent', 'selector': 'app-inventario-general-estadisticas'},{'name': 'InventarioGeneralRegistroComponent', 'selector': 'app-inventario-general-registro'},{'name': 'InventarioGeneralResumenComponent', 'selector': 'app-inventario-general-resumen'},{'name': 'InventariosHatoComponent', 'selector': 'app-inventarios-hato'},{'name': 'KpiDetalleComponent', 'selector': 'app-kpi-detalle'},{'name': 'KpiPreviewSectionComponent', 'selector': 'app-kpi-preview-section'},{'name': 'LandingComponent', 'selector': 'app-landing'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapaHatosComponent', 'selector': 'app-mapa-hatos'},{'name': 'MiProgresoComponent', 'selector': 'app-mi-progreso'},{'name': 'MisPracticasComponent', 'selector': 'app-mis-practicas'},{'name': 'ModFinanzasComponent', 'selector': 'app-mod-finanzas'},{'name': 'ModGanadoComponent', 'selector': 'app-mod-ganado'},{'name': 'ModKpisComponent', 'selector': 'app-mod-kpis'},{'name': 'ModProduccionComponent', 'selector': 'app-mod-produccion'},{'name': 'NavbarAdminComponent', 'selector': 'app-navbar-admin'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-landing-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NuevoHatoComponent', 'selector': 'app-nuevo-hato'},{'name': 'PracticasComponent', 'selector': 'app-practicas'},{'name': 'PracticasSugeridasComponent', 'selector': 'app-practicas-sugeridas'},{'name': 'PricingSectionComponent', 'selector': 'app-pricing-section'},{'name': 'ProblemSectionComponent', 'selector': 'app-problem-section'},{'name': 'ProduccionComponent', 'selector': 'app-produccion'},{'name': 'ProgresoPracticasComponent', 'selector': 'app-progreso-practicas'},{'name': 'ProyeccionesComponent', 'selector': 'app-proyecciones'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RankingCompuestoComponent', 'selector': 'app-ranking-compuesto'},{'name': 'RankingPorKpiComponent', 'selector': 'app-ranking-por-kpi'},{'name': 'RankingResumenComponent', 'selector': 'app-ranking-resumen'},{'name': 'RecomendacionesComponent', 'selector': 'app-recomendaciones'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegistroFinancieroComponent', 'selector': 'app-registro-financiero'},{'name': 'RegistroProduccionComponent', 'selector': 'app-registro-produccion'},{'name': 'ReportesComponent', 'selector': 'app-reportes'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SeccionFinancieroComponent', 'selector': 'app-seccion-financiero'},{'name': 'SeccionInfoHatoComponent', 'selector': 'app-seccion-info-hato'},{'name': 'SeccionInventarioComponent', 'selector': 'app-seccion-inventario'},{'name': 'SeccionProduccionComponent', 'selector': 'app-seccion-produccion'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'TestimonialsSectionComponent', 'selector': 'app-testimonials-section'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'}];
+    var DIRECTIVES = [{'name': 'RevealOnScrollDirective', 'selector': '[appRevealOnScroll]'}];
+    var ACTUAL_COMPONENT = {'name': 'HistorialReportesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HistorialReportesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

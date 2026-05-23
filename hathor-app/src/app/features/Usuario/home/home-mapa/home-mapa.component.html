@@ -1,0 +1,36 @@
+<div class="seccion-card">
+  <!-- ── Encabezado de sección ── -->
+  <div class="seccion-header">
+    <div class="seccion-header-left">
+      <span class="seccion-tag">Plataforma</span>
+      <h2 class="seccion-titulo">Hatos en <span class="brand">Colombia</span></h2>
+      <p class="seccion-subtitulo">
+        Hatos registrados en la plataforma con coordenadas disponibles
+      </p>
+    </div>
+
+    @if (!loadingMapa) {
+      <div class="seccion-chip">
+        {{ totalHatos }} hato{{ totalHatos === 1 ? '' : 's' }} activo{{
+          totalHatos === 1 ? '' : 's'
+        }}
+      </div>
+    }
+  </div>
+
+  <!-- ── Contenido ── -->
+  @if (loadingMapa) {
+    <div class="card-loading">
+      <app-spinner size="medium" message="Cargando mapa..."></app-spinner>
+    </div>
+  } @else if (hatosPlataforma.length === 0) {
+    <div class="card-empty">
+      <span aria-hidden="true">🗺️</span>
+      <p>No hay hatos con coordenadas registradas aún.</p>
+    </div>
+  } @else {
+    <div class="mapa-wrapper">
+      <app-mapa-hatos [hatos]="hatosPlataforma" [modoGeneral]="true" />
+    </div>
+  }
+</div>

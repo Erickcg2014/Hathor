@@ -1,0 +1,8 @@
+version: "3"
+agent:
+  authtoken: 3D8MfHv8qcpxWHO2Ij9xWhyEuFa_3mtUTVZ6GcVF6mxj1p7c4
+
+tunnels:
+  gateway:
+    proto: http
+    addr: 8081
